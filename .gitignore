@@ -1,0 +1,58 @@
+# Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Data lake — never commit datasets, clips, features, or model weights
+data/
+!data/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# uv / pip
+pip-wheel-metadata/
+
+# Jupyter
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# ML experiment artifacts
+wandb/
+mlruns/
+lightning_logs/
+outputs/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.zarr
+*.parquet
+
+# Modal
+.modal/
