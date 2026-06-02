@@ -21,7 +21,7 @@
 | `attn14_post_resid` | 104 |
 | `final_encoder` | 104 |
 
-## Next Step
+## Completed Follow-Up
 
 ```bash
 uv run python scripts/tribe_foldsafe_direction_patch.py \

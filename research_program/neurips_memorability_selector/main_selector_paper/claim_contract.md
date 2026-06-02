@@ -14,6 +14,9 @@ paper should be either already supported, pending a named experiment, or cut.
   response models.
 - Persona directions are structured but not orthogonal; they compress to a few
   signed latent axes.
+- The 104-clip fold-safe hidden-direction patch shows the learned TRIBE hidden
+  direction is load-bearing across disjoint train/eval folds on balanced
+  high/low memorability tail clips.
 - Current Wan LoRA/product-selector results are proxy-scored and need human
   validation.
 
@@ -31,7 +34,8 @@ paper should be either already supported, pending a named experiment, or cut.
 - A learned vector is the ontological essence of memorability, attention, or
   audience identity.
 - The active-inference / emptiness frame validates any empirical result.
-- The hidden-direction patch proves population-level TRIBE-internal causality.
+- The hidden-direction patch proves population-level TRIBE-internal causality
+  or a fully isolated mechanism.
 - The Wan LoRA is behaviorally improved just because the TRIBE/BMD proxy rises.
 - Direct steering is solved.
 - Memorability is the same thing as quality, engagement, virality, emotion, or

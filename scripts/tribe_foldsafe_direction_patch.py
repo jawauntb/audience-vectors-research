@@ -668,7 +668,7 @@ def write_markdown(report: dict[str, Any], path: Path) -> None:
         "  --out-md data/reports/tribe_layerwise_encoder_hidden_capture_104.md",
         "```",
         "",
-        "This expands the hidden cache to the fold-safe requirement of "
+        "This expanded the hidden cache to the completed fold-safe requirement of "
         f"{config['n_train_each'] + config['n_eval_each']} low + "
         f"{config['n_train_each'] + config['n_eval_each']} high clips.",
         "",

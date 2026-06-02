@@ -55,8 +55,9 @@ to TRIBE/product nor obviously irrelevant.
 - We have not shown delayed-recognition memory gains.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.
-- We have not shown a mechanistic causal story inside TRIBE beyond exploratory
-  layerwise and patching probes.
+- We have a fold-safe TRIBE-internal hidden-direction intervention on 104
+  balanced high/low clips. We have not yet shown a full population-level causal
+  mechanism with content stratification and matched-control patches.
 
 ## Submission-Critical Next Step
 

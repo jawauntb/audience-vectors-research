@@ -1,6 +1,6 @@
 # Synthetic Audience Axes Are Structured But Not Orthogonal
 
-**Draft status:** satellite paper draft, regenerated 2026-06-01.
+**Draft status:** satellite paper draft, regenerated 2026-06-02.
 **Core purpose:** preserve the useful audience-vector work while removing the
 original overclaim.
 

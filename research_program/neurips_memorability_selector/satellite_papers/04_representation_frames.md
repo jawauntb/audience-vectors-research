@@ -1,6 +1,6 @@
 # Representation Frames For Cognitive Media Selection
 
-**Draft status:** theory and methods note, regenerated 2026-06-01.
+**Draft status:** theory and methods note, regenerated 2026-06-02.
 **Core purpose:** keep the broader intellectual frame without letting it
 overclaim the empirical paper.
 

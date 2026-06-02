@@ -25,7 +25,7 @@ PROGRAM = ROOT / "research_program" / "neurips_memorability_selector"
 REPORTS = ROOT / "data" / "reports"
 SITE = PROGRAM / "site"
 SITE_PAPERS = SITE / "papers"
-BUILD_DATE = "2026-06-01"
+BUILD_DATE = "2026-06-02"
 CHROME = Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
 
@@ -45,6 +45,19 @@ def fnum(value: Any, digits: int = 3, signed: bool = True) -> str:
         return "n/a"
     sign = "+" if signed else ""
     return f"{val:{sign}.{digits}f}"
+
+
+def mean(values: list[float]) -> float | None:
+    if not values:
+        return None
+    return sum(values) / len(values)
+
+
+def numeric(value: Any) -> float | None:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
 
 
 def pct(value: Any, digits: int = 1) -> str:
@@ -87,7 +100,161 @@ def read_results() -> dict[str, Any]:
         "tribe_temporal": load_json(REPORTS / "tribe_temporal_spectral_probe.json"),
         "alexnet": load_json(REPORTS / "alexnet_memorability_probe.json"),
         "alexnet_forward": load_json(REPORTS / "alexnet_forward_patch_probe.json"),
+        "tribe_foldsafe_patch": load_json(
+            PROGRAM / "experiments" / "tribe_foldsafe_direction_patch.json"
+        ),
+        "tribe_hidden_capture_104": load_json(
+            PROGRAM / "experiments" / "tribe_layerwise_encoder_hidden_capture_104.json"
+        ),
     }
+
+
+def foldsafe_summary(results: dict[str, Any]) -> dict[str, Any]:
+    report = results.get("tribe_foldsafe_patch", {})
+    raw_layers = report.get("summary", {}).get("layers", [])
+    if not isinstance(raw_layers, list):
+        raw_layers = []
+
+    by_label: dict[str, list[dict[str, Any]]] = {}
+    for row in raw_layers:
+        if isinstance(row, dict) and isinstance(row.get("label"), str):
+            by_label.setdefault(row["label"], []).append(row)
+
+    layers: list[dict[str, Any]] = []
+    for label, rows in by_label.items():
+        train = [
+            val
+            for val in (
+                numeric(r.get("hidden", {}).get("train_spearman_vs_memorability"))
+                for r in rows
+            )
+            if val is not None
+        ]
+        baseline = [
+            val
+            for val in (
+                numeric(r.get("patch", {}).get("eval_baseline_spearman_vs_memorability"))
+                for r in rows
+            )
+            if val is not None
+        ]
+        patch = [
+            val
+            for val in (
+                numeric(r.get("patch", {}).get("eval_patch_spearman_vs_memorability"))
+                for r in rows
+            )
+            if val is not None
+        ]
+        gap = [
+            val
+            for val in (
+                numeric(r.get("patch", {}).get("eval_patch_gap_ratio_vs_baseline"))
+                for r in rows
+            )
+            if val is not None
+        ]
+        delta = [
+            val
+            for val in (
+                numeric(r.get("patch", {}).get("eval_projection_delta_in_baseline_std"))
+                for r in rows
+            )
+            if val is not None
+        ]
+        non_dc = [
+            val
+            for val in (
+                numeric(r.get("hidden", {}).get("non_dc_energy")) for r in rows
+            )
+            if val is not None
+        ]
+        layers.append(
+            {
+                "label": label,
+                "folds": len(rows),
+                "train_hidden_rho": mean(train),
+                "eval_baseline_rho": mean(baseline),
+                "eval_patch_rho": mean(patch),
+                "eval_gap_ratio": mean(gap),
+                "delta_std": mean(delta),
+                "non_dc_energy": mean(non_dc),
+            }
+        )
+
+    patch_values = [
+        val
+        for val in (numeric(layer.get("eval_patch_rho")) for layer in layers)
+        if val is not None
+    ]
+    gap_values = [
+        val
+        for val in (numeric(layer.get("eval_gap_ratio")) for layer in layers)
+        if val is not None
+    ]
+    baseline_values = [
+        val
+        for val in (numeric(layer.get("eval_baseline_rho")) for layer in layers)
+        if val is not None
+    ]
+    train_values = [
+        val
+        for val in (numeric(layer.get("train_hidden_rho")) for layer in layers)
+        if val is not None
+    ]
+    non_dc_values = [
+        val
+        for val in (numeric(layer.get("non_dc_energy")) for layer in layers)
+        if val is not None
+    ]
+
+    summary = report.get("summary", {})
+    coverage = summary.get("balanced_hidden_cache_coverage", {})
+    if not isinstance(coverage, dict):
+        coverage = {}
+
+    return {
+        "status": report.get("status", "missing"),
+        "layers": sorted(layers, key=lambda row: row["label"]),
+        "n_layers": len(layers),
+        "folds": report.get("config", {}).get("folds"),
+        "n_train_each": report.get("config", {}).get("n_train_each"),
+        "n_eval_each": report.get("config", {}).get("n_eval_each"),
+        "n_hidden_cache_eligible": summary.get("n_hidden_cache_eligible"),
+        "needed_hidden_cache_clips": summary.get("needed_hidden_cache_clips"),
+        "low_ready": coverage.get("low_ready"),
+        "high_ready": coverage.get("high_ready"),
+        "baseline_mean": mean(baseline_values),
+        "patch_min": min(patch_values) if patch_values else None,
+        "patch_max": max(patch_values) if patch_values else None,
+        "gap_min": min(gap_values) if gap_values else None,
+        "gap_max": max(gap_values) if gap_values else None,
+        "train_min": min(train_values) if train_values else None,
+        "train_max": max(train_values) if train_values else None,
+        "non_dc_min": min(non_dc_values) if non_dc_values else None,
+        "non_dc_max": max(non_dc_values) if non_dc_values else None,
+    }
+
+
+def foldsafe_layer_table(results: dict[str, Any]) -> str:
+    summary = foldsafe_summary(results)
+    layers = summary.get("layers", [])
+    if not layers:
+        return "Fold-safe hidden patch results are not available in this build."
+
+    rows = [
+        "| Hook target | Train hidden rho | Held-out baseline rho | Held-out patch rho | Gap ratio |",
+        "|---|---:|---:|---:|---:|",
+    ]
+    for layer in layers:
+        rows.append(
+            f"| `{layer['label']}` | "
+            f"{fnum(layer.get('train_hidden_rho'))} | "
+            f"{fnum(layer.get('eval_baseline_rho'))} | "
+            f"{fnum(layer.get('eval_patch_rho'))} | "
+            f"{fnum(layer.get('eval_gap_ratio'))} |"
+        )
+    return "\n".join(rows)
 
 
 def wan_policy(results: dict[str, Any], name: str) -> dict[str, Any]:
@@ -128,6 +295,7 @@ def result_table(results: dict[str, Any]) -> str:
     vjepa = results["vjepa_cv"]
     persona = results["persona_cos"]
     gated = wan_policy(results, "base_or_gated_best_of_n")
+    foldsafe = foldsafe_summary(results)
     rows = [
         "| Result | Current status | Number | Claim use |",
         "|---|---|---:|---|",
@@ -146,6 +314,13 @@ def result_table(results: dict[str, Any]) -> str:
             f"mean abs cos {fnum(persona.get('abs_cos_off_diag', {}).get('mean'), signed=False)}, "
             f"rank {fnum(persona.get('effective_rank'), 2, signed=False)}/12 | "
             "personas are not independent axes |"
+        ),
+        (
+            "| TRIBE hidden-direction patch | fold-safe 104-clip intervention | "
+            f"baseline rho {fnum(foldsafe.get('baseline_mean'))} -> patched rho "
+            f"{fnum(foldsafe.get('patch_min'))} to {fnum(foldsafe.get('patch_max'))}; "
+            f"gap ratio {fnum(foldsafe.get('gap_min'))} to {fnum(foldsafe.get('gap_max'))} | "
+            "mechanistic patch-sensitivity, not population proof |"
         ),
         (
             "| Wan selector proxy gain | proxy-only | "
@@ -188,6 +363,7 @@ def main_selector_paper(results: dict[str, Any]) -> str:
         {},
     )
     gated = wan_policy(results, "base_or_gated_best_of_n")
+    foldsafe = foldsafe_summary(results)
 
     return f"""# Brain-Aligned Memorability Signals Improve Video Generation Selection
 
@@ -216,8 +392,15 @@ Wan2.2 candidate pool, TRIBE/BMD and V-JEPA selectors overlap only partially,
 creating a useful adjudication setting for blinded human evaluation. The current
 paper therefore makes a narrow claim: brain-aligned features expose a compact,
 auditable memorability signal and define a testable generated-video selection
-workflow. It does not yet claim that TRIBE-selected generated videos are more
-memorable to humans, nor that direct generator steering is solved.
+workflow. A fold-safe hidden-direction patch on
+{foldsafe.get('n_hidden_cache_eligible', 104)} balanced high/low BMD clips
+further shows that removing the learned hidden direction disrupts held-out
+TRIBE readouts, reducing layerwise held-out rho from mean
+{fnum(foldsafe.get('baseline_mean'))} to a patched range of
+{fnum(foldsafe.get('patch_min'))} to {fnum(foldsafe.get('patch_max'))}. It does
+not yet claim that TRIBE-selected
+generated videos are more memorable to humans, nor that direct generator
+steering is solved.
 
 ## Big Picture
 
@@ -240,9 +423,11 @@ datasets, behavioral labels, and a plausible neural substrate.
    treating generic video features as strawmen.
 3. We define a generation-selection protocol with preservation gates so the
    selector cannot simply choose off-prompt but high-scoring clips.
-4. We package the human-evaluation protocol and V-JEPA-augmented candidate
+4. We complete a fold-safe hidden-direction patching audit inside TRIBE, using
+   disjoint train/eval clips and expanded layerwise hidden caches.
+5. We package the human-evaluation protocol and V-JEPA-augmented candidate
    manifest needed to test the decisive claim.
-5. We separate confirmed representation results from proxy-only generation
+6. We separate confirmed representation results from proxy-only generation
    results and direct-steering negatives.
 
 ## Current Evidence Ledger
@@ -317,6 +502,23 @@ direction ablations leave the signal intact. Nonlinear residual probes recover
 some signal, so the safe interpretation is "dominant linear readout," not
 "memorability is literally one-dimensional."
 
+The newer hidden-state audit strengthens this point without overclaiming it.
+We expanded the layerwise hidden cache to
+{foldsafe.get('low_ready', 52)} low-memorability and
+{foldsafe.get('high_ready', 52)} high-memorability clips, then ran
+{foldsafe.get('folds', 5)} fold-safe interventions. Each fold trained hidden
+directions on {foldsafe.get('n_train_each', 40)} low plus
+{foldsafe.get('n_train_each', 40)} high clips and patched
+{foldsafe.get('n_eval_each', 12)} low plus
+{foldsafe.get('n_eval_each', 12)} high held-out clips. Across nine hook targets,
+mean held-out baseline rho was {fnum(foldsafe.get('baseline_mean'))}; after
+removing the learned hidden direction, mean patched rho ranged from
+{fnum(foldsafe.get('patch_min'))} to {fnum(foldsafe.get('patch_max'))}, and the
+remaining high-minus-low gap ratio ranged from {fnum(foldsafe.get('gap_min'))}
+to {fnum(foldsafe.get('gap_max'))}. This is a fold-safe TRIBE-internal
+intervention result on tail clips, not a proof of full population-level
+causality.
+
 ### Generated-Video Selector
 
 The current Wan2.2 proxy experiment evaluates 24 fresh prompt/image seeds. The
@@ -367,6 +569,9 @@ Current implementation assets:
   gating candidate generations.
 - The TRIBE readout is a coordinate in a model frame, not an ontological essence
   of memory.
+- The fold-safe hidden patch supports load-bearing hidden-direction sensitivity
+  in TRIBE, but it is still a high/low-tail intervention rather than a full
+  causal account of human memorability.
 
 ## Submission-Ready Claim Contract
 
@@ -374,6 +579,8 @@ Allowed now:
 
 - TRIBE/BMD features contain a compact memorability readout.
 - TRIBE is competitive with V-JEPA for BMD memorability prediction.
+- Fold-safe hidden-direction patching shows the TRIBE-internal hidden direction
+  is load-bearing on disjoint held-out high/low clips.
 - The current generated-video selector is promising under the TRIBE/BMD proxy.
 - TRIBE and V-JEPA disagree enough on generated candidates to justify a human
   adjudication study.
@@ -390,6 +597,7 @@ Cut or avoid:
 - "Persona axes are independent."
 - "Direct steering is solved."
 - "LoRA learned human memorability."
+- "The hidden-direction patch proves population-level causality."
 
 ## References
 
@@ -412,6 +620,7 @@ Cut or avoid:
 
 
 def mechanistic_paper(results: dict[str, Any]) -> str:
+    foldsafe = foldsafe_summary(results)
     return f"""# Mechanistic Audit Of A TRIBE Memorability Readout
 
 **Draft status:** satellite paper draft, regenerated {BUILD_DATE}.
@@ -431,9 +640,14 @@ time-position and rotary-frequency patches do not collapse memorability
 ordering on a balanced 24-clip sensitivity set. However, non-DC encoder hidden
 structure is load-bearing: removing the learned hidden memorability direction
 from early attention residuals through the final encoder sharply disrupts the
-readout. The reviewer-safe conclusion is that the BMD/TRIBE readout is not
-explained by a simple learned-position-table artifact, but it remains a
-sequence-dependent model readout, not a fully isolated causal feature.
+readout. A new fold-safe run expands the hidden cache to
+{foldsafe.get('n_hidden_cache_eligible', 104)} balanced clips and uses disjoint
+train/eval splits; after patching, layerwise held-out rho drops from mean
+{fnum(foldsafe.get('baseline_mean'))} to a patched range of
+{fnum(foldsafe.get('patch_min'))} to {fnum(foldsafe.get('patch_max'))}. The
+reviewer-safe conclusion is that the BMD/TRIBE readout is not explained by a
+simple learned-position-table artifact, but it remains a sequence-dependent
+model readout, not a fully isolated population-level causal feature.
 
 ## Why This Exists
 
@@ -465,9 +679,29 @@ main selector paper cleaner.
 - Direction-only hidden patch is sharper: first collapse appears at
   `attn00_post_resid`, and final encoder removal gives patch rho about -0.105
   with gap ratio about +0.004.
+- Fold-safe hidden-direction patching is now complete on
+  {foldsafe.get('n_hidden_cache_eligible', 104)} balanced clips. Across nine
+  hook targets, mean held-out baseline rho is
+  {fnum(foldsafe.get('baseline_mean'))}; mean patched rho ranges from
+  {fnum(foldsafe.get('patch_min'))} to {fnum(foldsafe.get('patch_max'))}, and
+  the remaining high/low gap ratio ranges from {fnum(foldsafe.get('gap_min'))}
+  to {fnum(foldsafe.get('gap_max'))}.
 - AlexNet conv5 gives a transparent sanity check: learned-direction ablation
   drops rho from about +0.386 to +0.018, and forward patching weakens fc7 from
   about +0.432 to +0.212.
+
+## Fold-Safe Hidden Patch
+
+The fold-safe run expanded the hidden cache to
+{foldsafe.get('low_ready', 52)} low-memorability plus
+{foldsafe.get('high_ready', 52)} high-memorability clips. Each of
+{foldsafe.get('folds', 5)} folds trains a hidden high-minus-low direction on
+{foldsafe.get('n_train_each', 40)} low plus {foldsafe.get('n_train_each', 40)}
+high clips, then patches {foldsafe.get('n_eval_each', 12)} low plus
+{foldsafe.get('n_eval_each', 12)} high held-out clips. The hidden direction,
+output readout, and reported patch metrics are disjoint within each fold.
+
+{foldsafe_layer_table(results)}
 
 ## Layerwise Summary
 
@@ -485,28 +719,31 @@ The layerwise artifacts are stored in:
 - `data/reports/tribe_fourier_critique_review.md`
 - `data/reports/tribe_layerwise_encoder_localization.md`
 - `data/reports/tribe_layerwise_direction_patch.md`
+- `data/reports/tribe_layerwise_encoder_hidden_capture_104.md`
+- `data/reports/tribe_foldsafe_direction_patch.md`
 
 ## Reviewer-Safe Interpretation
 
 The mechanistic audit supports the selector paper by removing an easy dismissal:
 the readout is not merely the temporal position table or a mean-pooling artifact.
 But it also narrows the live concern. The model uses sequence structure
-internally, and the learned hidden direction is load-bearing on the sensitivity
-set. A larger fold-safe hidden-patch run is required before treating the
-layerwise effect as a population estimate.
+internally, and the fold-safe hidden-direction patch shows the learned hidden
+direction remains load-bearing across disjoint train/eval folds. That supports
+the layerwise effect as an intervention result, while population-level
+generalization and content-stratified claims should still be framed cautiously.
 
-## Next Experiment
+## Next Controls
 
-Run fold-safe hidden-direction patching over a larger BMD subset:
+The 104-clip fold-safe patch is complete. The next mechanistic controls are:
 
-- train hidden directions only on train clips;
-- patch held-out clips;
 - report prompt/content stratification;
 - compare random hidden directions and matched-norm patches;
 - repeat across multiple balanced subsets.
+- replicate the intervention in an open brain-encoder or a transparent video
+  model where hidden hooks are easier to audit.
 
-This would turn the current strong local intervention into a submission-grade
-mechanistic result.
+These controls would turn the current fold-safe intervention into a stronger
+population-level mechanistic claim.
 
 ## References
 
@@ -775,6 +1012,7 @@ The existing artifact is:
 
 
 def readme(results: dict[str, Any]) -> str:
+    foldsafe = foldsafe_summary(results)
     return f"""# NeurIPS-Grade Memorability Selector Program
 
 Regenerated {BUILD_DATE}.
@@ -793,6 +1031,9 @@ audience-vector project:
 - Main manuscript source: `main_selector_paper/paper.md`
 - Main manuscript PDF: `main_selector_paper/paper.pdf`
 - Main manuscript HTML: `main_selector_paper/paper.html`
+- Fold-safe hidden patch: `experiments/tribe_foldsafe_direction_patch.md`
+- Expanded hidden cache report:
+  `experiments/tribe_layerwise_encoder_hidden_capture_104.md`
 - Site index: `site/index.html`
 - Split package zip: `data/reports/neurips_memorability_selector_split_package_{BUILD_DATE}.zip`
 
@@ -800,8 +1041,11 @@ audience-vector project:
 
 TRIBE/BMD features expose a compact brain-aligned memorability readout that is
 competitive with V-JEPA on BOLD Moments and useful enough to define a generated
-video selector. The generated-video selector is promising under the proxy metric
-but still needs independent human validation.
+video selector. A fold-safe TRIBE-internal hidden-direction patch on
+{foldsafe.get('n_hidden_cache_eligible', 104)} balanced clips supports the
+mechanistic readout as load-bearing under disjoint train/eval intervention. The
+generated-video selector is promising under the proxy metric but still needs
+independent human validation.
 
 ## What It Does Not Claim Yet
 
@@ -809,6 +1053,7 @@ but still needs independent human validation.
 - TRIBE beats V-JEPA or CLIP in independent human judgment.
 - Direct generator steering is solved.
 - Synthetic persona axes are independent real audience segments.
+- The fold-safe hidden patch proves population-level causality.
 
 ## Current Strongest Numbers
 
@@ -822,6 +1067,8 @@ but still needs independent human validation.
 - `experiments/` - manifests, survey HTML, protocols, and representation audits.
 - `site/` - rendered local website and PDFs.
 - `submissions/` - readiness notes.
+- `future_work/` - research leads that are inspiring but not yet evidence for
+  the main paper.
 
 ## Next Decisive Step
 
@@ -984,17 +1231,15 @@ blockquote {
 def render_markdown(markdown_text: str, title: str, nav_prefix: str = "../") -> str:
     md = MarkdownIt("default", {"html": True})
     body = md.render(markdown_text)
-    nav = f"""
-    <nav>
-      <a href="{nav_prefix}index.html">Program</a>
-      <a href="{nav_prefix}papers/main_selector_paper.html">Main Paper</a>
-      <a href="{nav_prefix}papers/mechanistic_audit.html">Mechanistic</a>
-      <a href="{nav_prefix}papers/audience_axes.html">Audience Axes</a>
-      <a href="{nav_prefix}papers/reward_distillation.html">Distillation</a>
-      <a href="{nav_prefix}papers/affect_aware.html">Affect</a>
-      <a href="{nav_prefix}papers/representation_frames.html">Theory</a>
-    </nav>
-    """
+    nav = f"""<nav>
+  <a href="{nav_prefix}index.html">Program</a>
+  <a href="{nav_prefix}papers/main_selector_paper.html">Main Paper</a>
+  <a href="{nav_prefix}papers/mechanistic_audit.html">Mechanistic</a>
+  <a href="{nav_prefix}papers/audience_axes.html">Audience Axes</a>
+  <a href="{nav_prefix}papers/reward_distillation.html">Distillation</a>
+  <a href="{nav_prefix}papers/affect_aware.html">Affect</a>
+  <a href="{nav_prefix}papers/representation_frames.html">Theory</a>
+</nav>"""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1006,8 +1251,8 @@ def render_markdown(markdown_text: str, title: str, nav_prefix: str = "../") -> 
 <body>
   <main class="page">
     <article class="paper">
-      {nav}
-      {body}
+{nav}
+{body}
     </article>
   </main>
 </body>
@@ -1069,6 +1314,7 @@ def site_index(results: dict[str, Any], docs: list[dict[str, str]]) -> str:
     tribe = results["tribe_cv"]
     vjepa = results["vjepa_cv"]
     gated = wan_policy(results, "base_or_gated_best_of_n")
+    foldsafe = foldsafe_summary(results)
     cards = "\n".join(
         f"""<a class="card" href="papers/{Path(d['site_html']).name}">
           <b>{html.escape(d['title'])}</b>
@@ -1100,6 +1346,7 @@ def site_index(results: dict[str, Any], docs: list[dict[str, str]]) -> str:
       <p>
         <span class="metric">TRIBE BMD rho {fnum(tribe.get('mean_spearman'))}</span>
         <span class="metric">V-JEPA rho {fnum(vjepa.get('mean_spearman'))}</span>
+        <span class="metric">Fold-safe patch rho {fnum(foldsafe.get('patch_min'))} to {fnum(foldsafe.get('patch_max'))}</span>
         <span class="metric">Wan proxy selector {policy_improved(gated, 18)}/24</span>
         <span class="metric">Human selector validation pending</span>
       </p>
@@ -1109,7 +1356,8 @@ def site_index(results: dict[str, Any], docs: list[dict[str, str]]) -> str:
       <h2>Current Honest Bottom Line</h2>
       <p>The main paper is now framed around a practical generation-ranking
       workflow, not direct steering. The confirmed result is a compact
-      brain-aligned memorability readout. The remaining decisive experiment is
+      brain-aligned memorability readout with a completed fold-safe
+      TRIBE-internal hidden-patch audit. The remaining decisive experiment is
       whether TRIBE+gate beats V-JEPA, CLIP, and quality baselines in blinded
       human judgments.</p>
     </section>
@@ -1140,14 +1388,15 @@ def write_submission_status(docs: list[dict[str, str]]) -> None:
         "- Independent human validation of the V-JEPA-augmented selector.",
         "- Prompt-clustered statistics over human responses.",
         "- Video-quality or VBench-style baseline if feasible.",
-        "- Larger fold-safe hidden-direction patch for mechanistic claims.",
+        "- Content-stratified and matched-random-control analysis for the completed",
+        "  104-clip fold-safe hidden-direction patch.",
         "",
         "## Rendered Papers",
         "",
     ]
     for doc in docs:
         lines.append(f"- {doc['title']}: `{doc['pdf']}`")
-    (PROGRAM / "submissions" / "submission_status_2026-06-01.md").write_text(
+    (PROGRAM / "submissions" / f"submission_status_{BUILD_DATE}.md").write_text(
         "\n".join(lines) + "\n"
     )
 
@@ -1162,6 +1411,7 @@ def make_zip(docs: list[dict[str, str]]) -> Path:
         PROGRAM / "main_selector_paper",
         PROGRAM / "satellite_papers",
         PROGRAM / "experiments",
+        PROGRAM / "future_work",
         PROGRAM / "irb",
         PROGRAM / "overleaf",
         PROGRAM / "packages",
@@ -1174,6 +1424,7 @@ def make_zip(docs: list[dict[str, str]]) -> Path:
         REPORTS / "spencer_style_second_review_2026-05-28.md",
         REPORTS / "tribe_fourier_critique_review.md",
         REPORTS / "tribe_layerwise_encoder_localization.md",
+        REPORTS / "tribe_layerwise_encoder_hidden_capture_104.md",
         REPORTS / "tribe_layerwise_direction_patch.md",
         REPORTS / "tribe_foldsafe_direction_patch.md",
         REPORTS
