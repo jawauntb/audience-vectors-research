@@ -1,6 +1,6 @@
 # NeurIPS-Grade Memorability Selector Program
 
-Regenerated 2026-06-01.
+Regenerated 2026-06-02.
 
 This folder now contains a split version of the original exploratory
 audience-vector project:
@@ -16,15 +16,21 @@ audience-vector project:
 - Main manuscript source: `main_selector_paper/paper.md`
 - Main manuscript PDF: `main_selector_paper/paper.pdf`
 - Main manuscript HTML: `main_selector_paper/paper.html`
+- Fold-safe hidden patch: `experiments/tribe_foldsafe_direction_patch.md`
+- Expanded hidden cache report:
+  `experiments/tribe_layerwise_encoder_hidden_capture_104.md`
 - Site index: `site/index.html`
-- Split package zip: `data/reports/neurips_memorability_selector_split_package_2026-06-01.zip`
+- Split package zip: `data/reports/neurips_memorability_selector_split_package_2026-06-02.zip`
 
 ## What The Main Paper Claims Now
 
 TRIBE/BMD features expose a compact brain-aligned memorability readout that is
 competitive with V-JEPA on BOLD Moments and useful enough to define a generated
-video selector. The generated-video selector is promising under the proxy metric
-but still needs independent human validation.
+video selector. A fold-safe TRIBE-internal hidden-direction patch on
+104 balanced clips supports the
+mechanistic readout as load-bearing under disjoint train/eval intervention. The
+generated-video selector is promising under the proxy metric but still needs
+independent human validation.
 
 ## What It Does Not Claim Yet
 
@@ -32,6 +38,7 @@ but still needs independent human validation.
 - TRIBE beats V-JEPA or CLIP in independent human judgment.
 - Direct generator steering is solved.
 - Synthetic persona axes are independent real audience segments.
+- The fold-safe hidden patch proves population-level causality.
 
 ## Current Strongest Numbers
 
@@ -40,6 +47,7 @@ but still needs independent human validation.
 | TRIBE/BMD memorability prediction | confirmed on BMD CV | +0.403 +/- 0.061 | brain-aligned signal exists |
 | V-JEPA memorability prediction | confirmed baseline | +0.395 +/- 0.037 | TRIBE is competitive, not dominant |
 | Persona-axis overlap | reviewer-corrected | mean abs cos 0.434, rank 3.56/12 | personas are not independent axes |
+| TRIBE hidden-direction patch | fold-safe 104-clip intervention | baseline rho +0.602 -> patched rho +0.054 to +0.200; gap ratio +0.135 to +0.212 | mechanistic patch-sensitivity, not population proof |
 | Wan selector proxy gain | proxy-only | 18/24 improved, mean lift +2.817 | product workflow candidate, not behavioral proof |
 
 ## Folder Map
@@ -50,6 +58,8 @@ but still needs independent human validation.
 - `experiments/` - manifests, survey HTML, protocols, and representation audits.
 - `site/` - rendered local website and PDFs.
 - `submissions/` - readiness notes.
+- `future_work/` - research leads that are inspiring but not yet evidence for
+  the main paper.
 
 ## Next Decisive Step
 

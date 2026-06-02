@@ -79,7 +79,7 @@ uv run python scripts/tribe_layerwise_encoder_localization.py \
   --out-md data/reports/tribe_layerwise_encoder_hidden_capture_104.md
 ```
 
-This expands the hidden cache to the fold-safe requirement of 52 low + 52 high clips.
+This expanded the hidden cache to the completed fold-safe requirement of 52 low + 52 high clips.
 
 ## Fold-Safe Patch Rerun
 

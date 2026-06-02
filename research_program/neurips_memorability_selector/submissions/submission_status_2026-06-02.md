@@ -1,6 +1,6 @@
 # Submission Status
 
-Regenerated: 2026-06-01
+Regenerated: 2026-06-02
 
 ## Completed In This Split Build
 
@@ -17,9 +17,8 @@ Regenerated: 2026-06-01
 - Independent human validation of the V-JEPA-augmented selector.
 - Prompt-clustered statistics over human responses.
 - Video-quality or VBench-style baseline if feasible.
-- Superseded by the 2026-06-02 build for mechanistic status: the 104-clip
-  fold-safe hidden-direction patch is complete; remaining mechanistic work is
-  content stratification and matched-control analysis.
+- Content-stratified and matched-random-control analysis for the completed
+  104-clip fold-safe hidden-direction patch.
 
 ## Rendered Papers
 

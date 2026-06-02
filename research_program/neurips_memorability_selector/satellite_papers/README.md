@@ -40,7 +40,8 @@ Core:
 - Temporal Fourier and hidden-direction patching inside TRIBE.
 - Positional-artifact critique is weakened, but hidden sequence dependence
   remains.
-- Needs larger fold-safe hidden-patch run.
+- 104-clip fold-safe hidden-patch run is complete; remaining caution is
+  population-level generalization and matched-control analysis.
 
 Venue target:
 

@@ -494,7 +494,7 @@ def write_capture_markdown(report: dict[str, Any], path: Path) -> None:
         )
     lines += [
         "",
-        "## Next Step",
+        "## Suggested Follow-Up Command",
         "",
         "```bash",
         "uv run python scripts/tribe_foldsafe_direction_patch.py \\",

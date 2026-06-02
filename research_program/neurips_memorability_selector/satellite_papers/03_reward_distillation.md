@@ -1,6 +1,6 @@
 # From Brain-Aligned Selectors To Video-Generator Distillation
 
-**Draft status:** satellite paper draft, regenerated 2026-06-01.
+**Draft status:** satellite paper draft, regenerated 2026-06-02.
 **Core purpose:** define the LoRA/DPO project without pretending the proxy result
 is already behavioral success.
 

@@ -1,6 +1,6 @@
 # Brain-Aligned Memorability Signals Improve Video Generation Selection
 
-**Draft status:** split-program manuscript, regenerated 2026-06-01.
+**Draft status:** split-program manuscript, regenerated 2026-06-02.
 **Intended venue shape:** NeurIPS main track or Evaluations and Datasets, pending
 independent selector validation.
 **Primary caveat:** the strongest generation result is still proxy-scored. The
@@ -25,8 +25,15 @@ Wan2.2 candidate pool, TRIBE/BMD and V-JEPA selectors overlap only partially,
 creating a useful adjudication setting for blinded human evaluation. The current
 paper therefore makes a narrow claim: brain-aligned features expose a compact,
 auditable memorability signal and define a testable generated-video selection
-workflow. It does not yet claim that TRIBE-selected generated videos are more
-memorable to humans, nor that direct generator steering is solved.
+workflow. A fold-safe hidden-direction patch on
+104 balanced high/low BMD clips
+further shows that removing the learned hidden direction disrupts held-out
+TRIBE readouts, reducing layerwise held-out rho from mean
++0.602 to a patched range of
++0.054 to +0.200. It does
+not yet claim that TRIBE-selected
+generated videos are more memorable to humans, nor that direct generator
+steering is solved.
 
 ## Big Picture
 
@@ -49,9 +56,11 @@ datasets, behavioral labels, and a plausible neural substrate.
    treating generic video features as strawmen.
 3. We define a generation-selection protocol with preservation gates so the
    selector cannot simply choose off-prompt but high-scoring clips.
-4. We package the human-evaluation protocol and V-JEPA-augmented candidate
+4. We complete a fold-safe hidden-direction patching audit inside TRIBE, using
+   disjoint train/eval clips and expanded layerwise hidden caches.
+5. We package the human-evaluation protocol and V-JEPA-augmented candidate
    manifest needed to test the decisive claim.
-5. We separate confirmed representation results from proxy-only generation
+6. We separate confirmed representation results from proxy-only generation
    results and direct-steering negatives.
 
 ## Current Evidence Ledger
@@ -61,6 +70,7 @@ datasets, behavioral labels, and a plausible neural substrate.
 | TRIBE/BMD memorability prediction | confirmed on BMD CV | +0.403 +/- 0.061 | brain-aligned signal exists |
 | V-JEPA memorability prediction | confirmed baseline | +0.395 +/- 0.037 | TRIBE is competitive, not dominant |
 | Persona-axis overlap | reviewer-corrected | mean abs cos 0.434, rank 3.56/12 | personas are not independent axes |
+| TRIBE hidden-direction patch | fold-safe 104-clip intervention | baseline rho +0.602 -> patched rho +0.054 to +0.200; gap ratio +0.135 to +0.212 | mechanistic patch-sensitivity, not population proof |
 | Wan selector proxy gain | proxy-only | 18/24 improved, mean lift +2.817 | product workflow candidate, not behavioral proof |
 
 ## Method
@@ -131,6 +141,23 @@ direction ablations leave the signal intact. Nonlinear residual probes recover
 some signal, so the safe interpretation is "dominant linear readout," not
 "memorability is literally one-dimensional."
 
+The newer hidden-state audit strengthens this point without overclaiming it.
+We expanded the layerwise hidden cache to
+52 low-memorability and
+52 high-memorability clips, then ran
+5 fold-safe interventions. Each fold trained hidden
+directions on 40 low plus
+40 high clips and patched
+12 low plus
+12 high held-out clips. Across nine hook targets,
+mean held-out baseline rho was +0.602; after
+removing the learned hidden direction, mean patched rho ranged from
++0.054 to +0.200, and the
+remaining high-minus-low gap ratio ranged from +0.135
+to +0.212. This is a fold-safe TRIBE-internal
+intervention result on tail clips, not a proof of full population-level
+causality.
+
 ### Generated-Video Selector
 
 The current Wan2.2 proxy experiment evaluates 24 fresh prompt/image seeds. The
@@ -181,6 +208,9 @@ No independent responses have been collected for the V-JEPA-augmented selector p
   gating candidate generations.
 - The TRIBE readout is a coordinate in a model frame, not an ontological essence
   of memory.
+- The fold-safe hidden patch supports load-bearing hidden-direction sensitivity
+  in TRIBE, but it is still a high/low-tail intervention rather than a full
+  causal account of human memorability.
 
 ## Submission-Ready Claim Contract
 
@@ -188,6 +218,8 @@ Allowed now:
 
 - TRIBE/BMD features contain a compact memorability readout.
 - TRIBE is competitive with V-JEPA for BMD memorability prediction.
+- Fold-safe hidden-direction patching shows the TRIBE-internal hidden direction
+  is load-bearing on disjoint held-out high/low clips.
 - The current generated-video selector is promising under the TRIBE/BMD proxy.
 - TRIBE and V-JEPA disagree enough on generated candidates to justify a human
   adjudication study.
@@ -204,6 +236,7 @@ Cut or avoid:
 - "Persona axes are independent."
 - "Direct steering is solved."
 - "LoRA learned human memorability."
+- "The hidden-direction patch proves population-level causality."
 
 ## References
 
