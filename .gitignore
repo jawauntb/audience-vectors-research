@@ -9,6 +9,9 @@
 data/
 !data/.gitkeep
 
+# Vendored third-party repos should be added intentionally, e.g. as submodules.
+vendor/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -51,8 +54,35 @@ outputs/
 *.pt
 *.pth
 *.safetensors
+*.npy
+*.npz
 *.zarr
 *.parquet
+
+# Generated media and publish bundles
+*.mp4
+*.mov
+*.webm
+*.avi
+*.mkv
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.pdf
+research_program/**/site/
+research_program/**/packages/
+
+# Human-study exports and private response data
+*prolific*responses*
+*participant*responses*
+*survey*responses*
+*raw*responses*
+*.csv
+*.tsv
+*.xlsx
+responses/raw/
+responses/private/
 
 # Modal
 .modal/

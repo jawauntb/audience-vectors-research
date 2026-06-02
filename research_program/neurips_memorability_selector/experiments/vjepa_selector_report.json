@@ -1,0 +1,330 @@
+{
+  "schema_version": 1,
+  "source_manifest": "wan22_pref_weighted_r16_s300_product_selector",
+  "features_dir": "data/features/vjepa_wan22_selector_pref_weighted_r16_s300",
+  "n_seeds": 24,
+  "n_complete_seeds": 24,
+  "n_missing_features": 0,
+  "rows": [
+    {
+      "seed": "fresh24_aerial_beach",
+      "vjepa_best_label": "fresh24_aerial_beach_m1p0_n02",
+      "vjepa_best_score": -0.03428647294640541,
+      "scores_by_label": {
+        "fresh24_aerial_beach_base": -0.06373168528079987,
+        "fresh24_aerial_beach_lora": -0.039728790521621704,
+        "fresh24_aerial_beach_m1p0_n00": -0.12254378199577332,
+        "fresh24_aerial_beach_m1p0_n02": -0.03428647294640541
+      },
+      "n_scored": 4,
+      "n_expected_unique": 4
+    },
+    {
+      "seed": "fresh24_blue_jellyfish",
+      "vjepa_best_label": "fresh24_blue_jellyfish_m1p0_n02",
+      "vjepa_best_score": 0.05810997635126114,
+      "scores_by_label": {
+        "fresh24_blue_jellyfish_base": -0.005945295095443726,
+        "fresh24_blue_jellyfish_lora": -0.010166764259338379,
+        "fresh24_blue_jellyfish_m1p0_n01": 0.01590706780552864,
+        "fresh24_blue_jellyfish_m1p0_n02": 0.05810997635126114
+      },
+      "n_scored": 4,
+      "n_expected_unique": 4
+    },
+    {
+      "seed": "fresh24_city_street",
+      "vjepa_best_label": "fresh24_city_street_m1p0_n01",
+      "vjepa_best_score": 0.0685458704829216,
+      "scores_by_label": {
+        "fresh24_city_street_base": -0.04985641688108444,
+        "fresh24_city_street_lora": -0.0317944772541523,
+        "fresh24_city_street_m1p0_n01": 0.0685458704829216,
+        "fresh24_city_street_m1p0_n02": -0.03359510004520416,
+        "fresh24_city_street_m1p0_n03": -0.05766697973012924
+      },
+      "n_scored": 5,
+      "n_expected_unique": 5
+    },
+    {
+      "seed": "fresh24_cloud_mountain",
+      "vjepa_best_label": "fresh24_cloud_mountain_m1p0_n00",
+      "vjepa_best_score": 0.06902812421321869,
+      "scores_by_label": {
+        "fresh24_cloud_mountain_base": -0.07197636365890503,
+        "fresh24_cloud_mountain_lora": -0.0900336429476738,
+        "fresh24_cloud_mountain_m1p0_n00": 0.06902812421321869,
+        "fresh24_cloud_mountain_m1p0_n01": -0.01483088731765747
+      },
+      "n_scored": 4,
+      "n_expected_unique": 4
+    },
+    {
+      "seed": "fresh24_coastal_tracks",
+      "vjepa_best_label": "fresh24_coastal_tracks_lora",
+      "vjepa_best_score": 0.10239144414663315,
+      "scores_by_label": {
+        "fresh24_coastal_tracks_base": 0.05444411560893059,
+        "fresh24_coastal_tracks_lora": 0.10239144414663315,
+        "fresh24_coastal_tracks_m1p0_n02": -0.1592351347208023,
+        "fresh24_coastal_tracks_m1p0_n03": 0.01629205048084259
+      },
+      "n_scored": 4,
+      "n_expected_unique": 4
+    },
+    {
+      "seed": "fresh24_concert_stage",
+      "vjepa_best_label": "fresh24_concert_stage_m1p0_n01",
+      "vjepa_best_score": 0.09492142498493195,
+      "scores_by_label": {
+        "fresh24_concert_stage_base": 0.05704324319958687,
+        "fresh24_concert_stage_lora": 0.042521823197603226,
+        "fresh24_concert_stage_m1p0_n00": 0.0922323614358902,
+        "fresh24_concert_stage_m1p0_n01": 0.09492142498493195,
+        "fresh24_concert_stage_m1p0_n03": 0.0540103055536747
+      },
+      "n_scored": 5,
+      "n_expected_unique": 5
+    },
+    {
+      "seed": "fresh24_dewy_grass",
+      "vjepa_best_label": "fresh24_dewy_grass_m1p0_n01",
+      "vjepa_best_score": 0.09997791051864624,
+      "scores_by_label": {
+        "fresh24_dewy_grass_base": 0.036357395350933075,
+        "fresh24_dewy_grass_lora": -0.034787148237228394,
+        "fresh24_dewy_grass_m1p0_n00": 0.06494882702827454,
+        "fresh24_dewy_grass_m1p0_n01": 0.09997791051864624
+      },
+      "n_scored": 4,
+      "n_expected_unique": 4
+    },
+    {
+      "seed": "fresh24_fireworks",
+      "vjepa_best_label": "fresh24_fireworks_m1p0_n03",
+      "vjepa_best_score": 0.06850598752498627,
+      "scores_by_label": {
+        "fresh24_fireworks_base": 0.030850540846586227,
+        "fresh24_fireworks_lora": 0.022735659033060074,
+        "fresh24_fireworks_m1p0_n00": 0.004694979637861252,
+        "fresh24_fireworks_m1p0_n02": -0.009431600570678711,
+        "fresh24_fireworks_m1p0_n03": 0.06850598752498627
+      },
+      "n_scored": 5,
+      "n_expected_unique": 5
+    },
+    {
+      "seed": "fresh24_forest_canopy",
+      "vjepa_best_label": "fresh24_forest_canopy_lora",
+      "vjepa_best_score": 0.06360651552677155,
+      "scores_by_label": {
+        "fresh24_forest_canopy_base": 0.05749860033392906,
+        "fresh24_forest_canopy_lora": 0.06360651552677155,
+        "fresh24_forest_canopy_m1p0_n00": 0.033632323145866394,
+        "fresh24_forest_canopy_m1p0_n03": -0.023610081523656845
+      },
+      "n_scored": 4,
+      "n_expected_unique": 4
+    },
+    {
+      "seed": "fresh24_golden_grass",
+      "vjepa_best_label": "fresh24_golden_grass_m1p0_n03",
+      "vjepa_best_score": -0.01937515288591385,
+      "scores_by_label": {
+        "fresh24_golden_grass_base": -0.05299736559391022,
+        "fresh24_golden_grass_lora": -0.04686398059129715,
+        "fresh24_golden_grass_m1p0_n00": -0.13613581657409668,
+        "fresh24_golden_grass_m1p0_n03": -0.01937515288591385
+      },
+      "n_scored": 4,
+      "n_expected_unique": 4
+    },
+    {
+      "seed": "fresh24_hanging_clothes",
+      "vjepa_best_label": "fresh24_hanging_clothes_lora",
+      "vjepa_best_score": 0.04778958857059479,
+      "scores_by_label": {
+        "fresh24_hanging_clothes_base": 0.045294083654880524,
+        "fresh24_hanging_clothes_lora": 0.04778958857059479,
+        "fresh24_hanging_clothes_m1p0_n01": -0.019373741000890732,
+        "fresh24_hanging_clothes_m1p0_n02": -0.09041795134544373,
+        "fresh24_hanging_clothes_m1p0_n03": 0.019345715641975403
+      },
+      "n_scored": 5,
+      "n_expected_unique": 5
+    },
+    {
+      "seed": "fresh24_lighthouse",
+      "vjepa_best_label": "fresh24_lighthouse_m1p0_n02",
+      "vjepa_best_score": -0.003037434071302414,
+      "scores_by_label": {
+        "fresh24_lighthouse_base": -0.03791879490017891,
+        "fresh24_lighthouse_lora": -0.025352710857987404,
+        "fresh24_lighthouse_m1p0_n02": -0.003037434071302414
+      },
+      "n_scored": 3,
+      "n_expected_unique": 3
+    },
+    {
+      "seed": "fresh24_misty_woods",
+      "vjepa_best_label": "fresh24_misty_woods_m1p0_n00",
+      "vjepa_best_score": 0.03840075433254242,
+      "scores_by_label": {
+        "fresh24_misty_woods_base": -0.17162145674228668,
+        "fresh24_misty_woods_lora": -0.16468088328838348,
+        "fresh24_misty_woods_m1p0_n00": 0.03840075433254242,
+        "fresh24_misty_woods_m1p0_n01": -0.008878953754901886,
+        "fresh24_misty_woods_m1p0_n03": -0.04794642701745033
+      },
+      "n_scored": 5,
+      "n_expected_unique": 5
+    },
+    {
+      "seed": "fresh24_mountain_fog",
+      "vjepa_best_label": "fresh24_mountain_fog_m1p0_n01",
+      "vjepa_best_score": 0.051480017602443695,
+      "scores_by_label": {
+        "fresh24_mountain_fog_base": 0.021519441157579422,
+        "fresh24_mountain_fog_lora": -0.011087674647569656,
+        "fresh24_mountain_fog_m1p0_n00": -0.054356396198272705,
+        "fresh24_mountain_fog_m1p0_n01": 0.051480017602443695
+      },
+      "n_scored": 4,
+      "n_expected_unique": 4
+    },
+    {
+      "seed": "fresh24_ocean_cliffs",
+      "vjepa_best_label": "fresh24_ocean_cliffs_m1p0_n02",
+      "vjepa_best_score": -0.03917679190635681,
+      "scores_by_label": {
+        "fresh24_ocean_cliffs_base": -0.06277099251747131,
+        "fresh24_ocean_cliffs_lora": -0.11560716480016708,
+        "fresh24_ocean_cliffs_m1p0_n01": -0.08592306822538376,
+        "fresh24_ocean_cliffs_m1p0_n02": -0.03917679190635681
+      },
+      "n_scored": 4,
+      "n_expected_unique": 4
+    },
+    {
+      "seed": "fresh24_old_car",
+      "vjepa_best_label": "fresh24_old_car_lora",
+      "vjepa_best_score": 0.17484955489635468,
+      "scores_by_label": {
+        "fresh24_old_car_base": 0.14615508913993835,
+        "fresh24_old_car_lora": 0.17484955489635468,
+        "fresh24_old_car_m1p0_n00": 0.029338844120502472,
+        "fresh24_old_car_m1p0_n01": 0.03969310596585274
+      },
+      "n_scored": 4,
+      "n_expected_unique": 4
+    },
+    {
+      "seed": "fresh24_orange_flowers",
+      "vjepa_best_label": "fresh24_orange_flowers_m1p0_n00",
+      "vjepa_best_score": 0.11378684639930725,
+      "scores_by_label": {
+        "fresh24_orange_flowers_base": 0.0710194781422615,
+        "fresh24_orange_flowers_lora": 0.08305428177118301,
+        "fresh24_orange_flowers_m1p0_n00": 0.11378684639930725,
+        "fresh24_orange_flowers_m1p0_n02": 0.07837096601724625,
+        "fresh24_orange_flowers_m1p0_n03": 0.0806507021188736
+      },
+      "n_scored": 5,
+      "n_expected_unique": 5
+    },
+    {
+      "seed": "fresh24_red_mailbox",
+      "vjepa_best_label": "fresh24_red_mailbox_m1p0_n03",
+      "vjepa_best_score": -0.006623208522796631,
+      "scores_by_label": {
+        "fresh24_red_mailbox_base": -0.08660358190536499,
+        "fresh24_red_mailbox_lora": -0.0342213399708271,
+        "fresh24_red_mailbox_m1p0_n01": -0.018100131303071976,
+        "fresh24_red_mailbox_m1p0_n03": -0.006623208522796631
+      },
+      "n_scored": 4,
+      "n_expected_unique": 4
+    },
+    {
+      "seed": "fresh24_sidewalk_steps",
+      "vjepa_best_label": "fresh24_sidewalk_steps_lora",
+      "vjepa_best_score": 0.09939692914485931,
+      "scores_by_label": {
+        "fresh24_sidewalk_steps_base": -0.004633646458387375,
+        "fresh24_sidewalk_steps_lora": 0.09939692914485931,
+        "fresh24_sidewalk_steps_m1p0_n01": -0.06609035283327103,
+        "fresh24_sidewalk_steps_m1p0_n02": 0.0566667802631855
+      },
+      "n_scored": 4,
+      "n_expected_unique": 4
+    },
+    {
+      "seed": "fresh24_sparse_forest",
+      "vjepa_best_label": "fresh24_sparse_forest_lora",
+      "vjepa_best_score": -0.03217863291501999,
+      "scores_by_label": {
+        "fresh24_sparse_forest_base": -0.052698440849781036,
+        "fresh24_sparse_forest_lora": -0.03217863291501999,
+        "fresh24_sparse_forest_m1p0_n00": -0.07977478206157684,
+        "fresh24_sparse_forest_m1p0_n01": -0.04806402325630188,
+        "fresh24_sparse_forest_m1p0_n02": -0.13111703097820282
+      },
+      "n_scored": 5,
+      "n_expected_unique": 5
+    },
+    {
+      "seed": "fresh24_storm_beach",
+      "vjepa_best_label": "fresh24_storm_beach_lora",
+      "vjepa_best_score": 0.08438147604465485,
+      "scores_by_label": {
+        "fresh24_storm_beach_base": 0.06214352324604988,
+        "fresh24_storm_beach_lora": 0.08438147604465485,
+        "fresh24_storm_beach_m1p0_n00": -0.022262651473283768,
+        "fresh24_storm_beach_m1p0_n01": -0.10166332125663757,
+        "fresh24_storm_beach_m1p0_n03": -0.06297292560338974
+      },
+      "n_scored": 5,
+      "n_expected_unique": 5
+    },
+    {
+      "seed": "fresh24_suspension_bridge",
+      "vjepa_best_label": "fresh24_suspension_bridge_m1p0_n00",
+      "vjepa_best_score": 0.03070155903697014,
+      "scores_by_label": {
+        "fresh24_suspension_bridge_base": -0.04253966361284256,
+        "fresh24_suspension_bridge_lora": 0.028690733015537262,
+        "fresh24_suspension_bridge_m1p0_n00": 0.03070155903697014,
+        "fresh24_suspension_bridge_m1p0_n03": -0.042111437767744064
+      },
+      "n_scored": 4,
+      "n_expected_unique": 4
+    },
+    {
+      "seed": "fresh24_tall_building",
+      "vjepa_best_label": "fresh24_tall_building_m1p0_n03",
+      "vjepa_best_score": 0.023521943017840385,
+      "scores_by_label": {
+        "fresh24_tall_building_base": -0.11581657826900482,
+        "fresh24_tall_building_lora": -0.10862071067094803,
+        "fresh24_tall_building_m1p0_n01": -0.05863603204488754,
+        "fresh24_tall_building_m1p0_n02": -0.02431098371744156,
+        "fresh24_tall_building_m1p0_n03": 0.023521943017840385
+      },
+      "n_scored": 5,
+      "n_expected_unique": 5
+    },
+    {
+      "seed": "fresh24_wheat_closeup",
+      "vjepa_best_label": "fresh24_wheat_closeup_m1p0_n03",
+      "vjepa_best_score": 0.08272622525691986,
+      "scores_by_label": {
+        "fresh24_wheat_closeup_base": -0.07023084908723831,
+        "fresh24_wheat_closeup_lora": -0.042006608098745346,
+        "fresh24_wheat_closeup_m1p0_n03": 0.08272622525691986
+      },
+      "n_scored": 3,
+      "n_expected_unique": 3
+    }
+  ],
+  "missing_features": []
+}

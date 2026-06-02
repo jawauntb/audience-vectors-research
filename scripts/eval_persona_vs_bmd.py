@@ -7,7 +7,7 @@ align with the global human memorability score.
 
 If a persona's predictions correlate strongly, that persona's taste
 overlaps with the BMD subject pool. If a persona is uncorrelated, that
-persona has tastes orthogonal to the human study — which is the actual
+persona diverges from the human-study average — which is the actual
 signal we want for audience-vector decomposition.
 
 Usage:
@@ -60,10 +60,14 @@ def main() -> None:
     df = pl.read_parquet(persona_labels_path)
     with bmd_path.open() as fh:
         ann = json.load(fh)
-    mem_lookup = {f"bmd_vid_idx{eid}": e["memorability_score"] for eid, e in ann.items()}
+    mem_lookup = {
+        f"bmd_vid_idx{eid}": e["memorability_score"] for eid, e in ann.items()
+    }
 
     # Group: persona_id -> {segment_id: {axis: score}}
-    by_persona: dict[str, dict[str, dict[str, float]]] = defaultdict(lambda: defaultdict(dict))
+    by_persona: dict[str, dict[str, dict[str, float]]] = defaultdict(
+        lambda: defaultdict(dict)
+    )
     for r in df.iter_rows(named=True):
         if not isinstance(r["scores"], dict):
             continue
@@ -94,8 +98,10 @@ def main() -> None:
             a: _spearman(real, per_axis_pred[a]) for a in axes
         }
         rows.append((persona, len(real), per_axis_rho))
-        print(f"{persona:<28} {len(real):>4}  " +
-              "  ".join(f"{per_axis_rho[a]:>+10.3f}" for a in axes))
+        print(
+            f"{persona:<28} {len(real):>4}  "
+            + "  ".join(f"{per_axis_rho[a]:>+10.3f}" for a in axes)
+        )
 
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)

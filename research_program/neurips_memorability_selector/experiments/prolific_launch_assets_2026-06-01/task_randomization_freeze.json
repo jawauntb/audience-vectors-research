@@ -1,0 +1,47 @@
+{
+  "launch_blockers": [
+    "Faculty/PI and IRB determination not recorded in this preflight artifact.",
+    "Hosted video URLs must be filled into hosted_video_url_map.template.json.",
+    "Stimulus screening must be marked complete for every hosted video.",
+    "Completion code, compensation, and response export endpoint remain to be finalized."
+  ],
+  "prepared_at_utc": "2026-06-02T05:00:53+00:00",
+  "schema_version": "selector_preflight_freeze.v1",
+  "source_files": {
+    "current_selector_manifest_with_vjepa.json": "3216dd4f23276846e81e699dea44e4d6102ad649fbe0d193459b254b216a48b4",
+    "current_selector_pairwise_tasks_with_vjepa.json": "fac3b9c34564998596700bd2eb1634753acf9dae90ee2f699127125bf0fa4b44",
+    "current_selector_prolific_survey_with_vjepa.html": "6279bad148cc111a6ce3ef1d1252b5177c29bfa4d879b041f0740177fa47cd13"
+  },
+  "status": "prelaunch_not_launched",
+  "survey_randomization": {
+    "asset_base": "../../../",
+    "randomization": {
+      "balancing": "shuffle comparison families, take floor(trials_per_participant / n_comparisons) per family, then fill remaining trials from unused tasks",
+      "final_order": "selected trials are shuffled once more before display",
+      "hash_function": "32-bit FNV-1a style hashString in survey HTML",
+      "participant_seed_source": "PROLIFIC_PID query parameter or entered participant id; falls back to anonymous/Date.now in the existing HTML",
+      "prng": "mulberry32"
+    },
+    "trials_per_participant": 24
+  },
+  "task_pool": {
+    "comparisons": {
+      "gated_vs_base": 24,
+      "gated_vs_clip_preservation": 17,
+      "gated_vs_vjepa_memorability": 14,
+      "product_vs_base": 18,
+      "product_vs_clip_preservation": 19,
+      "product_vs_clip_prompt": 20,
+      "product_vs_clip_seed_image": 19,
+      "product_vs_raw_best": 13,
+      "product_vs_single_lora": 24,
+      "product_vs_vjepa_memorability": 17
+    },
+    "n_seeds": 24,
+    "n_tasks": 185,
+    "n_unique_video_paths": 103,
+    "task_order_sha256": "dbb76aaac5ad18fceddf71816a7a9acaa8e8e8c30098273ed7ab404bf5c9166b",
+    "task_payload_sha256": "4ea7e1a2639e60a7b12b740e4ca41b7aed7b530af3b6f6d9e3f91b273ae502c7",
+    "video_path_set_sha256": "78c171607ee31b46d99593c6011c9e50e1cfa4f395e22711c2189634d58daadd"
+  }
+}

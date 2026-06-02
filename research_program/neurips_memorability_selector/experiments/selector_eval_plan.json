@@ -1,0 +1,30 @@
+{
+  "name": "brain_aligned_memorability_selector_human_eval",
+  "status": "planned",
+  "primary_endpoint": "prompt_clustered_human_win_rate",
+  "primary_comparison": "tribe_plus_preservation_gate_vs_strongest_non_brain_baseline",
+  "candidate_policy_arms": [
+    "random",
+    "clip_text_video_alignment",
+    "vjepa_memorability_linear",
+    "tribe_memorability",
+    "tribe_plus_preservation_gate",
+    "wan_lora_product_selector"
+  ],
+  "pilot": {
+    "prompts": 50,
+    "raters_per_pair": 20,
+    "target_judgments": 3000
+  },
+  "submission_grade": {
+    "prompts": 100,
+    "raters_per_pair": 20,
+    "target_judgments_min": 6000,
+    "target_judgments_max": 15000
+  },
+  "analysis": {
+    "bootstrap_cluster": "prompt",
+    "mixed_effects": ["prompt", "rater"],
+    "multiple_comparison_correction": true
+  }
+}

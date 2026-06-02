@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Synthetic Audience Axes Are Structured But Not Orthogonal</title>
+  <style>
+:root {
+  --bg: #f6f1e7;
+  --ink: #181511;
+  --muted: #6f6558;
+  --line: #d9ccb9;
+  --accent: #193c36;
+  --accent2: #a34a2c;
+  --paper: #fffaf0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(25,60,54,0.08), transparent 28%),
+    linear-gradient(315deg, rgba(163,74,44,0.08), transparent 34%),
+    var(--bg);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.56;
+}
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 42px 28px 72px;
+}
+.paper {
+  background: rgba(255, 250, 240, 0.88);
+  border: 1px solid var(--line);
+  box-shadow: 14px 14px 28px rgba(90,70,45,0.11), -10px -10px 24px rgba(255,255,255,0.72);
+  padding: 48px;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+nav a {
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  padding: 7px 10px;
+  background: rgba(255,250,240,0.7);
+}
+h1, h2, h3 {
+  line-height: 1.08;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+}
+h2 {
+  font-size: 29px;
+  margin-top: 42px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+h3 {
+  font-size: 21px;
+  margin-top: 30px;
+}
+p, li { font-size: 16px; }
+a { color: var(--accent2); }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: rgba(25,60,54,0.08);
+  padding: 0.12em 0.28em;
+}
+pre {
+  padding: 16px;
+  overflow-x: auto;
+  background: #181511;
+  color: #fffaf0;
+  border: 1px solid #181511;
+}
+pre code { background: transparent; padding: 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0 28px;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid var(--line);
+  padding: 9px 10px;
+  vertical-align: top;
+}
+th {
+  background: rgba(25,60,54,0.08);
+  text-align: left;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+blockquote {
+  margin: 24px 0;
+  padding: 8px 18px;
+  border-left: 3px solid var(--accent2);
+  background: rgba(163,74,44,0.07);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 26px;
+}
+.card {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+  background: rgba(255,250,240,0.8);
+  border: 1px solid var(--line);
+  padding: 20px;
+  min-height: 170px;
+  box-shadow: inset 2px 2px 8px rgba(90,70,45,0.08), inset -2px -2px 8px rgba(255,255,255,0.72);
+}
+.card b {
+  display: block;
+  margin-bottom: 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  line-height: 1.08;
+}
+.metric {
+  display: inline-block;
+  margin: 6px 8px 6px 0;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  background: rgba(25,60,54,0.06);
+}
+@media print {
+  body { background: white; }
+  .page { max-width: none; padding: 0; }
+  .paper { box-shadow: none; border: none; padding: 24px; }
+  nav { display: none; }
+  h1 { font-size: 38px; }
+  h2 { break-after: avoid; }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <article class="paper">
+
+    <nav>
+      <a href="../index.html">Program</a>
+      <a href="../papers/main_selector_paper.html">Main Paper</a>
+      <a href="../papers/mechanistic_audit.html">Mechanistic</a>
+      <a href="../papers/audience_axes.html">Audience Axes</a>
+      <a href="../papers/reward_distillation.html">Distillation</a>
+      <a href="../papers/affect_aware.html">Affect</a>
+      <a href="../papers/representation_frames.html">Theory</a>
+    </nav>
+
+      <h1>Synthetic Audience Axes Are Structured But Not Orthogonal</h1>
+<p><strong>Draft status:</strong> satellite paper draft, regenerated 2026-06-01.
+<strong>Core purpose:</strong> preserve the useful audience-vector work while removing the
+original overclaim.</p>
+<h2>Abstract</h2>
+<p>Synthetic persona-conditioned scoring can reveal structured differences in how
+generated or natural videos are ranked, but signed cosine averages can make
+shared axes look falsely orthogonal. We revisit the audience-vector
+decomposition after a reviewer critique. Twelve persona-conditioned TRIBE
+contrastive directions have signed off-diagonal cosine mean
++0.023, but this statistic
+hides large positive and negative alignments. The corrected unsigned overlap is
+mean abs cosine 0.434,
+and the effective rank is 3.56
+out of 12, compared with nearly 12 for random directions in the same dimension.
+Thus the audience directions are structured, stable, and potentially useful for
+ranking, but they do not span twelve independent audience axes. The right next
+step is persona-matched human validation, not stronger claims about cognitive
+modules.</p>
+<h2>Corrected Claim</h2>
+<p>Original unsafe claim:</p>
+<pre><code class="language-text">Per-persona directions are near-orthogonal and reveal independent audience axes.
+</code></pre>
+<p>Current safe claim:</p>
+<pre><code class="language-text">Synthetic persona directions compress to a small set of signed latent axes.
+Opposite signs can reflect the same underlying axis, and ROI localization is
+exploratory.
+</code></pre>
+<h2>Why The Correction Matters</h2>
+<p>A cosine of -0.99 is not evidence for a different memorability axis. It is the
+same axis with opposite sign. Since squared projection removes sign, any ROI or
+energy localization analysis must be interpreted with this sign ambiguity in
+mind.</p>
+<h2>Current Numbers</h2>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align:right">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personas</td>
+<td style="text-align:right">12</td>
+</tr>
+<tr>
+<td>Signed off-diagonal cosine mean</td>
+<td style="text-align:right">+0.023</td>
+</tr>
+<tr>
+<td>Signed off-diagonal cosine range</td>
+<td style="text-align:right">-0.987 to +0.934</td>
+</tr>
+<tr>
+<td>Mean absolute off-diagonal cosine</td>
+<td style="text-align:right">0.434</td>
+</tr>
+<tr>
+<td>Effective rank</td>
+<td style="text-align:right">3.56 / 12</td>
+</tr>
+<tr>
+<td>Components for 90 percent variance</td>
+<td style="text-align:right">4</td>
+</tr>
+</tbody>
+</table>
+<h2>Interpretation</h2>
+<p>The persona system is still interesting. It suggests that model-generated
+audience archetypes induce repeatable orderings over stimuli. But the structure
+looks low-dimensional and signed, not cleanly modular. This may be useful for
+product interfaces, where users want sliders such as &quot;fast-scroll salience&quot; or
+&quot;narrative emotionality.&quot; It is not yet evidence that real audiences divide
+into those exact archetypes.</p>
+<h2>Validation Needed</h2>
+<ol>
+<li>Recruit participants who self-identify with or are behaviorally matched to
+the persona profiles.</li>
+<li>Ask them to rank or choose videos under identical prompt-conditioned sets.</li>
+<li>Compare persona-derived selector wins with matched and mismatched raters.</li>
+<li>Report whether synthetic persona axes predict real subgroup preferences
+beyond the global memorability direction.</li>
+</ol>
+<h2>Keep Out Of The Main Selector Paper</h2>
+<p>This work is useful, but it can distract from the primary selector claim. The
+main paper should mention persona axes only as exploratory context or appendix
+material unless persona-matched human validation is complete.</p>
+
+    </article>
+  </main>
+</body>
+</html>

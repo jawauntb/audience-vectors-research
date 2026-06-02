@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Affect-Aware Media Selection From Brain-Aligned And EEG-Inspired Signals</title>
+  <style>
+:root {
+  --bg: #f6f1e7;
+  --ink: #181511;
+  --muted: #6f6558;
+  --line: #d9ccb9;
+  --accent: #193c36;
+  --accent2: #a34a2c;
+  --paper: #fffaf0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(25,60,54,0.08), transparent 28%),
+    linear-gradient(315deg, rgba(163,74,44,0.08), transparent 34%),
+    var(--bg);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.56;
+}
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 42px 28px 72px;
+}
+.paper {
+  background: rgba(255, 250, 240, 0.88);
+  border: 1px solid var(--line);
+  box-shadow: 14px 14px 28px rgba(90,70,45,0.11), -10px -10px 24px rgba(255,255,255,0.72);
+  padding: 48px;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+nav a {
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  padding: 7px 10px;
+  background: rgba(255,250,240,0.7);
+}
+h1, h2, h3 {
+  line-height: 1.08;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+}
+h2 {
+  font-size: 29px;
+  margin-top: 42px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+h3 {
+  font-size: 21px;
+  margin-top: 30px;
+}
+p, li { font-size: 16px; }
+a { color: var(--accent2); }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: rgba(25,60,54,0.08);
+  padding: 0.12em 0.28em;
+}
+pre {
+  padding: 16px;
+  overflow-x: auto;
+  background: #181511;
+  color: #fffaf0;
+  border: 1px solid #181511;
+}
+pre code { background: transparent; padding: 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0 28px;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid var(--line);
+  padding: 9px 10px;
+  vertical-align: top;
+}
+th {
+  background: rgba(25,60,54,0.08);
+  text-align: left;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+blockquote {
+  margin: 24px 0;
+  padding: 8px 18px;
+  border-left: 3px solid var(--accent2);
+  background: rgba(163,74,44,0.07);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 26px;
+}
+.card {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+  background: rgba(255,250,240,0.8);
+  border: 1px solid var(--line);
+  padding: 20px;
+  min-height: 170px;
+  box-shadow: inset 2px 2px 8px rgba(90,70,45,0.08), inset -2px -2px 8px rgba(255,255,255,0.72);
+}
+.card b {
+  display: block;
+  margin-bottom: 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  line-height: 1.08;
+}
+.metric {
+  display: inline-block;
+  margin: 6px 8px 6px 0;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  background: rgba(25,60,54,0.06);
+}
+@media print {
+  body { background: white; }
+  .page { max-width: none; padding: 0; }
+  .paper { box-shadow: none; border: none; padding: 24px; }
+  nav { display: none; }
+  h1 { font-size: 38px; }
+  h2 { break-after: avoid; }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <article class="paper">
+
+    <nav>
+      <a href="../index.html">Program</a>
+      <a href="../papers/main_selector_paper.html">Main Paper</a>
+      <a href="../papers/mechanistic_audit.html">Mechanistic</a>
+      <a href="../papers/audience_axes.html">Audience Axes</a>
+      <a href="../papers/reward_distillation.html">Distillation</a>
+      <a href="../papers/affect_aware.html">Affect</a>
+      <a href="../papers/representation_frames.html">Theory</a>
+    </nav>
+
+      <h1>Affect-Aware Media Selection From Brain-Aligned And EEG-Inspired Signals</h1>
+<p><strong>Draft status:</strong> satellite project seed, started 2026-06-01.<br>
+<strong>Core purpose:</strong> extend the memorability-selector program into affect while
+keeping the current main paper clean.</p>
+<h2>Abstract</h2>
+<p>Memorability is only one cognitive effect of generated media. A richer selector
+should also estimate affect: whether a video is likely to feel happy, angry,
+fearful, sad, aversive, or neutral. The NOVA dataset motivates a tractable
+signal-processing baseline for this direction: compute EEG power spectral
+density features from video-evoked recordings and train simple supervised
+classifiers for emotion labels. Our current analyzer does not collect EEG, so it
+cannot perform NOVA-style decoding directly. Instead, it exposes a
+NOVA-inspired media proxy using TRIBE engagement dimensions plus palette,
+motion, edge, density, arousal, and valence proxies. The scientific plan is to
+validate whether these media-derived affect estimates align with EEG-derived or
+human-rated affect labels, then test whether affect and memorability can be
+jointly optimized during generated-video selection.</p>
+<h2>Why This Is Separate From The Main Paper</h2>
+<p>The main paper is about memorability selection. NOVA is about EEG affect
+decoding. Mixing them into one headline would create a reviewer problem: we
+would be asking one paper to prove memory, emotion, brain alignment, and
+generation selection at the same time. The right structure is:</p>
+<ul>
+<li>main paper: generated-video memorability selection;</li>
+<li>satellite paper: affect-aware media selection;</li>
+<li>product feature: affect proxy for exploratory creative diagnosis;</li>
+<li>future validation: EEG or human affect labels.</li>
+</ul>
+<h2>Current Product Implementation</h2>
+<p>The Modal analyzer now returns an <code>affect_profile</code> in each analysis summary and
+an <code>affect_proxy</code> for each segment. The classes are:</p>
+<ul>
+<li>happy;</li>
+<li>anger;</li>
+<li>fear;</li>
+<li>sadness;</li>
+<li>disgust;</li>
+<li>neutral.</li>
+</ul>
+<p>The implementation is intentionally labeled:</p>
+<pre><code class="language-text">NOVA-inspired media proxy from TRIBE dimensions plus palette/motion/density;
+not EEG PSD decoding.
+</code></pre>
+<p>This lets users diagnose affective shape without pretending the site has access
+to neural recordings.</p>
+<h2>Proper NOVA-Style Research Version</h2>
+<p>When EEG data are available, the correct pipeline is:</p>
+<pre><code class="language-text">video stimulus
+  -&gt; EEG recording
+  -&gt; preprocessing / artifact handling
+  -&gt; power spectral density by channel and frequency
+  -&gt; supervised ridge or logistic-ridge emotion classifier
+  -&gt; emotion class probabilities
+</code></pre>
+<p>Differential entropy can be included as a baseline, but PSD should remain the
+default richer feature because it preserves more frequency-specific structure.</p>
+<h2>Scientific Questions</h2>
+<ol>
+<li>Do TRIBE-derived emotion and media-derived affect proxies predict human
+affect labels?</li>
+<li>Do they predict EEG-derived NOVA-style emotion classes?</li>
+<li>Are high-memorability clips also high-arousal, or can memory and affect be
+separated?</li>
+<li>Does affect-aware gating improve generated-video selection without reducing
+prompt preservation or visual quality?</li>
+<li>Where do TRIBE, V-JEPA, CLIP, EEG, and human affect ratings agree or
+disagree as representation frames?</li>
+</ol>
+<h2>Minimum Validation Plan</h2>
+<ol>
+<li>Curate or generate prompt-conditioned candidate sets.</li>
+<li>Score each candidate with:
+<ul>
+<li>TRIBE/BMD memorability;</li>
+<li>TRIBE raw emotion;</li>
+<li>NOVA-inspired media affect proxy;</li>
+<li>V-JEPA and CLIP baselines.</li>
+</ul>
+</li>
+<li>Collect human affect labels on Prolific using the six NOVA-like classes.</li>
+<li>Compare model predictions to human labels with accuracy, macro-F1, and
+prompt-clustered uncertainty.</li>
+<li>Only after behavioral validation, compare against EEG-derived labels or run a
+small EEG/fMRI follow-up.</li>
+</ol>
+<h2>IRB Note</h2>
+<p>Do not add EEG to the current memorability IRB pilot. EEG changes the study
+burden, recruitment, privacy, equipment, and risk profile. Keep the first IRB
+packet focused on online pairwise memorability judgments. Submit affect labels
+as a behavioral amendment or separate minimal-risk study. Submit EEG as a later,
+more involved protocol.</p>
+<h2>Product Direction</h2>
+<p>Affect-aware selection becomes useful once it can support queries like:</p>
+<pre><code class="language-text">pick the most memorable variant that is happy rather than fearful
+pick the highest-arousal opener that does not drift off prompt
+find segments where attention spikes but affect turns aversive
+</code></pre>
+<p>This is product-relevant, but it should not be marketed as neural emotion
+decoding until EEG validation exists.</p>
+
+    </article>
+  </main>
+</body>
+</html>

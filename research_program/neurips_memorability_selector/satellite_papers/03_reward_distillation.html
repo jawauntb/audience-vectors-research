@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>From Brain-Aligned Selectors To Video-Generator Distillation</title>
+  <style>
+:root {
+  --bg: #f6f1e7;
+  --ink: #181511;
+  --muted: #6f6558;
+  --line: #d9ccb9;
+  --accent: #193c36;
+  --accent2: #a34a2c;
+  --paper: #fffaf0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(25,60,54,0.08), transparent 28%),
+    linear-gradient(315deg, rgba(163,74,44,0.08), transparent 34%),
+    var(--bg);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.56;
+}
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 42px 28px 72px;
+}
+.paper {
+  background: rgba(255, 250, 240, 0.88);
+  border: 1px solid var(--line);
+  box-shadow: 14px 14px 28px rgba(90,70,45,0.11), -10px -10px 24px rgba(255,255,255,0.72);
+  padding: 48px;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+nav a {
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  padding: 7px 10px;
+  background: rgba(255,250,240,0.7);
+}
+h1, h2, h3 {
+  line-height: 1.08;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+}
+h2 {
+  font-size: 29px;
+  margin-top: 42px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+h3 {
+  font-size: 21px;
+  margin-top: 30px;
+}
+p, li { font-size: 16px; }
+a { color: var(--accent2); }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: rgba(25,60,54,0.08);
+  padding: 0.12em 0.28em;
+}
+pre {
+  padding: 16px;
+  overflow-x: auto;
+  background: #181511;
+  color: #fffaf0;
+  border: 1px solid #181511;
+}
+pre code { background: transparent; padding: 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0 28px;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid var(--line);
+  padding: 9px 10px;
+  vertical-align: top;
+}
+th {
+  background: rgba(25,60,54,0.08);
+  text-align: left;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+blockquote {
+  margin: 24px 0;
+  padding: 8px 18px;
+  border-left: 3px solid var(--accent2);
+  background: rgba(163,74,44,0.07);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 26px;
+}
+.card {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+  background: rgba(255,250,240,0.8);
+  border: 1px solid var(--line);
+  padding: 20px;
+  min-height: 170px;
+  box-shadow: inset 2px 2px 8px rgba(90,70,45,0.08), inset -2px -2px 8px rgba(255,255,255,0.72);
+}
+.card b {
+  display: block;
+  margin-bottom: 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  line-height: 1.08;
+}
+.metric {
+  display: inline-block;
+  margin: 6px 8px 6px 0;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  background: rgba(25,60,54,0.06);
+}
+@media print {
+  body { background: white; }
+  .page { max-width: none; padding: 0; }
+  .paper { box-shadow: none; border: none; padding: 24px; }
+  nav { display: none; }
+  h1 { font-size: 38px; }
+  h2 { break-after: avoid; }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <article class="paper">
+
+    <nav>
+      <a href="../index.html">Program</a>
+      <a href="../papers/main_selector_paper.html">Main Paper</a>
+      <a href="../papers/mechanistic_audit.html">Mechanistic</a>
+      <a href="../papers/audience_axes.html">Audience Axes</a>
+      <a href="../papers/reward_distillation.html">Distillation</a>
+      <a href="../papers/affect_aware.html">Affect</a>
+      <a href="../papers/representation_frames.html">Theory</a>
+    </nav>
+
+      <h1>From Brain-Aligned Selectors To Video-Generator Distillation</h1>
+<p><strong>Draft status:</strong> satellite paper draft, regenerated 2026-06-01.
+<strong>Core purpose:</strong> define the LoRA/DPO project without pretending the proxy result
+is already behavioral success.</p>
+<h2>Abstract</h2>
+<p>Brain-aligned reward signals can be used in two ways: selecting among generated
+candidates at test time, or distilling the selector into the generator through
+preference optimization. The current project supports the first path more
+strongly than the second. On a 24-seed Wan2.2 proxy run, a preference-weighted
+single LoRA improves 20/24 prompts under the TRIBE/BMD projection, and
+base-or-gated best-of-4 improves 18/24 with mean lift about +2.817 while avoiding
+negative seed-level regressions by falling back to the base clip. This is useful
+engineering evidence for a generation-ranking workflow, but it is not proof that
+the generator learned human memorability. A distillation paper should begin only
+after the selector itself is validated by humans.</p>
+<h2>Current Product Workflow</h2>
+<pre><code class="language-text">generate base video
+generate LoRA / best-of-N variants
+score each candidate with TRIBE/BMD v_mem
+score preservation with CLIP-style gates
+choose the best gated candidate
+fallback to base when the gated candidate is worse
+</code></pre>
+<h2>Current Proxy Result</h2>
+<table>
+<thead>
+<tr>
+<th>Selection rule</th>
+<th style="text-align:right">Improved seeds</th>
+<th style="text-align:right">Mean lift</th>
+<th style="text-align:right">Median lift</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single LoRA</td>
+<td style="text-align:right">20/24</td>
+<td style="text-align:right">+1.274</td>
+<td style="text-align:right">+1.218</td>
+</tr>
+<tr>
+<td>Raw best-of-N</td>
+<td style="text-align:right">20/24</td>
+<td style="text-align:right">+3.561</td>
+<td style="text-align:right">+3.451</td>
+</tr>
+<tr>
+<td>Base or raw best-of-N</td>
+<td style="text-align:right">20/24</td>
+<td style="text-align:right">+3.674</td>
+<td style="text-align:right">+3.451</td>
+</tr>
+<tr>
+<td>Base or gated best-of-N</td>
+<td style="text-align:right">18/24</td>
+<td style="text-align:right">+2.817</td>
+<td style="text-align:right">+2.432</td>
+</tr>
+</tbody>
+</table>
+<h2>Why DPO Is Harder Than Selection</h2>
+<p>Selection is cheap because the reward model only chooses among candidates.
+Distillation is harder because the generator can learn reward-model loopholes:
+artifact-heavy clips, semantic drift, or high-scoring visual tropes that humans
+do not actually remember. Video DPO also needs temporally meaningful preference
+pairs, consistent seeds, enough diversity, and held-out human evaluation. The
+training objective must not be evaluated only by the reward model that created
+the labels.</p>
+<h2>Minimal DPO Study Design</h2>
+<ol>
+<li>Validate the selector against humans on 50-100 prompts.</li>
+<li>Generate 4-8 candidates per prompt for 500-2,000 prompts.</li>
+<li>Label preference pairs with the validated selector plus preservation gates.</li>
+<li>Train a small LoRA or DPO adapter.</li>
+<li>Evaluate on fresh prompts with:
+<ul>
+<li>human pairwise memorability;</li>
+<li>V-JEPA and CLIP baselines;</li>
+<li>video-quality gates;</li>
+<li>delayed recognition if budget allows.</li>
+</ul>
+</li>
+</ol>
+<h2>Product Direction</h2>
+<p>The most useful near-term product is not a fully trained memorability generator.
+It is a queueable selector that lets users upload or generate multiple variants,
+then returns:</p>
+<ul>
+<li>raw TRIBE dimensions;</li>
+<li>BMD memorability projection;</li>
+<li>V-JEPA and CLIP baseline scores;</li>
+<li>threshold checks;</li>
+<li>natural-language failure analysis;</li>
+<li>recommended edits or next generations.</li>
+</ul>
+<p>Distillation becomes worthwhile only after the selector reliably predicts human
+judgment.</p>
+
+    </article>
+  </main>
+</body>
+</html>

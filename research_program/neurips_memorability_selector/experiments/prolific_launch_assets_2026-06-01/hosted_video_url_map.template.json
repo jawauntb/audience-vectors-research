@@ -1,0 +1,629 @@
+{
+  "instructions": [
+    "Fill hosted_url with stable HTTPS URLs for every local_path.",
+    "Set screened to true only after sensitive-content screening is complete.",
+    "Run build_hosted_survey.py --url-map <this file> --hosted-survey <output.html>."
+  ],
+  "prepared_for": "current_selector_prolific_survey_with_vjepa.html",
+  "schema_version": "hosted_video_url_map.v1",
+  "videos": [
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_aerial_beach_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_aerial_beach_m1p0_n02.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_blue_jellyfish_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_blue_jellyfish_m1p0_n02.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_city_street_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_city_street_m1p0_n02.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_city_street_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_cloud_mountain_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_cloud_mountain_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_coastal_tracks_m1p0_n02.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_coastal_tracks_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_dewy_grass_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_dewy_grass_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n02.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_forest_canopy_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_forest_canopy_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_golden_grass_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_golden_grass_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_hanging_clothes_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_hanging_clothes_m1p0_n02.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_hanging_clothes_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_lighthouse_m1p0_n02.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_mountain_fog_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_mountain_fog_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_ocean_cliffs_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_ocean_cliffs_m1p0_n02.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_old_car_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_old_car_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n02.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_red_mailbox_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_red_mailbox_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sidewalk_steps_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sidewalk_steps_m1p0_n02.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sparse_forest_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sparse_forest_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sparse_forest_m1p0_n02.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_storm_beach_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_storm_beach_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_storm_beach_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_suspension_bridge_m1p0_n00.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_suspension_bridge_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n01.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n02.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_wheat_closeup_m1p0_n03.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_aerial_beach_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_aerial_beach_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_blue_jellyfish_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_blue_jellyfish_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_city_street_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_city_street_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_cloud_mountain_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_cloud_mountain_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_coastal_tracks_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_coastal_tracks_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_concert_stage_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_concert_stage_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_dewy_grass_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_dewy_grass_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_fireworks_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_fireworks_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_forest_canopy_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_forest_canopy_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_golden_grass_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_golden_grass_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_hanging_clothes_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_hanging_clothes_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_lighthouse_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_lighthouse_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_misty_woods_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_misty_woods_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_mountain_fog_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_mountain_fog_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_ocean_cliffs_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_ocean_cliffs_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_old_car_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_old_car_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_orange_flowers_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_orange_flowers_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_red_mailbox_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_red_mailbox_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sidewalk_steps_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sidewalk_steps_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sparse_forest_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sparse_forest_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_storm_beach_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_storm_beach_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_suspension_bridge_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_suspension_bridge_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_tall_building_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_tall_building_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_wheat_closeup_base.mp4",
+      "screened": false,
+      "screening_notes": ""
+    },
+    {
+      "hosted_url": "",
+      "local_path": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_wheat_closeup_lora.mp4",
+      "screened": false,
+      "screening_notes": ""
+    }
+  ]
+}

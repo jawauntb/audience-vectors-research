@@ -1,0 +1,85 @@
+\section{Selector Human-Evaluation Protocol}
+
+\subsection{Primary question}
+
+When choosing among multiple generated videos for the same prompt, does a
+TRIBE/BMD memorability selector choose clips that humans judge as more memorable
+than clips chosen by non-brain baselines?
+
+\subsection{Experimental unit}
+
+The experimental unit is the prompt-conditioned candidate set. Each set contains
+multiple videos generated from the same prompt or image seed. Selector policies
+choose one candidate per set. Human raters compare videos only within the same
+set, reducing confounding from prompt-level differences.
+
+\subsection{Selector policies}
+
+The minimum policy set is:
+\begin{enumerate}
+  \item random candidate selection;
+  \item CLIP or text-video prompt-preservation winner;
+  \item V-JEPA memorability winner;
+  \item TRIBE/BMD memorability winner;
+  \item TRIBE/BMD memorability winner with preservation or quality gate.
+\end{enumerate}
+Optional policies include aesthetic/video-quality winners, LoRA candidates, and
+ensemble policies that combine memorability, quality, and prompt preservation.
+
+\subsection{Human task}
+
+The first study should use a fast pairwise preference task:
+
+\begin{quote}
+Which video do you think would be more memorable if you saw many such clips?
+\end{quote}
+
+This measures predicted memorability rather than delayed recognition. If this
+pilot produces a clear effect, a follow-up delayed-recognition study should
+present target and filler clips, wait for a delay, and then test recognition
+against repeated and lure clips.
+
+\subsection{Primary endpoint}
+
+The primary endpoint is the prompt-clustered win rate of TRIBE+gate selected
+clips against the strongest non-brain baseline. The primary hypothesis is:
+\[
+P(\text{human chooses TRIBE+gate over baseline}) > 0.5.
+\]
+
+\subsection{Statistical analysis}
+
+The analysis should report:
+\begin{itemize}
+  \item prompt-clustered bootstrap confidence intervals;
+  \item per-prompt win-rate distributions;
+  \item mixed-effects logistic regression with selector policy as a fixed effect
+        and random intercepts for prompt and, if identifiable, rater;
+  \item multiple-comparison correction when comparing many selector policies.
+\end{itemize}
+
+\subsection{Anti-circularity rule}
+
+No claim of human improvement can rely on TRIBE-scored gains alone. TRIBE may
+train or select candidates, but the final endpoint must be independent human
+judgment or delayed recognition.
+
+\section{IRB-Relevant Study Summary}
+
+The proposed first study is a minimal-risk online behavioral experiment. Adult
+participants recruited through Prolific will view short generated videos and
+make pairwise judgments about predicted memorability. The study does not collect
+clinical data, biometric data, sensitive personal histories, or deception-based
+responses. Responses will be analyzed in aggregate to compare selector policies.
+
+The main foreseeable risks are boredom, fatigue, mild visual discomfort, and the
+ordinary privacy risks associated with online survey data. Participants should be
+warned that short videos may contain motion or rapid visual change, and they
+should be allowed to stop at any time. The study should avoid graphic, sexual,
+political persuasion, medical, or otherwise sensitive stimuli unless separately
+reviewed.
+
+Data should be stored without names, emails, IP addresses, or other direct
+identifiers where possible. Prolific IDs, if collected for payment or duplicate
+prevention, should be stored separately from response data or replaced with
+pseudonymous participant IDs before analysis.

@@ -1,0 +1,168 @@
+{
+  "status": "blocked",
+  "blocker": "insufficient layerwise hidden cache for requested fold-safe split: need at least 104 clips with all requested targets, found 24. Balanced expansion is missing 40 low-tail and 40 high-tail clips.",
+  "config": {
+    "annotations": "data/raw/bold_moments/annotations.json",
+    "feature_dir": "data/features/tribe",
+    "hidden_dir": "data/features/tribe_layerwise_encoder",
+    "output_dir": "data/features/tribe_foldsafe_direction_patch",
+    "targets": null,
+    "alphas": [
+      1.0
+    ],
+    "n_train_each": 40,
+    "n_eval_each": 12,
+    "folds": 5,
+    "top_frac": 0.3,
+    "seed": 20260602,
+    "concurrency": 6
+  },
+  "summary": {
+    "n_scored_features": 1022,
+    "n_hidden_cache_eligible": 24,
+    "needed_hidden_cache_clips": 104,
+    "target_cache_counts": {
+      "attn00_post_resid": 24,
+      "attn02_post_resid": 24,
+      "attn04_post_resid": 24,
+      "attn06_post_resid": 24,
+      "attn08_post_resid": 24,
+      "attn10_post_resid": 24,
+      "attn12_post_resid": 24,
+      "attn14_post_resid": 24,
+      "final_encoder": 24
+    },
+    "balanced_hidden_cache_coverage": {
+      "n_each_tail_required": 52,
+      "low_ready": 12,
+      "high_ready": 12,
+      "low_missing": 40,
+      "high_missing": 40,
+      "total_ready": 24,
+      "total_missing": 80,
+      "low_missing_sample_ids": [
+        "bmd_vid_idx0042_seg_0000",
+        "bmd_vid_idx0843_seg_0000",
+        "bmd_vid_idx1091_seg_0000",
+        "bmd_vid_idx1037_seg_0000",
+        "bmd_vid_idx0522_seg_0000",
+        "bmd_vid_idx0804_seg_0000",
+        "bmd_vid_idx1010_seg_0000",
+        "bmd_vid_idx0920_seg_0000",
+        "bmd_vid_idx0291_seg_0000",
+        "bmd_vid_idx0268_seg_0000",
+        "bmd_vid_idx0965_seg_0000",
+        "bmd_vid_idx0264_seg_0000",
+        "bmd_vid_idx0056_seg_0000",
+        "bmd_vid_idx0878_seg_0000",
+        "bmd_vid_idx0275_seg_0000",
+        "bmd_vid_idx0248_seg_0000",
+        "bmd_vid_idx0244_seg_0000",
+        "bmd_vid_idx0427_seg_0000",
+        "bmd_vid_idx0110_seg_0000",
+        "bmd_vid_idx0111_seg_0000",
+        "bmd_vid_idx0644_seg_0000",
+        "bmd_vid_idx0712_seg_0000",
+        "bmd_vid_idx1061_seg_0000",
+        "bmd_vid_idx0187_seg_0000",
+        "bmd_vid_idx0240_seg_0000",
+        "bmd_vid_idx0437_seg_0000",
+        "bmd_vid_idx0681_seg_0000",
+        "bmd_vid_idx0337_seg_0000",
+        "bmd_vid_idx0670_seg_0000",
+        "bmd_vid_idx0916_seg_0000",
+        "bmd_vid_idx0095_seg_0000",
+        "bmd_vid_idx0563_seg_0000",
+        "bmd_vid_idx0930_seg_0000",
+        "bmd_vid_idx0025_seg_0000",
+        "bmd_vid_idx0060_seg_0000",
+        "bmd_vid_idx0031_seg_0000",
+        "bmd_vid_idx0053_seg_0000",
+        "bmd_vid_idx0859_seg_0000",
+        "bmd_vid_idx0374_seg_0000",
+        "bmd_vid_idx0587_seg_0000"
+      ],
+      "high_missing_sample_ids": [
+        "bmd_vid_idx0988_seg_0000",
+        "bmd_vid_idx0207_seg_0000",
+        "bmd_vid_idx0709_seg_0000",
+        "bmd_vid_idx0194_seg_0000",
+        "bmd_vid_idx0209_seg_0000",
+        "bmd_vid_idx0868_seg_0000",
+        "bmd_vid_idx0243_seg_0000",
+        "bmd_vid_idx1057_seg_0000",
+        "bmd_vid_idx0466_seg_0000",
+        "bmd_vid_idx0229_seg_0000",
+        "bmd_vid_idx0888_seg_0000",
+        "bmd_vid_idx0929_seg_0000",
+        "bmd_vid_idx0593_seg_0000",
+        "bmd_vid_idx0620_seg_0000",
+        "bmd_vid_idx0596_seg_0000",
+        "bmd_vid_idx0999_seg_0000",
+        "bmd_vid_idx0152_seg_0000",
+        "bmd_vid_idx0775_seg_0000",
+        "bmd_vid_idx0196_seg_0000",
+        "bmd_vid_idx0987_seg_0000",
+        "bmd_vid_idx0858_seg_0000",
+        "bmd_vid_idx0826_seg_0000",
+        "bmd_vid_idx0132_seg_0000",
+        "bmd_vid_idx0408_seg_0000",
+        "bmd_vid_idx0549_seg_0000",
+        "bmd_vid_idx1063_seg_0000",
+        "bmd_vid_idx0372_seg_0000",
+        "bmd_vid_idx0446_seg_0000",
+        "bmd_vid_idx0386_seg_0000",
+        "bmd_vid_idx0865_seg_0000",
+        "bmd_vid_idx0834_seg_0000",
+        "bmd_vid_idx0603_seg_0000",
+        "bmd_vid_idx0557_seg_0000",
+        "bmd_vid_idx0038_seg_0000",
+        "bmd_vid_idx1093_seg_0000",
+        "bmd_vid_idx0997_seg_0000",
+        "bmd_vid_idx0576_seg_0000",
+        "bmd_vid_idx0562_seg_0000",
+        "bmd_vid_idx0325_seg_0000",
+        "bmd_vid_idx0144_seg_0000"
+      ]
+    },
+    "targets": [
+      {
+        "label": "attn00_post_resid",
+        "hook_module": "_model.encoder.layers.0.2"
+      },
+      {
+        "label": "attn02_post_resid",
+        "hook_module": "_model.encoder.layers.2.2"
+      },
+      {
+        "label": "attn04_post_resid",
+        "hook_module": "_model.encoder.layers.4.2"
+      },
+      {
+        "label": "attn06_post_resid",
+        "hook_module": "_model.encoder.layers.6.2"
+      },
+      {
+        "label": "attn08_post_resid",
+        "hook_module": "_model.encoder.layers.8.2"
+      },
+      {
+        "label": "attn10_post_resid",
+        "hook_module": "_model.encoder.layers.10.2"
+      },
+      {
+        "label": "attn12_post_resid",
+        "hook_module": "_model.encoder.layers.12.2"
+      },
+      {
+        "label": "attn14_post_resid",
+        "hook_module": "_model.encoder.layers.14.2"
+      },
+      {
+        "label": "final_encoder",
+        "hook_module": "_model.encoder"
+      }
+    ],
+    "layers": []
+  }
+}

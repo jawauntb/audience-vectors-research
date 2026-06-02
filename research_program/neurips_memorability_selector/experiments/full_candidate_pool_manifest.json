@@ -1,0 +1,2168 @@
+{
+  "schema_version": 1,
+  "source": "wan22_pref_weighted_r16_s300_full_candidate_pool",
+  "n_seeds": 24,
+  "n_candidates": 144,
+  "rows": [
+    {
+      "seed": "fresh24_aerial_beach",
+      "labels": {
+        "candidate": "fresh24_aerial_beach_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_aerial_beach_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_aerial_beach_seed.png",
+        "prompt": "A wide beach and shallow shoreline stretch into hazy light as tiny figures move near the water. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_aerial_beach",
+      "labels": {
+        "candidate": "fresh24_aerial_beach_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_aerial_beach_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_aerial_beach_seed.png",
+        "prompt": "A wide beach and shallow shoreline stretch into hazy light as tiny figures move near the water. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_aerial_beach",
+      "labels": {
+        "candidate": "fresh24_aerial_beach_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_aerial_beach_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_aerial_beach_seed.png",
+        "prompt": "A wide beach and shallow shoreline stretch into hazy light as tiny figures move near the water. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_aerial_beach",
+      "labels": {
+        "candidate": "fresh24_aerial_beach_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_aerial_beach_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_aerial_beach_seed.png",
+        "prompt": "A wide beach and shallow shoreline stretch into hazy light as tiny figures move near the water. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_aerial_beach",
+      "labels": {
+        "candidate": "fresh24_aerial_beach_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_aerial_beach_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_aerial_beach_seed.png",
+        "prompt": "A wide beach and shallow shoreline stretch into hazy light as tiny figures move near the water. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_aerial_beach",
+      "labels": {
+        "candidate": "fresh24_aerial_beach_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_aerial_beach_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_aerial_beach_seed.png",
+        "prompt": "A wide beach and shallow shoreline stretch into hazy light as tiny figures move near the water. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_blue_jellyfish",
+      "labels": {
+        "candidate": "fresh24_blue_jellyfish_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_blue_jellyfish_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_blue_jellyfish_seed.png",
+        "prompt": "Blue translucent jellyfish float through bright water with slow drifting motion. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_blue_jellyfish",
+      "labels": {
+        "candidate": "fresh24_blue_jellyfish_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_blue_jellyfish_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_blue_jellyfish_seed.png",
+        "prompt": "Blue translucent jellyfish float through bright water with slow drifting motion. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_blue_jellyfish",
+      "labels": {
+        "candidate": "fresh24_blue_jellyfish_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_blue_jellyfish_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_blue_jellyfish_seed.png",
+        "prompt": "Blue translucent jellyfish float through bright water with slow drifting motion. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_blue_jellyfish",
+      "labels": {
+        "candidate": "fresh24_blue_jellyfish_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_blue_jellyfish_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_blue_jellyfish_seed.png",
+        "prompt": "Blue translucent jellyfish float through bright water with slow drifting motion. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_blue_jellyfish",
+      "labels": {
+        "candidate": "fresh24_blue_jellyfish_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_blue_jellyfish_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_blue_jellyfish_seed.png",
+        "prompt": "Blue translucent jellyfish float through bright water with slow drifting motion. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_blue_jellyfish",
+      "labels": {
+        "candidate": "fresh24_blue_jellyfish_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_blue_jellyfish_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_blue_jellyfish_seed.png",
+        "prompt": "Blue translucent jellyfish float through bright water with slow drifting motion. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_city_street",
+      "labels": {
+        "candidate": "fresh24_city_street_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_city_street_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_city_street_seed.png",
+        "prompt": "A city street runs between tall buildings while trees and traffic move in the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_city_street",
+      "labels": {
+        "candidate": "fresh24_city_street_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_city_street_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_city_street_seed.png",
+        "prompt": "A city street runs between tall buildings while trees and traffic move in the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_city_street",
+      "labels": {
+        "candidate": "fresh24_city_street_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_city_street_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_city_street_seed.png",
+        "prompt": "A city street runs between tall buildings while trees and traffic move in the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_city_street",
+      "labels": {
+        "candidate": "fresh24_city_street_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_city_street_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_city_street_seed.png",
+        "prompt": "A city street runs between tall buildings while trees and traffic move in the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_city_street",
+      "labels": {
+        "candidate": "fresh24_city_street_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_city_street_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_city_street_seed.png",
+        "prompt": "A city street runs between tall buildings while trees and traffic move in the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_city_street",
+      "labels": {
+        "candidate": "fresh24_city_street_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_city_street_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_city_street_seed.png",
+        "prompt": "A city street runs between tall buildings while trees and traffic move in the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_cloud_mountain",
+      "labels": {
+        "candidate": "fresh24_cloud_mountain_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_cloud_mountain_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_cloud_mountain_seed.png",
+        "prompt": "Clouds cling to a steep mountain ridge while fog drifts slowly across the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_cloud_mountain",
+      "labels": {
+        "candidate": "fresh24_cloud_mountain_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_cloud_mountain_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_cloud_mountain_seed.png",
+        "prompt": "Clouds cling to a steep mountain ridge while fog drifts slowly across the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_cloud_mountain",
+      "labels": {
+        "candidate": "fresh24_cloud_mountain_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_cloud_mountain_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_cloud_mountain_seed.png",
+        "prompt": "Clouds cling to a steep mountain ridge while fog drifts slowly across the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_cloud_mountain",
+      "labels": {
+        "candidate": "fresh24_cloud_mountain_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_cloud_mountain_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_cloud_mountain_seed.png",
+        "prompt": "Clouds cling to a steep mountain ridge while fog drifts slowly across the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_cloud_mountain",
+      "labels": {
+        "candidate": "fresh24_cloud_mountain_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_cloud_mountain_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_cloud_mountain_seed.png",
+        "prompt": "Clouds cling to a steep mountain ridge while fog drifts slowly across the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_cloud_mountain",
+      "labels": {
+        "candidate": "fresh24_cloud_mountain_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_cloud_mountain_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_cloud_mountain_seed.png",
+        "prompt": "Clouds cling to a steep mountain ridge while fog drifts slowly across the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_coastal_tracks",
+      "labels": {
+        "candidate": "fresh24_coastal_tracks_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_coastal_tracks_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_coastal_tracks_seed.png",
+        "prompt": "Railroad tracks run along a bright coastline as the sea and cliffs recede into the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_coastal_tracks",
+      "labels": {
+        "candidate": "fresh24_coastal_tracks_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_coastal_tracks_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_coastal_tracks_seed.png",
+        "prompt": "Railroad tracks run along a bright coastline as the sea and cliffs recede into the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_coastal_tracks",
+      "labels": {
+        "candidate": "fresh24_coastal_tracks_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_coastal_tracks_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_coastal_tracks_seed.png",
+        "prompt": "Railroad tracks run along a bright coastline as the sea and cliffs recede into the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_coastal_tracks",
+      "labels": {
+        "candidate": "fresh24_coastal_tracks_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_coastal_tracks_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_coastal_tracks_seed.png",
+        "prompt": "Railroad tracks run along a bright coastline as the sea and cliffs recede into the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_coastal_tracks",
+      "labels": {
+        "candidate": "fresh24_coastal_tracks_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_coastal_tracks_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_coastal_tracks_seed.png",
+        "prompt": "Railroad tracks run along a bright coastline as the sea and cliffs recede into the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_coastal_tracks",
+      "labels": {
+        "candidate": "fresh24_coastal_tracks_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_coastal_tracks_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_coastal_tracks_seed.png",
+        "prompt": "Railroad tracks run along a bright coastline as the sea and cliffs recede into the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_concert_stage",
+      "labels": {
+        "candidate": "fresh24_concert_stage_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_concert_stage_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_concert_stage_seed.png",
+        "prompt": "Musicians perform on a dark stage under bright spotlights as silhouettes move in the background. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_concert_stage",
+      "labels": {
+        "candidate": "fresh24_concert_stage_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_concert_stage_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_concert_stage_seed.png",
+        "prompt": "Musicians perform on a dark stage under bright spotlights as silhouettes move in the background. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_concert_stage",
+      "labels": {
+        "candidate": "fresh24_concert_stage_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_concert_stage_seed.png",
+        "prompt": "Musicians perform on a dark stage under bright spotlights as silhouettes move in the background. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_concert_stage",
+      "labels": {
+        "candidate": "fresh24_concert_stage_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_concert_stage_seed.png",
+        "prompt": "Musicians perform on a dark stage under bright spotlights as silhouettes move in the background. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_concert_stage",
+      "labels": {
+        "candidate": "fresh24_concert_stage_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_concert_stage_seed.png",
+        "prompt": "Musicians perform on a dark stage under bright spotlights as silhouettes move in the background. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_concert_stage",
+      "labels": {
+        "candidate": "fresh24_concert_stage_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_concert_stage_seed.png",
+        "prompt": "Musicians perform on a dark stage under bright spotlights as silhouettes move in the background. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_dewy_grass",
+      "labels": {
+        "candidate": "fresh24_dewy_grass_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_dewy_grass_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_dewy_grass_seed.png",
+        "prompt": "Low green grass catches soft light while blades bend and shimmer near the camera. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_dewy_grass",
+      "labels": {
+        "candidate": "fresh24_dewy_grass_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_dewy_grass_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_dewy_grass_seed.png",
+        "prompt": "Low green grass catches soft light while blades bend and shimmer near the camera. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_dewy_grass",
+      "labels": {
+        "candidate": "fresh24_dewy_grass_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_dewy_grass_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_dewy_grass_seed.png",
+        "prompt": "Low green grass catches soft light while blades bend and shimmer near the camera. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_dewy_grass",
+      "labels": {
+        "candidate": "fresh24_dewy_grass_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_dewy_grass_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_dewy_grass_seed.png",
+        "prompt": "Low green grass catches soft light while blades bend and shimmer near the camera. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_dewy_grass",
+      "labels": {
+        "candidate": "fresh24_dewy_grass_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_dewy_grass_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_dewy_grass_seed.png",
+        "prompt": "Low green grass catches soft light while blades bend and shimmer near the camera. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_dewy_grass",
+      "labels": {
+        "candidate": "fresh24_dewy_grass_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_dewy_grass_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_dewy_grass_seed.png",
+        "prompt": "Low green grass catches soft light while blades bend and shimmer near the camera. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_fireworks",
+      "labels": {
+        "candidate": "fresh24_fireworks_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_fireworks_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_fireworks_seed.png",
+        "prompt": "A large firework blossoms in a dark blue evening sky above a low horizon. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_fireworks",
+      "labels": {
+        "candidate": "fresh24_fireworks_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_fireworks_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_fireworks_seed.png",
+        "prompt": "A large firework blossoms in a dark blue evening sky above a low horizon. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_fireworks",
+      "labels": {
+        "candidate": "fresh24_fireworks_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_fireworks_seed.png",
+        "prompt": "A large firework blossoms in a dark blue evening sky above a low horizon. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_fireworks",
+      "labels": {
+        "candidate": "fresh24_fireworks_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_fireworks_seed.png",
+        "prompt": "A large firework blossoms in a dark blue evening sky above a low horizon. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_fireworks",
+      "labels": {
+        "candidate": "fresh24_fireworks_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_fireworks_seed.png",
+        "prompt": "A large firework blossoms in a dark blue evening sky above a low horizon. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_fireworks",
+      "labels": {
+        "candidate": "fresh24_fireworks_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_fireworks_seed.png",
+        "prompt": "A large firework blossoms in a dark blue evening sky above a low horizon. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_forest_canopy",
+      "labels": {
+        "candidate": "fresh24_forest_canopy_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_forest_canopy_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_forest_canopy_seed.png",
+        "prompt": "Tall forest trees lean into a misty canopy as light moves through the branches. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_forest_canopy",
+      "labels": {
+        "candidate": "fresh24_forest_canopy_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_forest_canopy_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_forest_canopy_seed.png",
+        "prompt": "Tall forest trees lean into a misty canopy as light moves through the branches. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_forest_canopy",
+      "labels": {
+        "candidate": "fresh24_forest_canopy_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_forest_canopy_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_forest_canopy_seed.png",
+        "prompt": "Tall forest trees lean into a misty canopy as light moves through the branches. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_forest_canopy",
+      "labels": {
+        "candidate": "fresh24_forest_canopy_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_forest_canopy_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_forest_canopy_seed.png",
+        "prompt": "Tall forest trees lean into a misty canopy as light moves through the branches. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_forest_canopy",
+      "labels": {
+        "candidate": "fresh24_forest_canopy_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_forest_canopy_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_forest_canopy_seed.png",
+        "prompt": "Tall forest trees lean into a misty canopy as light moves through the branches. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_forest_canopy",
+      "labels": {
+        "candidate": "fresh24_forest_canopy_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_forest_canopy_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_forest_canopy_seed.png",
+        "prompt": "Tall forest trees lean into a misty canopy as light moves through the branches. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_golden_grass",
+      "labels": {
+        "candidate": "fresh24_golden_grass_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_golden_grass_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_golden_grass_seed.png",
+        "prompt": "Golden grasses glow in low sunlight while the stems sway gently in the breeze. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_golden_grass",
+      "labels": {
+        "candidate": "fresh24_golden_grass_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_golden_grass_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_golden_grass_seed.png",
+        "prompt": "Golden grasses glow in low sunlight while the stems sway gently in the breeze. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_golden_grass",
+      "labels": {
+        "candidate": "fresh24_golden_grass_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_golden_grass_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_golden_grass_seed.png",
+        "prompt": "Golden grasses glow in low sunlight while the stems sway gently in the breeze. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_golden_grass",
+      "labels": {
+        "candidate": "fresh24_golden_grass_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_golden_grass_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_golden_grass_seed.png",
+        "prompt": "Golden grasses glow in low sunlight while the stems sway gently in the breeze. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_golden_grass",
+      "labels": {
+        "candidate": "fresh24_golden_grass_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_golden_grass_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_golden_grass_seed.png",
+        "prompt": "Golden grasses glow in low sunlight while the stems sway gently in the breeze. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_golden_grass",
+      "labels": {
+        "candidate": "fresh24_golden_grass_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_golden_grass_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_golden_grass_seed.png",
+        "prompt": "Golden grasses glow in low sunlight while the stems sway gently in the breeze. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_hanging_clothes",
+      "labels": {
+        "candidate": "fresh24_hanging_clothes_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_hanging_clothes_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_hanging_clothes_seed.png",
+        "prompt": "Colorful clothes hang in a row on a rack while fabric shifts slightly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_hanging_clothes",
+      "labels": {
+        "candidate": "fresh24_hanging_clothes_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_hanging_clothes_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_hanging_clothes_seed.png",
+        "prompt": "Colorful clothes hang in a row on a rack while fabric shifts slightly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_hanging_clothes",
+      "labels": {
+        "candidate": "fresh24_hanging_clothes_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_hanging_clothes_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_hanging_clothes_seed.png",
+        "prompt": "Colorful clothes hang in a row on a rack while fabric shifts slightly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_hanging_clothes",
+      "labels": {
+        "candidate": "fresh24_hanging_clothes_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_hanging_clothes_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_hanging_clothes_seed.png",
+        "prompt": "Colorful clothes hang in a row on a rack while fabric shifts slightly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_hanging_clothes",
+      "labels": {
+        "candidate": "fresh24_hanging_clothes_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_hanging_clothes_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_hanging_clothes_seed.png",
+        "prompt": "Colorful clothes hang in a row on a rack while fabric shifts slightly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_hanging_clothes",
+      "labels": {
+        "candidate": "fresh24_hanging_clothes_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_hanging_clothes_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_hanging_clothes_seed.png",
+        "prompt": "Colorful clothes hang in a row on a rack while fabric shifts slightly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_lighthouse",
+      "labels": {
+        "candidate": "fresh24_lighthouse_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_lighthouse_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_lighthouse_seed.png",
+        "prompt": "A small lighthouse stands on a rocky shore under dramatic clouds as the sky slowly changes. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_lighthouse",
+      "labels": {
+        "candidate": "fresh24_lighthouse_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_lighthouse_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_lighthouse_seed.png",
+        "prompt": "A small lighthouse stands on a rocky shore under dramatic clouds as the sky slowly changes. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_lighthouse",
+      "labels": {
+        "candidate": "fresh24_lighthouse_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_lighthouse_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_lighthouse_seed.png",
+        "prompt": "A small lighthouse stands on a rocky shore under dramatic clouds as the sky slowly changes. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_lighthouse",
+      "labels": {
+        "candidate": "fresh24_lighthouse_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_lighthouse_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_lighthouse_seed.png",
+        "prompt": "A small lighthouse stands on a rocky shore under dramatic clouds as the sky slowly changes. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_lighthouse",
+      "labels": {
+        "candidate": "fresh24_lighthouse_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_lighthouse_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_lighthouse_seed.png",
+        "prompt": "A small lighthouse stands on a rocky shore under dramatic clouds as the sky slowly changes. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_lighthouse",
+      "labels": {
+        "candidate": "fresh24_lighthouse_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_lighthouse_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_lighthouse_seed.png",
+        "prompt": "A small lighthouse stands on a rocky shore under dramatic clouds as the sky slowly changes. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_misty_woods",
+      "labels": {
+        "candidate": "fresh24_misty_woods_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_misty_woods_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_misty_woods_seed.png",
+        "prompt": "Mist hangs between tall forest trunks while pale light filters through the trees. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_misty_woods",
+      "labels": {
+        "candidate": "fresh24_misty_woods_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_misty_woods_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_misty_woods_seed.png",
+        "prompt": "Mist hangs between tall forest trunks while pale light filters through the trees. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_misty_woods",
+      "labels": {
+        "candidate": "fresh24_misty_woods_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_misty_woods_seed.png",
+        "prompt": "Mist hangs between tall forest trunks while pale light filters through the trees. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_misty_woods",
+      "labels": {
+        "candidate": "fresh24_misty_woods_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_misty_woods_seed.png",
+        "prompt": "Mist hangs between tall forest trunks while pale light filters through the trees. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_misty_woods",
+      "labels": {
+        "candidate": "fresh24_misty_woods_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_misty_woods_seed.png",
+        "prompt": "Mist hangs between tall forest trunks while pale light filters through the trees. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_misty_woods",
+      "labels": {
+        "candidate": "fresh24_misty_woods_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_misty_woods_seed.png",
+        "prompt": "Mist hangs between tall forest trunks while pale light filters through the trees. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_mountain_fog",
+      "labels": {
+        "candidate": "fresh24_mountain_fog_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_mountain_fog_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_mountain_fog_seed.png",
+        "prompt": "Thick fog curls around rocky mountain cliffs, revealing and hiding the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_mountain_fog",
+      "labels": {
+        "candidate": "fresh24_mountain_fog_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_mountain_fog_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_mountain_fog_seed.png",
+        "prompt": "Thick fog curls around rocky mountain cliffs, revealing and hiding the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_mountain_fog",
+      "labels": {
+        "candidate": "fresh24_mountain_fog_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_mountain_fog_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_mountain_fog_seed.png",
+        "prompt": "Thick fog curls around rocky mountain cliffs, revealing and hiding the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_mountain_fog",
+      "labels": {
+        "candidate": "fresh24_mountain_fog_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_mountain_fog_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_mountain_fog_seed.png",
+        "prompt": "Thick fog curls around rocky mountain cliffs, revealing and hiding the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_mountain_fog",
+      "labels": {
+        "candidate": "fresh24_mountain_fog_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_mountain_fog_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_mountain_fog_seed.png",
+        "prompt": "Thick fog curls around rocky mountain cliffs, revealing and hiding the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_mountain_fog",
+      "labels": {
+        "candidate": "fresh24_mountain_fog_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_mountain_fog_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_mountain_fog_seed.png",
+        "prompt": "Thick fog curls around rocky mountain cliffs, revealing and hiding the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_ocean_cliffs",
+      "labels": {
+        "candidate": "fresh24_ocean_cliffs_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_ocean_cliffs_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_ocean_cliffs_seed.png",
+        "prompt": "A rugged coastline drops toward rolling ocean waves under a pale cloudy sky. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_ocean_cliffs",
+      "labels": {
+        "candidate": "fresh24_ocean_cliffs_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_ocean_cliffs_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_ocean_cliffs_seed.png",
+        "prompt": "A rugged coastline drops toward rolling ocean waves under a pale cloudy sky. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_ocean_cliffs",
+      "labels": {
+        "candidate": "fresh24_ocean_cliffs_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_ocean_cliffs_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_ocean_cliffs_seed.png",
+        "prompt": "A rugged coastline drops toward rolling ocean waves under a pale cloudy sky. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_ocean_cliffs",
+      "labels": {
+        "candidate": "fresh24_ocean_cliffs_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_ocean_cliffs_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_ocean_cliffs_seed.png",
+        "prompt": "A rugged coastline drops toward rolling ocean waves under a pale cloudy sky. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_ocean_cliffs",
+      "labels": {
+        "candidate": "fresh24_ocean_cliffs_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_ocean_cliffs_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_ocean_cliffs_seed.png",
+        "prompt": "A rugged coastline drops toward rolling ocean waves under a pale cloudy sky. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_ocean_cliffs",
+      "labels": {
+        "candidate": "fresh24_ocean_cliffs_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_ocean_cliffs_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_ocean_cliffs_seed.png",
+        "prompt": "A rugged coastline drops toward rolling ocean waves under a pale cloudy sky. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_old_car",
+      "labels": {
+        "candidate": "fresh24_old_car_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_old_car_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_old_car_seed.png",
+        "prompt": "An old weathered car interior sits outdoors while light shifts across the steering wheel and seats. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_old_car",
+      "labels": {
+        "candidate": "fresh24_old_car_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_old_car_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_old_car_seed.png",
+        "prompt": "An old weathered car interior sits outdoors while light shifts across the steering wheel and seats. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_old_car",
+      "labels": {
+        "candidate": "fresh24_old_car_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_old_car_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_old_car_seed.png",
+        "prompt": "An old weathered car interior sits outdoors while light shifts across the steering wheel and seats. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_old_car",
+      "labels": {
+        "candidate": "fresh24_old_car_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_old_car_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_old_car_seed.png",
+        "prompt": "An old weathered car interior sits outdoors while light shifts across the steering wheel and seats. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_old_car",
+      "labels": {
+        "candidate": "fresh24_old_car_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_old_car_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_old_car_seed.png",
+        "prompt": "An old weathered car interior sits outdoors while light shifts across the steering wheel and seats. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_old_car",
+      "labels": {
+        "candidate": "fresh24_old_car_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_old_car_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_old_car_seed.png",
+        "prompt": "An old weathered car interior sits outdoors while light shifts across the steering wheel and seats. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_orange_flowers",
+      "labels": {
+        "candidate": "fresh24_orange_flowers_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_orange_flowers_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_orange_flowers_seed.png",
+        "prompt": "Orange flowers fill the frame while petals and leaves move softly in warm light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_orange_flowers",
+      "labels": {
+        "candidate": "fresh24_orange_flowers_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_orange_flowers_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_orange_flowers_seed.png",
+        "prompt": "Orange flowers fill the frame while petals and leaves move softly in warm light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_orange_flowers",
+      "labels": {
+        "candidate": "fresh24_orange_flowers_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_orange_flowers_seed.png",
+        "prompt": "Orange flowers fill the frame while petals and leaves move softly in warm light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_orange_flowers",
+      "labels": {
+        "candidate": "fresh24_orange_flowers_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_orange_flowers_seed.png",
+        "prompt": "Orange flowers fill the frame while petals and leaves move softly in warm light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_orange_flowers",
+      "labels": {
+        "candidate": "fresh24_orange_flowers_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_orange_flowers_seed.png",
+        "prompt": "Orange flowers fill the frame while petals and leaves move softly in warm light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_orange_flowers",
+      "labels": {
+        "candidate": "fresh24_orange_flowers_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_orange_flowers_seed.png",
+        "prompt": "Orange flowers fill the frame while petals and leaves move softly in warm light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_red_mailbox",
+      "labels": {
+        "candidate": "fresh24_red_mailbox_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_red_mailbox_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_red_mailbox_seed.png",
+        "prompt": "A bright red mailbox hangs on a city wall as nearby reflections and shadows shift. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_red_mailbox",
+      "labels": {
+        "candidate": "fresh24_red_mailbox_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_red_mailbox_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_red_mailbox_seed.png",
+        "prompt": "A bright red mailbox hangs on a city wall as nearby reflections and shadows shift. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_red_mailbox",
+      "labels": {
+        "candidate": "fresh24_red_mailbox_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_red_mailbox_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_red_mailbox_seed.png",
+        "prompt": "A bright red mailbox hangs on a city wall as nearby reflections and shadows shift. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_red_mailbox",
+      "labels": {
+        "candidate": "fresh24_red_mailbox_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_red_mailbox_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_red_mailbox_seed.png",
+        "prompt": "A bright red mailbox hangs on a city wall as nearby reflections and shadows shift. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_red_mailbox",
+      "labels": {
+        "candidate": "fresh24_red_mailbox_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_red_mailbox_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_red_mailbox_seed.png",
+        "prompt": "A bright red mailbox hangs on a city wall as nearby reflections and shadows shift. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_red_mailbox",
+      "labels": {
+        "candidate": "fresh24_red_mailbox_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_red_mailbox_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_red_mailbox_seed.png",
+        "prompt": "A bright red mailbox hangs on a city wall as nearby reflections and shadows shift. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_sidewalk_steps",
+      "labels": {
+        "candidate": "fresh24_sidewalk_steps_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sidewalk_steps_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_sidewalk_steps_seed.png",
+        "prompt": "A person walks across a sunlit sidewalk while shadows move over the grass nearby. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_sidewalk_steps",
+      "labels": {
+        "candidate": "fresh24_sidewalk_steps_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sidewalk_steps_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_sidewalk_steps_seed.png",
+        "prompt": "A person walks across a sunlit sidewalk while shadows move over the grass nearby. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_sidewalk_steps",
+      "labels": {
+        "candidate": "fresh24_sidewalk_steps_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sidewalk_steps_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_sidewalk_steps_seed.png",
+        "prompt": "A person walks across a sunlit sidewalk while shadows move over the grass nearby. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_sidewalk_steps",
+      "labels": {
+        "candidate": "fresh24_sidewalk_steps_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sidewalk_steps_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_sidewalk_steps_seed.png",
+        "prompt": "A person walks across a sunlit sidewalk while shadows move over the grass nearby. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_sidewalk_steps",
+      "labels": {
+        "candidate": "fresh24_sidewalk_steps_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sidewalk_steps_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_sidewalk_steps_seed.png",
+        "prompt": "A person walks across a sunlit sidewalk while shadows move over the grass nearby. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_sidewalk_steps",
+      "labels": {
+        "candidate": "fresh24_sidewalk_steps_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sidewalk_steps_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_sidewalk_steps_seed.png",
+        "prompt": "A person walks across a sunlit sidewalk while shadows move over the grass nearby. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_sparse_forest",
+      "labels": {
+        "candidate": "fresh24_sparse_forest_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sparse_forest_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_sparse_forest_seed.png",
+        "prompt": "A sparse forest of thin trunks stands under a cloudy sky while branches sway faintly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_sparse_forest",
+      "labels": {
+        "candidate": "fresh24_sparse_forest_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sparse_forest_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_sparse_forest_seed.png",
+        "prompt": "A sparse forest of thin trunks stands under a cloudy sky while branches sway faintly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_sparse_forest",
+      "labels": {
+        "candidate": "fresh24_sparse_forest_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sparse_forest_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_sparse_forest_seed.png",
+        "prompt": "A sparse forest of thin trunks stands under a cloudy sky while branches sway faintly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_sparse_forest",
+      "labels": {
+        "candidate": "fresh24_sparse_forest_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sparse_forest_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_sparse_forest_seed.png",
+        "prompt": "A sparse forest of thin trunks stands under a cloudy sky while branches sway faintly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_sparse_forest",
+      "labels": {
+        "candidate": "fresh24_sparse_forest_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sparse_forest_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_sparse_forest_seed.png",
+        "prompt": "A sparse forest of thin trunks stands under a cloudy sky while branches sway faintly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_sparse_forest",
+      "labels": {
+        "candidate": "fresh24_sparse_forest_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sparse_forest_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_sparse_forest_seed.png",
+        "prompt": "A sparse forest of thin trunks stands under a cloudy sky while branches sway faintly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_storm_beach",
+      "labels": {
+        "candidate": "fresh24_storm_beach_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_storm_beach_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_storm_beach_seed.png",
+        "prompt": "A stormy beach and steep cliffs sit under heavy clouds as waves move along the shore. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_storm_beach",
+      "labels": {
+        "candidate": "fresh24_storm_beach_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_storm_beach_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_storm_beach_seed.png",
+        "prompt": "A stormy beach and steep cliffs sit under heavy clouds as waves move along the shore. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_storm_beach",
+      "labels": {
+        "candidate": "fresh24_storm_beach_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_storm_beach_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_storm_beach_seed.png",
+        "prompt": "A stormy beach and steep cliffs sit under heavy clouds as waves move along the shore. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_storm_beach",
+      "labels": {
+        "candidate": "fresh24_storm_beach_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_storm_beach_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_storm_beach_seed.png",
+        "prompt": "A stormy beach and steep cliffs sit under heavy clouds as waves move along the shore. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_storm_beach",
+      "labels": {
+        "candidate": "fresh24_storm_beach_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_storm_beach_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_storm_beach_seed.png",
+        "prompt": "A stormy beach and steep cliffs sit under heavy clouds as waves move along the shore. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_storm_beach",
+      "labels": {
+        "candidate": "fresh24_storm_beach_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_storm_beach_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_storm_beach_seed.png",
+        "prompt": "A stormy beach and steep cliffs sit under heavy clouds as waves move along the shore. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_suspension_bridge",
+      "labels": {
+        "candidate": "fresh24_suspension_bridge_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_suspension_bridge_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_suspension_bridge_seed.png",
+        "prompt": "A red suspension bridge rises through fog while cables and towers fade into the mist. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_suspension_bridge",
+      "labels": {
+        "candidate": "fresh24_suspension_bridge_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_suspension_bridge_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_suspension_bridge_seed.png",
+        "prompt": "A red suspension bridge rises through fog while cables and towers fade into the mist. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_suspension_bridge",
+      "labels": {
+        "candidate": "fresh24_suspension_bridge_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_suspension_bridge_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_suspension_bridge_seed.png",
+        "prompt": "A red suspension bridge rises through fog while cables and towers fade into the mist. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_suspension_bridge",
+      "labels": {
+        "candidate": "fresh24_suspension_bridge_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_suspension_bridge_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_suspension_bridge_seed.png",
+        "prompt": "A red suspension bridge rises through fog while cables and towers fade into the mist. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_suspension_bridge",
+      "labels": {
+        "candidate": "fresh24_suspension_bridge_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_suspension_bridge_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_suspension_bridge_seed.png",
+        "prompt": "A red suspension bridge rises through fog while cables and towers fade into the mist. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_suspension_bridge",
+      "labels": {
+        "candidate": "fresh24_suspension_bridge_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_suspension_bridge_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_suspension_bridge_seed.png",
+        "prompt": "A red suspension bridge rises through fog while cables and towers fade into the mist. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_tall_building",
+      "labels": {
+        "candidate": "fresh24_tall_building_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_tall_building_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_tall_building_seed.png",
+        "prompt": "A tall city building rises in black and white while windows and shadows create a repeating pattern. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_tall_building",
+      "labels": {
+        "candidate": "fresh24_tall_building_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_tall_building_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_tall_building_seed.png",
+        "prompt": "A tall city building rises in black and white while windows and shadows create a repeating pattern. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_tall_building",
+      "labels": {
+        "candidate": "fresh24_tall_building_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_tall_building_seed.png",
+        "prompt": "A tall city building rises in black and white while windows and shadows create a repeating pattern. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_tall_building",
+      "labels": {
+        "candidate": "fresh24_tall_building_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_tall_building_seed.png",
+        "prompt": "A tall city building rises in black and white while windows and shadows create a repeating pattern. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_tall_building",
+      "labels": {
+        "candidate": "fresh24_tall_building_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_tall_building_seed.png",
+        "prompt": "A tall city building rises in black and white while windows and shadows create a repeating pattern. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_tall_building",
+      "labels": {
+        "candidate": "fresh24_tall_building_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_tall_building_seed.png",
+        "prompt": "A tall city building rises in black and white while windows and shadows create a repeating pattern. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_wheat_closeup",
+      "labels": {
+        "candidate": "fresh24_wheat_closeup_base"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_wheat_closeup_base.mp4"
+      },
+      "metadata": {
+        "variant": "base",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_wheat_closeup_seed.png",
+        "prompt": "Green wheat heads fill the foreground while the field ripples gently behind them. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_wheat_closeup",
+      "labels": {
+        "candidate": "fresh24_wheat_closeup_lora"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_wheat_closeup_lora.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_wheat_closeup_seed.png",
+        "prompt": "Green wheat heads fill the foreground while the field ripples gently behind them. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_wheat_closeup",
+      "labels": {
+        "candidate": "fresh24_wheat_closeup_m1p0_n00"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_wheat_closeup_m1p0_n00.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_wheat_closeup_seed.png",
+        "prompt": "Green wheat heads fill the foreground while the field ripples gently behind them. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_wheat_closeup",
+      "labels": {
+        "candidate": "fresh24_wheat_closeup_m1p0_n01"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_wheat_closeup_m1p0_n01.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_wheat_closeup_seed.png",
+        "prompt": "Green wheat heads fill the foreground while the field ripples gently behind them. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_wheat_closeup",
+      "labels": {
+        "candidate": "fresh24_wheat_closeup_m1p0_n02"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_wheat_closeup_m1p0_n02.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_wheat_closeup_seed.png",
+        "prompt": "Green wheat heads fill the foreground while the field ripples gently behind them. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    },
+    {
+      "seed": "fresh24_wheat_closeup",
+      "labels": {
+        "candidate": "fresh24_wheat_closeup_m1p0_n03"
+      },
+      "video_paths": {
+        "candidate": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_wheat_closeup_m1p0_n03.mp4"
+      },
+      "metadata": {
+        "variant": "lora",
+        "seed_image": "data/training/wan22_lora_eval_fresh_picsum_24/seeds/fresh24_wheat_closeup_seed.png",
+        "prompt": "Green wheat heads fill the foreground while the field ripples gently behind them. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+        "source_report": "data/reports/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0_composite_gate008.json"
+      }
+    }
+  ]
+}

@@ -13,7 +13,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import statistics
 from pathlib import Path
 
 import numpy as np
@@ -28,7 +27,9 @@ def _load_feature(path: Path) -> np.ndarray:
     return np.asarray(payload["embedding"], dtype=np.float32)
 
 
-def _direction(features: np.ndarray, scores: np.ndarray, top_k_frac: float = 0.30) -> np.ndarray:
+def _direction(
+    features: np.ndarray, scores: np.ndarray, top_k_frac: float = 0.30
+) -> np.ndarray:
     order = np.argsort(scores)
     n_each = max(3, int(len(scores) * top_k_frac))
     neg = features[order[:n_each]].mean(axis=0)
@@ -49,14 +50,24 @@ def _load_bmd() -> dict[str, float]:
     }
 
 
-def main() -> None:
+def main() -> None:  # noqa: C901, PLR0912
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--features-dir", type=Path, default=Path("data/features/tribe"))
-    parser.add_argument("--persona-file", type=Path, default=Path("data/labels/synthetic_persona_haiku_clean.parquet"))
+    parser.add_argument(
+        "--features-dir", type=Path, default=Path("data/features/tribe")
+    )
+    parser.add_argument(
+        "--persona-file",
+        type=Path,
+        default=Path("data/labels/synthetic_persona_haiku_clean.parquet"),
+    )
     parser.add_argument("--axis", default="memorability")
     parser.add_argument("--top-k-frac", type=float, default=0.30)
-    parser.add_argument("--csv-out", type=Path, default=Path("data/reports/persona_scores.csv"))
-    parser.add_argument("--report-out", type=Path, default=Path("data/reports/persona_driving.md"))
+    parser.add_argument(
+        "--csv-out", type=Path, default=Path("data/reports/persona_scores.csv")
+    )
+    parser.add_argument(
+        "--report-out", type=Path, default=Path("data/reports/persona_driving.md")
+    )
     args = parser.parse_args()
 
     df = pl.read_parquet(args.persona_file)
@@ -64,9 +75,11 @@ def main() -> None:
     if args.axis not in scores_struct.columns:
         raise SystemExit(f"axis {args.axis!r} not found in {scores_struct.columns}")
 
-    rows = df.with_columns(scores_struct[args.axis].alias("_score")).select(
-        ["persona_id", "segment_id", "_score"]
-    ).to_dicts()
+    rows = (
+        df.with_columns(scores_struct[args.axis].alias("_score"))
+        .select(["persona_id", "segment_id", "_score"])
+        .to_dicts()
+    )
 
     by_persona: dict[str, dict[str, float]] = {}
     for r in rows:
@@ -84,7 +97,9 @@ def main() -> None:
     all_ids = sorted(all_features.keys())
     feat_mat = np.stack([all_features[s] for s in all_ids])
 
-    print(f"[score] training {len(by_persona)} persona directions on axis '{args.axis}'")
+    print(
+        f"[score] training {len(by_persona)} persona directions on axis '{args.axis}'"
+    )
     directions: dict[str, np.ndarray] = {}
     for persona_id, seg_scores in by_persona.items():
         feats = []
@@ -97,7 +112,9 @@ def main() -> None:
         if len(feats) < 10:
             continue
         directions[persona_id] = _direction(
-            np.stack(feats), np.asarray(scores_list, dtype=np.float32), args.top_k_frac,
+            np.stack(feats),
+            np.asarray(scores_list, dtype=np.float32),
+            args.top_k_frac,
         )
 
     # Also compute the GLOBAL BMD direction for reference
@@ -111,7 +128,9 @@ def main() -> None:
             bmd_scores_list.append(bmd[vid])
     if bmd_feats:
         directions["BMD_human_global"] = _direction(
-            np.stack(bmd_feats), np.asarray(bmd_scores_list, dtype=np.float32), args.top_k_frac,
+            np.stack(bmd_feats),
+            np.asarray(bmd_scores_list, dtype=np.float32),
+            args.top_k_frac,
         )
 
     persona_ids = sorted([p for p in directions if p != "BMD_human_global"])
@@ -119,13 +138,15 @@ def main() -> None:
     score_mat = np.stack([feat_mat @ directions[p] for p in columns], axis=1)
 
     # CSV
-    csv_rows: list[dict] = []
+    csv_rows: list[dict[str, str | float | None]] = []
     for i, sid in enumerate(all_ids):
-        row = {"segment_id": sid}
+        row: dict[str, str | float | None] = {"segment_id": sid}
         for j, col in enumerate(columns):
             row[col] = round(float(score_mat[i, j]), 4)
         vid = sid.split("_seg_")[0]
-        row["bmd_human_memorability"] = round(bmd.get(vid, float("nan")), 4) if vid in bmd else None
+        row["bmd_human_memorability"] = (
+            round(bmd.get(vid, float("nan")), 4) if vid in bmd else None
+        )
         csv_rows.append(row)
     out_df = pl.DataFrame(csv_rows)
     args.csv_out.parent.mkdir(parents=True, exist_ok=True)
@@ -134,7 +155,7 @@ def main() -> None:
 
     # Summary report
     lines: list[str] = [
-        f"# Persona-driven scoring on TRIBE features",
+        "# Persona-driven scoring on TRIBE features",
         "",
         f"Axis: **{args.axis}** · Personas: **{len(persona_ids)}** · Clips: **{len(all_ids)}**",
         "",
@@ -168,15 +189,17 @@ def main() -> None:
     for k in range(10):
         idx = order_div[k]
         bmd_val = score_mat[idx, bmd_col]
-        lines.append(f"| `{all_ids[idx]}` | {persona_stdev[idx]:.3f} | {bmd_val:+.3f} |")
+        lines.append(
+            f"| `{all_ids[idx]}` | {persona_stdev[idx]:.3f} | {bmd_val:+.3f} |"
+        )
 
-    # Audience-orthogonal clips: high persona variance, low correlation with BMD
+    # Audience-divergent clips: high persona variance, low correlation with BMD
     # For each clip, persona scores - BMD score; high abs delta = persona drives different signal
     delta = persona_only.mean(axis=1) - score_mat[:, bmd_col]
     persona_minus_bmd = np.argsort(-np.abs(delta))
     lines += [
         "",
-        "## Audience-orthogonal clips (mean persona score far from BMD global score)",
+        "## Audience-divergent clips (mean persona score far from BMD global score)",
         "",
         "| segment_id | mean(persona) | BMD global | delta |",
         "|---|---|---|---|",
@@ -195,7 +218,7 @@ def main() -> None:
         "",
     ]
     ranks = np.argsort(np.argsort(score_mat[:, : len(persona_ids)], axis=0), axis=0)
-    corrs = np.corrcoef(ranks.T)
+    corrs = np.asarray(np.corrcoef(ranks.T), dtype=np.float64)
     off = corrs[~np.eye(len(persona_ids), dtype=bool)]
     lines.append(
         f"- Off-diagonal Spearman: mean = {off.mean():+.3f}, "
@@ -208,14 +231,20 @@ def main() -> None:
 
     # JSON sidecar for HTML paper
     json_out = args.report_out.with_suffix(".json")
-    json_out.write_text(json.dumps({
-        "axis": args.axis,
-        "persona_ids": persona_ids,
-        "all_columns": columns,
-        "segments": all_ids,
-        "scores": score_mat.tolist(),
-        "directions_norm_check": {p: float(np.linalg.norm(directions[p])) for p in columns},
-    }))
+    json_out.write_text(
+        json.dumps(
+            {
+                "axis": args.axis,
+                "persona_ids": persona_ids,
+                "all_columns": columns,
+                "segments": all_ids,
+                "scores": score_mat.tolist(),
+                "directions_norm_check": {
+                    p: float(np.linalg.norm(directions[p])) for p in columns
+                },
+            }
+        )
+    )
     print(f"[json] wrote {json_out}")
 
 

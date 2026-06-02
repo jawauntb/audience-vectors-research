@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Representation Frames For Cognitive Media Selection</title>
+  <style>
+:root {
+  --bg: #f6f1e7;
+  --ink: #181511;
+  --muted: #6f6558;
+  --line: #d9ccb9;
+  --accent: #193c36;
+  --accent2: #a34a2c;
+  --paper: #fffaf0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(25,60,54,0.08), transparent 28%),
+    linear-gradient(315deg, rgba(163,74,44,0.08), transparent 34%),
+    var(--bg);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.56;
+}
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 42px 28px 72px;
+}
+.paper {
+  background: rgba(255, 250, 240, 0.88);
+  border: 1px solid var(--line);
+  box-shadow: 14px 14px 28px rgba(90,70,45,0.11), -10px -10px 24px rgba(255,255,255,0.72);
+  padding: 48px;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+nav a {
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  padding: 7px 10px;
+  background: rgba(255,250,240,0.7);
+}
+h1, h2, h3 {
+  line-height: 1.08;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+}
+h2 {
+  font-size: 29px;
+  margin-top: 42px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+h3 {
+  font-size: 21px;
+  margin-top: 30px;
+}
+p, li { font-size: 16px; }
+a { color: var(--accent2); }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: rgba(25,60,54,0.08);
+  padding: 0.12em 0.28em;
+}
+pre {
+  padding: 16px;
+  overflow-x: auto;
+  background: #181511;
+  color: #fffaf0;
+  border: 1px solid #181511;
+}
+pre code { background: transparent; padding: 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0 28px;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid var(--line);
+  padding: 9px 10px;
+  vertical-align: top;
+}
+th {
+  background: rgba(25,60,54,0.08);
+  text-align: left;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+blockquote {
+  margin: 24px 0;
+  padding: 8px 18px;
+  border-left: 3px solid var(--accent2);
+  background: rgba(163,74,44,0.07);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 26px;
+}
+.card {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+  background: rgba(255,250,240,0.8);
+  border: 1px solid var(--line);
+  padding: 20px;
+  min-height: 170px;
+  box-shadow: inset 2px 2px 8px rgba(90,70,45,0.08), inset -2px -2px 8px rgba(255,255,255,0.72);
+}
+.card b {
+  display: block;
+  margin-bottom: 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  line-height: 1.08;
+}
+.metric {
+  display: inline-block;
+  margin: 6px 8px 6px 0;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  background: rgba(25,60,54,0.06);
+}
+@media print {
+  body { background: white; }
+  .page { max-width: none; padding: 0; }
+  .paper { box-shadow: none; border: none; padding: 24px; }
+  nav { display: none; }
+  h1 { font-size: 38px; }
+  h2 { break-after: avoid; }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <article class="paper">
+
+    <nav>
+      <a href="../index.html">Program</a>
+      <a href="../papers/main_selector_paper.html">Main Paper</a>
+      <a href="../papers/mechanistic_audit.html">Mechanistic</a>
+      <a href="../papers/audience_axes.html">Audience Axes</a>
+      <a href="../papers/reward_distillation.html">Distillation</a>
+      <a href="../papers/affect_aware.html">Affect</a>
+      <a href="../papers/representation_frames.html">Theory</a>
+    </nav>
+
+      <h1>Representation Frames For Cognitive Media Selection</h1>
+<p><strong>Draft status:</strong> theory and methods note, regenerated 2026-06-01.
+<strong>Core purpose:</strong> keep the broader intellectual frame without letting it
+overclaim the empirical paper.</p>
+<h2>Abstract</h2>
+<p>A learned vector in a model should not be treated as the essence of a cognitive
+property. It is a readout in a representation frame. The current memorability
+project can be formalized as a frame-transfer problem: TRIBE, V-JEPA, CLIP, and
+human behavior each map the same stimulus into different coordinates, and the
+scientific question is whether an ordering learned in one frame survives in
+another. On the current Wan candidate pool, TRIBE and V-JEPA show moderate
+geometric relationship, with RSA Spearman about
++0.345 and linear CKA
+about +0.392, while CLIP-preservation
+signals are much less aligned with the memorability scores. This motivates a
+broader program: generated media as controlled intervention on human generative
+models, with memorability as the first validated axis.</p>
+<h2>Mathematical Frame</h2>
+<p>Let <code>X</code> be the space of prompt-conditioned video candidates. We observe several
+representation maps:</p>
+<pre><code class="language-text">f_T : X -&gt; V_T      TRIBE / brain-aligned frame
+f_J : X -&gt; V_J      V-JEPA / self-supervised video frame
+f_C : X -&gt; V_C      CLIP / prompt-preservation frame
+h   : X -&gt; Y        human memory behavior
+</code></pre>
+<p>The current readout is:</p>
+<pre><code class="language-text">l_T : V_T -&gt; R
+</code></pre>
+<p>The empirical question is whether <code>l_T(f_T(x))</code> predicts <code>h(x)</code> better than
+comparable readouts in <code>V_J</code> and <code>V_C</code>.</p>
+<h2>Anti-Reification Rule</h2>
+<p>The vector is not the property. The vector is a coordinate that becomes useful
+when its induced ordering transfers across frames. This matters for:</p>
+<ul>
+<li>memorability vectors;</li>
+<li>attention vectors;</li>
+<li>persona vectors;</li>
+<li>social-cohesion or volition vectors in future projects.</li>
+</ul>
+<h2>Current Frame Audit</h2>
+<p>TRIBE and V-JEPA are partially aligned, not interchangeable. CLIP preservation
+is closer to prompt/seed fidelity than memorability. That separation is useful:
+it lets a product enforce prompt fidelity while still optimizing memory signal.</p>
+<p>The existing artifact is:</p>
+<ul>
+<li><code>experiments/representation_frame_analysis.md</code></li>
+</ul>
+<h2>Future Work</h2>
+<ol>
+<li>Compare TRIBE, V-JEPA, CLIP, and human pairwise similarity matrices with RSA
+and CKA after human responses are collected.</li>
+<li>Ask whether high-disagreement prompts reveal semantic, temporal, social, or
+artifact-driven differences between frames.</li>
+<li>Extend the method from memorability to attention, agency, social warmth,
+threat/safety, and self-other overlap.</li>
+<li>Use the validated selector before training any generator, so reward-model
+circularity does not define the science.</li>
+</ol>
+<h2>References</h2>
+<ul>
+<li>Hohwy. The Self-Evidencing Brain. Nous 2016.</li>
+<li>Fields, Friston, Glazebrook, and Levin. A Free Energy Principle for Generic
+Quantum Systems. Progress in Biophysics and Molecular Biology 2022.</li>
+<li>Fields and Glazebrook. Separability, Contextuality, and the Quantum Frame
+Problem. International Journal of Theoretical Physics 2023.</li>
+<li>Dahl, Lutz, and Davidson. Reconstructing and deconstructing the self. Trends
+in Cognitive Sciences 2015.</li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

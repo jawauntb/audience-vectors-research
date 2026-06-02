@@ -1,0 +1,1289 @@
+{
+  "schema_version": 1,
+  "source": "wan22_pref_weighted_r16_s300_product_selector",
+  "n_seeds": 24,
+  "summary": {
+    "n_seeds": 24,
+    "policies": {
+      "single_lora": {
+        "n_improved": 20,
+        "mean": 1.273693504743278,
+        "median": 1.2177372574806213,
+        "min": -1.2260141372680664,
+        "max": 5.2267210856080055
+      },
+      "raw_best_of_n": {
+        "n_improved": 20,
+        "mean": 3.560715484432876,
+        "median": 3.450902044773102,
+        "min": -1.7607002258300781,
+        "max": 12.14400339126587
+      },
+      "gated_best_of_n": {
+        "n_improved": 18,
+        "mean": 2.2103511172657213,
+        "median": 2.432440757751465,
+        "min": -7.6097331047058105,
+        "max": 6.555823124945164
+      },
+      "base_or_single_lora": {
+        "n_improved": 20,
+        "mean": 1.4499795104687412,
+        "median": 1.2177372574806213,
+        "min": 0.0,
+        "max": 5.2267210856080055
+      },
+      "base_or_raw_best_of_n": {
+        "n_improved": 20,
+        "mean": 3.673840981287261,
+        "median": 3.450902044773102,
+        "min": 0.0,
+        "max": 12.14400339126587
+      },
+      "base_or_gated_best_of_n": {
+        "n_improved": 18,
+        "mean": 2.8169652139768004,
+        "median": 2.432440757751465,
+        "min": 0.0,
+        "max": 6.555823124945164
+      }
+    },
+    "composite_summary": {
+      "n_candidates": 96,
+      "n_seeds": 24,
+      "model_id": "openai/clip-vit-large-patch14",
+      "frames": 4,
+      "image_weight": 0.75,
+      "prompt_weight": 0.25,
+      "min_seed_cosine": null,
+      "min_prompt_cosine": null,
+      "max_seed_cosine_drop_from_best": 0.08,
+      "max_prompt_cosine_drop_from_best": null,
+      "gate_pass_rate": 0.7291666666666666,
+      "n_composite_winner_changes": 12,
+      "n_gate_winner_changes": 10,
+      "seed_image_cosine_mean": 0.8474817406386137,
+      "prompt_clip_cosine_mean": 0.2777969261320929
+    },
+    "bon_summary": {
+      "n": 96,
+      "best": 11.163689613342285,
+      "median": -2.494004249572754,
+      "min": -11.448885917663574,
+      "best_minus_median": 13.657693862915039,
+      "per_seed_best_minus_median_mean": 2.541152028987805,
+      "per_seed_best_minus_median_median": 2.3647310733795166,
+      "per_seed_best_minus_median_min": 0.2110753059387207,
+      "per_seed_best_minus_median_max": 10.222834348678589
+    }
+  },
+  "baseline_selectors": {
+    "clip_seed_image_best": "highest CLIP cosine between seed image and generated video frames",
+    "clip_prompt_best": "highest CLIP cosine between prompt text and generated video frames",
+    "clip_preservation_best": "0.75 * z(seed-image cosine) + 0.25 * z(prompt cosine)",
+    "vjepa_memorability_best": "highest projection on the BMD-trained V-JEPA memorability direction"
+  },
+  "rows": [
+    {
+      "seed": "fresh24_aerial_beach",
+      "labels": {
+        "base": "fresh24_aerial_beach_base",
+        "single_lora": "fresh24_aerial_beach_lora",
+        "raw_best_of_n": "fresh24_aerial_beach_m1p0_n02",
+        "gated_best_of_n": "fresh24_aerial_beach_m1p0_n02",
+        "product_selected": "fresh24_aerial_beach_base",
+        "clip_seed_image_best": "fresh24_aerial_beach_m1p0_n00",
+        "clip_prompt_best": "fresh24_aerial_beach_m1p0_n00",
+        "clip_preservation_best": "fresh24_aerial_beach_m1p0_n00",
+        "vjepa_memorability_best": "fresh24_aerial_beach_m1p0_n02"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_aerial_beach_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_aerial_beach_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_aerial_beach_m1p0_n02.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_aerial_beach_m1p0_n02.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_aerial_beach_base.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_aerial_beach_m1p0_n00.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_aerial_beach_m1p0_n00.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_aerial_beach_m1p0_n00.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_aerial_beach_m1p0_n02.mp4"
+      },
+      "scores": {
+        "base": -5.161648273468018,
+        "single_lora": -6.387662410736084,
+        "raw_best_of_n": -5.591205596923828,
+        "gated_best_of_n": -5.591205596923828,
+        "product_selected": -5.161648273468018,
+        "clip_seed_image_best": -8.568022727966309,
+        "clip_prompt_best": -8.568022727966309,
+        "clip_preservation_best": -8.568022727966309,
+        "single_delta": -1.2260141372680664,
+        "raw_best_delta": -0.42955732345581055,
+        "gated_best_delta": -0.42955732345581055,
+        "base_or_gated_lift": 0.0,
+        "vjepa_memorability_best": -0.03428647294640541
+      },
+      "selector_metadata": {
+        "product_variant": "base",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8095729351043701,
+        "gated_prompt_clip_cosine": 0.279143363237381,
+        "clip_seed_image_best_cosine": 0.8771412372589111,
+        "clip_prompt_best_cosine": 0.29716408252716064,
+        "clip_preservation_best_score": 0.5050275394781865,
+        "vjepa_n_scored": 4
+      }
+    },
+    {
+      "seed": "fresh24_blue_jellyfish",
+      "labels": {
+        "base": "fresh24_blue_jellyfish_base",
+        "single_lora": "fresh24_blue_jellyfish_lora",
+        "raw_best_of_n": "fresh24_blue_jellyfish_m1p0_n01",
+        "gated_best_of_n": "fresh24_blue_jellyfish_m1p0_n02",
+        "product_selected": "fresh24_blue_jellyfish_m1p0_n02",
+        "clip_seed_image_best": "fresh24_blue_jellyfish_base",
+        "clip_prompt_best": "fresh24_blue_jellyfish_m1p0_n01",
+        "clip_preservation_best": "fresh24_blue_jellyfish_base",
+        "vjepa_memorability_best": "fresh24_blue_jellyfish_m1p0_n02"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_blue_jellyfish_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_blue_jellyfish_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_blue_jellyfish_m1p0_n01.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_blue_jellyfish_m1p0_n02.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_blue_jellyfish_m1p0_n02.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_blue_jellyfish_base.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_blue_jellyfish_m1p0_n01.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_blue_jellyfish_base.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_blue_jellyfish_m1p0_n02.mp4"
+      },
+      "scores": {
+        "base": 0.9094547033309937,
+        "single_lora": 2.213864803314209,
+        "raw_best_of_n": 8.39625072479248,
+        "gated_best_of_n": 7.061740875244141,
+        "product_selected": 7.061740875244141,
+        "clip_seed_image_best": 0.9094547033309937,
+        "clip_prompt_best": 8.39625072479248,
+        "clip_preservation_best": 0.9094547033309937,
+        "single_delta": 1.3044100999832153,
+        "raw_best_delta": 7.486796021461487,
+        "gated_best_delta": 6.152286171913147,
+        "base_or_gated_lift": 6.152286171913147,
+        "vjepa_memorability_best": 0.05810997635126114
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.9063766002655029,
+        "gated_prompt_clip_cosine": 0.3293382525444031,
+        "clip_seed_image_best_cosine": 0.9271708130836487,
+        "clip_prompt_best_cosine": 0.3464827537536621,
+        "clip_preservation_best_score": 1.25042392896021,
+        "vjepa_n_scored": 4
+      }
+    },
+    {
+      "seed": "fresh24_city_street",
+      "labels": {
+        "base": "fresh24_city_street_base",
+        "single_lora": "fresh24_city_street_lora",
+        "raw_best_of_n": "fresh24_city_street_m1p0_n01",
+        "gated_best_of_n": "fresh24_city_street_m1p0_n01",
+        "product_selected": "fresh24_city_street_m1p0_n01",
+        "clip_seed_image_best": "fresh24_city_street_m1p0_n02",
+        "clip_prompt_best": "fresh24_city_street_m1p0_n03",
+        "clip_preservation_best": "fresh24_city_street_lora",
+        "vjepa_memorability_best": "fresh24_city_street_m1p0_n01"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_city_street_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_city_street_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_city_street_m1p0_n01.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_city_street_m1p0_n01.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_city_street_m1p0_n01.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_city_street_m1p0_n02.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_city_street_m1p0_n03.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_city_street_lora.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_city_street_m1p0_n01.mp4"
+      },
+      "scores": {
+        "base": -8.305148124694824,
+        "single_lora": -7.942635536193848,
+        "raw_best_of_n": -5.825919151306152,
+        "gated_best_of_n": -5.825919151306152,
+        "product_selected": -5.825919151306152,
+        "clip_seed_image_best": -11.448885917663574,
+        "clip_prompt_best": -7.021486759185791,
+        "clip_preservation_best": -7.942635536193848,
+        "single_delta": 0.36251258850097656,
+        "raw_best_delta": 2.479228973388672,
+        "gated_best_delta": 2.479228973388672,
+        "base_or_gated_lift": 2.479228973388672,
+        "vjepa_memorability_best": 0.0685458704829216
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.7976937294006348,
+        "gated_prompt_clip_cosine": 0.3016151785850525,
+        "clip_seed_image_best_cosine": 0.8670319318771362,
+        "clip_prompt_best_cosine": 0.3309599459171295,
+        "clip_preservation_best_score": 0.5616879745791797,
+        "vjepa_n_scored": 5
+      }
+    },
+    {
+      "seed": "fresh24_cloud_mountain",
+      "labels": {
+        "base": "fresh24_cloud_mountain_base",
+        "single_lora": "fresh24_cloud_mountain_lora",
+        "raw_best_of_n": "fresh24_cloud_mountain_m1p0_n00",
+        "gated_best_of_n": "fresh24_cloud_mountain_m1p0_n01",
+        "product_selected": "fresh24_cloud_mountain_m1p0_n01",
+        "clip_seed_image_best": "fresh24_cloud_mountain_lora",
+        "clip_prompt_best": "fresh24_cloud_mountain_lora",
+        "clip_preservation_best": "fresh24_cloud_mountain_lora",
+        "vjepa_memorability_best": "fresh24_cloud_mountain_m1p0_n00"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_cloud_mountain_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_cloud_mountain_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_cloud_mountain_m1p0_n00.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_cloud_mountain_m1p0_n01.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_cloud_mountain_m1p0_n01.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_cloud_mountain_lora.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_cloud_mountain_lora.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_cloud_mountain_lora.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_cloud_mountain_m1p0_n00.mp4"
+      },
+      "scores": {
+        "base": -7.950554847717285,
+        "single_lora": -5.488518714904785,
+        "raw_best_of_n": 4.193448543548584,
+        "gated_best_of_n": -1.8597705364227295,
+        "product_selected": -1.8597705364227295,
+        "clip_seed_image_best": -5.488518714904785,
+        "clip_prompt_best": -5.488518714904785,
+        "clip_preservation_best": -5.488518714904785,
+        "single_delta": 2.4620361328125,
+        "raw_best_delta": 12.14400339126587,
+        "gated_best_delta": 6.090784311294556,
+        "base_or_gated_lift": 6.090784311294556,
+        "vjepa_memorability_best": 0.06902812421321869
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8511382341384888,
+        "gated_prompt_clip_cosine": 0.28909164667129517,
+        "clip_seed_image_best_cosine": 0.8875066041946411,
+        "clip_prompt_best_cosine": 0.29606926441192627,
+        "clip_preservation_best_score": 0.6135374985603833,
+        "vjepa_n_scored": 4
+      }
+    },
+    {
+      "seed": "fresh24_coastal_tracks",
+      "labels": {
+        "base": "fresh24_coastal_tracks_base",
+        "single_lora": "fresh24_coastal_tracks_lora",
+        "raw_best_of_n": "fresh24_coastal_tracks_m1p0_n03",
+        "gated_best_of_n": "fresh24_coastal_tracks_m1p0_n02",
+        "product_selected": "fresh24_coastal_tracks_base",
+        "clip_seed_image_best": "fresh24_coastal_tracks_m1p0_n02",
+        "clip_prompt_best": "fresh24_coastal_tracks_base",
+        "clip_preservation_best": "fresh24_coastal_tracks_m1p0_n02",
+        "vjepa_memorability_best": "fresh24_coastal_tracks_lora"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_coastal_tracks_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_coastal_tracks_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_coastal_tracks_m1p0_n03.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_coastal_tracks_m1p0_n02.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_coastal_tracks_base.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_coastal_tracks_m1p0_n02.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_coastal_tracks_base.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_coastal_tracks_m1p0_n02.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_coastal_tracks_lora.mp4"
+      },
+      "scores": {
+        "base": -2.42732572555542,
+        "single_lora": -0.7120611667633057,
+        "raw_best_of_n": 1.2632893323898315,
+        "gated_best_of_n": -4.671571731567383,
+        "product_selected": -2.42732572555542,
+        "clip_seed_image_best": -4.671571731567383,
+        "clip_prompt_best": -2.42732572555542,
+        "clip_preservation_best": -4.671571731567383,
+        "single_delta": 1.7152645587921143,
+        "raw_best_delta": 3.6906150579452515,
+        "gated_best_delta": -2.244246006011963,
+        "base_or_gated_lift": 0.0,
+        "vjepa_memorability_best": 0.10239144414663315
+      },
+      "selector_metadata": {
+        "product_variant": "base",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8661535978317261,
+        "gated_prompt_clip_cosine": 0.25332900881767273,
+        "clip_seed_image_best_cosine": 0.8661535978317261,
+        "clip_prompt_best_cosine": 0.2632266879081726,
+        "clip_preservation_best_score": 0.06941116782097362,
+        "vjepa_n_scored": 4
+      }
+    },
+    {
+      "seed": "fresh24_concert_stage",
+      "labels": {
+        "base": "fresh24_concert_stage_base",
+        "single_lora": "fresh24_concert_stage_lora",
+        "raw_best_of_n": "fresh24_concert_stage_m1p0_n01",
+        "gated_best_of_n": "fresh24_concert_stage_m1p0_n01",
+        "product_selected": "fresh24_concert_stage_m1p0_n01",
+        "clip_seed_image_best": "fresh24_concert_stage_m1p0_n00",
+        "clip_prompt_best": "fresh24_concert_stage_m1p0_n03",
+        "clip_preservation_best": "fresh24_concert_stage_m1p0_n00",
+        "vjepa_memorability_best": "fresh24_concert_stage_m1p0_n01"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_concert_stage_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_concert_stage_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n01.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n01.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n01.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n00.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n03.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n00.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_concert_stage_m1p0_n01.mp4"
+      },
+      "scores": {
+        "base": -1.1411900520324707,
+        "single_lora": 1.0925679206848145,
+        "raw_best_of_n": 3.895228147506714,
+        "gated_best_of_n": 3.895228147506714,
+        "product_selected": 3.895228147506714,
+        "clip_seed_image_best": 2.8888142108917236,
+        "clip_prompt_best": -2.2282207012176514,
+        "clip_preservation_best": 2.8888142108917236,
+        "single_delta": 2.233757972717285,
+        "raw_best_delta": 5.036418199539185,
+        "gated_best_delta": 5.036418199539185,
+        "base_or_gated_lift": 5.036418199539185,
+        "vjepa_memorability_best": 0.09492142498493195
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.877151370048523,
+        "gated_prompt_clip_cosine": 0.28939536213874817,
+        "clip_seed_image_best_cosine": 0.9396277666091919,
+        "clip_prompt_best_cosine": 0.2894492745399475,
+        "clip_preservation_best_score": 1.0953304569364946,
+        "vjepa_n_scored": 5
+      }
+    },
+    {
+      "seed": "fresh24_dewy_grass",
+      "labels": {
+        "base": "fresh24_dewy_grass_base",
+        "single_lora": "fresh24_dewy_grass_lora",
+        "raw_best_of_n": "fresh24_dewy_grass_m1p0_n01",
+        "gated_best_of_n": "fresh24_dewy_grass_m1p0_n00",
+        "product_selected": "fresh24_dewy_grass_m1p0_n00",
+        "clip_seed_image_best": "fresh24_dewy_grass_m1p0_n00",
+        "clip_prompt_best": "fresh24_dewy_grass_base",
+        "clip_preservation_best": "fresh24_dewy_grass_m1p0_n00",
+        "vjepa_memorability_best": "fresh24_dewy_grass_m1p0_n01"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_dewy_grass_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_dewy_grass_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_dewy_grass_m1p0_n01.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_dewy_grass_m1p0_n00.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_dewy_grass_m1p0_n00.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_dewy_grass_m1p0_n00.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_dewy_grass_base.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_dewy_grass_m1p0_n00.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_dewy_grass_m1p0_n01.mp4"
+      },
+      "scores": {
+        "base": 0.4750204086303711,
+        "single_lora": -0.5891215801239014,
+        "raw_best_of_n": 6.909708499908447,
+        "gated_best_of_n": 6.160045146942139,
+        "product_selected": 6.160045146942139,
+        "clip_seed_image_best": 6.160045146942139,
+        "clip_prompt_best": 0.4750204086303711,
+        "clip_preservation_best": 6.160045146942139,
+        "single_delta": -1.0641419887542725,
+        "raw_best_delta": 6.434688091278076,
+        "gated_best_delta": 5.685024738311768,
+        "base_or_gated_lift": 5.685024738311768,
+        "vjepa_memorability_best": 0.09997791051864624
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.923782467842102,
+        "gated_prompt_clip_cosine": 0.2974908947944641,
+        "clip_seed_image_best_cosine": 0.923782467842102,
+        "clip_prompt_best_cosine": 0.30660900473594666,
+        "clip_preservation_best_score": 1.0307205355010738,
+        "vjepa_n_scored": 4
+      }
+    },
+    {
+      "seed": "fresh24_fireworks",
+      "labels": {
+        "base": "fresh24_fireworks_base",
+        "single_lora": "fresh24_fireworks_lora",
+        "raw_best_of_n": "fresh24_fireworks_m1p0_n03",
+        "gated_best_of_n": "fresh24_fireworks_m1p0_n03",
+        "product_selected": "fresh24_fireworks_m1p0_n03",
+        "clip_seed_image_best": "fresh24_fireworks_m1p0_n00",
+        "clip_prompt_best": "fresh24_fireworks_m1p0_n02",
+        "clip_preservation_best": "fresh24_fireworks_m1p0_n02",
+        "vjepa_memorability_best": "fresh24_fireworks_m1p0_n03"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_fireworks_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_fireworks_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n03.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n03.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n03.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n00.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n02.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n02.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_fireworks_m1p0_n03.mp4"
+      },
+      "scores": {
+        "base": 3.412614107131958,
+        "single_lora": 3.9872069358825684,
+        "raw_best_of_n": 6.62380313873291,
+        "gated_best_of_n": 6.62380313873291,
+        "product_selected": 6.62380313873291,
+        "clip_seed_image_best": 1.946397066116333,
+        "clip_prompt_best": 1.8455694913864136,
+        "clip_preservation_best": 1.8455694913864136,
+        "single_delta": 0.5745928287506104,
+        "raw_best_delta": 3.211189031600952,
+        "gated_best_delta": 3.211189031600952,
+        "base_or_gated_lift": 3.211189031600952,
+        "vjepa_memorability_best": 0.06850598752498627
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.9310275316238403,
+        "gated_prompt_clip_cosine": 0.30127304792404175,
+        "clip_seed_image_best_cosine": 0.9518661499023438,
+        "clip_prompt_best_cosine": 0.3214901089668274,
+        "clip_preservation_best_score": 1.426576660195054,
+        "vjepa_n_scored": 5
+      }
+    },
+    {
+      "seed": "fresh24_forest_canopy",
+      "labels": {
+        "base": "fresh24_forest_canopy_base",
+        "single_lora": "fresh24_forest_canopy_lora",
+        "raw_best_of_n": "fresh24_forest_canopy_m1p0_n00",
+        "gated_best_of_n": "fresh24_forest_canopy_m1p0_n00",
+        "product_selected": "fresh24_forest_canopy_m1p0_n00",
+        "clip_seed_image_best": "fresh24_forest_canopy_m1p0_n00",
+        "clip_prompt_best": "fresh24_forest_canopy_m1p0_n03",
+        "clip_preservation_best": "fresh24_forest_canopy_m1p0_n00",
+        "vjepa_memorability_best": "fresh24_forest_canopy_lora"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_forest_canopy_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_forest_canopy_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_forest_canopy_m1p0_n00.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_forest_canopy_m1p0_n00.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_forest_canopy_m1p0_n00.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_forest_canopy_m1p0_n00.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_forest_canopy_m1p0_n03.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_forest_canopy_m1p0_n00.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_forest_canopy_lora.mp4"
+      },
+      "scores": {
+        "base": -6.751835823059082,
+        "single_lora": -5.375209808349609,
+        "raw_best_of_n": -5.283647537231445,
+        "gated_best_of_n": -5.283647537231445,
+        "product_selected": -5.283647537231445,
+        "clip_seed_image_best": -5.283647537231445,
+        "clip_prompt_best": -6.343976974487305,
+        "clip_preservation_best": -5.283647537231445,
+        "single_delta": 1.3766260147094727,
+        "raw_best_delta": 1.4681882858276367,
+        "gated_best_delta": 1.4681882858276367,
+        "base_or_gated_lift": 1.4681882858276367,
+        "vjepa_memorability_best": 0.06360651552677155
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8658016920089722,
+        "gated_prompt_clip_cosine": 0.30030521750450134,
+        "clip_seed_image_best_cosine": 0.8658016920089722,
+        "clip_prompt_best_cosine": 0.3050294518470764,
+        "clip_preservation_best_score": 0.4001661916705187,
+        "vjepa_n_scored": 4
+      }
+    },
+    {
+      "seed": "fresh24_golden_grass",
+      "labels": {
+        "base": "fresh24_golden_grass_base",
+        "single_lora": "fresh24_golden_grass_lora",
+        "raw_best_of_n": "fresh24_golden_grass_m1p0_n03",
+        "gated_best_of_n": "fresh24_golden_grass_m1p0_n03",
+        "product_selected": "fresh24_golden_grass_base",
+        "clip_seed_image_best": "fresh24_golden_grass_m1p0_n00",
+        "clip_prompt_best": "fresh24_golden_grass_m1p0_n00",
+        "clip_preservation_best": "fresh24_golden_grass_m1p0_n00",
+        "vjepa_memorability_best": "fresh24_golden_grass_m1p0_n03"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_golden_grass_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_golden_grass_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_golden_grass_m1p0_n03.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_golden_grass_m1p0_n03.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_golden_grass_base.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_golden_grass_m1p0_n00.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_golden_grass_m1p0_n00.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_golden_grass_m1p0_n00.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_golden_grass_m1p0_n03.mp4"
+      },
+      "scores": {
+        "base": 0.8771085739135742,
+        "single_lora": 1.2173973321914673,
+        "raw_best_of_n": 0.38972511887550354,
+        "gated_best_of_n": 0.38972511887550354,
+        "product_selected": 0.8771085739135742,
+        "clip_seed_image_best": -2.8835747241973877,
+        "clip_prompt_best": -2.8835747241973877,
+        "clip_preservation_best": -2.8835747241973877,
+        "single_delta": 0.34028875827789307,
+        "raw_best_delta": -0.4873834550380707,
+        "gated_best_delta": -0.4873834550380707,
+        "base_or_gated_lift": 0.0,
+        "vjepa_memorability_best": -0.01937515288591385
+      },
+      "selector_metadata": {
+        "product_variant": "base",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.9194386601448059,
+        "gated_prompt_clip_cosine": 0.31416529417037964,
+        "clip_seed_image_best_cosine": 0.9223899841308594,
+        "clip_prompt_best_cosine": 0.31808972358703613,
+        "clip_preservation_best_score": 1.1618612877534287,
+        "vjepa_n_scored": 4
+      }
+    },
+    {
+      "seed": "fresh24_hanging_clothes",
+      "labels": {
+        "base": "fresh24_hanging_clothes_base",
+        "single_lora": "fresh24_hanging_clothes_lora",
+        "raw_best_of_n": "fresh24_hanging_clothes_m1p0_n03",
+        "gated_best_of_n": "fresh24_hanging_clothes_m1p0_n03",
+        "product_selected": "fresh24_hanging_clothes_m1p0_n03",
+        "clip_seed_image_best": "fresh24_hanging_clothes_m1p0_n01",
+        "clip_prompt_best": "fresh24_hanging_clothes_m1p0_n02",
+        "clip_preservation_best": "fresh24_hanging_clothes_m1p0_n01",
+        "vjepa_memorability_best": "fresh24_hanging_clothes_lora"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_hanging_clothes_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_hanging_clothes_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_hanging_clothes_m1p0_n03.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_hanging_clothes_m1p0_n03.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_hanging_clothes_m1p0_n03.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_hanging_clothes_m1p0_n01.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_hanging_clothes_m1p0_n02.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_hanging_clothes_m1p0_n01.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_hanging_clothes_lora.mp4"
+      },
+      "scores": {
+        "base": -0.09781817346811295,
+        "single_lora": 5.128902912139893,
+        "raw_best_of_n": 6.458004951477051,
+        "gated_best_of_n": 6.458004951477051,
+        "product_selected": 6.458004951477051,
+        "clip_seed_image_best": 5.287516117095947,
+        "clip_prompt_best": -0.9038999080657959,
+        "clip_preservation_best": 5.287516117095947,
+        "single_delta": 5.2267210856080055,
+        "raw_best_delta": 6.555823124945164,
+        "gated_best_delta": 6.555823124945164,
+        "base_or_gated_lift": 6.555823124945164,
+        "vjepa_memorability_best": 0.04778958857059479
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.9400814771652222,
+        "gated_prompt_clip_cosine": 0.27593326568603516,
+        "clip_seed_image_best_cosine": 0.9467822313308716,
+        "clip_prompt_best_cosine": 0.3069427013397217,
+        "clip_preservation_best_score": 1.2666010006974533,
+        "vjepa_n_scored": 5
+      }
+    },
+    {
+      "seed": "fresh24_lighthouse",
+      "labels": {
+        "base": "fresh24_lighthouse_base",
+        "single_lora": "fresh24_lighthouse_lora",
+        "raw_best_of_n": "fresh24_lighthouse_m1p0_n02",
+        "gated_best_of_n": "fresh24_lighthouse_m1p0_n02",
+        "product_selected": "fresh24_lighthouse_m1p0_n02",
+        "clip_seed_image_best": "fresh24_lighthouse_lora",
+        "clip_prompt_best": "fresh24_lighthouse_m1p0_n02",
+        "clip_preservation_best": "fresh24_lighthouse_lora",
+        "vjepa_memorability_best": "fresh24_lighthouse_m1p0_n02"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_lighthouse_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_lighthouse_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_lighthouse_m1p0_n02.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_lighthouse_m1p0_n02.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_lighthouse_m1p0_n02.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_lighthouse_lora.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_lighthouse_m1p0_n02.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_lighthouse_lora.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_lighthouse_m1p0_n02.mp4"
+      },
+      "scores": {
+        "base": -8.120536804199219,
+        "single_lora": -5.490424156188965,
+        "raw_best_of_n": -4.156403541564941,
+        "gated_best_of_n": -4.156403541564941,
+        "product_selected": -4.156403541564941,
+        "clip_seed_image_best": -5.490424156188965,
+        "clip_prompt_best": -4.156403541564941,
+        "clip_preservation_best": -5.490424156188965,
+        "single_delta": 2.630112648010254,
+        "raw_best_delta": 3.9641332626342773,
+        "gated_best_delta": 3.9641332626342773,
+        "base_or_gated_lift": 3.9641332626342773,
+        "vjepa_memorability_best": -0.003037434071302414
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8606993556022644,
+        "gated_prompt_clip_cosine": 0.31062841415405273,
+        "clip_seed_image_best_cosine": 0.9373423457145691,
+        "clip_prompt_best_cosine": 0.31062841415405273,
+        "clip_preservation_best_score": 1.1281121321977483,
+        "vjepa_n_scored": 3
+      }
+    },
+    {
+      "seed": "fresh24_misty_woods",
+      "labels": {
+        "base": "fresh24_misty_woods_base",
+        "single_lora": "fresh24_misty_woods_lora",
+        "raw_best_of_n": "fresh24_misty_woods_m1p0_n00",
+        "gated_best_of_n": "fresh24_misty_woods_m1p0_n01",
+        "product_selected": "fresh24_misty_woods_m1p0_n01",
+        "clip_seed_image_best": "fresh24_misty_woods_m1p0_n03",
+        "clip_prompt_best": "fresh24_misty_woods_m1p0_n03",
+        "clip_preservation_best": "fresh24_misty_woods_m1p0_n03",
+        "vjepa_memorability_best": "fresh24_misty_woods_m1p0_n00"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_misty_woods_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_misty_woods_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n00.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n01.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n01.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n03.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n03.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n03.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_misty_woods_m1p0_n00.mp4"
+      },
+      "scores": {
+        "base": -8.7548828125,
+        "single_lora": -5.644877910614014,
+        "raw_best_of_n": -4.892292022705078,
+        "gated_best_of_n": -7.5598649978637695,
+        "product_selected": -7.5598649978637695,
+        "clip_seed_image_best": -7.7724761962890625,
+        "clip_prompt_best": -7.7724761962890625,
+        "clip_preservation_best": -7.7724761962890625,
+        "single_delta": 3.1100049018859863,
+        "raw_best_delta": 3.862590789794922,
+        "gated_best_delta": 1.1950178146362305,
+        "base_or_gated_lift": 1.1950178146362305,
+        "vjepa_memorability_best": 0.03840075433254242
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8387317657470703,
+        "gated_prompt_clip_cosine": 0.3086300492286682,
+        "clip_seed_image_best_cosine": 0.8759182691574097,
+        "clip_prompt_best_cosine": 0.30944955348968506,
+        "clip_preservation_best_score": 0.5788380650259026,
+        "vjepa_n_scored": 5
+      }
+    },
+    {
+      "seed": "fresh24_mountain_fog",
+      "labels": {
+        "base": "fresh24_mountain_fog_base",
+        "single_lora": "fresh24_mountain_fog_lora",
+        "raw_best_of_n": "fresh24_mountain_fog_m1p0_n01",
+        "gated_best_of_n": "fresh24_mountain_fog_m1p0_n01",
+        "product_selected": "fresh24_mountain_fog_m1p0_n01",
+        "clip_seed_image_best": "fresh24_mountain_fog_base",
+        "clip_prompt_best": "fresh24_mountain_fog_lora",
+        "clip_preservation_best": "fresh24_mountain_fog_m1p0_n00",
+        "vjepa_memorability_best": "fresh24_mountain_fog_m1p0_n01"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_mountain_fog_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_mountain_fog_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_mountain_fog_m1p0_n01.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_mountain_fog_m1p0_n01.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_mountain_fog_m1p0_n01.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_mountain_fog_base.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_mountain_fog_lora.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_mountain_fog_m1p0_n00.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_mountain_fog_m1p0_n01.mp4"
+      },
+      "scores": {
+        "base": -1.8716504573822021,
+        "single_lora": -1.6336838006973267,
+        "raw_best_of_n": 3.8657772541046143,
+        "gated_best_of_n": 3.8657772541046143,
+        "product_selected": 3.8657772541046143,
+        "clip_seed_image_best": -1.8716504573822021,
+        "clip_prompt_best": -1.6336838006973267,
+        "clip_preservation_best": -3.355708599090576,
+        "single_delta": 0.2379666566848755,
+        "raw_best_delta": 5.737427711486816,
+        "gated_best_delta": 5.737427711486816,
+        "base_or_gated_lift": 5.737427711486816,
+        "vjepa_memorability_best": 0.051480017602443695
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8128725290298462,
+        "gated_prompt_clip_cosine": 0.2610430121421814,
+        "clip_seed_image_best_cosine": 0.8943139314651489,
+        "clip_prompt_best_cosine": 0.31181812286376953,
+        "clip_preservation_best_score": 0.6178638098942817,
+        "vjepa_n_scored": 4
+      }
+    },
+    {
+      "seed": "fresh24_ocean_cliffs",
+      "labels": {
+        "base": "fresh24_ocean_cliffs_base",
+        "single_lora": "fresh24_ocean_cliffs_lora",
+        "raw_best_of_n": "fresh24_ocean_cliffs_m1p0_n02",
+        "gated_best_of_n": "fresh24_ocean_cliffs_m1p0_n01",
+        "product_selected": "fresh24_ocean_cliffs_m1p0_n01",
+        "clip_seed_image_best": "fresh24_ocean_cliffs_m1p0_n01",
+        "clip_prompt_best": "fresh24_ocean_cliffs_m1p0_n01",
+        "clip_preservation_best": "fresh24_ocean_cliffs_m1p0_n01",
+        "vjepa_memorability_best": "fresh24_ocean_cliffs_m1p0_n02"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_ocean_cliffs_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_ocean_cliffs_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_ocean_cliffs_m1p0_n02.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_ocean_cliffs_m1p0_n01.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_ocean_cliffs_m1p0_n01.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_ocean_cliffs_m1p0_n01.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_ocean_cliffs_m1p0_n01.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_ocean_cliffs_m1p0_n01.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_ocean_cliffs_m1p0_n02.mp4"
+      },
+      "scores": {
+        "base": -4.7189836502075195,
+        "single_lora": -4.392009258270264,
+        "raw_best_of_n": -0.34806525707244873,
+        "gated_best_of_n": -3.610690116882324,
+        "product_selected": -3.610690116882324,
+        "clip_seed_image_best": -3.610690116882324,
+        "clip_prompt_best": -3.610690116882324,
+        "clip_preservation_best": -3.610690116882324,
+        "single_delta": 0.32697439193725586,
+        "raw_best_delta": 4.370918393135071,
+        "gated_best_delta": 1.1082935333251953,
+        "base_or_gated_lift": 1.1082935333251953,
+        "vjepa_memorability_best": -0.03917679190635681
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8656922578811646,
+        "gated_prompt_clip_cosine": 0.3109123110771179,
+        "clip_seed_image_best_cosine": 0.8656922578811646,
+        "clip_prompt_best_cosine": 0.3109123110771179,
+        "clip_preservation_best_score": 0.47451338082267036,
+        "vjepa_n_scored": 4
+      }
+    },
+    {
+      "seed": "fresh24_old_car",
+      "labels": {
+        "base": "fresh24_old_car_base",
+        "single_lora": "fresh24_old_car_lora",
+        "raw_best_of_n": "fresh24_old_car_m1p0_n00",
+        "gated_best_of_n": "fresh24_old_car_m1p0_n01",
+        "product_selected": "fresh24_old_car_base",
+        "clip_seed_image_best": "fresh24_old_car_m1p0_n01",
+        "clip_prompt_best": "fresh24_old_car_m1p0_n01",
+        "clip_preservation_best": "fresh24_old_car_m1p0_n01",
+        "vjepa_memorability_best": "fresh24_old_car_lora"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_old_car_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_old_car_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_old_car_m1p0_n00.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_old_car_m1p0_n01.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_old_car_base.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_old_car_m1p0_n01.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_old_car_m1p0_n01.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_old_car_m1p0_n01.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_old_car_lora.mp4"
+      },
+      "scores": {
+        "base": 6.864404678344727,
+        "single_lora": 5.905757904052734,
+        "raw_best_of_n": 5.103704452514648,
+        "gated_best_of_n": 3.113957166671753,
+        "product_selected": 6.864404678344727,
+        "clip_seed_image_best": 3.113957166671753,
+        "clip_prompt_best": 3.113957166671753,
+        "clip_preservation_best": 3.113957166671753,
+        "single_delta": -0.9586467742919922,
+        "raw_best_delta": -1.7607002258300781,
+        "gated_best_delta": -3.7504475116729736,
+        "base_or_gated_lift": 0.0,
+        "vjepa_memorability_best": 0.17484955489635468
+      },
+      "selector_metadata": {
+        "product_variant": "base",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8906811475753784,
+        "gated_prompt_clip_cosine": 0.34095069766044617,
+        "clip_seed_image_best_cosine": 0.8906811475753784,
+        "clip_prompt_best_cosine": 0.34095069766044617,
+        "clip_preservation_best_score": 0.968937853503248,
+        "vjepa_n_scored": 4
+      }
+    },
+    {
+      "seed": "fresh24_orange_flowers",
+      "labels": {
+        "base": "fresh24_orange_flowers_base",
+        "single_lora": "fresh24_orange_flowers_lora",
+        "raw_best_of_n": "fresh24_orange_flowers_m1p0_n02",
+        "gated_best_of_n": "fresh24_orange_flowers_m1p0_n02",
+        "product_selected": "fresh24_orange_flowers_m1p0_n02",
+        "clip_seed_image_best": "fresh24_orange_flowers_m1p0_n03",
+        "clip_prompt_best": "fresh24_orange_flowers_m1p0_n00",
+        "clip_preservation_best": "fresh24_orange_flowers_m1p0_n03",
+        "vjepa_memorability_best": "fresh24_orange_flowers_m1p0_n00"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_orange_flowers_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_orange_flowers_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n02.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n02.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n02.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n03.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n00.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n03.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_orange_flowers_m1p0_n00.mp4"
+      },
+      "scores": {
+        "base": 8.254392623901367,
+        "single_lora": 9.385457038879395,
+        "raw_best_of_n": 11.163689613342285,
+        "gated_best_of_n": 11.163689613342285,
+        "product_selected": 11.163689613342285,
+        "clip_seed_image_best": 9.046473503112793,
+        "clip_prompt_best": 6.048199653625488,
+        "clip_preservation_best": 9.046473503112793,
+        "single_delta": 1.1310644149780273,
+        "raw_best_delta": 2.909296989440918,
+        "gated_best_delta": 2.909296989440918,
+        "base_or_gated_lift": 2.909296989440918,
+        "vjepa_memorability_best": 0.11378684639930725
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.905996561050415,
+        "gated_prompt_clip_cosine": 0.29373735189437866,
+        "clip_seed_image_best_cosine": 0.9147475957870483,
+        "clip_prompt_best_cosine": 0.29554709792137146,
+        "clip_preservation_best_score": 0.9123014130039783,
+        "vjepa_n_scored": 5
+      }
+    },
+    {
+      "seed": "fresh24_red_mailbox",
+      "labels": {
+        "base": "fresh24_red_mailbox_base",
+        "single_lora": "fresh24_red_mailbox_lora",
+        "raw_best_of_n": "fresh24_red_mailbox_m1p0_n01",
+        "gated_best_of_n": "fresh24_red_mailbox_m1p0_n01",
+        "product_selected": "fresh24_red_mailbox_m1p0_n01",
+        "clip_seed_image_best": "fresh24_red_mailbox_m1p0_n01",
+        "clip_prompt_best": "fresh24_red_mailbox_m1p0_n03",
+        "clip_preservation_best": "fresh24_red_mailbox_m1p0_n01",
+        "vjepa_memorability_best": "fresh24_red_mailbox_m1p0_n03"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_red_mailbox_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_red_mailbox_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_red_mailbox_m1p0_n01.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_red_mailbox_m1p0_n01.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_red_mailbox_m1p0_n01.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_red_mailbox_m1p0_n01.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_red_mailbox_m1p0_n03.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_red_mailbox_m1p0_n01.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_red_mailbox_m1p0_n03.mp4"
+      },
+      "scores": {
+        "base": -9.344244003295898,
+        "single_lora": -7.772305488586426,
+        "raw_best_of_n": -3.0462567806243896,
+        "gated_best_of_n": -3.0462567806243896,
+        "product_selected": -3.0462567806243896,
+        "clip_seed_image_best": -3.0462567806243896,
+        "clip_prompt_best": -4.248547554016113,
+        "clip_preservation_best": -3.0462567806243896,
+        "single_delta": 1.5719385147094727,
+        "raw_best_delta": 6.297987222671509,
+        "gated_best_delta": 6.297987222671509,
+        "base_or_gated_lift": 6.297987222671509,
+        "vjepa_memorability_best": -0.006623208522796631
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8379074335098267,
+        "gated_prompt_clip_cosine": 0.28850290179252625,
+        "clip_seed_image_best_cosine": 0.8379074335098267,
+        "clip_prompt_best_cosine": 0.32000845670700073,
+        "clip_preservation_best_score": 0.0030717185839533867,
+        "vjepa_n_scored": 4
+      }
+    },
+    {
+      "seed": "fresh24_sidewalk_steps",
+      "labels": {
+        "base": "fresh24_sidewalk_steps_base",
+        "single_lora": "fresh24_sidewalk_steps_lora",
+        "raw_best_of_n": "fresh24_sidewalk_steps_m1p0_n02",
+        "gated_best_of_n": "fresh24_sidewalk_steps_m1p0_n02",
+        "product_selected": "fresh24_sidewalk_steps_m1p0_n02",
+        "clip_seed_image_best": "fresh24_sidewalk_steps_m1p0_n01",
+        "clip_prompt_best": "fresh24_sidewalk_steps_m1p0_n01",
+        "clip_preservation_best": "fresh24_sidewalk_steps_m1p0_n01",
+        "vjepa_memorability_best": "fresh24_sidewalk_steps_lora"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sidewalk_steps_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sidewalk_steps_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sidewalk_steps_m1p0_n02.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sidewalk_steps_m1p0_n02.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sidewalk_steps_m1p0_n02.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sidewalk_steps_m1p0_n01.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sidewalk_steps_m1p0_n01.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sidewalk_steps_m1p0_n01.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sidewalk_steps_lora.mp4"
+      },
+      "scores": {
+        "base": 1.779322862625122,
+        "single_lora": 6.478193283081055,
+        "raw_best_of_n": 2.843207836151123,
+        "gated_best_of_n": 2.843207836151123,
+        "product_selected": 2.843207836151123,
+        "clip_seed_image_best": -2.85402250289917,
+        "clip_prompt_best": -2.85402250289917,
+        "clip_preservation_best": -2.85402250289917,
+        "single_delta": 4.698870420455933,
+        "raw_best_delta": 1.063884973526001,
+        "gated_best_delta": 1.063884973526001,
+        "base_or_gated_lift": 1.063884973526001,
+        "vjepa_memorability_best": 0.09939692914485931
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8025256991386414,
+        "gated_prompt_clip_cosine": 0.2574937343597412,
+        "clip_seed_image_best_cosine": 0.8367067575454712,
+        "clip_prompt_best_cosine": 0.3003038763999939,
+        "clip_preservation_best_score": 0.07368036678207579,
+        "vjepa_n_scored": 4
+      }
+    },
+    {
+      "seed": "fresh24_sparse_forest",
+      "labels": {
+        "base": "fresh24_sparse_forest_base",
+        "single_lora": "fresh24_sparse_forest_lora",
+        "raw_best_of_n": "fresh24_sparse_forest_m1p0_n00",
+        "gated_best_of_n": "fresh24_sparse_forest_m1p0_n02",
+        "product_selected": "fresh24_sparse_forest_m1p0_n02",
+        "clip_seed_image_best": "fresh24_sparse_forest_m1p0_n02",
+        "clip_prompt_best": "fresh24_sparse_forest_m1p0_n01",
+        "clip_preservation_best": "fresh24_sparse_forest_m1p0_n02",
+        "vjepa_memorability_best": "fresh24_sparse_forest_lora"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sparse_forest_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sparse_forest_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sparse_forest_m1p0_n00.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sparse_forest_m1p0_n02.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sparse_forest_m1p0_n02.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sparse_forest_m1p0_n02.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sparse_forest_m1p0_n01.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_sparse_forest_m1p0_n02.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_sparse_forest_lora.mp4"
+      },
+      "scores": {
+        "base": -5.9205522537231445,
+        "single_lora": -3.9386343955993652,
+        "raw_best_of_n": -4.808267116546631,
+        "gated_best_of_n": -4.973702907562256,
+        "product_selected": -4.973702907562256,
+        "clip_seed_image_best": -4.973702907562256,
+        "clip_prompt_best": -5.337786674499512,
+        "clip_preservation_best": -4.973702907562256,
+        "single_delta": 1.9819178581237793,
+        "raw_best_delta": 1.1122851371765137,
+        "gated_best_delta": 0.9468493461608887,
+        "base_or_gated_lift": 0.9468493461608887,
+        "vjepa_memorability_best": -0.03217863291501999
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.9200930595397949,
+        "gated_prompt_clip_cosine": 0.2724902629852295,
+        "clip_seed_image_best_cosine": 0.9200930595397949,
+        "clip_prompt_best_cosine": 0.29869896173477173,
+        "clip_preservation_best_score": 0.8111928350232646,
+        "vjepa_n_scored": 5
+      }
+    },
+    {
+      "seed": "fresh24_storm_beach",
+      "labels": {
+        "base": "fresh24_storm_beach_base",
+        "single_lora": "fresh24_storm_beach_lora",
+        "raw_best_of_n": "fresh24_storm_beach_m1p0_n00",
+        "gated_best_of_n": "fresh24_storm_beach_m1p0_n03",
+        "product_selected": "fresh24_storm_beach_base",
+        "clip_seed_image_best": "fresh24_storm_beach_m1p0_n01",
+        "clip_prompt_best": "fresh24_storm_beach_m1p0_n01",
+        "clip_preservation_best": "fresh24_storm_beach_m1p0_n01",
+        "vjepa_memorability_best": "fresh24_storm_beach_lora"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_storm_beach_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_storm_beach_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_storm_beach_m1p0_n00.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_storm_beach_m1p0_n03.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_storm_beach_base.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_storm_beach_m1p0_n01.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_storm_beach_m1p0_n01.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_storm_beach_m1p0_n01.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_storm_beach_lora.mp4"
+      },
+      "scores": {
+        "base": 1.73486328125,
+        "single_lora": 2.045670747756958,
+        "raw_best_of_n": 4.072659492492676,
+        "gated_best_of_n": -5.8748698234558105,
+        "product_selected": 1.73486328125,
+        "clip_seed_image_best": -6.949119567871094,
+        "clip_prompt_best": -6.949119567871094,
+        "clip_preservation_best": -6.949119567871094,
+        "single_delta": 0.310807466506958,
+        "raw_best_delta": 2.337796211242676,
+        "gated_best_delta": -7.6097331047058105,
+        "base_or_gated_lift": 0.0,
+        "vjepa_memorability_best": 0.08438147604465485
+      },
+      "selector_metadata": {
+        "product_variant": "base",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8221729397773743,
+        "gated_prompt_clip_cosine": 0.24207434058189392,
+        "clip_seed_image_best_cosine": 0.8855331540107727,
+        "clip_prompt_best_cosine": 0.2542338967323303,
+        "clip_preservation_best_score": 0.29331780007340136,
+        "vjepa_n_scored": 5
+      }
+    },
+    {
+      "seed": "fresh24_suspension_bridge",
+      "labels": {
+        "base": "fresh24_suspension_bridge_base",
+        "single_lora": "fresh24_suspension_bridge_lora",
+        "raw_best_of_n": "fresh24_suspension_bridge_m1p0_n00",
+        "gated_best_of_n": "fresh24_suspension_bridge_m1p0_n00",
+        "product_selected": "fresh24_suspension_bridge_m1p0_n00",
+        "clip_seed_image_best": "fresh24_suspension_bridge_m1p0_n03",
+        "clip_prompt_best": "fresh24_suspension_bridge_m1p0_n00",
+        "clip_preservation_best": "fresh24_suspension_bridge_m1p0_n03",
+        "vjepa_memorability_best": "fresh24_suspension_bridge_m1p0_n00"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_suspension_bridge_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_suspension_bridge_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_suspension_bridge_m1p0_n00.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_suspension_bridge_m1p0_n00.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_suspension_bridge_m1p0_n00.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_suspension_bridge_m1p0_n03.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_suspension_bridge_m1p0_n00.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_suspension_bridge_m1p0_n03.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_suspension_bridge_m1p0_n00.mp4"
+      },
+      "scores": {
+        "base": -7.060230731964111,
+        "single_lora": -4.014861583709717,
+        "raw_best_of_n": -1.7405518293380737,
+        "gated_best_of_n": -1.7405518293380737,
+        "product_selected": -1.7405518293380737,
+        "clip_seed_image_best": -5.322917938232422,
+        "clip_prompt_best": -1.7405518293380737,
+        "clip_preservation_best": -5.322917938232422,
+        "single_delta": 3.0453691482543945,
+        "raw_best_delta": 5.319678902626038,
+        "gated_best_delta": 5.319678902626038,
+        "base_or_gated_lift": 5.319678902626038,
+        "vjepa_memorability_best": 0.03070155903697014
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8759292960166931,
+        "gated_prompt_clip_cosine": 0.32668012380599976,
+        "clip_seed_image_best_cosine": 0.914537250995636,
+        "clip_prompt_best_cosine": 0.32668012380599976,
+        "clip_preservation_best_score": 0.8622120789171627,
+        "vjepa_n_scored": 4
+      }
+    },
+    {
+      "seed": "fresh24_tall_building",
+      "labels": {
+        "base": "fresh24_tall_building_base",
+        "single_lora": "fresh24_tall_building_lora",
+        "raw_best_of_n": "fresh24_tall_building_m1p0_n02",
+        "gated_best_of_n": "fresh24_tall_building_m1p0_n01",
+        "product_selected": "fresh24_tall_building_m1p0_n01",
+        "clip_seed_image_best": "fresh24_tall_building_m1p0_n03",
+        "clip_prompt_best": "fresh24_tall_building_m1p0_n03",
+        "clip_preservation_best": "fresh24_tall_building_m1p0_n03",
+        "vjepa_memorability_best": "fresh24_tall_building_m1p0_n03"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_tall_building_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_tall_building_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n02.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n01.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n01.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n03.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n03.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n03.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_tall_building_m1p0_n03.mp4"
+      },
+      "scores": {
+        "base": -8.966730117797852,
+        "single_lora": -8.80845832824707,
+        "raw_best_of_n": -6.277496337890625,
+        "gated_best_of_n": -6.581077575683594,
+        "product_selected": -6.581077575683594,
+        "clip_seed_image_best": -6.9989495277404785,
+        "clip_prompt_best": -6.9989495277404785,
+        "clip_preservation_best": -6.9989495277404785,
+        "single_delta": 0.15827178955078125,
+        "raw_best_delta": 2.6892337799072266,
+        "gated_best_delta": 2.385652542114258,
+        "base_or_gated_lift": 2.385652542114258,
+        "vjepa_memorability_best": 0.023521943017840385
+      },
+      "selector_metadata": {
+        "product_variant": "gated_lora_best_of_n",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8416942954063416,
+        "gated_prompt_clip_cosine": 0.24940653145313263,
+        "clip_seed_image_best_cosine": 0.9018457531929016,
+        "clip_prompt_best_cosine": 0.3133563995361328,
+        "clip_preservation_best_score": 0.8976082909322269,
+        "vjepa_n_scored": 5
+      }
+    },
+    {
+      "seed": "fresh24_wheat_closeup",
+      "labels": {
+        "base": "fresh24_wheat_closeup_base",
+        "single_lora": "fresh24_wheat_closeup_lora",
+        "raw_best_of_n": "fresh24_wheat_closeup_m1p0_n03",
+        "gated_best_of_n": "fresh24_wheat_closeup_m1p0_n03",
+        "product_selected": "fresh24_wheat_closeup_base",
+        "clip_seed_image_best": "fresh24_wheat_closeup_lora",
+        "clip_prompt_best": "fresh24_wheat_closeup_m1p0_n03",
+        "clip_preservation_best": "fresh24_wheat_closeup_lora",
+        "vjepa_memorability_best": "fresh24_wheat_closeup_m1p0_n03"
+      },
+      "video_paths": {
+        "base": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_wheat_closeup_base.mp4",
+        "single_lora": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_wheat_closeup_lora.mp4",
+        "raw_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_wheat_closeup_m1p0_n03.mp4",
+        "gated_best_of_n": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_wheat_closeup_m1p0_n03.mp4",
+        "product_selected": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_wheat_closeup_base.mp4",
+        "clip_seed_image_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_wheat_closeup_lora.mp4",
+        "clip_prompt_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_wheat_closeup_m1p0_n03.mp4",
+        "clip_preservation_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_s12/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_eval_24x2_s12_m1p0/fresh24_wheat_closeup_lora.mp4",
+        "vjepa_memorability_best": "data/generated/wan22_lora_eval_fresh_picsum_24_pref_weighted_r16_s300_bon_24x4_s12_m1p0/wan22_tribe_proxy_pref_weighted_r16_s300_wan22_lora_eval_fresh_picsum_24_bon_24x4_s12_m1p0/fresh24_wheat_closeup_m1p0_n03.mp4"
+      },
+      "scores": {
+        "base": 1.3956118822097778,
+        "single_lora": 0.41355064511299133,
+        "raw_best_of_n": 1.3582409620285034,
+        "gated_best_of_n": 1.3582409620285034,
+        "product_selected": 1.3956118822097778,
+        "clip_seed_image_best": 0.41355064511299133,
+        "clip_prompt_best": 1.3582409620285034,
+        "clip_preservation_best": 0.41355064511299133,
+        "single_delta": -0.9820612370967865,
+        "raw_best_delta": -0.037370920181274414,
+        "gated_best_delta": -0.037370920181274414,
+        "base_or_gated_lift": 0.0,
+        "vjepa_memorability_best": 0.08272622525691986
+      },
+      "selector_metadata": {
+        "product_variant": "base",
+        "gated_passes_preservation_gate": true,
+        "gated_seed_image_cosine": 0.8983174562454224,
+        "gated_prompt_clip_cosine": 0.29502227902412415,
+        "clip_seed_image_best_cosine": 0.9075236320495605,
+        "clip_prompt_best_cosine": 0.29502227902412415,
+        "clip_preservation_best_score": 0.7503554494144318,
+        "vjepa_n_scored": 3
+      }
+    }
+  ],
+  "missing_files": []
+}

@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brain-Aligned Memorability Signals Improve Video Generation Selection</title>
+  <style>
+:root {
+  --bg: #f6f1e7;
+  --ink: #181511;
+  --muted: #6f6558;
+  --line: #d9ccb9;
+  --accent: #193c36;
+  --accent2: #a34a2c;
+  --paper: #fffaf0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(25,60,54,0.08), transparent 28%),
+    linear-gradient(315deg, rgba(163,74,44,0.08), transparent 34%),
+    var(--bg);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.56;
+}
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 42px 28px 72px;
+}
+.paper {
+  background: rgba(255, 250, 240, 0.88);
+  border: 1px solid var(--line);
+  box-shadow: 14px 14px 28px rgba(90,70,45,0.11), -10px -10px 24px rgba(255,255,255,0.72);
+  padding: 48px;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+nav a {
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  padding: 7px 10px;
+  background: rgba(255,250,240,0.7);
+}
+h1, h2, h3 {
+  line-height: 1.08;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+}
+h2 {
+  font-size: 29px;
+  margin-top: 42px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+h3 {
+  font-size: 21px;
+  margin-top: 30px;
+}
+p, li { font-size: 16px; }
+a { color: var(--accent2); }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: rgba(25,60,54,0.08);
+  padding: 0.12em 0.28em;
+}
+pre {
+  padding: 16px;
+  overflow-x: auto;
+  background: #181511;
+  color: #fffaf0;
+  border: 1px solid #181511;
+}
+pre code { background: transparent; padding: 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0 28px;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid var(--line);
+  padding: 9px 10px;
+  vertical-align: top;
+}
+th {
+  background: rgba(25,60,54,0.08);
+  text-align: left;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+blockquote {
+  margin: 24px 0;
+  padding: 8px 18px;
+  border-left: 3px solid var(--accent2);
+  background: rgba(163,74,44,0.07);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 26px;
+}
+.card {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+  background: rgba(255,250,240,0.8);
+  border: 1px solid var(--line);
+  padding: 20px;
+  min-height: 170px;
+  box-shadow: inset 2px 2px 8px rgba(90,70,45,0.08), inset -2px -2px 8px rgba(255,255,255,0.72);
+}
+.card b {
+  display: block;
+  margin-bottom: 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  line-height: 1.08;
+}
+.metric {
+  display: inline-block;
+  margin: 6px 8px 6px 0;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  background: rgba(25,60,54,0.06);
+}
+@media print {
+  body { background: white; }
+  .page { max-width: none; padding: 0; }
+  .paper { box-shadow: none; border: none; padding: 24px; }
+  nav { display: none; }
+  h1 { font-size: 38px; }
+  h2 { break-after: avoid; }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <article class="paper">
+
+    <nav>
+      <a href="../index.html">Program</a>
+      <a href="../papers/main_selector_paper.html">Main Paper</a>
+      <a href="../papers/mechanistic_audit.html">Mechanistic</a>
+      <a href="../papers/audience_axes.html">Audience Axes</a>
+      <a href="../papers/reward_distillation.html">Distillation</a>
+      <a href="../papers/affect_aware.html">Affect</a>
+      <a href="../papers/representation_frames.html">Theory</a>
+    </nav>
+
+      <h1>Brain-Aligned Memorability Signals Improve Video Generation Selection</h1>
+<p><strong>Draft status:</strong> split-program manuscript, regenerated 2026-06-01.
+<strong>Intended venue shape:</strong> NeurIPS main track or Evaluations and Datasets, pending
+independent selector validation.
+<strong>Primary caveat:</strong> the strongest generation result is still proxy-scored. The
+human endpoint is designed and scaffolded, but not yet complete.</p>
+<h2>Abstract</h2>
+<p>Generated videos can now be sampled cheaply, but creators still need to decide
+which candidate is worth showing to humans. Standard evaluation metrics target
+visual quality, prompt alignment, or generic preference; they do not directly
+ask what a viewer will remember. We study whether a brain-aligned video
+representation can supply a practical memorability selector for generated
+videos. Using 1,022 analyzable clips from the 1,102-clip BOLD Moments dataset,
+we learn a supervised memorability readout in TRIBE-predicted cortical-response
+features and compare it with self-supervised video features, prompt-preservation
+signals, and generation-time selector policies. TRIBE predicts held-out BOLD
+Moments memorability at Spearman rho +0.403
++/- 0.061, comparable
+to the V-JEPA baseline at rho +0.395
++/- 0.037. On a
+Wan2.2 candidate pool, TRIBE/BMD and V-JEPA selectors overlap only partially,
+creating a useful adjudication setting for blinded human evaluation. The current
+paper therefore makes a narrow claim: brain-aligned features expose a compact,
+auditable memorability signal and define a testable generated-video selection
+workflow. It does not yet claim that TRIBE-selected generated videos are more
+memorable to humans, nor that direct generator steering is solved.</p>
+<h2>Big Picture</h2>
+<p>The useful product and scientific unit is no longer &quot;a magic memorability
+vector.&quot; It is a selector:</p>
+<pre><code class="language-text">prompt or seed -&gt; N generated candidates -&gt; representation scores -&gt; gated winner
+</code></pre>
+<p>If the selector's ordering transfers to human behavior, it becomes a practical
+way to optimize cognitive properties of generated media without immediately
+training a generator. Memorability is the first axis because it has established
+datasets, behavioral labels, and a plausible neural substrate.</p>
+<h2>Contributions</h2>
+<ol>
+<li>We learn a compact memorability readout from TRIBE features on BOLD Moments.</li>
+<li>We benchmark it against V-JEPA and simple non-brain baselines rather than
+treating generic video features as strawmen.</li>
+<li>We define a generation-selection protocol with preservation gates so the
+selector cannot simply choose off-prompt but high-scoring clips.</li>
+<li>We package the human-evaluation protocol and V-JEPA-augmented candidate
+manifest needed to test the decisive claim.</li>
+<li>We separate confirmed representation results from proxy-only generation
+results and direct-steering negatives.</li>
+</ol>
+<h2>Current Evidence Ledger</h2>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Current status</th>
+<th style="text-align:right">Number</th>
+<th>Claim use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRIBE/BMD memorability prediction</td>
+<td>confirmed on BMD CV</td>
+<td style="text-align:right">+0.403 +/- 0.061</td>
+<td>brain-aligned signal exists</td>
+</tr>
+<tr>
+<td>V-JEPA memorability prediction</td>
+<td>confirmed baseline</td>
+<td style="text-align:right">+0.395 +/- 0.037</td>
+<td>TRIBE is competitive, not dominant</td>
+</tr>
+<tr>
+<td>Persona-axis overlap</td>
+<td>reviewer-corrected</td>
+<td style="text-align:right">mean abs cos 0.434, rank 3.56/12</td>
+<td>personas are not independent axes</td>
+</tr>
+<tr>
+<td>Wan selector proxy gain</td>
+<td>proxy-only</td>
+<td style="text-align:right">18/24 improved, mean lift +2.817</td>
+<td>product workflow candidate, not behavioral proof</td>
+</tr>
+</tbody>
+</table>
+<h2>Method</h2>
+<h3>Dataset</h3>
+<p>BOLD Moments contains 1,102 short naturalistic videos sampled from Memento10k,
+with fMRI responses and memorability metadata. Our current TRIBE analysis uses
+1,022 analyzable clips after feature and URL exclusions. We keep this distinction
+explicit because reviewers will care about the denominator.</p>
+<h3>Brain-Aligned Feature Space</h3>
+<p>TRIBE v2 maps video, audio, and text representations to predicted cortical
+surface responses. We mean-pool the saved TRIBE output per clip, producing a
+brain-aligned feature vector. This is not a literal brain scan and not a human
+preference oracle. It is a learned encoding-model representation whose value is
+that it can be compared against fMRI and ROI hypotheses.</p>
+<h3>Memorability Readout</h3>
+<p>For each train fold, we sort clips by BOLD Moments memorability, take the top
+and bottom 30 percent, and form a unit contrastive direction:</p>
+<pre><code class="language-text">v_mem = mean(high memorability) - mean(low memorability)
+</code></pre>
+<p>Held-out clips are scored by projection onto this direction. All claims about
+the selector should be read as claims about this specific readout in this
+specific representation frame.</p>
+<h3>Baselines</h3>
+<p>The required baselines are:</p>
+<ul>
+<li>random candidate selection;</li>
+<li>CLIP or text-video prompt-preservation selection;</li>
+<li>V-JEPA memorability selection;</li>
+<li>video-quality or temporal-consistency selection where feasible;</li>
+<li>TRIBE/BMD memorability selection;</li>
+<li>TRIBE/BMD with preservation or quality gates.</li>
+</ul>
+<p>V-JEPA is especially important because it performs nearly as well as TRIBE on
+global BMD memorability prediction. The paper's claim cannot be &quot;TRIBE simply
+beats visual features.&quot; The better question is whether brain alignment adds
+selection value beyond a strong self-supervised video frame.</p>
+<h2>Results To Date</h2>
+<h3>BMD Prediction</h3>
+<p>TRIBE reaches mean held-out Spearman rho
++0.403 +/- 0.061
+across five folds. V-JEPA reaches
++0.395 +/- 0.037.
+The old &quot;TRIBE is 1.9x V-JEPA&quot; headline is retired. TRIBE remains interesting
+because the signal is brain-aligned and mechanistically auditable, not because
+it has a clean global lead on this prediction task.</p>
+<h3>Directional Compactness</h3>
+<p>The fold-safe linear ablation result supports dominant-axis compactness. Removing
+the learned TRIBE direction and retraining on residual features drops performance
+from roughly +0.403
+to -0.016. Random
+direction ablations leave the signal intact. Nonlinear residual probes recover
+some signal, so the safe interpretation is &quot;dominant linear readout,&quot; not
+&quot;memorability is literally one-dimensional.&quot;</p>
+<h3>Generated-Video Selector</h3>
+<p>The current Wan2.2 proxy experiment evaluates 24 fresh prompt/image seeds. The
+best product-style rule compares base clips to LoRA and best-of-N candidates,
+uses CLIP-style preservation gates, and keeps the base when the gated candidate
+is worse. Under the TRIBE/BMD proxy, base-or-gated best-of-4 improves
+18/24 seeds with mean lift
++2.817.
+This is a promising selector-policy result, not independent behavioral evidence.</p>
+<h3>Representation-Frame Audit</h3>
+<p>On the current candidate pool, TRIBE and V-JEPA are related but not identical.
+Their scalar score Spearman correlation is
++0.632. Within prompt-conditioned seed
+groups, their mean rank agreement is
++0.443, and their top-1 selector
+agreement is 45.8%. This is exactly the useful
+regime: the baselines disagree often enough that human evaluation can adjudicate
+between them.</p>
+<h2>Human Evaluation Plan</h2>
+<p>The decisive experiment is a blinded within-prompt pairwise study. Each trial
+shows two videos generated for the same prompt or image seed. Participants choose
+which clip they expect to be more memorable. The primary endpoint is the
+prompt-clustered win rate of TRIBE+gate selected clips against the strongest
+non-brain baseline, especially V-JEPA.</p>
+<p>Current implementation assets:</p>
+<ul>
+<li><code>experiments/current_selector_manifest_with_vjepa.json</code></li>
+<li><code>experiments/current_selector_pairwise_tasks_with_vjepa.json</code></li>
+<li><code>experiments/current_selector_prolific_survey_with_vjepa.html</code></li>
+<li><code>experiments/selector_human_eval_protocol.md</code></li>
+</ul>
+<p>No independent responses have been collected for the V-JEPA-augmented selector pilot yet.</p>
+<h2>Failure Modes Reviewers Will Notice</h2>
+<ul>
+<li>The generated-video result is proxy-scored until human validation is complete.</li>
+<li>V-JEPA may tie or beat TRIBE in human judgments. That would change the paper
+into a representation-frame comparison rather than a brain-aligned-selector
+win.</li>
+<li>Memorability is not engagement, virality, attention, quality, emotion, or
+commercial effectiveness.</li>
+<li>Direct continuous steering is not solved. Current evidence favors ranking and
+gating candidate generations.</li>
+<li>The TRIBE readout is a coordinate in a model frame, not an ontological essence
+of memory.</li>
+</ul>
+<h2>Submission-Ready Claim Contract</h2>
+<p>Allowed now:</p>
+<ul>
+<li>TRIBE/BMD features contain a compact memorability readout.</li>
+<li>TRIBE is competitive with V-JEPA for BMD memorability prediction.</li>
+<li>The current generated-video selector is promising under the TRIBE/BMD proxy.</li>
+<li>TRIBE and V-JEPA disagree enough on generated candidates to justify a human
+adjudication study.</li>
+</ul>
+<p>Requires human validation:</p>
+<ul>
+<li>TRIBE-selected generated videos are more memorable to humans.</li>
+<li>TRIBE improves selection beyond V-JEPA, CLIP, and quality baselines.</li>
+<li>The selector is product-ready.</li>
+</ul>
+<p>Cut or avoid:</p>
+<ul>
+<li>&quot;TRIBE is a preference oracle.&quot;</li>
+<li>&quot;Persona axes are independent.&quot;</li>
+<li>&quot;Direct steering is solved.&quot;</li>
+<li>&quot;LoRA learned human memorability.&quot;</li>
+</ul>
+<h2>References</h2>
+<ul>
+<li>Isola, Parikh, Torralba, and Oliva. Understanding the Intrinsic Memorability
+of Images. NeurIPS 2011.</li>
+<li>Newman et al. Multimodal Memorability: Modeling Effects of Semantics and Decay
+on Video Memorability. ECCV 2020.</li>
+<li>Lahner et al. Modeling short visual events through the BOLD Moments video fMRI
+dataset and metadata. Nature Communications 2024.</li>
+<li>Meta/Facebook Research. TRIBE v2 repository.</li>
+<li>Bardes et al. V-JEPA 2: Self-Supervised Video Models Enable Understanding,
+Prediction and Planning. arXiv 2025.</li>
+<li>Huang et al. VBench: Comprehensive Benchmark Suite for Video Generative
+Models. arXiv 2023.</li>
+<li>Liu et al. FETV: A Benchmark for Fine-Grained Evaluation of Open-Domain
+Text-to-Video Generation. NeurIPS Datasets and Benchmarks 2023.</li>
+<li>Wallace et al. Diffusion Model Alignment Using Direct Preference Optimization.
+arXiv 2023.</li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

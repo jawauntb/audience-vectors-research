@@ -2,11 +2,144 @@
 
 Interpretable viewer-response directions in brain-aligned video models.
 
-A no-new-human-data research framework for predicting which moments of a video
-viewers are likely to attend to, remember, skip, or find confusing — by
-combining public memorability / engagement / fMRI datasets, synthetic
-persona-conditioned labels from VLMs, and contrastive activation directions
-extracted from brain-encoding video models (TRIBE v2, V-JEPA 2, InternVideo2).
+A research framework for predicting which moments of a video viewers are likely
+to attend to, remember, skip, or find confusing — by combining public
+memorability / engagement / fMRI datasets, synthetic persona-conditioned labels
+from VLMs, contrastive activation directions extracted from brain-encoding video
+models (TRIBE v2, V-JEPA 2, InternVideo2), and a lightweight Prolific validation
+pass.
+
+## Current Source Of Truth
+
+The project is now split into a codebase, a research-program folder, a live
+analyzer product surface, and a local data lake. The current canonical status
+docs are:
+
+- [June 2 parallel sprint update](JUNE_2_PARALLEL_SPRINT_2026-06-02.md)
+- [June 1 canonical research/product update](JUNE_1_UPDATE_2026-06-01.md)
+- [Publishing and artifact policy](docs/PUBLISHING.md)
+
+Live analyzer:
+[https://jawaun--video-analyzer.modal.run](https://jawaun--video-analyzer.modal.run)
+
+Current research-program folder:
+[`research_program/neurips_memorability_selector`](research_program/neurips_memorability_selector)
+
+Current strongest blocker:
+
+- Human validation: the V-JEPA-augmented Prolific pilot is prepared but not
+  launched.
+- Mechanistic validation: the fold-safe TRIBE hidden-direction patch is prepared
+  but needs larger layerwise hidden-cache coverage. We have 1,022 scored TRIBE
+  feature clips, but only 24 clips currently have all requested layerwise hidden
+  caches; the planned fold-safe split needs at least 104.
+
+GitHub artifact policy:
+
+- Commit source code, scripts, tests, Markdown/HTML research docs, protocols,
+  templates, and lightweight JSON manifests.
+- Do not commit raw data, model weights, generated videos, generated PDFs/zips,
+  Prolific response exports, local caches, or vendored third-party repos.
+- Keep the repo private while it references gated models, TRIBE non-commercial
+  terms, unpublished human-study materials, and local generated media.
+
+## Status (updated 2026-05-28, post critical audit + human validation + fMRI + open-model patching + TRIBE Fourier/layerwise hidden-direction audit + Wan LoRA selector)
+
+Latest paper + numbers: `data/reports/paper.pdf` (~62 pages, 5.3 MB) and
+`data/reports/paper.html`. One-page summary: `data/reports/FINAL_REPORT.md`.
+Live interactive demo: `data/reports/arena_demo.html`. Distributable bundle:
+`data/reports/audience_vectors_share.zip`.
+
+### Headline (one line)
+
+The TRIBE-projection direction survives human contact: on a Prolific pairwise
+forced-choice study (n=41, 100% attention-check pass), humans prefer the
+TRIBE-projection-ranked best-of-N winner over the within-seed median variant
+**64.3% of the time** (290/451, 95% Wilson CI [0.598, 0.686], binomial
+p = 1.3 × 10⁻⁹; pair-cluster bootstrap CI [0.565, 0.718]; per-pair t-test
+p = 0.0057). The previously open "metric-internal" caveat is substantially
+addressed.
+
+### Full numbers, all bootstrapped or controlled
+
+- **Prediction (BMD memorability):** TRIBE 5-fold CV ρ = **+0.403 ± 0.061**
+  (n=1022); canonical BMD test split ρ = **+0.478** (n=93, 95% CI
+  [+0.30, +0.63]). The critical audit retires the old "1.9× V-JEPA" headline:
+  the current V-JEPA full-CV run is comparable at **+0.395 ± 0.037**.
+  The updated claim is competitive prediction in a brain-aligned feature space,
+  not a clean global-baseline win.
+- **Compactness:** label-permutation null (n=1000) → z = +9.79; random-direction
+  ablation control (n=200) leaves ρ = +0.405 ± 0.004 while fold-safe v_mem
+  ablation leaves ρ = +0.057 (z = −78.8). Nonlinear probes show residual signal
+  (random forest +0.414 → +0.196), so the right claim is dominant-axis, not
+  literal one-dimensionality. Directions 2–10 are weak (mean ρ = −0.007, range
+  [−0.059, +0.060]).
+- **Stability:** disjoint-halves cos = +0.963.
+- **Measured-fMRI pilot:** BMD sub-01 measured beta estimates recover a
+  memorability direction aligned with TRIBE's v_mem (cos = +0.336) and predictive
+  of BMD memorability (5-fold CV ρ = +0.449). This is a positive single-subject
+  pilot; all-subject aggregation is still needed.
+- **TRIBE Fourier/position audit:** saved TRIBE output tensors do not support a
+  simple temporal-position artifact explanation. Native 4-bin clips: full tensor
+  ρ = +0.401 ± 0.031, temporal-DC-only ρ = +0.405 ± 0.027, nonzero-temporal
+  ρ = +0.297 ± 0.064; all 1022 clips after 3→4 resampling replicate the pattern.
+  Modal introspection confirms the internal model has learned temporal positional
+  embeddings (`_model.time_pos_embed`, shape [1, 1024, 1152]) and rotary positional
+  machinery. Directly scaling that learned table on 24 balanced clips leaves the
+  memorability readout intact: scale 0.0 gives ρ = +0.703 vs baseline ρ = +0.677
+  and retains 80.9% of the high-low gap. A deeper encoder hook shows the nuance:
+  zeroing rotary `inv_freq` preserves ordering (ρ = +0.685), but collapsing the
+  encoder output to sequence-DC nearly removes the high-low gap (ρ = +0.097; gap
+  ratio 0.013). Layerwise post-attention hooks localize this dependence from the
+  first attention residual onward: layer 0 non-DC removal already leaves only
+  9.7% of the high-low gap, and the final encoder leaves 1.4%. The sharper
+  direction-only patch is stronger: removing the learned hidden memorability
+  direction at layer 0 gives ρ = −0.030 and gap ratio 0.057; removing it at the
+  final encoder gives ρ = −0.105 and gap ratio 0.004. So the simple learned-position
+  artifact is weakened, while the learned hidden memorability direction is
+  patch-sensitive on this 24-clip high/low subset. A larger fold-safe hidden-patch run
+  is still needed before treating this as a population estimate.
+- **Open-model sanity checks:** transparent AlexNet conv5 layer-5 features predict
+  BMD memorability at ρ = +0.386; offline ablation drops prediction to ρ = +0.018
+  while random-direction ablations leave ≈ +0.382. A true AlexNet forward-pass
+  patch before fc6/fc7/logits weakens downstream readouts (fc7 +0.432 → +0.212;
+  logits +0.386 → +0.128). A small open CLIP frame-encoder pilot also shows signed
+  block-level steering works, though removal is inconclusive.
+- **Generator-side (TRIBE metric):** best-of-N lift +2.07 SVD-XT (95% CI
+  [+0.95, +3.19]) and +1.53 Veo 3 Fast (CI [+0.70, +2.40]). The open-weight
+  Wan2.2 follow-up is now a small LoRA/product-selector result:
+  the preference-weighted single LoRA improves **20/24** fresh image-seeded prompts,
+  and base-or-gated best-of-4 improves **18/24** with mean lift **+2.817** and
+  median lift **+2.432** under the TRIBE/BMD projection. This is proxy-scored and
+  still needs human validation.
+- **Human validation (Prolific):** Best-of-N pooled 64.3% (pair-cluster
+  bootstrap CI [0.565, 0.718], per-pair t-test p = 0.0057);
+  α-steering 1-pair 63.4% (n.s.); persona-pair pooled 73.2% (p = 2.3×10⁻¹¹,
+  with honest caveat that persona-matched raters are still needed).
+
+### Honest caveats (now reviewer-corrected)
+
+- Persona "decomposition" is ~4 effective axes, not 12 — the signed cosine
+  mean of +0.02 was bimodal, the correct metric is |cos| = 0.43 (§5.4).
+- α-steering is not significant across 9 seeds (t-test p=0.44); the 1-pair
+  Prolific result is descriptive only.
+- Cross-domain transfer drops to ρ = +0.10–0.13 for indoor↔outdoor scenes.
+- Brain-alignment is NOT the active ingredient for global best-of-N
+  (V-JEPA-as-judge matches TRIBE). It is clearly useful for held-out human
+  memorability prediction; the V-JEPA persona comparison is currently
+  inconclusive rather than a clean TRIBE win.
+- TRIBE has real internal temporal positional machinery. The Fourier result and
+  direct `time_pos_embed` scale patch weaken a simple time-position artifact
+  critique. Rotary-frequency zeroing also preserves ordering, but encoder non-DC
+  sequence structure matters for the readout from the first post-attention residual
+  onward. Direction-only patches show that removing the learned hidden
+  memorability direction sharply disrupts the readout on a 24-clip high/low
+  subset, so the honest remaining
+  caveat is hidden sequence entanglement rather than a simple positional-table
+  artifact.
+- Wan LoRA/product-selector gains are not behavioral evidence yet; they are
+  TRIBE/BMD proxy gains that need blinded human comparison against base and
+  random LoRA variants.
 
 See the project conversation for the full design write-up. This README is
 just the operating manual.
@@ -136,7 +269,11 @@ The adapter falls back to each entry's `MiT_url` as the `media_uri` when no
 local video is on disk, so downstream segmentation / VLM labeling can still
 work clip-by-clip without the full video download.
 
-## Status
+## Historical Checkpoints (Superseded)
+
+The checkpoints below are retained for provenance. The source of truth is the
+2026-05-25 status block above plus `data/reports/paper.pdf`,
+`data/reports/paper.html`, and `data/reports/FINAL_REPORT.md`.
 
 End-to-end pipeline runs on real data:
 
@@ -154,7 +291,7 @@ uv run python scripts/eval_label_correlation.py \
     --output data/reports/vlm_vs_human.md
 ```
 
-### Scaled to n=1,026 BMD clips with 5-fold cross-validation (the defensible result)
+### Scaled to n=1,026 BMD clips with 5-fold cross-validation (early V-JEPA checkpoint)
 
 After scaling to the full BMD dataset (1,026 V-JEPA features extracted; the
 other 76 had dead MiT URLs) and running proper k-fold CV with bootstrap CIs:
@@ -212,7 +349,7 @@ ranking, held-out Spearman against that VLM target is **+0.207**. But the same
 vector vs BMD human ground truth is near zero. V-JEPA features encode "what
 VLMs notice," not "what humans actually remember."
 
-### TRIBE v2 (brain-aligned) vs V-JEPA vs Gemini head-to-head
+### TRIBE v2 (brain-aligned) vs V-JEPA vs Gemini head-to-head (historical small-n checkpoint, superseded)
 
 After Llama-3.2 approval landed, ran TRIBE v2 on Modal (H100/B200 with cu124
 torch wheel) to get per-vertex cortical activations (20,484 vertices × 4
@@ -225,11 +362,13 @@ BMD memorability top/bottom 30%:
 | V-JEPA contrastive (1,024-dim) | +0.309 | 184 | **+0.233** | 100 |
 | TRIBE contrastive (20,484-dim) | **+0.399** | 133 | −0.082 | 51 |
 
-Two real findings:
+This checkpoint is kept for archaeology only; the full-CV results above supersede
+it and retire any global "TRIBE beats V-JEPA" claim. Two local findings from the
+small-n run were:
 
-1. **Brain-aligned features have stronger overall contrast** — TRIBE beats V-JEPA
-   (which beats Gemini) at separating top/bottom memorable clips by BMD
-   ground truth.
+1. **Brain-aligned features had stronger small-n overall contrast** — in this
+   early subset, TRIBE separated top/bottom memorable clips better in all-sample
+   correlation, but this was not held-out evidence of a global V-JEPA win.
 2. **TRIBE generalizes worse on held-out at this scale** — 20,484-dim contrastive
    direction from 80 training segments overfits; V-JEPA's tighter feature space
    generalizes better with the same training budget.
@@ -269,13 +408,11 @@ average on memorability. Cross-persona stdev on attention/visual axes is
 ~0.15 — meaningful audience disagreement, which is exactly what
 contrastive audience-vector decomposition is supposed to recover.
 
-Still TODO: TRIBE feature extraction (pending Llama-3.2 approval),
-V-JEPA feature extraction (scaffolded + Modal deployed, populate in
-flight), contrastive vector training, scoring + heatmaps, more adapters.
-
-`pyright` reports unresolved imports for `audience_vectors.*` until you
-run `uv sync` (or `uv sync --group dev --extra ml --extra modal`).
-The actual pytest suite passes — 34/34 as of this checkpoint.
+Current TODOs are the forward-looking items in the paper: multi-subject fMRI
+aggregation, persona-matched raters, cross-dataset transfer, and a real open
+video-brain model patching experiment beyond the AlexNet/CLIP pilots. The old
+extraction TODOs above have been completed or superseded by the full paper
+pipeline.
 
 ## License notes
 

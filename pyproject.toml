@@ -32,6 +32,9 @@ dependencies = [
     "sentence-transformers>=5.5.0",
     "nilearn>=0.13.1",
     "nibabel>=5.4.2",
+    "imageio[ffmpeg]>=2.37.3",
+    "fastapi>=0.115,<1.0",
+    "python-multipart>=0.0.20,<1.0",
 ]
 
 [project.optional-dependencies]

@@ -62,3 +62,18 @@ class VjepaService:
                 raise VjepaValidationError(str(exc)) from exc
             logger.exception("V-JEPA predict_video failed: %s", exc)
             return None
+
+    async def predict_video_bytes(
+        self, video_bytes: bytes, suffix: str = ".mp4"
+    ) -> Any:
+        if not video_bytes:
+            return None
+        try:
+            cls = self._resolve_cls()
+            predictor = cls()
+            return await predictor.predict_video_bytes.remote.aio(video_bytes, suffix)
+        except Exception as exc:  # noqa: BLE001
+            if _is_validation_error(exc):
+                raise VjepaValidationError(str(exc)) from exc
+            logger.exception("V-JEPA predict_video_bytes failed: %s", exc)
+            return None

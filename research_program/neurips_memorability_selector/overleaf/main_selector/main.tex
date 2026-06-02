@@ -1,0 +1,237 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black
+}
+
+\title{Brain-Aligned Memorability Signals Improve Video Generation Selection}
+\author{
+  Jawaun Brown\\
+  Independent Research Project\\
+  \texttt{jawaun@example.com}
+}
+\date{Draft regenerated June 1, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Generated videos can now be sampled cheaply, but creators still need to decide
+which candidate is worth showing to humans. Standard evaluation metrics target
+visual quality, prompt alignment, or generic preference; they do not directly ask
+what a viewer will remember. We study whether a brain-aligned video
+representation can supply a practical memorability selector for generated
+videos. Using 1,022 analyzable clips from the 1,102-clip BOLD Moments dataset,
+we learn a supervised memorability readout in TRIBE-predicted cortical-response
+features and compare it with self-supervised video features, prompt-preservation
+signals, and generation-time selector policies. TRIBE predicts held-out BOLD
+Moments memorability at Spearman $\rho=0.403\pm0.061$, comparable to the V-JEPA
+baseline at $\rho=0.395\pm0.037$. On a Wan2.2 candidate pool, TRIBE/BMD and
+V-JEPA selectors overlap only partially, creating a useful adjudication setting
+for blinded human evaluation. The current paper therefore makes a narrow claim:
+brain-aligned features expose a compact, auditable memorability signal and define
+a testable generated-video selection workflow. It does not yet claim that
+TRIBE-selected generated videos are more memorable to humans, nor that direct
+generator steering is solved.
+\end{abstract}
+
+\section{Introduction}
+
+Video generation systems increasingly make it cheap to produce many plausible
+variants for the same prompt. This shifts a practical bottleneck from generation
+to selection: which candidate should a creator, researcher, or product system
+show to people? Existing automatic evaluations emphasize text-video alignment,
+image fidelity, temporal consistency, aesthetic quality, or broad preference.
+These are necessary but incomplete when the target property is cognitive:
+whether a viewer will remember the clip.
+
+Memorability is a useful first target because it is empirically measurable and
+partly stable across observers \citep{isola2011memorability,newman2020memento}.
+BOLD Moments further links short naturalistic videos, memorability metadata, and
+fMRI responses \citep{lahner2024boldmoments}. We use this setting to ask whether
+a brain-aligned representation can provide a practical selection signal for
+generated videos.
+
+The intended contribution is deliberately narrow. We do not claim that TRIBE is
+a human preference oracle, that memorability equals engagement, or that a learned
+linear vector is the essence of memory. We treat TRIBE, V-JEPA, CLIP, and human
+behavior as different representation frames over the same stimulus space. The
+scientific question is whether an ordering learned in one frame transfers to
+independent human judgment.
+
+\section{Related Work}
+
+\paragraph{Memorability.}
+Image memorability work established that memorability is not merely private
+taste; some images are consistently remembered better than others
+\citep{isola2011memorability}. Video memorability extends the problem to dynamic
+events and temporal decay, requiring both visual and semantic representations
+\citep{newman2020memento}.
+
+\paragraph{Brain-aligned video representations.}
+BOLD Moments provides short naturalistic videos, fMRI responses, and
+memorability metadata, making it a natural substrate for studying a
+brain-aligned memorability readout \citep{lahner2024boldmoments}. TRIBE v2 is a
+multimodal brain-encoding model that maps video, audio, and language features to
+predicted cortical responses \citep{tribev2}. In this paper, TRIBE is used as a
+brain-aligned feature space, not as a literal brain scan or preference oracle.
+
+\paragraph{Video generation evaluation.}
+Benchmarks such as VBench and FETV show that video generation evaluation is
+multi-dimensional and that automatic metrics can diverge from human judgment
+\citep{huang2023vbench,liu2023fetv}. Our selector therefore uses
+memorability-specific scoring alongside preservation gates rather than replacing
+quality and alignment checks.
+
+\paragraph{Best-of-$N$ and preference alignment.}
+Best-of-$N$ selection samples multiple candidates and returns the highest-scored
+one under a reward model. Preference-optimization methods for image and video
+diffusion models show a path toward amortizing such selectors into generators
+\citep{wallace2023diffusiondpo,liu2024videodpo,wub2025densedpo}. We treat
+distillation as future work because proxy-labeled DPO must still be validated
+against humans.
+
+\section{Learning a Brain-Aligned Memorability Direction}
+
+\subsection{Dataset and features}
+
+We analyze 1,022 clips from the 1,102-clip BOLD Moments dataset after feature and
+URL exclusions. For each clip, we use saved TRIBE predicted cortical-response
+features and mean-pool them across the available output time bins. We compare
+against V-JEPA video embeddings and CLIP-style preservation scores when ranking
+generated candidates.
+
+\subsection{Readout}
+
+Within each training fold, clips are sorted by BOLD Moments memorability. We
+compute a unit contrastive readout using the top and bottom 30 percent of the
+training set:
+\[
+v_{\mathrm{mem}} =
+\frac{\mu_{\mathrm{high}}-\mu_{\mathrm{low}}}
+{\lVert\mu_{\mathrm{high}}-\mu_{\mathrm{low}}\rVert_2}.
+\]
+Held-out clips are scored by projection onto $v_{\mathrm{mem}}$. This is a
+supervised readout in a chosen representation frame, not a claim about the
+ontological structure of memory.
+
+\section{Current Results}
+
+\subsection{BMD memorability prediction}
+
+\begin{table}[h]
+\centering
+\caption{Current cross-validated memorability prediction on BOLD Moments.}
+\begin{tabular}{llll}
+\toprule
+Predictor & Validation & Spearman $\rho$ & $n$ \\
+\midrule
+Gemini zero-shot & matched held-out subset & $0.139$ & 939 \\
+V-JEPA contrastive & 5-fold CV & $0.395\pm0.037$ & 1,026 \\
+TRIBE contrastive & 5-fold CV & $0.403\pm0.061$ & 1,022 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The old headline that TRIBE cleanly beats V-JEPA is retired. The current result
+is more interesting and more defensible: TRIBE is competitive with a strong
+self-supervised video baseline while offering a brain-aligned substrate for
+fMRI, ROI, and internal model-audit questions.
+
+\subsection{Dominant-axis compactness}
+
+The fold-safe linear ablation result supports dominant-axis compactness. Removing
+the learned TRIBE direction and retraining on residual features drops
+performance from roughly $\rho=0.401$ to $\rho=0.057$, while random direction
+ablations leave the signal intact. Nonlinear residual probes recover some
+signal, so the safe interpretation is dominant linear readout, not literal
+one-dimensionality.
+
+\subsection{Generated-video selector}
+
+The current Wan2.2 proxy experiment evaluates 24 fresh prompt/image seeds. The
+best product-style rule compares base clips to LoRA and best-of-$N$ candidates,
+uses CLIP-style preservation gates, and keeps the base when the gated candidate
+is worse. Under the TRIBE/BMD proxy, base-or-gated best-of-4 improves 18/24
+seeds with mean lift $+2.817$ and median lift $+2.432$. This is a promising
+selector-policy result, not independent behavioral evidence.
+
+\begin{table}[h]
+\centering
+\caption{Wan2.2 proxy selector result. These are proxy scores, not human
+validation.}
+\begin{tabular}{llll}
+\toprule
+Selection rule & Improved seeds & Mean lift & Median lift \\
+\midrule
+Single LoRA & 20/24 & $+1.274$ & $+1.218$ \\
+Raw best-of-$N$ & 20/24 & $+3.561$ & $+3.451$ \\
+Base or raw best-of-$N$ & 20/24 & $+3.674$ & $+3.451$ \\
+Base or gated best-of-$N$ & 18/24 & $+2.817$ & $+2.432$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Representation-frame audit}
+
+On the current candidate pool, TRIBE and V-JEPA are related but not identical.
+Their scalar score Spearman correlation is $\rho=0.632$. Within
+prompt-conditioned seed groups, their mean rank agreement is $\rho=0.443$, and
+their top-1 selector agreement is 45.8 percent. This is the useful regime:
+the baselines disagree often enough that human evaluation can adjudicate between
+them.
+
+\section{Planned Human Evaluation}
+
+The decisive experiment is a blinded within-prompt pairwise study. Each trial
+shows two videos generated for the same prompt or image seed. Participants choose
+which clip they expect to be more memorable. The primary endpoint is the
+prompt-clustered win rate of TRIBE+gate selected clips against the strongest
+non-brain baseline, especially V-JEPA.
+
+The current implementation assets include a V-JEPA-augmented manifest, pairwise
+task file, and local Prolific-style survey HTML. No independent responses have
+yet been collected for the V-JEPA-augmented selector pilot.
+
+\section{Limitations}
+
+First, the generated-video result is proxy-scored until human validation is
+complete. Second, V-JEPA may tie or beat TRIBE in human judgments; if so, the
+paper becomes a representation-frame comparison rather than a clean
+brain-aligned-selector win. Third, memorability is not engagement, virality,
+attention, quality, emotion, or commercial effectiveness. Fourth, direct
+continuous steering is not solved; current evidence favors ranking and gating
+candidate generations. Fifth, the TRIBE readout is a coordinate in a model frame,
+not an ontological essence of memory.
+
+\section{Conclusion}
+
+Brain-aligned representations expose a compact memorability signal that is
+competitive with strong video features and useful for defining a generated-video
+selection workflow. The current result is strong enough to motivate a blinded
+human validation study and careful IRB review. The submission-grade claim,
+however, depends on that independent human endpoint.
+
+\clearpage
+\appendix
+\input{appendix_protocol}
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}

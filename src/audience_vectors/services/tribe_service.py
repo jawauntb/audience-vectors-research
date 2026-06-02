@@ -33,6 +33,7 @@ _VALIDATION_PREFIXES = (
     "remote media too large",
     "remote media exceeded size cap",
     "non-positive video duration",
+    "text produced no retained tribe segments",
 )
 
 
@@ -74,4 +75,116 @@ class TribeService:
             if _is_validation_error(exc):
                 raise TribeValidationError(str(exc)) from exc
             logger.exception("TRIBE predict_video failed: %s", exc)
+            return None
+
+    async def predict_text(self, text_path_or_url: str) -> Any:
+        """Run TRIBE v2 on one text stimulus. Returns VideoPredictionResult or None."""
+        if not text_path_or_url:
+            return None
+        try:
+            cls = self._resolve_cls()
+            predictor = cls()
+            return await predictor.predict_text.remote.aio(text_path_or_url)
+        except Exception as exc:  # noqa: BLE001
+            if _is_validation_error(exc):
+                raise TribeValidationError(str(exc)) from exc
+            logger.exception("TRIBE predict_text failed: %s", exc)
+            return None
+
+    async def predict_video_time_pos_scale(
+        self,
+        video_path_or_url: str,
+        time_pos_scale: float,
+    ) -> Any:
+        """Run TRIBE with its learned temporal position embedding scaled."""
+        if not video_path_or_url:
+            return None
+        try:
+            cls = self._resolve_cls()
+            predictor = cls()
+            return await predictor.predict_video_time_pos_scale.remote.aio(
+                video_path_or_url,
+                time_pos_scale,
+            )
+        except Exception as exc:  # noqa: BLE001
+            if _is_validation_error(exc):
+                raise TribeValidationError(str(exc)) from exc
+            logger.exception("TRIBE time_pos_scale predict failed: %s", exc)
+            return None
+
+    async def predict_video_hidden_patch(
+        self,
+        video_path_or_url: str,
+        *,
+        hook_module: str = "_model.encoder",
+        patch_mode: str = "none",
+        patch_scale: float = 1.0,
+        rotary_inv_freq_scale: float = 1.0,
+        capture_hidden: bool = False,
+    ) -> Any:
+        """Run TRIBE with an optional hidden-state or rotary-position patch."""
+        if not video_path_or_url:
+            return None
+        try:
+            cls = self._resolve_cls()
+            predictor = cls()
+            return await predictor.predict_video_hidden_patch.remote.aio(
+                video_path_or_url,
+                hook_module,
+                patch_mode,
+                patch_scale,
+                rotary_inv_freq_scale,
+                capture_hidden,
+            )
+        except Exception as exc:  # noqa: BLE001
+            if _is_validation_error(exc):
+                raise TribeValidationError(str(exc)) from exc
+            logger.exception("TRIBE hidden patch predict failed: %s", exc)
+            return None
+
+    async def capture_video_hiddens(
+        self,
+        video_path_or_url: str,
+        hook_modules: list[str],
+    ) -> Any:
+        """Run TRIBE once and capture hidden tensors from several hook modules."""
+        if not video_path_or_url:
+            return None
+        try:
+            cls = self._resolve_cls()
+            predictor = cls()
+            return await predictor.capture_video_hiddens.remote.aio(
+                video_path_or_url,
+                hook_modules,
+            )
+        except Exception as exc:  # noqa: BLE001
+            if _is_validation_error(exc):
+                raise TribeValidationError(str(exc)) from exc
+            logger.exception("TRIBE hidden capture failed: %s", exc)
+            return None
+
+    async def predict_video_hidden_direction_patch(
+        self,
+        video_path_or_url: str,
+        *,
+        hook_module: str,
+        direction_npz: bytes,
+        patch_alpha: float = 1.0,
+    ) -> Any:
+        """Run TRIBE after patching one learned hidden direction."""
+        if not video_path_or_url:
+            return None
+        try:
+            cls = self._resolve_cls()
+            predictor = cls()
+            return await predictor.predict_video_hidden_direction_patch.remote.aio(
+                video_path_or_url,
+                hook_module,
+                direction_npz,
+                patch_alpha,
+            )
+        except Exception as exc:  # noqa: BLE001
+            if _is_validation_error(exc):
+                raise TribeValidationError(str(exc)) from exc
+            logger.exception("TRIBE hidden direction patch failed: %s", exc)
             return None

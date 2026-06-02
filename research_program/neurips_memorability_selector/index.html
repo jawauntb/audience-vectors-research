@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Memorability Selector Program</title>
+  <style>
+:root {
+  --bg: #f6f1e7;
+  --ink: #181511;
+  --muted: #6f6558;
+  --line: #d9ccb9;
+  --accent: #193c36;
+  --accent2: #a34a2c;
+  --paper: #fffaf0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(25,60,54,0.08), transparent 28%),
+    linear-gradient(315deg, rgba(163,74,44,0.08), transparent 34%),
+    var(--bg);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.56;
+}
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 42px 28px 72px;
+}
+.paper {
+  background: rgba(255, 250, 240, 0.88);
+  border: 1px solid var(--line);
+  box-shadow: 14px 14px 28px rgba(90,70,45,0.11), -10px -10px 24px rgba(255,255,255,0.72);
+  padding: 48px;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+nav a {
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  padding: 7px 10px;
+  background: rgba(255,250,240,0.7);
+}
+h1, h2, h3 {
+  line-height: 1.08;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+}
+h2 {
+  font-size: 29px;
+  margin-top: 42px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+h3 {
+  font-size: 21px;
+  margin-top: 30px;
+}
+p, li { font-size: 16px; }
+a { color: var(--accent2); }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: rgba(25,60,54,0.08);
+  padding: 0.12em 0.28em;
+}
+pre {
+  padding: 16px;
+  overflow-x: auto;
+  background: #181511;
+  color: #fffaf0;
+  border: 1px solid #181511;
+}
+pre code { background: transparent; padding: 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0 28px;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid var(--line);
+  padding: 9px 10px;
+  vertical-align: top;
+}
+th {
+  background: rgba(25,60,54,0.08);
+  text-align: left;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+blockquote {
+  margin: 24px 0;
+  padding: 8px 18px;
+  border-left: 3px solid var(--accent2);
+  background: rgba(163,74,44,0.07);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 26px;
+}
+.card {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+  background: rgba(255,250,240,0.8);
+  border: 1px solid var(--line);
+  padding: 20px;
+  min-height: 170px;
+  box-shadow: inset 2px 2px 8px rgba(90,70,45,0.08), inset -2px -2px 8px rgba(255,255,255,0.72);
+}
+.card b {
+  display: block;
+  margin-bottom: 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  line-height: 1.08;
+}
+.metric {
+  display: inline-block;
+  margin: 6px 8px 6px 0;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  background: rgba(25,60,54,0.06);
+}
+@media print {
+  body { background: white; }
+  .page { max-width: none; padding: 0; }
+  .paper { box-shadow: none; border: none; padding: 24px; }
+  nav { display: none; }
+  h1 { font-size: 38px; }
+  h2 { break-after: avoid; }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <section class="paper">
+      <nav>
+        <a href="../../../data/reports/paper.html">Original Monolithic Paper</a>
+        <a href="papers/main_selector_paper.html">Main Split Paper</a>
+        <a href="../experiments/current_selector_prolific_survey_with_vjepa.html">Pilot Survey</a>
+      </nav>
+      <h1>Memorability Selector Program</h1>
+      <p>Regenerated 2026-06-01. This is the split, reviewer-safe version of
+      the audience-vector research program: one main selector paper plus
+      satellites for mechanistic auditing, audience axes, reward distillation,
+      and theory.</p>
+      <p>
+        <span class="metric">TRIBE BMD rho +0.403</span>
+        <span class="metric">V-JEPA rho +0.395</span>
+        <span class="metric">Wan proxy selector 18/24</span>
+        <span class="metric">Human selector validation pending</span>
+      </p>
+      <div class="grid">
+        <a class="card" href="papers/main_selector_paper.html">
+          <b>Brain-Aligned Memorability Signals Improve Video Generation Selection</b>
+          <span>HTML</span> / <span>PDF</span>
+        </a>
+<a class="card" href="papers/mechanistic_audit.html">
+          <b>Mechanistic Audit Of A TRIBE Memorability Readout</b>
+          <span>HTML</span> / <span>PDF</span>
+        </a>
+<a class="card" href="papers/audience_axes.html">
+          <b>Synthetic Audience Axes Are Structured But Not Orthogonal</b>
+          <span>HTML</span> / <span>PDF</span>
+        </a>
+<a class="card" href="papers/reward_distillation.html">
+          <b>From Brain-Aligned Selectors To Video-Generator Distillation</b>
+          <span>HTML</span> / <span>PDF</span>
+        </a>
+<a class="card" href="papers/representation_frames.html">
+          <b>Representation Frames For Cognitive Media Selection</b>
+          <span>HTML</span> / <span>PDF</span>
+        </a>
+<a class="card" href="papers/affect_aware.html">
+          <b>Affect-Aware Media Selection From Brain-Aligned And EEG-Inspired Signals</b>
+          <span>HTML</span> / <span>PDF</span>
+        </a>
+      </div>
+      <h2>Current Honest Bottom Line</h2>
+      <p>The main paper is now framed around a practical generation-ranking
+      workflow, not direct steering. The confirmed result is a compact
+      brain-aligned memorability readout. The remaining decisive experiment is
+      whether TRIBE+gate beats V-JEPA, CLIP, and quality baselines in blinded
+      human judgments.</p>
+    </section>
+  </main>
+</body>
+</html>

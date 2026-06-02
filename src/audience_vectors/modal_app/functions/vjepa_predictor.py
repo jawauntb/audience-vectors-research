@@ -33,10 +33,12 @@ VJEPA_MODEL_ID = "facebook/vjepa2-vitl-fpc64-256"
 VJEPA_REVISION = ""  # latest; pin once we know it stabilizes
 
 vjepa_weights_volume = modal.Volume.from_name(
-    "vjepa-weights-v1", create_if_missing=True,
+    "vjepa-weights-v1",
+    create_if_missing=True,
 )
 bmd_videos_volume = modal.Volume.from_name(
-    "bmd-videos-v1", create_if_missing=True,
+    "bmd-videos-v1",
+    create_if_missing=True,
 )
 BMD_VIDEOS_MOUNT = "/bmd-videos"
 
@@ -57,10 +59,12 @@ vjepa_image = (
         "huggingface_hub[hf_transfer]",
         "av>=12.0",
     )
-    .env({
-        "HF_HUB_ENABLE_HF_TRANSFER": "1",
-        "HF_HOME": HF_CACHE_DIR,
-    })
+    .env(
+        {
+            "HF_HUB_ENABLE_HF_TRANSFER": "1",
+            "HF_HOME": HF_CACHE_DIR,
+        }
+    )
 )
 
 
@@ -103,9 +107,20 @@ def _resolve_local_path(path_or_url: str) -> tuple[str, bool]:
 
 def _probe_duration(local_path: str) -> float:
     result = subprocess.run(
-        ["ffprobe", "-v", "error", "-show_entries", "format=duration",
-         "-of", "default=noprint_wrappers=1:nokey=1", local_path],
-        capture_output=True, check=True, text=True, timeout=30,
+        [
+            "ffprobe",
+            "-v",
+            "error",
+            "-show_entries",
+            "format=duration",
+            "-of",
+            "default=noprint_wrappers=1:nokey=1",
+            local_path,
+        ],
+        capture_output=True,
+        check=True,
+        text=True,
+        timeout=30,
     )
     return float(result.stdout.strip())
 
@@ -159,39 +174,68 @@ class VjepaPredictor:
         if VJEPA_REVISION:
             kwargs["revision"] = VJEPA_REVISION
         self.processor = AutoVideoProcessor.from_pretrained(VJEPA_MODEL_ID, **kwargs)
-        self.model = AutoModel.from_pretrained(VJEPA_MODEL_ID, **kwargs).to("cuda").eval()
+        self.model = (
+            AutoModel.from_pretrained(VJEPA_MODEL_ID, **kwargs).to("cuda").eval()
+        )
+
+    def _predict_local_video(self, local_path: str) -> VjepaPredictionResult:
+        import torch  # noqa: PLC0415
+
+        duration = _probe_duration(local_path)
+        if duration > _MAX_VIDEO_DURATION_S:
+            raise ValueError(
+                f"video too long: {duration:.1f}s > {_MAX_VIDEO_DURATION_S:.0f}s"
+            )
+
+        # decord-backed loader keeps memory tight and FFmpeg-free for the model.
+        inputs = self.processor(videos=local_path, return_tensors="pt")
+        pixel_values = inputs["pixel_values_videos"].to("cuda")
+
+        with torch.inference_mode():
+            outputs = self.model(pixel_values_videos=pixel_values)
+        # V-JEPA encoder output: (B, T*P, D). Mean over time*patches.
+        hidden = outputs.last_hidden_state
+        pooled = hidden.mean(dim=1).squeeze(0).detach().cpu().to(torch.float32).numpy()
+
+        return VjepaPredictionResult(
+            embedding=pooled.tolist(),
+            duration_seconds=float(duration),
+            n_frames=int(hidden.shape[1]),
+        )
 
     @modal.method()
     def predict_video(self, video_path_or_url: str) -> VjepaPredictionResult:
         """Mean-pooled V-JEPA embedding for one clip."""
-        import torch  # noqa: PLC0415
+        # Generated-video selector runs upload new files into the mounted volume
+        # immediately before inference. Long-lived containers otherwise see a
+        # stale volume snapshot from @enter.
+        bmd_videos_volume.reload()
 
         local_path, is_temp = _resolve_local_path(video_path_or_url)
         try:
-            duration = _probe_duration(local_path)
-            if duration > _MAX_VIDEO_DURATION_S:
-                raise ValueError(
-                    f"video too long: {duration:.1f}s > {_MAX_VIDEO_DURATION_S:.0f}s"
-                )
-
-            # decord-backed loader keeps memory tight and FFmpeg-free for the model.
-            inputs = self.processor(videos=local_path, return_tensors="pt")
-            pixel_values = inputs["pixel_values_videos"].to("cuda")
-
-            with torch.inference_mode():
-                outputs = self.model(pixel_values_videos=pixel_values)
-            # V-JEPA encoder output: (B, T*P, D). Mean over time*patches.
-            hidden = outputs.last_hidden_state
-            pooled = hidden.mean(dim=1).squeeze(0).detach().cpu().to(torch.float32).numpy()
-
-            return VjepaPredictionResult(
-                embedding=pooled.tolist(),
-                duration_seconds=float(duration),
-                n_frames=int(hidden.shape[1]),
-            )
+            return self._predict_local_video(local_path)
         finally:
             if is_temp:
                 try:
                     os.unlink(local_path)
                 except OSError:
                     pass
+
+    @modal.method()
+    def predict_video_bytes(
+        self,
+        video_bytes: bytes,
+        suffix: str = ".mp4",
+    ) -> VjepaPredictionResult:
+        """Mean-pooled V-JEPA embedding for one uploaded clip payload."""
+        fd, tmp = tempfile.mkstemp(suffix=suffix, dir="/tmp")
+        os.close(fd)
+        try:
+            with open(tmp, "wb") as out:
+                out.write(video_bytes)
+            return self._predict_local_video(tmp)
+        finally:
+            try:
+                os.unlink(tmp)
+            except OSError:
+                pass

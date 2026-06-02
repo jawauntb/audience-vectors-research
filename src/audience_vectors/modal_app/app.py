@@ -47,7 +47,7 @@ def get_app_name() -> str:
 
 # Forward host env vars to Modal as secrets. Strip the few that break
 # Dockerfile parsing or aren't safe to forward.
-_env_dict = deepcopy(dict(os.environ))
+_env_dict: dict[str, str | None] = deepcopy(dict(os.environ))
 for _drop in ("PATH",):
     _env_dict.pop(_drop, None)
 _env_dict = {k: v for k, v in _env_dict.items() if not k.startswith("BASH_FUNC_")}
@@ -63,7 +63,12 @@ app = modal.App(get_app_name())
 _FUNCTION_MODULES: tuple[str, ...] = (
     "tribe_predictor",
     "vjepa_predictor",
+    "cogvideox_generator",
+    "svd_generator",
+    "wan22_generator",
+    "wan22_lora_trainer",
     "debug_volume",
+    "video_analyzer_site",
 )
 
 for _mod in _FUNCTION_MODULES:

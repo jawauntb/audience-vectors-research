@@ -21,7 +21,7 @@ PYTHON_VERSION = "3.12"
 
 base_image = (
     modal.Image.debian_slim(python_version=PYTHON_VERSION)
-    .apt_install("git", "ffmpeg")
+    .apt_install("git", "ffmpeg", "nodejs")
     .pip_install(
         "pydantic[email]==2.12.5",
         "huggingface-hub>=0.36",
@@ -32,6 +32,12 @@ base_image = (
         "polars>=1.20",
         "httpx==0.28.1",
         "logfire==4.16.0",
+        "fastapi>=0.115,<1.0",
+        "python-multipart>=0.0.20,<1.0",
+        "pillow==12.1.0",
+        "scipy>=1.14,<2.0",
+        "scikit-learn>=1.8.0",
+        "yt-dlp",
     )
 )
 
@@ -97,10 +103,12 @@ tribe_image = (
     # makes whisperx's faster-whisper download bail. The runtime fall
     # back to standard HTTP is fine since the weights volume is already
     # populated.
-    .env({
-        "HF_HUB_ENABLE_HF_TRANSFER": "0",
-        "HF_HOME": HF_IMAGE_CACHE_DIR,
-    })
+    .env(
+        {
+            "HF_HUB_ENABLE_HF_TRANSFER": "0",
+            "HF_HOME": HF_IMAGE_CACHE_DIR,
+        }
+    )
     # uv (not pip) for the TRIBE git install — pip can try to uninstall
     # uv-managed base packages and fail on Modal's `/.uv/.venv` paths.
     .uv_pip_install(
@@ -110,14 +118,248 @@ tribe_image = (
         f"python -m pip install --no-deps --target {CUDNN8_TARGET} {CUDNN8_PACKAGE}",
         f"test -f {CUDNN8_LIB_DIR}/libcudnn_ops_infer.so.8",
         "python -m spacy download en_core_web_sm",
+        # TRIBE's native text path asks for the large English model at
+        # request time if it is absent. Bake it in so text scoring does not
+        # spend several minutes pip-installing during a live HTTP request.
+        "python -m spacy download en_core_web_lg",
     )
     .env({"HF_HOME": HF_CACHE_DIR})
+)
+
+
+# ---------------------------------------------------------------------------
+# CogVideoX-5B — text-to-video for brain-direction-conditioned generation.
+# Uses torch 2.7+ so we can target B200 (sm_100). CogVideoX has no torch pin,
+# unlike TRIBE, so this is safe.
+# ---------------------------------------------------------------------------
+
+COGVIDEOX_REPO_ID = "THUDM/CogVideoX-5b"
+COGVIDEOX_CACHE_DIR = "/cogvideox-cache"
+
+# Image-rebuild-tag: 2026-05-13-v1-cogvideox-b200
+cogvideox_image = (
+    modal.Image.debian_slim(python_version=PYTHON_VERSION)
+    .apt_install("git", "ffmpeg")
+    .pip_install(
+        # torch 2.7+ for sm_100 (B200). torch 2.7 ships in cu126 wheels.
+        "torch==2.7.1",
+        "torchvision==0.22.1",
+        "torchaudio==2.7.1",
+        index_url="https://download.pytorch.org/whl/cu126",
+    )
+    .pip_install(
+        "diffusers>=0.32",
+        "transformers>=4.45",
+        "accelerate>=1.0",
+        "sentencepiece",
+        "protobuf",
+        "huggingface_hub[hf_transfer]",
+        "imageio==2.36.0",
+        "imageio-ffmpeg==0.5.1",
+        "numpy>=1.26,<3.0",
+        # base deps needed because app.py imports every function module
+        "pydantic[email]==2.12.5",
+        "polars>=1.20",
+        "google-genai==1.56.0",
+        "anthropic==0.80.0",
+    )
+    .env(
+        {
+            "HF_HUB_ENABLE_HF_TRANSFER": "1",
+            "HF_HOME": COGVIDEOX_CACHE_DIR,
+        }
+    )
+)
+
+
+# ---------------------------------------------------------------------------
+# Stable Video Diffusion (SVD-XT). img2vid → 25 frames @ 1024x576.
+# Conditions on CLIP-ViT-H-14 image embeddings + VAE-encoded image.
+# ---------------------------------------------------------------------------
+
+SVD_REPO_ID = "stabilityai/stable-video-diffusion-img2vid-xt"
+SVD_CACHE_DIR = "/svd-cache"
+
+svd_image = (
+    modal.Image.debian_slim(python_version=PYTHON_VERSION)
+    .apt_install("git", "ffmpeg")
+    .pip_install(
+        "torch==2.7.1",
+        "torchvision==0.22.1",
+        "torchaudio==2.7.1",
+        index_url="https://download.pytorch.org/whl/cu126",
+    )
+    .pip_install(
+        "diffusers>=0.32",
+        "transformers>=4.45",
+        "accelerate>=1.0",
+        "huggingface_hub[hf_transfer]",
+        "imageio==2.36.0",
+        "imageio-ffmpeg==0.5.1",
+        "numpy>=1.26,<3.0",
+        "pillow>=10",
+        # base deps needed because app.py imports every function module
+        "pydantic[email]==2.12.5",
+        "polars>=1.20",
+        "google-genai==1.56.0",
+        "anthropic==0.80.0",
+    )
+    .env(
+        {
+            "HF_HUB_ENABLE_HF_TRANSFER": "1",
+            "HF_HOME": SVD_CACHE_DIR,
+        }
+    )
+)
+
+
+# ---------------------------------------------------------------------------
+# Wan2.2 — high-quality open video generation target.
+#
+# We use strict B200 at the function/class level for this model: 180 GB VRAM is
+# enough to run the 14B I2V/T2V models without the slow CPU-offload defaults,
+# while avoiding B200+ / B300 because B300 currently requires a CUDA 13 stack.
+# ---------------------------------------------------------------------------
+
+WAN22_REPO_URL = "https://github.com/Wan-Video/Wan2.2.git"
+WAN22_GIT_REF = "42bf4cfaa384bc21833865abc2f9e6c0e67233dc"
+WAN22_REPO_DIR = "/opt/Wan2.2"
+WAN22_CACHE_DIR = "/wan22-cache"
+WAN22_MODEL_REPOS = {
+    "t2v-A14B": "Wan-AI/Wan2.2-T2V-A14B",
+    "i2v-A14B": "Wan-AI/Wan2.2-I2V-A14B",
+    "ti2v-5B": "Wan-AI/Wan2.2-TI2V-5B",
+}
+
+wan22_image = (
+    modal.Image.debian_slim(python_version=PYTHON_VERSION)
+    .apt_install(
+        "git",
+        "ffmpeg",
+        "libgl1",
+        "libglib2.0-0",
+    )
+    .pip_install(
+        # PyTorch 2.7+ adds Blackwell support via the CUDA 12.8 wheels. The
+        # CUDA 12.6 wheel can import on B200 but fails at runtime with
+        # "no kernel image is available for execution on the device".
+        "torch==2.7.1",
+        "torchvision==0.22.1",
+        "torchaudio==2.7.1",
+        index_url="https://download.pytorch.org/whl/cu128",
+    )
+    .pip_install(
+        "accelerate>=1.1.1",
+        "dashscope",
+        "decord",
+        "diffusers>=0.31.0",
+        "easydict",
+        "einops",
+        "ftfy",
+        "huggingface_hub[hf_transfer]>=0.36",
+        "imageio-ffmpeg>=0.5.1",
+        "imageio[ffmpeg]>=2.36",
+        "numpy>=1.23.5,<2",
+        "opencv-python-headless>=4.9.0.80",
+        "peft",
+        "pillow>=10",
+        "protobuf",
+        "regex",
+        "scipy",
+        "sentencepiece",
+        "tokenizers>=0.20.3",
+        "tqdm",
+        "transformers>=4.49.0,<=4.51.3",
+        # base deps needed because app.py imports every function module
+        "anthropic==0.80.0",
+        "google-genai==1.56.0",
+        "polars>=1.20",
+        "pydantic[email]==2.12.5",
+    )
+    .run_commands(
+        f"git clone {WAN22_REPO_URL} {WAN22_REPO_DIR}",
+        f"cd {WAN22_REPO_DIR} && git checkout {WAN22_GIT_REF}",
+        (
+            "python - <<'PY'\n"
+            "from pathlib import Path\n"
+            f"p = Path({WAN22_REPO_DIR!r}) / 'wan' / '__init__.py'\n"
+            'p.write_text("""from . import configs, distributed, modules\\n'
+            "from .image2video import WanI2V\\n"
+            "from .text2video import WanT2V\\n"
+            "from .textimage2video import WanTI2V\\n"
+            '""")\n'
+            f"model = Path({WAN22_REPO_DIR!r}) / 'wan' / 'modules' / 'model.py'\n"
+            "text = model.read_text()\n"
+            "text = text.replace(\n"
+            "    'from .attention import flash_attention',\n"
+            "    'from .attention import attention as flash_attention',\n"
+            ")\n"
+            "model.write_text(text)\n"
+            "PY"
+        ),
+    )
+    .env(
+        {
+            "HF_HUB_ENABLE_HF_TRANSFER": "1",
+            "HF_HOME": WAN22_CACHE_DIR,
+            "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True",
+        }
+    )
+)
+
+
+# ---------------------------------------------------------------------------
+# Musubi Tuner — Wan2.2 LoRA training.
+#
+# This is separate from the official Wan generation image because Musubi pins a
+# newer Transformers stack and different runtime dependencies. The training
+# target is Wan2.2 14B I2V/T2V; Musubi does not currently train TI2V-5B.
+# ---------------------------------------------------------------------------
+
+MUSUBI_TUNER_REPO_URL = "https://github.com/kohya-ss/musubi-tuner.git"
+MUSUBI_TUNER_GIT_REF = "6306e839608cd6525def3e6b0d8ec8cd17ff459e"
+WAN22_LORA_CACHE_DIR = "/wan22-lora-cache"
+
+wan22_lora_image = (
+    modal.Image.debian_slim(python_version=PYTHON_VERSION)
+    .apt_install(
+        "git",
+        "ffmpeg",
+        "libgl1",
+        "libglib2.0-0",
+    )
+    .pip_install(
+        "torch==2.7.1",
+        "torchvision==0.22.1",
+        "torchaudio==2.7.1",
+        index_url="https://download.pytorch.org/whl/cu128",
+    )
+    .pip_install(
+        f"git+{MUSUBI_TUNER_REPO_URL}@{MUSUBI_TUNER_GIT_REF}",
+        "huggingface_hub[hf_transfer]==0.34.3",
+        # base deps needed because app.py imports every function module
+        "anthropic==0.80.0",
+        "google-genai==1.56.0",
+        "polars>=1.20",
+        "pydantic[email]==2.12.5",
+    )
+    .env(
+        {
+            "HF_HUB_ENABLE_HF_TRANSFER": "1",
+            "HF_HOME": WAN22_LORA_CACHE_DIR,
+            "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True",
+        }
+    )
 )
 
 
 __all__ = [
     "base_image",
     "tribe_image",
+    "cogvideox_image",
+    "svd_image",
+    "wan22_image",
+    "wan22_lora_image",
     "PYTHON_VERSION",
     "TRIBE_HF_REPO_ID",
     "TRIBE_HF_REVISION",
@@ -127,4 +369,16 @@ __all__ = [
     "WHISPERX_MODEL_REVISION",
     "HF_CACHE_DIR",
     "CUDNN8_LIB_DIR",
+    "COGVIDEOX_REPO_ID",
+    "COGVIDEOX_CACHE_DIR",
+    "SVD_REPO_ID",
+    "SVD_CACHE_DIR",
+    "WAN22_REPO_URL",
+    "WAN22_GIT_REF",
+    "WAN22_REPO_DIR",
+    "WAN22_CACHE_DIR",
+    "WAN22_MODEL_REPOS",
+    "MUSUBI_TUNER_REPO_URL",
+    "MUSUBI_TUNER_GIT_REF",
+    "WAN22_LORA_CACHE_DIR",
 ]
