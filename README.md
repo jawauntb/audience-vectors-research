@@ -29,10 +29,9 @@ Current strongest blocker:
 
 - Human validation: the V-JEPA-augmented Prolific pilot is prepared but not
   launched.
-- Mechanistic validation: the fold-safe TRIBE hidden-direction patch is prepared
-  but needs larger layerwise hidden-cache coverage. We have 1,022 scored TRIBE
-  feature clips, but only 24 clips currently have all requested layerwise hidden
-  caches; the planned fold-safe split needs at least 104.
+- Mechanistic validation: the fold-safe TRIBE hidden-direction patch now runs on
+  the planned 104 balanced cache-eligible clips. Hidden-cache coverage is
+  complete at 52 low + 52 high clips across all requested encoder targets.
 
 GitHub artifact policy:
 
@@ -95,10 +94,13 @@ addressed.
   9.7% of the high-low gap, and the final encoder leaves 1.4%. The sharper
   direction-only patch is stronger: removing the learned hidden memorability
   direction at layer 0 gives ρ = −0.030 and gap ratio 0.057; removing it at the
-  final encoder gives ρ = −0.105 and gap ratio 0.004. So the simple learned-position
-  artifact is weakened, while the learned hidden memorability direction is
-  patch-sensitive on this 24-clip high/low subset. A larger fold-safe hidden-patch run
-  is still needed before treating this as a population estimate.
+  final encoder gives ρ = −0.105 and gap ratio 0.004. The larger fold-safe
+  hidden-patch run has now completed on 104 balanced cache-eligible clips:
+  baseline held-out ρ averages +0.602 across folds, while patching the learned
+  hidden memorability direction drops eval ρ to roughly +0.054 to +0.200
+  depending on layer, with high-low gap ratios around 0.135 to 0.212. So the
+  simple learned-position artifact is weakened, while the learned hidden
+  memorability direction is patch-sensitive under a fold-safe split.
 - **Open-model sanity checks:** transparent AlexNet conv5 layer-5 features predict
   BMD memorability at ρ = +0.386; offline ablation drops prediction to ρ = +0.018
   while random-direction ablations leave ≈ +0.382. A true AlexNet forward-pass
