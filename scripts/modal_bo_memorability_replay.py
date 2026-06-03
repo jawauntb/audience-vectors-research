@@ -21,6 +21,7 @@ import io
 import json
 import os
 import time
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -32,6 +33,7 @@ from audience_vectors.bo_replay import (
     load_collaborator_trials,
     load_unit_npz_vector,
     replay_summary,
+    replicate_summary,
     safe_label,
     score_projection,
     select_trials,
@@ -47,6 +49,16 @@ INTAKE_ROOT = (
 )
 DEFAULT_TRIAL_TABLE = INTAKE_ROOT / "raw_results" / "gpu_run_3obj_all_results.json"
 DEFAULT_SEED_ROOT = INTAKE_ROOT / "original"
+
+
+@dataclass(frozen=True)
+class ReplayJob:
+    """One Modal replay attempt for a collaborator BO trial."""
+
+    trial: CollaboratorBOTrial
+    trial_index: int
+    replicate_index: int
+    noise_seed: int
 
 
 def log(message: str) -> None:
@@ -113,8 +125,49 @@ def load_steering_vector(path: Path, *, key: str) -> list[float]:
     return (vector / norm).astype(np.float32).tolist()
 
 
-def trial_label(trial: CollaboratorBOTrial, index: int) -> str:
-    return safe_label(f"bo_replay_{index:02d}_{trial.task_id}")
+def trial_label(
+    trial: CollaboratorBOTrial,
+    index: int,
+    *,
+    replicate_index: int = 0,
+    total_replicates: int = 1,
+) -> str:
+    suffix = f"_rep{replicate_index:02d}" if total_replicates > 1 else ""
+    return safe_label(f"bo_replay_{index:02d}_{trial.task_id}{suffix}")
+
+
+def expand_replay_jobs(
+    trials: list[CollaboratorBOTrial],
+    *,
+    replicates: int,
+    seed_stride: int,
+    seed_offset: int,
+) -> list[ReplayJob]:
+    """Expand selected trials into deterministic replicate jobs."""
+    if replicates <= 0:
+        raise ValueError("replicates must be positive")
+    if seed_stride <= 0:
+        raise ValueError("replicate seed stride must be positive")
+
+    jobs: list[ReplayJob] = []
+    for trial_index, trial in enumerate(trials):
+        for replicate_index in range(replicates):
+            noise_seed = trial.noise_seed
+            if replicate_index > 0:
+                noise_seed = (
+                    trial.noise_seed
+                    + seed_offset
+                    + (replicate_index * seed_stride)
+                )
+            jobs.append(
+                ReplayJob(
+                    trial=trial,
+                    trial_index=trial_index,
+                    replicate_index=replicate_index,
+                    noise_seed=noise_seed,
+                )
+            )
+    return jobs
 
 
 def populate_svd_cache_on_modal(*, app_name: str) -> None:
@@ -130,7 +183,8 @@ def populate_svd_cache_on_modal(*, app_name: str) -> None:
 
 def generate_videos_on_modal(
     *,
-    trials: list[CollaboratorBOTrial],
+    jobs: list[ReplayJob],
+    total_replicates: int,
     seed_pool: list[dict[str, Any]],
     steering_vector: list[float],
     app_name: str,
@@ -144,14 +198,20 @@ def generate_videos_on_modal(
     generator_cls = modal.Cls.from_name(app_name, "SVDGenerator")
     generator = generator_cls()
     pending = []
-    for index, trial in enumerate(trials):
+    for job in jobs:
+        trial = job.trial
         seed = seed_pool[trial.seed_idx % len(seed_pool)]
-        label = trial_label(trial, index)
+        label = trial_label(
+            trial,
+            job.trial_index,
+            replicate_index=job.replicate_index,
+            total_replicates=total_replicates,
+        )
         started = time.monotonic()
         log(
             "spawning SVD job "
             f"{label} alpha={trial.alpha:.3f} guidance={trial.guidance:.3f} "
-            f"seed={trial.noise_seed} seed_image={seed['bmd_name']}"
+            f"seed={job.noise_seed} seed_image={seed['bmd_name']}"
         )
         call = generator.generate.spawn(
             image_bytes(seed["image_path"]),
@@ -159,16 +219,20 @@ def generate_videos_on_modal(
             alpha=trial.alpha,
             guidance_scale=trial.guidance,
             num_inference_steps=num_inference_steps,
-            seed=trial.noise_seed,
+            seed=job.noise_seed,
             output_label=label,
             persist_output=False,
         )
-        pending.append((index, trial, seed, label, started, call))
+        pending.append((job, seed, label, started, call))
 
     rows: list[dict[str, Any]] = []
-    for index, trial, seed, label, started, call in pending:
+    for job, seed, label, started, call in pending:
         row: dict[str, Any] = {
-            "trial": trial.to_json(),
+            "trial": job.trial.to_json(),
+            "trial_index": job.trial_index,
+            "replicate_index": job.replicate_index,
+            "noise_seed": job.noise_seed,
+            "source_noise_seed": job.trial.noise_seed,
             "seed": {
                 "idx": seed["idx"],
                 "bmd_name": seed["bmd_name"],
@@ -407,10 +471,16 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         max_evals=args.max_evals,
         task_ids=set(args.task_id) if args.task_id else None,
     )
+    jobs = expand_replay_jobs(
+        selected,
+        replicates=args.replicates,
+        seed_stride=args.replicate_seed_stride,
+        seed_offset=args.replicate_seed_offset,
+    )
     seed_pool = load_seed_pool(args.seed_root)
     log(
         f"loaded {len(trials)} trials; selected {len(selected)} "
-        f"with selection={args.selection!r}"
+        f"with selection={args.selection!r}; expanded to {len(jobs)} replay jobs"
     )
 
     rows: list[dict[str, Any]]
@@ -418,17 +488,28 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         log("dry run only; not generating or scoring videos")
         rows = [
             {
-                "trial": trial.to_json(),
+                "trial": job.trial.to_json(),
+                "trial_index": job.trial_index,
+                "replicate_index": job.replicate_index,
+                "noise_seed": job.noise_seed,
+                "source_noise_seed": job.trial.noise_seed,
                 "seed": {
-                    "idx": seed_pool[trial.seed_idx % len(seed_pool)]["idx"],
-                    "bmd_name": seed_pool[trial.seed_idx % len(seed_pool)]["bmd_name"],
+                    "idx": seed_pool[job.trial.seed_idx % len(seed_pool)]["idx"],
+                    "bmd_name": seed_pool[job.trial.seed_idx % len(seed_pool)][
+                        "bmd_name"
+                    ],
                     "image_path": str(
-                        seed_pool[trial.seed_idx % len(seed_pool)]["image_path"]
+                        seed_pool[job.trial.seed_idx % len(seed_pool)]["image_path"]
                     ),
                 },
-                "label": trial_label(trial, idx),
+                "label": trial_label(
+                    job.trial,
+                    job.trial_index,
+                    replicate_index=job.replicate_index,
+                    total_replicates=args.replicates,
+                ),
             }
-            for idx, trial in enumerate(selected)
+            for job in jobs
         ]
     else:
         if args.steering_artifact is None:
@@ -444,7 +525,8 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
             key=args.steering_key,
         )
         rows = generate_videos_on_modal(
-            trials=selected,
+            jobs=jobs,
+            total_replicates=args.replicates,
             seed_pool=seed_pool,
             steering_vector=steering_vector,
             app_name=args.app_name,
@@ -472,12 +554,16 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         "source_trial_table": str(args.trial_table),
         "selection": args.selection,
         "max_evals": args.max_evals,
+        "replicates": args.replicates,
+        "replicate_seed_stride": args.replicate_seed_stride,
+        "replicate_seed_offset": args.replicate_seed_offset,
         "app_name": args.app_name,
         "num_inference_steps": args.num_inference_steps,
         "tribe_mode": args.tribe_mode,
         "tribe_input": args.tribe_input,
         "dry_run": bool(args.dry_run),
         "summary": replay_summary(rows),
+        "replicate_summary": replicate_summary(rows),
         "rows": rows,
     }
     args.report_path.parent.mkdir(parents=True, exist_ok=True)
@@ -497,6 +583,24 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--max-evals", type=int, default=2)
     parser.add_argument("--task-id", action="append", default=[])
+    parser.add_argument(
+        "--replicates",
+        type=int,
+        default=1,
+        help="Number of stochastic noise-seed replays per selected BO trial.",
+    )
+    parser.add_argument(
+        "--replicate-seed-stride",
+        type=int,
+        default=10_000,
+        help="Seed increment used for replicate 1, 2, etc.",
+    )
+    parser.add_argument(
+        "--replicate-seed-offset",
+        type=int,
+        default=0,
+        help="Optional extra seed offset for nonzero replicate indices.",
+    )
     parser.add_argument(
         "--app-name",
         default=os.environ.get("MODAL_APP_NAME", "audience-vectors-dev"),

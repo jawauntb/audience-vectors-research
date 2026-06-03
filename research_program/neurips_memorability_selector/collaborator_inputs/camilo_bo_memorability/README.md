@@ -115,18 +115,78 @@ Follow-up replay diagnostics on the same day narrowed the blocker:
 - 32-eval generation timing: min 28.2s, max 44.5s, mean 37.8s per generated
   MP4. Total generated payload was 58,782,919 bytes.
 
+The post-outage retry showed the TRIBE infrastructure is healthy again when
+given a longer scoring timeout:
+
+- 1-eval full-score probe with `--tribe-input bytes --tribe-timeout 300`
+  completed with replay TRIBE score `0.6754`.
+- 2-eval full-score probe completed with replay TRIBE scores `0.6754` and
+  `1.3557`.
+- 32/32 pre-generated replay MP4s completed full TRIBE scoring with direct
+  bytes input. The replay distribution ranged from `-4.5179` to `2.4868`, with
+  mean `-0.0345`.
+
 Current interpretation: Modal can make SVD replay and fixed-budget generation
-practical once the SVD cache is warm. Full TRIBE replay scoring remains blocked
-inside `TribeModel.predict(...)`, after event construction and before returning
-frame-level predictions.
+practical once the SVD cache is warm, and TRIBE scoring is usable again. The
+remaining scientific issue is score stability: replay scores differ materially
+from the collaborator table, so candidate ranking should be treated as
+stochastic until we summarize multiple generated replicates per BO point.
+
+## Replicated Stochastic Replay
+
+For probabilistic video generation, a single replay score can be a lucky or
+unlucky draw. Use `--replicates` to replay each selected BO point across
+deterministic noise-seed offsets and report per-candidate mean/std/min/max:
+
+```bash
+BO_MEM_STEERING_ARTIFACT=/path/to/tribe_clip_adapter.pt \
+BO_MEM_CORTICAL_VMEM=/path/to/v_mem.npz \
+uv run --extra modal python scripts/modal_bo_memorability_replay.py \
+  --selection top-tribe \
+  --max-evals 2 \
+  --replicates 3 \
+  --num-inference-steps 4 \
+  --tribe-mode full \
+  --tribe-input bytes \
+  --tribe-timeout 300 \
+  --tribe-concurrency 3 \
+  --report-path data/reports/bo_modal_replay_replicates_top2.json \
+  --output-dir data/generated/bo_modal_replay_replicates_top2
+```
+
+Replicate `0` preserves the collaborator's original `noise_seed`. Later
+replicates use deterministic offsets controlled by `--replicate-seed-stride`
+and `--replicate-seed-offset`. Reports include `replicate_summary`, sorted by
+mean replay TRIBE score, so follow-up figures can plot score distributions or
+error bars instead of relying on one point estimate.
+
+### 2026-06-03 Top-2 Replicate Smoke Result
+
+The top two original TRIBE candidates were replayed with 3 noise seeds each,
+4 SVD inference steps, direct-bytes TRIBE input, and a 300 second TRIBE timeout.
+All 6/6 full TRIBE scores completed.
+
+Replicated replay changed the top-2 order:
+
+- `bo04_cand01`: mean `1.5123`, std `0.3245`, sem `0.1873`, range
+  `1.2857..1.8840`, original score `5.3993`.
+- `bo07_cand01`: mean `1.3184`, std `0.7007`, sem `0.4046`, range
+  `0.5102..1.7557`, original score `6.1509`.
+
+Interpretation: the original top score should not be treated as a stable point
+estimate yet. Replicated replay is the right next compute-side validation
+because it separates robust candidates from stochastic high draws.
 
 ## Validation Checklist
 
 - Confirm exact `v_mem_CLIP` derivation from cortical `v_mem`.
-- Reproduce a 2-4 eval Modal smoke with completed TRIBE replay scores.
+- Reproduce a 2-4 eval Modal smoke with completed TRIBE replay scores. Current
+  status: passed after the post-outage Modal retry.
 - Reproduce the 32-eval table under a fixed generation/scoring budget. Current
-  status: generation/upload/preflight pass for all 32; full TRIBE scores do not
-  yet replay.
+  status: generation/upload/preflight pass for all 32; full TRIBE direct-bytes
+  scoring passed for all 32 with longer timeout.
+- Run replicated stochastic replay for the top candidates and report mean,
+  standard deviation, standard error, and rank stability.
 - Compare against random/Sobol/best-of-N under equal evaluation count.
 - Inspect top videos for prompt drift and artifacts.
 - Report wall-clock and average minutes per evaluation.

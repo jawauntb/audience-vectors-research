@@ -8,6 +8,7 @@ import pytest
 from audience_vectors.bo_replay import (
     load_collaborator_trials,
     replay_summary,
+    replicate_summary,
     safe_label,
     score_projection,
     select_trials,
@@ -109,3 +110,46 @@ def test_safe_label_and_replay_summary():
     assert summary["n_scored"] == 2
     assert summary["mean_score_delta_vs_original"] == pytest.approx(0.0)
     assert summary["max_abs_score_delta_vs_original"] == pytest.approx(0.25)
+
+
+def test_replicate_summary_groups_scores_and_ranks_by_mean():
+    summary = replicate_summary(
+        [
+            {
+                "trial": {"task_id": "candidate_a", "tribe_score": 1.5},
+                "replicate_index": 0,
+                "noise_seed": 10,
+                "replay_tribe_score": 1.0,
+            },
+            {
+                "trial": {"task_id": "candidate_a", "tribe_score": 1.5},
+                "replicate_index": 1,
+                "noise_seed": 10010,
+                "replay_tribe_score": 3.0,
+            },
+            {
+                "trial": {"task_id": "candidate_b", "tribe_score": 0.25},
+                "replicate_index": 0,
+                "noise_seed": 22,
+                "replay_tribe_score": 0.5,
+            },
+            {
+                "trial": {"task_id": "candidate_b", "tribe_score": 0.25},
+                "replicate_index": 1,
+                "noise_seed": 10022,
+            },
+        ]
+    )
+
+    assert [item["task_id"] for item in summary] == ["candidate_a", "candidate_b"]
+    assert summary[0]["rank_by_mean_replay_tribe_score"] == 1
+    assert summary[0]["n_requested"] == 2
+    assert summary[0]["n_scored"] == 2
+    assert summary[0]["mean_replay_tribe_score"] == pytest.approx(2.0)
+    assert summary[0]["std_replay_tribe_score"] == pytest.approx(np.sqrt(2.0))
+    assert summary[0]["sem_replay_tribe_score"] == pytest.approx(1.0)
+    assert summary[0]["mean_delta_vs_original"] == pytest.approx(0.5)
+    assert summary[0]["noise_seeds"] == [10, 10010]
+    assert summary[1]["n_requested"] == 2
+    assert summary[1]["n_scored"] == 1
+    assert summary[1]["std_replay_tribe_score"] == pytest.approx(0.0)
