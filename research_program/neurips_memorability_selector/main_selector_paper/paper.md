@@ -3,8 +3,10 @@
 **Draft status:** split-program manuscript, regenerated 2026-06-02.
 **Intended venue shape:** NeurIPS main track or Evaluations and Datasets, pending
 independent selector validation.
-**Primary caveat:** the strongest generation result is still proxy-scored. The
-human endpoint is designed and scaffolded, but not yet complete.
+**Primary caveat:** the strongest current generated-video selector result is
+still proxy-scored. Earlier Prolific data supports the broader TRIBE/BMD
+best-of-N selector signal, but the V-JEPA-adjudicated selector endpoint is
+designed and scaffolded, not yet complete.
 
 ## Abstract
 
@@ -25,7 +27,9 @@ Wan2.2 candidate pool, TRIBE/BMD and V-JEPA selectors overlap only partially,
 creating a useful adjudication setting for blinded human evaluation. The current
 paper therefore makes a narrow claim: brain-aligned features expose a compact,
 auditable memorability signal and define a testable generated-video selection
-workflow. A fold-safe hidden-direction patch on
+workflow. Earlier Prolific evidence supports the broader TRIBE/BMD best-of-N
+selector signal, but not yet the current V-JEPA-adjudicated generated-video
+selector pool. A fold-safe hidden-direction patch on
 104 balanced high/low BMD clips
 further shows that removing the learned hidden direction disrupts held-out
 TRIBE readouts, reducing layerwise held-out rho from mean
@@ -178,6 +182,22 @@ groups, their mean rank agreement is
 agreement is 45.8%. This is exactly the useful
 regime: the baselines disagree often enough that human evaluation can adjudicate
 between them.
+
+### Existing Human Evidence
+
+Human behavior is the reference standard for this project. The strongest
+existing behavioral evidence is the completed Prolific best-of-N study from the
+earlier selector setting: 41 raters, all passing attention checks, with humans
+choosing the TRIBE-projection-ranked best-of-N winner over a within-seed median
+variant 290/451 times, or 64.3% (Wilson 95% CI [0.598, 0.686], binomial
+p = 1.3e-9; pair-cluster bootstrap CI [0.565, 0.718]).
+
+That result matters because it shows the TRIBE/BMD selector signal survives
+human contact. Its scope is limited: it does not by itself validate the current
+V-JEPA-adjudicated selector pool, the collaborator BO-generated videos, or
+delayed-recognition memory. The paper should therefore treat proxy scores as
+candidate-selection evidence that is downstream of human behavior, not a
+replacement for it.
 
 ## Human Evaluation Plan
 
