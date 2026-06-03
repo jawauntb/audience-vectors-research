@@ -215,6 +215,139 @@ def upload_generated_videos(rows: list[dict[str, Any]], *, volume_name: str) -> 
             log(f"uploaded {local_path.name} to {row['modal_video_path']}")
 
 
+def result_payload(result: Any) -> dict[str, Any]:
+    if hasattr(result, "model_dump"):
+        return result.model_dump()
+    if isinstance(result, dict):
+        return result
+    return dict(result)
+
+
+def row_label(row: dict[str, Any]) -> str:
+    return str(
+        row.get("label")
+        or row.get("modal_video_path")
+        or row.get("local_video_path")
+        or "unknown"
+    )
+
+
+async def tribe_preflight_row(
+    service: Any,
+    row: dict[str, Any],
+    *,
+    input_mode: str,
+) -> Any:
+    local_path_raw = row.get("local_video_path")
+    modal_path = row.get("modal_video_path")
+    if input_mode == "bytes" and local_path_raw:
+        return await service.preflight_video_bytes(Path(str(local_path_raw)).read_bytes())
+    if modal_path:
+        return await service.preflight_video(str(modal_path))
+    return None
+
+
+async def tribe_predict_row(
+    service: Any,
+    row: dict[str, Any],
+    *,
+    input_mode: str,
+) -> Any:
+    local_path_raw = row.get("local_video_path")
+    modal_path = row.get("modal_video_path")
+    if input_mode == "bytes" and local_path_raw:
+        return await service.predict_video_bytes(Path(str(local_path_raw)).read_bytes())
+    if modal_path:
+        return await service.predict_video(str(modal_path))
+    return None
+
+
+async def run_tribe_preflight(
+    service: Any,
+    row: dict[str, Any],
+    *,
+    input_mode: str,
+    timeout_seconds: float,
+) -> None:
+    started = time.monotonic()
+    label = row_label(row)
+    log(f"preflighting {label} with TRIBE input={input_mode}")
+    result = await asyncio.wait_for(
+        tribe_preflight_row(service, row, input_mode=input_mode),
+        timeout=timeout_seconds,
+    )
+    if result is None:
+        row["tribe_preflight_error"] = "empty TRIBE preflight result"
+        return
+    row["tribe_preflight"] = result_payload(result)
+    row["tribe_wall_seconds"] = time.monotonic() - started
+    log(f"TRIBE preflight passed for {label}")
+
+
+async def attach_timeout_preflight(
+    service: Any,
+    row: dict[str, Any],
+    *,
+    input_mode: str,
+    timeout_seconds: float,
+) -> None:
+    label = row_label(row)
+    try:
+        diagnostic = await asyncio.wait_for(
+            tribe_preflight_row(service, row, input_mode=input_mode),
+            timeout=min(timeout_seconds, 120.0),
+        )
+        if diagnostic is not None:
+            row["tribe_timeout_preflight"] = result_payload(diagnostic)
+            log(f"TRIBE timeout preflight passed for {label}")
+    except Exception as diag_exc:  # noqa: BLE001
+        row["tribe_timeout_preflight_error"] = repr(diag_exc)
+        log(f"TRIBE timeout preflight failed for {label}: {diag_exc!r}")
+
+
+async def run_tribe_full_score(
+    service: Any,
+    row: dict[str, Any],
+    *,
+    cortical_vmem: np.ndarray,
+    input_mode: str,
+    timeout_seconds: float,
+    diagnose_on_timeout: bool,
+) -> None:
+    started = time.monotonic()
+    label = row_label(row)
+    try:
+        log(f"scoring {label} with TRIBE input={input_mode}")
+        result = await asyncio.wait_for(
+            tribe_predict_row(service, row, input_mode=input_mode),
+            timeout=timeout_seconds,
+        )
+        if result is None:
+            row["tribe_error"] = "empty TRIBE result"
+            return
+        frames = np.asarray(result.frames, dtype=np.float32)
+        row["replay_tribe_score"] = score_projection(frames, cortical_vmem)
+        row["tribe_frames_shape"] = list(frames.shape)
+        row["tribe_duration_seconds"] = float(result.duration_seconds)
+        row["tribe_wall_seconds"] = time.monotonic() - started
+        log(f"TRIBE score for {label}: {row['replay_tribe_score']:.4f}")
+    except TimeoutError as exc:
+        row["tribe_error"] = repr(exc)
+        row["tribe_wall_seconds"] = time.monotonic() - started
+        log(f"TRIBE full timed out for {label}: {exc!r}")
+        if diagnose_on_timeout:
+            await attach_timeout_preflight(
+                service,
+                row,
+                input_mode=input_mode,
+                timeout_seconds=timeout_seconds,
+            )
+    except Exception as exc:  # noqa: BLE001
+        row["tribe_error"] = repr(exc)
+        row["tribe_wall_seconds"] = time.monotonic() - started
+        log(f"TRIBE full failed for {label}: {exc!r}")
+
+
 async def score_rows_with_tribe(
     rows: list[dict[str, Any]],
     *,
@@ -222,6 +355,9 @@ async def score_rows_with_tribe(
     cortical_vmem: np.ndarray,
     concurrency: int,
     timeout_seconds: float,
+    mode: str,
+    input_mode: str,
+    diagnose_on_timeout: bool,
 ) -> None:
     """Run TRIBE on uploaded rows and attach replay projection scores."""
     from audience_vectors.services.tribe_service import TribeService  # noqa: PLC0415
@@ -230,32 +366,27 @@ async def score_rows_with_tribe(
     sem = asyncio.Semaphore(concurrency)
 
     async def one(row: dict[str, Any]) -> None:
-        modal_path = row.get("modal_video_path")
-        if not modal_path:
+        if not row.get("modal_video_path") and not row.get("local_video_path"):
             return
         async with sem:
-            started = time.monotonic()
-            try:
-                log(f"scoring {modal_path} with TRIBE")
-                result = await asyncio.wait_for(
-                    service.predict_video(str(modal_path)),
-                    timeout=timeout_seconds,
+            if mode == "skip":
+                row["tribe_status"] = "skipped"
+            elif mode == "preflight":
+                await run_tribe_preflight(
+                    service,
+                    row,
+                    input_mode=input_mode,
+                    timeout_seconds=timeout_seconds,
                 )
-                if result is None:
-                    row["tribe_error"] = "empty TRIBE result"
-                    return
-                frames = np.asarray(result.frames, dtype=np.float32)
-                row["replay_tribe_score"] = score_projection(frames, cortical_vmem)
-                row["tribe_frames_shape"] = list(frames.shape)
-                row["tribe_duration_seconds"] = float(result.duration_seconds)
-                row["tribe_wall_seconds"] = time.monotonic() - started
-                log(
-                    f"TRIBE score for {modal_path}: "
-                    f"{row['replay_tribe_score']:.4f}"
+            else:
+                await run_tribe_full_score(
+                    service,
+                    row,
+                    cortical_vmem=cortical_vmem,
+                    input_mode=input_mode,
+                    timeout_seconds=timeout_seconds,
+                    diagnose_on_timeout=diagnose_on_timeout,
                 )
-            except Exception as exc:  # noqa: BLE001
-                row["tribe_error"] = repr(exc)
-                log(f"TRIBE scoring failed for {modal_path}: {exc!r}")
 
     await asyncio.gather(*(one(row) for row in rows))
 
@@ -330,6 +461,9 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
             cortical_vmem=cortical_vmem,
             concurrency=args.tribe_concurrency,
             timeout_seconds=args.tribe_timeout,
+            mode=args.tribe_mode,
+            input_mode=args.tribe_input,
+            diagnose_on_timeout=not args.no_diagnose_on_timeout,
         )
 
     attach_original_scores(rows)
@@ -340,6 +474,8 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         "max_evals": args.max_evals,
         "app_name": args.app_name,
         "num_inference_steps": args.num_inference_steps,
+        "tribe_mode": args.tribe_mode,
+        "tribe_input": args.tribe_input,
         "dry_run": bool(args.dry_run),
         "summary": replay_summary(rows),
         "rows": rows,
@@ -396,6 +532,19 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--generation-timeout", type=int, default=20 * 60)
     parser.add_argument("--tribe-timeout", type=float, default=10 * 60)
     parser.add_argument("--tribe-concurrency", type=int, default=2)
+    parser.add_argument(
+        "--tribe-mode",
+        choices=["full", "preflight", "skip"],
+        default="full",
+        help="Run full TRIBE scoring, lightweight preflight, or skip TRIBE.",
+    )
+    parser.add_argument(
+        "--tribe-input",
+        choices=["bytes", "volume"],
+        default="bytes",
+        help="Send local MP4 bytes directly to TRIBE or score uploaded volume paths.",
+    )
+    parser.add_argument("--no-diagnose-on-timeout", action="store_true")
     parser.add_argument("--populate-svd-cache", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()

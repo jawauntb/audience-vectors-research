@@ -30,7 +30,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
-import modal
+import modal  # type: ignore[import-not-found]
 from huggingface_hub import snapshot_download
 from pydantic import BaseModel
 
@@ -82,6 +82,20 @@ class VideoPredictionResult(BaseModel):
 
     frames: list[list[float]]
     duration_seconds: float
+
+
+class VideoPreflightResult(BaseModel):
+    """Lightweight video-readiness check before expensive TRIBE prediction."""
+
+    input_kind: str
+    resolved_path: str
+    tribe_path: str
+    exists: bool
+    size_bytes: int | None
+    duration_seconds: float
+    events_rows: int
+    event_columns: list[str]
+    step_seconds: dict[str, float]
 
 
 # ---------------------------------------------------------------------------
@@ -792,10 +806,112 @@ class TribeV2Predictor:
                 except OSError:
                     pass
 
+    def _preflight_video_impl(
+        self,
+        video_path_or_url: str,
+        *,
+        input_kind: str,
+    ) -> VideoPreflightResult:
+        """Validate path resolution, duration probing, and TRIBE event creation."""
+        import time
+
+        timings: dict[str, float] = {}
+
+        started = time.monotonic()
+        bmd_videos_volume.reload()
+        timings["volume_reload"] = time.monotonic() - started
+
+        started = time.monotonic()
+        local_path, is_temp = _resolve_local_path(video_path_or_url)
+        timings["resolve_local_path"] = time.monotonic() - started
+
+        cleanup_dir: str | None = None
+        try:
+            started = time.monotonic()
+            duration = _probe_duration(local_path)
+            timings["probe_duration"] = time.monotonic() - started
+
+            started = time.monotonic()
+            tribe_path, cleanup_dir = _ensure_tribe_suffix(local_path)
+            timings["ensure_suffix"] = time.monotonic() - started
+
+            started = time.monotonic()
+            events = self.model.get_events_dataframe(video_path=tribe_path)
+            timings["get_events_dataframe"] = time.monotonic() - started
+
+            return VideoPreflightResult(
+                input_kind=input_kind,
+                resolved_path=local_path,
+                tribe_path=tribe_path,
+                exists=os.path.exists(local_path),
+                size_bytes=os.path.getsize(local_path)
+                if os.path.exists(local_path)
+                else None,
+                duration_seconds=float(duration),
+                events_rows=int(len(events)),
+                event_columns=[str(column) for column in events.columns],
+                step_seconds=timings,
+            )
+        finally:
+            if cleanup_dir is not None:
+                try:
+                    os.unlink(os.path.join(cleanup_dir, "video.mp4"))
+                    os.rmdir(cleanup_dir)
+                except OSError:
+                    pass
+            if is_temp:
+                try:
+                    os.unlink(local_path)
+                except OSError:
+                    pass
+
     @modal.method()
     def predict_video(self, video_path_or_url: str) -> VideoPredictionResult:
         """Predict per-vertex brain activations for a video stimulus."""
         return self._predict_video_impl(video_path_or_url)
+
+    @modal.method()
+    def predict_video_bytes(
+        self,
+        video_bytes: bytes,
+        suffix: str = ".mp4",
+    ) -> VideoPredictionResult:
+        """Predict per-vertex brain activations for an uploaded video payload."""
+        fd, tmp = tempfile.mkstemp(suffix=suffix, dir="/tmp")
+        os.close(fd)
+        try:
+            with open(tmp, "wb") as out:
+                out.write(video_bytes)
+            return self._predict_video_impl(tmp)
+        finally:
+            try:
+                os.unlink(tmp)
+            except OSError:
+                pass
+
+    @modal.method()
+    def preflight_video(self, video_path_or_url: str) -> VideoPreflightResult:
+        """Validate a video path/URL without running expensive TRIBE prediction."""
+        return self._preflight_video_impl(video_path_or_url, input_kind="path")
+
+    @modal.method()
+    def preflight_video_bytes(
+        self,
+        video_bytes: bytes,
+        suffix: str = ".mp4",
+    ) -> VideoPreflightResult:
+        """Validate an uploaded video payload without running TRIBE prediction."""
+        fd, tmp = tempfile.mkstemp(suffix=suffix, dir="/tmp")
+        os.close(fd)
+        try:
+            with open(tmp, "wb") as out:
+                out.write(video_bytes)
+            return self._preflight_video_impl(tmp, input_kind="bytes")
+        finally:
+            try:
+                os.unlink(tmp)
+            except OSError:
+                pass
 
     def _predict_text_impl(self, text_path_or_url: str) -> VideoPredictionResult:
         """Predict per-vertex brain activations for a text stimulus.

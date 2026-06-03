@@ -67,14 +67,25 @@ The script:
 1. queues Modal SVD generations in parallel;
 2. passes the collaborator `alpha` and `guidance` values;
 3. uploads generated MP4s to `bmd-videos-v1`;
-4. scores with the deployed `TribeV2Predictor`;
+4. scores or preflights with the deployed `TribeV2Predictor`;
 5. writes `data/reports/bo_modal_replay.json`.
+
+TRIBE modes:
+
+- `--tribe-mode full`: run full TRIBE prediction and project onto cortical
+  `v_mem`.
+- `--tribe-mode preflight`: validate TRIBE path/bytes handling, ffprobe
+  duration, and `get_events_dataframe` without running the expensive model
+  prediction path.
+- `--tribe-input bytes`: send local generated MP4 bytes directly to TRIBE,
+  avoiding Modal volume staleness as a confound.
+- `--tribe-input volume`: score the uploaded `/bmd-videos/...` path.
 
 ### 2026-06-03 Modal Smoke Result
 
 Dry-run table/seed mapping passed for the top two TRIBE trials. A bounded
-single-trial Modal smoke also generated and uploaded the top collaborator trial
-(`bo07_cand01`) successfully:
+single-trial Modal smoke generated and uploaded the top collaborator trial
+(`bo07_cand01`) successfully, but full TRIBE scoring timed out:
 
 - source objective row: `alpha=7.0735`, `guidance=3.2311`, `seed_idx=13`,
   `noise_seed=701`;
@@ -90,11 +101,32 @@ Face downloads took about five minutes for the first successful SVD cache fill.
 SVD generation itself returned quickly once the cache was warm. The remaining
 compute-side blocker is TRIBE video feature extraction on generated MP4s.
 
+Follow-up replay diagnostics on the same day narrowed the blocker:
+
+- 2-eval top-TRIBE smoke passed SVD generation, upload, and direct-bytes TRIBE
+  preflight for both selected trials.
+- 1-eval full-score probe with `--tribe-input bytes` still timed out after 90
+  seconds, while automatic timeout preflight passed on the same MP4. This rules
+  out Modal volume staleness, bad MP4 duration probing, and TRIBE event
+  construction as the primary issue.
+- 32-eval fixed-budget replay with `--selection first --max-evals 32
+  --tribe-mode preflight --tribe-input bytes --num-inference-steps 4` generated
+  and uploaded all 32 videos. All 32 passed TRIBE preflight.
+- 32-eval generation timing: min 28.2s, max 44.5s, mean 37.8s per generated
+  MP4. Total generated payload was 58,782,919 bytes.
+
+Current interpretation: Modal can make SVD replay and fixed-budget generation
+practical once the SVD cache is warm. Full TRIBE replay scoring remains blocked
+inside `TribeModel.predict(...)`, after event construction and before returning
+frame-level predictions.
+
 ## Validation Checklist
 
 - Confirm exact `v_mem_CLIP` derivation from cortical `v_mem`.
 - Reproduce a 2-4 eval Modal smoke with completed TRIBE replay scores.
-- Reproduce the 32-eval table under a fixed generation/scoring budget.
+- Reproduce the 32-eval table under a fixed generation/scoring budget. Current
+  status: generation/upload/preflight pass for all 32; full TRIBE scores do not
+  yet replay.
 - Compare against random/Sobol/best-of-N under equal evaluation count.
 - Inspect top videos for prompt drift and artifacts.
 - Report wall-clock and average minutes per evaluation.
