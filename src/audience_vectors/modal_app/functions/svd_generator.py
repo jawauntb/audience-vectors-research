@@ -16,7 +16,7 @@ import logging
 import os
 import tempfile
 
-import modal
+import modal  # type: ignore[import-not-found]
 
 from audience_vectors.modal_app.app import MODAL_REGION, app, env_secrets
 from audience_vectors.modal_app.image_factory import (
@@ -71,19 +71,20 @@ class SVDGenerator:
 
     @modal.enter()
     def load_model(self) -> None:
+        import diffusers  # type: ignore[import-not-found]  # noqa: PLC0415
         import torch  # noqa: PLC0415
-        from diffusers import StableVideoDiffusionPipeline  # noqa: PLC0415
         from huggingface_hub import snapshot_download  # noqa: PLC0415
 
         svd_volume.reload()
         local = snapshot_download(SVD_REPO_ID)
+        svd_volume.commit()
         print(f"[svd] loading from {local}")
-        self.pipe = StableVideoDiffusionPipeline.from_pretrained(
+        self.pipe = diffusers.StableVideoDiffusionPipeline.from_pretrained(
             local, torch_dtype=torch.float16, variant="fp16",
         )
         self.pipe.to("cuda")
         self.pipe.enable_model_cpu_offload()
-        print(f"[svd] ready")
+        print("[svd] ready")
 
     @modal.method()
     def generate(
@@ -92,6 +93,7 @@ class SVDGenerator:
         *,
         steering_vector: list[float] | None = None,
         alpha: float = 0.0,
+        guidance_scale: float = 3.0,
         num_frames: int = 25,
         num_inference_steps: int = 25,
         motion_bucket_id: int = 127,
@@ -99,6 +101,7 @@ class SVDGenerator:
         fps: int = 7,
         seed: int | None = None,
         output_label: str = "untitled",
+        persist_output: bool = True,
     ) -> bytes:
         """Generate a video from a seed image, optionally steering the CLIP-image
         embedding before it reaches the U-Net cross-attention."""
@@ -134,6 +137,8 @@ class SVDGenerator:
                     image,
                     num_frames=num_frames,
                     num_inference_steps=num_inference_steps,
+                    min_guidance_scale=guidance_scale,
+                    max_guidance_scale=guidance_scale,
                     motion_bucket_id=motion_bucket_id,
                     noise_aug_strength=noise_aug_strength,
                     generator=generator,
@@ -143,6 +148,7 @@ class SVDGenerator:
             self.pipe._encode_image = original_encode
 
         import imageio  # noqa: PLC0415
+        print(f"[svd] encoding {output_label}")
         with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as f:
             tmp = f.name
         imageio.mimsave(
@@ -151,11 +157,15 @@ class SVDGenerator:
         with open(tmp, "rb") as fh:
             video_bytes = fh.read()
         os.unlink(tmp)
+        print(f"[svd] encoded {output_label}: {len(video_bytes)} bytes")
 
-        out_path = f"{SVD_OUTPUTS_MOUNT}/{output_label}.mp4"
-        with open(out_path, "wb") as fh:
-            fh.write(video_bytes)
-        svd_outputs_volume.commit()
+        if persist_output:
+            out_path = f"{SVD_OUTPUTS_MOUNT}/{output_label}.mp4"
+            print(f"[svd] persisting {output_label} to {out_path}")
+            with open(out_path, "wb") as fh:
+                fh.write(video_bytes)
+            svd_outputs_volume.commit()
+            print(f"[svd] persisted {output_label}")
 
         return video_bytes
 
