@@ -1,0 +1,39 @@
+# ── Ambiente LOCAL (CPU) ──────────────────────────────────────────────────────
+# Instalar com:
+#   pip install -r requirements_local.txt
+#
+# Usado no notebook: notebooks/2_local_cpu_score_bo.ipynb
+# Responsabilidades locais: scoring TRIBE + CLIP, loop BO (GP + qNEHVI)
+
+# PyTorch CPU — já instalado? pule esta linha e instale manualmente via
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch>=2.2
+torchvision>=0.17
+
+# BO e GP
+botorch>=0.12
+gpytorch>=1.12
+
+# CLIP scorer
+open-clip-torch>=2.24
+
+# TRIBE v2 (scoring de memorabilidade cortical)
+# Requer git; instale com:
+#   pip install git+https://github.com/facebookresearch/tribev2.git@72399081ed3f1040c4d996cefb2864a4c46f5b8e
+# tribev2  # descomente após clonar manualmente se necessário
+
+# Leitura/escrita de vídeo
+av>=12.0
+
+# Utilitários
+numpy>=1.26
+scipy>=1.12
+scikit-learn>=1.4
+pandas>=2.0
+matplotlib>=3.8
+rich>=13.0
+tqdm>=4.66
+python-dotenv>=1.0
+
+# Logging (opcional — comentar se não quiser usar W&B)
+wandb>=0.17

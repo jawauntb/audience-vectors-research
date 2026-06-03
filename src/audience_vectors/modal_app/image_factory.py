@@ -11,7 +11,7 @@ predictions before relying on them.
 
 from __future__ import annotations
 
-import modal
+import modal  # type: ignore[import-not-found]
 
 PYTHON_VERSION = "3.12"
 
@@ -162,6 +162,8 @@ cogvideox_image = (
         "polars>=1.20",
         "google-genai==1.56.0",
         "anthropic==0.80.0",
+        "fastapi>=0.115,<1.0",
+        "python-multipart>=0.0.20,<1.0",
     )
     .env(
         {
@@ -203,6 +205,8 @@ svd_image = (
         "polars>=1.20",
         "google-genai==1.56.0",
         "anthropic==0.80.0",
+        "fastapi>=0.115,<1.0",
+        "python-multipart>=0.0.20,<1.0",
     )
     .env(
         {
@@ -275,6 +279,8 @@ wan22_image = (
         "google-genai==1.56.0",
         "polars>=1.20",
         "pydantic[email]==2.12.5",
+        "fastapi>=0.115,<1.0",
+        "python-multipart>=0.0.20,<1.0",
     )
     .run_commands(
         f"git clone {WAN22_REPO_URL} {WAN22_REPO_DIR}",
@@ -342,6 +348,8 @@ wan22_lora_image = (
         "google-genai==1.56.0",
         "polars>=1.20",
         "pydantic[email]==2.12.5",
+        "fastapi>=0.115,<1.0",
+        "python-multipart>=0.0.20,<1.0",
     )
     .env(
         {
