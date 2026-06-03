@@ -177,6 +177,34 @@ Interpretation: the original top score should not be treated as a stable point
 estimate yet. Replicated replay is the right next compute-side validation
 because it separates robust candidates from stochastic high draws.
 
+### 2026-06-03 Top-5 Replicate Panel Result
+
+After merging the replicate tooling and redeploying the TRIBE Modal image, the
+top five original TRIBE candidates were replayed with 3 noise seeds each,
+4 SVD inference steps, direct-bytes TRIBE input, and a 300 second TRIBE timeout.
+All 15/15 full TRIBE scores completed.
+
+SVD generation remained practical: 15 generated MP4s completed with min 33.6s,
+max 38.1s, and mean 35.5s per clip. TRIBE full scoring was more variable:
+min 19.1s, max 242.4s, and mean 76.3s per clip.
+
+Replicated replay substantially changed the original top-5 order:
+
+| replay rank | task | replay mean | replay std | replay range | original score |
+|---:|---|---:|---:|---:|---:|
+| 1 | `bo10_cand01` | 1.8826 | 0.3552 | 1.6549..2.2920 | 4.1715 |
+| 2 | `bo02_cand01` | 1.7181 | 0.3977 | 1.3791..2.1559 | 4.8678 |
+| 3 | `bo04_cand01` | 1.5397 | 0.3086 | 1.3557..1.8960 | 5.3993 |
+| 4 | `bo07_cand01` | 1.5224 | 0.5935 | 0.8371..1.8739 | 6.1509 |
+| 5 | `bo02_cand00` | 0.6132 | 1.5041 | -1.1183..1.5963 | 4.6728 |
+
+Important interpretation: the top original score is not the top replicated
+mean, and one candidate has a large negative replicate. All five selected
+points also use the same `fresh24_blue_jellyfish` seed image, so this panel is
+good evidence of stochastic replay variance but not evidence of broad prompt
+coverage. Next compute validation should compare replicated BO points against
+random/Sobol or best-of-N under equal budget across multiple seed images.
+
 ## Validation Checklist
 
 - Confirm exact `v_mem_CLIP` derivation from cortical `v_mem`.
@@ -186,7 +214,8 @@ because it separates robust candidates from stochastic high draws.
   status: generation/upload/preflight pass for all 32; full TRIBE direct-bytes
   scoring passed for all 32 with longer timeout.
 - Run replicated stochastic replay for the top candidates and report mean,
-  standard deviation, standard error, and rank stability.
+  standard deviation, standard error, and rank stability. Current status:
+  top-2 and top-5 replicated panels passed; top-rank stability is weak.
 - Compare against random/Sobol/best-of-N under equal evaluation count.
 - Inspect top videos for prompt drift and artifacts.
 - Report wall-clock and average minutes per evaluation.
