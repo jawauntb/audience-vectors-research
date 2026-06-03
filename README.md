@@ -12,12 +12,19 @@ pass.
 ## Current Source Of Truth
 
 The project is now split into a codebase, a research-program folder, a live
-analyzer product surface, and a local data lake. The current canonical status
-docs are:
+analyzer product surface, and a local data lake. Start here first:
 
-- [June 2 parallel sprint update](JUNE_2_PARALLEL_SPRINT_2026-06-02.md)
-- [June 1 canonical research/product update](JUNE_1_UPDATE_2026-06-01.md)
+- [Start Here](START_HERE.md)
+- [Current research status](research_program/neurips_memorability_selector/experiments/current_research_status.md)
+- [Current main paper source](research_program/neurips_memorability_selector/main_selector_paper/paper.md)
+- [Current main paper HTML](research_program/neurips_memorability_selector/main_selector_paper/paper.html)
 - [Publishing and artifact policy](docs/PUBLISHING.md)
+
+The older `data/reports/paper.html` and `data/reports/paper.pdf` files are
+local data-lake artifacts, not committed source-of-truth documents. They may
+exist on the main workstation under `/Users/jawaun/isc_mod/data/reports/`, but
+GitHub intentionally excludes generated PDFs/zips, raw Prolific exports, model
+weights, and generated videos.
 
 Live analyzer:
 [https://jawaun--video-analyzer.modal.run](https://jawaun--video-analyzer.modal.run)
@@ -27,8 +34,9 @@ Current research-program folder:
 
 Current strongest blocker:
 
-- Human validation: the V-JEPA-augmented Prolific pilot is prepared but not
-  launched.
+- Human validation scope: the earlier Prolific best-of-N study supports the
+  broader TRIBE/BMD selector signal, but the newer V-JEPA-augmented generated
+  selector pilot is prepared and not launched.
 - Mechanistic validation: the fold-safe TRIBE hidden-direction patch now runs on
   the planned 104 balanced cache-eligible clips. Hidden-cache coverage is
   complete at 52 low + 52 high clips across all requested encoder targets.
@@ -42,12 +50,16 @@ GitHub artifact policy:
 - Keep the repo private while it references gated models, TRIBE non-commercial
   terms, unpublished human-study materials, and local generated media.
 
-## Status (updated 2026-05-28, post critical audit + human validation + fMRI + open-model patching + TRIBE Fourier/layerwise hidden-direction audit + Wan LoRA selector)
+## Status (updated 2026-06-03, post critical source-of-truth cleanup)
 
-Latest paper + numbers: `data/reports/paper.pdf` (~62 pages, 5.3 MB) and
-`data/reports/paper.html`. One-page summary: `data/reports/FINAL_REPORT.md`.
-Live interactive demo: `data/reports/arena_demo.html`. Distributable bundle:
-`data/reports/audience_vectors_share.zip`.
+Latest committed paper source:
+`research_program/neurips_memorability_selector/main_selector_paper/paper.md`.
+Latest committed readable render:
+`research_program/neurips_memorability_selector/main_selector_paper/paper.html`.
+
+Local generated reports, PDFs, demos, and bundles live under
+`/Users/jawaun/isc_mod/data/reports/` on the main workstation when available.
+They are not committed.
 
 ### Headline (one line)
 
@@ -57,7 +69,9 @@ TRIBE-projection-ranked best-of-N winner over the within-seed median variant
 **64.3% of the time** (290/451, 95% Wilson CI [0.598, 0.686], binomial
 p = 1.3 × 10⁻⁹; pair-cluster bootstrap CI [0.565, 0.718]; per-pair t-test
 p = 0.0057). The previously open "metric-internal" caveat is substantially
-addressed.
+addressed for that earlier selector setting. This does not automatically validate
+the newer V-JEPA-adjudicated selector pool, BO-generated videos, or delayed
+recognition memorability.
 
 ### Full numbers, all bootstrapped or controlled
 
@@ -274,8 +288,10 @@ work clip-by-clip without the full video download.
 ## Historical Checkpoints (Superseded)
 
 The checkpoints below are retained for provenance. The source of truth is the
-2026-05-25 status block above plus `data/reports/paper.pdf`,
-`data/reports/paper.html`, and `data/reports/FINAL_REPORT.md`.
+2026-06-03 status block above plus `START_HERE.md` and
+`research_program/neurips_memorability_selector/main_selector_paper/paper.md`.
+The older `data/reports/paper.*` artifacts are local generated outputs, not the
+committed navigation spine.
 
 End-to-end pipeline runs on real data:
 

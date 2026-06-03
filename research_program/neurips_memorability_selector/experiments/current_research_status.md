@@ -1,11 +1,17 @@
 # Current Research Status
 
-Last updated: 2026-05-28
+Last updated: 2026-06-03
 
 ## Confirmed Enough To Treat As Real
 
 - A supervised TRIBE/BMD memorability direction predicts held-out BMD
   memorability at roughly `rho ~= +0.40`.
+- BOLD Moments human memorability labels are the ground-truth behavioral target
+  for the core `v_mem` direction.
+- The completed Prolific best-of-N study supports the broader TRIBE/BMD selector
+  signal: 41 raters, 41 passed attention checks, and Study A found humans chose
+  the TRIBE-ranked best-of-N winner over a within-seed median variant 290/451
+  times, or 64.3% (Wilson 95% CI [0.598, 0.686], binomial p = 1.3e-9).
 - Persona vectors are structured, but the Spencer critique was right: they are
   not independent orthogonal axes. Signed cosine structure implies a smaller set
   of shared latent directions.
@@ -49,9 +55,12 @@ to TRIBE/product nor obviously irrelevant.
 
 ## Not Yet Proven
 
-- We have not shown that TRIBE-selected videos are more memorable to humans.
-- We have not shown that TRIBE beats V-JEPA, CLIP, or quality baselines in
-  independent human judgment.
+- We have not shown that the newer V-JEPA-adjudicated TRIBE-selected generated
+  videos are more memorable to humans.
+- We have not shown that TRIBE beats V-JEPA, CLIP, or quality baselines in the
+  current independent generated-video selector pilot.
+- We have not shown that Arthur/Camilo's BO-generated videos improve human
+  memorability. Their BO work is compute/control evidence until human-tested.
 - We have not shown delayed-recognition memory gains.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.

@@ -20,11 +20,14 @@ Regenerated: 2026-06-02
 - Content-stratified and matched-random-control analysis for the completed
   104-clip fold-safe hidden-direction patch.
 
-## Rendered Papers
+## Committed Rendered Papers
 
-- Brain-Aligned Memorability Signals Improve Video Generation Selection: `research_program/neurips_memorability_selector/main_selector_paper/paper.pdf`
-- Mechanistic Audit Of A TRIBE Memorability Readout: `research_program/neurips_memorability_selector/satellite_papers/01_mechanistic_audit.pdf`
-- Synthetic Audience Axes Are Structured But Not Orthogonal: `research_program/neurips_memorability_selector/satellite_papers/02_audience_axes.pdf`
-- From Brain-Aligned Selectors To Video-Generator Distillation: `research_program/neurips_memorability_selector/satellite_papers/03_reward_distillation.pdf`
-- Representation Frames For Cognitive Media Selection: `research_program/neurips_memorability_selector/satellite_papers/04_representation_frames.pdf`
-- Affect-Aware Media Selection From Brain-Aligned And EEG-Inspired Signals: `research_program/neurips_memorability_selector/satellite_papers/05_affect_aware_media_selection.pdf`
+- Brain-Aligned Memorability Signals Improve Video Generation Selection: `research_program/neurips_memorability_selector/main_selector_paper/paper.html`
+- Mechanistic Audit Of A TRIBE Memorability Readout: `research_program/neurips_memorability_selector/satellite_papers/01_mechanistic_audit.html`
+- Synthetic Audience Axes Are Structured But Not Orthogonal: `research_program/neurips_memorability_selector/satellite_papers/02_audience_axes.html`
+- From Brain-Aligned Selectors To Video-Generator Distillation: `research_program/neurips_memorability_selector/satellite_papers/03_reward_distillation.html`
+- Representation Frames For Cognitive Media Selection: `research_program/neurips_memorability_selector/satellite_papers/04_representation_frames.html`
+- Affect-Aware Media Selection From Brain-Aligned And EEG-Inspired Signals: `research_program/neurips_memorability_selector/satellite_papers/05_affect_aware_media_selection.html`
+
+PDFs are generated local data-lake outputs and are not guaranteed to be present
+in a clean git checkout.

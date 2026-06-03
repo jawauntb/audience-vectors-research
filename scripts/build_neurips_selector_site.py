@@ -370,8 +370,10 @@ def main_selector_paper(results: dict[str, Any]) -> str:
 **Draft status:** split-program manuscript, regenerated {BUILD_DATE}.
 **Intended venue shape:** NeurIPS main track or Evaluations and Datasets, pending
 independent selector validation.
-**Primary caveat:** the strongest generation result is still proxy-scored. The
-human endpoint is designed and scaffolded, but not yet complete.
+**Primary caveat:** the strongest current generated-video selector result is
+still proxy-scored. Earlier Prolific data supports the broader TRIBE/BMD
+best-of-N selector signal, but the V-JEPA-adjudicated selector endpoint is
+designed and scaffolded, not yet complete.
 
 ## Abstract
 
@@ -392,7 +394,9 @@ Wan2.2 candidate pool, TRIBE/BMD and V-JEPA selectors overlap only partially,
 creating a useful adjudication setting for blinded human evaluation. The current
 paper therefore makes a narrow claim: brain-aligned features expose a compact,
 auditable memorability signal and define a testable generated-video selection
-workflow. A fold-safe hidden-direction patch on
+workflow. Earlier Prolific evidence supports the broader TRIBE/BMD best-of-N
+selector signal, but not yet the current V-JEPA-adjudicated generated-video
+selector pool. A fold-safe hidden-direction patch on
 {foldsafe.get('n_hidden_cache_eligible', 104)} balanced high/low BMD clips
 further shows that removing the learned hidden direction disrupts held-out
 TRIBE readouts, reducing layerwise held-out rho from mean
@@ -539,6 +543,22 @@ groups, their mean rank agreement is
 agreement is {pct(top1.get('top1_agreement'))}. This is exactly the useful
 regime: the baselines disagree often enough that human evaluation can adjudicate
 between them.
+
+### Existing Human Evidence
+
+Human behavior is the reference standard for this project. The strongest
+existing behavioral evidence is the completed Prolific best-of-N study from the
+earlier selector setting: 41 raters, all passing attention checks, with humans
+choosing the TRIBE-projection-ranked best-of-N winner over a within-seed median
+variant 290/451 times, or 64.3% (Wilson 95% CI [0.598, 0.686], binomial
+p = 1.3e-9; pair-cluster bootstrap CI [0.565, 0.718]).
+
+That result matters because it shows the TRIBE/BMD selector signal survives
+human contact. Its scope is limited: it does not by itself validate the current
+V-JEPA-adjudicated selector pool, the collaborator BO-generated videos, or
+delayed-recognition memory. The paper should therefore treat proxy scores as
+candidate-selection evidence that is downstream of human behavior, not a
+replacement for it.
 
 ## Human Evaluation Plan
 
@@ -1015,27 +1035,45 @@ def readme(results: dict[str, Any]) -> str:
     foldsafe = foldsafe_summary(results)
     return f"""# NeurIPS-Grade Memorability Selector Program
 
-Regenerated {BUILD_DATE}.
+Last generated {BUILD_DATE}. Manually reconciled 2026-06-03.
 
 This folder now contains a split version of the original exploratory
 audience-vector project:
 
 - a main selector manuscript;
 - five satellite manuscripts;
-- a local navigation site;
-- rendered PDFs and HTML pages;
+- a committed navigation page;
+- rendered HTML pages;
 - the current V-JEPA-augmented evaluation scaffold.
 
 ## What Is Finished
 
 - Main manuscript source: `main_selector_paper/paper.md`
-- Main manuscript PDF: `main_selector_paper/paper.pdf`
 - Main manuscript HTML: `main_selector_paper/paper.html`
 - Fold-safe hidden patch: `experiments/tribe_foldsafe_direction_patch.md`
 - Expanded hidden cache report:
   `experiments/tribe_layerwise_encoder_hidden_capture_104.md`
-- Site index: `site/index.html`
-- Split package zip: `data/reports/neurips_memorability_selector_split_package_{BUILD_DATE}.zip`
+- Program navigation page: `index.html`
+
+Generated PDFs, zip packages, raw responses, generated videos, and model weights
+belong in the local data lake, not in this committed folder. On the main
+workstation those artifacts usually live under `/Users/jawaun/isc_mod/data/`.
+
+## Existing Human Evidence
+
+There is already human behavioral evidence for the broader TRIBE/BMD selector
+signal:
+
+- BOLD Moments human memorability labels supervise and evaluate the core
+  `v_mem` direction.
+- The completed Prolific best-of-N study had 41 raters, all passing attention
+  checks. Humans preferred the TRIBE-ranked best-of-N winner over the
+  within-seed median variant 290/451 times, or 64.3%, with Wilson 95% CI
+  [0.598, 0.686] and binomial p = 1.3e-9.
+
+Scope boundary: that study supports the earlier selector signal. It does not
+complete the newer V-JEPA-adjudicated generated-video selector pilot, the
+collaborator BO/video-control satellite, or delayed-recognition validation.
 
 ## What The Main Paper Claims Now
 
@@ -1044,8 +1082,9 @@ competitive with V-JEPA on BOLD Moments and useful enough to define a generated
 video selector. A fold-safe TRIBE-internal hidden-direction patch on
 {foldsafe.get('n_hidden_cache_eligible', 104)} balanced clips supports the
 mechanistic readout as load-bearing under disjoint train/eval intervention. The
-generated-video selector is promising under the proxy metric but still needs
-independent human validation.
+generated-video selector is promising under the proxy metric. The earlier
+Prolific result supports the general TRIBE/BMD selector signal, but the current
+V-JEPA-adjudicated selector pool still needs independent human validation.
 
 ## What It Does Not Claim Yet
 
@@ -1065,7 +1104,7 @@ independent human validation.
 - `satellite_papers/` - mechanistic audit, audience axes, reward distillation,
   and representation-frame theory note.
 - `experiments/` - manifests, survey HTML, protocols, and representation audits.
-- `site/` - rendered local website and PDFs.
+- `index.html` - committed navigation page for the split program.
 - `submissions/` - readiness notes.
 - `future_work/` - research leads that are inspiring but not yet evidence for
   the main paper.
@@ -1233,12 +1272,12 @@ def render_markdown(markdown_text: str, title: str, nav_prefix: str = "../") -> 
     body = md.render(markdown_text)
     nav = f"""<nav>
   <a href="{nav_prefix}index.html">Program</a>
-  <a href="{nav_prefix}papers/main_selector_paper.html">Main Paper</a>
-  <a href="{nav_prefix}papers/mechanistic_audit.html">Mechanistic</a>
-  <a href="{nav_prefix}papers/audience_axes.html">Audience Axes</a>
-  <a href="{nav_prefix}papers/reward_distillation.html">Distillation</a>
-  <a href="{nav_prefix}papers/affect_aware.html">Affect</a>
-  <a href="{nav_prefix}papers/representation_frames.html">Theory</a>
+  <a href="{nav_prefix}main_selector_paper/paper.html">Main Paper</a>
+  <a href="{nav_prefix}satellite_papers/01_mechanistic_audit.html">Mechanistic</a>
+  <a href="{nav_prefix}satellite_papers/02_audience_axes.html">Audience Axes</a>
+  <a href="{nav_prefix}satellite_papers/03_reward_distillation.html">Distillation</a>
+  <a href="{nav_prefix}satellite_papers/05_affect_aware_media_selection.html">Affect</a>
+  <a href="{nav_prefix}satellite_papers/04_representation_frames.html">Theory</a>
 </nav>"""
     return f"""<!doctype html>
 <html lang="en">
@@ -1310,15 +1349,31 @@ def write_doc(
     }
 
 
-def site_index(results: dict[str, Any], docs: list[dict[str, str]]) -> str:
+def site_index(
+    results: dict[str, Any],
+    docs: list[dict[str, str]],
+    *,
+    base_prefix: str,
+    root_prefix: str,
+) -> str:
     tribe = results["tribe_cv"]
     vjepa = results["vjepa_cv"]
     gated = wan_policy(results, "base_or_gated_best_of_n")
     foldsafe = foldsafe_summary(results)
+    program_root = PROGRAM.relative_to(ROOT)
+
+    def doc_href(doc: dict[str, str]) -> str:
+        path = Path(doc["html"])
+        try:
+            rel = path.relative_to(program_root)
+        except ValueError:
+            rel = path
+        return f"{base_prefix}{rel.as_posix()}"
+
     cards = "\n".join(
-        f"""<a class="card" href="papers/{Path(d['site_html']).name}">
+        f"""<a class="card" href="{html.escape(doc_href(d))}">
           <b>{html.escape(d['title'])}</b>
-          <span>HTML</span> / <span>PDF</span>
+          <span>HTML</span>
         </a>"""
         for d in docs
     )
@@ -1334,21 +1389,22 @@ def site_index(results: dict[str, Any], docs: list[dict[str, str]]) -> str:
   <main class="page">
     <section class="paper">
       <nav>
-        <a href="../../../data/reports/paper.html">Original Monolithic Paper</a>
-        <a href="papers/main_selector_paper.html">Main Split Paper</a>
-        <a href="../experiments/current_selector_prolific_survey_with_vjepa.html">Pilot Survey</a>
+        <a href="{root_prefix}START_HERE.md">Start Here</a>
+        <a href="{base_prefix}main_selector_paper/paper.html">Main Paper</a>
+        <a href="{base_prefix}experiments/current_selector_prolific_survey_with_vjepa.html">Pilot Survey</a>
       </nav>
       <h1>Memorability Selector Program</h1>
-      <p>Regenerated {BUILD_DATE}. This is the split, reviewer-safe version of
-      the audience-vector research program: one main selector paper plus
-      satellites for mechanistic auditing, audience axes, reward distillation,
-      and theory.</p>
+      <p>Regenerated {BUILD_DATE}; manually reconciled 2026-06-03. This is the
+      split, reviewer-safe version of the audience-vector research program: one
+      main selector paper plus satellites for mechanistic auditing, audience
+      axes, reward distillation, and theory.</p>
       <p>
         <span class="metric">TRIBE BMD rho {fnum(tribe.get('mean_spearman'))}</span>
         <span class="metric">V-JEPA rho {fnum(vjepa.get('mean_spearman'))}</span>
         <span class="metric">Fold-safe patch rho {fnum(foldsafe.get('patch_min'))} to {fnum(foldsafe.get('patch_max'))}</span>
         <span class="metric">Wan proxy selector {policy_improved(gated, 18)}/24</span>
-        <span class="metric">Human selector validation pending</span>
+        <span class="metric">Prior Prolific: 64.3% best-of-N</span>
+        <span class="metric">V-JEPA pilot pending</span>
       </p>
       <div class="grid">
         {cards}
@@ -1357,9 +1413,10 @@ def site_index(results: dict[str, Any], docs: list[dict[str, str]]) -> str:
       <p>The main paper is now framed around a practical generation-ranking
       workflow, not direct steering. The confirmed result is a compact
       brain-aligned memorability readout with a completed fold-safe
-      TRIBE-internal hidden-patch audit. The remaining decisive experiment is
-      whether TRIBE+gate beats V-JEPA, CLIP, and quality baselines in blinded
-      human judgments.</p>
+      TRIBE-internal hidden-patch audit and prior Prolific support for the
+      broader TRIBE/BMD best-of-N selector signal. The remaining decisive
+      experiment is whether TRIBE+gate beats V-JEPA, CLIP, and quality baselines
+      in blinded human judgments on the current selector pool.</p>
     </section>
   </main>
 </body>
@@ -1391,11 +1448,18 @@ def write_submission_status(docs: list[dict[str, str]]) -> None:
         "- Content-stratified and matched-random-control analysis for the completed",
         "  104-clip fold-safe hidden-direction patch.",
         "",
-        "## Rendered Papers",
+        "## Committed Rendered Papers",
         "",
     ]
     for doc in docs:
-        lines.append(f"- {doc['title']}: `{doc['pdf']}`")
+        lines.append(f"- {doc['title']}: `{doc['html']}`")
+    lines.extend(
+        [
+            "",
+            "PDFs are generated local data-lake outputs and are not guaranteed to",
+            "be present in a clean git checkout.",
+        ]
+    )
     (PROGRAM / "submissions" / f"submission_status_{BUILD_DATE}.md").write_text(
         "\n".join(lines) + "\n"
     )
@@ -1518,20 +1582,23 @@ def main() -> None:
     ]
 
     (PROGRAM / "README.md").write_text(readme(results))
-    index = site_index(results, docs)
-    (SITE / "index.html").write_text(index)
-    (PROGRAM / "index.html").write_text(index)
+    (SITE / "index.html").write_text(
+        site_index(results, docs, base_prefix="../", root_prefix="../../../")
+    )
+    (PROGRAM / "index.html").write_text(
+        site_index(results, docs, base_prefix="", root_prefix="../../")
+    )
     # Also mirror a convenient top-level report entry point.
     (REPORTS / "neurips_memorability_selector_program.html").write_text(
         """<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="refresh" content="0; url=../../research_program/neurips_memorability_selector/site/index.html" />
+  <meta http-equiv="refresh" content="0; url=../../research_program/neurips_memorability_selector/index.html" />
   <title>Memorability Selector Program</title>
 </head>
 <body>
-  <p><a href="../../research_program/neurips_memorability_selector/site/index.html">Open the memorability selector program site</a>.</p>
+  <p><a href="../../research_program/neurips_memorability_selector/index.html">Open the memorability selector program index</a>.</p>
 </body>
 </html>
 """
