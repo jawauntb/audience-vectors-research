@@ -51,6 +51,17 @@ base_image = (
 TRIBE_HF_REPO_ID = "facebook/tribev2"
 TRIBE_HF_REVISION = "f894e783020944dcd96e5568550afe2aa9743f9f"
 TRIBE_GIT_REF = "72399081ed3f1040c4d996cefb2864a4c46f5b8e"
+_TRIBE_EXCA_VERSION = "0.5.25"
+TRIBE_UV_PIP_INSTALL_REQUIREMENTS = (
+    f"git+https://github.com/facebookresearch/tribev2.git@{TRIBE_GIT_REF}",
+    f"exca=={_TRIBE_EXCA_VERSION}",
+)
+_TRIBE_IMPORT_RUNTIME_PREFLIGHT_COMMAND = (
+    'python -c "import exca.steps.base as exca_base; '
+    "exca_base.NoValue(); "
+    "from tribev2 import TribeModel; "
+    'print(TribeModel.__name__)"'
+)
 
 # whisperx + cuDNN dance: whisperx 3.4.3 pins ctranslate2<4.5, whose CUDA
 # 12 wheels still dlopen cuDNN 8. PyTorch ships cuDNN 9, so cuDNN 8 must
@@ -111,10 +122,9 @@ tribe_image = (
     )
     # uv (not pip) for the TRIBE git install — pip can try to uninstall
     # uv-managed base packages and fail on Modal's `/.uv/.venv` paths.
-    .uv_pip_install(
-        f"git+https://github.com/facebookresearch/tribev2.git@{TRIBE_GIT_REF}"
-    )
+    .uv_pip_install(*TRIBE_UV_PIP_INSTALL_REQUIREMENTS)
     .run_commands(
+        _TRIBE_IMPORT_RUNTIME_PREFLIGHT_COMMAND,
         f"python -m pip install --no-deps --target {CUDNN8_TARGET} {CUDNN8_PACKAGE}",
         f"test -f {CUDNN8_LIB_DIR}/libcudnn_ops_infer.so.8",
         "python -m spacy download en_core_web_sm",
@@ -372,6 +382,7 @@ __all__ = [
     "TRIBE_HF_REPO_ID",
     "TRIBE_HF_REVISION",
     "TRIBE_GIT_REF",
+    "TRIBE_UV_PIP_INSTALL_REQUIREMENTS",
     "TRIBE_FEATURE_MODEL_PINS",
     "WHISPERX_MODEL_REPO_ID",
     "WHISPERX_MODEL_REVISION",
