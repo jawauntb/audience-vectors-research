@@ -173,3 +173,86 @@ def replay_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
             float(np.max(np.abs(deltas))) if deltas else None
         ),
     }
+
+
+def replicate_summary(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Summarize replay score distributions by collaborator trial."""
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    for row in rows:
+        trial = row.get("trial")
+        task_id = None
+        if isinstance(trial, dict):
+            task_id = trial.get("task_id")
+        if task_id is None:
+            task_id = row.get("task_id") or row.get("label") or "unknown"
+        grouped.setdefault(str(task_id), []).append(row)
+
+    summaries: list[dict[str, Any]] = []
+    for task_id, task_rows in grouped.items():
+        scores = [
+            float(row["replay_tribe_score"])
+            for row in task_rows
+            if row.get("replay_tribe_score") is not None
+        ]
+        score_array = np.asarray(scores, dtype=np.float64)
+        mean_score = float(np.mean(score_array)) if scores else None
+        std_score = (
+            float(np.std(score_array, ddof=1))
+            if len(scores) > 1
+            else (0.0 if scores else None)
+        )
+
+        original_score = first_original_tribe_score(task_rows)
+        summaries.append(
+            {
+                "task_id": task_id,
+                "n_requested": len(task_rows),
+                "n_scored": len(scores),
+                "original_tribe_score": original_score,
+                "mean_replay_tribe_score": mean_score,
+                "std_replay_tribe_score": std_score,
+                "sem_replay_tribe_score": (
+                    float(std_score / np.sqrt(len(scores)))
+                    if std_score is not None and len(scores) > 1
+                    else (0.0 if scores else None)
+                ),
+                "min_replay_tribe_score": float(np.min(score_array))
+                if scores
+                else None,
+                "max_replay_tribe_score": float(np.max(score_array))
+                if scores
+                else None,
+                "mean_delta_vs_original": (
+                    mean_score - original_score
+                    if mean_score is not None and original_score is not None
+                    else None
+                ),
+                "replay_tribe_scores": scores,
+                "noise_seeds": [
+                    int(row["noise_seed"])
+                    for row in task_rows
+                    if row.get("noise_seed") is not None
+                ],
+            }
+        )
+
+    ranked = sorted(
+        summaries,
+        key=lambda item: item["mean_replay_tribe_score"]
+        if item["mean_replay_tribe_score"] is not None
+        else -np.inf,
+        reverse=True,
+    )
+    for rank, item in enumerate(ranked, start=1):
+        item["rank_by_mean_replay_tribe_score"] = rank
+    return ranked
+
+
+def first_original_tribe_score(rows: list[dict[str, Any]]) -> float | None:
+    for row in rows:
+        value = row.get("original_tribe_score")
+        if value is None and isinstance(row.get("trial"), dict):
+            value = row["trial"].get("tribe_score")
+        if value is not None:
+            return float(value)
+    return None
