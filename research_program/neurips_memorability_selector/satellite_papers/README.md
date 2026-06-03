@@ -60,6 +60,22 @@ Venue target:
 - Generative model alignment workshop first.
 - Main-track only if human gains are strong and compute scale is credible.
 
+## Paper 6: Proxy-Guided BO Video Control
+
+Core:
+
+- Multi-objective BO over SVD-XT steering/search parameters.
+- Proxy objectives: TRIBE/BMD memorability, CLIP fidelity, R3D quality.
+- Current status is collaborator intake plus Modal replay tooling.
+- Needs exact `v_mem_CLIP` provenance, fixed-budget reproduction, and visual
+  inspection before being treated as evidence.
+
+Venue target:
+
+- Generative media control / black-box optimization workshop.
+- Main-track only if paired with human validation and strong equal-budget
+  baselines.
+
 ## Rule
 
 Do not let a satellite claim become a burden for the main paper unless it

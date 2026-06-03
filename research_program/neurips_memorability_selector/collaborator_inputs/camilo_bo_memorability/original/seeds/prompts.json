@@ -1,0 +1,218 @@
+[
+  {
+    "idx": 0,
+    "bmd_name": "fresh24_old_car",
+    "prompt": "An old weathered car interior sits outdoors while light shifts across the steering wheel and seats. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_old_car_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_00/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 1,
+    "bmd_name": "fresh24_fireworks",
+    "prompt": "A large firework blossoms in a dark blue evening sky above a low horizon. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_fireworks_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_01/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 2,
+    "bmd_name": "fresh24_sidewalk_steps",
+    "prompt": "A person walks across a sunlit sidewalk while shadows move over the grass nearby. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_sidewalk_steps_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_03/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 3,
+    "bmd_name": "fresh24_aerial_beach",
+    "prompt": "A wide beach and shallow shoreline stretch into hazy light as tiny figures move near the water. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_aerial_beach_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_04/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 4,
+    "bmd_name": "fresh24_golden_grass",
+    "prompt": "Golden grasses glow in low sunlight while the stems sway gently in the breeze. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_golden_grass_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_05/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 5,
+    "bmd_name": "fresh24_red_mailbox",
+    "prompt": "A bright red mailbox hangs on a city wall as nearby reflections and shadows shift. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_red_mailbox_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_06/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 6,
+    "bmd_name": "fresh24_suspension_bridge",
+    "prompt": "A red suspension bridge rises through fog while cables and towers fade into the mist. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_suspension_bridge_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_07/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 7,
+    "bmd_name": "fresh24_lighthouse",
+    "prompt": "A small lighthouse stands on a rocky shore under dramatic clouds as the sky slowly changes. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_lighthouse_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_08/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 8,
+    "bmd_name": "fresh24_city_street",
+    "prompt": "A city street runs between tall buildings while trees and traffic move in the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_city_street_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_09/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 9,
+    "bmd_name": "fresh24_coastal_tracks",
+    "prompt": "Railroad tracks run along a bright coastline as the sea and cliffs recede into the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_coastal_tracks_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_10/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 10,
+    "bmd_name": "fresh24_orange_flowers",
+    "prompt": "Orange flowers fill the frame while petals and leaves move softly in warm light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_orange_flowers_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_11/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 11,
+    "bmd_name": "fresh24_ocean_cliffs",
+    "prompt": "A rugged coastline drops toward rolling ocean waves under a pale cloudy sky. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_ocean_cliffs_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_12/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 12,
+    "bmd_name": "fresh24_hanging_clothes",
+    "prompt": "Colorful clothes hang in a row on a rack while fabric shifts slightly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_hanging_clothes_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_13/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 13,
+    "bmd_name": "fresh24_concert_stage",
+    "prompt": "Musicians perform on a dark stage under bright spotlights as silhouettes move in the background. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_concert_stage_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_14/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 14,
+    "bmd_name": "fresh24_storm_beach",
+    "prompt": "A stormy beach and steep cliffs sit under heavy clouds as waves move along the shore. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_storm_beach_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_17/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 15,
+    "bmd_name": "fresh24_misty_woods",
+    "prompt": "Mist hangs between tall forest trunks while pale light filters through the trees. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_misty_woods_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_18/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 16,
+    "bmd_name": "fresh24_wheat_closeup",
+    "prompt": "Green wheat heads fill the foreground while the field ripples gently behind them. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_wheat_closeup_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_20/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 17,
+    "bmd_name": "fresh24_cloud_mountain",
+    "prompt": "Clouds cling to a steep mountain ridge while fog drifts slowly across the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_cloud_mountain_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_21/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 18,
+    "bmd_name": "fresh24_blue_jellyfish",
+    "prompt": "Blue translucent jellyfish float through bright water with slow drifting motion. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_blue_jellyfish_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_22/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 19,
+    "bmd_name": "fresh24_tall_building",
+    "prompt": "A tall city building rises in black and white while windows and shadows create a repeating pattern. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_tall_building_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_23/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 20,
+    "bmd_name": "fresh24_mountain_fog",
+    "prompt": "Thick fog curls around rocky mountain cliffs, revealing and hiding the peaks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_mountain_fog_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_24/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 21,
+    "bmd_name": "fresh24_forest_canopy",
+    "prompt": "Tall forest trees lean into a misty canopy as light moves through the branches. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_forest_canopy_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_25/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 22,
+    "bmd_name": "fresh24_dewy_grass",
+    "prompt": "Low green grass catches soft light while blades bend and shimmer near the camera. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_dewy_grass_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_26/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  },
+  {
+    "idx": 23,
+    "bmd_name": "fresh24_sparse_forest",
+    "prompt": "A sparse forest of thin trunks stands under a cloudy sky while branches sway faintly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+    "seed_image": "seeds/fresh24_sparse_forest_seed.png",
+    "source_image": "https://picsum.photos/seed/avfresh24_27/960/528",
+    "source_dataset": "Picsum seeded public photo endpoint",
+    "notes": "Fresh non-BMD seed for larger Wan2.2 LoRA proxy selector validation."
+  }
+]

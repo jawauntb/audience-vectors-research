@@ -1,0 +1,102 @@
+# Collaborator Intake: BO Memorability
+
+**Status:** code/provenance intake, not main-paper evidence yet.
+
+This folder imports the collaborator BO memorability prototype from
+`https://github.com/cerqarth/bo_memorability` for reproducibility review and
+Modal adaptation.
+
+## What Is Included
+
+- `original/src/bo_mem/`: original BO package code.
+- `original/scripts/`: original local GPU runner/report scripts.
+- `original/seeds/`: small seed-image/prompt assets available in the source repo.
+- `raw_results/gpu_run_all_results.json`: original 2-objective run table.
+- `raw_results/gpu_run_3obj_all_results.json`: original 3-objective run table.
+- `figures/`: original run figures from the source repo.
+
+## What Is Deliberately Excluded
+
+- Generated MP4s.
+- Model weights and adapter checkpoints.
+- `bo_state.pt` checkpoint binaries.
+- Report PDFs.
+- Secrets or Hugging Face tokens.
+
+The source repo includes `artifacts/v_mem.npz` and
+`artifacts/tribe_clip_adapter.pt`; those are intentionally not committed here.
+Pass local copies to the replay script when running reproduction.
+
+## Reviewer-Safe Framing
+
+This is compute/control evidence, not human memorability evidence. The current
+claim should be:
+
+```text
+Multi-objective BO can be a sample-efficient search policy over generated video
+candidates under TRIBE/CLIP/R3D proxy objectives.
+```
+
+Do not claim:
+
+```text
+BO-steered videos are proven more memorable to humans.
+```
+
+## Modal Replay
+
+Dry-run the imported table and seed mapping:
+
+```bash
+uv run python scripts/modal_bo_memorability_replay.py --dry-run
+```
+
+Run a tiny Modal smoke replay, assuming local artifact copies:
+
+```bash
+BO_MEM_STEERING_ARTIFACT=/path/to/tribe_clip_adapter.pt \
+BO_MEM_CORTICAL_VMEM=/path/to/v_mem.npz \
+uv run --extra modal python scripts/modal_bo_memorability_replay.py \
+  --selection top-tribe \
+  --max-evals 2 \
+  --num-inference-steps 8
+```
+
+The script:
+
+1. queues Modal SVD generations in parallel;
+2. passes the collaborator `alpha` and `guidance` values;
+3. uploads generated MP4s to `bmd-videos-v1`;
+4. scores with the deployed `TribeV2Predictor`;
+5. writes `data/reports/bo_modal_replay.json`.
+
+### 2026-06-03 Modal Smoke Result
+
+Dry-run table/seed mapping passed for the top two TRIBE trials. A bounded
+single-trial Modal smoke also generated and uploaded the top collaborator trial
+(`bo07_cand01`) successfully:
+
+- source objective row: `alpha=7.0735`, `guidance=3.2311`, `seed_idx=13`,
+  `noise_seed=701`;
+- generated `data/generated/bo_modal_replay_smoke/bo_replay_00_bo07_cand01.mp4`
+  in 40.0 seconds at 1,474,551 bytes;
+- uploaded to
+  `/bmd-videos/generated/bo_memorability_replay/bo_replay_00_bo07_cand01.mp4`;
+- bounded TRIBE replay scoring reached the video extractor but timed out after
+  60 seconds, so `replay_tribe_score` is not validated yet.
+
+Cold SVD setup was the expensive part before caching: unauthenticated Hugging
+Face downloads took about five minutes for the first successful SVD cache fill.
+SVD generation itself returned quickly once the cache was warm. The remaining
+compute-side blocker is TRIBE video feature extraction on generated MP4s.
+
+## Validation Checklist
+
+- Confirm exact `v_mem_CLIP` derivation from cortical `v_mem`.
+- Reproduce a 2-4 eval Modal smoke with completed TRIBE replay scores.
+- Reproduce the 32-eval table under a fixed generation/scoring budget.
+- Compare against random/Sobol/best-of-N under equal evaluation count.
+- Inspect top videos for prompt drift and artifacts.
+- Report wall-clock and average minutes per evaluation.
+- Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock
+  efficient.
