@@ -70,7 +70,7 @@ only through committed notes, PR descriptions, or regenerated reports.
 | G-001 | Infrastructure gate | Modal generation and TRIBE scoring complete without startup/import failure. | Passed for current dev app. |
 | G-002 | Replicate-stability gate | Candidate ranking is summarized by mean/std/SEM across stochastic replays. | Passed for top-2/top-5 panels; stability is weak. |
 | G-003 | Equal-budget baseline gate | BO is compared to random/Sobol/best-of-N under equal evaluation count. | Partially passed for saved Sobol top-5 in PR #10; seed coverage caveat remains. |
-| G-004 | Seed-stratified tournament gate | BO, random/Sobol, and best-of-N are compared within matched seed-image/prompt strata. | Tooling added for BO/Sobol matched-stratum replay; Modal run remains open. |
+| G-004 | Seed-stratified tournament gate | BO, random/Sobol, and best-of-N are compared within matched seed-image/prompt strata. | Tooling and BO/Sobol run manifest added; Modal run is blocked on local artifact paths. |
 | G-005 | Visual artifact gate | Top candidates are inspected for prompt drift, degenerate motion, and obvious artifacts. | Open for BO panels. |
 | G-006 | Human gate | Compute-stabilized generated candidates pass blinded human evaluation. | Open for BO-generated videos. |
 
