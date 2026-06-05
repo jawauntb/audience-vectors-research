@@ -38,6 +38,7 @@ from audience_vectors.bo_replay import (
     safe_label,
     score_projection,
     select_trials,
+    stratum_policy_summary,
     trial_policy_group,
 )
 
@@ -473,6 +474,7 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         selection=args.selection,
         max_evals=args.max_evals,
         task_ids=set(args.task_id) if args.task_id else None,
+        stratify_by=args.stratify_by,
     )
     jobs = expand_replay_jobs(
         selected,
@@ -556,6 +558,7 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         "schema_version": 1,
         "source_trial_table": str(args.trial_table),
         "selection": args.selection,
+        "stratify_by": args.stratify_by,
         "max_evals": args.max_evals,
         "replicates": args.replicates,
         "replicate_seed_stride": args.replicate_seed_stride,
@@ -568,6 +571,10 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         "summary": replay_summary(rows),
         "replicate_summary": replicate_summary(rows),
         "policy_group_summary": policy_group_summary(rows),
+        "stratum_policy_summary": stratum_policy_summary(
+            rows,
+            stratify_by=args.stratify_by,
+        ),
         "rows": rows,
     }
     args.report_path.parent.mkdir(parents=True, exist_ok=True)
@@ -590,11 +597,23 @@ def parse_args() -> argparse.Namespace:
             "top-bo-tribe",
             "top-sobol-tribe",
             "top-bo-vs-top-sobol",
+            "seed-stratified-bo-vs-sobol",
         ],
         default="top-tribe",
         help=(
-            "Trial selector. top-bo-vs-top-sobol uses --max-evals per group, "
-            "returning up to twice that many trials."
+            "Trial selector. top-bo-vs-top-sobol uses --max-evals per group. "
+            "seed-stratified-bo-vs-sobol uses --max-evals per policy inside "
+            "each matched stratum."
+        ),
+    )
+    parser.add_argument(
+        "--stratify-by",
+        choices=["prompt", "seed_idx"],
+        default="prompt",
+        help=(
+            "Stratum key for seed-stratified selectors and reports. Prompt is "
+            "the default because it tracks repeated seed-image content better "
+            "than the raw optimizer seed_idx slot."
         ),
     )
     parser.add_argument("--max-evals", type=int, default=2)

@@ -166,6 +166,31 @@ In that mode, `--max-evals` applies per policy group, so `--max-evals 5
 replay jobs. Reports include `policy_group_summary` for the group-level
 comparison.
 
+For the stricter seed-coverage check, use
+`--selection seed-stratified-bo-vs-sobol`. In that mode, the script only selects
+strata where both BO and Sobol have candidates, applies `--max-evals` per policy
+inside each matched stratum, and writes `stratum_policy_summary` so the
+policy-by-seed comparison is explicit. The default `--stratify-by prompt`
+groups by repeated seed-image content; use `--stratify-by seed_idx` when the raw
+optimizer slot is the desired control.
+
+```bash
+BO_MEM_STEERING_ARTIFACT=/path/to/tribe_clip_adapter.pt \
+BO_MEM_CORTICAL_VMEM=/path/to/v_mem.npz \
+uv run --extra modal python scripts/modal_bo_memorability_replay.py \
+  --selection seed-stratified-bo-vs-sobol \
+  --stratify-by prompt \
+  --max-evals 1 \
+  --replicates 3 \
+  --num-inference-steps 4 \
+  --tribe-mode full \
+  --tribe-input bytes \
+  --tribe-timeout 300 \
+  --tribe-concurrency 3 \
+  --report-path data/reports/bo_modal_replay_seed_stratified.json \
+  --output-dir data/generated/bo_modal_replay_seed_stratified
+```
+
 ### 2026-06-03 Top-2 Replicate Smoke Result
 
 The top two original TRIBE candidates were replayed with 3 noise seeds each,
@@ -267,6 +292,9 @@ matched seed-image coverage.
   top-2 and top-5 replicated panels passed; top-rank stability is weak.
 - Compare against random/Sobol/best-of-N under equal evaluation count. Current
   status: BO vs saved Sobol top-5 panel passed, with seed-coverage caveat.
+- Run a seed-stratified BO/Sobol tournament panel. Current status: tooling
+  added; next run should decide whether saved-trial matched strata are enough
+  or whether the baseline must be regenerated across all seed images.
 - Inspect top videos for prompt drift and artifacts.
 - Report wall-clock and average minutes per evaluation.
 - Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock
