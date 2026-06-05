@@ -179,6 +179,11 @@ The runnable manifest is
 strata, required local artifacts, preflight command, Modal run command, and
 acceptance readout.
 
+The completed result note is
+`seed_stratified_tournament_result_20260605.md`. It records a 12/12 generated
+and TRIBE-scored replay, a mixed BO/Sobol stratum outcome, and a failed visual
+artifact gate for the panel.
+
 ```bash
 BO_MEM_STEERING_ARTIFACT=/path/to/tribe_clip_adapter.pt \
 BO_MEM_CORTICAL_VMEM=/path/to/v_mem.npz \
@@ -284,6 +289,26 @@ still entangled with a jellyfish seed pocket." The next baseline should be
 seed-stratified or regenerated so BO, random/Sobol, and best-of-N compare under
 matched seed-image coverage.
 
+### 2026-06-05 Seed-Stratified BO vs Sobol Panel Result
+
+The stricter saved-table panel compared BO and Sobol inside matched prompt
+strata, with 3 stochastic replay seeds per candidate, 4 SVD inference steps,
+direct-bytes TRIBE input, and a 300 second TRIBE timeout. After SVD cache
+warmup, all 12/12 generated videos completed full TRIBE scoring.
+
+Matched-stratum result:
+
+| stratum | BO task | BO replay mean | Sobol task | Sobol replay mean | winner |
+|---|---|---:|---|---:|---|
+| fireworks | `bo06_cand01` | 0.3778 | `sobol_007` | 0.1514 | BO |
+| jellyfish | `bo07_cand01` | 1.4744 | `sobol_005` | 1.5559 | Sobol |
+
+Pooled means are close: BO `0.9261`, Sobol `0.8536`. The panel is therefore
+mixed, not a broad BO win. Visual inspection also fails the artifact gate:
+fireworks clips collapse into dark blur after the first frame, and jellyfish
+clips collapse into smooth blue/white gradients with weak subject persistence.
+This run should be used to narrow the BO claim, not strengthen it.
+
 ## Validation Checklist
 
 - Confirm exact `v_mem_CLIP` derivation from cortical `v_mem`.
@@ -298,9 +323,11 @@ matched seed-image coverage.
 - Compare against random/Sobol/best-of-N under equal evaluation count. Current
   status: BO vs saved Sobol top-5 panel passed, with seed-coverage caveat.
 - Run a seed-stratified BO/Sobol tournament panel. Current status: tooling
-  and run manifest added; next run is blocked only on local artifact paths for
-  `tribe_clip_adapter.pt` and `v_mem.npz`.
-- Inspect top videos for prompt drift and artifacts.
+  and run manifest added; 2026-06-05 saved-table BO/Sobol replay completed
+  12/12 scores but produced a mixed stratum result.
+- Inspect top videos for prompt drift and artifacts. Current status: failed for
+  the 2026-06-05 seed-stratified panel because mid/end frames collapse into
+  low-content blur or gradients.
 - Report wall-clock and average minutes per evaluation.
 - Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock
   efficient.

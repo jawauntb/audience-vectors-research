@@ -43,11 +43,11 @@ gate.
 | C-003 | accepted | TRIBE Modal startup/import is fixed for the deployed dev image after pinning `exca==0.5.25`. | Modal rebuild/deploy preflight imported `TribeModel`; post-deploy TRIBE video-byte preflight passed. | Infrastructure claim only. Does not say anything about scientific validity. |
 | C-004 | accepted | Fixed-budget SVD replay through Modal is operational after cache warmup. | 32/32 pre-generated replay MP4s completed direct-bytes TRIBE full scoring with longer timeout. | Supports using Modal for compute-side reproduction. Runtime remains a limitation. |
 | C-005 | accepted | Single original BO table scores should not be treated as stable point estimates. | Top-2 and top-5 replicated replay panels changed rank order and showed high stochastic variance. | This retires "original top score is a stable winner" language. |
-| C-006 | tentative | BO beats the saved Sobol top-5 under equal-count replicated replay. | PR #10 run: 5 BO + 5 Sobol candidates, 3 replicates each, 30/30 full TRIBE scores; BO replay mean 1.3281 vs Sobol replay mean -1.5901. | Tentative until PR #10 is merged and seed coverage is addressed. BO top five are all `fresh24_blue_jellyfish`; this is not broad prompt evidence. |
+| C-006 | tentative | BO beats the saved Sobol top-5 under equal-count replicated replay. | PR #10 run: 5 BO + 5 Sobol candidates, 3 replicates each, 30/30 full TRIBE scores; BO replay mean 1.3281 vs Sobol replay mean -1.5901. | Seed-stratified replay later produced a mixed result: BO won fireworks, Sobol won jellyfish, and pooled means were close. Keep this claim limited to the saved top-5 panel; do not generalize across prompts. |
 | C-007 | tentative | BO is a sample-efficient search policy over generated video candidates under proxy objectives. | Reproduced BO replay, replicated panels, and equal-count saved-Sobol comparison. | Say "sample-efficient" or "fixed-budget search"; do not say "wall-clock efficient" or "human-memorability proven." |
 | C-008 | superseded | The original `bo07_cand01` score proves a stable best BO candidate. | Superseded by replicated replay. | Do not use. Current top by replay mean differs from original top score. |
 | C-009 | superseded | Brain alignment is the active ingredient for all global best-of-N gains. | Superseded by V-JEPA-as-judge parity in some settings. | Current claim: brain alignment is useful for held-out human memorability prediction; generator-side proxy gains need more careful controls. |
-| C-010 | open | BO, random/Sobol, and best-of-N are compared under matched seed-image coverage. | Needed: seed-stratified or regenerated tournament panel. | This is the next compute-side gate before stronger BO/control language. |
+| C-010 | rejected | Saved-table BO/Sobol comparison supports a stronger broad BO/control claim under matched seed-image coverage. | Seed-stratified BO/Sobol replay on 2026-06-05: 12/12 full TRIBE scores; BO won fireworks, Sobol won jellyfish, pooled means were close; visual artifact gate failed. | Do not use stronger BO/control language from the saved table. Next step should be regenerated matched baselines with better generation quality or an automated visual-quality gate. |
 | C-011 | open | BO-generated videos improve human memorability. | Needed: blinded human study on compute-stabilized candidates. | Do not claim yet. |
 
 ## Run Registry
@@ -59,6 +59,7 @@ gate.
 | R-2026-06-03-bo-replicates | 2026-06-03 | Add stochastic BO replay replicates. | PR #6; `scripts/modal_bo_memorability_replay.py`; `src/audience_vectors/bo_replay.py`. | Tests passed; merged. | Enables C-005/C-007 gates. |
 | R-2026-06-03-top5-replay | 2026-06-03 | Replay top 5 original BO/TRIBE candidates with 3 noise seeds each. | PR #9 note; local report `data/reports/bo_modal_replay_replicates_top5x3_20260603.json`. | 15/15 full TRIBE scores completed. | Supports C-005; weakens original top-rank claim. |
 | R-2026-06-05-bo-vs-sobol | 2026-06-05 | Equal-count replay of top 5 BO vs top 5 saved Sobol candidates, 3 replicates each. | PR #10; local report `data/reports/bo_modal_replay_equal_budget_top5_bo_vs_sobol_20260605.json`. | 30/30 full TRIBE scores completed; BO mean 1.3281 vs Sobol mean -1.5901. | Supports C-006 with seed-pocket caveat. |
+| R-2026-06-05-seed-stratified | 2026-06-05 | Seed-stratified saved-table BO vs Sobol replay across fireworks and jellyfish prompt strata, 3 replicates each. | `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/seed_stratified_tournament_result_20260605.md`; local report `data/reports/bo_modal_replay_seed_stratified_20260605.json`. | 12/12 full TRIBE scores completed; BO won fireworks, Sobol won jellyfish; pooled means nearly tied; visual gate failed. | Rejects broad BO/control language from the saved-table seed-stratified panel; supports a regenerated matched baseline or visual-quality gate next. |
 
 Local `data/reports/*` and generated MP4s are not committed. They can be cited
 only through committed notes, PR descriptions, or regenerated reports.
@@ -70,8 +71,8 @@ only through committed notes, PR descriptions, or regenerated reports.
 | G-001 | Infrastructure gate | Modal generation and TRIBE scoring complete without startup/import failure. | Passed for current dev app. |
 | G-002 | Replicate-stability gate | Candidate ranking is summarized by mean/std/SEM across stochastic replays. | Passed for top-2/top-5 panels; stability is weak. |
 | G-003 | Equal-budget baseline gate | BO is compared to random/Sobol/best-of-N under equal evaluation count. | Partially passed for saved Sobol top-5 in PR #10; seed coverage caveat remains. |
-| G-004 | Seed-stratified tournament gate | BO, random/Sobol, and best-of-N are compared within matched seed-image/prompt strata. | Tooling and BO/Sobol run manifest added; Modal run is blocked on local artifact paths. |
-| G-005 | Visual artifact gate | Top candidates are inspected for prompt drift, degenerate motion, and obvious artifacts. | Open for BO panels. |
+| G-004 | Seed-stratified tournament gate | BO, random/Sobol, and best-of-N are compared within matched seed-image/prompt strata. | Saved-table BO/Sobol panel completed for two matched strata; result is mixed and not sufficient for stronger BO/control language. |
+| G-005 | Visual artifact gate | Top candidates are inspected for prompt drift, degenerate motion, and obvious artifacts. | Failed for the 2026-06-05 seed-stratified panel: mid/end frames collapse into low-content blur or gradients. |
 | G-006 | Human gate | Compute-stabilized generated candidates pass blinded human evaluation. | Open for BO-generated videos. |
 
 ## Conceptual Guardrails
@@ -96,14 +97,15 @@ replicates, then report the distribution.
 
 ## Next Move
 
-Run a seed-stratified tournament panel:
+Regenerate a matched baseline with a visual-quality gate:
 
-- strategies: BO, random/Sobol, best-of-N, and if feasible a cheap CLIP/R3D
-  filter before full TRIBE;
-- strata: matched seed images/prompts, including but not limited to
-  `fresh24_blue_jellyfish`;
+- strategies: BO, random/Sobol, best-of-N, and if feasible a cheap CLIP/R3D or
+  VBench-style filter before full TRIBE;
+- strata: matched seed images/prompts across more than the two saved-table
+  strata;
 - budget: same number of generated clips and full TRIBE scores per strategy;
+- generation: use settings that preserve subject identity past the first frame;
 - summary: per-stratum mean/std/SEM, pooled mixed-effect summary if appropriate,
-  wall-clock cost, and visual artifact inspection notes.
+  wall-clock cost, and visual artifact inspection notes before any human study.
 
 Only after this should the BO/control satellite claim move beyond "tentative."
