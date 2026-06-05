@@ -15,6 +15,7 @@ The project is now split into a codebase, a research-program folder, a live
 analyzer product surface, and a local data lake. Start here first:
 
 - [Start Here](START_HERE.md)
+- [Claim ledger](CLAIM_LEDGER.md)
 - [Current research status](research_program/neurips_memorability_selector/experiments/current_research_status.md)
 - [Current main paper source](research_program/neurips_memorability_selector/main_selector_paper/paper.md)
 - [Current main paper HTML](research_program/neurips_memorability_selector/main_selector_paper/paper.html)
