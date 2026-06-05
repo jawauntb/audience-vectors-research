@@ -160,6 +160,12 @@ and `--replicate-seed-offset`. Reports include `replicate_summary`, sorted by
 mean replay TRIBE score, so follow-up figures can plot score distributions or
 error bars instead of relying on one point estimate.
 
+For an equal-budget BO/Sobol comparison, use `--selection top-bo-vs-top-sobol`.
+In that mode, `--max-evals` applies per policy group, so `--max-evals 5
+--replicates 3` expands to 5 BO candidates, 5 Sobol candidates, and 30 total
+replay jobs. Reports include `policy_group_summary` for the group-level
+comparison.
+
 ### 2026-06-03 Top-2 Replicate Smoke Result
 
 The top two original TRIBE candidates were replayed with 3 noise seeds each,
@@ -205,6 +211,49 @@ good evidence of stochastic replay variance but not evidence of broad prompt
 coverage. Next compute validation should compare replicated BO points against
 random/Sobol or best-of-N under equal budget across multiple seed images.
 
+### 2026-06-05 Equal-Budget BO vs Sobol Panel Result
+
+The next panel compared the top five BO candidates against the top five Sobol
+candidates from the same saved 32-trial table, with 3 stochastic replay seeds
+per candidate, 4 SVD inference steps, direct-bytes TRIBE input, and a 300 second
+TRIBE timeout. All 30/30 full TRIBE scores completed.
+
+SVD generation completed with min 44.8s, max 69.2s, and mean 60.6s per clip.
+TRIBE full scoring completed with min 19.0s, max 114.1s, and mean 42.8s per
+clip.
+
+Group-level result:
+
+| policy | candidates | scored replays | original mean | replay mean | replay std | best replay candidate |
+|---|---:|---:|---:|---:|---:|---|
+| BO | 5 | 15/15 | 5.0525 | 1.3281 | 0.8399 | `bo10_cand01` mean 1.8148 |
+| Sobol | 5 | 15/15 | 0.6798 | -1.5901 | 2.6747 | `sobol_005` mean 1.4614 |
+
+Candidate-level replay ranking:
+
+| replay rank | policy | task | seed image | replay mean | replay std | replay range | original score |
+|---:|---|---|---|---:|---:|---:|---:|
+| 1 | BO | `bo10_cand01` | `fresh24_blue_jellyfish` | 1.8148 | 0.3930 | 1.5706..2.2681 | 4.1715 |
+| 2 | BO | `bo02_cand01` | `fresh24_blue_jellyfish` | 1.6081 | 0.3863 | 1.2632..2.0254 | 4.8678 |
+| 3 | Sobol | `sobol_005` | `fresh24_blue_jellyfish` | 1.4614 | 0.3173 | 1.2154..1.8194 | 3.5215 |
+| 4 | BO | `bo04_cand01` | `fresh24_blue_jellyfish` | 1.4415 | 0.2722 | 1.2830..1.7558 | 5.3993 |
+| 5 | BO | `bo07_cand01` | `fresh24_blue_jellyfish` | 1.3257 | 0.6996 | 0.5191..1.7686 | 6.1509 |
+| 6 | BO | `bo02_cand00` | `fresh24_blue_jellyfish` | 0.4505 | 1.5569 | -1.3372..1.5089 | 4.6728 |
+| 7 | Sobol | `sobol_007` | `fresh24_fireworks` | 0.0621 | 0.4795 | -0.4728..0.4536 | -0.7994 |
+| 8 | Sobol | `sobol_000` | `fresh24_concert_stage` | -1.4724 | 0.2648 | -1.7751..-1.2838 | 2.2894 |
+| 9 | Sobol | `sobol_003` | `fresh24_concert_stage` | -2.6244 | 1.2964 | -3.9476..-1.3565 | -0.9350 |
+| 10 | Sobol | `sobol_002` | `fresh24_concert_stage` | -5.3771 | 2.6070 | -7.6397..-2.5262 | -0.6776 |
+
+Interpretation: under this equal-count replay budget, BO retains a higher
+replicated mean than the top Sobol/random initialization points. The strong
+caveat is seed coverage. The BO top five are all `fresh24_blue_jellyfish`, while
+the Sobol top five include one jellyfish point plus concert/fireworks points.
+The fair claim is therefore not "BO robustly beats random across prompts"; it
+is "BO beats the saved Sobol top-5 under replicated replay, but the result is
+still entangled with a jellyfish seed pocket." The next baseline should be
+seed-stratified or regenerated so BO, random/Sobol, and best-of-N compare under
+matched seed-image coverage.
+
 ## Validation Checklist
 
 - Confirm exact `v_mem_CLIP` derivation from cortical `v_mem`.
@@ -216,7 +265,8 @@ random/Sobol or best-of-N under equal budget across multiple seed images.
 - Run replicated stochastic replay for the top candidates and report mean,
   standard deviation, standard error, and rank stability. Current status:
   top-2 and top-5 replicated panels passed; top-rank stability is weak.
-- Compare against random/Sobol/best-of-N under equal evaluation count.
+- Compare against random/Sobol/best-of-N under equal evaluation count. Current
+  status: BO vs saved Sobol top-5 panel passed, with seed-coverage caveat.
 - Inspect top videos for prompt drift and artifacts.
 - Report wall-clock and average minutes per evaluation.
 - Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock

@@ -7,6 +7,7 @@ import pytest
 
 from audience_vectors.bo_replay import (
     load_collaborator_trials,
+    policy_group_summary,
     replay_summary,
     replicate_summary,
     safe_label,
@@ -88,6 +89,53 @@ def test_select_trials_by_top_scores(tmp_path):
     assert select_trials(trials, task_ids={"a"})[0].task_id == "a"
 
 
+def test_select_trials_bo_vs_sobol_applies_budget_per_group(tmp_path):
+    path = tmp_path / "select_baseline_trials.json"
+    path.write_text(
+        json.dumps(
+            [
+                {
+                    "task_id": "sobol_000",
+                    "alpha": 0,
+                    "guidance": 1,
+                    "seed_idx": 0,
+                    "tribe_score": 2.0,
+                },
+                {
+                    "task_id": "sobol_001",
+                    "alpha": 0,
+                    "guidance": 1,
+                    "seed_idx": 0,
+                    "tribe_score": 5.0,
+                },
+                {
+                    "task_id": "bo01_cand00",
+                    "alpha": 0,
+                    "guidance": 1,
+                    "seed_idx": 0,
+                    "tribe_score": 4.0,
+                },
+                {
+                    "task_id": "bo01_cand01",
+                    "alpha": 0,
+                    "guidance": 1,
+                    "seed_idx": 0,
+                    "tribe_score": 3.0,
+                },
+            ]
+        )
+    )
+    trials = load_collaborator_trials(path)
+
+    selected = select_trials(
+        trials,
+        selection="top-bo-vs-top-sobol",
+        max_evals=1,
+    )
+
+    assert [trial.task_id for trial in selected] == ["bo01_cand00", "sobol_001"]
+
+
 def test_score_projection_means_frames():
     frames = np.asarray([[1.0, 0.0], [3.0, 4.0]], dtype=np.float32)
     direction = np.asarray([0.6, 0.8], dtype=np.float32)
@@ -153,3 +201,40 @@ def test_replicate_summary_groups_scores_and_ranks_by_mean():
     assert summary[1]["n_requested"] == 2
     assert summary[1]["n_scored"] == 1
     assert summary[1]["std_replay_tribe_score"] == pytest.approx(0.0)
+
+
+def test_policy_group_summary_compares_candidate_means():
+    summary = policy_group_summary(
+        [
+            {
+                "trial": {"task_id": "bo01_cand00", "tribe_score": 4.0},
+                "original_tribe_score": 4.0,
+                "replay_tribe_score": 2.0,
+            },
+            {
+                "trial": {"task_id": "bo01_cand00", "tribe_score": 4.0},
+                "original_tribe_score": 4.0,
+                "replay_tribe_score": 4.0,
+            },
+            {
+                "trial": {"task_id": "sobol_000", "tribe_score": 1.0},
+                "original_tribe_score": 1.0,
+                "replay_tribe_score": 1.0,
+            },
+            {
+                "trial": {"task_id": "sobol_000", "tribe_score": 1.0},
+                "original_tribe_score": 1.0,
+                "replay_tribe_score": 2.0,
+            },
+        ]
+    )
+
+    assert [item["policy_group"] for item in summary] == ["bo", "sobol"]
+    assert summary[0]["n_candidates"] == 1
+    assert summary[0]["n_requested"] == 2
+    assert summary[0]["n_scored"] == 2
+    assert summary[0]["mean_candidate_replay_tribe_score"] == pytest.approx(3.0)
+    assert summary[0]["pooled_mean_replay_tribe_score"] == pytest.approx(3.0)
+    assert summary[0]["mean_original_tribe_score"] == pytest.approx(4.0)
+    assert summary[0]["best_candidate_task_id"] == "bo01_cand00"
+    assert summary[1]["mean_candidate_replay_tribe_score"] == pytest.approx(1.5)
