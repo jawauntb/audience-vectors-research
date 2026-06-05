@@ -1,6 +1,6 @@
 # Start Here
 
-Last updated: 2026-06-03.
+Last updated: 2026-06-05.
 
 This repo now has three layers that were previously blended together:
 
@@ -32,6 +32,14 @@ monolithic project shape. They may still exist on this machine under
 
 This is the compact state of the science: what is real, what is pending, and
 what should not be claimed.
+
+## Claim Ledger
+
+- `CLAIM_LEDGER.md`
+
+This is the audit map for claim status, run provenance, validation gates, and
+superseded language. Use it before changing paper claims or collaborator-facing
+summaries.
 
 ## Human Evidence Boundary
 
@@ -107,6 +115,7 @@ Before new human trials, use compute-side work to stabilize candidate selection:
 - replicated BO/TRIBE replay for stochastic generated videos;
 - fixed-budget comparisons against random/Sobol/best-of-N;
 - prompt-clustered ranking stability;
+- seed-stratified tournament panels across matched prompts and budgets;
 - then human validation only on candidates that survive the compute screen.
 
 Do not frame proxy-only improvements as human memorability gains.
