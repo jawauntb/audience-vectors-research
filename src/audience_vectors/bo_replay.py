@@ -15,7 +15,15 @@ from typing import Any, Literal
 
 import numpy as np
 
-TrialSelection = Literal["first", "top-tribe", "top-quality", "top-clip"]
+TrialSelection = Literal[
+    "first",
+    "top-tribe",
+    "top-quality",
+    "top-clip",
+    "top-bo-tribe",
+    "top-sobol-tribe",
+    "top-bo-vs-top-sobol",
+]
 
 
 @dataclass(frozen=True)
@@ -88,7 +96,11 @@ def select_trials(
     max_evals: int = 2,
     task_ids: set[str] | None = None,
 ) -> list[CollaboratorBOTrial]:
-    """Select trials for a smoke/replay run."""
+    """Select trials for a smoke/replay run.
+
+    For `top-bo-vs-top-sobol`, `max_evals` is applied per group so the returned
+    panel has up to `2 * max_evals` trials.
+    """
     if max_evals <= 0:
         raise ValueError("max_evals must be positive")
     if task_ids:
@@ -99,30 +111,73 @@ def select_trials(
         return [by_id[task_id] for task_id in sorted(task_ids)]
 
     if selection == "first":
-        ordered = trials
-    elif selection == "top-tribe":
-        ordered = sorted(
+        return trials[:max_evals]
+    if selection == "top-bo-vs-top-sobol":
+        return select_top_policy_trials(
             trials,
-            key=lambda trial: trial.tribe_score if trial.tribe_score is not None else -np.inf,
-            reverse=True,
-        )
-    elif selection == "top-clip":
-        ordered = sorted(
+            policy_group="bo",
+            max_evals=max_evals,
+        ) + select_top_policy_trials(
             trials,
-            key=lambda trial: trial.clip_score if trial.clip_score is not None else -np.inf,
-            reverse=True,
+            policy_group="sobol",
+            max_evals=max_evals,
         )
-    elif selection == "top-quality":
-        ordered = sorted(
-            trials,
-            key=lambda trial: trial.quality_score
-            if trial.quality_score is not None
-            else -np.inf,
-            reverse=True,
-        )
-    else:
+
+    selection_config: dict[TrialSelection, tuple[str | None, str]] = {
+        "top-tribe": (None, "tribe_score"),
+        "top-clip": (None, "clip_score"),
+        "top-quality": (None, "quality_score"),
+        "top-bo-tribe": ("bo", "tribe_score"),
+        "top-sobol-tribe": ("sobol", "tribe_score"),
+    }
+    if selection not in selection_config:
         raise ValueError(f"unsupported selection: {selection}")
-    return ordered[:max_evals]
+    policy_group, score_name = selection_config[selection]
+    return select_top_policy_trials(
+        trials,
+        policy_group=policy_group,
+        score_name=score_name,
+        max_evals=max_evals,
+    )
+
+
+def select_top_policy_trials(
+    trials: list[CollaboratorBOTrial],
+    *,
+    policy_group: str | None,
+    max_evals: int,
+    score_name: str = "tribe_score",
+) -> list[CollaboratorBOTrial]:
+    group_trials = (
+        trials
+        if policy_group is None
+        else [
+            trial
+            for trial in trials
+            if trial_policy_group(trial.task_id) == policy_group
+        ]
+    )
+    return sort_by_score(group_trials, score_name=score_name)[:max_evals]
+
+
+def sort_by_score(
+    trials: list[CollaboratorBOTrial],
+    *,
+    score_name: str,
+) -> list[CollaboratorBOTrial]:
+    """Sort trials by one original objective score, descending."""
+    return sorted(
+        trials,
+        key=lambda trial: getattr(trial, score_name)
+        if getattr(trial, score_name) is not None
+        else -np.inf,
+        reverse=True,
+    )
+
+
+def trial_policy_group(task_id: str) -> str:
+    """Return the policy group represented by a collaborator task id."""
+    return "sobol" if task_id.startswith("sobol") else "bo"
 
 
 def load_unit_npz_vector(path: Path, *, key: str = "direction") -> np.ndarray:
@@ -246,6 +301,92 @@ def replicate_summary(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     for rank, item in enumerate(ranked, start=1):
         item["rank_by_mean_replay_tribe_score"] = rank
     return ranked
+
+
+def policy_group_summary(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Compare replay score distributions by search policy group."""
+    candidate_summaries = replicate_summary(rows)
+    rows_by_group: dict[str, list[dict[str, Any]]] = {}
+    candidate_summaries_by_group: dict[str, list[dict[str, Any]]] = {}
+
+    for row in rows:
+        task_id = row_task_id(row)
+        rows_by_group.setdefault(trial_policy_group(task_id), []).append(row)
+
+    for item in candidate_summaries:
+        task_id = str(item["task_id"])
+        candidate_summaries_by_group.setdefault(
+            trial_policy_group(task_id),
+            [],
+        ).append(item)
+
+    summaries: list[dict[str, Any]] = []
+    for group in sorted(rows_by_group):
+        group_rows = rows_by_group[group]
+        group_candidates = candidate_summaries_by_group.get(group, [])
+        scores = [
+            float(row["replay_tribe_score"])
+            for row in group_rows
+            if row.get("replay_tribe_score") is not None
+        ]
+        candidate_means = [
+            float(item["mean_replay_tribe_score"])
+            for item in group_candidates
+            if item.get("mean_replay_tribe_score") is not None
+        ]
+        original_scores = [
+            float(row["original_tribe_score"])
+            for row in group_rows
+            if row.get("original_tribe_score") is not None
+        ]
+        best_candidate = next(iter(group_candidates), None)
+
+        score_array = np.asarray(scores, dtype=np.float64)
+        candidate_mean_array = np.asarray(candidate_means, dtype=np.float64)
+        original_array = np.asarray(original_scores, dtype=np.float64)
+        summaries.append(
+            {
+                "policy_group": group,
+                "n_candidates": len(group_candidates),
+                "n_requested": len(group_rows),
+                "n_scored": len(scores),
+                "pooled_mean_replay_tribe_score": float(np.mean(score_array))
+                if scores
+                else None,
+                "pooled_std_replay_tribe_score": sample_std(scores),
+                "mean_candidate_replay_tribe_score": (
+                    float(np.mean(candidate_mean_array)) if candidate_means else None
+                ),
+                "std_candidate_replay_tribe_score": sample_std(candidate_means),
+                "mean_original_tribe_score": float(np.mean(original_array))
+                if original_scores
+                else None,
+                "best_candidate_task_id": best_candidate["task_id"]
+                if best_candidate
+                else None,
+                "best_candidate_mean_replay_tribe_score": (
+                    best_candidate["mean_replay_tribe_score"]
+                    if best_candidate
+                    else None
+                ),
+            }
+        )
+    return summaries
+
+
+def sample_std(values: list[float]) -> float | None:
+    if len(values) > 1:
+        return float(np.std(np.asarray(values, dtype=np.float64), ddof=1))
+    if values:
+        return 0.0
+    return None
+
+
+def row_task_id(row: dict[str, Any]) -> str:
+    trial = row.get("trial")
+    if isinstance(trial, dict) and trial.get("task_id") is not None:
+        return str(trial["task_id"])
+    return str(row.get("task_id") or row.get("label") or "unknown")
 
 
 def first_original_tribe_score(rows: list[dict[str, Any]]) -> float | None:

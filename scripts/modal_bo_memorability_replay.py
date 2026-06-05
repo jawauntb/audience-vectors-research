@@ -32,11 +32,13 @@ from audience_vectors.bo_replay import (
     CollaboratorBOTrial,
     load_collaborator_trials,
     load_unit_npz_vector,
+    policy_group_summary,
     replay_summary,
     replicate_summary,
     safe_label,
     score_projection,
     select_trials,
+    trial_policy_group,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -458,6 +460,7 @@ async def score_rows_with_tribe(
 def attach_original_scores(rows: list[dict[str, Any]]) -> None:
     for row in rows:
         trial = row["trial"]
+        row["trial_policy_group"] = trial_policy_group(str(trial.get("task_id")))
         row["original_tribe_score"] = trial.get("tribe_score")
         row["original_clip_score"] = trial.get("clip_score")
         row["original_quality_score"] = trial.get("quality_score")
@@ -564,6 +567,7 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         "dry_run": bool(args.dry_run),
         "summary": replay_summary(rows),
         "replicate_summary": replicate_summary(rows),
+        "policy_group_summary": policy_group_summary(rows),
         "rows": rows,
     }
     args.report_path.parent.mkdir(parents=True, exist_ok=True)
@@ -578,8 +582,20 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed-root", type=Path, default=DEFAULT_SEED_ROOT)
     parser.add_argument(
         "--selection",
-        choices=["first", "top-tribe", "top-quality", "top-clip"],
+        choices=[
+            "first",
+            "top-tribe",
+            "top-quality",
+            "top-clip",
+            "top-bo-tribe",
+            "top-sobol-tribe",
+            "top-bo-vs-top-sobol",
+        ],
         default="top-tribe",
+        help=(
+            "Trial selector. top-bo-vs-top-sobol uses --max-evals per group, "
+            "returning up to twice that many trials."
+        ),
     )
     parser.add_argument("--max-evals", type=int, default=2)
     parser.add_argument("--task-id", action="append", default=[])
