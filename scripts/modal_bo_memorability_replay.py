@@ -467,7 +467,33 @@ def attach_original_scores(rows: list[dict[str, Any]]) -> None:
         row["original_quality_score"] = trial.get("quality_score")
 
 
+def validate_run_inputs(args: argparse.Namespace, *, require_artifacts: bool) -> None:
+    """Fail early if a non-dry replay is missing local run artifacts."""
+    if args.trial_table is None or not args.trial_table.exists():
+        raise FileNotFoundError(f"trial table not found: {args.trial_table}")
+    if args.seed_root is None or not args.seed_root.exists():
+        raise FileNotFoundError(f"seed root not found: {args.seed_root}")
+    if not require_artifacts:
+        return
+
+    missing: list[str] = []
+    for label, path in [
+        ("--steering-artifact / BO_MEM_STEERING_ARTIFACT", args.steering_artifact),
+        ("--cortical-vmem / BO_MEM_CORTICAL_VMEM", args.cortical_vmem),
+    ]:
+        if path is None:
+            missing.append(f"{label} is not set")
+        elif not path.exists():
+            missing.append(f"{label} path does not exist: {path}")
+    if missing:
+        raise FileNotFoundError("; ".join(missing))
+
+
 async def run(args: argparse.Namespace) -> dict[str, Any]:
+    validate_run_inputs(
+        args,
+        require_artifacts=args.require_artifacts or not args.dry_run,
+    )
     trials = load_collaborator_trials(args.trial_table)
     selected = select_trials(
         trials,
@@ -517,10 +543,6 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
             for job in jobs
         ]
     else:
-        if args.steering_artifact is None:
-            raise ValueError("pass --steering-artifact or set BO_MEM_STEERING_ARTIFACT")
-        if args.cortical_vmem is None:
-            raise ValueError("pass --cortical-vmem or set BO_MEM_CORTICAL_VMEM")
         args.output_dir.mkdir(parents=True, exist_ok=True)
         if args.populate_svd_cache:
             populate_svd_cache_on_modal(app_name=args.app_name)
@@ -568,6 +590,7 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         "tribe_mode": args.tribe_mode,
         "tribe_input": args.tribe_input,
         "dry_run": bool(args.dry_run),
+        "preflight_only": bool(args.dry_run),
         "summary": replay_summary(rows),
         "replicate_summary": replicate_summary(rows),
         "policy_group_summary": policy_group_summary(rows),
@@ -685,6 +708,14 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--no-diagnose-on-timeout", action="store_true")
     parser.add_argument("--populate-svd-cache", action="store_true")
+    parser.add_argument(
+        "--require-artifacts",
+        action="store_true",
+        help=(
+            "Validate --steering-artifact and --cortical-vmem even in dry-run "
+            "mode. Useful before queueing an expensive Modal replay."
+        ),
+    )
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
 

@@ -1,6 +1,10 @@
 from __future__ import annotations
 
+import importlib.util
 import json
+import sys
+from argparse import Namespace
+from pathlib import Path
 
 import numpy as np
 import pytest
@@ -15,6 +19,19 @@ from audience_vectors.bo_replay import (
     select_trials,
     stratum_policy_summary,
 )
+
+
+def load_modal_replay_module():
+    module_path = (
+        Path(__file__).resolve().parents[1] / "scripts" / "modal_bo_memorability_replay.py"
+    )
+    spec = importlib.util.spec_from_file_location("modal_bo_memorability_replay", module_path)
+    assert spec is not None
+    assert spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
 
 
 def test_load_collaborator_trials_from_all_meta(tmp_path):
@@ -194,6 +211,26 @@ def test_select_trials_seed_stratified_bo_vs_sobol_uses_matched_strata(tmp_path)
     )
 
     assert [trial.task_id for trial in selected] == ["bo01_cand01", "sobol_000"]
+
+
+def test_validate_run_inputs_requires_artifacts_when_requested(tmp_path):
+    trial_table = tmp_path / "trials.json"
+    seed_root = tmp_path / "seed_root"
+    trial_table.write_text("[]")
+    seed_root.mkdir()
+    args = Namespace(
+        trial_table=trial_table,
+        seed_root=seed_root,
+        steering_artifact=None,
+        cortical_vmem=tmp_path / "missing_v_mem.npz",
+    )
+
+    with pytest.raises(FileNotFoundError) as excinfo:
+        load_modal_replay_module().validate_run_inputs(args, require_artifacts=True)
+
+    message = str(excinfo.value)
+    assert "BO_MEM_STEERING_ARTIFACT" in message
+    assert "BO_MEM_CORTICAL_VMEM" in message
 
 
 def test_score_projection_means_frames():

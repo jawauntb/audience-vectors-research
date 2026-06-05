@@ -174,6 +174,11 @@ policy-by-seed comparison is explicit. The default `--stratify-by prompt`
 groups by repeated seed-image content; use `--stratify-by seed_idx` when the raw
 optimizer slot is the desired control.
 
+The runnable manifest is
+`seed_stratified_tournament_manifest.md`. It records the selected saved-table
+strata, required local artifacts, preflight command, Modal run command, and
+acceptance readout.
+
 ```bash
 BO_MEM_STEERING_ARTIFACT=/path/to/tribe_clip_adapter.pt \
 BO_MEM_CORTICAL_VMEM=/path/to/v_mem.npz \
@@ -293,8 +298,8 @@ matched seed-image coverage.
 - Compare against random/Sobol/best-of-N under equal evaluation count. Current
   status: BO vs saved Sobol top-5 panel passed, with seed-coverage caveat.
 - Run a seed-stratified BO/Sobol tournament panel. Current status: tooling
-  added; next run should decide whether saved-trial matched strata are enough
-  or whether the baseline must be regenerated across all seed images.
+  and run manifest added; next run is blocked only on local artifact paths for
+  `tribe_clip_adapter.pt` and `v_mem.npz`.
 - Inspect top videos for prompt drift and artifacts.
 - Report wall-clock and average minutes per evaluation.
 - Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock
