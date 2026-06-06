@@ -5,6 +5,7 @@ import json
 import sys
 from argparse import Namespace
 from pathlib import Path
+from typing import Any
 
 import numpy as np
 import pytest
@@ -231,6 +232,76 @@ def test_validate_run_inputs_requires_artifacts_when_requested(tmp_path):
     message = str(excinfo.value)
     assert "BO_MEM_STEERING_ARTIFACT" in message
     assert "BO_MEM_CORTICAL_VMEM" in message
+
+
+def test_attach_visual_artifact_gate_summarizes_generated_rows(monkeypatch, tmp_path):
+    module = load_modal_replay_module()
+    passing_video = tmp_path / "pass.mp4"
+    failing_video = tmp_path / "fail.mp4"
+    rows: list[dict[str, Any]] = [
+        {"label": "passing", "local_video_path": str(passing_video)},
+        {"label": "failing", "local_video_path": str(failing_video)},
+        {"label": "not-generated"},
+    ]
+
+    def fake_summarize_video(path, *, samples, thresholds):
+        del thresholds
+        passes = Path(path).name == "pass.mp4"
+        return {
+            "video_path": str(path),
+            "sample_count": samples,
+            "artifact_flags": [] if passes else ["tail_contrast_collapse"],
+            "passes_visual_gate": passes,
+        }
+
+    monkeypatch.setattr(module, "summarize_video", fake_summarize_video)
+
+    summary = module.attach_visual_artifact_gate(
+        rows,
+        samples=5,
+        thresholds=module.ArtifactThresholds(),
+    )
+
+    assert summary["n_videos"] == 2
+    assert summary["n_failed"] == 1
+    assert not summary["passes_visual_gate"]
+    assert summary["failures"] == [
+        {
+            "label": "failing",
+            "video_path": str(failing_video),
+            "artifact_flags": ["tail_contrast_collapse"],
+            "error": None,
+        }
+    ]
+    assert rows[0]["visual_artifact_gate"]["passes_visual_gate"]
+    assert not rows[1]["visual_artifact_gate"]["passes_visual_gate"]
+    assert "visual_artifact_gate" not in rows[2]
+
+
+def test_attach_visual_artifact_gate_marks_decode_errors(monkeypatch, tmp_path):
+    module = load_modal_replay_module()
+    video_path = tmp_path / "broken.mp4"
+    rows: list[dict[str, Any]] = [
+        {"label": "broken", "local_video_path": str(video_path)}
+    ]
+
+    def fake_summarize_video(path, *, samples, thresholds):
+        del path, samples, thresholds
+        raise ValueError("cannot decode")
+
+    monkeypatch.setattr(module, "summarize_video", fake_summarize_video)
+
+    summary = module.attach_visual_artifact_gate(
+        rows,
+        samples=3,
+        thresholds=module.ArtifactThresholds(),
+    )
+
+    assert summary["n_videos"] == 1
+    assert summary["n_failed"] == 1
+    assert not summary["passes_visual_gate"]
+    assert rows[0]["visual_artifact_gate"]["artifact_flags"] == ["visual_gate_error"]
+    assert "cannot decode" in rows[0]["visual_artifact_gate"]["error"]
 
 
 def test_score_projection_means_frames():

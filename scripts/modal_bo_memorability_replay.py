@@ -41,6 +41,7 @@ from audience_vectors.bo_replay import (
     stratum_policy_summary,
     trial_policy_group,
 )
+from audience_vectors.visual_artifact_gate import ArtifactThresholds, summarize_video
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 INTAKE_ROOT = (
@@ -467,6 +468,56 @@ def attach_original_scores(rows: list[dict[str, Any]]) -> None:
         row["original_quality_score"] = trial.get("quality_score")
 
 
+def attach_visual_artifact_gate(
+    rows: list[dict[str, Any]],
+    *,
+    samples: int,
+    thresholds: ArtifactThresholds,
+) -> dict[str, Any]:
+    """Attach visual artifact-gate metrics to generated-video rows."""
+    evaluated = 0
+    failures: list[dict[str, Any]] = []
+    for row in rows:
+        local_path_raw = row.get("local_video_path")
+        if not local_path_raw:
+            continue
+        evaluated += 1
+        try:
+            gate = summarize_video(
+                Path(str(local_path_raw)),
+                samples=samples,
+                thresholds=thresholds,
+            )
+        except Exception as exc:  # noqa: BLE001
+            gate = {
+                "video_path": str(local_path_raw),
+                "sample_count": samples,
+                "artifact_flags": ["visual_gate_error"],
+                "passes_visual_gate": False,
+                "error": repr(exc),
+            }
+        row["visual_artifact_gate"] = gate
+        if not gate["passes_visual_gate"]:
+            failures.append(
+                {
+                    "label": row_label(row),
+                    "video_path": gate.get("video_path"),
+                    "artifact_flags": gate.get("artifact_flags", []),
+                    "error": gate.get("error"),
+                }
+            )
+
+    return {
+        "schema_version": 1,
+        "samples": samples,
+        "thresholds": thresholds.__dict__,
+        "n_videos": evaluated,
+        "n_failed": len(failures),
+        "passes_visual_gate": len(failures) == 0,
+        "failures": failures,
+    }
+
+
 def validate_run_inputs(args: argparse.Namespace, *, require_artifacts: bool) -> None:
     """Fail early if a non-dry replay is missing local run artifacts."""
     if args.trial_table is None or not args.trial_table.exists():
@@ -515,6 +566,8 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
     )
 
     rows: list[dict[str, Any]]
+    visual_artifact_gate: dict[str, Any] | None = None
+    visual_gate_blocked_scoring = False
     if args.dry_run:
         log("dry run only; not generating or scoring videos")
         rows = [
@@ -561,19 +614,45 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
             num_inference_steps=args.num_inference_steps,
             timeout_seconds=args.generation_timeout,
         )
-        upload_generated_videos(rows, volume_name=args.volume)
-        log(f"loading cortical v_mem from {args.cortical_vmem}")
-        cortical_vmem = load_unit_npz_vector(args.cortical_vmem, key=args.vmem_key)
-        await score_rows_with_tribe(
-            rows,
-            app_name=args.app_name,
-            cortical_vmem=cortical_vmem,
-            concurrency=args.tribe_concurrency,
-            timeout_seconds=args.tribe_timeout,
-            mode=args.tribe_mode,
-            input_mode=args.tribe_input,
-            diagnose_on_timeout=not args.no_diagnose_on_timeout,
-        )
+        if args.skip_visual_gate:
+            log("visual artifact gate skipped")
+        else:
+            thresholds = ArtifactThresholds(
+                min_tail_sharpness_ratio=args.visual_min_tail_sharpness_ratio,
+                min_tail_contrast_ratio=args.visual_min_tail_contrast_ratio,
+                min_tail_contrast=args.visual_min_tail_contrast,
+            )
+            visual_artifact_gate = attach_visual_artifact_gate(
+                rows,
+                samples=args.visual_gate_samples,
+                thresholds=thresholds,
+            )
+            log(
+                "visual artifact gate "
+                f"{visual_artifact_gate['n_failed']}/"
+                f"{visual_artifact_gate['n_videos']} failed"
+            )
+            visual_gate_blocked_scoring = (
+                args.fail_on_visual_artifacts
+                and not visual_artifact_gate["passes_visual_gate"]
+            )
+
+        if visual_gate_blocked_scoring:
+            log("visual artifact gate failed; skipping upload and TRIBE scoring")
+        else:
+            upload_generated_videos(rows, volume_name=args.volume)
+            log(f"loading cortical v_mem from {args.cortical_vmem}")
+            cortical_vmem = load_unit_npz_vector(args.cortical_vmem, key=args.vmem_key)
+            await score_rows_with_tribe(
+                rows,
+                app_name=args.app_name,
+                cortical_vmem=cortical_vmem,
+                concurrency=args.tribe_concurrency,
+                timeout_seconds=args.tribe_timeout,
+                mode=args.tribe_mode,
+                input_mode=args.tribe_input,
+                diagnose_on_timeout=not args.no_diagnose_on_timeout,
+            )
 
     attach_original_scores(rows)
     payload = {
@@ -589,6 +668,10 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         "num_inference_steps": args.num_inference_steps,
         "tribe_mode": args.tribe_mode,
         "tribe_input": args.tribe_input,
+        "skip_visual_gate": bool(args.skip_visual_gate),
+        "fail_on_visual_artifacts": bool(args.fail_on_visual_artifacts),
+        "visual_artifact_gate": visual_artifact_gate,
+        "visual_gate_blocked_scoring": visual_gate_blocked_scoring,
         "dry_run": bool(args.dry_run),
         "preflight_only": bool(args.dry_run),
         "summary": replay_summary(rows),
@@ -709,6 +792,44 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--no-diagnose-on-timeout", action="store_true")
     parser.add_argument("--populate-svd-cache", action="store_true")
     parser.add_argument(
+        "--skip-visual-gate",
+        action="store_true",
+        help="Do not attach visual artifact-gate metrics to generated videos.",
+    )
+    parser.add_argument(
+        "--fail-on-visual-artifacts",
+        action="store_true",
+        help=(
+            "After generation, write the replay report and exit nonzero if any "
+            "generated video fails the visual artifact gate. Upload/TRIBE scoring "
+            "is skipped when the gate fails."
+        ),
+    )
+    parser.add_argument(
+        "--visual-gate-samples",
+        type=int,
+        default=3,
+        help="Number of evenly spaced frames sampled by the visual artifact gate.",
+    )
+    parser.add_argument(
+        "--visual-min-tail-sharpness-ratio",
+        type=float,
+        default=0.35,
+        help="Minimum mid/end sharpness ratio relative to the first sampled frame.",
+    )
+    parser.add_argument(
+        "--visual-min-tail-contrast-ratio",
+        type=float,
+        default=0.55,
+        help="Minimum mid/end contrast ratio relative to the first sampled frame.",
+    )
+    parser.add_argument(
+        "--visual-min-tail-contrast",
+        type=float,
+        default=0.04,
+        help="Minimum absolute contrast for the weaker mid/end sampled frame.",
+    )
+    parser.add_argument(
         "--require-artifacts",
         action="store_true",
         help=(
@@ -721,8 +842,11 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
-    payload = asyncio.run(run(parse_args()))
+    args = parse_args()
+    payload = asyncio.run(run(args))
     print(json.dumps(payload["summary"], indent=2))
+    if payload.get("visual_gate_blocked_scoring"):
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":
