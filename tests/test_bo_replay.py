@@ -234,6 +234,35 @@ def test_validate_run_inputs_requires_artifacts_when_requested(tmp_path):
     assert "BO_MEM_CORTICAL_VMEM" in message
 
 
+def test_parse_args_exposes_svd_generation_controls(monkeypatch):
+    module = load_modal_replay_module()
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "modal_bo_memorability_replay.py",
+            "--svd-num-frames",
+            "14",
+            "--num-inference-steps",
+            "50",
+            "--svd-motion-bucket-id",
+            "40",
+            "--svd-noise-aug-strength",
+            "0",
+            "--svd-fps",
+            "11",
+        ],
+    )
+
+    args = module.parse_args()
+
+    assert args.svd_num_frames == 14
+    assert args.num_inference_steps == 50
+    assert args.svd_motion_bucket_id == 40
+    assert args.svd_noise_aug_strength == pytest.approx(0.0)
+    assert args.svd_fps == 11
+
+
 def test_attach_visual_artifact_gate_summarizes_generated_rows(monkeypatch, tmp_path):
     module = load_modal_replay_module()
     passing_video = tmp_path / "pass.mp4"
