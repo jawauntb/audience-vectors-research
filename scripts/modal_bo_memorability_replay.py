@@ -193,7 +193,11 @@ def generate_videos_on_modal(
     steering_vector: list[float],
     app_name: str,
     output_dir: Path,
+    num_frames: int,
     num_inference_steps: int,
+    motion_bucket_id: int,
+    noise_aug_strength: float,
+    fps: int,
     timeout_seconds: int,
 ) -> list[dict[str, Any]]:
     """Spawn Modal SVD jobs and write returned MP4 bytes locally."""
@@ -222,7 +226,11 @@ def generate_videos_on_modal(
             steering_vector=steering_vector,
             alpha=trial.alpha,
             guidance_scale=trial.guidance,
+            num_frames=num_frames,
             num_inference_steps=num_inference_steps,
+            motion_bucket_id=motion_bucket_id,
+            noise_aug_strength=noise_aug_strength,
+            fps=fps,
             seed=job.noise_seed,
             output_label=label,
             persist_output=False,
@@ -611,7 +619,11 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
             steering_vector=steering_vector,
             app_name=args.app_name,
             output_dir=args.output_dir,
+            num_frames=args.svd_num_frames,
             num_inference_steps=args.num_inference_steps,
+            motion_bucket_id=args.svd_motion_bucket_id,
+            noise_aug_strength=args.svd_noise_aug_strength,
+            fps=args.svd_fps,
             timeout_seconds=args.generation_timeout,
         )
         if args.skip_visual_gate:
@@ -665,7 +677,11 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         "replicate_seed_stride": args.replicate_seed_stride,
         "replicate_seed_offset": args.replicate_seed_offset,
         "app_name": args.app_name,
+        "svd_num_frames": args.svd_num_frames,
         "num_inference_steps": args.num_inference_steps,
+        "svd_motion_bucket_id": args.svd_motion_bucket_id,
+        "svd_noise_aug_strength": args.svd_noise_aug_strength,
+        "svd_fps": args.svd_fps,
         "tribe_mode": args.tribe_mode,
         "tribe_input": args.tribe_input,
         "skip_visual_gate": bool(args.skip_visual_gate),
@@ -774,6 +790,30 @@ def parse_args() -> argparse.Namespace:
         default=Path("data/reports/bo_modal_replay.json"),
     )
     parser.add_argument("--num-inference-steps", type=int, default=8)
+    parser.add_argument(
+        "--svd-num-frames",
+        type=int,
+        default=25,
+        help="Number of SVD-XT frames to generate per clip.",
+    )
+    parser.add_argument(
+        "--svd-motion-bucket-id",
+        type=int,
+        default=127,
+        help="SVD-XT motion bucket. Lower values usually preserve the seed image more.",
+    )
+    parser.add_argument(
+        "--svd-noise-aug-strength",
+        type=float,
+        default=0.02,
+        help="SVD-XT seed-image noise augmentation strength.",
+    )
+    parser.add_argument(
+        "--svd-fps",
+        type=int,
+        default=7,
+        help="FPS used when encoding the generated SVD frames.",
+    )
     parser.add_argument("--generation-timeout", type=int, default=20 * 60)
     parser.add_argument("--tribe-timeout", type=float, default=10 * 60)
     parser.add_argument("--tribe-concurrency", type=int, default=2)

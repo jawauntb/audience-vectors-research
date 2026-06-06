@@ -79,6 +79,14 @@ Visual gate options:
   when the gate fails.
 - `--visual-gate-samples`: number of evenly spaced frames sampled per video.
 
+SVD quality controls:
+
+- `--svd-num-frames`: number of SVD-XT frames to generate.
+- `--svd-motion-bucket-id`: SVD-XT motion bucket; lower values preserve the
+  seed image more strongly.
+- `--svd-noise-aug-strength`: seed-image noise augmentation strength.
+- `--svd-fps`: MP4 encoding FPS.
+
 TRIBE modes:
 
 - `--tribe-mode full`: run full TRIBE prediction and project onto cortical
@@ -337,7 +345,9 @@ This run should be used to narrow the BO claim, not strengthen it.
 - Inspect top videos for prompt drift and artifacts. Current status: failed for
   the 2026-06-05 seed-stratified panel because mid/end frames collapse into
   low-content blur or gradients. The automated visual-gated smoke also failed
-  4/4 generated clips and correctly skipped upload/TRIBE scoring.
+  4/4 generated clips and correctly skipped upload/TRIBE scoring. Tuned SVD
+  settings (`50` steps, motion bucket `5`, noise `0`) passed 4/4 clips and
+  completed 4/4 TRIBE scores in a one-replicate panel.
 - Report wall-clock and average minutes per evaluation.
 - Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock
   efficient.
