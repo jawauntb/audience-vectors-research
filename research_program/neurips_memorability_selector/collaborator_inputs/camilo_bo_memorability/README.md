@@ -66,9 +66,18 @@ The script:
 
 1. queues Modal SVD generations in parallel;
 2. passes the collaborator `alpha` and `guidance` values;
-3. uploads generated MP4s to `bmd-videos-v1`;
-4. scores or preflights with the deployed `TribeV2Predictor`;
-5. writes `data/reports/bo_modal_replay.json`.
+3. attaches start/mid/end-frame visual artifact-gate metrics;
+4. uploads generated MP4s to `bmd-videos-v1`;
+5. scores or preflights with the deployed `TribeV2Predictor`;
+6. writes `data/reports/bo_modal_replay.json`.
+
+Visual gate options:
+
+- `--skip-visual-gate`: omit generated-video artifact metrics.
+- `--fail-on-visual-artifacts`: write the report and exit nonzero if any
+  generated video fails the visual gate; upload and TRIBE scoring are skipped
+  when the gate fails.
+- `--visual-gate-samples`: number of evenly spaced frames sampled per video.
 
 TRIBE modes:
 
