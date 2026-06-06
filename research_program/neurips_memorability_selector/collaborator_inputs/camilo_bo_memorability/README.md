@@ -336,7 +336,8 @@ This run should be used to narrow the BO claim, not strengthen it.
   12/12 scores but produced a mixed stratum result.
 - Inspect top videos for prompt drift and artifacts. Current status: failed for
   the 2026-06-05 seed-stratified panel because mid/end frames collapse into
-  low-content blur or gradients.
+  low-content blur or gradients. The automated visual-gated smoke also failed
+  4/4 generated clips and correctly skipped upload/TRIBE scoring.
 - Report wall-clock and average minutes per evaluation.
 - Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock
   efficient.
