@@ -347,7 +347,10 @@ This run should be used to narrow the BO claim, not strengthen it.
   low-content blur or gradients. The automated visual-gated smoke also failed
   4/4 generated clips and correctly skipped upload/TRIBE scoring. Tuned SVD
   settings (`50` steps, motion bucket `5`, noise `0`) passed 4/4 clips and
-  completed 4/4 TRIBE scores in a one-replicate panel.
+  completed 4/4 TRIBE scores in a one-replicate panel, but the three-replicate
+  panel failed 1/12 clips because `sobol_007` replicate 2 repeatedly collapsed.
+  The human-panel path is blocked until the protocol does visual-first
+  replacement or resampling under a matched budget.
 - Report wall-clock and average minutes per evaluation.
 - Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock
   efficient.
