@@ -32,7 +32,12 @@ Last updated: 2026-06-08
   recipe identity. A follow-up lightweight feature audit did not explain the
   positive pockets strongly enough to accept a descriptor verifier: the best
   near-miss was seed-image colorfulness (AUC 0.8333, abs d 1.8471), below the
-  pre-registered AUC >= 0.85 gate.
+  pre-registered AUC >= 0.85 gate. A stronger CLIP embedding audit did clear
+  the descriptor-explanation gate: seed-image pocket-held-out centroid margin
+  reached AUC 1.0000, abs d 2.8573, and r(score) 0.8541; generated-video CLIP
+  centroid margin reached AUC 0.8796 and abs d 2.0280. This gives the pocket
+  residual an accepted compute-proxy verifier, but exact V-JEPA features for
+  those replay videos and human/BMD validation remain open.
 
 ## Newly Built V-JEPA Pilot State
 
@@ -74,9 +79,11 @@ to TRIBE/product nor obviously irrelevant.
   memorability. Their BO work is compute/control evidence until human-tested,
   and current SVD broadening should target seed-image/content expansion or a
   prompt-conditioned generator path rather than more alpha/guidance-only search.
-- We have not explained the stable positive SVD content pockets with lightweight
-  seed/video descriptors. The next mechanistic verifier should be CLIP/V-JEPA
-  embedding structure, measured-BMD alignment, or human evidence.
+- We have not validated the stable positive SVD content pockets with human
+  behavior, measured-BMD alignment, or exact V-JEPA features for the pocket
+  replay videos. CLIP embedding geometry is now accepted as a compute-proxy
+  verifier, so the next SVD run should replicate orange flowers and hanging
+  clothes while tracking both TRIBE score and CLIP centroid margin.
 - We have not shown delayed-recognition memory gains.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.
