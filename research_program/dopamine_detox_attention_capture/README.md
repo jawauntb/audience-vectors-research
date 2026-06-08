@@ -23,6 +23,10 @@ format work. It does not validate attentional capture.
 - `phase1_synthetic_smoke_manifest_20260608.json`: tiny fixture manifest.
 - `results/phase1_synthetic_smoke_20260608.json`: machine-readable smoke result.
 - `results/phase1_synthetic_smoke_20260608.md`: readable smoke report.
+- `results/bmd_memorability_control_20260608.json`: BOLD Moments control result
+  over 1,022 cached TRIBE feature files from the local data lake.
+- `results/bmd_memorability_control_20260608.md`: readable BOLD Moments control
+  report.
 
 ## Reused Infrastructure
 
@@ -46,6 +50,20 @@ uv run python scripts/run_attention_capture_phase1.py \
   --permutations 999 \
   --seed 20260608
 ```
+
+Run the local BOLD Moments control if `/Users/jawaun/isc_mod/data` is present:
+
+```bash
+uv run python scripts/run_attention_capture_bmd_control.py \
+  --output-json research_program/dopamine_detox_attention_capture/results/bmd_memorability_control_20260608.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/bmd_memorability_control_20260608.md \
+  --permutations 999 \
+  --seed 20260608
+```
+
+The BMD control is deliberately marked `real_control_not_attention_capture`.
+It can show whether the capture proxy overlaps with memorability, but it cannot
+validate the attention-capture claim.
 
 ## Real Manifest Shape
 
@@ -89,3 +107,21 @@ Ratios with non-positive frontoparietal denominators are withheld from the
 primary correlation and counted in the report. `capture_delta =
 mean(V1, PPA, language) - frontoparietal` is reported as a secondary robustness
 readout.
+
+## Current Control Result
+
+The BOLD Moments control used 1,022 cached TRIBE feature files and
+memorability labels. It did not pass the capture-score gate:
+
+```text
+capture_score vs memorability: rho = -0.1988, n = 660
+capture_delta vs memorability: rho = -0.2033, n = 1022
+frontoparietal vs memorability: rho = +0.1935, n = 1022
+invalid ratio denominators: 362
+```
+
+This is useful negative/control evidence. Under the broad exploratory
+Destrieux ROI masks, the new capture proxy is not simply the existing
+BMD memorability direction. It also shows that denominator handling is not a
+detail: 362 rows had non-positive frontoparietal means and were withheld from
+the primary ratio.

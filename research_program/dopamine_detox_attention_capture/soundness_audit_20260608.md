@@ -148,6 +148,23 @@ Results:
 - Key metrics: see the smoke report.
 - Variance or ablation: not applicable until real datasets are loaded.
 
+Control update:
+
+- A BOLD Moments memorability control was run over 1,022 cached TRIBE feature
+  files using exploratory Destrieux ROI masks. It is not an attention-capture
+  validation dataset.
+- The capture-score gate did not pass against BMD memorability:
+  `rho = -0.1988` on 660 valid-ratio rows.
+- The additive contrast also stayed negative: `rho = -0.2033` on 1,022 rows.
+- Frontoparietal alone weakly correlated positively with memorability:
+  `rho = +0.1935`.
+- 362 rows had non-positive frontoparietal denominators and were withheld from
+  the primary ratio. This confirms denominator handling is a live issue for
+  real TRIBE tensors.
+- Interpretation: useful control evidence. The proposed capture proxy does not
+  appear to be a trivial re-labeling of the existing BMD memorability direction,
+  but the ROI/ratio definition still needs real attention-label validation.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and

@@ -20,6 +20,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-json", type=Path, required=True)
     parser.add_argument("--output-md", type=Path, required=True)
     parser.add_argument("--roi-masks", type=Path, default=None)
+    parser.add_argument(
+        "--omit-rows",
+        action="store_true",
+        help="Do not include per-sample rows in the JSON report.",
+    )
     parser.add_argument("--permutations", type=int, default=999)
     parser.add_argument("--seed", type=int, default=17)
     parser.add_argument("--gate-rho", type=float, default=0.40)
@@ -36,6 +41,7 @@ def main() -> None:
         seed=args.seed,
         gate_rho=args.gate_rho,
         epsilon=args.epsilon,
+        include_rows=not args.omit_rows,
     )
 
     args.output_json.parent.mkdir(parents=True, exist_ok=True)

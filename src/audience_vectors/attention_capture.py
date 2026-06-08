@@ -161,6 +161,24 @@ def load_roi_masks_npz(path: Path) -> dict[str, np.ndarray]:
     return {name: np.asarray(payload[name], dtype=bool) for name in payload.files}
 
 
+def load_destrieux_roi_masks() -> dict[str, np.ndarray]:
+    """Load exploratory ROI masks from Nilearn's fsaverage5 Destrieux atlas."""
+
+    from nilearn.datasets import fetch_atlas_surf_destrieux  # noqa: PLC0415
+
+    atlas = fetch_atlas_surf_destrieux()
+    lh = np.asarray(atlas["map_left"], dtype=int)
+    rh = np.asarray(atlas["map_right"], dtype=int)
+    labels = [str(label) for label in atlas["labels"]]
+    n_regions = len(labels)
+    parcels = np.concatenate([lh, rh])
+    parcels[10242:] = parcels[10242:] + n_regions
+    all_labels = [f"L_{label}" for label in labels] + [
+        f"R_{label}" for label in labels
+    ]
+    return build_roi_masks_from_parcels(parcels, all_labels)
+
+
 def build_roi_masks_from_parcels(
     parcels: np.ndarray,
     labels: list[str],
@@ -231,6 +249,7 @@ def run_phase1_manifest(
     seed: int = 17,
     gate_rho: float = DEFAULT_GATE_RHO,
     epsilon: float = 1e-6,
+    include_rows: bool = True,
 ) -> dict[str, Any]:
     """Run the Phase 1 capture-score validation gate for a manifest."""
 
@@ -238,6 +257,29 @@ def run_phase1_manifest(
     manifest_status = str(manifest_payload.get("status") or "unspecified")
     roi_masks = load_roi_masks_npz(roi_masks_path) if roi_masks_path else None
     rows = load_manifest_rows(manifest_path, roi_masks=roi_masks, epsilon=epsilon)
+    return run_capture_rows(
+        rows,
+        manifest_path=str(manifest_path),
+        manifest_status=manifest_status,
+        permutations=permutations,
+        seed=seed,
+        gate_rho=gate_rho,
+        include_rows=include_rows,
+    )
+
+
+def run_capture_rows(
+    rows: list[CaptureRow],
+    *,
+    manifest_path: str,
+    manifest_status: str,
+    permutations: int = 999,
+    seed: int = 17,
+    gate_rho: float = DEFAULT_GATE_RHO,
+    include_rows: bool = True,
+) -> dict[str, Any]:
+    """Build a Phase 1 report from already-scored capture rows."""
+
     datasets = sorted({row.dataset for row in rows})
     group_summaries = [
         summarize_capture_rows(
@@ -262,11 +304,11 @@ def run_phase1_manifest(
         for item in group_summaries
         if item["metrics"]["capture_score"]["gate_passed"]
     ]
-    claim_update_allowed = not _is_fixture_run(manifest_status, rows)
-    return {
+    claim_update_allowed = not _is_claim_blocked_run(manifest_status, rows)
+    report: dict[str, Any] = {
         "schema_version": 1,
         "experiment": "phase1_capture_score_validation",
-        "manifest_path": str(manifest_path),
+        "manifest_path": manifest_path,
         "manifest_status": manifest_status,
         "claim_update_allowed": claim_update_allowed,
         "n_samples": len(rows),
@@ -287,8 +329,10 @@ def run_phase1_manifest(
                 f"{gate_rho:.2f} in at least one dataset"
             ),
         },
-        "rows": [_row_to_json(row) for row in rows],
     }
+    if include_rows:
+        report["rows"] = [_row_to_json(row) for row in rows]
+    return report
 
 
 def summarize_capture_rows(
@@ -468,6 +512,19 @@ def render_phase1_markdown(report: dict[str, Any]) -> str:
             ),
         ]
     )
+    control = report.get("control")
+    if isinstance(control, dict):
+        lines.extend(
+            [
+                "",
+                "## Control Note",
+                "",
+                f"- Control: {control.get('name', 'unspecified')}",
+                f"- Ground truth: {control.get('ground_truth_name', 'unspecified')}",
+                f"- ROI source: {control.get('roi_source', 'unspecified')}",
+                f"- Interpretation: {control.get('interpretation', 'unspecified')}",
+            ]
+        )
     return "\n".join(lines) + "\n"
 
 
@@ -546,11 +603,12 @@ def _row_to_json(row: CaptureRow) -> dict[str, Any]:
     }
 
 
-def _is_fixture_run(manifest_status: str, rows: list[CaptureRow]) -> bool:
+def _is_claim_blocked_run(manifest_status: str, rows: list[CaptureRow]) -> bool:
     status = manifest_status.lower()
-    if "synthetic" in status or "fixture" in status or "smoke" in status:
+    blocked_terms = ("synthetic", "fixture", "smoke", "control", "not_attention")
+    if any(term in status for term in blocked_terms):
         return True
-    return any(row.dataset.lower().endswith("_fixture") for row in rows)
+    return any("fixture" in row.dataset.lower() for row in rows)
 
 
 def _fmt_optional_float(value: float | None) -> str:

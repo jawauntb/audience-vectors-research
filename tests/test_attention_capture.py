@@ -7,11 +7,13 @@ import numpy as np
 import pytest
 
 from audience_vectors.attention_capture import (
+    CaptureRow,
     ROIGroupSpec,
     build_roi_masks_from_parcels,
     capture_scores_from_roi_values,
     load_manifest_rows,
     render_phase1_markdown,
+    run_capture_rows,
     run_phase1_manifest,
     spearman_rho,
 )
@@ -107,5 +109,41 @@ def test_run_phase1_manifest_passes_synthetic_gate(tmp_path: Path) -> None:
 
     report = run_phase1_manifest(manifest, permutations=99, seed=1)
     assert report["gate"]["passed"] is True
+    assert report["gate"]["claim_validated"] is False
     assert report["groups"][0]["metrics"]["capture_score"]["rho"] > 0.9
     assert "Phase 1 Capture-Score Dry Run" in render_phase1_markdown(report)
+
+
+def test_control_status_blocks_claim_validation() -> None:
+    rows = [
+        CaptureRow(
+            sample_id=f"s{i}",
+            dataset="BOLD_Moments_control",
+            ground_truth=float(i),
+            roi_values={
+                "V1": 0.2 + i,
+                "PPA": 0.2 + i,
+                "language": 0.2 + i,
+                "frontoparietal": 1.0,
+            },
+            sensory_mean=0.2 + i,
+            capture_score=0.2 + i,
+            capture_delta=i - 0.8,
+            frontoparietal=1.0,
+            denominator_valid=True,
+        )
+        for i in range(5)
+    ]
+
+    report = run_capture_rows(
+        rows,
+        manifest_path="control",
+        manifest_status="real_control_not_attention_capture",
+        permutations=0,
+        include_rows=False,
+    )
+
+    assert report["gate"]["passed"] is True
+    assert report["claim_update_allowed"] is False
+    assert report["gate"]["claim_validated"] is False
+    assert "rows" not in report
