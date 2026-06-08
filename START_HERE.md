@@ -33,6 +33,15 @@ monolithic project shape. They may still exist on this machine under
 This is the compact state of the science: what is real, what is pending, and
 what should not be claimed.
 
+## Active Research Queue
+
+- `NEXT_STEPS.md`
+
+This is the working control doc for what to do next, why it matters, which gate
+decides whether it counts, and which artifacts need updating after each run. Use
+it before launching new experiments so the project stays focused on the current
+content-pocket consolidation path.
+
 ## Claim Ledger
 
 - `CLAIM_LEDGER.md`

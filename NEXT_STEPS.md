@@ -1,14 +1,130 @@
-# Next steps — what to actually click
+# Active Research Control Doc
 
-Three things to launch:
+Last updated: 2026-06-08.
 
-1. Prolific human study (~$30–60, ~24h to results)
-2. Memento10k + VideoMem access requests (free, ~1–2 weeks for approval)
-3. BMD fMRI joint analysis (free, ~30 min compute per subject — closes the
-   "predicted not measured" §8 limitation)
+Purpose: keep the research loop explicit enough that we can continue across
+sessions without drifting. This is the working queue for what to do next, why it
+matters, what gate decides whether it counts, and which artifacts should be
+updated after each run.
 
-I can't create accounts, submit forms, or spend money on your behalf. Everything
-else is built — below is the exact click-by-click.
+Update rule: every substantial research turn should update this file, the
+current status doc, or the claim ledger if the accepted state changes. If a run
+only refines tactics, update this file. If a run changes what can be claimed,
+update `CLAIM_LEDGER.md` and
+`research_program/neurips_memorability_selector/experiments/current_research_status.md`
+too.
+
+## Current Accepted State
+
+- Human behavior remains the strongest validation layer. The Prolific Study A
+  result supports the TRIBE/BMD selector signal, but it does not validate every
+  later compute-only candidate pool.
+- BO/SVD/LoRA/Modal work is compute-proxy evidence until a human or
+  BMD-grounded gate validates the selected videos.
+- Recent SVD replay and pocket-regime audit results show that seed-image and
+  content identity dominate the score structure. Alpha/guidance-only broadening
+  is not the current path to research progress.
+- Accepted compute-proxy finding C-017: stable non-jellyfish content pockets
+  survive local recipe stress tests. Orange flowers and hanging clothes are the
+  most important positive pockets to consolidate next. Aerial beach, city
+  street, and storm beach are current hard negative controls.
+- Prompt text is metadata-only in the current SVD runner. A prompt-rewrite
+  tournament should wait until we use a prompt-conditioned generator path where
+  the prompt changes the actual pixels.
+
+## Current Regime
+
+- Artifact types: seed images, prompts, SVD/Modal recipes, generated videos,
+  TRIBE scores, memorability deltas, visual-gate statuses, run manifests,
+  pocket labels, claim-ledger entries, and research notes.
+- Operations: restore seed-bank frames, generate fixed-recipe or Sobol replay
+  videos, score with TRIBE, run visual gates, aggregate by seed/content pocket,
+  compare against hard negative controls, and summarize accepted/rejected
+  claims.
+- Gates/verifiers: successful generation, no visual-gate failure, positive
+  mean TRIBE delta for candidate pockets, negative control separation, enough
+  stochastic replication to avoid one-off seed luck, and human/BMD validation
+  before final memorability claims.
+- Store: committed manifests and result notes live under
+  `research_program/neurips_memorability_selector/`; raw videos and generated
+  score reports live in the local `data/` lake and are intentionally not all
+  committed.
+- Known limitation: the current pocket finding is a compute-proxy content
+  finding, not a proven human memorability mechanism.
+
+## Active Objective
+
+Turn the content-pocket result from "interesting compute proxy residual" into a
+stable candidate-selection regime. The next several steps should either
+consolidate the positive pockets, explain them with interpretable descriptors,
+or show that the signal is too model-internal to trust without immediate human
+validation.
+
+## Active Queue
+
+| Priority | Task | Why | Gate | Next artifact | Status |
+|---|---|---|---|---|---|
+| P0 | Feature/embedding audit of positive vs negative content pockets | Tests whether the accepted pocket residual has an interpretable visual or embedding basis | Positives separate from hard negatives in at least one descriptor family, or we explicitly mark the pocket as black-box TRIBE content specificity | Content-pocket feature audit manifest and result note | Next |
+| P1 | Stochastic replication around orange flowers and hanging clothes | Consolidates the best non-jellyfish positives before spending human-validation budget | Positive mean persists across new stochastic seeds, visual gates pass, and hard negatives remain negative under matched recipes | Expanded pocket replication manifest and result note | Queued |
+| P1 | Blue jellyfish and old car boundary audit | Checks whether weaker positives are stable enough to keep or should be demoted | Stable positive mean with acceptable variance, or demote to exploratory/supporting only | Boundary audit note | Queued |
+| P2 | Prompt-conditioned generator transition | Moves from metadata-only prompt text to a generator where prompt operations can actually change content | Prompt interventions change generated video content while preserving visual validity and improving candidate selection | Prompt-conditioned generator manifest | Queued |
+| P2 | V-JEPA-augmented candidate screen | Reintroduces the broader selector stack only after content pockets are stabilized | V-JEPA adjudication improves or de-risks candidate ranking against TRIBE-only selection | Selector-stack comparison note | Queued |
+| Human-owned | Human pilot or delayed-recognition study | Needed before final human memorability claims | Participants prefer selected candidates or delayed recognition improves under pre-registered analysis | Prolific/IRB packet and analysis report | Parked until compute screen |
+| Async | Memento10k, VideoMem, or measured-BMD transfer checks | Tests cross-dataset and measured-brain grounding | External dataset correlation or measured-fMRI direction alignment clears pre-registered threshold | Dataset transfer report | Parked |
+
+## Immediate Next Experiment
+
+Question: are the stable positive pockets explainable by interpretable visual or
+embedding features, or are they only TRIBE score islands?
+
+Action class: search inside the current compute-proxy regime. It becomes a
+small discovery move only if it creates a new accepted descriptor, verifier, or
+artifact class that survives the hard negative controls.
+
+Positive targets: orange flowers, hanging clothes, blue jellyfish, old car.
+
+Negative controls: aerial beach, city street, storm beach.
+
+Suggested descriptors:
+
+- CLIP or image/video embedding distance from positive and negative seed
+  centroids.
+- Basic visual features: color histograms, edge density, optical-flow or frame
+  change magnitude if available, object/text labels if already accessible.
+- Existing TRIBE score, recipe id, Sobol index, and visual-gate status as
+  covariates.
+
+Acceptance gate:
+
+- At least one descriptor family separates accepted positives from hard
+  negatives without using the memorability score directly; or
+- the result note explicitly rejects descriptor-level explanation and narrows
+  C-017 to a black-box compute-proxy pocket finding.
+
+Required outputs:
+
+- a manifest naming inputs, descriptors, positives, controls, and withheld
+  cases;
+- a result note with accepted and rejected explanations;
+- claim-ledger update only if the result changes C-017's scope.
+
+## Stop Rules
+
+- Do not call proxy-only improvements human memorability gains.
+- Do not broaden alpha/guidance-only search until content identity has been
+  controlled or deliberately accepted as the main mechanism.
+- Do not run prompt-rewrite tournaments in the current SVD runner as if prompt
+  text changes the generated pixels.
+- Do not delete failed candidates. Rejected alternatives explain what the
+  accepted pocket is not.
+- If a positive pocket fails replication, demote it instead of averaging it into
+  a broader success story.
+
+## Reference: External Human And Dataset Tasks From Earlier Plan
+
+The sections below preserve the older click-by-click launch material. They are
+still useful, but they are not the active Codex queue until the compute screen
+above produces a candidate set worth spending human or dataset-access effort on.
 
 ---
 
