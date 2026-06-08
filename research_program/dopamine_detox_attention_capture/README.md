@@ -91,7 +91,8 @@ format work. It does not validate attentional capture.
 - `scripts/audit_attention_capture_data_readiness.py`: local readiness audit for
   external labels/videos, cached TRIBE NPZs, ROI masks, and existing manifests.
 - `scripts/audit_attention_capture_manifest_alignment.py`: label-to-feature
-  alignment audit to run before building a real manifest.
+  alignment audit to run before building a real manifest. For DHF1K, it can
+  consume the upstream label audit and carry that verifier hash forward.
 
 ## Reused Infrastructure
 
@@ -249,7 +250,22 @@ uv run python scripts/extract_attention_capture_tribe_features.py \
   --concurrency 4
 ```
 
-Then build and score the DHF1K Phase 1 manifest:
+Then audit DHF1K label-to-feature alignment, including the upstream label audit:
+
+```bash
+uv run python scripts/audit_attention_capture_manifest_alignment.py \
+  --labels-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv \
+  --feature-dir data/features/tribe_dhf1k_attention \
+  --label-audit research_program/dopamine_detox_attention_capture/results/dhf1k_attention_label_audit_20260608.json \
+  --dataset DHF1K \
+  --ground-truth-column mean_map_intensity \
+  --min-samples 350 \
+  --min-distinct-ground-truth 3 \
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_alignment_20260608.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_alignment_20260608.md
+```
+
+Then build the DHF1K Phase 1 manifest:
 
 ```bash
 uv run python scripts/build_attention_capture_phase1_manifest.py \

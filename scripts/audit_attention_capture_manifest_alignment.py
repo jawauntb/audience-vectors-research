@@ -7,6 +7,7 @@ import csv
 import json
 import math
 from collections import Counter
+from hashlib import sha256
 from pathlib import Path
 from typing import Any
 
@@ -19,6 +20,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--feature-dir", type=Path, required=True)
     parser.add_argument("--output-json", type=Path, required=True)
     parser.add_argument("--output-md", type=Path, required=True)
+    parser.add_argument(
+        "--label-audit",
+        type=Path,
+        default=None,
+        help=(
+            "Optional upstream label audit, such as the JSON output from "
+            "build_dhf1k_attention_labels.py."
+        ),
+    )
     parser.add_argument("--sample-id-column", default="sample_id")
     parser.add_argument("--ground-truth-column", default="ground_truth")
     parser.add_argument("--feature-template", default="{sample_id}.npz")
@@ -34,6 +44,7 @@ def main() -> None:
     report = audit_manifest_alignment(
         labels_csv=args.labels_csv,
         feature_dir=args.feature_dir,
+        label_audit=args.label_audit,
         sample_id_column=args.sample_id_column,
         ground_truth_column=args.ground_truth_column,
         feature_template=args.feature_template,
@@ -57,6 +68,7 @@ def audit_manifest_alignment(
     *,
     labels_csv: Path,
     feature_dir: Path,
+    label_audit: Path | None = None,
     sample_id_column: str = "sample_id",
     ground_truth_column: str = "ground_truth",
     feature_template: str = "{sample_id}.npz",
@@ -89,6 +101,12 @@ def audit_manifest_alignment(
     existing = [sample for sample in samples if sample["feature_exists"]]
     missing = [sample for sample in samples if not sample["feature_exists"]]
     invalid_ground_truth = [sample for sample in samples if sample["ground_truth"] is None]
+    label_audit_metadata = validate_label_audit(
+        label_audit=label_audit,
+        labels_csv=labels_csv,
+        dataset=dataset,
+        ground_truth_column=ground_truth_column,
+    )
     blocking_reasons = alignment_blocking_reasons(
         n_aligned=len(existing),
         n_duplicate_ids=len(duplicate_ids),
@@ -97,6 +115,7 @@ def audit_manifest_alignment(
         min_samples=min_samples,
         min_distinct_ground_truth=min_distinct_ground_truth,
     )
+    blocking_reasons.extend(label_audit_metadata["blocking_reasons"])
 
     return {
         "schema_version": 1,
@@ -104,6 +123,7 @@ def audit_manifest_alignment(
         "dataset": dataset,
         "labels_csv": str(labels_csv),
         "feature_dir": str(feature_dir),
+        "label_audit": label_audit_metadata,
         "sample_id_column": sample_id_column,
         "ground_truth_column": ground_truth_column,
         "feature_template": feature_template,
@@ -129,6 +149,66 @@ def audit_manifest_alignment(
             "This audit checks CSV/feature alignment only. It does not score "
             "TRIBE features or validate attentional capture."
         ),
+    }
+
+
+def validate_label_audit(
+    *,
+    label_audit: Path | None,
+    labels_csv: Path,
+    dataset: str,
+    ground_truth_column: str,
+) -> dict[str, Any]:
+    if label_audit is None:
+        return {
+            "path": None,
+            "sha256": None,
+            "experiment": None,
+            "ready_for_manifest_alignment": None,
+            "rank_column": None,
+            "recommended_ground_truth_column": None,
+            "n_rows": None,
+            "blocking_reasons": [],
+        }
+
+    payload = json.loads(label_audit.read_text(encoding="utf-8"))
+    reasons: list[str] = []
+    experiment = payload.get("experiment")
+    if experiment != "dhf1k_attention_label_audit":
+        reasons.append(f"label audit experiment {experiment!r} is not supported")
+    if not payload.get("ready_for_manifest_alignment"):
+        upstream_reasons = payload.get("blocking_reasons") or []
+        reason_text = "; ".join(str(reason) for reason in upstream_reasons)
+        if reason_text:
+            reasons.append(f"label audit is not ready: {reason_text}")
+        else:
+            reasons.append("label audit is not ready")
+
+    audit_labels_csv = payload.get("labels_csv")
+    if audit_labels_csv and not same_path(audit_labels_csv, labels_csv):
+        reasons.append("label audit labels_csv differs from alignment labels_csv")
+
+    audit_dataset = str(payload.get("dataset") or "unknown")
+    if dataset != "unknown" and audit_dataset not in ("unknown", dataset):
+        reasons.append("label audit dataset differs from alignment dataset")
+
+    rank_column = payload.get("rank_column")
+    if rank_column and rank_column != ground_truth_column:
+        reasons.append(
+            "label audit rank_column differs from alignment ground_truth_column"
+        )
+
+    return {
+        "path": str(label_audit),
+        "sha256": sha256(label_audit.read_bytes()).hexdigest(),
+        "experiment": experiment,
+        "ready_for_manifest_alignment": payload.get("ready_for_manifest_alignment"),
+        "rank_column": rank_column,
+        "recommended_ground_truth_column": payload.get(
+            "recommended_ground_truth_column"
+        ),
+        "n_rows": payload.get("n_rows"),
+        "blocking_reasons": reasons,
     }
 
 
@@ -219,6 +299,8 @@ def render_alignment_markdown(report: dict[str, Any]) -> str:
         "",
         f"- Dataset: {report['dataset']}",
         f"- Ready for manifest build: {report['ready_for_manifest_build']}",
+        f"- Label audit ready: {report['label_audit']['ready_for_manifest_alignment']}",
+        f"- Label audit rank column: {report['label_audit']['rank_column'] or 'n/a'}",
         f"- Label rows: {report['n_label_rows']}",
         f"- Unique sample ids: {report['n_unique_sample_ids']}",
         f"- Aligned feature files: {report['n_aligned_features']}",
@@ -283,6 +365,12 @@ def required_cell(row: dict[str, str], column: str, path: Path) -> str:
     if value is None or value == "":
         raise ValueError(f"{path} has a row missing required column {column!r}")
     return value
+
+
+def same_path(value: object, expected: Path) -> bool:
+    if not isinstance(value, str) or not value:
+        return False
+    return Path(value).expanduser().resolve() == expected.expanduser().resolve()
 
 
 def finite_float(value: Any) -> float | None:

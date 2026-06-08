@@ -336,6 +336,22 @@ DHF1K label-gate update:
 - No real DHF1K label artifact was generated in this step; this is a verifier
   upgrade that will run once a DHF1K root is mounted.
 
+DHF1K handoff-provenance update:
+
+- `scripts/build_dhf1k_attention_labels.py` now marks its JSON output as
+  `experiment=dhf1k_attention_label_audit` and records the emitted label CSV
+  path.
+- `scripts/audit_attention_capture_manifest_alignment.py` can consume that
+  upstream label audit via `--label-audit`.
+- The alignment audit now blocks if the upstream DHF1K label audit is not
+  `ready_for_manifest_alignment`, points at a different label CSV, names a
+  different rank column than the manifest ground-truth column, or claims a
+  different dataset.
+- The DHF1K runbook now explicitly inserts the alignment audit between TRIBE
+  feature extraction and manifest build, so the manifest provenance chain is:
+  DHF1K label audit -> label/feature alignment audit -> manifest metadata.
+- No real DHF1K label or alignment artifact was generated in this step.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
@@ -349,15 +365,16 @@ Next move:
 
 1. Mount or acquire real SnapUGC/VQualA labels or a DHF1K dataset root; rerun
    `scripts/audit_attention_capture_data_readiness.py`.
-2. Before building the manifest, run
-   `scripts/audit_attention_capture_manifest_alignment.py` on the chosen label
-   CSV and feature directory.
-3. Build a real Phase 1 manifest for SnapUGC and/or DHF1K from external labels
-   and cached TRIBE NPZ files, passing `--alignment-audit` so the manifest
-   records the verifier hash.
-4. For DHF1K, require `ready_for_manifest_alignment=true` in the label audit;
+2. For DHF1K, require `ready_for_manifest_alignment=true` in the label audit;
    if the chosen rank column is blocked, rerun with a recommended
    non-degenerate ground-truth column before GPU scoring.
+3. Before building the manifest, run
+   `scripts/audit_attention_capture_manifest_alignment.py` on the chosen label
+   CSV and feature directory. For DHF1K, pass the label audit via
+   `--label-audit`.
+4. Build a real Phase 1 manifest for SnapUGC and/or DHF1K from external labels
+   and cached TRIBE NPZ files, passing `--alignment-audit` so the manifest
+   records the verifier hash.
 5. Run the guarded Phase 1 workflow with
    `scripts/run_attention_capture_phase1_workflow.py`, using disjoint masks as
    primary and overlapping masks as the archived sensitivity condition.
