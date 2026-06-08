@@ -115,10 +115,12 @@ Before new human trials, use compute-side work to stabilize candidate selection:
 - preserve the claim boundary: BO/SVD/LoRA/Modal work is compute-proxy evidence
   until a human or BMD-grounded gate validates the candidate set;
 - for current SVD replay, stop spending broadening budget on alpha/guidance-only
-  search. Prompt-transfer, per-prompt Sobol, and fixed-recipe seed-content panels
-  show that seed-image/content identity dominates the score structure;
-- expand or restore the seed-image bank, then run equal-budget seed-selection
-  tournaments with visual-first retention and stochastic replicates;
+  search. Prompt-transfer, per-prompt Sobol, fixed-recipe seed-content,
+  restored-bank, and pocket regime-audit panels show that seed-image/content
+  identity dominates the score structure;
+- consolidate the stable restored positive pockets, especially orange flowers
+  and hanging clothes, with more stochastic seeds and an embedding/visual
+  feature audit against hard negative controls;
 - or switch to a prompt-conditioned generator path before running prompt-rewrite
   tournaments, because prompt text is metadata-only in the current SVD runner;
 - then human validation only on candidates that survive the compute screen.
