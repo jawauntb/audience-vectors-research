@@ -203,6 +203,8 @@ the control sequence, prompt strata, and missing strata are auditable. The
 runnable manifest is `regenerated_visual_controls_manifest_20260608.md`.
 The completed regenerated-control run is
 `regenerated_visual_controls_result_20260608.md`.
+The next foundation manifest is
+`next_research_foundation_manifest_20260608.md`.
 
 The runnable manifest is
 `seed_stratified_tournament_manifest.md`. It records the selected saved-table
@@ -366,6 +368,23 @@ Use it as evidence that the regenerated-control and visual-first protocol can
 run end to end, not as evidence that BO broadly beats controls or improves
 human memorability.
 
+### 2026-06-08 Next Foundation Audit
+
+The saved 3-objective table cannot broaden the BO/control claim beyond two
+prompt strata by replay alone. A `top-bo-per-stratum --max-evals 99` dry-run
+finds 20 saved BO rows: 3 fireworks and 17 jellyfish. A saved-table
+`seed-stratified-bo-vs-sobol --max-evals 99` dry-run also remains limited to
+the same two prompt strata.
+
+The next low-friction compute step is therefore a balanced within-table stress
+test, not a broad prompt claim: 3 saved BO anchors and 3 fresh regenerated
+Sobol controls per available prompt stratum, with 3 stochastic replicates each.
+The preflight in `next_research_foundation_manifest_20260608.md` selects 12
+candidates and expands to 36 replay jobs.
+
+True broad prompt evidence requires a new BO/search panel over additional seed
+prompts.
+
 ## Validation Checklist
 
 - Confirm exact `v_mem_CLIP` derivation from cortical `v_mem`.
@@ -395,7 +414,10 @@ human memorability.
   regenerated-control run generated 24/24 clips, withheld one BO fireworks
   candidate under complete-candidate retention, scored 21/21 retained rows, and
   kept matched BO/control coverage in both selected strata. The result is mixed:
-  BO wins jellyfish, regenerated Sobol wins fireworks.
+  BO wins jellyfish, regenerated Sobol wins fireworks. Current next step:
+  run the balanced max-3 stress test from
+  `next_research_foundation_manifest_20260608.md`, or freeze only the visually
+  retained matched candidates for an exploratory human panel.
 - Report wall-clock and average minutes per evaluation.
 - Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock
   efficient.
