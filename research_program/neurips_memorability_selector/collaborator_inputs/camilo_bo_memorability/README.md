@@ -468,6 +468,40 @@ committed preregistration and result notes are
 `pocket_regime_audit_manifest_20260608.md` and
 `pocket_regime_audit_result_20260608.md`.
 
+### 2026-06-08 Content-Pocket Feature Audit
+
+The next audit asked whether the positive pocket residual has a lightweight
+visual explanation, or whether it should remain a black-box TRIBE compute-proxy
+finding until a stronger verifier is added. The script
+`scripts/audit_content_pocket_features.py` joined the pocket-regime replay
+report to the restored seed images and generated replay videos, then computed
+color, brightness, hue-region, edge/texture, entropy, and center/border
+descriptors on both seed images and sampled generated-video frames.
+
+The pre-registered descriptor gate was strict but simple: accept a descriptor
+only if it separates the four positive pockets from the three hard negative
+controls with `separation_auc >= 0.85` and `abs_cohen_d >= 1.00`, without using
+TRIBE score as an input feature.
+
+No lightweight descriptor cleared that gate.
+
+| family | feature | direction | positive mean | negative mean | AUC | abs d | r(score) |
+|---|---|---|---:|---:|---:|---:|---:|
+| seed | colorfulness | higher for positive | 0.2381 | 0.1126 | 0.8333 | 1.8471 | 0.7469 |
+| seed | bright fraction | higher for positive | 0.5143 | 0.1568 | 0.8333 | 1.3371 | 0.5908 |
+| video | bright fraction | higher for positive | 0.5221 | 0.1869 | 0.8102 | 1.2287 | 0.5626 |
+| video | colorfulness | higher for positive | 0.2797 | 0.1366 | 0.7963 | 1.6930 | 0.7225 |
+
+This is useful negative structure. The stable pockets are not explained well
+enough by simple color/edge/frame descriptors to promote one of those
+descriptors into a verifier. C-017 therefore stays scoped as a compute-proxy
+content-pocket finding. The next mechanistic move should be a stronger
+CLIP/V-JEPA embedding audit, or a human/BMD-grounded validation gate, before
+spending much more budget on blind stochastic replication. The committed audit
+artifacts are `content_pocket_feature_audit_manifest_20260608.md`,
+`content_pocket_feature_audit_result_20260608.md`, and
+`content_pocket_feature_audit_summary_20260608.json`.
+
 ## Validation Checklist
 
 - Confirm exact `v_mem_CLIP` derivation from cortical `v_mem`.

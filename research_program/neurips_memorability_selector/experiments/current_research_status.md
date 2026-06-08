@@ -29,7 +29,10 @@ Last updated: 2026-06-08
   hanging clothes are stable non-jellyfish positive pockets, blue jellyfish
   remains positive, fireworks is visually brittle, and seed-image/content slot
   explains retained SVD replay score variance far better than alpha/guidance
-  recipe identity.
+  recipe identity. A follow-up lightweight feature audit did not explain the
+  positive pockets strongly enough to accept a descriptor verifier: the best
+  near-miss was seed-image colorfulness (AUC 0.8333, abs d 1.8471), below the
+  pre-registered AUC >= 0.85 gate.
 
 ## Newly Built V-JEPA Pilot State
 
@@ -71,6 +74,9 @@ to TRIBE/product nor obviously irrelevant.
   memorability. Their BO work is compute/control evidence until human-tested,
   and current SVD broadening should target seed-image/content expansion or a
   prompt-conditioned generator path rather than more alpha/guidance-only search.
+- We have not explained the stable positive SVD content pockets with lightweight
+  seed/video descriptors. The next mechanistic verifier should be CLIP/V-JEPA
+  embedding structure, measured-BMD alignment, or human evidence.
 - We have not shown delayed-recognition memory gains.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.
