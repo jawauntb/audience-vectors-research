@@ -67,6 +67,10 @@ too.
   files or matched controls, and a standalone Prolific-style survey HTML. This
   is still prelaunch; manual screening, hosting, and human/BMD approval remain
   open.
+- Agent sampled-frame pre-screening of the frozen content-pocket MP4s is now
+  complete: 45/45 stimuli byte/hash/frame-gate screened, 0 automated failures,
+  4 contact sheets produced, and a hosted-video URL map template prepared.
+  Final human/IRB-facing content screening and hosted HTTPS URLs remain open.
 - Prompt text is metadata-only in the current SVD runner. A prompt-rewrite
   tournament should wait until we use a prompt-conditioned generator path where
   the prompt changes the actual pixels.
@@ -110,6 +114,7 @@ validation.
 | P1 | Blue jellyfish and old car boundary audit | Checks whether weaker positives are stable enough to keep or should be demoted | Partial pass: 90/90 clips generated/scored, 0 visual failures, both pockets positive, hard controls negative; CLIP-side boundary verifier accepted; exact V-JEPA not accepted | `boundary_pocket_audit_result_20260608.md` | Done; boundary arms only |
 | P1 | V-JEPA-caveated human/BMD validation packet | Freezes what can move to human/BMD spend without smuggling compute-proxy caveats into the claim | Packet assembled with orange flowers/hanging clothes as primary candidates and blue jellyfish/old car as exploratory boundary arms | `content_pocket_human_bmd_validation_packet_20260608.md` | Done |
 | P1 | Exact content-pocket MP4 stimulus freeze | Turns the validation packet into an auditable fixed task pool before human/BMD spend | Frozen: 24 pairwise tasks, 45 unique MP4 paths, no missing selected files or matched controls; survey HTML built but not launched | `content_pocket_validation_stimuli_manifest_20260608.json` and `content_pocket_validation_pairwise_tasks_20260608.json` | Done; screen/host next |
+| P1 | Frozen MP4 prelaunch screening | Checks launch readiness without changing the proxy-selected claim | Done: 45/45 selected MP4s present and hash-matched, sampled-frame visual gate passed, contact-sheet review found no obvious sampled-frame text/watermark/collapse/leakage; final human/IRB screening still required | `content_pocket_validation_mp4_screening_20260608.md` and `content_pocket_validation_hosted_video_url_map_template_20260608.json` | Done; host/sign off next |
 | P2 | Prompt-conditioned generator transition | Moves from metadata-only prompt text to a generator where prompt operations can actually change content | Prompt interventions change generated video content while preserving visual validity and improving candidate selection | Prompt-conditioned generator manifest | Queued |
 | P2 | V-JEPA-augmented candidate screen | Reintroduces the broader selector stack only after content pockets are stabilized | V-JEPA adjudication improves or de-risks candidate ranking against TRIBE-only selection | Selector-stack comparison note | Queued |
 | Human-owned | Human pilot or delayed-recognition study | Needed before final human memorability claims | Participants prefer selected candidates or delayed recognition improves under pre-registered analysis | Prolific/IRB packet and analysis report | Parked until compute screen |
@@ -120,8 +125,8 @@ validation.
 Question: after orange flowers and hanging clothes replicated under fresh
 stochastic seeds with TRIBE and exact V-JEPA, after generated-video CLIP failed
 the prospective diagnostic, after blue jellyfish/old car passed TRIBE but not
-V-JEPA in the boundary audit, and after the exact validation MP4 set was frozen,
-what should launch next?
+V-JEPA in the boundary audit, after the exact validation MP4 set was frozen, and
+after agent sampled-frame MP4 pre-screening passed, what should launch next?
 
 Action class: still search inside the accepted SVD content-pocket regime. It
 becomes discovery-relevant only if a new descriptor rule, validation packet, or
@@ -156,11 +161,18 @@ Current results to preserve:
   MP4 bytes and task pool for the content-pocket validation spend: 12 primary
   orange/hanging tasks, 12 exploratory blue/old boundary tasks, 45 unique MP4
   paths, and no missing selected files or matched controls.
+- `content_pocket_validation_mp4_screening_20260608.md` records the launch
+  pre-screen: 45 stimuli, 0 automated failures, 0 visual-gate failures, and 4
+  contact sheets. It remains an agent pre-screen, not final IRB/faculty signoff.
+- `content_pocket_validation_hosted_video_url_map_template_20260608.json` lists
+  the 45 exact MP4 paths to host. Entries intentionally keep `screened=false`
+  until final human/IRB-facing review is complete.
 
 Near-term options:
 
-1. Manually screen the frozen MP4s, host them at stable HTTPS URLs, and run the
-   blinded human forced-choice survey if validation budget is approved.
+1. Fill hosted HTTPS URLs in the frozen URL map template, complete final
+   human/IRB-facing screening, and run the blinded human forced-choice survey
+   if validation budget is approved.
 2. Build a measured-BMD or BMD-grounded transfer report from the same frozen
    stimulus set.
 3. Keep a prompt-conditioned generator transition separate; do not run prompt

@@ -42,6 +42,10 @@ Frozen validation stimuli:
 - `content_pocket_validation_stimuli_manifest_20260608.md`
 - `content_pocket_validation_pairwise_tasks_20260608.json`
 - `content_pocket_validation_prolific_survey_20260608.html`
+- `content_pocket_validation_mp4_screening_20260608.json`
+- `content_pocket_validation_mp4_screening_20260608.md`
+- `content_pocket_validation_hosted_video_url_map_template_20260608.json`
+- `content_pocket_validation_screening_sheets_20260608/`
 
 Local data-lake inputs:
 
@@ -115,6 +119,11 @@ Frozen task pool:
 - No missing selected MP4s or missing matched controls.
 - Task payload SHA-256:
   `b151326f1e120d7d6c6440c97e9341784bb3b25a1393b8ca7a8481fbcb3cef6c`.
+- Agent sampled-frame MP4 pre-screening found 0 byte/hash/frame-gate failures
+  across 45 stimuli and produced 4 contact sheets. Codex contact-sheet review
+  found retained candidate subjects and visually distinct hard-negative
+  controls, with no obvious sampled-frame text/watermark, frame collapse, or
+  attention-check leakage. Final human/IRB-facing screening is still required.
 
 ## Recommended Human Pilot
 
@@ -189,8 +198,8 @@ Not allowed:
 
 ## Next Action
 
-Manually screen the frozen MP4 stimulus set, host the screened videos at stable
-HTTPS URLs, and then run either:
+Use the hosted-video URL map template to upload the frozen MP4 stimulus set,
+complete final human/IRB-facing content screening, and then run either:
 
 1. a blinded human forced-choice survey, or
 2. a measured-BMD/BMD-grounded transfer report.

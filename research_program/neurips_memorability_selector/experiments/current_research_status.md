@@ -58,8 +58,14 @@ Last updated: 2026-06-08
   clothes are primary TRIBE/V-JEPA candidates; blue jellyfish and old car are
   secondary exploratory boundary arms. The exact validation stimulus set is now
   frozen at 24 pairwise tasks over 45 unique MP4 paths, with no missing selected
-  files or missing matched controls. That freeze is prelaunch only and does not
-  change the claim status.
+  files or missing matched controls. Agent sampled-frame MP4 pre-screening then
+  checked all 45 selected stimuli with byte/hash/frame-gate verification,
+  produced four contact sheets, and found zero automated failures. Codex
+  contact-sheet review found retained candidate subjects and visually distinct
+  hard-negative controls, with no obvious sampled-frame text/watermark, frame
+  collapse, or attention-check leakage. Final human/IRB-facing screening,
+  hosted URLs, and validation still remain open, so this does not change the
+  claim status.
 
 ## Newly Built V-JEPA Pilot State
 
@@ -106,8 +112,8 @@ to TRIBE/product nor obviously irrelevant.
   have fresh-seed TRIBE/V-JEPA compute-proxy replication, but generated-video
   CLIP did not clear the prospective verifier. Blue jellyfish and old car passed
   fresh TRIBE and CLIP-side boundary checks, but not the exact V-JEPA boundary
-  verifier. The validation packet and exact MP4 stimulus freeze are assembled,
-  but no human/BMD gate has run.
+  verifier. The validation packet, exact MP4 stimulus freeze, and agent
+  sampled-frame pre-screen are assembled, but no human/BMD gate has run.
 - We have not shown delayed-recognition memory gains.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.
@@ -152,8 +158,11 @@ artifact:
 - `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_validation_stimuli_manifest_20260608.json`
 - `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_validation_pairwise_tasks_20260608.json`
 - `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_validation_prolific_survey_20260608.html`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_validation_mp4_screening_20260608.md`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_validation_hosted_video_url_map_template_20260608.json`
 
 Use it only for a human/BMD validation launch. The next operational blockers
-are manual MP4 screening, hosted HTTPS video URLs, and participant/IRB approval.
-It does not change the current main-pilot priority above unless the team decides
-to spend validation budget on the content-pocket fork.
+are hosted HTTPS video URLs, final human/IRB-facing stimulus screening, and
+participant/IRB approval. It does not change the current main-pilot priority
+above unless the team decides to spend validation budget on the content-pocket
+fork.
