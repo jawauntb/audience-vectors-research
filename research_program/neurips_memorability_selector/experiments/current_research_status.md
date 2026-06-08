@@ -43,10 +43,13 @@ Last updated: 2026-06-08
   controls stayed negative, and exact V-JEPA transported prospectively with
   centroid-margin AUC 1.0000 / abs d 2.8636 and leave-one-pocket-out balanced
   accuracy 1.0000. Generated-video CLIP did not replicate prospectively
-  (centroid-margin AUC 0.6667, classifier balanced accuracy 0.5833). This gives
-  the two strongest pockets a TRIBE/V-JEPA compute-proxy replication, but
-  human/BMD validation remains open and CLIP should not be described as a fresh
-  prospective pass.
+  (centroid-margin AUC 0.6667, classifier balanced accuracy 0.5833). A targeted
+  CLIP diagnostic with 8 sampled frames and prompt-text similarities preserved
+  that boundary: generated-video CLIP still failed, while prompt-seed CLIP
+  cosine passed only as an ancillary seed/prompt descriptor. This gives the two
+  strongest pockets a TRIBE/V-JEPA compute-proxy replication, but human/BMD
+  validation remains open and CLIP should not be described as a fresh
+  prospective generated-video pass.
 
 ## Newly Built V-JEPA Pilot State
 
@@ -91,7 +94,9 @@ to TRIBE/product nor obviously irrelevant.
 - We have not validated the stable positive SVD content pockets with human
   behavior or measured-BMD alignment. Orange flowers and hanging clothes now
   have fresh-seed TRIBE/V-JEPA compute-proxy replication, but generated-video
-  CLIP did not clear the prospective verifier and no human/BMD gate has run.
+  CLIP did not clear the prospective verifier, the follow-up CLIP diagnostic
+  accepted only an ancillary prompt-seed descriptor, and no human/BMD gate has
+  run.
 - We have not shown delayed-recognition memory gains.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.
