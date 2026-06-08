@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "atlas": "nilearn.fetch_atlas_surf_destrieux fsaverage5",
-  "overlap_policy": "allow",
+  "overlap_policy": "drop_shared",
   "n_vertices": 20484,
   "n_labels": 152,
   "roi_groups": {
@@ -12,9 +12,9 @@
         "lingual"
       ],
       "exclude": [],
-      "n_vertices": 2217,
-      "vertex_fraction": 0.10823081429408318,
-      "mask_sha256": "1f9c0dd2653c5e09654d6e0d792f543038c87276aa85102ad64fb3ef5ab54b57",
+      "n_vertices": 1619,
+      "vertex_fraction": 0.07903729740285101,
+      "mask_sha256": "2546107e0f3ae9619c3176c12f194bf634d2a6baf6347d368e0151a2efbaf0a7",
       "selected_labels": [
         "L_G_and_S_occipital_inf",
         "L_G_occipital_middle",
@@ -42,9 +42,9 @@
         "oc-temp_med"
       ],
       "exclude": [],
-      "n_vertices": 866,
-      "vertex_fraction": 0.04227689904315563,
-      "mask_sha256": "9840dc3ddaeaf6c9349198b816a98e8f6fbf23fb80fcc9bb800e638fa473e9f0",
+      "n_vertices": 268,
+      "vertex_fraction": 0.013083382151923452,
+      "mask_sha256": "88610e284b0ce4c305b3e3e7c607f273ee521ea0742beeea48bac650028231ce",
       "selected_labels": [
         "L_G_oc-temp_med-Lingual",
         "L_G_oc-temp_med-Parahip",
@@ -62,9 +62,9 @@
         "s_circular_insula"
       ],
       "exclude": [],
-      "n_vertices": 4142,
-      "vertex_fraction": 0.2022066002733841,
-      "mask_sha256": "5688d44930171abad1f15ab997520039e5a3badc53d1ab8b40598ed2ec1e243e",
+      "n_vertices": 3400,
+      "vertex_fraction": 0.16598320640499903,
+      "mask_sha256": "ebdea259e3edf35b4d641ca4fa83f4157dca4771ad57d8d6101c3f8b2b88720b",
       "selected_labels": [
         "L_G_front_inf-Opercular",
         "L_G_front_inf-Orbital",
@@ -109,9 +109,9 @@
       "exclude": [
         "insula"
       ],
-      "n_vertices": 4104,
-      "vertex_fraction": 0.20035149384885764,
-      "mask_sha256": "106fa9e4360b2176c4d31b30e3f6e6c16c4724f191a2a83d7739e83989ffda48",
+      "n_vertices": 3362,
+      "vertex_fraction": 0.16412809998047256,
+      "mask_sha256": "80e1ac2ec6c997c9c60e7c3b08819e3bfa21d79ddd23623b2c7fd8b9d28868e3",
       "selected_labels": [
         "L_G_front_middle",
         "L_G_front_sup",
@@ -136,30 +136,30 @@
   },
   "vertex_overlaps": {
     "V1": {
-      "V1": 2217,
-      "PPA": 598,
+      "V1": 1619,
+      "PPA": 0,
       "language": 0,
       "frontoparietal": 0
     },
     "PPA": {
-      "V1": 598,
-      "PPA": 866,
+      "V1": 0,
+      "PPA": 268,
       "language": 0,
       "frontoparietal": 0
     },
     "language": {
       "V1": 0,
       "PPA": 0,
-      "language": 4142,
-      "frontoparietal": 742
+      "language": 3400,
+      "frontoparietal": 0
     },
     "frontoparietal": {
       "V1": 0,
       "PPA": 0,
-      "language": 742,
-      "frontoparietal": 4104
+      "language": 0,
+      "frontoparietal": 3362
     }
   },
   "claim_boundary": "Exploratory ROI masks for proxy dry runs. These masks are not validated attention, dopamine, or executive-control measurements.",
-  "mask_npz_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz"
+  "mask_npz_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz"
 }

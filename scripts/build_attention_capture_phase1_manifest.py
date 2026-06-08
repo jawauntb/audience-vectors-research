@@ -1,0 +1,169 @@
+"""Build a Phase 1 attention-capture manifest from labels and TRIBE features."""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+from pathlib import Path
+from typing import Any
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Build a capture-score Phase 1 manifest from a label CSV and a "
+            "directory of cached TRIBE feature NPZ files."
+        ),
+    )
+    parser.add_argument("--labels-csv", type=Path, required=True)
+    parser.add_argument("--feature-dir", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--dataset", required=True)
+    parser.add_argument("--ground-truth-name", required=True)
+    parser.add_argument("--sample-id-column", default="sample_id")
+    parser.add_argument("--ground-truth-column", default="ground_truth")
+    parser.add_argument(
+        "--feature-template",
+        default="{sample_id}.npz",
+        help=(
+            "Filename template relative to --feature-dir. The token "
+            "{sample_id} is replaced with the CSV sample id."
+        ),
+    )
+    parser.add_argument(
+        "--status",
+        default="real_external_attention_labels",
+        help="Manifest status used by the Phase 1 claim gate.",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Optional cap for quick dry runs.",
+    )
+    parser.add_argument(
+        "--allow-missing-features",
+        action="store_true",
+        help="Skip rows whose expected feature file is absent.",
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    manifest = build_manifest(
+        labels_csv=args.labels_csv,
+        feature_dir=args.feature_dir,
+        dataset=args.dataset,
+        ground_truth_name=args.ground_truth_name,
+        sample_id_column=args.sample_id_column,
+        ground_truth_column=args.ground_truth_column,
+        feature_template=args.feature_template,
+        status=args.status,
+        limit=args.limit,
+        allow_missing_features=args.allow_missing_features,
+    )
+
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    print(
+        f"wrote {len(manifest['samples'])} samples -> {args.output} "
+        f"({manifest['metadata']['n_missing_features']} missing features)"
+    )
+
+
+def build_manifest(
+    *,
+    labels_csv: Path,
+    feature_dir: Path,
+    dataset: str,
+    ground_truth_name: str,
+    sample_id_column: str = "sample_id",
+    ground_truth_column: str = "ground_truth",
+    feature_template: str = "{sample_id}.npz",
+    status: str = "real_external_attention_labels",
+    limit: int | None = None,
+    allow_missing_features: bool = False,
+) -> dict[str, Any]:
+    rows = _read_label_rows(labels_csv)
+    samples: list[dict[str, Any]] = []
+    missing_features: list[dict[str, str]] = []
+
+    for row in rows:
+        sample_id = _required_cell(row, sample_id_column, labels_csv)
+        ground_truth = float(_required_cell(row, ground_truth_column, labels_csv))
+        feature_path = feature_dir / feature_template.format(sample_id=sample_id)
+        if not feature_path.exists():
+            missing_features.append(
+                {
+                    "sample_id": sample_id,
+                    "expected_feature_path": str(feature_path),
+                }
+            )
+            if not allow_missing_features:
+                continue
+
+        if feature_path.exists():
+            samples.append(
+                {
+                    "sample_id": sample_id,
+                    "dataset": dataset,
+                    "ground_truth": ground_truth,
+                    "ground_truth_name": ground_truth_name,
+                    "tribe_feature_path": str(feature_path.resolve()),
+                }
+            )
+        if limit is not None and len(samples) >= limit:
+            break
+
+    if missing_features and not allow_missing_features:
+        preview = ", ".join(item["sample_id"] for item in missing_features[:5])
+        raise FileNotFoundError(
+            f"{len(missing_features)} feature files were missing; first ids: {preview}"
+        )
+
+    return {
+        "schema_version": 1,
+        "experiment": "phase1_capture_score_validation",
+        "status": status,
+        "dataset": dataset,
+        "ground_truth_name": ground_truth_name,
+        "feature_source": {
+            "feature_dir": str(feature_dir),
+            "feature_template": feature_template,
+        },
+        "roi_mask_recommendation": (
+            "Use results/destrieux_roi_masks_disjoint_20260608.npz for the "
+            "primary Phase 1 run; keep overlapping masks as sensitivity only."
+        ),
+        "samples": samples,
+        "metadata": {
+            "labels_csv": str(labels_csv),
+            "sample_id_column": sample_id_column,
+            "ground_truth_column": ground_truth_column,
+            "n_label_rows": len(rows),
+            "n_samples": len(samples),
+            "n_missing_features": len(missing_features),
+            "missing_features": missing_features,
+        },
+    }
+
+
+def _read_label_rows(path: Path) -> list[dict[str, str]]:
+    with path.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        if reader.fieldnames is None:
+            raise ValueError(f"{path} is missing a CSV header")
+        return [dict(row) for row in reader]
+
+
+def _required_cell(row: dict[str, str], column: str, path: Path) -> str:
+    value = row.get(column)
+    if value is None or value == "":
+        raise ValueError(f"{path} has a row missing required column {column!r}")
+    return value
+
+
+if __name__ == "__main__":
+    main()

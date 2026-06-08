@@ -112,6 +112,54 @@ def test_roi_selection_audit_reports_labels_counts_and_overlaps() -> None:
     assert "Destrieux ROI Mask Audit" in render_roi_mask_audit_markdown(audit)
 
 
+def test_drop_shared_roi_policy_removes_overlapping_vertices() -> None:
+    parcels = np.array([0, 1, 2, 3, 4, 5])
+    labels = [
+        "unknown",
+        "G_occipital",
+        "G_occipital_parahip",
+        "G_parahip",
+        "G_front_middle",
+        "G_front_middle_temporal",
+    ]
+    selection = build_roi_selection_from_parcels(
+        parcels,
+        labels,
+        group_specs={
+            "V1": ROIGroupSpec(include=("occipital",)),
+            "PPA": ROIGroupSpec(include=("parahip",)),
+            "language": ROIGroupSpec(include=("temporal",)),
+            "frontoparietal": ROIGroupSpec(include=("front_middle",)),
+        },
+        overlap_policy="drop_shared",
+    )
+
+    assert selection.overlap_policy == "drop_shared"
+    assert selection.masks["V1"].tolist() == [False, True, False, False, False, False]
+    assert selection.masks["PPA"].tolist() == [False, False, False, True, False, False]
+    assert selection.masks["language"].tolist() == [
+        False,
+        False,
+        False,
+        False,
+        False,
+        False,
+    ]
+    assert selection.masks["frontoparietal"].tolist() == [
+        False,
+        False,
+        False,
+        False,
+        True,
+        False,
+    ]
+
+    audit = roi_mask_audit(selection)
+    assert audit["overlap_policy"] == "drop_shared"
+    assert audit["vertex_overlaps"]["V1"]["PPA"] == 0
+    assert audit["vertex_overlaps"]["language"]["frontoparietal"] == 0
+
+
 def test_run_phase1_manifest_passes_synthetic_gate(tmp_path: Path) -> None:
     manifest = tmp_path / "manifest.json"
     manifest.write_text(

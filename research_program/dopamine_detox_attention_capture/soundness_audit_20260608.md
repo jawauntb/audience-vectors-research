@@ -179,6 +179,36 @@ ROI-mask freeze update:
   not clean enough to serve as final preregistered ROIs without refinement or a
   disjoint-mask rule.
 
+ROI-policy refinement:
+
+- A conservative `drop_shared` policy was added and materialized as
+  `results/destrieux_roi_masks_disjoint_20260608.npz` with audit reports in
+  `results/destrieux_roi_mask_audit_disjoint_20260608.*`.
+- This policy removes any vertex selected by more than one ROI, avoiding
+  numerator/denominator leakage rather than assigning shared vertices by an
+  arbitrary priority rule.
+- Disjoint coverage remains non-empty: V1 1,619 vertices, PPA 268, language
+  3,400, and frontoparietal 3,362. All off-diagonal overlap counts are zero.
+- The cost is that PPA becomes small. Therefore the disjoint masks should be
+  the recommended default for real Phase 1, while the overlapping masks remain
+  an archived sensitivity condition.
+- The BOLD Moments control was rerun with the disjoint masks:
+  `rho(capture_score, memorability) = -0.2444` on 739 valid-ratio rows;
+  `rho(capture_delta, memorability) = -0.2492` on 1,022 rows;
+  `rho(frontoparietal, memorability) = +0.2346`.
+- Invalid primary-ratio denominators decreased from 362 to 283. This is a
+  modest improvement in score usability without making the capture proxy a
+  memorability proxy.
+
+Manifest bridge update:
+
+- `scripts/build_attention_capture_phase1_manifest.py` now turns a label CSV
+  plus cached TRIBE NPZ feature directory into the JSON manifest consumed by
+  `scripts/run_attention_capture_phase1.py`.
+- This is retrieval infrastructure, not a result. It makes the next real-data
+  step auditable by fixing the sample-id, label-column, feature-template, and
+  missing-feature behavior in one command.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
@@ -190,7 +220,10 @@ Residual content:
 
 Next move:
 
-1. Refine or explicitly accept the overlapping ROI mask policy.
-2. Build a real Phase 1 manifest for SnapUGC and/or DHF1K.
+1. Build a real Phase 1 manifest for SnapUGC and/or DHF1K from external labels
+   and cached TRIBE NPZ files, using the disjoint ROI mask NPZ as the default
+   scoring source.
+2. Report the archived overlapping-mask run as a sensitivity check if compute
+   is cheap enough.
 3. Run the same script with cached or Modal-generated TRIBE features.
 4. Only then decide whether perturbation/neutralization is worth compute.

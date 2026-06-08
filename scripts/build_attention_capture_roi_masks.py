@@ -21,6 +21,15 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Build auditable Destrieux ROI masks for capture-score runs.",
     )
+    parser.add_argument(
+        "--overlap-policy",
+        choices=("allow", "drop_shared"),
+        default="allow",
+        help=(
+            "How to handle vertices selected by more than one ROI. "
+            "drop_shared removes shared vertices from every ROI."
+        ),
+    )
     parser.add_argument("--output-npz", type=Path, required=True)
     parser.add_argument("--output-json", type=Path, required=True)
     parser.add_argument("--output-md", type=Path, required=True)
@@ -29,7 +38,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    selection = load_destrieux_roi_selection()
+    selection = load_destrieux_roi_selection(overlap_policy=args.overlap_policy)
     audit = roi_mask_audit(selection)
     audit["mask_npz_path"] = str(args.output_npz)
 

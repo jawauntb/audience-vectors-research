@@ -1,7 +1,7 @@
 # Destrieux ROI Mask Audit
 
 - Atlas: nilearn.fetch_atlas_surf_destrieux fsaverage5
-- Overlap policy: allow
+- Overlap policy: drop_shared
 - Vertices: 20484
 - Labels: 152
 - Claim boundary: Exploratory ROI masks for proxy dry runs. These masks are not validated attention, dopamine, or executive-control measurements.
@@ -10,10 +10,10 @@
 
 | ROI | vertices | fraction | selected labels | mask sha256 |
 |---|---:|---:|---:|---|
-| V1 | 2217 | 0.1082 | 18 | `1f9c0dd2653c` |
-| PPA | 866 | 0.0423 | 6 | `9840dc3ddaea` |
-| language | 4142 | 0.2022 | 30 | `5688d4493017` |
-| frontoparietal | 4104 | 0.2004 | 18 | `106fa9e4360b` |
+| V1 | 1619 | 0.0790 | 18 | `2546107e0f3a` |
+| PPA | 268 | 0.0131 | 6 | `88610e284b0c` |
+| language | 3400 | 0.1660 | 30 | `ebdea259e3ed` |
+| frontoparietal | 3362 | 0.1641 | 18 | `80e1ac2ec6c9` |
 
 ## Selected Labels
 
@@ -105,7 +105,7 @@
 
 | ROI | V1 | PPA | language | frontoparietal |
 |---|---:|---:|---:|---:|
-| V1 | 2217 | 598 | 0 | 0 |
-| PPA | 598 | 866 | 0 | 0 |
-| language | 0 | 0 | 4142 | 742 |
-| frontoparietal | 0 | 0 | 742 | 4104 |
+| V1 | 1619 | 0 | 0 | 0 |
+| PPA | 0 | 268 | 0 | 0 |
+| language | 0 | 0 | 3400 | 0 |
+| frontoparietal | 0 | 0 | 0 | 3362 |

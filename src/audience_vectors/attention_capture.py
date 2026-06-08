@@ -23,6 +23,7 @@ REQUIRED_ROIS = (*SENSORY_ROIS, CONTROL_ROI)
 DEFAULT_GATE_RHO = 0.40
 
 Alternative = Literal["greater", "two-sided"]
+OverlapPolicy = Literal["allow", "drop_shared"]
 
 
 @dataclass(frozen=True)
@@ -49,6 +50,7 @@ class ROISelection:
     selected_labels: dict[str, tuple[str, ...]]
     n_vertices: int
     n_labels: int
+    overlap_policy: OverlapPolicy = "allow"
 
 
 DEFAULT_DESTRIEUX_ROI_GROUPS: dict[str, ROIGroupSpec] = {
@@ -172,13 +174,19 @@ def load_roi_masks_npz(path: Path) -> dict[str, np.ndarray]:
     return {name: np.asarray(payload[name], dtype=bool) for name in payload.files}
 
 
-def load_destrieux_roi_masks() -> dict[str, np.ndarray]:
+def load_destrieux_roi_masks(
+    *,
+    overlap_policy: OverlapPolicy = "allow",
+) -> dict[str, np.ndarray]:
     """Load exploratory ROI masks from Nilearn's fsaverage5 Destrieux atlas."""
 
-    return load_destrieux_roi_selection().masks
+    return load_destrieux_roi_selection(overlap_policy=overlap_policy).masks
 
 
-def load_destrieux_roi_selection() -> ROISelection:
+def load_destrieux_roi_selection(
+    *,
+    overlap_policy: OverlapPolicy = "allow",
+) -> ROISelection:
     """Load exploratory ROI masks and label metadata from Destrieux."""
 
     from nilearn.datasets import fetch_atlas_surf_destrieux  # noqa: PLC0415
@@ -193,7 +201,11 @@ def load_destrieux_roi_selection() -> ROISelection:
     all_labels = [f"L_{label}" for label in labels] + [
         f"R_{label}" for label in labels
     ]
-    return build_roi_selection_from_parcels(parcels, all_labels)
+    return build_roi_selection_from_parcels(
+        parcels,
+        all_labels,
+        overlap_policy=overlap_policy,
+    )
 
 
 def build_roi_masks_from_parcels(
@@ -201,6 +213,7 @@ def build_roi_masks_from_parcels(
     labels: list[str],
     *,
     group_specs: dict[str, ROIGroupSpec] | None = None,
+    overlap_policy: OverlapPolicy = "allow",
 ) -> dict[str, np.ndarray]:
     """Build ROI masks from a surface atlas parcel vector and labels."""
 
@@ -208,6 +221,7 @@ def build_roi_masks_from_parcels(
         parcels,
         labels,
         group_specs=group_specs,
+        overlap_policy=overlap_policy,
     ).masks
 
 
@@ -216,8 +230,12 @@ def build_roi_selection_from_parcels(
     labels: list[str],
     *,
     group_specs: dict[str, ROIGroupSpec] | None = None,
+    overlap_policy: OverlapPolicy = "allow",
 ) -> ROISelection:
     """Build ROI masks and selected-label metadata from a parcel vector."""
+
+    if overlap_policy not in ("allow", "drop_shared"):
+        raise ValueError(f"unknown ROI overlap policy: {overlap_policy}")
 
     specs = group_specs or DEFAULT_DESTRIEUX_ROI_GROUPS
     parcel_ids = np.asarray(parcels, dtype=int)
@@ -229,11 +247,15 @@ def build_roi_selection_from_parcels(
         masks[roi] = np.isin(parcel_ids, list(selected_ids))
         selected_labels[roi] = tuple(labels[idx] for idx in sorted(selected_ids))
 
+    if overlap_policy == "drop_shared":
+        masks = _drop_shared_roi_vertices(masks)
+
     return ROISelection(
         masks=masks,
         selected_labels=selected_labels,
         n_vertices=int(parcel_ids.shape[0]),
         n_labels=len(labels),
+        overlap_policy=overlap_policy,
     )
 
 
@@ -265,6 +287,7 @@ def roi_mask_audit(selection: ROISelection) -> dict[str, Any]:
     return {
         "schema_version": 1,
         "atlas": "nilearn.fetch_atlas_surf_destrieux fsaverage5",
+        "overlap_policy": selection.overlap_policy,
         "n_vertices": selection.n_vertices,
         "n_labels": selection.n_labels,
         "roi_groups": roi_items,
@@ -283,6 +306,7 @@ def render_roi_mask_audit_markdown(audit: dict[str, Any]) -> str:
         "# Destrieux ROI Mask Audit",
         "",
         f"- Atlas: {audit['atlas']}",
+        f"- Overlap policy: {audit.get('overlap_policy', 'allow')}",
         f"- Vertices: {audit['n_vertices']}",
         f"- Labels: {audit['n_labels']}",
         f"- Claim boundary: {audit['claim_boundary']}",
@@ -710,6 +734,20 @@ def _select_roi_label_indices(
                 selected_ids.add(idx)
         selected[roi] = selected_ids
     return selected
+
+
+def _drop_shared_roi_vertices(masks: dict[str, np.ndarray]) -> dict[str, np.ndarray]:
+    if not masks:
+        return {}
+
+    membership_count = np.zeros(next(iter(masks.values())).shape, dtype=np.int16)
+    for mask in masks.values():
+        membership_count += np.asarray(mask, dtype=bool).astype(np.int16)
+
+    return {
+        roi: np.logical_and(np.asarray(mask, dtype=bool), membership_count == 1)
+        for roi, mask in masks.items()
+    }
 
 
 def _required_str(sample: dict[str, Any], field: str) -> str:

@@ -24,14 +24,27 @@ format work. It does not validate attentional capture.
 - `results/phase1_synthetic_smoke_20260608.json`: machine-readable smoke result.
 - `results/phase1_synthetic_smoke_20260608.md`: readable smoke report.
 - `results/bmd_memorability_control_20260608.json`: BOLD Moments control result
-  over 1,022 cached TRIBE feature files from the local data lake.
-- `results/bmd_memorability_control_20260608.md`: readable BOLD Moments control
-  report.
+  over 1,022 cached TRIBE feature files using overlapping exploratory masks.
+- `results/bmd_memorability_control_20260608.md`: readable overlapping-mask
+  BOLD Moments control report.
+- `results/bmd_memorability_control_disjoint_20260608.json`: BOLD Moments
+  control result using the disjoint `drop_shared` mask policy.
+- `results/bmd_memorability_control_disjoint_20260608.md`: readable disjoint
+  BOLD Moments control report.
 - `results/destrieux_roi_masks_20260608.npz`: frozen exploratory Destrieux ROI
-  masks used by downstream feature-path runs.
+  masks with overlapping vertices allowed.
 - `results/destrieux_roi_mask_audit_20260608.json`: machine-readable ROI mask
   coverage and overlap audit.
 - `results/destrieux_roi_mask_audit_20260608.md`: readable ROI mask audit.
+- `results/destrieux_roi_masks_disjoint_20260608.npz`: frozen exploratory
+  Destrieux ROI masks after removing vertices shared by more than one ROI.
+- `results/destrieux_roi_mask_audit_disjoint_20260608.json`: machine-readable
+  disjoint ROI mask coverage and overlap audit.
+- `results/destrieux_roi_mask_audit_disjoint_20260608.md`: readable disjoint ROI
+  mask audit.
+- `scripts/build_attention_capture_phase1_manifest.py`: CSV-to-manifest bridge
+  for real SnapUGC, DHF1K, or similar external-label datasets once cached TRIBE
+  NPZ files exist.
 
 ## Reused Infrastructure
 
@@ -47,13 +60,24 @@ format work. It does not validate attentional capture.
 
 ## Run
 
-Freeze the exploratory Destrieux masks:
+Freeze the exploratory Destrieux masks with overlapping vertices retained:
 
 ```bash
 uv run python scripts/build_attention_capture_roi_masks.py \
+  --overlap-policy allow \
   --output-npz research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz \
   --output-json research_program/dopamine_detox_attention_capture/results/destrieux_roi_mask_audit_20260608.json \
   --output-md research_program/dopamine_detox_attention_capture/results/destrieux_roi_mask_audit_20260608.md
+```
+
+Freeze the recommended real-Phase-1 masks with shared vertices removed:
+
+```bash
+uv run python scripts/build_attention_capture_roi_masks.py \
+  --overlap-policy drop_shared \
+  --output-npz research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz \
+  --output-json research_program/dopamine_detox_attention_capture/results/destrieux_roi_mask_audit_disjoint_20260608.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/destrieux_roi_mask_audit_disjoint_20260608.md
 ```
 
 Run the synthetic smoke test:
@@ -67,13 +91,38 @@ uv run python scripts/run_attention_capture_phase1.py \
   --seed 20260608
 ```
 
+Build a real Phase 1 manifest from external labels and cached TRIBE NPZ files:
+
+```bash
+uv run python scripts/build_attention_capture_phase1_manifest.py \
+  --labels-csv /absolute/path/to/labels.csv \
+  --feature-dir /absolute/path/to/tribe_npz_features \
+  --output research_program/dopamine_detox_attention_capture/phase1_real_manifest.json \
+  --dataset SnapUGC \
+  --ground-truth-name ECR \
+  --sample-id-column sample_id \
+  --ground-truth-column ecr
+```
+
+Then score that manifest with the disjoint ROI masks:
+
+```bash
+uv run python scripts/run_attention_capture_phase1.py \
+  --manifest research_program/dopamine_detox_attention_capture/phase1_real_manifest.json \
+  --roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz \
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_real_disjoint.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_real_disjoint.md \
+  --permutations 999 \
+  --seed 20260608
+```
+
 Run the local BOLD Moments control if `/Users/jawaun/isc_mod/data` is present:
 
 ```bash
 uv run python scripts/run_attention_capture_bmd_control.py \
-  --roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz \
-  --output-json research_program/dopamine_detox_attention_capture/results/bmd_memorability_control_20260608.json \
-  --output-md research_program/dopamine_detox_attention_capture/results/bmd_memorability_control_20260608.md \
+  --roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz \
+  --output-json research_program/dopamine_detox_attention_capture/results/bmd_memorability_control_disjoint_20260608.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/bmd_memorability_control_disjoint_20260608.md \
   --permutations 999 \
   --seed 20260608
 ```
@@ -128,28 +177,40 @@ readout.
 ## Current Control Result
 
 The BOLD Moments control used 1,022 cached TRIBE feature files and
-memorability labels. It did not pass the capture-score gate:
+memorability labels. With the recommended disjoint masks, it did not pass the
+capture-score gate:
 
 ```text
-capture_score vs memorability: rho = -0.1988, n = 660
-capture_delta vs memorability: rho = -0.2033, n = 1022
-frontoparietal vs memorability: rho = +0.1935, n = 1022
-invalid ratio denominators: 362
+capture_score vs memorability: rho = -0.2444, n = 739
+capture_delta vs memorability: rho = -0.2492, n = 1022
+frontoparietal vs memorability: rho = +0.2346, n = 1022
+invalid ratio denominators: 283
 ```
 
 This is useful negative/control evidence. Under the broad exploratory
-Destrieux ROI masks, the new capture proxy is not simply the existing
-BMD memorability direction. It also shows that denominator handling is not a
-detail: 362 rows had non-positive frontoparietal means and were withheld from
-the primary ratio.
+Destrieux ROI masks, the new capture proxy is not simply the existing BMD
+memorability direction. The disjoint policy improved denominator validity
+relative to the overlapping masks, reducing withheld rows from 362 to 283, but
+did not turn the proxy into a memorability predictor.
 
-The mask audit also shows that the current broad string-matched ROI defaults
-are anatomically entangled:
+The overlapping mask audit also shows that the broad string-matched ROI
+defaults are anatomically entangled:
 
 ```text
 V1/PPA overlap: 598 vertices
 language/frontoparietal overlap: 742 vertices
 ```
 
-These masks are acceptable for pipeline and control runs, but should be refined
-or made disjoint before treating Phase 1 as preregistered neuroscience.
+The recommended `drop_shared` mask removes all off-diagonal overlap and keeps
+non-empty ROI coverage:
+
+```text
+V1: 1,619 vertices
+PPA: 268 vertices
+language: 3,400 vertices
+frontoparietal: 3,362 vertices
+```
+
+The PPA mask is now small, so Phase 1 should report both the disjoint default
+and the archived overlapping-mask sensitivity check rather than claiming the
+ROI definition is final.
