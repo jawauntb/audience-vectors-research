@@ -11,6 +11,7 @@ import argparse
 import csv
 import json
 import math
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -40,6 +41,15 @@ CSV_COLUMNS = (
     "mean_fixation_density",
     "selected_tail",
 )
+RANK_COLUMNS = (
+    "mean_map_intensity",
+    "peak_map_intensity",
+    "peak_to_mean_map_ratio",
+    "mean_map_concentration",
+    "mean_fixation_density",
+)
+DEFAULT_MIN_ROWS = 30
+DEFAULT_MIN_DISTINCT_RANK_VALUES = 3
 
 
 @dataclass(frozen=True)
@@ -71,13 +81,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--rank-column",
-        choices=(
-            "mean_map_intensity",
-            "peak_map_intensity",
-            "peak_to_mean_map_ratio",
-            "mean_map_concentration",
-            "mean_fixation_density",
-        ),
+        choices=RANK_COLUMNS,
         default="mean_map_intensity",
     )
     parser.add_argument(
@@ -88,6 +92,18 @@ def parse_args() -> argparse.Namespace:
             "Optional high/low tail selection after computing all rows. "
             "Use 175 for the proposal's DHF1K 350-video extreme-quartile run."
         ),
+    )
+    parser.add_argument(
+        "--min-rows",
+        type=int,
+        default=DEFAULT_MIN_ROWS,
+        help="Minimum emitted rows required before the label audit is handoff-ready.",
+    )
+    parser.add_argument(
+        "--min-distinct-rank-values",
+        type=int,
+        default=DEFAULT_MIN_DISTINCT_RANK_VALUES,
+        help="Minimum distinct finite values required in the selected rank column.",
     )
     parser.add_argument("--limit", type=int, default=None)
     return parser.parse_args()
@@ -111,6 +127,8 @@ def main() -> None:
         split=args.split,
         rank_column=args.rank_column,
         extreme_count_per_tail=args.extreme_count_per_tail,
+        min_rows=args.min_rows,
+        min_distinct_rank_values=args.min_distinct_rank_values,
     )
 
     args.output_csv.parent.mkdir(parents=True, exist_ok=True)
@@ -219,7 +237,14 @@ def select_extreme_tails(
 ) -> list[DHF1KRow]:
     if count_per_tail is None:
         return rows
+    if count_per_tail <= 0:
+        raise ValueError("count_per_tail must be positive")
     usable = [row for row in rows if getattr(row, rank_column) is not None]
+    if len(usable) < count_per_tail * 2:
+        raise ValueError(
+            f"not enough finite {rank_column} rows for disjoint extreme tails: "
+            f"{len(usable)} available, {count_per_tail * 2} required"
+        )
     ordered = sorted(usable, key=lambda row: float(getattr(row, rank_column)))
     low = [replace_tail(row, "low") for row in ordered[:count_per_tail]]
     high = [replace_tail(row, "high") for row in ordered[-count_per_tail:]]
@@ -250,7 +275,28 @@ def summarize_rows(
     split: str,
     rank_column: str,
     extreme_count_per_tail: int | None,
+    min_rows: int = DEFAULT_MIN_ROWS,
+    min_distinct_rank_values: int = DEFAULT_MIN_DISTINCT_RANK_VALUES,
 ) -> dict[str, Any]:
+    metric_summaries = {
+        column: summarize_metric(
+            [getattr(row, column) for row in rows],
+        )
+        for column in RANK_COLUMNS
+    }
+    candidate_columns = ground_truth_column_candidates(
+        metric_summaries,
+        min_rows=min_rows,
+        min_distinct_rank_values=min_distinct_rank_values,
+    )
+    blocking_reasons = dhf1k_label_blocking_reasons(
+        rows=rows,
+        rank_column=rank_column,
+        metric_summaries=metric_summaries,
+        min_rows=min_rows,
+        min_distinct_rank_values=min_distinct_rank_values,
+        extreme_count_per_tail=extreme_count_per_tail,
+    )
     return {
         "schema_version": 1,
         "dataset": "DHF1K",
@@ -258,16 +304,18 @@ def summarize_rows(
         "split": split,
         "rank_column": rank_column,
         "extreme_count_per_tail": extreme_count_per_tail,
+        "min_rows": min_rows,
+        "min_distinct_rank_values": min_distinct_rank_values,
         "n_rows": len(rows),
-        "metrics": {
-            column: summarize_metric(
-                [getattr(row, column) for row in rows],
-            )
-            for column in CSV_COLUMNS
-            if column.startswith("mean_")
-            or column.startswith("peak_")
-            or column == "mean_fixation_density"
-        },
+        "metrics": metric_summaries,
+        "rank_column_summary": metric_summaries[rank_column],
+        "rank_column_ready": not blocking_reasons,
+        "ready_for_manifest_alignment": not blocking_reasons,
+        "blocking_reasons": blocking_reasons,
+        "candidate_ground_truth_columns": candidate_columns,
+        "recommended_ground_truth_column": (
+            candidate_columns[0]["column"] if candidate_columns else None
+        ),
         "claim_boundary": (
             "DHF1K labels are external gaze/saliency labels, not retention, "
             "dopamine, or executive-control measurements."
@@ -278,15 +326,97 @@ def summarize_rows(
 def summarize_metric(values: list[float | None]) -> dict[str, float | int | None]:
     finite = [float(value) for value in values if value is not None]
     if not finite:
-        return {"n": 0, "mean": None, "std": None, "min": None, "max": None}
+        return {
+            "n": 0,
+            "n_distinct": 0,
+            "mean": None,
+            "std": None,
+            "min": None,
+            "max": None,
+        }
     arr = np.asarray(finite, dtype=np.float64)
     return {
         "n": int(arr.size),
+        "n_distinct": len(set(finite)),
         "mean": float(arr.mean()),
         "std": float(arr.std(ddof=0)),
         "min": float(arr.min()),
         "max": float(arr.max()),
     }
+
+
+def ground_truth_column_candidates(
+    metric_summaries: dict[str, dict[str, float | int | None]],
+    *,
+    min_rows: int,
+    min_distinct_rank_values: int,
+) -> list[dict[str, float | int | str]]:
+    candidates: list[dict[str, float | int | str]] = []
+    for column in RANK_COLUMNS:
+        summary = metric_summaries[column]
+        n = int(summary["n"] or 0)
+        n_distinct = int(summary["n_distinct"] or 0)
+        std = float(summary["std"] or 0.0)
+        if n < min_rows or n_distinct < min_distinct_rank_values or std <= 0.0:
+            continue
+        candidates.append(
+            {
+                "column": column,
+                "n": n,
+                "n_distinct": n_distinct,
+                "std": std,
+            }
+        )
+    return candidates
+
+
+def dhf1k_label_blocking_reasons(
+    *,
+    rows: list[DHF1KRow],
+    rank_column: str,
+    metric_summaries: dict[str, dict[str, float | int | None]],
+    min_rows: int,
+    min_distinct_rank_values: int,
+    extreme_count_per_tail: int | None,
+) -> list[str]:
+    reasons: list[str] = []
+    summary = metric_summaries[rank_column]
+    n_rows = len(rows)
+    n_finite = int(summary["n"] or 0)
+    n_distinct = int(summary["n_distinct"] or 0)
+    std = float(summary["std"] or 0.0)
+    if n_rows < min_rows:
+        reasons.append(f"row count {n_rows} is below minimum {min_rows}")
+    if n_finite < n_rows:
+        reasons.append(
+            f"{rank_column} has {n_rows - n_finite} non-finite rows"
+        )
+    if n_distinct < min_distinct_rank_values:
+        reasons.append(
+            f"{rank_column} distinct finite value count {n_distinct} "
+            f"is below minimum {min_distinct_rank_values}"
+        )
+    if n_finite and std <= 0.0:
+        reasons.append(f"{rank_column} has zero variance")
+    if extreme_count_per_tail is not None:
+        expected = extreme_count_per_tail * 2
+        tail_counts = Counter(row.selected_tail for row in rows)
+        if n_rows != expected:
+            reasons.append(
+                f"selected row count {n_rows} does not equal expected "
+                f"extreme-tail count {expected}"
+            )
+        if tail_counts["low"] != extreme_count_per_tail:
+            reasons.append(
+                f"low-tail row count {tail_counts['low']} does not equal "
+                f"{extreme_count_per_tail}"
+            )
+        if tail_counts["high"] != extreme_count_per_tail:
+            reasons.append(
+                f"high-tail row count {tail_counts['high']} does not equal "
+                f"{extreme_count_per_tail}"
+            )
+    return reasons
 
 
 def write_rows_csv(rows: list[DHF1KRow], path: Path) -> None:

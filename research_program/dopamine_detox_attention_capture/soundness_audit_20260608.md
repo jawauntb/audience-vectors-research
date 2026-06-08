@@ -323,6 +323,19 @@ Manifest-provenance update:
 - This closes a reproducibility gap: a real Phase 1 manifest can now carry the
   exact verifier artifact that allowed it to be built.
 
+DHF1K label-gate update:
+
+- `scripts/build_dhf1k_attention_labels.py` now records whether the emitted
+  label CSV is `ready_for_manifest_alignment`.
+- The gate blocks if the selected rank column has too few rows, non-finite
+  values, too few distinct finite values, zero variance, or an invalid
+  high/low tail split.
+- The audit also records `candidate_ground_truth_columns` and
+  `recommended_ground_truth_column`, so DHF1K handoff no longer depends on
+  manually eyeballing metric summaries before manifest alignment.
+- No real DHF1K label artifact was generated in this step; this is a verifier
+  upgrade that will run once a DHF1K root is mounted.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
@@ -342,8 +355,9 @@ Next move:
 3. Build a real Phase 1 manifest for SnapUGC and/or DHF1K from external labels
    and cached TRIBE NPZ files, passing `--alignment-audit` so the manifest
    records the verifier hash.
-4. For DHF1K, run the label audit before GPU scoring and choose a non-degenerate
-   ground-truth column.
+4. For DHF1K, require `ready_for_manifest_alignment=true` in the label audit;
+   if the chosen rank column is blocked, rerun with a recommended
+   non-degenerate ground-truth column before GPU scoring.
 5. Run the guarded Phase 1 workflow with
    `scripts/run_attention_capture_phase1_workflow.py`, using disjoint masks as
    primary and overlapping masks as the archived sensitivity condition.

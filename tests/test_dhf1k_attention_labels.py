@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 from PIL import Image
 
 
@@ -80,6 +81,53 @@ def test_select_extreme_tails_labels_high_and_low_rows(tmp_path: Path) -> None:
         split="train",
         rank_column="mean_map_intensity",
         extreme_count_per_tail=1,
+        min_rows=2,
+        min_distinct_rank_values=2,
     )
     assert audit["n_rows"] == 2
     assert audit["metrics"]["mean_map_intensity"]["n"] == 2
+    assert audit["ready_for_manifest_alignment"] is True
+    assert audit["recommended_ground_truth_column"] == "mean_map_intensity"
+
+
+def test_dhf1k_audit_blocks_degenerate_rank_column(tmp_path: Path) -> None:
+    module = load_module()
+    for index in range(1, 4):
+        make_fake_dhf1k_video(tmp_path, f"{index:03d}", 64)
+    rows = module.build_rows(dhf1k_root=tmp_path, split="train", limit=3)
+
+    audit = module.summarize_rows(
+        rows,
+        dhf1k_root=tmp_path,
+        split="train",
+        rank_column="mean_map_intensity",
+        extreme_count_per_tail=None,
+        min_rows=3,
+        min_distinct_rank_values=2,
+    )
+
+    assert audit["ready_for_manifest_alignment"] is False
+    assert audit["rank_column_ready"] is False
+    assert audit["recommended_ground_truth_column"] is None
+    assert any("zero variance" in reason for reason in audit["blocking_reasons"])
+
+
+def test_select_extreme_tails_requires_disjoint_tails(tmp_path: Path) -> None:
+    module = load_module()
+    for index, value in enumerate((16, 64, 128), start=1):
+        make_fake_dhf1k_video(tmp_path, f"{index:03d}", value)
+    rows = module.build_rows(dhf1k_root=tmp_path, split="train", limit=3)
+
+    with pytest.raises(ValueError, match="disjoint extreme tails"):
+        module.select_extreme_tails(
+            rows,
+            rank_column="mean_map_intensity",
+            count_per_tail=2,
+        )
+
+    with pytest.raises(ValueError, match="positive"):
+        module.select_extreme_tails(
+            rows,
+            rank_column="mean_map_intensity",
+            count_per_tail=0,
+        )

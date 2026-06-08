@@ -76,7 +76,9 @@ format work. It does not validate attentional capture.
   NPZ files exist. It can consume an alignment audit and record its hash in the
   manifest metadata.
 - `scripts/build_dhf1k_attention_labels.py`: DHF1K annotation-map label builder
-  that emits gaze/saliency CSV rows plus a label audit.
+  that emits gaze/saliency CSV rows plus a label audit with a
+  `ready_for_manifest_alignment` gate and non-degenerate ground-truth column
+  recommendations.
 - `scripts/extract_attention_capture_tribe_features.py`: generic TRIBE NPZ
   extractor for local/remote videos listed in a CSV.
 - `scripts/preflight_attention_capture_phase1.py`: manifest/feature/label
@@ -224,9 +226,16 @@ uv run python scripts/build_dhf1k_attention_labels.py \
   --split annotated \
   --rank-column mean_map_intensity \
   --extreme-count-per-tail 175 \
+  --min-rows 350 \
+  --min-distinct-rank-values 3 \
   --output-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv \
   --output-json research_program/dopamine_detox_attention_capture/results/dhf1k_attention_label_audit_20260608.json
 ```
+
+The DHF1K label audit must report `ready_for_manifest_alignment=true` before
+feature extraction and manifest alignment. If the chosen `--rank-column` is
+degenerate, use one of `candidate_ground_truth_columns` from the audit and rerun
+the label builder before spending TRIBE compute.
 
 Then extract TRIBE features for those videos:
 
