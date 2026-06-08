@@ -139,8 +139,9 @@ BMD-grounded gate validates the candidate set.
   identity dominates the score structure;
 - orange flowers and hanging clothes are the primary recognition-memory pockets;
   aerial beach, city street, and storm beach remain the hard negative controls;
-- build distinct same-category lures from new seed images before any recognition
-  launch, because near-duplicate flower/clothes clips would contaminate exact
+- use the recognition stimulus production manifest to materialize distinct
+  same-category lures and unrelated fillers before any recognition launch,
+  because near-duplicate flower/clothes clips would contaminate exact
   old-vs-lure memory;
 - switch to a prompt-conditioned generator path before running prompt-rewrite
   tournaments, because prompt text is metadata-only in the current SVD runner;
