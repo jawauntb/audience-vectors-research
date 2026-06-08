@@ -209,6 +209,26 @@ Manifest bridge update:
   step auditable by fixing the sample-id, label-column, feature-template, and
   missing-feature behavior in one command.
 
+DHF1K readiness update:
+
+- `scripts/build_dhf1k_attention_labels.py` derives external saliency/gaze
+  labels from the official DHF1K directory structure documented at
+  https://github.com/wenguanwang/DHF1K: `video/{id}.AVI`,
+  `annotation/{id}/maps/*.png`, and optional
+  `annotation/{id}/fixation/*.png`.
+- The script emits multiple attention-adjacent columns:
+  `mean_map_intensity`, `peak_map_intensity`, `peak_to_mean_map_ratio`,
+  `mean_map_concentration`, and `mean_fixation_density`.
+- This is deliberately not hidden inside TRIBE scoring. The label audit should
+  be inspected first because saliency-map mean intensity may have low variance
+  or encode map-generation conventions rather than attentional capture.
+- `scripts/extract_attention_capture_tribe_features.py` now provides a generic
+  CSV-driven TRIBE feature extractor for local or Modal-visible videos. Byte
+  transport is the default so local DHF1K videos can be scored without a Modal
+  volume upload pre-step.
+- No local SnapUGC or DHF1K assets were found in the searched data paths during
+  this pass, so no real Phase 1 claim has been attempted.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
@@ -223,7 +243,9 @@ Next move:
 1. Build a real Phase 1 manifest for SnapUGC and/or DHF1K from external labels
    and cached TRIBE NPZ files, using the disjoint ROI mask NPZ as the default
    scoring source.
-2. Report the archived overlapping-mask run as a sensitivity check if compute
+2. For DHF1K, run the label audit before GPU scoring and choose a non-degenerate
+   ground-truth column.
+3. Report the archived overlapping-mask run as a sensitivity check if compute
    is cheap enough.
-3. Run the same script with cached or Modal-generated TRIBE features.
-4. Only then decide whether perturbation/neutralization is worth compute.
+4. Run the same script with cached or Modal-generated TRIBE features.
+5. Only then decide whether perturbation/neutralization is worth compute.

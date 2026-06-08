@@ -45,6 +45,10 @@ format work. It does not validate attentional capture.
 - `scripts/build_attention_capture_phase1_manifest.py`: CSV-to-manifest bridge
   for real SnapUGC, DHF1K, or similar external-label datasets once cached TRIBE
   NPZ files exist.
+- `scripts/build_dhf1k_attention_labels.py`: DHF1K annotation-map label builder
+  that emits gaze/saliency CSV rows plus a label audit.
+- `scripts/extract_attention_capture_tribe_features.py`: generic TRIBE NPZ
+  extractor for local/remote videos listed in a CSV.
 
 ## Reused Infrastructure
 
@@ -104,7 +108,62 @@ uv run python scripts/build_attention_capture_phase1_manifest.py \
   --ground-truth-column ecr
 ```
 
-Then score that manifest with the disjoint ROI masks:
+For DHF1K specifically, first derive external saliency labels from the official
+dataset layout (`video/001.AVI`, `annotation/001/maps/*.png`, and optional
+`annotation/001/fixation/*.png`). The official repository describes 1,000
+videos, with released annotations for the first 700 train/validation videos:
+https://github.com/wenguanwang/DHF1K.
+
+```bash
+uv run python scripts/build_dhf1k_attention_labels.py \
+  --dhf1k-root /absolute/path/to/DHF1K \
+  --split annotated \
+  --rank-column mean_map_intensity \
+  --extreme-count-per-tail 175 \
+  --output-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv \
+  --output-json research_program/dopamine_detox_attention_capture/results/dhf1k_attention_label_audit_20260608.json
+```
+
+Then extract TRIBE features for those videos:
+
+```bash
+uv run python scripts/extract_attention_capture_tribe_features.py \
+  --source-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv \
+  --output-dir data/features/tribe_dhf1k_attention \
+  --sample-id-column sample_id \
+  --media-path-column video_path \
+  --transport bytes \
+  --concurrency 4
+```
+
+Then build and score the DHF1K Phase 1 manifest:
+
+```bash
+uv run python scripts/build_attention_capture_phase1_manifest.py \
+  --labels-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv \
+  --feature-dir data/features/tribe_dhf1k_attention \
+  --output research_program/dopamine_detox_attention_capture/phase1_dhf1k_manifest_20260608.json \
+  --dataset DHF1K \
+  --ground-truth-name mean_map_intensity \
+  --ground-truth-column mean_map_intensity
+```
+
+```bash
+uv run python scripts/run_attention_capture_phase1.py \
+  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_manifest_20260608.json \
+  --roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz \
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_disjoint_20260608.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_disjoint_20260608.md \
+  --permutations 999 \
+  --seed 20260608
+```
+
+The DHF1K label audit should be inspected before GPU scoring. If
+`mean_map_intensity` has weak variance, use one of the emitted concentration
+columns as a stress test rather than treating map intensity as a validated
+capture metric.
+
+For a generic real manifest, score it with the disjoint ROI masks:
 
 ```bash
 uv run python scripts/run_attention_capture_phase1.py \
