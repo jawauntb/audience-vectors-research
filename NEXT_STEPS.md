@@ -115,9 +115,10 @@ validation.
 | P1 | V-JEPA-caveated human/BMD validation packet | Freezes what can move to human/BMD spend without smuggling compute-proxy caveats into the claim | Packet assembled with orange flowers/hanging clothes as primary candidates and blue jellyfish/old car as exploratory boundary arms | `content_pocket_human_bmd_validation_packet_20260608.md` | Done |
 | P1 | Exact content-pocket MP4 stimulus freeze | Turns the validation packet into an auditable fixed task pool before human/BMD spend | Frozen: 24 pairwise tasks, 45 unique MP4 paths, no missing selected files or matched controls; survey HTML built but not launched | `content_pocket_validation_stimuli_manifest_20260608.json` and `content_pocket_validation_pairwise_tasks_20260608.json` | Done; screen/host next |
 | P1 | Frozen MP4 prelaunch screening | Checks launch readiness without changing the proxy-selected claim | Done: 45/45 selected MP4s present and hash-matched, sampled-frame visual gate passed, contact-sheet review found no obvious sampled-frame text/watermark/collapse/leakage; final human/IRB screening still required | `content_pocket_validation_mp4_screening_20260608.md` and `content_pocket_validation_hosted_video_url_map_template_20260608.json` | Done; host/sign off next |
+| P1 | Direct recognition-memory validation design | Upgrades the human endpoint from perceived memorability to exact old-vs-lure memory while controlling same-category false familiarity | Designed but not launchable: 15 frozen old targets, 15 required same-category lure seed requests, six sparse forms, 300 usable delayed participants target | `content_pocket_recognition_memory_design_20260608.json` and `content_pocket_recognition_memory_packet_20260608.md` | Done; generate/screen lures and fillers next |
 | P2 | Prompt-conditioned generator transition | Moves from metadata-only prompt text to a generator where prompt operations can actually change content | Prompt interventions change generated video content while preserving visual validity and improving candidate selection | Prompt-conditioned generator manifest | Queued |
 | P2 | V-JEPA-augmented candidate screen | Reintroduces the broader selector stack only after content pockets are stabilized | V-JEPA adjudication improves or de-risks candidate ranking against TRIBE-only selection | Selector-stack comparison note | Queued |
-| Human-owned | Human pilot or delayed-recognition study | Needed before final human memorability claims | Participants prefer selected candidates or delayed recognition improves under pre-registered analysis | Prolific/IRB packet and analysis report | Parked until compute screen |
+| Human-owned | Two-session recognition-memory study | Needed before final human memorability claims | Primary-positive old-vs-lure recognition exceeds hard-negative-control recognition under the pre-registered analysis; dry-run rows excluded | Prolific/IRB packet and analysis report | Blocked on lure/filler generation, screening, hosting |
 | Async | Memento10k, VideoMem, or measured-BMD transfer checks | Tests cross-dataset and measured-brain grounding | External dataset correlation or measured-fMRI direction alignment clears pre-registered threshold | Dataset transfer report | Parked |
 
 ## Immediate Next Decision
@@ -167,15 +168,22 @@ Current results to preserve:
 - `content_pocket_validation_hosted_video_url_map_template_20260608.json` lists
   the 45 exact MP4 paths to host. Entries intentionally keep `screened=false`
   until final human/IRB-facing review is complete.
+- `content_pocket_recognition_memory_design_20260608.json` and
+  `content_pocket_recognition_memory_packet_20260608.md` define the stronger
+  old-vs-lure human-memory study. It is deliberately not launchable until
+  distinct same-category lures and unrelated fillers are generated, screened,
+  and hosted.
 
 Near-term options:
 
-1. Fill hosted HTTPS URLs in the frozen URL map template, complete final
-   human/IRB-facing screening, and run the blinded human forced-choice survey
-   if validation budget is approved.
+1. Build the recognition-memory stimulus extension: acquire distinct
+   same-category lure seed images, generate matched lure MP4s and unrelated
+   fillers, screen/contact-sheet them, and freeze the complete recognition set.
 2. Build a measured-BMD or BMD-grounded transfer report from the same frozen
    stimulus set.
-3. Keep a prompt-conditioned generator transition separate; do not run prompt
+3. Optionally run the older blinded forced-choice survey as a weaker perceived
+   memorability readout, but do not use it as proof of actual memory.
+4. Keep a prompt-conditioned generator transition separate; do not run prompt
    rewriting in the current image-conditioned SVD runner as if it changes the
    pixels.
 

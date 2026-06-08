@@ -128,19 +128,22 @@ When editing the paper text, update both:
 
 ## Current Next Move
 
-Before new human trials, use compute-side work to stabilize candidate selection:
+The content-pocket fork is now ready for a direct human-memory validation build,
+not another perceived-memorability-only survey. Keep the claim boundary intact:
+BO/SVD/LoRA/Modal work is compute-proxy evidence until a human recognition or
+BMD-grounded gate validates the candidate set.
 
-- preserve the claim boundary: BO/SVD/LoRA/Modal work is compute-proxy evidence
-  until a human or BMD-grounded gate validates the candidate set;
 - for current SVD replay, stop spending broadening budget on alpha/guidance-only
   search. Prompt-transfer, per-prompt Sobol, fixed-recipe seed-content,
   restored-bank, and pocket regime-audit panels show that seed-image/content
   identity dominates the score structure;
-- consolidate the stable restored positive pockets, especially orange flowers
-  and hanging clothes, with more stochastic seeds and an embedding/visual
-  feature audit against hard negative controls;
-- or switch to a prompt-conditioned generator path before running prompt-rewrite
+- orange flowers and hanging clothes are the primary recognition-memory pockets;
+  aerial beach, city street, and storm beach remain the hard negative controls;
+- build distinct same-category lures from new seed images before any recognition
+  launch, because near-duplicate flower/clothes clips would contaminate exact
+  old-vs-lure memory;
+- switch to a prompt-conditioned generator path before running prompt-rewrite
   tournaments, because prompt text is metadata-only in the current SVD runner;
-- then human validation only on candidates that survive the compute screen.
+- keep neural-response-guided generation as a separate satellite track.
 
 Do not frame proxy-only improvements as human memorability gains.
