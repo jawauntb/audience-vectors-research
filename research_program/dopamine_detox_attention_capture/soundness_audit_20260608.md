@@ -369,6 +369,20 @@ Preflight-provenance update:
 - No real data artifact was generated in this step; this turns the existing
   verifier chain into an enforced preflight gate.
 
+Synthetic diagnostic under provenance gate:
+
+- `results/phase1_synthetic_smoke_preflight_20260608.*` was regenerated after
+  the preflight-provenance gate landed.
+- Verdict: `mechanical_ready=true`, `claim_update_allowed=false`,
+  `claim_ready=false`, `provenance_audit.required=false`, and
+  `provenance_audit.ready=true`.
+- `results/phase1_synthetic_smoke_workflow_20260608.json` was regenerated with
+  `--score-claim-blocked` and now records the same preflight provenance verdict.
+- Diagnostic scoring still executes only because `--score-claim-blocked` was
+  explicit; the workflow records `reason=claim_blocked_scored_for_diagnostic_only`.
+- This confirms the intended behavior: synthetic fixtures can test the pipeline
+  mechanically, but they remain blocked from claim updates.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
