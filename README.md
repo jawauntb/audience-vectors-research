@@ -168,6 +168,10 @@ recognition memorability.
   that prompt/seed identity dominates alpha/guidance choice: prompt-only R2 =
   0.9196 on retained TRIBE scores, while recipe-only R2 = 0.0062. All top eight
   retained rows were blue jellyfish.
+- A follow-up SVD content-axis audit found that prompt text is metadata-only in
+  the current SVD replay path and that only 5/24 catalog seed images are locally
+  available. Prompt rewriting is therefore not a valid SVD replay intervention
+  until the generator path changes.
 
 ### 2026-06-08 Max-3 Regenerated Visual Controls Result
 
@@ -237,9 +241,29 @@ note is
 `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/per_prompt_sobol_search_result_20260608.md`.
 
 The new operating conclusion is that alpha/guidance-only search is exhausted as
-a broadening axis under the current replay regime. The next search should add
-content variables: prompt rewriting, seed-image selection, or seed-bank
-expansion before more BO over alpha/guidance.
+a broadening axis under the current replay regime. For current SVD replay, the
+next search should add seed-image selection or seed-bank expansion before more
+BO over alpha/guidance. Prompt rewriting only becomes a valid content variable
+after switching to, or plumbing in, a prompt-conditioned generator path.
+
+### 2026-06-08 SVD Content-Axis Audit
+
+The content-axis audit checked what the current SVD replay runner can actually
+change. It found 24 prompt catalog rows but only 5 locally available seed
+images, and the SVD Modal generation call does not accept or pass prompt text.
+The prompt field is currently provenance/stratification metadata, not a
+generation-conditioning variable.
+
+An attempted 20-job fixed-recipe seed-content replicate panel dry-ran correctly,
+but full generation was blocked immediately by the Modal workspace billing-cycle
+spend limit. No scored replay result was produced by that attempted probe.
+
+The committed audit note is
+`research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/svd_content_axes_audit_20260608.md`.
+
+The next valid content-broadening move is seed-bank restoration/expansion under
+SVD, or a switch to a prompt-conditioned generator such as CogVideoX, Wan2.2, or
+Veo before running prompt-rewrite tournaments.
 
 See the project conversation for the full design write-up. This README is
 just the operating manual.
