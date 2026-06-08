@@ -62,6 +62,11 @@ too.
 - A V-JEPA-caveated human/BMD validation packet is now assembled. The primary
   success gate is orange flowers plus hanging clothes; blue jellyfish and old
   car are exploratory boundary arms only.
+- The exact MP4 stimulus set for that content-pocket validation packet is now
+  frozen: 24 blinded pairwise tasks, 45 unique MP4 paths, no missing selected
+  files or matched controls, and a standalone Prolific-style survey HTML. This
+  is still prelaunch; manual screening, hosting, and human/BMD approval remain
+  open.
 - Prompt text is metadata-only in the current SVD runner. A prompt-rewrite
   tournament should wait until we use a prompt-conditioned generator path where
   the prompt changes the actual pixels.
@@ -104,6 +109,7 @@ validation.
 | P1 | Resolve prospective CLIP verifier gap | Decides whether the next human/BMD packet can use a V-JEPA-only compute screen or needs another descriptor check first | Done: generated-video CLIP remained not accepted after 8-frame/text diagnostic; prompt-seed CLIP passed only as an ancillary seed/prompt descriptor | `descriptor_conditioned_replication_clip_diagnostic_result_20260608.md` | Done |
 | P1 | Blue jellyfish and old car boundary audit | Checks whether weaker positives are stable enough to keep or should be demoted | Partial pass: 90/90 clips generated/scored, 0 visual failures, both pockets positive, hard controls negative; CLIP-side boundary verifier accepted; exact V-JEPA not accepted | `boundary_pocket_audit_result_20260608.md` | Done; boundary arms only |
 | P1 | V-JEPA-caveated human/BMD validation packet | Freezes what can move to human/BMD spend without smuggling compute-proxy caveats into the claim | Packet assembled with orange flowers/hanging clothes as primary candidates and blue jellyfish/old car as exploratory boundary arms | `content_pocket_human_bmd_validation_packet_20260608.md` | Done |
+| P1 | Exact content-pocket MP4 stimulus freeze | Turns the validation packet into an auditable fixed task pool before human/BMD spend | Frozen: 24 pairwise tasks, 45 unique MP4 paths, no missing selected files or matched controls; survey HTML built but not launched | `content_pocket_validation_stimuli_manifest_20260608.json` and `content_pocket_validation_pairwise_tasks_20260608.json` | Done; screen/host next |
 | P2 | Prompt-conditioned generator transition | Moves from metadata-only prompt text to a generator where prompt operations can actually change content | Prompt interventions change generated video content while preserving visual validity and improving candidate selection | Prompt-conditioned generator manifest | Queued |
 | P2 | V-JEPA-augmented candidate screen | Reintroduces the broader selector stack only after content pockets are stabilized | V-JEPA adjudication improves or de-risks candidate ranking against TRIBE-only selection | Selector-stack comparison note | Queued |
 | Human-owned | Human pilot or delayed-recognition study | Needed before final human memorability claims | Participants prefer selected candidates or delayed recognition improves under pre-registered analysis | Prolific/IRB packet and analysis report | Parked until compute screen |
@@ -113,8 +119,9 @@ validation.
 
 Question: after orange flowers and hanging clothes replicated under fresh
 stochastic seeds with TRIBE and exact V-JEPA, after generated-video CLIP failed
-the prospective diagnostic, and after blue jellyfish/old car passed TRIBE but
-not V-JEPA in the boundary audit, what should launch next?
+the prospective diagnostic, after blue jellyfish/old car passed TRIBE but not
+V-JEPA in the boundary audit, and after the exact validation MP4 set was frozen,
+what should launch next?
 
 Action class: still search inside the accepted SVD content-pocket regime. It
 becomes discovery-relevant only if a new descriptor rule, validation packet, or
@@ -145,11 +152,15 @@ Current results to preserve:
 - `content_pocket_human_bmd_validation_packet_20260608.md` defines the tiered
   validation packet: orange flowers and hanging clothes are primary candidates;
   blue jellyfish and old car are exploratory boundary arms.
+- `content_pocket_validation_stimuli_manifest_20260608.json` freezes the exact
+  MP4 bytes and task pool for the content-pocket validation spend: 12 primary
+  orange/hanging tasks, 12 exploratory blue/old boundary tasks, 45 unique MP4
+  paths, and no missing selected files or matched controls.
 
 Near-term options:
 
-1. Freeze the exact MP4 stimulus set from the validation packet and build a
-   blinded human forced-choice survey.
+1. Manually screen the frozen MP4s, host them at stable HTTPS URLs, and run the
+   blinded human forced-choice survey if validation budget is approved.
 2. Build a measured-BMD or BMD-grounded transfer report from the same frozen
    stimulus set.
 3. Keep a prompt-conditioned generator transition separate; do not run prompt

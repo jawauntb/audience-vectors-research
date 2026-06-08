@@ -56,7 +56,10 @@ Last updated: 2026-06-08
   passed while exact V-JEPA did not clear the pre-registered boundary gate. The
   human/BMD validation packet is therefore tiered: orange flowers and hanging
   clothes are primary TRIBE/V-JEPA candidates; blue jellyfish and old car are
-  secondary exploratory boundary arms.
+  secondary exploratory boundary arms. The exact validation stimulus set is now
+  frozen at 24 pairwise tasks over 45 unique MP4 paths, with no missing selected
+  files or missing matched controls. That freeze is prelaunch only and does not
+  change the claim status.
 
 ## Newly Built V-JEPA Pilot State
 
@@ -103,7 +106,8 @@ to TRIBE/product nor obviously irrelevant.
   have fresh-seed TRIBE/V-JEPA compute-proxy replication, but generated-video
   CLIP did not clear the prospective verifier. Blue jellyfish and old car passed
   fresh TRIBE and CLIP-side boundary checks, but not the exact V-JEPA boundary
-  verifier. The validation packet is assembled, but no human/BMD gate has run.
+  verifier. The validation packet and exact MP4 stimulus freeze are assembled,
+  but no human/BMD gate has run.
 - We have not shown delayed-recognition memory gains.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.
@@ -145,7 +149,11 @@ The SVD content-pocket validation packet is ready as a separate compute-proxy
 artifact:
 
 - `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_human_bmd_validation_packet_20260608.md`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_validation_stimuli_manifest_20260608.json`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_validation_pairwise_tasks_20260608.json`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_validation_prolific_survey_20260608.html`
 
-Use it only for a human/BMD validation launch. It does not change the current
-main-pilot priority above unless the team decides to spend validation budget on
-the content-pocket fork.
+Use it only for a human/BMD validation launch. The next operational blockers
+are manual MP4 screening, hosted HTTPS video URLs, and participant/IRB approval.
+It does not change the current main-pilot priority above unless the team decides
+to spend validation budget on the content-pocket fork.

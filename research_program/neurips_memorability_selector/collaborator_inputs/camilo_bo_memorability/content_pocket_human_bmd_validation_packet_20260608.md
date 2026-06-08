@@ -36,6 +36,13 @@ Boundary-arm evidence:
 - `boundary_pocket_audit_vjepa_extraction_result_20260608.md`
 - `boundary_pocket_audit_embedding_result_20260608.md`
 
+Frozen validation stimuli:
+
+- `content_pocket_validation_stimuli_manifest_20260608.json`
+- `content_pocket_validation_stimuli_manifest_20260608.md`
+- `content_pocket_validation_pairwise_tasks_20260608.json`
+- `content_pocket_validation_prolific_survey_20260608.html`
+
 Local data-lake inputs:
 
 - Primary replay report:
@@ -78,6 +85,36 @@ Use complete-candidate retained clips only.
 - Before launch, manually inspect the selected MP4s for semantic subject
   retention, frame collapse, text/watermark artifacts, and obvious
   attention-check leakage.
+
+## Frozen Stimulus Set
+
+The 2026-06-08 freeze selected the top two complete retained task-level
+candidates per pocket in each analysis tier:
+
+| tier | pocket | selected Sobol recipes |
+|---|---|---|
+| primary | `fresh24_orange_flowers` | `519`, `520` |
+| primary | `fresh24_hanging_clothes` | `521`, `520` |
+| exploratory boundary | `fresh24_blue_jellyfish` | `519`, `521` |
+| exploratory boundary | `fresh24_old_car` | `522`, `518` |
+
+Each selected candidate keeps all three stochastic replicates. Replicates are
+paired with hard negatives from the same Sobol recipe index:
+
+- `rep00` versus `fresh24_aerial_beach`
+- `rep01` versus `fresh24_city_street`
+- `rep02` versus `fresh24_storm_beach`
+
+Frozen task pool:
+
+- 24 blinded pairwise tasks.
+- 12 primary orange/hanging tasks.
+- 12 exploratory blue/old boundary tasks.
+- 45 unique MP4 paths because matched controls can be reused when selected
+  pockets share a Sobol recipe.
+- No missing selected MP4s or missing matched controls.
+- Task payload SHA-256:
+  `b151326f1e120d7d6c6440c97e9341784bb3b25a1393b8ca7a8481fbcb3cef6c`.
 
 ## Recommended Human Pilot
 
@@ -152,8 +189,8 @@ Not allowed:
 
 ## Next Action
 
-Freeze the exact MP4 stimulus set from the primary replay report and this
-packet's selection rules. Then build either:
+Manually screen the frozen MP4 stimulus set, host the screened videos at stable
+HTTPS URLs, and then run either:
 
 1. a blinded human forced-choice survey, or
 2. a measured-BMD/BMD-grounded transfer report.
