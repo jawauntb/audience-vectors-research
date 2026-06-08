@@ -1,6 +1,6 @@
 # Content-Pocket Recognition Stimulus Production Manifest
 
-Date: 2026-06-08T22:53:28+00:00
+Date: 2026-06-08T23:17:30+00:00
 
 ## Discovery-Regime Audit
 
@@ -25,13 +25,13 @@ validation regime.
 
 ## Status
 
-- Status: `seed_images_screened_ready_for_svd_generation`
+- Status: `generated_videos_present_screening_required`
 - Seed image requests: 60
 - Seed images present: 60
 - Seed images missing: 0
 - SVD generation jobs: 60
-- Output MP4s present: 0
-- Output MP4s missing: 60
+- Output MP4s present: 60
+- Output MP4s missing: 0
 
 ## Required Production Blocks
 
@@ -43,8 +43,8 @@ validation regime.
 
 ## Launch Blockers
 
-- 60 SVD output MP4s are missing.
-- Generated MP4 visual screening/contact sheets have not been recorded.
+- Generated MP4 visual screening has unresolved flags.
+- Final human/IRB-facing content review is not complete.
 - Hosted HTTPS URLs and two-session Prolific wiring are not complete.
 
 ## Claim Boundary
@@ -55,6 +55,6 @@ validation regime.
 
 ## Next Action
 
-Generate SVD MP4s from the screened seed images and generation
-jobs, then screen/contact-sheet every MP4 before freezing the
-launchable recognition set.
+Review or replace the generated MP4s flagged by video screening,
+preserve rejected artifacts with reasons, then rerun screening before
+hosting accepted videos.

@@ -139,10 +139,10 @@ BMD-grounded gate validates the candidate set.
   identity dominates the score structure;
 - orange flowers and hanging clothes are the primary recognition-memory pockets;
   aerial beach, city street, and storm beach remain the hard negative controls;
-- recognition seed images are materialized and first-pass screened for SVD
-  generation; next generate the 60 matched SVD MP4s, then screen/contact-sheet
-  every video before any recognition launch, because near-duplicate
-  flower/clothes clips would contaminate exact old-vs-lure memory;
+- recognition seed images and matched SVD MP4s are materialized. The recognition
+  video pre-screen generated 60/60 MP4s and flagged one filler lure
+  (`filler_lure_v06`) for `tail_sharpness_collapse`; review or replace that
+  filler before hosting and any recognition launch;
 - switch to a prompt-conditioned generator path before running prompt-rewrite
   tournaments, because prompt text is metadata-only in the current SVD runner;
 - keep neural-response-guided generation as a separate satellite track.
