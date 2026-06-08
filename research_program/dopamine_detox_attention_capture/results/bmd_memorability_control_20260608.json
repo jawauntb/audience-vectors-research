@@ -83,7 +83,7 @@
     "name": "BOLD Moments memorability control",
     "ground_truth_name": "memorability_score",
     "feature_dir": "/Users/jawaun/isc_mod/data/features/tribe",
-    "roi_source": "nilearn fetch_atlas_surf_destrieux exploratory masks",
+    "roi_source": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz",
     "interpretation": "Control-only run. A positive result would show overlap with memorability labels, not validation of attentional capture."
   }
 }

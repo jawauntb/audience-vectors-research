@@ -15,6 +15,7 @@ from audience_vectors.attention_capture import (
     CaptureRow,
     capture_scores_from_roi_values,
     load_destrieux_roi_masks,
+    load_roi_masks_npz,
     load_tribe_feature_mean,
     render_phase1_markdown,
     roi_values_from_feature_vector,
@@ -36,6 +37,12 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("/Users/jawaun/isc_mod/data/features/tribe"),
     )
+    parser.add_argument(
+        "--roi-masks",
+        type=Path,
+        default=None,
+        help="Optional frozen ROI mask NPZ. Defaults to live Destrieux masks.",
+    )
     parser.add_argument("--output-json", type=Path, required=True)
     parser.add_argument("--output-md", type=Path, required=True)
     parser.add_argument("--permutations", type=int, default=999)
@@ -47,7 +54,11 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     labels = _load_bmd_memorability(args.annotations)
-    roi_masks = load_destrieux_roi_masks()
+    roi_masks = (
+        load_roi_masks_npz(args.roi_masks)
+        if args.roi_masks is not None
+        else load_destrieux_roi_masks()
+    )
     rows = []
 
     for feature_path in sorted(args.feature_dir.glob("bmd_vid_idx*_seg_0000.npz")):
@@ -87,7 +98,9 @@ def main() -> None:
         "name": "BOLD Moments memorability control",
         "ground_truth_name": "memorability_score",
         "feature_dir": str(args.feature_dir),
-        "roi_source": "nilearn fetch_atlas_surf_destrieux exploratory masks",
+        "roi_source": str(args.roi_masks)
+        if args.roi_masks is not None
+        else "nilearn fetch_atlas_surf_destrieux exploratory masks",
         "interpretation": (
             "Control-only run. A positive result would show overlap with "
             "memorability labels, not validation of attentional capture."

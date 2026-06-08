@@ -27,6 +27,11 @@ format work. It does not validate attentional capture.
   over 1,022 cached TRIBE feature files from the local data lake.
 - `results/bmd_memorability_control_20260608.md`: readable BOLD Moments control
   report.
+- `results/destrieux_roi_masks_20260608.npz`: frozen exploratory Destrieux ROI
+  masks used by downstream feature-path runs.
+- `results/destrieux_roi_mask_audit_20260608.json`: machine-readable ROI mask
+  coverage and overlap audit.
+- `results/destrieux_roi_mask_audit_20260608.md`: readable ROI mask audit.
 
 ## Reused Infrastructure
 
@@ -42,6 +47,17 @@ format work. It does not validate attentional capture.
 
 ## Run
 
+Freeze the exploratory Destrieux masks:
+
+```bash
+uv run python scripts/build_attention_capture_roi_masks.py \
+  --output-npz research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz \
+  --output-json research_program/dopamine_detox_attention_capture/results/destrieux_roi_mask_audit_20260608.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/destrieux_roi_mask_audit_20260608.md
+```
+
+Run the synthetic smoke test:
+
 ```bash
 uv run python scripts/run_attention_capture_phase1.py \
   --manifest research_program/dopamine_detox_attention_capture/phase1_synthetic_smoke_manifest_20260608.json \
@@ -55,6 +71,7 @@ Run the local BOLD Moments control if `/Users/jawaun/isc_mod/data` is present:
 
 ```bash
 uv run python scripts/run_attention_capture_bmd_control.py \
+  --roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz \
   --output-json research_program/dopamine_detox_attention_capture/results/bmd_memorability_control_20260608.json \
   --output-md research_program/dopamine_detox_attention_capture/results/bmd_memorability_control_20260608.md \
   --permutations 999 \
@@ -125,3 +142,14 @@ Destrieux ROI masks, the new capture proxy is not simply the existing
 BMD memorability direction. It also shows that denominator handling is not a
 detail: 362 rows had non-positive frontoparietal means and were withheld from
 the primary ratio.
+
+The mask audit also shows that the current broad string-matched ROI defaults
+are anatomically entangled:
+
+```text
+V1/PPA overlap: 598 vertices
+language/frontoparietal overlap: 742 vertices
+```
+
+These masks are acceptable for pipeline and control runs, but should be refined
+or made disjoint before treating Phase 1 as preregistered neuroscience.

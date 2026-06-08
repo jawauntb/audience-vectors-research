@@ -10,9 +10,12 @@ from audience_vectors.attention_capture import (
     CaptureRow,
     ROIGroupSpec,
     build_roi_masks_from_parcels,
+    build_roi_selection_from_parcels,
     capture_scores_from_roi_values,
     load_manifest_rows,
     render_phase1_markdown,
+    render_roi_mask_audit_markdown,
+    roi_mask_audit,
     run_capture_rows,
     run_phase1_manifest,
     spearman_rho,
@@ -77,6 +80,36 @@ def test_build_roi_masks_from_parcels_uses_include_and_exclude() -> None:
     )
 
     assert masks["frontoparietal"].tolist() == [False, True, True, False, True, True]
+
+
+def test_roi_selection_audit_reports_labels_counts_and_overlaps() -> None:
+    parcels = np.array([0, 1, 2, 3, 1, 2])
+    labels = [
+        "unknown",
+        "G_front_middle",
+        "S_intrapariet_and_P_trans",
+        "G_front_middle_insula",
+    ]
+    selection = build_roi_selection_from_parcels(
+        parcels,
+        labels,
+        group_specs={
+            "frontoparietal": ROIGroupSpec(
+                include=("front_middle", "intrapariet"),
+                exclude=("insula",),
+            ),
+        },
+    )
+
+    assert selection.selected_labels["frontoparietal"] == (
+        "G_front_middle",
+        "S_intrapariet_and_P_trans",
+    )
+
+    audit = roi_mask_audit(selection)
+    assert audit["roi_groups"]["frontoparietal"]["n_vertices"] == 4
+    assert audit["vertex_overlaps"]["frontoparietal"]["frontoparietal"] == 4
+    assert "Destrieux ROI Mask Audit" in render_roi_mask_audit_markdown(audit)
 
 
 def test_run_phase1_manifest_passes_synthetic_gate(tmp_path: Path) -> None:

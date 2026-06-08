@@ -11,6 +11,7 @@ from __future__ import annotations
 import json
 import math
 from dataclasses import dataclass
+from hashlib import sha256
 from pathlib import Path
 from typing import Any, Literal, TypedDict
 
@@ -38,6 +39,16 @@ class CaptureScoreValues(TypedDict):
     capture_score: float | None
     capture_delta: float
     denominator_valid: bool
+
+
+@dataclass(frozen=True)
+class ROISelection:
+    """ROI masks plus the atlas labels that produced them."""
+
+    masks: dict[str, np.ndarray]
+    selected_labels: dict[str, tuple[str, ...]]
+    n_vertices: int
+    n_labels: int
 
 
 DEFAULT_DESTRIEUX_ROI_GROUPS: dict[str, ROIGroupSpec] = {
@@ -164,6 +175,12 @@ def load_roi_masks_npz(path: Path) -> dict[str, np.ndarray]:
 def load_destrieux_roi_masks() -> dict[str, np.ndarray]:
     """Load exploratory ROI masks from Nilearn's fsaverage5 Destrieux atlas."""
 
+    return load_destrieux_roi_selection().masks
+
+
+def load_destrieux_roi_selection() -> ROISelection:
+    """Load exploratory ROI masks and label metadata from Destrieux."""
+
     from nilearn.datasets import fetch_atlas_surf_destrieux  # noqa: PLC0415
 
     atlas = fetch_atlas_surf_destrieux()
@@ -176,7 +193,7 @@ def load_destrieux_roi_masks() -> dict[str, np.ndarray]:
     all_labels = [f"L_{label}" for label in labels] + [
         f"R_{label}" for label in labels
     ]
-    return build_roi_masks_from_parcels(parcels, all_labels)
+    return build_roi_selection_from_parcels(parcels, all_labels)
 
 
 def build_roi_masks_from_parcels(
@@ -187,23 +204,127 @@ def build_roi_masks_from_parcels(
 ) -> dict[str, np.ndarray]:
     """Build ROI masks from a surface atlas parcel vector and labels."""
 
+    return build_roi_selection_from_parcels(
+        parcels,
+        labels,
+        group_specs=group_specs,
+    ).masks
+
+
+def build_roi_selection_from_parcels(
+    parcels: np.ndarray,
+    labels: list[str],
+    *,
+    group_specs: dict[str, ROIGroupSpec] | None = None,
+) -> ROISelection:
+    """Build ROI masks and selected-label metadata from a parcel vector."""
+
     specs = group_specs or DEFAULT_DESTRIEUX_ROI_GROUPS
     parcel_ids = np.asarray(parcels, dtype=int)
-    normalized_labels = [_normalize_label(label) for label in labels]
+    selected = _select_roi_label_indices(labels, specs)
     masks: dict[str, np.ndarray] = {}
+    selected_labels: dict[str, tuple[str, ...]] = {}
 
-    for roi, spec in specs.items():
-        selected_ids: set[int] = set()
-        include = tuple(_normalize_label(token) for token in spec.include)
-        exclude = tuple(_normalize_label(token) for token in spec.exclude)
-        for idx, label in enumerate(normalized_labels):
-            if any(token in label for token in include) and not any(
-                token in label for token in exclude
-            ):
-                selected_ids.add(idx)
+    for roi, selected_ids in selected.items():
         masks[roi] = np.isin(parcel_ids, list(selected_ids))
+        selected_labels[roi] = tuple(labels[idx] for idx in sorted(selected_ids))
 
-    return masks
+    return ROISelection(
+        masks=masks,
+        selected_labels=selected_labels,
+        n_vertices=int(parcel_ids.shape[0]),
+        n_labels=len(labels),
+    )
+
+
+def roi_mask_audit(selection: ROISelection) -> dict[str, Any]:
+    """Return a JSON-serializable audit for a frozen ROI selection."""
+
+    roi_items: dict[str, Any] = {}
+    roi_names = tuple(selection.masks)
+    for roi in roi_names:
+        mask = np.asarray(selection.masks[roi], dtype=bool)
+        spec = DEFAULT_DESTRIEUX_ROI_GROUPS.get(roi, ROIGroupSpec(include=()))
+        roi_items[roi] = {
+            "include": list(spec.include),
+            "exclude": list(spec.exclude),
+            "n_vertices": int(mask.sum()),
+            "vertex_fraction": float(mask.mean()),
+            "mask_sha256": sha256(mask.astype(np.uint8).tobytes()).hexdigest(),
+            "selected_labels": list(selection.selected_labels[roi]),
+        }
+
+    overlaps: dict[str, dict[str, int]] = {}
+    for roi in roi_names:
+        left = np.asarray(selection.masks[roi], dtype=bool)
+        overlaps[roi] = {}
+        for other_roi in roi_names:
+            right = np.asarray(selection.masks[other_roi], dtype=bool)
+            overlaps[roi][other_roi] = int(np.logical_and(left, right).sum())
+
+    return {
+        "schema_version": 1,
+        "atlas": "nilearn.fetch_atlas_surf_destrieux fsaverage5",
+        "n_vertices": selection.n_vertices,
+        "n_labels": selection.n_labels,
+        "roi_groups": roi_items,
+        "vertex_overlaps": overlaps,
+        "claim_boundary": (
+            "Exploratory ROI masks for proxy dry runs. These masks are not "
+            "validated attention, dopamine, or executive-control measurements."
+        ),
+    }
+
+
+def render_roi_mask_audit_markdown(audit: dict[str, Any]) -> str:
+    """Render a concise Markdown view of `roi_mask_audit`."""
+
+    lines = [
+        "# Destrieux ROI Mask Audit",
+        "",
+        f"- Atlas: {audit['atlas']}",
+        f"- Vertices: {audit['n_vertices']}",
+        f"- Labels: {audit['n_labels']}",
+        f"- Claim boundary: {audit['claim_boundary']}",
+        "",
+        "## ROI Coverage",
+        "",
+        "| ROI | vertices | fraction | selected labels | mask sha256 |",
+        "|---|---:|---:|---:|---|",
+    ]
+
+    roi_names = tuple(audit["roi_groups"])
+    for roi in roi_names:
+        item = audit["roi_groups"][roi]
+        lines.append(
+            "| "
+            f"{roi} | {item['n_vertices']} | "
+            f"{float(item['vertex_fraction']):.4f} | "
+            f"{len(item['selected_labels'])} | "
+            f"`{str(item['mask_sha256'])[:12]}` |"
+        )
+
+    lines.extend(["", "## Selected Labels", ""])
+    for roi in roi_names:
+        labels = audit["roi_groups"][roi]["selected_labels"]
+        lines.append(f"### {roi}")
+        lines.append("")
+        for label in labels:
+            lines.append(f"- `{label}`")
+        lines.append("")
+
+    lines.extend(["## Vertex Overlaps", ""])
+    header = " | ".join(["ROI", *roi_names])
+    divider = "|".join(["---", *["---:" for _ in roi_names]])
+    lines.append(f"| {header} |")
+    lines.append(f"|{divider}|")
+    for roi in roi_names:
+        values = " | ".join(
+            str(audit["vertex_overlaps"][roi][other]) for other in roi_names
+        )
+        lines.append(f"| {roi} | {values} |")
+
+    return "\n".join(lines) + "\n"
 
 
 def load_manifest_rows(
@@ -570,6 +691,25 @@ def _rankdata_average(values: np.ndarray) -> np.ndarray:
 
 def _normalize_label(label: str) -> str:
     return str(label).lower().replace("_", "-")
+
+
+def _select_roi_label_indices(
+    labels: list[str],
+    group_specs: dict[str, ROIGroupSpec],
+) -> dict[str, set[int]]:
+    normalized_labels = [_normalize_label(label) for label in labels]
+    selected: dict[str, set[int]] = {}
+    for roi, spec in group_specs.items():
+        selected_ids: set[int] = set()
+        include = tuple(_normalize_label(token) for token in spec.include)
+        exclude = tuple(_normalize_label(token) for token in spec.exclude)
+        for idx, label in enumerate(normalized_labels):
+            if any(token in label for token in include) and not any(
+                token in label for token in exclude
+            ):
+                selected_ids.add(idx)
+        selected[roi] = selected_ids
+    return selected
 
 
 def _required_str(sample: dict[str, Any], field: str) -> str:

@@ -165,6 +165,20 @@ Control update:
   appear to be a trivial re-labeling of the existing BMD memorability direction,
   but the ROI/ratio definition still needs real attention-label validation.
 
+ROI-mask freeze update:
+
+- The exploratory Destrieux masks are now materialized as
+  `results/destrieux_roi_masks_20260608.npz` with coverage/overlap reports in
+  `results/destrieux_roi_mask_audit_20260608.*`.
+- Coverage is broad: V1 2,217 vertices, PPA 866, language 4,142, and
+  frontoparietal 4,104.
+- The audit found overlapping numerator/denominator families:
+  V1/PPA overlap is 598 vertices and language/frontoparietal overlap is 742
+  vertices.
+- Interpretation: the current masks are now auditable and reproducible, but
+  not clean enough to serve as final preregistered ROIs without refinement or a
+  disjoint-mask rule.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
@@ -176,7 +190,7 @@ Residual content:
 
 Next move:
 
-1. Freeze real ROI masks.
+1. Refine or explicitly accept the overlapping ROI mask policy.
 2. Build a real Phase 1 manifest for SnapUGC and/or DHF1K.
 3. Run the same script with cached or Modal-generated TRIBE features.
 4. Only then decide whether perturbation/neutralization is worth compute.

@@ -32,5 +32,5 @@ This is a pipeline and metric dry run. It validates that the manifest, ROI score
 
 - Control: BOLD Moments memorability control
 - Ground truth: memorability_score
-- ROI source: nilearn fetch_atlas_surf_destrieux exploratory masks
+- ROI source: research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz
 - Interpretation: Control-only run. A positive result would show overlap with memorability labels, not validation of attentional capture.
