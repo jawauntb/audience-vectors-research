@@ -157,6 +157,32 @@ recognition memorability.
 - Wan LoRA/product-selector gains are not behavioral evidence yet; they are
   TRIBE/BMD proxy gains that need blinded human comparison against base and
   random LoRA variants.
+- BO-generated SVD videos are not yet broad strategy evidence. The completed
+  max-3 regenerated-control stress test shows prompt-pocket behavior: a stable
+  positive jellyfish pocket and a brittle, low-scoring fireworks pocket.
+
+### 2026-06-08 Max-3 Regenerated Visual Controls Result
+
+The balanced max-3 stress test generated 36/36 requested clips. Two BO
+fireworks clips failed the automated visual gate (`bo09_cand01` replicate 1 and
+`bo03_cand01` replicate 2), so complete-candidate retention withheld those two
+candidate families before scoring. The retained panel kept 10/12 candidates and
+scored 30/30 retained rows with full TRIBE.
+
+Retained stratum result:
+
+| stratum | BO retained candidates | BO mean | regenerated Sobol candidates | Sobol mean | interpretation |
+|---|---:|---:|---:|---:|---|
+| fireworks | 1/3 | -3.9426 | 3/3 | -5.1029 | BO is less bad, but the stratum is visually brittle and low scoring |
+| jellyfish | 3/3 | 1.7443 | 3/3 | 1.0575 | stable positive BO pocket |
+
+The compute-side finding is prompt-pocket behavior, not broad strategy
+dominance: BO reliably exploits the jellyfish replay pocket, while fireworks
+remains weak under the current tuned SVD/TRIBE replay for both BO and controls.
+The committed run note is
+`research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/max3_regenerated_visual_controls_result_20260608.md`.
+True broad prompt evidence still requires a new BO/search panel over additional
+seed prompts.
 
 See the project conversation for the full design write-up. This README is
 just the operating manual.
