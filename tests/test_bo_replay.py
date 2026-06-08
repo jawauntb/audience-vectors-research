@@ -302,6 +302,8 @@ def test_parse_args_exposes_svd_generation_controls(monkeypatch):
         "argv",
         [
             "modal_bo_memorability_replay.py",
+            "--replay-seed-pool-size",
+            "24",
             "--svd-num-frames",
             "14",
             "--num-inference-steps",
@@ -323,6 +325,7 @@ def test_parse_args_exposes_svd_generation_controls(monkeypatch):
 
     args = module.parse_args()
 
+    assert args.replay_seed_pool_size == 24
     assert args.svd_num_frames == 14
     assert args.num_inference_steps == 50
     assert args.svd_motion_bucket_id == 40
@@ -331,6 +334,32 @@ def test_parse_args_exposes_svd_generation_controls(monkeypatch):
     assert args.visual_first_retention == "complete-candidates"
     assert args.regenerated_sobol_controls_per_stratum == 2
     assert args.regenerated_sobol_pool_size == 64
+
+
+def test_load_seed_pool_can_cover_restored_seed_bank(tmp_path):
+    module = load_modal_replay_module()
+    seed_root = tmp_path / "seed_root"
+    seed_dir = seed_root / "seeds"
+    seed_dir.mkdir(parents=True)
+    prompts = []
+    for idx in range(24):
+        seed_path = seed_dir / f"seed_{idx:02d}.png"
+        seed_path.write_bytes(b"not opened by load_seed_pool")
+        prompts.append(
+            {
+                "idx": idx,
+                "bmd_name": f"seed_{idx:02d}",
+                "prompt": f"prompt {idx}",
+                "seed_image": f"seeds/seed_{idx:02d}.png",
+            }
+        )
+    (seed_dir / "prompts.json").write_text(json.dumps(prompts))
+
+    seed_pool = module.load_seed_pool(seed_root, n_pool=24)
+
+    assert len(seed_pool) == 24
+    assert seed_pool[16]["idx"] == 16
+    assert seed_pool[23]["bmd_name"] == "seed_23"
 
 
 def test_append_regenerated_sobol_controls_matches_selected_bo_strata():

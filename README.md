@@ -51,7 +51,7 @@ GitHub artifact policy:
 - Keep the repo private while it references gated models, TRIBE non-commercial
   terms, unpublished human-study materials, and local generated media.
 
-## Status (updated 2026-06-08, post seed-content replay audit)
+## Status (updated 2026-06-08, post restored seed-bank replay)
 
 Latest committed paper source:
 `research_program/neurips_memorability_selector/main_selector_paper/paper.md`.
@@ -177,6 +177,12 @@ recognition memorability.
   Seed-content slot explained retained score variance (R2 = 0.9494), while
   recipe identity explained essentially none (R2 = 0.0026); blue jellyfish was
   again the only positive retained slot.
+- Restoring the full 24-row seed catalog changed the content picture. With the
+  same fixed recipes 516 and 517 across all 24 image-backed seed slots,
+  seed-content explained R2 = 0.9804 of retained score variance, recipe identity
+  explained R2 = 0.0008, and the top retained pockets were orange flowers
+  (mean TRIBE 4.2013) and hanging clothes (3.6167), ahead of blue jellyfish
+  (2.1849).
 
 ### 2026-06-08 Max-3 Regenerated Visual Controls Result
 
@@ -283,9 +289,44 @@ On the 16 retained rows, recipe-only R2 = 0.0026, seed-content-only
 R2 = 0.9494, and recipe + seed-content R2 = 0.9520. The committed run note is
 `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/seed_content_fixed_recipe_probe_result_20260608.md`.
 
-The next valid content-broadening move is seed-bank restoration/expansion under
-SVD, or a switch to a prompt-conditioned generator such as CogVideoX, Wan2.2, or
-Veo before running prompt-rewrite tournaments.
+That made seed-bank restoration/expansion the next valid content-broadening
+move under SVD. The restored-bank run below completes that step; prompt-rewrite
+tournaments still require a prompt-conditioned generator path such as CogVideoX,
+Wan2.2, or Veo.
+
+### 2026-06-08 Restored Seed-Bank Fixed-Recipe Result
+
+The full seed catalog was restored locally from the `source_image` URLs in
+`original/seeds/prompts.json` using `scripts/restore_bo_seed_bank.py`. The
+post-restore audit found 24/24 available seed images and 0 missing images.
+
+The restored fixed-recipe screen replayed Sobol recipes 516 and 517 across all
+24 seed-image slots with two stochastic reps per candidate. It generated 96/96
+clips. The visual gate failed 2/96 clips, both fireworks tail-sharpness failures,
+so complete-candidate retention kept 46/48 candidates and scored 92/96 rows.
+
+| seed-content slot | scored / requested | mean TRIBE |
+|---|---:|---:|
+| orange flowers | 4 / 4 | 4.2013 |
+| hanging clothes | 4 / 4 | 3.6167 |
+| blue jellyfish | 4 / 4 | 2.1849 |
+| old car | 4 / 4 | 1.0488 |
+| sidewalk steps | 4 / 4 | 0.0402 |
+| fireworks | 0 / 4 | withheld |
+
+On all retained rows, seed-content-only R2 = 0.9804, recipe-only R2 = 0.0008,
+and seed-content + recipe R2 = 0.9941. The important update is that the current
+SVD replay regime is still overwhelmingly content-slot dominated, but the
+optimum is not just a blue-jellyfish artifact. Restoring the seed bank exposed
+new non-jellyfish positive pockets, especially orange flowers and hanging
+clothes.
+
+The committed run note is
+`research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/seed_bank_restored_fixed_recipe_result_20260608.md`.
+
+The next valid move is a small local recipe search around the top restored
+positive pockets, with retained negative pockets as controls. Prompt rewriting
+still requires a prompt-conditioned generator path.
 
 See the project conversation for the full design write-up. This README is
 just the operating manual.

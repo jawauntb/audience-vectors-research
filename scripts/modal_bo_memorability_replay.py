@@ -28,6 +28,7 @@ from typing import Any
 import numpy as np
 from PIL import Image
 
+from audience_vectors.bo_prompt_manifests import DEFAULT_REPLAY_SEED_POOL_SIZE
 from audience_vectors.bo_replay import (
     CollaboratorBOTrial,
     TrialStratum,
@@ -72,8 +73,15 @@ def log(message: str) -> None:
     print(f"[bo-replay] {message}", flush=True)
 
 
-def load_seed_pool(seed_root: Path, *, n_pool: int = 16) -> list[dict[str, Any]]:
+def load_seed_pool(
+    seed_root: Path,
+    *,
+    n_pool: int = DEFAULT_REPLAY_SEED_POOL_SIZE,
+) -> list[dict[str, Any]]:
     """Load the collaborator seed pool, cycling available images to n_pool."""
+    if n_pool <= 0:
+        raise ValueError("seed pool size must be positive")
+
     prompts_path = seed_root / "seeds" / "prompts.json"
     prompts = json.loads(prompts_path.read_text())
     available: list[dict[str, Any]] = []
@@ -803,6 +811,15 @@ def validate_regenerated_sobol_inputs(args: argparse.Namespace) -> None:
             raise ValueError("--regenerated-sobol-start-index must be >= 0")
 
 
+def validate_replay_seed_pool_inputs(args: argparse.Namespace) -> None:
+    """Fail early on invalid replay seed-pool settings."""
+    replay_seed_pool_size = int(
+        getattr(args, "replay_seed_pool_size", DEFAULT_REPLAY_SEED_POOL_SIZE)
+    )
+    if replay_seed_pool_size <= 0:
+        raise ValueError("--replay-seed-pool-size must be positive")
+
+
 def validate_run_inputs(args: argparse.Namespace, *, require_artifacts: bool) -> None:
     """Fail early if a non-dry replay is missing local run artifacts."""
     skip_visual_gate = bool(getattr(args, "skip_visual_gate", False))
@@ -816,6 +833,7 @@ def validate_run_inputs(args: argparse.Namespace, *, require_artifacts: bool) ->
             "--visual-first-retention"
         )
     validate_regenerated_sobol_inputs(args)
+    validate_replay_seed_pool_inputs(args)
     if args.trial_table is None or not args.trial_table.exists():
         raise FileNotFoundError(f"trial table not found: {args.trial_table}")
     if args.seed_root is None or not args.seed_root.exists():
@@ -842,7 +860,10 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         require_artifacts=args.require_artifacts or not args.dry_run,
     )
     trials = load_collaborator_trials(args.trial_table)
-    seed_pool = load_seed_pool(args.seed_root)
+    seed_pool = load_seed_pool(
+        args.seed_root,
+        n_pool=args.replay_seed_pool_size,
+    )
     selected = select_trials(
         trials,
         selection=args.selection,
@@ -993,6 +1014,8 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
     payload = {
         "schema_version": 1,
         "source_trial_table": str(args.trial_table),
+        "seed_root": str(args.seed_root),
+        "replay_seed_pool_size": args.replay_seed_pool_size,
         "selection": args.selection,
         "stratify_by": args.stratify_by,
         "max_evals": args.max_evals,
@@ -1041,6 +1064,16 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--trial-table", type=Path, default=DEFAULT_TRIAL_TABLE)
     parser.add_argument("--seed-root", type=Path, default=DEFAULT_SEED_ROOT)
+    parser.add_argument(
+        "--replay-seed-pool-size",
+        type=int,
+        default=DEFAULT_REPLAY_SEED_POOL_SIZE,
+        help=(
+            "Number of image-backed seed slots in the replay pool. Must match "
+            "trial tables built with --replay-seed-pool-size when they target "
+            "seed_idx values beyond the default 16-slot collaborator pool."
+        ),
+    )
     parser.add_argument(
         "--selection",
         choices=[
