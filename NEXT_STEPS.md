@@ -37,6 +37,11 @@ too.
   pocket-replay MP4s; V-JEPA video centroid margin reached AUC 1.0000, abs d
   3.2953, and r(score) 0.8871, with leave-one-pocket-out classifier balanced
   accuracy 0.9722. CLIP seed/video centroid margins also passed.
+- Descriptor-conditioned replication around orange flowers and hanging clothes
+  is now partially accepted. The run generated and scored 90/90 fresh-seed clips
+  with 0 visual failures; both target pockets stayed positive and all hard
+  controls stayed negative. Exact V-JEPA transported prospectively, but
+  generated-video CLIP did not clear the fresh replication verifier.
 - Prompt text is metadata-only in the current SVD runner. A prompt-rewrite
   tournament should wait until we use a prompt-conditioned generator path where
   the prompt changes the actual pixels.
@@ -75,57 +80,45 @@ validation.
 |---|---|---|---|---|---|
 | P0 | Lightweight visual feature audit of positive vs negative content pockets | Tests whether simple non-score descriptors explain the accepted pocket residual | Not accepted: no seed/video descriptor cleared AUC >= 0.85 and abs d >= 1.00; best near-miss was seed-image colorfulness at AUC 0.8333 | Content-pocket feature audit manifest and result note | Done |
 | P0 | CLIP/V-JEPA embedding audit of positive vs negative content pockets | Tests whether stronger semantic/video embeddings explain the pocket residual where simple visual descriptors failed | Accepted for exact V-JEPA and CLIP: V-JEPA video centroid margin AUC 1.0000 / abs d 3.2953, V-JEPA classifier balanced accuracy 0.9722; CLIP seed/video centroid margins also passed. | Content-pocket embedding audit manifest and result note | Done |
-| P1 | Stochastic replication around orange flowers and hanging clothes | Consolidates the best non-jellyfish positives before spending human-validation budget | Positive mean persists across new stochastic seeds, visual gates pass, hard negatives remain negative under matched recipes, and the accepted V-JEPA/CLIP centroid-margin verifiers remain positive | Descriptor-conditioned replication manifest and result note | Manifest created; generation next |
+| P1 | Stochastic replication around orange flowers and hanging clothes | Consolidates the best non-jellyfish positives before spending human-validation budget | Partial pass: 90/90 clips generated/scored, 0 visual failures, target TRIBE means positive, hard controls negative, exact V-JEPA accepted; generated-video CLIP not accepted prospectively | Descriptor-conditioned replication result note | Done; claim narrowed |
+| P1 | Resolve prospective CLIP verifier gap | Decides whether the next human/BMD packet can use a V-JEPA-only compute screen or needs another descriptor check first | Either CLIP failure is explained as a stable limitation, or a follow-up descriptor/control gate supersedes it | CLIP diagnostic or validation-packet decision note | Queued |
 | P1 | Blue jellyfish and old car boundary audit | Checks whether weaker positives are stable enough to keep or should be demoted | Stable positive mean with acceptable variance, or demote to exploratory/supporting only | Boundary audit note | Queued |
 | P2 | Prompt-conditioned generator transition | Moves from metadata-only prompt text to a generator where prompt operations can actually change content | Prompt interventions change generated video content while preserving visual validity and improving candidate selection | Prompt-conditioned generator manifest | Queued |
 | P2 | V-JEPA-augmented candidate screen | Reintroduces the broader selector stack only after content pockets are stabilized | V-JEPA adjudication improves or de-risks candidate ranking against TRIBE-only selection | Selector-stack comparison note | Queued |
 | Human-owned | Human pilot or delayed-recognition study | Needed before final human memorability claims | Participants prefer selected candidates or delayed recognition improves under pre-registered analysis | Prolific/IRB packet and analysis report | Parked until compute screen |
 | Async | Memento10k, VideoMem, or measured-BMD transfer checks | Tests cross-dataset and measured-brain grounding | External dataset correlation or measured-fMRI direction alignment clears pre-registered threshold | Dataset transfer report | Parked |
 
-## Immediate Next Experiment
+## Immediate Next Decision
 
-Question: do orange flowers and hanging clothes replicate under fresh stochastic
-seeds while preserving positive TRIBE replay score and the accepted V-JEPA/CLIP
-content-pocket verifiers?
+Question: after orange flowers and hanging clothes replicated under fresh
+stochastic seeds with TRIBE and exact V-JEPA, but not generated-video CLIP,
+should the next spend be a V-JEPA-caveated human/BMD packet or a targeted CLIP
+diagnostic?
 
-Action class: search inside the accepted SVD content-pocket regime. It becomes
-discovery-relevant only if a descriptor-conditioned replication turns the
-V-JEPA/CLIP centroid margins from retrospective verifiers into prospective
-selection constraints.
+Action class: still search inside the accepted SVD content-pocket regime. It
+becomes discovery-relevant only if a new descriptor rule, validation packet, or
+boundary audit changes what counts as a stable candidate-selection gate.
 
-Positive targets: orange flowers and hanging clothes. Keep blue jellyfish and
-old car as boundary/supporting positives unless budget allows a second block.
+Current result to preserve:
 
-Negative controls: aerial beach, city street, and storm beach under matched
-recipes/noise seeds.
+- `descriptor_conditioned_replication_result_20260608.md` records a partial
+  gate pass: 90/90 clips generated and scored, 0 visual failures, orange flowers
+  mean 3.8569, hanging clothes mean 3.1519, hard controls all negative, exact
+  V-JEPA centroid-margin AUC 1.0000 / abs d 2.8636, and V-JEPA LOPO balanced
+  accuracy 1.0000.
+- Generated-video CLIP did not replicate prospectively: centroid-margin AUC
+  0.6667 and LOPO balanced accuracy 0.5833. Do not describe the fresh
+  replication as a two-descriptor V-JEPA+CLIP pass.
 
-Suggested design:
+Near-term options:
 
-- Use the local recipe neighborhood that already passed the pocket-regime gate,
-  but add new stochastic seeds for the strongest two positive pockets.
-- Score all retained rows with TRIBE and compute the accepted V-JEPA and CLIP
-  centroid-margin descriptors.
-- Extract exact V-JEPA features for the new clips by video bytes; do not reuse
-  mismatched Wan/BMD V-JEPA features.
-- Preserve failed or withheld clips as rejected artifacts with visual-gate
-  reasons.
-
-Acceptance gate:
-
-- Orange flowers and hanging clothes stay positive in mean TRIBE score across
-  fresh stochastic seeds;
-- hard negative controls stay negative under matched recipes;
-- generated-video V-JEPA and CLIP centroid margins remain positive for the
-  replicated positives and do not collapse toward the negative centroid;
-- visual gates pass under complete-candidate retention.
-
-Required outputs:
-
-- descriptor-conditioned replication manifest:
-  `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/descriptor_conditioned_replication_manifest_20260608.md`;
-- a result note with TRIBE score, V-JEPA/CLIP verifier, visual-gate, and
-  hard-negative control summaries;
-- claim-ledger update only if the replication changes C-017/C-018 scope.
+1. Build a human/BMD validation packet with orange flowers and hanging clothes
+   explicitly labeled as TRIBE/V-JEPA-verified compute-proxy candidates.
+2. Run a targeted CLIP prospective diagnostic to decide whether CLIP only
+   explained the old 84-clip seed pool or whether the two-target replication
+   design is too narrow for CLIP.
+3. Run the blue jellyfish and old car boundary audit if the goal is to broaden
+   candidate pockets before human/BMD spend.
 
 ## Stop Rules
 
