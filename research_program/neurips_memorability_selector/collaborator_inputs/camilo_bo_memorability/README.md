@@ -201,6 +201,8 @@ prompt/seed stratum and appends deterministic, unscored Sobol controls for the
 same strata before generation. Reports include `regenerated_sobol_controls` so
 the control sequence, prompt strata, and missing strata are auditable. The
 runnable manifest is `regenerated_visual_controls_manifest_20260608.md`.
+The completed regenerated-control run is
+`regenerated_visual_controls_result_20260608.md`.
 
 The runnable manifest is
 `seed_stratified_tournament_manifest.md`. It records the selected saved-table
@@ -337,6 +339,33 @@ fireworks clips collapse into dark blur after the first frame, and jellyfish
 clips collapse into smooth blue/white gradients with weak subject persistence.
 This run should be used to narrow the BO claim, not strengthen it.
 
+### 2026-06-08 Regenerated Visual Controls Result
+
+The regenerated-control follow-up selected 2 saved BO anchors and 2
+deterministic, unscored regenerated Sobol controls in each BO-covered prompt
+stratum, then replayed 3 stochastic replicates per candidate under the tuned
+visual-first settings: 50 SVD steps, motion bucket 5, noise augmentation 0, and
+complete-candidate visual-first retention.
+
+The run generated 24/24 requested clips. One clip failed the automated visual
+gate: `bo09_cand01` replicate 1 with `tail_sharpness_collapse`. Because the run
+used complete-candidate retention, all 3 rows for `bo09_cand01` were withheld
+before upload/scoring. The retained set kept 7/8 candidates and scored 21/21
+retained rows with full TRIBE.
+
+Matched BO/control coverage survived in both selected prompt strata:
+
+| stratum | BO retained candidates | regenerated Sobol candidates | BO mean | Sobol mean | local winner |
+|---|---:|---:|---:|---:|---|
+| fireworks | 1 | 2 | -3.9426 | -3.3241 | regenerated Sobol |
+| jellyfish | 2 | 2 | 1.6745 | 1.0558 | BO |
+
+Pooled retained means were BO `-0.1979` and regenerated Sobol `-1.1342`, but
+this is still a small two-stratum proxy panel with a mixed per-stratum result.
+Use it as evidence that the regenerated-control and visual-first protocol can
+run end to end, not as evidence that BO broadly beats controls or improves
+human memorability.
+
 ## Validation Checklist
 
 - Confirm exact `v_mem_CLIP` derivation from cortical `v_mem`.
@@ -362,12 +391,11 @@ This run should be used to narrow the BO claim, not strengthen it.
   panel failed 1/12 clips because `sobol_007` replicate 2 repeatedly collapsed.
   A visual-first `max_evals=2` replacement pool generated 21/21 clips, withheld
   3/7 complete candidates, and scored 12/21 retained rows. The saved-table pool
-  still lacks a retained fireworks Sobol candidate, so the human-panel path
-  remains blocked until controls are regenerated with visual screening before
-  scoring. Current regenerated-control status: a dry-run preview selected 4 BO
-  anchors and 4 regenerated Sobol controls across fireworks and jellyfish,
-  expanding to 24 planned replay jobs; full Modal generation/scoring is the next
-  gate.
+  still lacked a retained fireworks Sobol candidate. The 2026-06-08
+  regenerated-control run generated 24/24 clips, withheld one BO fireworks
+  candidate under complete-candidate retention, scored 21/21 retained rows, and
+  kept matched BO/control coverage in both selected strata. The result is mixed:
+  BO wins jellyfish, regenerated Sobol wins fireworks.
 - Report wall-clock and average minutes per evaluation.
 - Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock
   efficient.
