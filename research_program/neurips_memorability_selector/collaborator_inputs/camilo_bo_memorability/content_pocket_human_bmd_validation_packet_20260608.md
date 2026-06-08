@@ -48,6 +48,8 @@ Frozen validation stimuli:
 - `content_pocket_validation_screening_sheets_20260608/`
 - `content_pocket_recognition_memory_design_20260608.json`
 - `content_pocket_recognition_memory_packet_20260608.md`
+- `content_pocket_recognition_stimulus_production_manifest_20260608.json`
+- `content_pocket_recognition_stimulus_production_manifest_20260608.md`
 
 Local data-lake inputs:
 
@@ -152,9 +154,10 @@ Launch state:
 - Designed: 15 frozen old targets, 15 required lure seed-image requests, six
   sparse forms, target 300 usable delayed participants, minimum 200 usable
   delayed participants before interpreting the gate.
-- Not launchable: lure seed images, generated lure MP4s, unrelated fillers,
-  lure/filler screening sheets, hosted URLs, and final Prolific setup are still
-  missing.
+- Production manifest built: 15 analysis lures, 25 filler old targets, 20
+  filler lures, 60 seed-image requests, and 60 SVD generation jobs.
+- Not launchable: 60 seed images, 60 generated MP4s, image/video screening
+  sheets, hosted URLs, and final Prolific setup are still missing.
 
 ## Weaker Perceived-Memorability Pilot
 
@@ -230,9 +233,9 @@ Not allowed:
 ## Next Action
 
 For an actual human memorability claim, use the recognition-memory packet:
-acquire distinct lure seed images, generate matched lure and filler MP4s,
-screen/contact-sheet them, freeze the complete recognition set, and then run
-the two-session delayed Prolific study.
+materialize the production manifest seed images, screen/contact-sheet them,
+generate matched lure and filler MP4s, screen/contact-sheet the MP4s, freeze the
+complete recognition set, and then run the two-session delayed Prolific study.
 
 Alternative lower-claim paths:
 

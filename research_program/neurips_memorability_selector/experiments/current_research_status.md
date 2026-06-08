@@ -113,8 +113,8 @@ to TRIBE/product nor obviously irrelevant.
   CLIP did not clear the prospective verifier. Blue jellyfish and old car passed
   fresh TRIBE and CLIP-side boundary checks, but not the exact V-JEPA boundary
   verifier. The validation packet, exact MP4 stimulus freeze, agent
-  sampled-frame pre-screen, and recognition-memory design are assembled, but
-  no human/BMD gate has run.
+  sampled-frame pre-screen, recognition-memory design, and recognition stimulus
+  production manifest are assembled, but no human/BMD gate has run.
 - We have not shown delayed-recognition memory gains.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.
@@ -163,11 +163,13 @@ artifact:
 - `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_validation_hosted_video_url_map_template_20260608.json`
 - `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_memory_design_20260608.json`
 - `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_memory_packet_20260608.md`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_stimulus_production_manifest_20260608.json`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_stimulus_production_manifest_20260608.md`
 
 Use it only for a human/BMD validation launch. For a direct actual-memory claim,
-the stronger path is the two-session recognition-memory packet: generate
-distinct same-category lures and unrelated fillers, screen them, host all MP4s,
-and then run the delayed old-vs-lure study. The older forced-choice survey is a
-weaker perceived-memorability readout. This does not change the current
-main-pilot priority above unless the team decides to spend validation budget on
-the content-pocket fork.
+the stronger path is the two-session recognition-memory packet. The production
+manifest now enumerates 60 required seed images and 60 SVD jobs; current status
+is `missing_seed_images_not_ready_for_generation`. The older forced-choice
+survey is a weaker perceived-memorability readout. This does not change the
+current main-pilot priority above unless the team decides to spend validation
+budget on the content-pocket fork.
