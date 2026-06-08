@@ -15,6 +15,7 @@ from audience_vectors.attention_capture import (
     load_manifest_rows,
     preflight_phase1_manifest,
     render_phase1_markdown,
+    render_phase1_workflow_markdown,
     render_preflight_markdown,
     render_roi_mask_audit_markdown,
     render_sensitivity_markdown,
@@ -22,6 +23,7 @@ from audience_vectors.attention_capture import (
     run_capture_rows,
     run_phase1_manifest,
     run_phase1_sensitivity,
+    run_phase1_workflow,
     spearman_rho,
 )
 
@@ -383,3 +385,95 @@ def test_run_phase1_sensitivity_compares_primary_and_sensitivity_masks(
     assert delta["sensitivity_label"] == "overlap"
     assert delta["rho_delta"] < 0
     assert "Phase 1 Capture-Score Sensitivity" in render_sensitivity_markdown(report)
+
+
+def test_run_phase1_workflow_scores_claim_ready_manifest(tmp_path: Path) -> None:
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "status": "real_external_attention_labels",
+                "samples": [
+                    {
+                        "sample_id": f"s{i}",
+                        "dataset": "DHF1K",
+                        "ground_truth": float(i),
+                        "roi_values": {
+                            "V1": 0.2 + i * 0.03,
+                            "PPA": 0.2 + i * 0.02,
+                            "language": 0.2 + i * 0.01,
+                            "frontoparietal": 0.8 - i * 0.04,
+                        },
+                    }
+                    for i in range(5)
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    report = run_phase1_workflow(
+        manifest,
+        min_samples=5,
+        permutations=0,
+    )
+
+    assert report["preflight"]["claim_ready"] is True
+    assert report["score_decision"] == {
+        "scoring_executed": True,
+        "reason": "claim_ready",
+    }
+    assert report["primary_report"]["gate"]["claim_validated"] is True
+    assert "Phase 1 Capture-Score Workflow" in render_phase1_workflow_markdown(report)
+
+
+def test_run_phase1_workflow_withholds_claim_blocked_manifest_by_default(
+    tmp_path: Path,
+) -> None:
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "status": "synthetic_smoke_only",
+                "samples": [
+                    {
+                        "sample_id": f"s{i}",
+                        "dataset": "DHF1K_fixture",
+                        "ground_truth": float(i),
+                        "roi_values": {
+                            "V1": 0.2 + i * 0.03,
+                            "PPA": 0.2 + i * 0.02,
+                            "language": 0.2 + i * 0.01,
+                            "frontoparietal": 0.8 - i * 0.04,
+                        },
+                    }
+                    for i in range(5)
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    withheld = run_phase1_workflow(
+        manifest,
+        min_samples=5,
+        permutations=0,
+    )
+    diagnostic = run_phase1_workflow(
+        manifest,
+        min_samples=5,
+        permutations=0,
+        score_claim_blocked=True,
+    )
+
+    assert withheld["preflight"]["mechanical_ready"] is True
+    assert withheld["preflight"]["claim_ready"] is False
+    assert withheld["score_decision"] == {
+        "scoring_executed": False,
+        "reason": "claim_blocked",
+    }
+    assert withheld["primary_report"] is None
+    assert diagnostic["score_decision"]["scoring_executed"] is True
+    assert diagnostic["primary_report"]["gate"]["claim_validated"] is False

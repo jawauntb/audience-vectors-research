@@ -258,6 +258,24 @@ Sensitivity-runner update:
   overlapping masks should be treated as ROI-definition sensitivity, not as a
   new attention-capture finding.
 
+Guarded-workflow update:
+
+- `scripts/run_attention_capture_phase1_workflow.py` now makes the Phase 1
+  sequence atomic: run preflight, decide whether scoring is allowed, then write
+  primary and optional sensitivity reports from the same manifest.
+- Real claim-relevant scoring only proceeds when `claim_ready` is true. A
+  smoke/control manifest can still be scored for command diagnostics with
+  `--score-claim-blocked`, but the resulting report keeps
+  `claim_validated=false`.
+- A synthetic smoke workflow report was generated at
+  `results/phase1_synthetic_smoke_workflow_20260608.*`. It shows the expected
+  diagnostic-only status: mechanical preflight passes, claim updates are
+  blocked, scoring executes only because it was explicitly requested, and the
+  sensitivity delta is zero because explicit fixture ROI values bypass masks.
+- A repeated local asset scan found only repository adapters/scripts for DHF1K,
+  SnapUGC/VQualA, and Memento-style data, not real external videos/labels, so
+  no real Phase 1 result has been attempted in this update.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
@@ -274,8 +292,10 @@ Next move:
    scoring source.
 2. For DHF1K, run the label audit before GPU scoring and choose a non-degenerate
    ground-truth column.
-3. Run the Phase 1 preflight before the final scoring report.
-4. Report the archived overlapping-mask run as a sensitivity check if compute
-   is cheap enough, using `scripts/run_attention_capture_sensitivity.py`.
+3. Run the guarded Phase 1 workflow with
+   `scripts/run_attention_capture_phase1_workflow.py`, using disjoint masks as
+   primary and overlapping masks as the archived sensitivity condition.
+4. If the workflow withholds scoring, treat that as the result of the handoff
+   and fix the manifest/labels/features before spending more compute.
 5. Run the same script with cached or Modal-generated TRIBE features.
 6. Only then decide whether perturbation/neutralization is worth compute.

@@ -760,6 +760,173 @@ def render_sensitivity_markdown(report: dict[str, Any]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def run_phase1_workflow(
+    manifest_path: Path,
+    *,
+    primary_label: str = "primary",
+    primary_roi_masks_path: Path | None = None,
+    sensitivity_roi_masks: dict[str, Path] | None = None,
+    min_samples: int = 30,
+    min_distinct_ground_truth: int = 3,
+    permutations: int = 999,
+    seed: int = 17,
+    gate_rho: float = DEFAULT_GATE_RHO,
+    epsilon: float = 1e-6,
+    include_rows: bool = False,
+    score_claim_blocked: bool = False,
+) -> dict[str, Any]:
+    """Run the guarded Phase 1 sequence: preflight, score, sensitivity."""
+
+    preflight = preflight_phase1_manifest(
+        manifest_path,
+        roi_masks_path=primary_roi_masks_path,
+        min_samples=min_samples,
+        min_distinct_ground_truth=min_distinct_ground_truth,
+        epsilon=epsilon,
+    )
+    score_decision = _phase1_workflow_score_decision(
+        preflight,
+        score_claim_blocked=score_claim_blocked,
+    )
+
+    primary_report = None
+    sensitivity_report = None
+    if score_decision["scoring_executed"]:
+        primary_report = run_phase1_manifest(
+            manifest_path,
+            roi_masks_path=primary_roi_masks_path,
+            permutations=permutations,
+            seed=seed,
+            gate_rho=gate_rho,
+            epsilon=epsilon,
+            include_rows=include_rows,
+        )
+        if sensitivity_roi_masks:
+            sensitivity_report = run_phase1_sensitivity(
+                manifest_path,
+                primary_label=primary_label,
+                primary_roi_masks_path=primary_roi_masks_path,
+                sensitivity_roi_masks=sensitivity_roi_masks,
+                permutations=permutations,
+                seed=seed,
+                gate_rho=gate_rho,
+                epsilon=epsilon,
+                include_rows=include_rows,
+            )
+
+    return {
+        "schema_version": 1,
+        "experiment": "phase1_capture_score_workflow",
+        "manifest_path": str(manifest_path),
+        "primary_label": primary_label,
+        "primary_roi_masks_path": (
+            str(primary_roi_masks_path) if primary_roi_masks_path else None
+        ),
+        "sensitivity_roi_masks": {
+            label: str(path) for label, path in (sensitivity_roi_masks or {}).items()
+        },
+        "min_samples": min_samples,
+        "min_distinct_ground_truth": min_distinct_ground_truth,
+        "gate_rho": gate_rho,
+        "permutations": permutations,
+        "seed": seed,
+        "preflight": preflight,
+        "score_decision": score_decision,
+        "primary_report": primary_report,
+        "sensitivity_report": sensitivity_report,
+        "claim_boundary": (
+            "This workflow only allows claim-relevant scoring after preflight "
+            "passes. Smoke or control manifests may be scored for diagnostics "
+            "only when explicitly requested, and remain claim-blocked."
+        ),
+    }
+
+
+def render_phase1_workflow_markdown(report: dict[str, Any]) -> str:
+    """Render a compact Markdown report for `run_phase1_workflow`."""
+
+    preflight = report["preflight"]
+    decision = report["score_decision"]
+    primary = report.get("primary_report")
+    lines = [
+        "# Phase 1 Capture-Score Workflow",
+        "",
+        "## Verdict",
+        "",
+        f"- Manifest: {report['manifest_path']}",
+        f"- Mechanical ready: {preflight['mechanical_ready']}",
+        f"- Claim update allowed: {preflight['claim_update_allowed']}",
+        f"- Claim ready: {preflight['claim_ready']}",
+        f"- Scoring executed: {decision['scoring_executed']}",
+        f"- Decision reason: {decision['reason']}",
+        f"- Claim boundary: {report['claim_boundary']}",
+        "",
+        "## Preflight Blocks",
+        "",
+    ]
+    reasons = preflight.get("blocking_reasons") or []
+    if reasons:
+        lines.extend(f"- {reason}" for reason in reasons)
+    else:
+        lines.append("- none")
+
+    warnings = preflight.get("warnings") or []
+    lines.extend(["", "## Preflight Warnings", ""])
+    if warnings:
+        lines.extend(f"- {warning}" for warning in warnings)
+    else:
+        lines.append("- none")
+
+    if isinstance(primary, dict):
+        lines.extend(
+            [
+                "",
+                "## Primary Score",
+                "",
+                f"- Claim validated: {primary['gate']['claim_validated']}",
+                f"- Gate passed groups: {_joined_or_none(primary['gate']['passed_groups'])}",
+                (
+                    "- Invalid capture denominators: "
+                    f"{primary['n_invalid_capture_denominators']}"
+                ),
+                "",
+                "| group | n valid | capture rho | permutation p | gate |",
+                "|---|---:|---:|---:|---|",
+            ]
+        )
+        for summary in [*primary["groups"], primary["pooled"]]:
+            capture = summary["metrics"]["capture_score"]
+            lines.append(
+                "| "
+                f"{summary['group']} | {capture['n']} | "
+                f"{_fmt_optional_float(capture['rho'])} | "
+                f"{_fmt_optional_float(capture['permutation_p_greater'])} | "
+                f"{capture['gate_passed']} |"
+            )
+
+    sensitivity = report.get("sensitivity_report")
+    if isinstance(sensitivity, dict):
+        lines.extend(
+            [
+                "",
+                "## Sensitivity Delta",
+                "",
+                "| group | sensitivity | primary rho | sensitivity rho | delta |",
+                "|---|---|---:|---:|---:|",
+            ]
+        )
+        for item in sensitivity["comparison"]["capture_score_deltas"]:
+            lines.append(
+                "| "
+                f"{item['group']} | {item['sensitivity_label']} | "
+                f"{_fmt_optional_float(item['primary_rho'])} | "
+                f"{_fmt_optional_float(item['sensitivity_rho'])} | "
+                f"{_fmt_optional_float(item['rho_delta'])} |"
+            )
+
+    return "\n".join(lines) + "\n"
+
+
 def summarize_capture_rows(
     rows: list[CaptureRow],
     *,
@@ -1184,6 +1351,36 @@ def _optional_delta(left: float | None, right: float | None) -> float | None:
     if left is None or right is None:
         return None
     return float(left) - float(right)
+
+
+def _phase1_workflow_score_decision(
+    preflight: dict[str, Any],
+    *,
+    score_claim_blocked: bool,
+) -> dict[str, Any]:
+    if not preflight["mechanical_ready"]:
+        return {
+            "scoring_executed": False,
+            "reason": "preflight_failed",
+        }
+    if preflight["claim_ready"]:
+        return {
+            "scoring_executed": True,
+            "reason": "claim_ready",
+        }
+    if score_claim_blocked:
+        return {
+            "scoring_executed": True,
+            "reason": "claim_blocked_scored_for_diagnostic_only",
+        }
+    return {
+        "scoring_executed": False,
+        "reason": "claim_blocked",
+    }
+
+
+def _joined_or_none(values: list[str]) -> str:
+    return ", ".join(values) if values else "none"
 
 
 def _synthetic_rows_for_claim_block_check(

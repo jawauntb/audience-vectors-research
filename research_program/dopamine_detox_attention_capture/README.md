@@ -32,6 +32,11 @@ format work. It does not validate attentional capture.
   choice is intentionally a no-op here.
 - `results/phase1_synthetic_smoke_sensitivity_20260608.md`: readable
   sensitivity-run smoke report.
+- `results/phase1_synthetic_smoke_workflow_20260608.json`: guarded workflow
+  smoke report that preflights, scores diagnostically, and compares masks while
+  keeping claim validation blocked.
+- `results/phase1_synthetic_smoke_workflow_20260608.md`: readable guarded
+  workflow smoke report.
 - `results/bmd_memorability_control_20260608.json`: BOLD Moments control result
   over 1,022 cached TRIBE feature files using overlapping exploratory masks.
 - `results/bmd_memorability_control_20260608.md`: readable overlapping-mask
@@ -62,6 +67,9 @@ format work. It does not validate attentional capture.
   preflight gate before claim-relevant Phase 1 scoring.
 - `scripts/run_attention_capture_sensitivity.py`: primary-vs-sensitivity ROI
   mask runner for disjoint primary and overlapping-mask sensitivity reports.
+- `scripts/run_attention_capture_phase1_workflow.py`: guarded Phase 1
+  orchestrator that runs preflight first, withholds scoring when the claim gate
+  is not ready, and optionally emits primary plus sensitivity reports.
 
 ## Reused Infrastructure
 
@@ -172,6 +180,27 @@ uv run python scripts/preflight_attention_capture_phase1.py \
   --min-samples 30 \
   --min-distinct-ground-truth 3
 ```
+
+Preferred guarded workflow for the real DHF1K run:
+
+```bash
+uv run python scripts/run_attention_capture_phase1_workflow.py \
+  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_manifest_20260608.json \
+  --primary-label disjoint \
+  --roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz \
+  --sensitivity-roi-masks overlapping=research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz \
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_workflow_20260608.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_workflow_20260608.md \
+  --min-samples 30 \
+  --min-distinct-ground-truth 3 \
+  --permutations 999 \
+  --seed 20260608 \
+  --omit-rows
+```
+
+The workflow exits non-zero after writing its report if preflight fails or the
+manifest is claim-blocked. Use `--score-claim-blocked` only for smoke/control
+diagnostics, never to turn a fixture into evidence.
 
 ```bash
 uv run python scripts/run_attention_capture_phase1.py \
