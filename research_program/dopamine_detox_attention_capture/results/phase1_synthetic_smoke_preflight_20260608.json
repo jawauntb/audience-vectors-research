@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_capture_score_preflight",
+  "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_synthetic_smoke_manifest_20260608.json",
+  "manifest_status": "synthetic_smoke_only",
+  "roi_masks_path": null,
+  "n_samples": 16,
+  "sample_kind_counts": {
+    "roi_values": 16,
+    "tribe_feature_path": 0,
+    "both": 0,
+    "neither": 0
+  },
+  "label_groups": [
+    {
+      "dataset": "DHF1K_fixture",
+      "n": 8,
+      "n_finite": 8,
+      "n_distinct": 8,
+      "mean": 0.5325,
+      "std": 0.23594225988576104,
+      "min": 0.18,
+      "max": 0.88,
+      "ready": true
+    },
+    {
+      "dataset": "SnapUGC_fixture",
+      "n": 8,
+      "n_finite": 8,
+      "n_distinct": 8,
+      "mean": 0.50125,
+      "std": 0.26750876153875786,
+      "min": 0.12,
+      "max": 0.91,
+      "ready": true
+    }
+  ],
+  "feature_audit": {
+    "n_feature_path_samples": 0,
+    "n_existing": 0,
+    "n_missing": 0,
+    "n_shape_mismatch": 0,
+    "feature_shape_counts": {},
+    "missing_features": [],
+    "shape_mismatches": [],
+    "roi_shape": null
+  },
+  "scoring_audit": {
+    "attempted": true,
+    "attempted_reason": null,
+    "n_invalid_capture_denominators": 0,
+    "n_valid_capture_denominators": 16
+  },
+  "min_samples": 3,
+  "min_distinct_ground_truth": 3,
+  "mechanical_ready": true,
+  "claim_update_allowed": false,
+  "claim_ready": false,
+  "blocking_reasons": [],
+  "warnings": [
+    "manifest status or dataset names block claim updates"
+  ],
+  "claim_boundary": "Preflight verifies manifest mechanics and label variance only. It does not validate attentional capture."
+}

@@ -229,6 +229,20 @@ DHF1K readiness update:
 - No local SnapUGC or DHF1K assets were found in the searched data paths during
   this pass, so no real Phase 1 claim has been attempted.
 
+Preflight verifier update:
+
+- `scripts/preflight_attention_capture_phase1.py` now runs a manifest preflight
+  before claim-relevant Phase 1 scoring.
+- It checks sample count, dataset-level label variance, missing feature files,
+  feature/ROI shape compatibility, denominator validity after local ROI
+  aggregation, and whether manifest status/dataset names would block claim
+  updates.
+- This turns the next real-data handoff into an explicit go/no-go artifact:
+  a real run should create `phase1_*_preflight_*.json/md` before
+  `phase1_*_disjoint_*.json/md`.
+- This is still retrieval/verification infrastructure. Passing preflight only
+  means the manifest is ready to score; it does not validate the capture proxy.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
@@ -245,7 +259,8 @@ Next move:
    scoring source.
 2. For DHF1K, run the label audit before GPU scoring and choose a non-degenerate
    ground-truth column.
-3. Report the archived overlapping-mask run as a sensitivity check if compute
+3. Run the Phase 1 preflight before the final scoring report.
+4. Report the archived overlapping-mask run as a sensitivity check if compute
    is cheap enough.
-4. Run the same script with cached or Modal-generated TRIBE features.
-5. Only then decide whether perturbation/neutralization is worth compute.
+5. Run the same script with cached or Modal-generated TRIBE features.
+6. Only then decide whether perturbation/neutralization is worth compute.

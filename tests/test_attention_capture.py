@@ -13,7 +13,9 @@ from audience_vectors.attention_capture import (
     build_roi_selection_from_parcels,
     capture_scores_from_roi_values,
     load_manifest_rows,
+    preflight_phase1_manifest,
     render_phase1_markdown,
+    render_preflight_markdown,
     render_roi_mask_audit_markdown,
     roi_mask_audit,
     run_capture_rows,
@@ -228,3 +230,79 @@ def test_control_status_blocks_claim_validation() -> None:
     assert report["claim_update_allowed"] is False
     assert report["gate"]["claim_validated"] is False
     assert "rows" not in report
+
+
+def test_preflight_phase1_manifest_accepts_ready_explicit_roi_manifest(
+    tmp_path: Path,
+) -> None:
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "status": "real_external_attention_labels",
+                "samples": [
+                    {
+                        "sample_id": f"s{i}",
+                        "dataset": "DHF1K",
+                        "ground_truth": float(i),
+                        "roi_values": {
+                            "V1": 0.2 + i,
+                            "PPA": 0.3 + i,
+                            "language": 0.4 + i,
+                            "frontoparietal": 1.0,
+                        },
+                    }
+                    for i in range(3)
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    report = preflight_phase1_manifest(manifest, min_samples=3)
+
+    assert report["mechanical_ready"] is True
+    assert report["claim_update_allowed"] is True
+    assert report["claim_ready"] is True
+    assert report["scoring_audit"]["attempted"] is True
+    assert report["scoring_audit"]["n_valid_capture_denominators"] == 3
+    assert "Phase 1 Capture-Score Preflight" in render_preflight_markdown(report)
+
+
+def test_preflight_phase1_manifest_blocks_feature_rows_without_roi_masks(
+    tmp_path: Path,
+) -> None:
+    feature_dir = tmp_path / "features"
+    feature_dir.mkdir()
+    for i in range(3):
+        np.savez_compressed(
+            feature_dir / f"s{i}.npz",
+            frames=np.ones((2, 4), dtype=np.float32),
+        )
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "status": "real_external_attention_labels",
+                "samples": [
+                    {
+                        "sample_id": f"s{i}",
+                        "dataset": "DHF1K",
+                        "ground_truth": float(i),
+                        "tribe_feature_path": str(feature_dir / f"s{i}.npz"),
+                    }
+                    for i in range(3)
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    report = preflight_phase1_manifest(manifest, min_samples=3)
+
+    assert report["mechanical_ready"] is False
+    assert report["claim_ready"] is False
+    assert "feature-path samples require --roi-masks" in report["blocking_reasons"]
+    assert report["feature_audit"]["n_existing"] == 3

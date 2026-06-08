@@ -21,6 +21,10 @@ format work. It does not validate attentional capture.
 
 - `soundness_audit_20260608.md`: pre-run assessment of the approach.
 - `phase1_synthetic_smoke_manifest_20260608.json`: tiny fixture manifest.
+- `results/phase1_synthetic_smoke_preflight_20260608.json`: machine-readable
+  manifest preflight for the synthetic fixture.
+- `results/phase1_synthetic_smoke_preflight_20260608.md`: readable synthetic
+  fixture preflight report.
 - `results/phase1_synthetic_smoke_20260608.json`: machine-readable smoke result.
 - `results/phase1_synthetic_smoke_20260608.md`: readable smoke report.
 - `results/bmd_memorability_control_20260608.json`: BOLD Moments control result
@@ -49,6 +53,8 @@ format work. It does not validate attentional capture.
   that emits gaze/saliency CSV rows plus a label audit.
 - `scripts/extract_attention_capture_tribe_features.py`: generic TRIBE NPZ
   extractor for local/remote videos listed in a CSV.
+- `scripts/preflight_attention_capture_phase1.py`: manifest/feature/label
+  preflight gate before claim-relevant Phase 1 scoring.
 
 ## Reused Infrastructure
 
@@ -148,6 +154,18 @@ uv run python scripts/build_attention_capture_phase1_manifest.py \
   --ground-truth-column mean_map_intensity
 ```
 
+Preflight the manifest before claim-relevant scoring:
+
+```bash
+uv run python scripts/preflight_attention_capture_phase1.py \
+  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_manifest_20260608.json \
+  --roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz \
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_preflight_20260608.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_preflight_20260608.md \
+  --min-samples 30 \
+  --min-distinct-ground-truth 3
+```
+
 ```bash
 uv run python scripts/run_attention_capture_phase1.py \
   --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_manifest_20260608.json \
@@ -163,7 +181,16 @@ The DHF1K label audit should be inspected before GPU scoring. If
 columns as a stress test rather than treating map intensity as a validated
 capture metric.
 
-For a generic real manifest, score it with the disjoint ROI masks:
+For a generic real manifest, run the same preflight before scoring with the
+disjoint ROI masks:
+
+```bash
+uv run python scripts/preflight_attention_capture_phase1.py \
+  --manifest research_program/dopamine_detox_attention_capture/phase1_real_manifest.json \
+  --roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz \
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_real_preflight.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_real_preflight.md
+```
 
 ```bash
 uv run python scripts/run_attention_capture_phase1.py \

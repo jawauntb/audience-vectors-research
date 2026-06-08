@@ -413,6 +413,175 @@ def run_phase1_manifest(
     )
 
 
+def preflight_phase1_manifest(
+    manifest_path: Path,
+    *,
+    roi_masks_path: Path | None = None,
+    min_samples: int = 30,
+    min_distinct_ground_truth: int = 3,
+    epsilon: float = 1e-6,
+) -> dict[str, Any]:
+    """Audit a Phase 1 manifest before claim-relevant scoring.
+
+    This is a verifier, not a result. It checks external-label variance,
+    feature coverage, ROI-mask compatibility, and claim-blocking status so a
+    real-data run has an auditable go/no-go gate before GPU or correlation
+    work.
+    """
+
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    samples = manifest.get("samples")
+    if not isinstance(samples, list):
+        raise ValueError(f"{manifest_path} missing list field 'samples'")
+
+    sample_dicts = _manifest_sample_dicts(samples)
+    roi_masks = load_roi_masks_npz(roi_masks_path) if roi_masks_path else None
+    feature_audit = _preflight_feature_paths(
+        sample_dicts,
+        manifest_path=manifest_path,
+        roi_masks=roi_masks,
+    )
+    label_groups = _preflight_label_groups(
+        sample_dicts,
+        min_samples=min_samples,
+        min_distinct_ground_truth=min_distinct_ground_truth,
+    )
+    kind_counts = _preflight_sample_kind_counts(sample_dicts)
+    reasons, warnings = _preflight_readiness_reasons(
+        n_samples=len(sample_dicts),
+        min_samples=min_samples,
+        kind_counts=kind_counts,
+        feature_audit=feature_audit,
+        label_groups=label_groups,
+        roi_masks_path=roi_masks_path,
+    )
+
+    manifest_status = str(manifest.get("status") or "unspecified")
+    claim_update_allowed = not _is_claim_blocked_run(
+        manifest_status,
+        _synthetic_rows_for_claim_block_check(sample_dicts),
+    )
+    if not claim_update_allowed:
+        warnings.append("manifest status or dataset names block claim updates")
+
+    scoring_audit = _preflight_scoring(
+        manifest_path,
+        roi_masks=roi_masks,
+        epsilon=epsilon,
+        enabled=not reasons,
+    )
+    if scoring_audit["attempted"]:
+        valid = int(scoring_audit["n_valid_capture_denominators"])
+        if valid < min_samples:
+            reasons.append(
+                f"valid capture denominator count {valid} is below minimum {min_samples}"
+            )
+    elif not scoring_audit["attempted_reason"]:
+        warnings.append("ROI scoring preflight was skipped")
+
+    mechanical_ready = not reasons
+    return {
+        "schema_version": 1,
+        "experiment": "phase1_capture_score_preflight",
+        "manifest_path": str(manifest_path),
+        "manifest_status": manifest_status,
+        "roi_masks_path": str(roi_masks_path) if roi_masks_path else None,
+        "n_samples": len(sample_dicts),
+        "sample_kind_counts": kind_counts,
+        "label_groups": label_groups,
+        "feature_audit": feature_audit,
+        "scoring_audit": scoring_audit,
+        "min_samples": min_samples,
+        "min_distinct_ground_truth": min_distinct_ground_truth,
+        "mechanical_ready": mechanical_ready,
+        "claim_update_allowed": claim_update_allowed,
+        "claim_ready": mechanical_ready and claim_update_allowed,
+        "blocking_reasons": reasons,
+        "warnings": warnings,
+        "claim_boundary": (
+            "Preflight verifies manifest mechanics and label variance only. "
+            "It does not validate attentional capture."
+        ),
+    }
+
+
+def render_preflight_markdown(report: dict[str, Any]) -> str:
+    """Render a compact Markdown report for `preflight_phase1_manifest`."""
+
+    lines = [
+        "# Phase 1 Capture-Score Preflight",
+        "",
+        "## Verdict",
+        "",
+        f"- Mechanical ready: {report['mechanical_ready']}",
+        f"- Claim update allowed: {report['claim_update_allowed']}",
+        f"- Claim ready: {report['claim_ready']}",
+        f"- Samples: {report['n_samples']}",
+        f"- ROI masks: {report.get('roi_masks_path') or 'none'}",
+        f"- Claim boundary: {report['claim_boundary']}",
+        "",
+        "## Blocking Reasons",
+        "",
+    ]
+    reasons = report.get("blocking_reasons") or []
+    if reasons:
+        lines.extend(f"- {reason}" for reason in reasons)
+    else:
+        lines.append("- none")
+
+    warnings = report.get("warnings") or []
+    lines.extend(["", "## Warnings", ""])
+    if warnings:
+        lines.extend(f"- {warning}" for warning in warnings)
+    else:
+        lines.append("- none")
+
+    lines.extend(
+        [
+            "",
+            "## Label Groups",
+            "",
+            "| dataset | n | finite | distinct | std | ready |",
+            "|---|---:|---:|---:|---:|---|",
+        ]
+    )
+    for group in report["label_groups"]:
+        lines.append(
+            "| "
+            f"{group['dataset']} | {group['n']} | {group['n_finite']} | "
+            f"{group['n_distinct']} | {_fmt_optional_float(group['std'])} | "
+            f"{group['ready']} |"
+        )
+
+    feature_audit = report["feature_audit"]
+    scoring_audit = report["scoring_audit"]
+    lines.extend(
+        [
+            "",
+            "## Feature Audit",
+            "",
+            f"- Feature-path samples: {feature_audit['n_feature_path_samples']}",
+            f"- Existing features: {feature_audit['n_existing']}",
+            f"- Missing features: {feature_audit['n_missing']}",
+            f"- Shape mismatches: {feature_audit['n_shape_mismatch']}",
+            "",
+            "## Scoring Audit",
+            "",
+            f"- Attempted: {scoring_audit['attempted']}",
+            f"- Reason skipped: {scoring_audit['attempted_reason'] or 'n/a'}",
+            (
+                "- Invalid capture denominators: "
+                f"{scoring_audit['n_invalid_capture_denominators']}"
+            ),
+            (
+                "- Valid capture denominators: "
+                f"{scoring_audit['n_valid_capture_denominators']}"
+            ),
+        ]
+    )
+    return "\n".join(lines) + "\n"
+
+
 def run_capture_rows(
     rows: list[CaptureRow],
     *,
@@ -671,6 +840,233 @@ def render_phase1_markdown(report: dict[str, Any]) -> str:
             ]
         )
     return "\n".join(lines) + "\n"
+
+
+def _manifest_sample_dicts(samples: list[Any]) -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    for sample in samples:
+        if not isinstance(sample, dict):
+            raise ValueError(f"manifest sample is not an object: {sample!r}")
+        out.append(sample)
+    return out
+
+
+def _preflight_readiness_reasons(
+    *,
+    n_samples: int,
+    min_samples: int,
+    kind_counts: dict[str, int],
+    feature_audit: dict[str, Any],
+    label_groups: list[dict[str, Any]],
+    roi_masks_path: Path | None,
+) -> tuple[list[str], list[str]]:
+    reasons: list[str] = []
+    warnings: list[str] = []
+    if n_samples < min_samples:
+        reasons.append(f"sample count {n_samples} is below minimum {min_samples}")
+    if kind_counts["neither"]:
+        reasons.append(f"{kind_counts['neither']} samples have no ROI values or feature path")
+    if kind_counts["both"]:
+        warnings.append(f"{kind_counts['both']} samples include both ROI values and features")
+    if kind_counts["tribe_feature_path"] and roi_masks_path is None:
+        reasons.append("feature-path samples require --roi-masks")
+    if feature_audit["n_missing"]:
+        reasons.append(f"{feature_audit['n_missing']} feature files are missing")
+    if feature_audit["n_shape_mismatch"]:
+        reasons.append(
+            f"{feature_audit['n_shape_mismatch']} feature files do not match ROI masks"
+        )
+    if not any(group["ready"] for group in label_groups):
+        reasons.append("no dataset group has enough non-degenerate ground truth labels")
+    return reasons, warnings
+
+
+def _preflight_sample_kind_counts(samples: list[dict[str, Any]]) -> dict[str, int]:
+    counts = {
+        "roi_values": 0,
+        "tribe_feature_path": 0,
+        "both": 0,
+        "neither": 0,
+    }
+    for sample in samples:
+        has_roi_values = isinstance(sample.get("roi_values"), dict)
+        has_feature_path = isinstance(sample.get("tribe_feature_path"), str)
+        counts["roi_values"] += int(has_roi_values)
+        counts["tribe_feature_path"] += int(has_feature_path)
+        counts["both"] += int(has_roi_values and has_feature_path)
+        counts["neither"] += int(not has_roi_values and not has_feature_path)
+    return counts
+
+
+def _preflight_label_groups(
+    samples: list[dict[str, Any]],
+    *,
+    min_samples: int,
+    min_distinct_ground_truth: int,
+) -> list[dict[str, Any]]:
+    by_dataset: dict[str, list[float | None]] = {}
+    for sample in samples:
+        dataset = str(sample.get("dataset") or "unknown")
+        by_dataset.setdefault(dataset, []).append(_finite_float(sample.get("ground_truth")))
+
+    groups: list[dict[str, Any]] = []
+    for dataset in sorted(by_dataset):
+        values = by_dataset[dataset]
+        finite = [float(value) for value in values if value is not None]
+        std = float(np.std(finite)) if finite else None
+        n_distinct = len(set(finite))
+        ready = bool(
+            len(values) >= min_samples
+            and len(finite) == len(values)
+            and n_distinct >= min_distinct_ground_truth
+            and std is not None
+            and std > 0.0
+        )
+        groups.append(
+            {
+                "dataset": dataset,
+                "n": len(values),
+                "n_finite": len(finite),
+                "n_distinct": n_distinct,
+                "mean": float(np.mean(finite)) if finite else None,
+                "std": std,
+                "min": float(np.min(finite)) if finite else None,
+                "max": float(np.max(finite)) if finite else None,
+                "ready": ready,
+            }
+        )
+    return groups
+
+
+def _preflight_feature_paths(
+    samples: list[dict[str, Any]],
+    *,
+    manifest_path: Path,
+    roi_masks: dict[str, np.ndarray] | None,
+) -> dict[str, Any]:
+    roi_shape = _common_roi_shape(roi_masks)
+    missing: list[dict[str, str]] = []
+    mismatches: list[dict[str, str]] = []
+    shape_counts: dict[str, int] = {}
+    existing = 0
+    feature_samples = 0
+
+    for sample in samples:
+        raw_feature_path = sample.get("tribe_feature_path")
+        if not isinstance(raw_feature_path, str) or not raw_feature_path:
+            continue
+        feature_samples += 1
+        feature_path = Path(raw_feature_path)
+        if not feature_path.is_absolute():
+            feature_path = manifest_path.parent / feature_path
+        sample_id = str(sample.get("sample_id") or "unknown")
+        if not feature_path.exists():
+            missing.append({"sample_id": sample_id, "path": str(feature_path)})
+            continue
+        existing += 1
+        try:
+            feature_shape = load_tribe_feature_mean(feature_path).shape
+        except ValueError as exc:
+            mismatches.append(
+                {
+                    "sample_id": sample_id,
+                    "path": str(feature_path),
+                    "error": str(exc),
+                }
+            )
+            continue
+        shape_key = "x".join(str(dim) for dim in feature_shape)
+        shape_counts[shape_key] = shape_counts.get(shape_key, 0) + 1
+        if roi_shape is not None and tuple(feature_shape) != roi_shape:
+            mismatches.append(
+                {
+                    "sample_id": sample_id,
+                    "path": str(feature_path),
+                    "feature_shape": shape_key,
+                    "roi_shape": "x".join(str(dim) for dim in roi_shape),
+                }
+            )
+
+    return {
+        "n_feature_path_samples": feature_samples,
+        "n_existing": existing,
+        "n_missing": len(missing),
+        "n_shape_mismatch": len(mismatches),
+        "feature_shape_counts": shape_counts,
+        "missing_features": missing[:20],
+        "shape_mismatches": mismatches[:20],
+        "roi_shape": "x".join(str(dim) for dim in roi_shape) if roi_shape else None,
+    }
+
+
+def _preflight_scoring(
+    manifest_path: Path,
+    *,
+    roi_masks: dict[str, np.ndarray] | None,
+    epsilon: float,
+    enabled: bool,
+) -> dict[str, Any]:
+    if not enabled:
+        return {
+            "attempted": False,
+            "attempted_reason": "skipped because blocking preflight issues exist",
+            "n_invalid_capture_denominators": None,
+            "n_valid_capture_denominators": None,
+        }
+    try:
+        rows = load_manifest_rows(manifest_path, roi_masks=roi_masks, epsilon=epsilon)
+    except ValueError as exc:
+        return {
+            "attempted": False,
+            "attempted_reason": str(exc),
+            "n_invalid_capture_denominators": None,
+            "n_valid_capture_denominators": None,
+        }
+    invalid = sum(1 for row in rows if not row.denominator_valid)
+    return {
+        "attempted": True,
+        "attempted_reason": None,
+        "n_invalid_capture_denominators": invalid,
+        "n_valid_capture_denominators": len(rows) - invalid,
+    }
+
+
+def _synthetic_rows_for_claim_block_check(
+    samples: list[dict[str, Any]],
+) -> list[CaptureRow]:
+    rows: list[CaptureRow] = []
+    for sample in samples:
+        rows.append(
+            CaptureRow(
+                sample_id=str(sample.get("sample_id") or "unknown"),
+                dataset=str(sample.get("dataset") or "unknown"),
+                ground_truth=0.0,
+                roi_values={},
+                sensory_mean=0.0,
+                capture_score=None,
+                capture_delta=0.0,
+                frontoparietal=0.0,
+                denominator_valid=False,
+            )
+        )
+    return rows
+
+
+def _common_roi_shape(roi_masks: dict[str, np.ndarray] | None) -> tuple[int, ...] | None:
+    if roi_masks is None:
+        return None
+    shapes = {tuple(np.asarray(mask, dtype=bool).shape) for mask in roi_masks.values()}
+    if len(shapes) != 1:
+        return None
+    return next(iter(shapes))
+
+
+def _finite_float(value: Any) -> float | None:
+    try:
+        out = float(value)
+    except (TypeError, ValueError):
+        return None
+    return out if math.isfinite(out) else None
 
 
 def _sample_roi_values(
