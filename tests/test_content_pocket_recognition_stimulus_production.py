@@ -69,6 +69,7 @@ def test_build_manifest_counts_missing_seed_images(tmp_path):
         design_path=write_design(tmp_path),
         seed_root=tmp_path / "seeds",
         video_out_dir=tmp_path / "videos",
+        seed_screening_result=tmp_path / "screening.json",
         filler_old_count=4,
         filler_recognition_count=3,
     )
@@ -92,6 +93,7 @@ def test_existing_seed_image_gets_hashed(tmp_path):
         design_path=write_design(tmp_path),
         seed_root=tmp_path / "seeds",
         video_out_dir=tmp_path / "videos",
+        seed_screening_result=tmp_path / "screening.json",
         filler_old_count=0,
         filler_recognition_count=0,
     )
@@ -105,6 +107,41 @@ def test_existing_seed_image_gets_hashed(tmp_path):
     assert requests["hanging_clothes_lure_v00"]["status"] == "missing_seed_image"
 
 
+def test_screened_seed_images_are_ready_for_svd_generation(tmp_path):
+    module = load_production_module()
+    seed_root = tmp_path / "seeds"
+    for name in ("orange_flowers_lure_v00", "hanging_clothes_lure_v00"):
+        seed = seed_root / "analysis_lures" / f"{name}.png"
+        seed.parent.mkdir(parents=True, exist_ok=True)
+        seed.write_bytes(b"seed bytes")
+    screening_result = tmp_path / "screening.json"
+    screening_result.write_text(
+        json.dumps(
+            {
+                "status": "seed_image_screen_passed_for_svd_generation",
+                "accepted_for_svd_generation": True,
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    manifest, markdown = module.build_manifest(
+        design_path=write_design(tmp_path),
+        seed_root=seed_root,
+        video_out_dir=tmp_path / "videos",
+        seed_screening_result=screening_result,
+        filler_old_count=0,
+        filler_recognition_count=0,
+    )
+
+    assert manifest["status"] == "seed_images_screened_ready_for_svd_generation"
+    assert manifest["seed_image_screening"]["accepted_for_svd_generation"] is True
+    assert "Manual image distinctiveness" not in "\n".join(
+        manifest["launch_blockers"]
+    )
+    assert "Generate SVD MP4s" in markdown
+
+
 def test_filler_recognition_count_cannot_exceed_old_count(tmp_path):
     module = load_production_module()
 
@@ -113,6 +150,7 @@ def test_filler_recognition_count_cannot_exceed_old_count(tmp_path):
             design_path=write_design(tmp_path),
             seed_root=tmp_path / "seeds",
             video_out_dir=tmp_path / "videos",
+            seed_screening_result=tmp_path / "screening.json",
             filler_old_count=2,
             filler_recognition_count=3,
         )
