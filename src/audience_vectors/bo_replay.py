@@ -24,6 +24,7 @@ TrialSelection = Literal[
     "top-sobol-tribe",
     "top-bo-vs-top-sobol",
     "seed-stratified-bo-vs-sobol",
+    "top-bo-per-stratum",
 ]
 TrialStratum = Literal["prompt", "seed_idx"]
 
@@ -132,6 +133,13 @@ def select_trials(
             max_evals_per_group=max_evals,
             stratify_by=stratify_by,
         )
+    if selection == "top-bo-per-stratum":
+        return select_top_policy_trials_per_stratum(
+            trials,
+            policy_group="bo",
+            max_evals_per_stratum=max_evals,
+            stratify_by=stratify_by,
+        )
 
     selection_config: dict[str, tuple[str | None, str]] = {
         "top-tribe": (None, "tribe_score"),
@@ -204,6 +212,37 @@ def select_seed_stratified_policy_trials(
                     score_name=score_name,
                 )[:max_evals_per_group]
             )
+    return selected
+
+
+def select_top_policy_trials_per_stratum(
+    trials: list[CollaboratorBOTrial],
+    *,
+    policy_group: str,
+    max_evals_per_stratum: int,
+    score_name: str = "tribe_score",
+    stratify_by: TrialStratum = "prompt",
+) -> list[CollaboratorBOTrial]:
+    """Select the top scored trials for one policy inside each available stratum."""
+    if max_evals_per_stratum <= 0:
+        raise ValueError("max_evals_per_stratum must be positive")
+
+    grouped: dict[str, list[CollaboratorBOTrial]] = {}
+    for trial in trials:
+        if trial_policy_group(trial.task_id) != policy_group:
+            continue
+        grouped.setdefault(
+            trial_stratum_key(trial, stratify_by=stratify_by),
+            [],
+        ).append(trial)
+
+    selected: list[CollaboratorBOTrial] = []
+    for stratum_key in sorted(grouped):
+        selected.extend(
+            sort_by_score(grouped[stratum_key], score_name=score_name)[
+                :max_evals_per_stratum
+            ]
+        )
     return selected
 
 
