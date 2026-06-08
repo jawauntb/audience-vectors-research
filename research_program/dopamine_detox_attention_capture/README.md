@@ -37,6 +37,11 @@ format work. It does not validate attentional capture.
   keeping claim validation blocked.
 - `results/phase1_synthetic_smoke_workflow_20260608.md`: readable guarded
   workflow smoke report.
+- `results/phase1_data_readiness_20260608.json`: local data-readiness audit for
+  DHF1K/SnapUGC labels, cached TRIBE feature directories, ROI masks, and Phase 1
+  manifests.
+- `results/phase1_data_readiness_20260608.md`: readable local data-readiness
+  audit.
 - `results/bmd_memorability_control_20260608.json`: BOLD Moments control result
   over 1,022 cached TRIBE feature files using overlapping exploratory masks.
 - `results/bmd_memorability_control_20260608.md`: readable overlapping-mask
@@ -70,6 +75,8 @@ format work. It does not validate attentional capture.
 - `scripts/run_attention_capture_phase1_workflow.py`: guarded Phase 1
   orchestrator that runs preflight first, withholds scoring when the claim gate
   is not ready, and optionally emits primary plus sensitivity reports.
+- `scripts/audit_attention_capture_data_readiness.py`: local readiness audit for
+  external labels/videos, cached TRIBE NPZs, ROI masks, and existing manifests.
 
 ## Reused Infrastructure
 
@@ -115,6 +122,36 @@ uv run python scripts/run_attention_capture_phase1.py \
   --permutations 999 \
   --seed 20260608
 ```
+
+Audit local data readiness before trying a real Phase 1 handoff:
+
+```bash
+uv run python scripts/audit_attention_capture_data_readiness.py \
+  --search-root . \
+  --search-root /Users/jawaun/isc_mod/data \
+  --search-root /Users/jawaun/data \
+  --search-root /Users/jawaun/datasets \
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.md
+```
+
+Current readiness verdict:
+
+```text
+phase1_can_run_now: false
+dhf1k_labels_ready: false
+snapugc_labels_ready: false
+tribe_features_ready: true
+roi_masks_ready: true
+real_manifest_ready: false
+blocking_reasons: no external attention-label source found
+```
+
+The scan found reusable cached TRIBE feature directories, including
+`/Users/jawaun/isc_mod/data/features/tribe` with 1,022 sampled-frame NPZ files,
+but no local DHF1K/SnapUGC/VQualA external-label source. Those cached features
+remain useful infrastructure; they do not unblock Phase 1 until they are aligned
+to a real external attention-label manifest.
 
 Build a real Phase 1 manifest from external labels and cached TRIBE NPZ files:
 

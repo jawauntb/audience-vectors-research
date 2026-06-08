@@ -276,6 +276,23 @@ Guarded-workflow update:
   SnapUGC/VQualA, and Memento-style data, not real external videos/labels, so
   no real Phase 1 result has been attempted in this update.
 
+Data-readiness audit update:
+
+- `scripts/audit_attention_capture_data_readiness.py` now records the local
+  data handoff state as a report rather than relying on ad hoc shell scans.
+- The readiness audit was generated at
+  `results/phase1_data_readiness_20260608.*` after scanning `.`,
+  `/Users/jawaun/isc_mod/data`, `/Users/jawaun/data`, and
+  `/Users/jawaun/datasets`.
+- Result: `phase1_can_run_now=false`. Disjoint ROI masks are present and cached
+  TRIBE feature directories exist, including `/Users/jawaun/isc_mod/data/features/tribe`
+  with 1,022 NPZ files whose sampled payloads contain `frames`; however, no
+  local DHF1K root, SnapUGC/VQualA ECR label CSV, or real claim-ready Phase 1
+  manifest was found.
+- This is a withheld/rejected handoff state, not a failed scientific result:
+  the blocker is absent external attention labels/videos, not a negative
+  capture-score validation.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
@@ -287,15 +304,17 @@ Residual content:
 
 Next move:
 
-1. Build a real Phase 1 manifest for SnapUGC and/or DHF1K from external labels
+1. Mount or acquire real SnapUGC/VQualA labels or a DHF1K dataset root; rerun
+   `scripts/audit_attention_capture_data_readiness.py`.
+2. Build a real Phase 1 manifest for SnapUGC and/or DHF1K from external labels
    and cached TRIBE NPZ files, using the disjoint ROI mask NPZ as the default
    scoring source.
-2. For DHF1K, run the label audit before GPU scoring and choose a non-degenerate
+3. For DHF1K, run the label audit before GPU scoring and choose a non-degenerate
    ground-truth column.
-3. Run the guarded Phase 1 workflow with
+4. Run the guarded Phase 1 workflow with
    `scripts/run_attention_capture_phase1_workflow.py`, using disjoint masks as
    primary and overlapping masks as the archived sensitivity condition.
-4. If the workflow withholds scoring, treat that as the result of the handoff
+5. If the workflow withholds scoring, treat that as the result of the handoff
    and fix the manifest/labels/features before spending more compute.
-5. Run the same script with cached or Modal-generated TRIBE features.
-6. Only then decide whether perturbation/neutralization is worth compute.
+6. Run the same script with cached or Modal-generated TRIBE features.
+7. Only then decide whether perturbation/neutralization is worth compute.
