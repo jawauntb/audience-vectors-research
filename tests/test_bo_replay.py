@@ -11,6 +11,7 @@ import numpy as np
 import pytest
 
 from audience_vectors.bo_replay import (
+    CollaboratorBOTrial,
     load_collaborator_trials,
     policy_group_summary,
     replay_summary,
@@ -33,6 +34,12 @@ def load_modal_replay_module():
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
     return module
+
+
+def load_collaborator_trials_from_rows(
+    rows: list[dict[str, Any]],
+) -> list[CollaboratorBOTrial]:
+    return [CollaboratorBOTrial.from_mapping(row) for row in rows]
 
 
 def test_load_collaborator_trials_from_all_meta(tmp_path):
@@ -214,6 +221,60 @@ def test_select_trials_seed_stratified_bo_vs_sobol_uses_matched_strata(tmp_path)
     assert [trial.task_id for trial in selected] == ["bo01_cand01", "sobol_000"]
 
 
+def test_select_trials_top_bo_per_stratum_keeps_bo_anchors(tmp_path):
+    path = tmp_path / "select_top_bo_per_stratum.json"
+    path.write_text(
+        json.dumps(
+            [
+                {
+                    "task_id": "sobol_000",
+                    "alpha": 0,
+                    "guidance": 1,
+                    "seed_idx": 0,
+                    "prompt": "shared prompt",
+                    "tribe_score": 9.0,
+                },
+                {
+                    "task_id": "bo01_cand00",
+                    "alpha": 0,
+                    "guidance": 1,
+                    "seed_idx": 0,
+                    "prompt": "shared prompt",
+                    "tribe_score": 4.0,
+                },
+                {
+                    "task_id": "bo01_cand01",
+                    "alpha": 0,
+                    "guidance": 1,
+                    "seed_idx": 0,
+                    "prompt": "shared prompt",
+                    "tribe_score": 6.0,
+                },
+                {
+                    "task_id": "bo02_cand00",
+                    "alpha": 0,
+                    "guidance": 1,
+                    "seed_idx": 1,
+                    "prompt": "bo only prompt",
+                    "tribe_score": 5.0,
+                },
+            ]
+        )
+    )
+    trials = load_collaborator_trials(path)
+
+    selected = select_trials(
+        trials,
+        selection="top-bo-per-stratum",
+        max_evals=1,
+    )
+
+    assert [trial.task_id for trial in selected] == [
+        "bo02_cand00",
+        "bo01_cand01",
+    ]
+
+
 def test_validate_run_inputs_requires_artifacts_when_requested(tmp_path):
     trial_table = tmp_path / "trials.json"
     seed_root = tmp_path / "seed_root"
@@ -253,6 +314,10 @@ def test_parse_args_exposes_svd_generation_controls(monkeypatch):
             "11",
             "--visual-first-retention",
             "complete-candidates",
+            "--regenerated-sobol-controls-per-stratum",
+            "2",
+            "--regenerated-sobol-pool-size",
+            "64",
         ],
     )
 
@@ -264,6 +329,76 @@ def test_parse_args_exposes_svd_generation_controls(monkeypatch):
     assert args.svd_noise_aug_strength == pytest.approx(0.0)
     assert args.svd_fps == 11
     assert args.visual_first_retention == "complete-candidates"
+    assert args.regenerated_sobol_controls_per_stratum == 2
+    assert args.regenerated_sobol_pool_size == 64
+
+
+def test_append_regenerated_sobol_controls_matches_selected_bo_strata():
+    module = load_modal_replay_module()
+    seed_pool = [
+        {
+            "idx": 0,
+            "bmd_name": "seed_a",
+            "prompt": "prompt a",
+            "image_path": Path("/tmp/seed_a.png"),
+        },
+        {
+            "idx": 1,
+            "bmd_name": "seed_b",
+            "prompt": "prompt b",
+            "image_path": Path("/tmp/seed_b.png"),
+        },
+    ]
+    all_trials = load_collaborator_trials_from_rows(
+        [
+            {
+                "task_id": "bo01_cand00",
+                "alpha": 1.0,
+                "guidance": 3.0,
+                "seed_idx": 0,
+                "prompt": "prompt a",
+                "tribe_score": 4.0,
+            },
+            {
+                "task_id": "sobol_000",
+                "alpha": 0.0,
+                "guidance": 1.0,
+                "seed_idx": 0,
+                "prompt": "prompt a",
+                "tribe_score": 1.0,
+            },
+        ]
+    )
+    selected = [all_trials[0]]
+
+    selected_with_controls, summary = module.append_regenerated_sobol_controls(
+        selected,
+        all_trials=all_trials,
+        seed_pool=seed_pool,
+        stratify_by="prompt",
+        controls_per_stratum=1,
+        pool_size=3,
+        start_index=0,
+        scramble_seed=42,
+        sobol_points=np.asarray(
+            [
+                [0.5, 0.5, 0.01],  # saved sobol_000, skipped
+                [0.6, 0.5, 0.08],  # prompt b, not a target stratum
+                [0.7, 0.5, 0.01],  # prompt a, retained
+            ],
+            dtype=np.float64,
+        ),
+    )
+
+    assert summary is not None
+    assert [trial.task_id for trial in selected_with_controls] == [
+        "bo01_cand00",
+        "sobol_regen_002",
+    ]
+    assert selected_with_controls[1].tribe_score is None
+    assert summary["target_strata"] == ["prompt a"]
+    assert summary["n_generated_controls"] == 1
+    assert summary["missing_strata"] == []
 
 
 def test_apply_visual_first_retention_requires_complete_candidate_replicates():

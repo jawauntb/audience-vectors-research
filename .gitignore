@@ -86,3 +86,4 @@ responses/private/
 
 # Modal
 .modal/
+.worktrees

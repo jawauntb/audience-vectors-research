@@ -194,6 +194,14 @@ policy-by-seed comparison is explicit. The default `--stratify-by prompt`
 groups by repeated seed-image content; use `--stratify-by seed_idx` when the raw
 optimizer slot is the desired control.
 
+For a regenerated-control follow-up when the saved Sobol table is exhausted, use
+`--selection top-bo-per-stratum` together with
+`--regenerated-sobol-controls-per-stratum`. This selects saved BO anchors per
+prompt/seed stratum and appends deterministic, unscored Sobol controls for the
+same strata before generation. Reports include `regenerated_sobol_controls` so
+the control sequence, prompt strata, and missing strata are auditable. The
+runnable manifest is `regenerated_visual_controls_manifest_20260608.md`.
+
 The runnable manifest is
 `seed_stratified_tournament_manifest.md`. It records the selected saved-table
 strata, required local artifacts, preflight command, Modal run command, and
@@ -356,7 +364,10 @@ This run should be used to narrow the BO claim, not strengthen it.
   3/7 complete candidates, and scored 12/21 retained rows. The saved-table pool
   still lacks a retained fireworks Sobol candidate, so the human-panel path
   remains blocked until controls are regenerated with visual screening before
-  scoring.
+  scoring. Current regenerated-control status: a dry-run preview selected 4 BO
+  anchors and 4 regenerated Sobol controls across fireworks and jellyfish,
+  expanding to 24 planned replay jobs; full Modal generation/scoring is the next
+  gate.
 - Report wall-clock and average minutes per evaluation.
 - Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock
   efficient.

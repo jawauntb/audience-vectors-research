@@ -30,6 +30,7 @@ from PIL import Image
 
 from audience_vectors.bo_replay import (
     CollaboratorBOTrial,
+    TrialStratum,
     load_collaborator_trials,
     load_unit_npz_vector,
     policy_group_summary,
@@ -40,6 +41,7 @@ from audience_vectors.bo_replay import (
     select_trials,
     stratum_policy_summary,
     trial_policy_group,
+    trial_stratum_key,
 )
 from audience_vectors.visual_artifact_gate import ArtifactThresholds, summarize_video
 
@@ -53,6 +55,7 @@ INTAKE_ROOT = (
 )
 DEFAULT_TRIAL_TABLE = INTAKE_ROOT / "raw_results" / "gpu_run_3obj_all_results.json"
 DEFAULT_SEED_ROOT = INTAKE_ROOT / "original"
+ORIGINAL_SOBOL_SEED_SLOTS = 15
 
 
 @dataclass(frozen=True)
@@ -92,6 +95,166 @@ def load_seed_pool(seed_root: Path, *, n_pool: int = 16) -> list[dict[str, Any]]
     if not available:
         raise FileNotFoundError(f"no available seed images under {seed_root}")
     return [available[idx % len(available)] for idx in range(n_pool)]
+
+
+def draw_sobol_points(count: int, *, scramble_seed: int) -> np.ndarray:
+    """Draw collaborator-compatible Sobol points for regenerated controls."""
+    from torch.quasirandom import SobolEngine  # noqa: PLC0415
+
+    engine = SobolEngine(dimension=3, scramble=True, seed=scramble_seed)
+    return np.asarray(engine.draw(count), dtype=np.float64)
+
+
+def sobol_control_trial(
+    *,
+    sobol_index: int,
+    point: np.ndarray,
+    seed_pool: list[dict[str, Any]],
+) -> CollaboratorBOTrial:
+    """Convert one Sobol point to a replayable, unscored control trial."""
+    seed_idx = int(float(point[2]) * ORIGINAL_SOBOL_SEED_SLOTS)
+    seed = seed_pool[seed_idx % len(seed_pool)]
+    return CollaboratorBOTrial(
+        task_id=f"sobol_regen_{sobol_index:03d}",
+        alpha=float(point[0] * 20.0 - 10.0),
+        guidance=float(point[1] * 9.0 + 1.0),
+        seed_idx=seed_idx,
+        noise_seed=sobol_index,
+        filename=None,
+        prompt=str(seed["prompt"]),
+        tribe_score=None,
+        clip_score=None,
+        quality_score=None,
+    )
+
+
+def generate_sobol_control_trials(
+    *,
+    seed_pool: list[dict[str, Any]],
+    existing_task_ids: set[str],
+    start_index: int,
+    pool_size: int,
+    scramble_seed: int,
+    sobol_points: np.ndarray | None = None,
+) -> list[CollaboratorBOTrial]:
+    """Generate fresh deterministic Sobol controls, skipping saved-table ids."""
+    if start_index < 0:
+        raise ValueError("regenerated Sobol start index must be non-negative")
+    if pool_size <= 0:
+        raise ValueError("regenerated Sobol pool size must be positive")
+
+    if sobol_points is None:
+        points = draw_sobol_points(
+            start_index + pool_size,
+            scramble_seed=scramble_seed,
+        )[start_index:]
+    else:
+        points = np.asarray(sobol_points, dtype=np.float64)[:pool_size]
+
+    controls: list[CollaboratorBOTrial] = []
+    for offset, point in enumerate(points):
+        sobol_index = start_index + offset
+        if f"sobol_{sobol_index:03d}" in existing_task_ids:
+            continue
+        if f"sobol_regen_{sobol_index:03d}" in existing_task_ids:
+            continue
+        controls.append(
+            sobol_control_trial(
+                sobol_index=sobol_index,
+                point=point,
+                seed_pool=seed_pool,
+            )
+        )
+    return controls
+
+
+def append_regenerated_sobol_controls(
+    selected: list[CollaboratorBOTrial],
+    *,
+    all_trials: list[CollaboratorBOTrial],
+    seed_pool: list[dict[str, Any]],
+    stratify_by: TrialStratum,
+    controls_per_stratum: int,
+    pool_size: int,
+    start_index: int,
+    scramble_seed: int,
+    sobol_points: np.ndarray | None = None,
+) -> tuple[list[CollaboratorBOTrial], dict[str, Any] | None]:
+    """Append unscored regenerated Sobol controls for selected BO strata."""
+    if controls_per_stratum <= 0:
+        return selected, None
+
+    target_strata = sorted(
+        {
+            trial_stratum_key(trial, stratify_by=stratify_by)
+            for trial in selected
+            if trial_policy_group(trial.task_id) == "bo"
+        }
+    )
+    if not target_strata:
+        return selected, {
+            "schema_version": 1,
+            "controls_per_stratum": controls_per_stratum,
+            "pool_size": pool_size,
+            "start_index": start_index,
+            "scramble_seed": scramble_seed,
+            "seed_slots": ORIGINAL_SOBOL_SEED_SLOTS,
+            "stratify_by": stratify_by,
+            "target_strata": [],
+            "n_generated_controls": 0,
+            "controls": [],
+            "missing_strata": [],
+        }
+
+    existing_task_ids = {trial.task_id for trial in all_trials}
+    generated_controls = generate_sobol_control_trials(
+        seed_pool=seed_pool,
+        existing_task_ids=existing_task_ids,
+        start_index=start_index,
+        pool_size=pool_size,
+        scramble_seed=scramble_seed,
+        sobol_points=sobol_points,
+    )
+
+    controls_by_stratum: dict[str, list[CollaboratorBOTrial]] = {
+        key: [] for key in target_strata
+    }
+    for control in generated_controls:
+        stratum_key = trial_stratum_key(control, stratify_by=stratify_by)
+        if stratum_key not in controls_by_stratum:
+            continue
+        if len(controls_by_stratum[stratum_key]) >= controls_per_stratum:
+            continue
+        controls_by_stratum[stratum_key].append(control)
+        if all(
+            len(items) >= controls_per_stratum
+            for items in controls_by_stratum.values()
+        ):
+            break
+
+    controls = [
+        control
+        for stratum_key in target_strata
+        for control in controls_by_stratum[stratum_key]
+    ]
+    summary = {
+        "schema_version": 1,
+        "controls_per_stratum": controls_per_stratum,
+        "pool_size": pool_size,
+        "start_index": start_index,
+        "scramble_seed": scramble_seed,
+        "seed_slots": ORIGINAL_SOBOL_SEED_SLOTS,
+        "stratify_by": stratify_by,
+        "target_strata": target_strata,
+        "n_generated_controls": len(controls),
+        "controls": [control.to_json() for control in controls],
+        "missing_strata": [
+            stratum_key
+            for stratum_key in target_strata
+            if len(controls_by_stratum[stratum_key]) < controls_per_stratum
+        ],
+    }
+    return selected + controls, summary
 
 
 def image_bytes(path: Path) -> bytes:
@@ -626,6 +789,20 @@ def apply_visual_first_retention(
     }
 
 
+def validate_regenerated_sobol_inputs(args: argparse.Namespace) -> None:
+    """Fail early on invalid regenerated-control settings."""
+    controls_per_stratum = int(
+        getattr(args, "regenerated_sobol_controls_per_stratum", 0)
+    )
+    if controls_per_stratum < 0:
+        raise ValueError("--regenerated-sobol-controls-per-stratum must be >= 0")
+    if controls_per_stratum > 0:
+        if int(getattr(args, "regenerated_sobol_pool_size", 0)) <= 0:
+            raise ValueError("--regenerated-sobol-pool-size must be positive")
+        if int(getattr(args, "regenerated_sobol_start_index", 0)) < 0:
+            raise ValueError("--regenerated-sobol-start-index must be >= 0")
+
+
 def validate_run_inputs(args: argparse.Namespace, *, require_artifacts: bool) -> None:
     """Fail early if a non-dry replay is missing local run artifacts."""
     skip_visual_gate = bool(getattr(args, "skip_visual_gate", False))
@@ -638,6 +815,7 @@ def validate_run_inputs(args: argparse.Namespace, *, require_artifacts: bool) ->
             "--fail-on-visual-artifacts cannot be combined with "
             "--visual-first-retention"
         )
+    validate_regenerated_sobol_inputs(args)
     if args.trial_table is None or not args.trial_table.exists():
         raise FileNotFoundError(f"trial table not found: {args.trial_table}")
     if args.seed_root is None or not args.seed_root.exists():
@@ -664,6 +842,7 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         require_artifacts=args.require_artifacts or not args.dry_run,
     )
     trials = load_collaborator_trials(args.trial_table)
+    seed_pool = load_seed_pool(args.seed_root)
     selected = select_trials(
         trials,
         selection=args.selection,
@@ -671,17 +850,32 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         task_ids=set(args.task_id) if args.task_id else None,
         stratify_by=args.stratify_by,
     )
+    selected, regenerated_sobol_controls = append_regenerated_sobol_controls(
+        selected,
+        all_trials=trials,
+        seed_pool=seed_pool,
+        stratify_by=args.stratify_by,
+        controls_per_stratum=args.regenerated_sobol_controls_per_stratum,
+        pool_size=args.regenerated_sobol_pool_size,
+        start_index=args.regenerated_sobol_start_index,
+        scramble_seed=args.regenerated_sobol_scramble_seed,
+    )
     jobs = expand_replay_jobs(
         selected,
         replicates=args.replicates,
         seed_stride=args.replicate_seed_stride,
         seed_offset=args.replicate_seed_offset,
     )
-    seed_pool = load_seed_pool(args.seed_root)
     log(
         f"loaded {len(trials)} trials; selected {len(selected)} "
         f"with selection={args.selection!r}; expanded to {len(jobs)} replay jobs"
     )
+    if regenerated_sobol_controls is not None:
+        log(
+            "appended "
+            f"{regenerated_sobol_controls['n_generated_controls']} regenerated "
+            "Sobol controls"
+        )
 
     rows: list[dict[str, Any]]
     visual_artifact_gate: dict[str, Any] | None = None
@@ -802,6 +996,12 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         "selection": args.selection,
         "stratify_by": args.stratify_by,
         "max_evals": args.max_evals,
+        "regenerated_sobol_controls_per_stratum": (
+            args.regenerated_sobol_controls_per_stratum
+        ),
+        "regenerated_sobol_pool_size": args.regenerated_sobol_pool_size,
+        "regenerated_sobol_start_index": args.regenerated_sobol_start_index,
+        "regenerated_sobol_scramble_seed": args.regenerated_sobol_scramble_seed,
         "replicates": args.replicates,
         "replicate_seed_stride": args.replicate_seed_stride,
         "replicate_seed_offset": args.replicate_seed_offset,
@@ -817,6 +1017,7 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         "fail_on_visual_artifacts": bool(args.fail_on_visual_artifacts),
         "visual_first_retention_mode": args.visual_first_retention,
         "visual_first_retention": visual_first_retention,
+        "regenerated_sobol_controls": regenerated_sobol_controls,
         "visual_artifact_gate": visual_artifact_gate,
         "visual_gate_blocked_scoring": visual_gate_blocked_scoring,
         "dry_run": bool(args.dry_run),
@@ -851,12 +1052,14 @@ def parse_args() -> argparse.Namespace:
             "top-sobol-tribe",
             "top-bo-vs-top-sobol",
             "seed-stratified-bo-vs-sobol",
+            "top-bo-per-stratum",
         ],
         default="top-tribe",
         help=(
             "Trial selector. top-bo-vs-top-sobol uses --max-evals per group. "
             "seed-stratified-bo-vs-sobol uses --max-evals per policy inside "
-            "each matched stratum."
+            "each matched stratum. top-bo-per-stratum selects top saved BO "
+            "candidates in each BO-covered stratum."
         ),
     )
     parser.add_argument(
@@ -871,6 +1074,37 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--max-evals", type=int, default=2)
     parser.add_argument("--task-id", action="append", default=[])
+    parser.add_argument(
+        "--regenerated-sobol-controls-per-stratum",
+        type=int,
+        default=0,
+        help=(
+            "Append this many deterministic, unscored Sobol controls for each "
+            "selected BO stratum. Use with top-bo-per-stratum for regenerated "
+            "matched controls."
+        ),
+    )
+    parser.add_argument(
+        "--regenerated-sobol-pool-size",
+        type=int,
+        default=128,
+        help=(
+            "Number of Sobol sequence indices to scan when finding regenerated "
+            "controls for selected BO strata."
+        ),
+    )
+    parser.add_argument(
+        "--regenerated-sobol-start-index",
+        type=int,
+        default=0,
+        help="First Sobol sequence index scanned for regenerated controls.",
+    )
+    parser.add_argument(
+        "--regenerated-sobol-scramble-seed",
+        type=int,
+        default=42,
+        help="Scramble seed used by the collaborator-compatible Sobol sequence.",
+    )
     parser.add_argument(
         "--replicates",
         type=int,
