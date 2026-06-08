@@ -51,7 +51,7 @@ GitHub artifact policy:
 - Keep the repo private while it references gated models, TRIBE non-commercial
   terms, unpublished human-study materials, and local generated media.
 
-## Status (updated 2026-06-03, post critical source-of-truth cleanup)
+## Status (updated 2026-06-08, post seed-content replay audit)
 
 Latest committed paper source:
 `research_program/neurips_memorability_selector/main_selector_paper/paper.md`.
@@ -172,6 +172,11 @@ recognition memorability.
   the current SVD replay path and that only 5/24 catalog seed images are locally
   available. Prompt rewriting is therefore not a valid SVD replay intervention
   until the generator path changes.
+- The fixed-recipe seed-content probe then held alpha/guidance recipe choice to
+  Sobol indices 516 and 517 and replayed them across the five local seed images.
+  Seed-content slot explained retained score variance (R2 = 0.9494), while
+  recipe identity explained essentially none (R2 = 0.0026); blue jellyfish was
+  again the only positive retained slot.
 
 ### 2026-06-08 Max-3 Regenerated Visual Controls Result
 
@@ -254,12 +259,29 @@ images, and the SVD Modal generation call does not accept or pass prompt text.
 The prompt field is currently provenance/stratification metadata, not a
 generation-conditioning variable.
 
-An attempted 20-job fixed-recipe seed-content replicate panel dry-ran correctly,
-but full generation was blocked immediately by the Modal workspace billing-cycle
-spend limit. No scored replay result was produced by that attempted probe.
-
 The committed audit note is
 `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/svd_content_axes_audit_20260608.md`.
+
+### 2026-06-08 Fixed-Recipe Seed-Content Probe Result
+
+The fixed-recipe probe replayed Sobol recipes 516 and 517 across the five local
+seed-image slots with two stochastic reps each. It generated 20/20 clips, then
+complete-candidate visual-first retention withheld both fireworks candidates
+because each had one `tail_sharpness_collapse` row. The remaining 16/16 rows
+completed full TRIBE scoring after the TRIBE Modal image was repinned to
+`transformers==4.56.1` and stale Modal tasks were stopped.
+
+| seed-content slot | scored / requested | mean TRIBE |
+|---|---:|---:|
+| fireworks | 0 / 4 | withheld |
+| ocean cliffs | 4 / 4 | -7.9930 |
+| concert stage | 4 / 4 | -0.8903 |
+| blue jellyfish | 4 / 4 | 2.2202 |
+| forest canopy | 4 / 4 | -3.7754 |
+
+On the 16 retained rows, recipe-only R2 = 0.0026, seed-content-only
+R2 = 0.9494, and recipe + seed-content R2 = 0.9520. The committed run note is
+`research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/seed_content_fixed_recipe_probe_result_20260608.md`.
 
 The next valid content-broadening move is seed-bank restoration/expansion under
 SVD, or a switch to a prompt-conditioned generator such as CogVideoX, Wan2.2, or

@@ -1,6 +1,6 @@
 # Current Research Status
 
-Last updated: 2026-06-03
+Last updated: 2026-06-08
 
 ## Confirmed Enough To Treat As Real
 
@@ -22,6 +22,13 @@ Last updated: 2026-06-03
   best-of-4 improves 18/24 prompts under the TRIBE/BMD proxy.
 - V-JEPA is now an active baseline for the same current-pilot candidate pool:
   103 unique V-JEPA embeddings, 24/24 seeds covered, 0 missing features.
+- BO/SVD generated-video evidence is currently a compute-proxy regime result,
+  not a human-memorability result. The latest regenerated-control,
+  prompt-transfer, per-prompt Sobol, content-axis audit, and fixed-recipe
+  seed-content panels show prompt-pocket behavior: blue jellyfish is the stable
+  positive pocket, fireworks is visually brittle, and seed-image/content slot
+  explains retained SVD replay score variance far better than alpha/guidance
+  recipe identity.
 
 ## Newly Built V-JEPA Pilot State
 
@@ -60,7 +67,9 @@ to TRIBE/product nor obviously irrelevant.
 - We have not shown that TRIBE beats V-JEPA, CLIP, or quality baselines in the
   current independent generated-video selector pilot.
 - We have not shown that Arthur/Camilo's BO-generated videos improve human
-  memorability. Their BO work is compute/control evidence until human-tested.
+  memorability. Their BO work is compute/control evidence until human-tested,
+  and current SVD broadening should target seed-image/content expansion or a
+  prompt-conditioned generator path rather than more alpha/guidance-only search.
 - We have not shown delayed-recognition memory gains.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.

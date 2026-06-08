@@ -385,6 +385,50 @@ candidates and expands to 36 replay jobs.
 True broad prompt evidence requires a new BO/search panel over additional seed
 prompts.
 
+### 2026-06-08 Prompt and Content-Axis Follow-Ups
+
+Three follow-up runs converted the foundation audit into a tighter regime
+diagnosis.
+
+First, the prompt-transfer stress test retargeted the top saved BO
+alpha/guidance recipes across all five locally image-backed prompt slots and
+compared them with matched Sobol-transfer controls. It generated 30/30 clips,
+withheld two fireworks rows under the visual gate, scored 28/28 retained rows,
+and found that saved high-scoring BO recipes were not portable global recipes:
+BO-transfer averaged `-3.5444`, Sobol-transfer averaged `-3.0223`, and blue
+jellyfish was the only positive prompt slot.
+
+Second, the per-prompt Sobol search ran eight shared Sobol alpha/guidance points
+across each of the five image-backed prompt slots. It generated 40/40 clips,
+withheld two fireworks rows, scored 38/38 retained rows, and found that prompt
+identity explained the retained score structure far better than alpha/guidance
+recipe choice: prompt-only R2 = `0.9196`, Sobol recipe-index-only R2 = `0.0062`,
+and alpha/guidance/interaction-only R2 = `0.0042`.
+
+Third, the SVD content-axis audit showed that prompt text is metadata-only in
+the current SVD replay path: `SVDGenerator.generate` does not accept prompt text
+and the replay runner does not pass it. The only currently valid SVD content
+variables are seed-image selection and seed-bank expansion.
+
+The fixed-recipe seed-content probe then tested that actual intervention: Sobol
+recipes 516 and 517 were replayed across the five available seed images with
+two stochastic reps each. It generated 20/20 clips, withheld both fireworks
+candidates by complete-candidate visual-first retention, scored 16/16 retained
+rows after the Modal/TRIBE dependency fix, and found that seed-content slot
+explained retained TRIBE score variance almost entirely:
+
+| model | retained-score R2 |
+|---|---:|
+| recipe only | 0.0026 |
+| seed-content slot only | 0.9494 |
+| recipe + seed-content slot | 0.9520 |
+
+The practical conclusion is now narrower and cleaner: under current SVD replay,
+do not spend more broadening budget on alpha/guidance-only search or prompt
+rewriting. The next valid content-broadening move is to restore/expand the
+seed-image bank or switch to a prompt-conditioned video generator before running
+prompt-rewrite tournaments.
+
 ## Validation Checklist
 
 - Confirm exact `v_mem_CLIP` derivation from cortical `v_mem`.
@@ -413,11 +457,12 @@ prompts.
   still lacked a retained fireworks Sobol candidate. The 2026-06-08
   regenerated-control run generated 24/24 clips, withheld one BO fireworks
   candidate under complete-candidate retention, scored 21/21 retained rows, and
-  kept matched BO/control coverage in both selected strata. The result is mixed:
-  BO wins jellyfish, regenerated Sobol wins fireworks. Current next step:
-  run the balanced max-3 stress test from
-  `next_research_foundation_manifest_20260608.md`, or freeze only the visually
-  retained matched candidates for an exploratory human panel.
+  kept matched BO/control coverage in both selected strata. The balanced max-3
+  regenerated-control stress test then generated 36/36 clips, withheld two
+  visual-failed rows, scored 30/30 retained rows, and confirmed prompt-pocket
+  behavior. The prompt-transfer, per-prompt Sobol, content-axis audit, and
+  fixed-recipe seed-content probe now show that current SVD broadening should
+  target seed-image/content expansion rather than alpha/guidance-only search.
 - Report wall-clock and average minutes per evaluation.
 - Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock
   efficient.
