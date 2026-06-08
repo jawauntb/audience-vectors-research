@@ -7,6 +7,7 @@
 - Claim ready: False
 - Samples: 16
 - ROI masks: none
+- Provenance ready: True
 - Claim boundary: Preflight verifies manifest mechanics and label variance only. It does not validate attentional capture.
 
 ## Blocking Reasons
@@ -30,6 +31,14 @@
 - Existing features: 0
 - Missing features: 0
 - Shape mismatches: 0
+
+## Provenance Audit
+
+- Required: False
+- Ready: True
+- Alignment audit sha256: n/a
+- Alignment audit path: n/a
+- Label audit ready: None
 
 ## Scoring Audit
 

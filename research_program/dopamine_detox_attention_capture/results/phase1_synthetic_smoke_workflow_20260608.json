@@ -3,11 +3,11 @@
   "experiment": "phase1_capture_score_workflow",
   "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_synthetic_smoke_manifest_20260608.json",
   "primary_label": "disjoint",
-  "primary_roi_masks_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+  "primary_roi_masks_path": null,
   "sensitivity_roi_masks": {
     "overlapping": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz"
   },
-  "min_samples": 8,
+  "min_samples": 3,
   "min_distinct_ground_truth": 3,
   "gate_rho": 0.4,
   "permutations": 999,
@@ -17,7 +17,7 @@
     "experiment": "phase1_capture_score_preflight",
     "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_synthetic_smoke_manifest_20260608.json",
     "manifest_status": "synthetic_smoke_only",
-    "roi_masks_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+    "roi_masks_path": null,
     "n_samples": 16,
     "sample_kind_counts": {
       "roi_values": 16,
@@ -57,7 +57,20 @@
       "feature_shape_counts": {},
       "missing_features": [],
       "shape_mismatches": [],
-      "roi_shape": "20484"
+      "roi_shape": null
+    },
+    "provenance_audit": {
+      "required": false,
+      "ready": true,
+      "blocking_reasons": [],
+      "alignment_audit": {
+        "path": null,
+        "sha256": null,
+        "ready_for_manifest_build": null,
+        "n_aligned_features": null,
+        "n_missing_features": null,
+        "label_audit_ready": null
+      }
     },
     "scoring_audit": {
       "attempted": true,
@@ -65,7 +78,7 @@
       "n_invalid_capture_denominators": 0,
       "n_valid_capture_denominators": 16
     },
-    "min_samples": 8,
+    "min_samples": 3,
     "min_distinct_ground_truth": 3,
     "mechanical_ready": true,
     "claim_update_allowed": false,
@@ -208,7 +221,7 @@
       {
         "role": "primary",
         "label": "disjoint",
-        "roi_masks_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+        "roi_masks_path": null,
         "report": {
           "schema_version": 1,
           "experiment": "phase1_capture_score_validation",

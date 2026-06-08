@@ -45,6 +45,19 @@
     "shape_mismatches": [],
     "roi_shape": null
   },
+  "provenance_audit": {
+    "required": false,
+    "ready": true,
+    "blocking_reasons": [],
+    "alignment_audit": {
+      "path": null,
+      "sha256": null,
+      "ready_for_manifest_build": null,
+      "n_aligned_features": null,
+      "n_missing_features": null,
+      "label_audit_ready": null
+    }
+  },
   "scoring_audit": {
     "attempted": true,
     "attempted_reason": null,
