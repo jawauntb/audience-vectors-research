@@ -42,6 +42,15 @@ decides whether it counts, and which artifacts need updating after each run. Use
 it before launching new experiments so the project stays focused on the current
 content-pocket consolidation path.
 
+## Current Handoff
+
+- `HANDOFF_2026-06-08_CONTENT_POCKET_VERIFIERS.md`
+
+This is the session handoff for the current content-pocket verifier work. It
+summarizes the accepted C-017/C-018 state, corrects the now-stale "exact V-JEPA
+unavailable" boundary, and specifies the descriptor-conditioned replication
+experiment that should run next.
+
 ## Claim Ledger
 
 - `CLAIM_LEDGER.md`
