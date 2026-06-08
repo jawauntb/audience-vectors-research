@@ -17,7 +17,7 @@ Action class: search inside the current compute-proxy regime. It becomes discove
 - Replay report: `data/reports/bo_pocket_regime_audit_sobol518_523_x7_reps2_steps50_motion5_noise0_20260608.json`
 - Seed root: `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/original`
 - CLIP model: `openai/clip-vit-base-patch32`
-- V-JEPA status: not run; exact pocket-replay feature dir not provided
+- V-JEPA status: integrated for all 42/42 candidates from `data/features/vjepa_pocket_regime_audit_20260608`
 - Candidates: 42 task-level candidates from 84 scored replicate rows.
 
 ## Score By Pocket
@@ -36,6 +36,7 @@ Action class: search inside the current compute-proxy regime. It becomes discove
 
 | family | feature | direction | positive mean | negative mean | AUC | abs d | r(score) |
 |---|---|---|---:|---:|---:|---:|---:|
+| vjepa_video | pocket_heldout_centroid_margin | higher_for_positive | 0.1029 | -0.0871 | 1.0000 | 3.2953 | 0.8871 |
 | clip_seed_image | pocket_heldout_centroid_margin | higher_for_positive | 0.0605 | -0.0409 | 1.0000 | 2.8573 | 0.8541 |
 | clip_video | pocket_heldout_centroid_margin | higher_for_positive | 0.0604 | -0.0359 | 0.8796 | 2.0280 | 0.7620 |
 | clip_seed_video | seed_video_clip_cosine | lower_for_positive | 0.9585 | 0.9701 | 0.5556 | 0.5203 | -0.2108 |
@@ -46,6 +47,7 @@ Action class: search inside the current compute-proxy regime. It becomes discove
 |---|---|---|---:|---:|---:|---:|---:|
 | clip_seed_image | seed_embedding | leave_one_pocket_out | 42 | 1.0000 | 0.8333 | 0.5109 | 0.4901 |
 | clip_video | video_embedding | leave_one_pocket_out | 42 | 0.9514 | 0.8333 | 0.5110 | 0.4913 |
+| vjepa_video | vjepa_embedding | leave_one_pocket_out | 42 | 1.0000 | 0.9722 | 0.5187 | 0.4819 |
 
 ## Gate
 
@@ -57,23 +59,23 @@ Gate result: **accepted**.
 
 Best descriptor:
 
-- family: `clip_seed_image`
+- family: `vjepa_video`
 - feature: `pocket_heldout_centroid_margin`
 - separation AUC: 1.0000
-- absolute Cohen d: 2.8573
-- correlation with mean TRIBE score: 0.8541
+- absolute Cohen d: 3.2953
+- correlation with mean TRIBE score: 0.8871
 
 Best classifier:
 
-- family: `clip_seed_image`
+- family: `vjepa_video`
 - validation: `leave_one_pocket_out`
 - ROC AUC: 1.0000
-- balanced accuracy: 0.8333
+- balanced accuracy: 0.9722
 
 ## Interpretation
 
-The CLIP embedding audit clears the verifier gate. That means the stable positive pockets are not merely opaque score islands: their seed/video embeddings contain enough structure to distinguish them from hard negative controls under leakage-aware evaluation. This is still compute-proxy evidence, not human memorability, but it gives the next replication a real descriptor to track.
+The embedding audit clears the verifier gate. The best accepted family is vjepa_video, and the stable positive pockets are not merely opaque score islands: their seed/video embeddings contain enough structure to distinguish them from hard negative controls under leakage-aware evaluation. This is still compute-proxy evidence, not human memorability, but it gives the next replication a real descriptor to track.
 
 ## Next Move
 
-Run the orange-flowers and hanging-clothes stochastic replication with the accepted CLIP descriptor as a covariate and stopping rule. If new variants preserve both positive TRIBE score and descriptor margin, the content-pocket verifier becomes stronger.
+Run the orange-flowers and hanging-clothes stochastic replication with the accepted embedding descriptor as a covariate and stopping rule. If new variants preserve both positive TRIBE score and descriptor margin, the content-pocket verifier becomes stronger.
