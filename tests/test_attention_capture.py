@@ -1,0 +1,111 @@
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+import numpy as np
+import pytest
+
+from audience_vectors.attention_capture import (
+    ROIGroupSpec,
+    build_roi_masks_from_parcels,
+    capture_scores_from_roi_values,
+    load_manifest_rows,
+    render_phase1_markdown,
+    run_phase1_manifest,
+    spearman_rho,
+)
+
+
+def test_capture_score_uses_sensory_over_frontoparietal() -> None:
+    scores = capture_scores_from_roi_values(
+        {
+            "V1": 0.8,
+            "PPA": 0.7,
+            "language": 0.5,
+            "frontoparietal": 0.25,
+        },
+        epsilon=0.0,
+    )
+
+    assert scores["sensory_mean"] == pytest.approx(2.0 / 3.0)
+    assert scores["capture_score"] == pytest.approx((2.0 / 3.0) / 0.25)
+    assert scores["capture_delta"] == pytest.approx((2.0 / 3.0) - 0.25)
+    assert scores["denominator_valid"] is True
+
+
+def test_capture_score_withholds_non_positive_denominator() -> None:
+    scores = capture_scores_from_roi_values(
+        {
+            "V1": 0.3,
+            "PPA": 0.2,
+            "language": 0.1,
+            "frontoparietal": -0.01,
+        },
+    )
+
+    assert scores["capture_score"] is None
+    assert scores["denominator_valid"] is False
+    assert scores["capture_delta"] == pytest.approx(0.21)
+
+
+def test_spearman_rho_handles_ties_with_average_ranks() -> None:
+    assert spearman_rho([1, 2, 2, 4], [1, 2, 3, 4]) == pytest.approx(
+        0.948683298,
+    )
+
+
+def test_build_roi_masks_from_parcels_uses_include_and_exclude() -> None:
+    parcels = np.array([0, 1, 2, 3, 1, 2])
+    labels = [
+        "unknown",
+        "G_front_middle",
+        "S_intrapariet_and_P_trans",
+        "G_front_middle_insula",
+    ]
+    masks = build_roi_masks_from_parcels(
+        parcels,
+        labels,
+        group_specs={
+            "frontoparietal": ROIGroupSpec(
+                include=("front_middle", "intrapariet"),
+                exclude=("insula",),
+            ),
+        },
+    )
+
+    assert masks["frontoparietal"].tolist() == [False, True, True, False, True, True]
+
+
+def test_run_phase1_manifest_passes_synthetic_gate(tmp_path: Path) -> None:
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "samples": [
+                    {
+                        "sample_id": f"s{i}",
+                        "dataset": "fixture",
+                        "ground_truth": float(i),
+                        "roi_values": {
+                            "V1": 0.2 + i * 0.03,
+                            "PPA": 0.2 + i * 0.02,
+                            "language": 0.2 + i * 0.01,
+                            "frontoparietal": 0.8 - i * 0.04,
+                        },
+                    }
+                    for i in range(10)
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    rows = load_manifest_rows(manifest)
+    assert len(rows) == 10
+
+    report = run_phase1_manifest(manifest, permutations=99, seed=1)
+    assert report["gate"]["passed"] is True
+    assert report["groups"][0]["metrics"]["capture_score"]["rho"] > 0.9
+    assert "Phase 1 Capture-Score Dry Run" in render_phase1_markdown(report)
