@@ -28,6 +28,9 @@ too.
   survive local recipe stress tests. Orange flowers and hanging clothes are the
   most important positive pockets to consolidate next. Aerial beach, city
   street, and storm beach are current hard negative controls.
+- Lightweight seed/video visual descriptors did not explain C-017 strongly
+  enough to become a verifier. The best near-miss was seed-image colorfulness
+  at AUC 0.8333 and abs d 1.8471, below the pre-registered AUC >= 0.85 gate.
 - Prompt text is metadata-only in the current SVD runner. A prompt-rewrite
   tournament should wait until we use a prompt-conditioned generator path where
   the prompt changes the actual pixels.
@@ -64,7 +67,8 @@ validation.
 
 | Priority | Task | Why | Gate | Next artifact | Status |
 |---|---|---|---|---|---|
-| P0 | Feature/embedding audit of positive vs negative content pockets | Tests whether the accepted pocket residual has an interpretable visual or embedding basis | Positives separate from hard negatives in at least one descriptor family, or we explicitly mark the pocket as black-box TRIBE content specificity | Content-pocket feature audit manifest and result note | Next |
+| P0 | Lightweight visual feature audit of positive vs negative content pockets | Tests whether simple non-score descriptors explain the accepted pocket residual | Not accepted: no seed/video descriptor cleared AUC >= 0.85 and abs d >= 1.00; best near-miss was seed-image colorfulness at AUC 0.8333 | Content-pocket feature audit manifest and result note | Done |
+| P0 | CLIP/V-JEPA embedding audit of positive vs negative content pockets | Tests whether stronger semantic/video embeddings explain the pocket residual where simple visual descriptors failed | Embedding centroid, classifier, or distance-based descriptor separates positives from hard negatives under pocket-held-out or otherwise leakage-aware validation | Content-pocket embedding audit manifest and result note | Next |
 | P1 | Stochastic replication around orange flowers and hanging clothes | Consolidates the best non-jellyfish positives before spending human-validation budget | Positive mean persists across new stochastic seeds, visual gates pass, and hard negatives remain negative under matched recipes | Expanded pocket replication manifest and result note | Queued |
 | P1 | Blue jellyfish and old car boundary audit | Checks whether weaker positives are stable enough to keep or should be demoted | Stable positive mean with acceptable variance, or demote to exploratory/supporting only | Boundary audit note | Queued |
 | P2 | Prompt-conditioned generator transition | Moves from metadata-only prompt text to a generator where prompt operations can actually change content | Prompt interventions change generated video content while preserving visual validity and improving candidate selection | Prompt-conditioned generator manifest | Queued |
@@ -74,12 +78,12 @@ validation.
 
 ## Immediate Next Experiment
 
-Question: are the stable positive pockets explainable by interpretable visual or
-embedding features, or are they only TRIBE score islands?
+Question: do stronger CLIP/V-JEPA-style embeddings explain the stable positive
+pockets after lightweight seed/video visual descriptors failed their gate?
 
 Action class: search inside the current compute-proxy regime. It becomes a
-small discovery move only if it creates a new accepted descriptor, verifier, or
-artifact class that survives the hard negative controls.
+small discovery move only if it creates a new accepted embedding descriptor,
+verifier, or artifact class that survives the hard negative controls.
 
 Positive targets: orange flowers, hanging clothes, blue jellyfish, old car.
 
@@ -87,19 +91,21 @@ Negative controls: aerial beach, city street, storm beach.
 
 Suggested descriptors:
 
-- CLIP or image/video embedding distance from positive and negative seed
+- CLIP image/video embedding distance from positive and negative seed/video
   centroids.
-- Basic visual features: color histograms, edge density, optical-flow or frame
-  change magnitude if available, object/text labels if already accessible.
+- V-JEPA embeddings for generated videos if local features already exist or can
+  be produced cheaply.
+- Pocket-held-out or leakage-aware classifiers so repeated recipes within the
+  same seed pocket cannot fake generalization.
 - Existing TRIBE score, recipe id, Sobol index, and visual-gate status as
   covariates.
 
 Acceptance gate:
 
-- At least one descriptor family separates accepted positives from hard
-  negatives without using the memorability score directly; or
-- the result note explicitly rejects descriptor-level explanation and narrows
-  C-017 to a black-box compute-proxy pocket finding.
+- At least one embedding descriptor family separates accepted positives from
+  hard negatives without using the memorability score directly; or
+- the result note explicitly rejects embedding-level explanation and keeps C-017
+  as a black-box compute-proxy pocket finding until human/BMD validation.
 
 Required outputs:
 
