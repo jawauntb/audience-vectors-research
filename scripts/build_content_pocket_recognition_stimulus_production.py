@@ -30,6 +30,9 @@ DEFAULT_OUT_MD = (
 DEFAULT_SEED_SCREENING_RESULT = (
     ARTIFACT_DIR / "content_pocket_recognition_seed_screening_result_20260608.json"
 )
+DEFAULT_VIDEO_SCREENING_RESULT = (
+    ARTIFACT_DIR / "content_pocket_recognition_video_screening_20260608.json"
+)
 DEFAULT_SEED_ROOT = Path("data/recognition_memory_seed_images_20260608")
 DEFAULT_VIDEO_OUT_DIR = Path("data/generated/content_pocket_recognition_memory_20260608")
 
@@ -550,10 +553,28 @@ def load_optional_screening_status(path: Path) -> dict[str, Any]:
     }
 
 
+def load_optional_video_screening_status(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        return {
+            "path": str(path),
+            "exists": False,
+            "status": None,
+            "accepted_for_hosting": False,
+        }
+    payload = load_json(path)
+    return {
+        "path": str(path),
+        "exists": True,
+        "status": payload.get("status"),
+        "accepted_for_hosting": bool(payload.get("accepted_for_hosting")),
+    }
+
+
 def production_status(
     counts: dict[str, int],
     *,
     seed_screening: dict[str, Any],
+    video_screening: dict[str, Any],
 ) -> str:
     if counts["seed_images_missing"]:
         return "missing_seed_images_not_ready_for_generation"
@@ -561,13 +582,16 @@ def production_status(
         return "seed_images_present_screening_required"
     if counts["output_videos_missing"]:
         return "seed_images_screened_ready_for_svd_generation"
-    return "generated_videos_present_screening_required"
+    if not video_screening["accepted_for_hosting"]:
+        return "generated_videos_present_screening_required"
+    return "recognition_videos_screened_ready_for_hosting"
 
 
 def launch_blockers(
     counts: dict[str, int],
     *,
     seed_screening: dict[str, Any],
+    video_screening: dict[str, Any],
 ) -> list[str]:
     blockers = []
     if counts["seed_images_missing"]:
@@ -578,9 +602,14 @@ def launch_blockers(
         blockers.append(f"{counts['output_videos_missing']} SVD output MP4s are missing.")
     if not seed_screening["accepted_for_svd_generation"]:
         blockers.append("Manual image distinctiveness screening has not been recorded.")
+    if not video_screening["accepted_for_hosting"]:
+        if video_screening["exists"]:
+            blockers.append("Generated MP4 visual screening has unresolved flags.")
+        else:
+            blockers.append("Generated MP4 visual screening/contact sheets have not been recorded.")
     blockers.extend(
         [
-            "Generated MP4 visual screening/contact sheets have not been recorded.",
+            "Final human/IRB-facing content review is not complete.",
             "Hosted HTTPS URLs and two-session Prolific wiring are not complete.",
         ]
     )
@@ -593,6 +622,7 @@ def build_manifest(
     seed_root: Path,
     video_out_dir: Path,
     seed_screening_result: Path,
+    video_screening_result: Path,
     filler_old_count: int,
     filler_recognition_count: int,
 ) -> tuple[dict[str, Any], str]:
@@ -612,15 +642,21 @@ def build_manifest(
     generation_jobs = analysis_jobs + filler_jobs
     counts = artifact_counts(seed_requests, generation_jobs)
     seed_screening = load_optional_screening_status(seed_screening_result)
+    video_screening = load_optional_video_screening_status(video_screening_result)
     manifest = {
         "schema_version": "content_pocket_recognition_stimulus_production.v1",
         "created_at_utc": datetime.now(UTC).replace(microsecond=0).isoformat(),
-        "status": production_status(counts, seed_screening=seed_screening),
+        "status": production_status(
+            counts,
+            seed_screening=seed_screening,
+            video_screening=video_screening,
+        ),
         "source_recognition_design": str(design_path),
         "source_task_payload_sha256": design["source_task_payload_sha256"],
         "seed_root": str(seed_root),
         "video_output_dir": str(video_out_dir),
         "seed_image_screening": seed_screening,
+        "video_screening": video_screening,
         "question": (
             "Can the recognition-memory validation set be materialized without "
             "using near-duplicate same-category lures?"
@@ -647,7 +683,11 @@ def build_manifest(
                 "all rejected/missing clips retained with reasons",
             ],
         },
-        "launch_blockers": launch_blockers(counts, seed_screening=seed_screening),
+        "launch_blockers": launch_blockers(
+            counts,
+            seed_screening=seed_screening,
+            video_screening=video_screening,
+        ),
         "claim_boundary": [
             "This artifact is a production manifest, not human evidence.",
             "Do not claim actual memorability until the recognition gate clears.",
@@ -659,7 +699,19 @@ def build_manifest(
 
 def render_markdown(manifest: dict[str, Any]) -> str:
     counts = manifest["artifact_counts"]
-    if manifest["seed_image_screening"]["accepted_for_svd_generation"]:
+    if manifest["video_screening"]["accepted_for_hosting"]:
+        next_action = [
+            "Review the generated MP4 contact sheets, complete final",
+            "human/IRB-facing content review, host accepted videos at stable",
+            "HTTPS URLs, and wire those URLs into the two-session recognition study.",
+        ]
+    elif counts["output_videos_missing"] == 0:
+        next_action = [
+            "Review or replace the generated MP4s flagged by video screening,",
+            "preserve rejected artifacts with reasons, then rerun screening before",
+            "hosting accepted videos.",
+        ]
+    elif manifest["seed_image_screening"]["accepted_for_svd_generation"]:
         next_action = [
             "Generate SVD MP4s from the screened seed images and generation",
             "jobs, then screen/contact-sheet every MP4 before freezing the",
@@ -742,6 +794,11 @@ def main() -> int:
         type=Path,
         default=DEFAULT_SEED_SCREENING_RESULT,
     )
+    parser.add_argument(
+        "--video-screening-result",
+        type=Path,
+        default=DEFAULT_VIDEO_SCREENING_RESULT,
+    )
     parser.add_argument("--out-json", type=Path, default=DEFAULT_OUT_JSON)
     parser.add_argument("--out-md", type=Path, default=DEFAULT_OUT_MD)
     parser.add_argument("--filler-old-count", type=int, default=DEFAULT_FILLER_OLD_COUNT)
@@ -757,6 +814,7 @@ def main() -> int:
         seed_root=args.seed_root,
         video_out_dir=args.video_out_dir,
         seed_screening_result=args.seed_screening_result,
+        video_screening_result=args.video_screening_result,
         filler_old_count=args.filler_old_count,
         filler_recognition_count=args.filler_recognition_count,
     )

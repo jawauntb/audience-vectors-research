@@ -1,0 +1,1598 @@
+{
+  "claim_boundary": [
+    "Generated recognition MP4s are not human-memory evidence.",
+    "Video-level screening and final human/IRB-facing review are required before launch.",
+    "Failed or visually rejected videos must be retained with reasons."
+  ],
+  "config": {
+    "app_name": "audience-vectors-dev",
+    "fps": 7,
+    "motion_bucket_id": 5,
+    "noise_aug_strength": 0.0,
+    "num_frames": 25,
+    "num_inference_steps": 50,
+    "steering_artifact": "/Users/jawaun/isc_mod/data/reports/adapter_tribe_to_clip_h.pt",
+    "steering_key": "v_mem_clip_h_via_adapter",
+    "timeout_seconds": 1800
+  },
+  "counts": {
+    "already_present": 1,
+    "failed": 0,
+    "generated": 59,
+    "present_after_run": 60,
+    "requested": 60
+  },
+  "created_at_utc": "2026-06-08T23:13:27+00:00",
+  "dry_run": false,
+  "result_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_video_generation_result_20260608.json",
+  "role_counts": {
+    "analysis_lure_video": 15,
+    "filler_lure_video": 20,
+    "filler_old_video": 25
+  },
+  "rows": [
+    {
+      "alpha": 2.813289761543274,
+      "error": null,
+      "generation_seconds": null,
+      "guidance": 7.6452042162418365,
+      "job_id": "orange_flowers_lure_v00",
+      "matched_id": "orange_flowers_old_v00",
+      "noise_seed": 765190,
+      "old_target_id": "orange_flowers_old_v00",
+      "output_video": {
+        "bytes": 1957927,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/orange_flowers_lure_v00.mp4",
+        "sha256": "8f12f08ec9017b302e75a9db6da27984bfd248568bae569bc2b348e30c86404c"
+      },
+      "prompt": "A different cluster of orange flowers in a wider garden setting, with a distinct camera angle, background, and petal layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 2341174,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/orange_flowers_lure_v00.png",
+        "sha256": "05a942677590b633f2eaf00ae0cf3a5da9816a6c84791ce0122e6cdca78f5b7c"
+      },
+      "source_pocket": "fresh24_orange_flowers",
+      "status": "already_present"
+    },
+    {
+      "alpha": 2.3916587829589844,
+      "error": null,
+      "generation_seconds": 50.001885415993456,
+      "guidance": 2.56687861867249,
+      "job_id": "orange_flowers_lure_v01",
+      "matched_id": "orange_flowers_old_v01",
+      "noise_seed": 765201,
+      "old_target_id": "orange_flowers_old_v01",
+      "output_video": {
+        "bytes": 2194708,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/orange_flowers_lure_v01.mp4",
+        "sha256": "96cac8c1c39b96b52b8ea5437b01998af6bd6a5d78aa0dc067c8524981eb2381"
+      },
+      "prompt": "A different cluster of orange flowers in a wider garden setting, with a distinct camera angle, background, and petal layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 2544079,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/orange_flowers_lure_v01.png",
+        "sha256": "c41cb4bafd021ed2904aac4787460111e8c8c88c1630b1820c281ce88bd440f1"
+      },
+      "source_pocket": "fresh24_orange_flowers",
+      "status": "generated"
+    },
+    {
+      "alpha": 2.813289761543274,
+      "error": null,
+      "generation_seconds": 64.76484962499671,
+      "guidance": 7.6452042162418365,
+      "job_id": "orange_flowers_lure_v02",
+      "matched_id": "orange_flowers_old_v02",
+      "noise_seed": 765192,
+      "old_target_id": "orange_flowers_old_v02",
+      "output_video": {
+        "bytes": 1437545,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/orange_flowers_lure_v02.mp4",
+        "sha256": "9e401caf3fff71a161e0b86bc7005915729257d3c8faa942ba996727d023e3bc"
+      },
+      "prompt": "A different cluster of orange flowers in a wider garden setting, with a distinct camera angle, background, and petal layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 2000409,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/orange_flowers_lure_v02.png",
+        "sha256": "3f73ecaaaa413aa6237d18dc2da76dae1550b732181c102251d27f2c0aee030a"
+      },
+      "source_pocket": "fresh24_orange_flowers",
+      "status": "generated"
+    },
+    {
+      "alpha": 2.3916587829589844,
+      "error": null,
+      "generation_seconds": 66.42568287500035,
+      "guidance": 2.56687861867249,
+      "job_id": "hanging_clothes_lure_v00",
+      "matched_id": "hanging_clothes_old_v00",
+      "noise_seed": 765200,
+      "old_target_id": "hanging_clothes_old_v00",
+      "output_video": {
+        "bytes": 1334505,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/hanging_clothes_lure_v00.mp4",
+        "sha256": "30ced169acec8e9760fa9714be0541a67727a2df48e6cbc229c457694f853573"
+      },
+      "prompt": "Colorful clothes hang outdoors on a clothesline in a different composition, with fabric shifting gently in natural light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 1910484,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/hanging_clothes_lure_v00.png",
+        "sha256": "68d1d30ac121b43cdc90d176e96571b29fd2ff85865d0aeeebc062652dfc2a05"
+      },
+      "source_pocket": "fresh24_hanging_clothes",
+      "status": "generated"
+    },
+    {
+      "alpha": -1.9609311372041702,
+      "error": null,
+      "generation_seconds": 67.80118987499736,
+      "guidance": 8.631222248077393,
+      "job_id": "hanging_clothes_lure_v01",
+      "matched_id": "hanging_clothes_old_v01",
+      "noise_seed": 765211,
+      "old_target_id": "hanging_clothes_old_v01",
+      "output_video": {
+        "bytes": 2166378,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/hanging_clothes_lure_v01.mp4",
+        "sha256": "7b3666251409761a419de01b5db7ea5c312c19dd7e4e2c21dfa37cc152d0d2ba"
+      },
+      "prompt": "Colorful clothes hang outdoors on a clothesline in a different composition, with fabric shifting gently in natural light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 2224749,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/hanging_clothes_lure_v01.png",
+        "sha256": "1d70f3c2c49cf9bb14fbeb4179fc38e4570af49f0c1b2d80312a6dbf23fb1de6"
+      },
+      "source_pocket": "fresh24_hanging_clothes",
+      "status": "generated"
+    },
+    {
+      "alpha": -1.9609311372041702,
+      "error": null,
+      "generation_seconds": 67.88161774999753,
+      "guidance": 8.631222248077393,
+      "job_id": "hanging_clothes_lure_v02",
+      "matched_id": "hanging_clothes_old_v02",
+      "noise_seed": 765212,
+      "old_target_id": "hanging_clothes_old_v02",
+      "output_video": {
+        "bytes": 1874486,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/hanging_clothes_lure_v02.mp4",
+        "sha256": "449d849cf251b469bc77c0befb196bf5ea70b425e5ad84f5a22bef98c6e99c2c"
+      },
+      "prompt": "Colorful clothes hang outdoors on a clothesline in a different composition, with fabric shifting gently in natural light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 1953033,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/hanging_clothes_lure_v02.png",
+        "sha256": "c65ede306ec63c383aedcd5a58a90e61f93fb73ee8bd2b41bc6656d56313c310"
+      },
+      "source_pocket": "fresh24_hanging_clothes",
+      "status": "generated"
+    },
+    {
+      "alpha": 2.3916587829589844,
+      "error": null,
+      "generation_seconds": 70.48839312499331,
+      "guidance": 2.56687861867249,
+      "job_id": "aerial_beach_lure_v00",
+      "matched_id": "aerial_beach_old_v00",
+      "noise_seed": 765200,
+      "old_target_id": "aerial_beach_old_v00",
+      "output_video": {
+        "bytes": 3089467,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/aerial_beach_lure_v00.mp4",
+        "sha256": "6d7e67dc69d88072a9e45318438af6058bc09d6e2b649d0d10c43d981e50d3b7"
+      },
+      "prompt": "A different wide aerial beach with shallow shoreline water and tiny figures, using a distinct coastline shape and camera framing. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 2374947,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/aerial_beach_lure_v00.png",
+        "sha256": "e945030ed11a61ded2a001f9987658e35b1642748573b37430bd94412a250558"
+      },
+      "source_pocket": "fresh24_aerial_beach",
+      "status": "generated"
+    },
+    {
+      "alpha": -1.9609311372041702,
+      "error": null,
+      "generation_seconds": 71.88921200000186,
+      "guidance": 8.631222248077393,
+      "job_id": "aerial_beach_lure_v01",
+      "matched_id": "aerial_beach_old_v01",
+      "noise_seed": 765211,
+      "old_target_id": "aerial_beach_old_v01",
+      "output_video": {
+        "bytes": 2513937,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/aerial_beach_lure_v01.mp4",
+        "sha256": "b5b829a0b736a4abc4b434cfba06d823f0b17beae06c6ca78685bf3b1fe3f541"
+      },
+      "prompt": "A different wide aerial beach with shallow shoreline water and tiny figures, using a distinct coastline shape and camera framing. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 2278089,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/aerial_beach_lure_v01.png",
+        "sha256": "0b704f9e2e2d824a24cfab8b1f7c1c2b5f1c6dbe9cf75c12c798da805863fab1"
+      },
+      "source_pocket": "fresh24_aerial_beach",
+      "status": "generated"
+    },
+    {
+      "alpha": 2.813289761543274,
+      "error": null,
+      "generation_seconds": 71.45556262500031,
+      "guidance": 7.6452042162418365,
+      "job_id": "aerial_beach_lure_v02",
+      "matched_id": "aerial_beach_old_v02",
+      "noise_seed": 765192,
+      "old_target_id": "aerial_beach_old_v02",
+      "output_video": {
+        "bytes": 2490579,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/aerial_beach_lure_v02.mp4",
+        "sha256": "e0a3a752ee2154cabbd00753b1f7f5095ae316f3c91a8eec5bfb9086f1fd4287"
+      },
+      "prompt": "A different wide aerial beach with shallow shoreline water and tiny figures, using a distinct coastline shape and camera framing. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 2442873,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/aerial_beach_lure_v02.png",
+        "sha256": "18ba3e2cb6edc646d7575ae04a21b7f9799bcd86d4ef51f14abdbfa8ba45188a"
+      },
+      "source_pocket": "fresh24_aerial_beach",
+      "status": "generated"
+    },
+    {
+      "alpha": -1.9609311372041702,
+      "error": null,
+      "generation_seconds": 73.63086900000053,
+      "guidance": 8.631222248077393,
+      "job_id": "city_street_lure_v00",
+      "matched_id": "city_street_old_v00",
+      "noise_seed": 765210,
+      "old_target_id": "city_street_old_v00",
+      "output_video": {
+        "bytes": 2358290,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/city_street_lure_v00.mp4",
+        "sha256": "09902451253974d2981dc2175844d20246a8bd1cf677fe9936e22b6e50cf262d"
+      },
+      "prompt": "A different city street between tall buildings with trees and distant motion, using a distinct street angle and building layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 2205626,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/city_street_lure_v00.png",
+        "sha256": "684f7feec08d029a6f088831ebb022fb92598918aa721a0772ab9a23e709cfb0"
+      },
+      "source_pocket": "fresh24_city_street",
+      "status": "generated"
+    },
+    {
+      "alpha": 2.3916587829589844,
+      "error": null,
+      "generation_seconds": 72.91684641600295,
+      "guidance": 2.56687861867249,
+      "job_id": "city_street_lure_v01",
+      "matched_id": "city_street_old_v01",
+      "noise_seed": 765201,
+      "old_target_id": "city_street_old_v01",
+      "output_video": {
+        "bytes": 1356252,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/city_street_lure_v01.mp4",
+        "sha256": "62568456538144b1c29b93bc1f00fc40946c8262a0f4ec9a6e49394e36ee73ec"
+      },
+      "prompt": "A different city street between tall buildings with trees and distant motion, using a distinct street angle and building layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 2107631,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/city_street_lure_v01.png",
+        "sha256": "61bb96e28d2ca332bebe1b1458e60dd0b3fa866577473371fd55f426f675fad8"
+      },
+      "source_pocket": "fresh24_city_street",
+      "status": "generated"
+    },
+    {
+      "alpha": 2.813289761543274,
+      "error": null,
+      "generation_seconds": 72.12797120899631,
+      "guidance": 7.6452042162418365,
+      "job_id": "city_street_lure_v02",
+      "matched_id": "city_street_old_v02",
+      "noise_seed": 765192,
+      "old_target_id": "city_street_old_v02",
+      "output_video": {
+        "bytes": 1754316,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/city_street_lure_v02.mp4",
+        "sha256": "0096b4e2776e2e72abecaba46e0fb3e147bc8046095f9f4c389805b3d1921d43"
+      },
+      "prompt": "A different city street between tall buildings with trees and distant motion, using a distinct street angle and building layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 2285268,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/city_street_lure_v02.png",
+        "sha256": "8ff5aa65991b6077168610c453e974709ce2c2c8a8cc0e05fa23149f5687c9af"
+      },
+      "source_pocket": "fresh24_city_street",
+      "status": "generated"
+    },
+    {
+      "alpha": 2.3916587829589844,
+      "error": null,
+      "generation_seconds": 71.60253825000109,
+      "guidance": 2.56687861867249,
+      "job_id": "storm_beach_lure_v00",
+      "matched_id": "storm_beach_old_v00",
+      "noise_seed": 765200,
+      "old_target_id": "storm_beach_old_v00",
+      "output_video": {
+        "bytes": 1919849,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/storm_beach_lure_v00.mp4",
+        "sha256": "c739c63c8f02a82b331db41ed81032a4bd869cf9bc7f214383b4c53beb66e929"
+      },
+      "prompt": "A different stormy beach under heavy clouds with waves and cliffs, using a distinct shoreline and cliff arrangement. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 2075640,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/storm_beach_lure_v00.png",
+        "sha256": "7864e630745274957d4893964ccc443970b2d0f15ab08f35d0554010f3eacc24"
+      },
+      "source_pocket": "fresh24_storm_beach",
+      "status": "generated"
+    },
+    {
+      "alpha": 2.813289761543274,
+      "error": null,
+      "generation_seconds": 74.69994387499901,
+      "guidance": 7.6452042162418365,
+      "job_id": "storm_beach_lure_v01",
+      "matched_id": "storm_beach_old_v01",
+      "noise_seed": 765191,
+      "old_target_id": "storm_beach_old_v01",
+      "output_video": {
+        "bytes": 1635606,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/storm_beach_lure_v01.mp4",
+        "sha256": "4646ac9dc0363e28f768d58d18e7b200383996232e4a08aefd337131f4b112e5"
+      },
+      "prompt": "A different stormy beach under heavy clouds with waves and cliffs, using a distinct shoreline and cliff arrangement. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 1827312,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/storm_beach_lure_v01.png",
+        "sha256": "dba204cacc00e639f641ec88bfe264e002ae35a32ca2fb3b077632adec717f03"
+      },
+      "source_pocket": "fresh24_storm_beach",
+      "status": "generated"
+    },
+    {
+      "alpha": -1.9609311372041702,
+      "error": null,
+      "generation_seconds": 74.2234307079998,
+      "guidance": 8.631222248077393,
+      "job_id": "storm_beach_lure_v02",
+      "matched_id": "storm_beach_old_v02",
+      "noise_seed": 765212,
+      "old_target_id": "storm_beach_old_v02",
+      "output_video": {
+        "bytes": 1964164,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/storm_beach_lure_v02.mp4",
+        "sha256": "9680ce7d9f8b9e7d3854b125bb1ee0ecfb2e8cf0a45a15380990a858707c4615"
+      },
+      "prompt": "A different stormy beach under heavy clouds with waves and cliffs, using a distinct shoreline and cliff arrangement. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "analysis_lure_video",
+      "seed_image": {
+        "bytes": 1909632,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/analysis_lures/storm_beach_lure_v02.png",
+        "sha256": "b27caef5f61f2fbbc90281fbd4b8b78c1f91f61e6c648742045ebe854c6597f7"
+      },
+      "source_pocket": "fresh24_storm_beach",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 73.72777045900148,
+      "guidance": 7.5,
+      "job_id": "filler_old_v00",
+      "matched_id": null,
+      "noise_seed": 880000,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1494971,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v00.mp4",
+        "sha256": "0e1fda4d149d490d8cc53efac1310c4eb005dc1510a6a08c4283bb86e8a18305"
+      },
+      "prompt": "Golden grass in warm sunlight with shallow depth of field. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1734252,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v00.png",
+        "sha256": "ea2ea0118cd8923f87a49ac516b633bebc8e7c075a7bf9794f30fe40b5e0df84"
+      },
+      "source_pocket": "fresh24_golden_grass",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 73.06356937500095,
+      "guidance": 7.5,
+      "job_id": "filler_old_v01",
+      "matched_id": null,
+      "noise_seed": 880001,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 939017,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v01.mp4",
+        "sha256": "4c6aa439467d9d66c18ab421d6f6726eada333909018a602b0baa604546a1264"
+      },
+      "prompt": "A red mailbox mounted near a building facade. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1735257,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v01.png",
+        "sha256": "20f3535b4dc90bfb5962a77b1c38c823b4d022aafc28a2723b1bce615b58122e"
+      },
+      "source_pocket": "fresh24_red_mailbox",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 72.94735283300543,
+      "guidance": 7.5,
+      "job_id": "filler_old_v02",
+      "matched_id": null,
+      "noise_seed": 880002,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2316089,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v02.mp4",
+        "sha256": "e685686cec5d17e2698e3c8a02c9d280a4711214944e66a1aa124d795a4eeb5b"
+      },
+      "prompt": "A suspension bridge viewed from a distinctive angle. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 2099922,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v02.png",
+        "sha256": "8936558fd9cbe7ff8d3312b673c8e6e624a158f120e0ff4c581d976738a864c1"
+      },
+      "source_pocket": "fresh24_suspension_bridge",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 72.48350820799533,
+      "guidance": 7.5,
+      "job_id": "filler_old_v03",
+      "matched_id": null,
+      "noise_seed": 880003,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1746991,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v03.mp4",
+        "sha256": "42cfd330dbae5edff3f9db6d8bc3f470aa93951ee8499dc64a9110d79e7fff8f"
+      },
+      "prompt": "A lighthouse standing under dramatic sky. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1816686,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v03.png",
+        "sha256": "ab2e91263e88e97f2efd9f72487ce50d48cf80a7827c7731d314d92b5acf59d2"
+      },
+      "source_pocket": "fresh24_lighthouse",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 93.37785216700286,
+      "guidance": 7.5,
+      "job_id": "filler_old_v04",
+      "matched_id": null,
+      "noise_seed": 880004,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2518795,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v04.mp4",
+        "sha256": "007eb2b934eea6ad542f62f337849feb08de5ff06b206790d9f9e2b2b1916ec0"
+      },
+      "prompt": "Railroad tracks beside a coastline with rocks and pale sky. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 2397867,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v04.png",
+        "sha256": "2d23da507a6d070271b061bde9842819f71d22f044f605ba614b2791455c3938"
+      },
+      "source_pocket": "fresh24_coastal_tracks",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 94.44176524999784,
+      "guidance": 7.5,
+      "job_id": "filler_old_v05",
+      "matched_id": null,
+      "noise_seed": 880005,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2964560,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v05.mp4",
+        "sha256": "31d42eb02bde492f5629c9440a1566a59c77a1b871fcf2fb956a5b2d1ecba233"
+      },
+      "prompt": "Ocean cliffs above a pale surf line. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 2710303,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v05.png",
+        "sha256": "12b1a01cb664a437672b1d2a4acb3f0ae72ccbd9e11e641cbcdae655d4c6c1e1"
+      },
+      "source_pocket": "fresh24_ocean_cliffs",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 94.8374791249953,
+      "guidance": 7.5,
+      "job_id": "filler_old_v06",
+      "matched_id": null,
+      "noise_seed": 880006,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1356512,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v06.mp4",
+        "sha256": "fe46e469fdddaa223684d9cdde622d8c70e1a33f2ca2a12773907d7d9162b6fe"
+      },
+      "prompt": "A small concert stage with musicians under lights. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1623230,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v06.png",
+        "sha256": "9589544b2535eaf929575cffaa844493a944944d2d7711804540bc396003067b"
+      },
+      "source_pocket": "fresh24_concert_stage",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 96.16782516700187,
+      "guidance": 7.5,
+      "job_id": "filler_old_v07",
+      "matched_id": null,
+      "noise_seed": 880007,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2916598,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v07.mp4",
+        "sha256": "3dfd457cffc0eec100c3d6174827f3a0df98c996f22bfaeec16f5f66ba7609c4"
+      },
+      "prompt": "Misty woods with tall trunks and soft light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 2628238,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v07.png",
+        "sha256": "0975e3d31b7750593de0aa8f4b29f2b32dcdac865b68bd1b1bfef712a8414b5d"
+      },
+      "source_pocket": "fresh24_misty_woods",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 97.35911370800022,
+      "guidance": 7.5,
+      "job_id": "filler_old_v08",
+      "matched_id": null,
+      "noise_seed": 880008,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1803847,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v08.mp4",
+        "sha256": "2ee517634585f36ed5b6afee01ae0e49655f25e2150199bc32de22403524ff95"
+      },
+      "prompt": "A close view of wheat heads in a field. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1891884,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v08.png",
+        "sha256": "97db6709c276683d28de87e44f2a2ba227e189a0b590fa0d5866fbec729b7631"
+      },
+      "source_pocket": "fresh24_wheat_closeup",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 97.20721374999994,
+      "guidance": 7.5,
+      "job_id": "filler_old_v09",
+      "matched_id": null,
+      "noise_seed": 880009,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1511860,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v09.mp4",
+        "sha256": "1d34cdc3f37e9d0ec0261857160e1e8f0f9e50ae94de4cdecee7c2265a15f3a6"
+      },
+      "prompt": "Clouds passing across a mountain ridge. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1863441,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v09.png",
+        "sha256": "0b4e309017483ee0bba94335339df66afb1aa29d3996e6a34bf70d306740b337"
+      },
+      "source_pocket": "fresh24_cloud_mountain",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 99.00353687499592,
+      "guidance": 7.5,
+      "job_id": "filler_old_v10",
+      "matched_id": null,
+      "noise_seed": 880010,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2036746,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v10.mp4",
+        "sha256": "011bcf2ab826a2531afda55a30cfcee89333ed344a7a7220a241e1e97e18792c"
+      },
+      "prompt": "A foggy mountain face with muted natural light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1991180,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v10.png",
+        "sha256": "c45299e911388796e1fa49ecd1b8d80565f9e403ced45595503b03e1ac5ee986"
+      },
+      "source_pocket": "fresh24_mountain_fog",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 100.17759954200301,
+      "guidance": 7.5,
+      "job_id": "filler_old_v11",
+      "matched_id": null,
+      "noise_seed": 880011,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 3923144,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v11.mp4",
+        "sha256": "0a1083aa33ef191e7e9b5719a21dfd2d4fdcf0e7361fa4fa9f3e305845ee0ddf"
+      },
+      "prompt": "A forest canopy viewed upward through tall trunks. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 3370900,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v11.png",
+        "sha256": "9ccdacbd59cfefb484fd058f38ef65fe7659c26cf868d7b82d65f8bda7c8ea59"
+      },
+      "source_pocket": "fresh24_forest_canopy",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 99.67564504099573,
+      "guidance": 7.5,
+      "job_id": "filler_old_v12",
+      "matched_id": null,
+      "noise_seed": 880012,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1592847,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v12.mp4",
+        "sha256": "f8fa82c1a8d3930edce0f76ad0d7b8469f4cd43d884c44f20505575f7bb47d58"
+      },
+      "prompt": "Dewy grass blades with low camera angle and soft sun. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1797988,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v12.png",
+        "sha256": "c34aa875b121ba7cf97b91e8f56aa4e0f98436675ff524b28b42ff488d9d2f2c"
+      },
+      "source_pocket": "fresh24_dewy_grass",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 99.44049595799879,
+      "guidance": 7.5,
+      "job_id": "filler_old_v13",
+      "matched_id": null,
+      "noise_seed": 880013,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2817604,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v13.mp4",
+        "sha256": "f4c69ff3e6dc4ba0deed83fa81137483183862b9983c2e9855e0535a77fbbf1b"
+      },
+      "prompt": "A sparse forest with bare trunks and pale sky. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 3066255,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v13.png",
+        "sha256": "fd833e61e505dcede079e13795f59ba8cf7b58cd399a4afe0761a5beb45a8d3a"
+      },
+      "source_pocket": "fresh24_sparse_forest",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 98.96436437500233,
+      "guidance": 7.5,
+      "job_id": "filler_old_v14",
+      "matched_id": null,
+      "noise_seed": 880014,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1369722,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v14.mp4",
+        "sha256": "ef8b611749223070ef484a8b31185cfaafe23e30003969685b3cb4813ec1fba0"
+      },
+      "prompt": "Golden grass in warm sunlight with shallow depth of field. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1643320,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v14.png",
+        "sha256": "1c5d695b83b0faa29a762b6eaa5eb8d0f597ada64d635b6dd616424f739e7224"
+      },
+      "source_pocket": "fresh24_golden_grass",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 98.51297641699784,
+      "guidance": 7.5,
+      "job_id": "filler_old_v15",
+      "matched_id": null,
+      "noise_seed": 880015,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1383970,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v15.mp4",
+        "sha256": "7e0721d8d30b6231bec2d7b4316957023096d0805c9f93ecbe562726017d592f"
+      },
+      "prompt": "A red mailbox mounted near a building facade. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1978668,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v15.png",
+        "sha256": "a67b4c4eb65a0fd6d58e58131eaabe8f5e2fccefaa3d032c5a65ff4783c70c53"
+      },
+      "source_pocket": "fresh24_red_mailbox",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 98.05229058300029,
+      "guidance": 7.5,
+      "job_id": "filler_old_v16",
+      "matched_id": null,
+      "noise_seed": 880016,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2426187,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v16.mp4",
+        "sha256": "de09be49bc25aad2a6d89e37a5b5aadf6699fd30d89bd1541a5e1d9f6e089e04"
+      },
+      "prompt": "A suspension bridge viewed from a distinctive angle. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 2006939,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v16.png",
+        "sha256": "cb07d6e97f7bd0a74f4b4cf94b51e32b26da50aa1afd7bf1582afb143031c5c5"
+      },
+      "source_pocket": "fresh24_suspension_bridge",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 97.62420770899917,
+      "guidance": 7.5,
+      "job_id": "filler_old_v17",
+      "matched_id": null,
+      "noise_seed": 880017,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1489201,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v17.mp4",
+        "sha256": "25d2919e9e7a63328546d81538ee04442d04a00c3888661d440edab40fe3b8ab"
+      },
+      "prompt": "A lighthouse standing under dramatic sky. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1789721,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v17.png",
+        "sha256": "958ed5638e632078c228175f0bec5f1dc2246b84548b32ca9475902493d953d4"
+      },
+      "source_pocket": "fresh24_lighthouse",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 100.05802929199854,
+      "guidance": 7.5,
+      "job_id": "filler_old_v18",
+      "matched_id": null,
+      "noise_seed": 880018,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2132584,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v18.mp4",
+        "sha256": "979716ba4e9777d2c6ad3ea0e9d1baec1a2ea2058d95aa56663553c30771b79e"
+      },
+      "prompt": "Railroad tracks beside a coastline with rocks and pale sky. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 2631732,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v18.png",
+        "sha256": "18b9ff53470428c7cd272970ba329ad39d3c5ac542d7939a6dff0b3a6f3cb4a8"
+      },
+      "source_pocket": "fresh24_coastal_tracks",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 99.6992592089955,
+      "guidance": 7.5,
+      "job_id": "filler_old_v19",
+      "matched_id": null,
+      "noise_seed": 880019,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1815502,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v19.mp4",
+        "sha256": "7a88995c7a531f617efff81b0e9113258431a0b5a1810d117c0328c442b75665"
+      },
+      "prompt": "Ocean cliffs above a pale surf line. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 2287287,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v19.png",
+        "sha256": "86813ec01a708254c2ca1f482cd3166255ec3b3cf2af34e7282a00a0e2990d38"
+      },
+      "source_pocket": "fresh24_ocean_cliffs",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 102.67986737500178,
+      "guidance": 7.5,
+      "job_id": "filler_old_v20",
+      "matched_id": null,
+      "noise_seed": 880020,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1597066,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v20.mp4",
+        "sha256": "c6bb1a51b7fa40ff5188fb291fe50d66941bc621a332aa1ace4cd91cb3872921"
+      },
+      "prompt": "A small concert stage with musicians under lights. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1668786,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v20.png",
+        "sha256": "07279b6889332e220aa88212b419f8e323aa5f8d8b98ddce296ee548adf1a03c"
+      },
+      "source_pocket": "fresh24_concert_stage",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 113.50748258300155,
+      "guidance": 7.5,
+      "job_id": "filler_old_v21",
+      "matched_id": null,
+      "noise_seed": 880021,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1543281,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v21.mp4",
+        "sha256": "45333d0e3a97aeda925d971077a8a6f335d93954958f3a91adfc89d654b89fb0"
+      },
+      "prompt": "Misty woods with tall trunks and soft light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 2550181,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v21.png",
+        "sha256": "6a994098e5d6d2e217bac5a78123dcfa57dc2e8b058ac3fb89c6ee1f18ee9462"
+      },
+      "source_pocket": "fresh24_misty_woods",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 114.57768733299599,
+      "guidance": 7.5,
+      "job_id": "filler_old_v22",
+      "matched_id": null,
+      "noise_seed": 880022,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1188659,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v22.mp4",
+        "sha256": "6723d6aa320e1550fda44cff8b2928e95c427ba88b58e290e24d11afeb85dad4"
+      },
+      "prompt": "A close view of wheat heads in a field. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1700398,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v22.png",
+        "sha256": "8bac4e253331f2720f16d17e8d2b06ff927f3df30a358b714e5675be635e20dc"
+      },
+      "source_pocket": "fresh24_wheat_closeup",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 119.60519345899957,
+      "guidance": 7.5,
+      "job_id": "filler_old_v23",
+      "matched_id": null,
+      "noise_seed": 880023,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2274151,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v23.mp4",
+        "sha256": "10233e92a67568b5c51359d6214253fe9f8ecf1d64c8ce1b269a3717f8ea6847"
+      },
+      "prompt": "Clouds passing across a mountain ridge. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 2211293,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v23.png",
+        "sha256": "3f74ee8171804d2dd9c62023dd72688584a9407a0a8b136ba98cd755c6d8c469"
+      },
+      "source_pocket": "fresh24_cloud_mountain",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 120.02530541599845,
+      "guidance": 7.5,
+      "job_id": "filler_old_v24",
+      "matched_id": null,
+      "noise_seed": 880024,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1916545,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v24.mp4",
+        "sha256": "9d3314f193aa878ad6d2f2e54a319962127c8c99b01127ab20263818a9bd68d7"
+      },
+      "prompt": "A foggy mountain face with muted natural light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1774257,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v24.png",
+        "sha256": "7f81b44378b21d064f6ee579d3996cf6f88cb262c9fa9b856580ee9fc52b9d46"
+      },
+      "source_pocket": "fresh24_mountain_fog",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 120.56536358300218,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v00",
+      "matched_id": "filler_old_v00",
+      "noise_seed": 890000,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1657116,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v00.mp4",
+        "sha256": "a160f0cf428852d500d2224af590e2999082ce978a6facf045f08eaba956a888"
+      },
+      "prompt": "A different patch of golden grass in warm sunlight, with distinct plant shapes and camera angle. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 2429586,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v00.png",
+        "sha256": "ec322e67a4c5dcf7bd16e82e3511705f6534ac801b5f0b445843d91f7622d887"
+      },
+      "source_pocket": "fresh24_golden_grass",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 121.86545620900142,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v01",
+      "matched_id": "filler_old_v01",
+      "noise_seed": 890001,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1618520,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v01.mp4",
+        "sha256": "f07e9e59a0fa60c7da3439e944b787a0ba34c863f5c514573b15871cc83ce5c4"
+      },
+      "prompt": "A different red mailbox in a distinct setting and camera angle. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 1825449,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v01.png",
+        "sha256": "a06bfb58828485420986ecac8107e00b3c9717079e6f2b880376f19d5800a61b"
+      },
+      "source_pocket": "fresh24_red_mailbox",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 123.98366379200161,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v02",
+      "matched_id": "filler_old_v02",
+      "noise_seed": 890002,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2272161,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v02.mp4",
+        "sha256": "8653a1cb9dddd1abbb5f7ebd7358a467a6bd6462a7264e7f55efd4fc9b45feae"
+      },
+      "prompt": "A different suspension bridge view with distinct cables and framing. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 2444688,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v02.png",
+        "sha256": "d9916a439ced8ad4ac7758ab11ca22eda8a8739e2d506a451fabf77fe805ac34"
+      },
+      "source_pocket": "fresh24_suspension_bridge",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 123.48649612499867,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v03",
+      "matched_id": "filler_old_v03",
+      "noise_seed": 890003,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1969396,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v03.mp4",
+        "sha256": "fee863520efae0d0ab9738d18413d2f3bc66f338acb32b9bda0de1a5cd4c94fc"
+      },
+      "prompt": "A different lighthouse with distinct surroundings and horizon. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 1945892,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v03.png",
+        "sha256": "a792208b990c8548228e4e4e631791abe93f4f747065b1581aecca82ca442fca"
+      },
+      "source_pocket": "fresh24_lighthouse",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 126.87175766700238,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v04",
+      "matched_id": "filler_old_v04",
+      "noise_seed": 890004,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2112157,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v04.mp4",
+        "sha256": "31d24e8abf941029d17823f2757e5e9f743933ffb553d5dfe8f76c1447a171af"
+      },
+      "prompt": "Different coastal railroad tracks with a distinct shoreline and track perspective. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 2507942,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v04.png",
+        "sha256": "6b67a61f404bfb639e8b46f527dc0d3dfca5217f004b747e591617a6ded44b59"
+      },
+      "source_pocket": "fresh24_coastal_tracks",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 126.51422370799992,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v05",
+      "matched_id": "filler_old_v05",
+      "noise_seed": 890005,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2289893,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v05.mp4",
+        "sha256": "de05e726769757cdd29cf2a7410641b606ee63456223ac7a4728e836366c993f"
+      },
+      "prompt": "Different ocean cliffs with a distinct cliff face, surf line, and framing. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 2475279,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v05.png",
+        "sha256": "2e6ddde88dbd0e15cfe811368ec1ddd9b1628fd4266b1eca1b085b1d2cec097f"
+      },
+      "source_pocket": "fresh24_ocean_cliffs",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 126.62390949999826,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v06",
+      "matched_id": "filler_old_v06",
+      "noise_seed": 890006,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1627647,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v06.mp4",
+        "sha256": "12faed8b8e58834f56844d5335cdc21aa41a767d9a1df903686cd02787763cb0"
+      },
+      "prompt": "A different concert stage with distinct lighting and performer layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 1795198,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v06.png",
+        "sha256": "6d3ee0364e876058c41a0393e0002924ee7f59550ef1117e272c9ad6d8bbf73e"
+      },
+      "source_pocket": "fresh24_concert_stage",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 126.36154495899973,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v07",
+      "matched_id": "filler_old_v07",
+      "noise_seed": 890007,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2075319,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v07.mp4",
+        "sha256": "e9d7708ab182c2fa0070de7bde2ac36f1ae19761434c6e39d2d94c3dec7447e1"
+      },
+      "prompt": "A different misty woodland scene with distinct tree spacing and light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 2385177,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v07.png",
+        "sha256": "af1aa0f9a3b9711bb6b397e415b9578bd0b9d6eb7f583b0ec592eb93c77a1caf"
+      },
+      "source_pocket": "fresh24_misty_woods",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 126.03600458300207,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v08",
+      "matched_id": "filler_old_v08",
+      "noise_seed": 890008,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1152444,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v08.mp4",
+        "sha256": "03c42931775819839b494f714b18db4dfb1e6ee13d3a1a39f275112992a03e79"
+      },
+      "prompt": "A different close view of wheat heads with distinct spacing and background blur. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 1562884,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v08.png",
+        "sha256": "19f0b24f564b63b475a9c58ff995090d98b7343217bcbe0b4dcea6623b691ce0"
+      },
+      "source_pocket": "fresh24_wheat_closeup",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 125.71607483299886,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v09",
+      "matched_id": "filler_old_v09",
+      "noise_seed": 890009,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1471558,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v09.mp4",
+        "sha256": "eb6610401eae6eed09e6fdb12b633090542e1835df3e8c268ba936f95e5ae0e7"
+      },
+      "prompt": "A different mountain ridge with clouds and distinct rock shapes. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 2211721,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v09.png",
+        "sha256": "1c435170c3c371cbf714422cb0b1b11a2f28d43f321cd5e1744a717f8b71f363"
+      },
+      "source_pocket": "fresh24_cloud_mountain",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 125.32600708400423,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v10",
+      "matched_id": "filler_old_v10",
+      "noise_seed": 890010,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2295822,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v10.mp4",
+        "sha256": "20b58a2f364ac6e01fa5fab3876df53be8e034af66655fbbe137432938c4ca98"
+      },
+      "prompt": "A different foggy mountain face with distinct ridge geometry. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 2180703,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v10.png",
+        "sha256": "534cbcc0a1e604a9ddfef5353818d5803e814d2f279f39540683c2fdc8213ba6"
+      },
+      "source_pocket": "fresh24_mountain_fog",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 125.00324720799836,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v11",
+      "matched_id": "filler_old_v11",
+      "noise_seed": 890011,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 3609924,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v11.mp4",
+        "sha256": "d51727fa593b9d17d1e3c87512b21e20ec38667f4ff713b8c5804d2640536825"
+      },
+      "prompt": "A different upward forest canopy view with distinct trunks and sky openings. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 3347573,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v11.png",
+        "sha256": "4d876c2332ecc358f8d9026118ace042ec89d03f6a32bd5ce0ade1d237e66faf"
+      },
+      "source_pocket": "fresh24_forest_canopy",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 124.56427350000013,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v12",
+      "matched_id": "filler_old_v12",
+      "noise_seed": 890012,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1415776,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v12.mp4",
+        "sha256": "cf59b1c60ced9f6ca580c7d09a756e7c585d908b29896f68cf92cf3212dbbd4e"
+      },
+      "prompt": "A different low-angle dewy grass scene with distinct blade shapes and highlights. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 1948688,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v12.png",
+        "sha256": "c0c39513044410c1025bbcdbac0b8a5e5a79e97570d76f6e7c755c7e2a6fc85f"
+      },
+      "source_pocket": "fresh24_dewy_grass",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 127.73774750000302,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v13",
+      "matched_id": "filler_old_v13",
+      "noise_seed": 890013,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2944335,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v13.mp4",
+        "sha256": "ce7b1a09fcf26953492fc5ac456815221a57eed8d8384e0f25616e35fee2bf86"
+      },
+      "prompt": "A different sparse forest with distinct trunk spacing and horizon. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 3236354,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v13.png",
+        "sha256": "0bb5cd1351c588ea6af7878b11a47e5c22d9e98efd8a99a10374a9dca6f88ec5"
+      },
+      "source_pocket": "fresh24_sparse_forest",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 134.51897083399672,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v14",
+      "matched_id": "filler_old_v14",
+      "noise_seed": 890014,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2055650,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v14.mp4",
+        "sha256": "532a94b86c70207bf6ebf3eeaa1ec43de0fe3b587aa27333bffaba517bfc086c"
+      },
+      "prompt": "A different patch of golden grass in warm sunlight, with distinct plant shapes and camera angle. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 2524671,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v14.png",
+        "sha256": "8bc36402294b83caddac43e7024b24dc10ed9fb4b50a65ecb206fdec1736b26a"
+      },
+      "source_pocket": "fresh24_golden_grass",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 140.20789183299348,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v15",
+      "matched_id": "filler_old_v15",
+      "noise_seed": 890015,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1301205,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v15.mp4",
+        "sha256": "88a80d31f020a71af3e7376ea3e387e87e93b7913ffa025488d854c9a61ff7d6"
+      },
+      "prompt": "A different red mailbox in a distinct setting and camera angle. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 1973123,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v15.png",
+        "sha256": "86905f9f3979c254f4d386276b913fbe4d17e80ffb5497fdbd93c275d6d9adfa"
+      },
+      "source_pocket": "fresh24_red_mailbox",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 141.24447187500482,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v16",
+      "matched_id": "filler_old_v16",
+      "noise_seed": 890016,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1510187,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v16.mp4",
+        "sha256": "ba45a59f510fb214f9bd9314caa15512272fe990d7358a7d787b7ae610101702"
+      },
+      "prompt": "A different suspension bridge view with distinct cables and framing. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 2280219,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v16.png",
+        "sha256": "468f74ef4c593d78bf0423658562d8da2c47d7378a5892ed81fa291ee395ba0b"
+      },
+      "source_pocket": "fresh24_suspension_bridge",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 147.19055833399761,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v17",
+      "matched_id": "filler_old_v17",
+      "noise_seed": 890017,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2626063,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v17.mp4",
+        "sha256": "f75c392975fa6d30e235ee883c7b975f5597e5963cec2e06c3f34ae4bfb16e71"
+      },
+      "prompt": "A different lighthouse with distinct surroundings and horizon. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 2322806,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v17.png",
+        "sha256": "d383b1ca9e9bc2fc8610df0e31c629cf00f259343d1b26694190932553ba99c1"
+      },
+      "source_pocket": "fresh24_lighthouse",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 147.9147489579991,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v18",
+      "matched_id": "filler_old_v18",
+      "noise_seed": 890018,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2278883,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v18.mp4",
+        "sha256": "bffa4208ce22c3f60bb5befca86df5d894d17bb3f8a2f0217547e64069bc2515"
+      },
+      "prompt": "Different coastal railroad tracks with a distinct shoreline and track perspective. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 2218815,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v18.png",
+        "sha256": "b90e89e0488c1b3e1fd732defd950858ecd5f4daf7fee60b6da42541dfa69fd8"
+      },
+      "source_pocket": "fresh24_coastal_tracks",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 148.7886996659945,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v19",
+      "matched_id": "filler_old_v19",
+      "noise_seed": 890019,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 2268217,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v19.mp4",
+        "sha256": "12656ef01eee9d4708361fd31f1c5c92b305d91982904dae31dcd7325c2c6715"
+      },
+      "prompt": "Different ocean cliffs with a distinct cliff face, surf line, and framing. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 2470464,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v19.png",
+        "sha256": "a56de5814c422dc3a7879d9b5138119b8f262268c6f9a675329726668a07f54b"
+      },
+      "source_pocket": "fresh24_ocean_cliffs",
+      "status": "generated"
+    }
+  ],
+  "schema_version": "content_pocket_recognition_video_generation.v1",
+  "source_production_manifest": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_stimulus_production_manifest_20260608.json",
+  "status": "generation_complete"
+}
