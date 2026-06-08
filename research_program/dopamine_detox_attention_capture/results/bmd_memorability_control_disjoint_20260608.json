@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_capture_score_validation",
+  "manifest_path": "/Users/jawaun/isc_mod/data/raw/bold_moments/annotations.json",
+  "manifest_status": "real_control_not_attention_capture",
+  "claim_update_allowed": false,
+  "n_samples": 1022,
+  "n_invalid_capture_denominators": 283,
+  "gate_rho": 0.4,
+  "permutations": 999,
+  "seed": 20260608,
+  "groups": [
+    {
+      "group": "BOLD_Moments_control",
+      "n_samples": 1022,
+      "n_invalid_capture_denominators": 283,
+      "metrics": {
+        "capture_score": {
+          "n": 739,
+          "rho": -0.24438626553547838,
+          "permutation_p_greater": 1.0,
+          "gate_passed": false
+        },
+        "capture_delta": {
+          "n": 1022,
+          "rho": -0.249157278839736,
+          "permutation_p_greater": 1.0,
+          "gate_passed": false
+        },
+        "sensory_mean": {
+          "n": 1022,
+          "rho": -0.08356437723598319,
+          "permutation_p_greater": 0.998,
+          "gate_passed": false
+        },
+        "frontoparietal": {
+          "n": 1022,
+          "rho": 0.23464129847792767,
+          "permutation_p_greater": 0.001,
+          "gate_passed": false
+        }
+      }
+    }
+  ],
+  "pooled": {
+    "group": "pooled",
+    "n_samples": 1022,
+    "n_invalid_capture_denominators": 283,
+    "metrics": {
+      "capture_score": {
+        "n": 739,
+        "rho": -0.24438626553547838,
+        "permutation_p_greater": 1.0,
+        "gate_passed": false
+      },
+      "capture_delta": {
+        "n": 1022,
+        "rho": -0.249157278839736,
+        "permutation_p_greater": 1.0,
+        "gate_passed": false
+      },
+      "sensory_mean": {
+        "n": 1022,
+        "rho": -0.08356437723598319,
+        "permutation_p_greater": 0.996,
+        "gate_passed": false
+      },
+      "frontoparietal": {
+        "n": 1022,
+        "rho": 0.23464129847792767,
+        "permutation_p_greater": 0.001,
+        "gate_passed": false
+      }
+    }
+  },
+  "gate": {
+    "passed": false,
+    "claim_validated": false,
+    "passed_groups": [],
+    "rule": "capture_score Spearman rho >= 0.40 in at least one dataset"
+  },
+  "control": {
+    "name": "BOLD Moments memorability control",
+    "ground_truth_name": "memorability_score",
+    "feature_dir": "/Users/jawaun/isc_mod/data/features/tribe",
+    "roi_source": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+    "interpretation": "Control-only run. A positive result would show overlap with memorability labels, not validation of attentional capture."
+  }
+}

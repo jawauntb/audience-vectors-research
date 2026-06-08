@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_capture_score_validation",
+  "status": "synthetic_smoke_only",
+  "dataset": "synthetic_alignment_fixture",
+  "ground_truth_name": "ecr",
+  "feature_source": {
+    "feature_dir": "research_program/dopamine_detox_attention_capture/fixtures/phase1_synthetic_alignment_features_20260608",
+    "feature_template": "{sample_id}.npz"
+  },
+  "roi_mask_recommendation": "Use results/destrieux_roi_masks_disjoint_20260608.npz for the primary Phase 1 run; keep overlapping masks as sensitivity only.",
+  "samples": [
+    {
+      "sample_id": "align_a",
+      "dataset": "synthetic_alignment_fixture",
+      "ground_truth": 0.2,
+      "ground_truth_name": "ecr",
+      "tribe_feature_path": "/Users/jawaun/.codex/worktrees/dopamine-detox-capture-score-20260608/isc_mod/research_program/dopamine_detox_attention_capture/fixtures/phase1_synthetic_alignment_features_20260608/align_a.npz"
+    },
+    {
+      "sample_id": "align_b",
+      "dataset": "synthetic_alignment_fixture",
+      "ground_truth": 0.5,
+      "ground_truth_name": "ecr",
+      "tribe_feature_path": "/Users/jawaun/.codex/worktrees/dopamine-detox-capture-score-20260608/isc_mod/research_program/dopamine_detox_attention_capture/fixtures/phase1_synthetic_alignment_features_20260608/align_b.npz"
+    },
+    {
+      "sample_id": "align_c",
+      "dataset": "synthetic_alignment_fixture",
+      "ground_truth": 0.8,
+      "ground_truth_name": "ecr",
+      "tribe_feature_path": "/Users/jawaun/.codex/worktrees/dopamine-detox-capture-score-20260608/isc_mod/research_program/dopamine_detox_attention_capture/fixtures/phase1_synthetic_alignment_features_20260608/align_c.npz"
+    }
+  ],
+  "metadata": {
+    "labels_csv": "research_program/dopamine_detox_attention_capture/phase1_synthetic_alignment_labels_20260608.csv",
+    "sample_id_column": "sample_id",
+    "ground_truth_column": "ecr",
+    "n_label_rows": 3,
+    "n_samples": 3,
+    "n_missing_features": 0,
+    "missing_features": [],
+    "alignment_audit": {
+      "path": "research_program/dopamine_detox_attention_capture/results/phase1_synthetic_alignment_20260608.json",
+      "sha256": "617ab2d49a58b643297517d6557dda43cc942b710b9d4e33975e61ba48fe246a",
+      "ready_for_manifest_build": true,
+      "n_aligned_features": 3,
+      "n_missing_features": 0,
+      "ground_truth_summary": {
+        "n": 3,
+        "n_distinct": 3,
+        "mean": 0.5,
+        "std": 0.24494897427831783,
+        "min": 0.2,
+        "max": 0.8
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_capture_score_validation",
+  "status": "synthetic_smoke_only",
+  "notes": [
+    "Synthetic fixture to exercise the manifest and report pipeline.",
+    "Does not validate attention capture or any human/neural claim."
+  ],
+  "samples": [
+    {
+      "sample_id": "snapugc_fixture_001",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth_name": "synthetic_ecr",
+      "ground_truth": 0.12,
+      "roi_values": {"V1": 0.24, "PPA": 0.20, "language": 0.19, "frontoparietal": 0.74}
+    },
+    {
+      "sample_id": "snapugc_fixture_002",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth_name": "synthetic_ecr",
+      "ground_truth": 0.21,
+      "roi_values": {"V1": 0.28, "PPA": 0.22, "language": 0.22, "frontoparietal": 0.68}
+    },
+    {
+      "sample_id": "snapugc_fixture_003",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth_name": "synthetic_ecr",
+      "ground_truth": 0.30,
+      "roi_values": {"V1": 0.34, "PPA": 0.28, "language": 0.24, "frontoparietal": 0.61}
+    },
+    {
+      "sample_id": "snapugc_fixture_004",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth_name": "synthetic_ecr",
+      "ground_truth": 0.43,
+      "roi_values": {"V1": 0.42, "PPA": 0.35, "language": 0.32, "frontoparietal": 0.50}
+    },
+    {
+      "sample_id": "snapugc_fixture_005",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth_name": "synthetic_ecr",
+      "ground_truth": 0.55,
+      "roi_values": {"V1": 0.50, "PPA": 0.43, "language": 0.37, "frontoparietal": 0.40}
+    },
+    {
+      "sample_id": "snapugc_fixture_006",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth_name": "synthetic_ecr",
+      "ground_truth": 0.68,
+      "roi_values": {"V1": 0.58, "PPA": 0.50, "language": 0.41, "frontoparietal": 0.33}
+    },
+    {
+      "sample_id": "snapugc_fixture_007",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth_name": "synthetic_ecr",
+      "ground_truth": 0.81,
+      "roi_values": {"V1": 0.66, "PPA": 0.58, "language": 0.48, "frontoparietal": 0.26}
+    },
+    {
+      "sample_id": "snapugc_fixture_008",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth_name": "synthetic_ecr",
+      "ground_truth": 0.91,
+      "roi_values": {"V1": 0.74, "PPA": 0.66, "language": 0.54, "frontoparietal": 0.21}
+    },
+    {
+      "sample_id": "dhf1k_fixture_001",
+      "dataset": "DHF1K_fixture",
+      "ground_truth_name": "synthetic_mean_fixation_density",
+      "ground_truth": 0.18,
+      "roi_values": {"V1": 0.20, "PPA": 0.24, "language": 0.15, "frontoparietal": 0.70}
+    },
+    {
+      "sample_id": "dhf1k_fixture_002",
+      "dataset": "DHF1K_fixture",
+      "ground_truth_name": "synthetic_mean_fixation_density",
+      "ground_truth": 0.27,
+      "roi_values": {"V1": 0.26, "PPA": 0.26, "language": 0.18, "frontoparietal": 0.63}
+    },
+    {
+      "sample_id": "dhf1k_fixture_003",
+      "dataset": "DHF1K_fixture",
+      "ground_truth_name": "synthetic_mean_fixation_density",
+      "ground_truth": 0.36,
+      "roi_values": {"V1": 0.31, "PPA": 0.34, "language": 0.21, "frontoparietal": 0.58}
+    },
+    {
+      "sample_id": "dhf1k_fixture_004",
+      "dataset": "DHF1K_fixture",
+      "ground_truth_name": "synthetic_mean_fixation_density",
+      "ground_truth": 0.48,
+      "roi_values": {"V1": 0.38, "PPA": 0.40, "language": 0.25, "frontoparietal": 0.49}
+    },
+    {
+      "sample_id": "dhf1k_fixture_005",
+      "dataset": "DHF1K_fixture",
+      "ground_truth_name": "synthetic_mean_fixation_density",
+      "ground_truth": 0.60,
+      "roi_values": {"V1": 0.46, "PPA": 0.47, "language": 0.31, "frontoparietal": 0.43}
+    },
+    {
+      "sample_id": "dhf1k_fixture_006",
+      "dataset": "DHF1K_fixture",
+      "ground_truth_name": "synthetic_mean_fixation_density",
+      "ground_truth": 0.70,
+      "roi_values": {"V1": 0.55, "PPA": 0.52, "language": 0.36, "frontoparietal": 0.34}
+    },
+    {
+      "sample_id": "dhf1k_fixture_007",
+      "dataset": "DHF1K_fixture",
+      "ground_truth_name": "synthetic_mean_fixation_density",
+      "ground_truth": 0.79,
+      "roi_values": {"V1": 0.63, "PPA": 0.61, "language": 0.43, "frontoparietal": 0.28}
+    },
+    {
+      "sample_id": "dhf1k_fixture_008",
+      "dataset": "DHF1K_fixture",
+      "ground_truth_name": "synthetic_mean_fixation_density",
+      "ground_truth": 0.88,
+      "roi_values": {"V1": 0.70, "PPA": 0.69, "language": 0.50, "frontoparietal": 0.23}
+    }
+  ]
+}

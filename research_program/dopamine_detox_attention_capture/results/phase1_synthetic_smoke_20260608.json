@@ -1,0 +1,374 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_capture_score_validation",
+  "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_synthetic_smoke_manifest_20260608.json",
+  "manifest_status": "synthetic_smoke_only",
+  "claim_update_allowed": false,
+  "n_samples": 16,
+  "n_invalid_capture_denominators": 0,
+  "gate_rho": 0.4,
+  "permutations": 999,
+  "seed": 20260608,
+  "groups": [
+    {
+      "group": "DHF1K_fixture",
+      "n_samples": 8,
+      "n_invalid_capture_denominators": 0,
+      "metrics": {
+        "capture_score": {
+          "n": 8,
+          "rho": 1.0,
+          "permutation_p_greater": 0.001,
+          "gate_passed": true
+        },
+        "capture_delta": {
+          "n": 8,
+          "rho": 1.0,
+          "permutation_p_greater": 0.001,
+          "gate_passed": false
+        },
+        "sensory_mean": {
+          "n": 8,
+          "rho": 1.0,
+          "permutation_p_greater": 0.001,
+          "gate_passed": false
+        },
+        "frontoparietal": {
+          "n": 8,
+          "rho": -1.0,
+          "permutation_p_greater": 1.0,
+          "gate_passed": false
+        }
+      }
+    },
+    {
+      "group": "SnapUGC_fixture",
+      "n_samples": 8,
+      "n_invalid_capture_denominators": 0,
+      "metrics": {
+        "capture_score": {
+          "n": 8,
+          "rho": 1.0,
+          "permutation_p_greater": 0.001,
+          "gate_passed": true
+        },
+        "capture_delta": {
+          "n": 8,
+          "rho": 1.0,
+          "permutation_p_greater": 0.001,
+          "gate_passed": false
+        },
+        "sensory_mean": {
+          "n": 8,
+          "rho": 1.0,
+          "permutation_p_greater": 0.001,
+          "gate_passed": false
+        },
+        "frontoparietal": {
+          "n": 8,
+          "rho": -1.0,
+          "permutation_p_greater": 1.0,
+          "gate_passed": false
+        }
+      }
+    }
+  ],
+  "pooled": {
+    "group": "pooled",
+    "n_samples": 16,
+    "n_invalid_capture_denominators": 0,
+    "metrics": {
+      "capture_score": {
+        "n": 16,
+        "rho": 0.9882352941176471,
+        "permutation_p_greater": 0.001,
+        "gate_passed": true
+      },
+      "capture_delta": {
+        "n": 16,
+        "rho": 0.9911764705882353,
+        "permutation_p_greater": 0.001,
+        "gate_passed": false
+      },
+      "sensory_mean": {
+        "n": 16,
+        "rho": 0.9845477279120478,
+        "permutation_p_greater": 0.001,
+        "gate_passed": false
+      },
+      "frontoparietal": {
+        "n": 16,
+        "rho": -0.9941176470588236,
+        "permutation_p_greater": 1.0,
+        "gate_passed": false
+      }
+    }
+  },
+  "gate": {
+    "passed": true,
+    "claim_validated": false,
+    "passed_groups": [
+      "DHF1K_fixture",
+      "SnapUGC_fixture"
+    ],
+    "rule": "capture_score Spearman rho >= 0.40 in at least one dataset"
+  },
+  "rows": [
+    {
+      "sample_id": "snapugc_fixture_001",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth": 0.12,
+      "roi_values": {
+        "V1": 0.24,
+        "PPA": 0.2,
+        "language": 0.19,
+        "frontoparietal": 0.74
+      },
+      "sensory_mean": 0.21,
+      "frontoparietal": 0.74,
+      "capture_score": 0.28378340029270227,
+      "capture_delta": -0.53,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "snapugc_fixture_002",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth": 0.21,
+      "roi_values": {
+        "V1": 0.28,
+        "PPA": 0.22,
+        "language": 0.22,
+        "frontoparietal": 0.68
+      },
+      "sensory_mean": 0.24,
+      "frontoparietal": 0.68,
+      "capture_score": 0.3529406574402096,
+      "capture_delta": -0.44000000000000006,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "snapugc_fixture_003",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth": 0.3,
+      "roi_values": {
+        "V1": 0.34,
+        "PPA": 0.28,
+        "language": 0.24,
+        "frontoparietal": 0.61
+      },
+      "sensory_mean": 0.2866666666666667,
+      "frontoparietal": 0.61,
+      "capture_score": 0.46994458479029816,
+      "capture_delta": -0.3233333333333333,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "snapugc_fixture_004",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth": 0.43,
+      "roi_values": {
+        "V1": 0.42,
+        "PPA": 0.35,
+        "language": 0.32,
+        "frontoparietal": 0.5
+      },
+      "sensory_mean": 0.36333333333333334,
+      "frontoparietal": 0.5,
+      "capture_score": 0.72666521333624,
+      "capture_delta": -0.13666666666666666,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "snapugc_fixture_005",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth": 0.55,
+      "roi_values": {
+        "V1": 0.5,
+        "PPA": 0.43,
+        "language": 0.37,
+        "frontoparietal": 0.4
+      },
+      "sensory_mean": 0.4333333333333333,
+      "frontoparietal": 0.4,
+      "capture_score": 1.0833306250067707,
+      "capture_delta": 0.03333333333333327,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "snapugc_fixture_006",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth": 0.68,
+      "roi_values": {
+        "V1": 0.58,
+        "PPA": 0.5,
+        "language": 0.41,
+        "frontoparietal": 0.33
+      },
+      "sensory_mean": 0.49666666666666665,
+      "frontoparietal": 0.33,
+      "capture_score": 1.5050459443052193,
+      "capture_delta": 0.16666666666666663,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "snapugc_fixture_007",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth": 0.81,
+      "roi_values": {
+        "V1": 0.66,
+        "PPA": 0.58,
+        "language": 0.48,
+        "frontoparietal": 0.26
+      },
+      "sensory_mean": 0.5733333333333334,
+      "frontoparietal": 0.26,
+      "capture_score": 2.2051197238984983,
+      "capture_delta": 0.31333333333333335,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "snapugc_fixture_008",
+      "dataset": "SnapUGC_fixture",
+      "ground_truth": 0.91,
+      "roi_values": {
+        "V1": 0.74,
+        "PPA": 0.66,
+        "language": 0.54,
+        "frontoparietal": 0.21
+      },
+      "sensory_mean": 0.6466666666666666,
+      "frontoparietal": 0.21,
+      "capture_score": 3.0793504157916707,
+      "capture_delta": 0.43666666666666665,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "dhf1k_fixture_001",
+      "dataset": "DHF1K_fixture",
+      "ground_truth": 0.18,
+      "roi_values": {
+        "V1": 0.2,
+        "PPA": 0.24,
+        "language": 0.15,
+        "frontoparietal": 0.7
+      },
+      "sensory_mean": 0.19666666666666666,
+      "frontoparietal": 0.7,
+      "capture_score": 0.2809519795924101,
+      "capture_delta": -0.5033333333333333,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "dhf1k_fixture_002",
+      "dataset": "DHF1K_fixture",
+      "ground_truth": 0.27,
+      "roi_values": {
+        "V1": 0.26,
+        "PPA": 0.26,
+        "language": 0.18,
+        "frontoparietal": 0.63
+      },
+      "sensory_mean": 0.2333333333333333,
+      "frontoparietal": 0.63,
+      "capture_score": 0.37036978248182667,
+      "capture_delta": -0.3966666666666667,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "dhf1k_fixture_003",
+      "dataset": "DHF1K_fixture",
+      "ground_truth": 0.36,
+      "roi_values": {
+        "V1": 0.31,
+        "PPA": 0.34,
+        "language": 0.21,
+        "frontoparietal": 0.58
+      },
+      "sensory_mean": 0.2866666666666667,
+      "frontoparietal": 0.58,
+      "capture_score": 0.4942520214045608,
+      "capture_delta": -0.2933333333333333,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "dhf1k_fixture_004",
+      "dataset": "DHF1K_fixture",
+      "ground_truth": 0.48,
+      "roi_values": {
+        "V1": 0.38,
+        "PPA": 0.4,
+        "language": 0.25,
+        "frontoparietal": 0.49
+      },
+      "sensory_mean": 0.3433333333333333,
+      "frontoparietal": 0.49,
+      "capture_score": 0.7006788421520228,
+      "capture_delta": -0.14666666666666667,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "dhf1k_fixture_005",
+      "dataset": "DHF1K_fixture",
+      "ground_truth": 0.6,
+      "roi_values": {
+        "V1": 0.46,
+        "PPA": 0.47,
+        "language": 0.31,
+        "frontoparietal": 0.43
+      },
+      "sensory_mean": 0.41333333333333333,
+      "frontoparietal": 0.43,
+      "capture_score": 0.9612380746401366,
+      "capture_delta": -0.016666666666666663,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "dhf1k_fixture_006",
+      "dataset": "DHF1K_fixture",
+      "ground_truth": 0.7,
+      "roi_values": {
+        "V1": 0.55,
+        "PPA": 0.52,
+        "language": 0.36,
+        "frontoparietal": 0.34
+      },
+      "sensory_mean": 0.47666666666666674,
+      "frontoparietal": 0.34,
+      "capture_score": 1.401956660911782,
+      "capture_delta": 0.13666666666666671,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "dhf1k_fixture_007",
+      "dataset": "DHF1K_fixture",
+      "ground_truth": 0.79,
+      "roi_values": {
+        "V1": 0.63,
+        "PPA": 0.61,
+        "language": 0.43,
+        "frontoparietal": 0.28
+      },
+      "sensory_mean": 0.5566666666666666,
+      "frontoparietal": 0.28,
+      "capture_score": 1.9880881377804602,
+      "capture_delta": 0.2766666666666666,
+      "denominator_valid": true
+    },
+    {
+      "sample_id": "dhf1k_fixture_008",
+      "dataset": "DHF1K_fixture",
+      "ground_truth": 0.88,
+      "roi_values": {
+        "V1": 0.7,
+        "PPA": 0.69,
+        "language": 0.5,
+        "frontoparietal": 0.23
+      },
+      "sensory_mean": 0.63,
+      "frontoparietal": 0.23,
+      "capture_score": 2.739118525571628,
+      "capture_delta": 0.4,
+      "denominator_valid": true
+    }
+  ]
+}

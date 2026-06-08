@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "atlas": "nilearn.fetch_atlas_surf_destrieux fsaverage5",
+  "overlap_policy": "drop_shared",
+  "n_vertices": 20484,
+  "n_labels": 152,
+  "roi_groups": {
+    "V1": {
+      "include": [
+        "calcar",
+        "occipital",
+        "lingual"
+      ],
+      "exclude": [],
+      "n_vertices": 1619,
+      "vertex_fraction": 0.07903729740285101,
+      "mask_sha256": "2546107e0f3ae9619c3176c12f194bf634d2a6baf6347d368e0151a2efbaf0a7",
+      "selected_labels": [
+        "L_G_and_S_occipital_inf",
+        "L_G_occipital_middle",
+        "L_G_occipital_sup",
+        "L_G_oc-temp_med-Lingual",
+        "L_Pole_occipital",
+        "L_S_calcarine",
+        "L_S_occipital_ant",
+        "L_S_oc-temp_med_and_Lingual",
+        "L_S_parieto_occipital",
+        "R_G_and_S_occipital_inf",
+        "R_G_occipital_middle",
+        "R_G_occipital_sup",
+        "R_G_oc-temp_med-Lingual",
+        "R_Pole_occipital",
+        "R_S_calcarine",
+        "R_S_occipital_ant",
+        "R_S_oc-temp_med_and_Lingual",
+        "R_S_parieto_occipital"
+      ]
+    },
+    "PPA": {
+      "include": [
+        "parahip",
+        "oc-temp_med"
+      ],
+      "exclude": [],
+      "n_vertices": 268,
+      "vertex_fraction": 0.013083382151923452,
+      "mask_sha256": "88610e284b0ce4c305b3e3e7c607f273ee521ea0742beeea48bac650028231ce",
+      "selected_labels": [
+        "L_G_oc-temp_med-Lingual",
+        "L_G_oc-temp_med-Parahip",
+        "L_S_oc-temp_med_and_Lingual",
+        "R_G_oc-temp_med-Lingual",
+        "R_G_oc-temp_med-Parahip",
+        "R_S_oc-temp_med_and_Lingual"
+      ]
+    },
+    "language": {
+      "include": [
+        "temporal",
+        "front_inf",
+        "front_middle",
+        "s_circular_insula"
+      ],
+      "exclude": [],
+      "n_vertices": 3400,
+      "vertex_fraction": 0.16598320640499903,
+      "mask_sha256": "ebdea259e3edf35b4d641ca4fa83f4157dca4771ad57d8d6101c3f8b2b88720b",
+      "selected_labels": [
+        "L_G_front_inf-Opercular",
+        "L_G_front_inf-Orbital",
+        "L_G_front_inf-Triangul",
+        "L_G_front_middle",
+        "L_G_temporal_inf",
+        "L_G_temporal_middle",
+        "L_Pole_temporal",
+        "L_S_circular_insula_ant",
+        "L_S_circular_insula_inf",
+        "L_S_circular_insula_sup",
+        "L_S_front_inf",
+        "L_S_front_middle",
+        "L_S_temporal_inf",
+        "L_S_temporal_sup",
+        "L_S_temporal_transverse",
+        "R_G_front_inf-Opercular",
+        "R_G_front_inf-Orbital",
+        "R_G_front_inf-Triangul",
+        "R_G_front_middle",
+        "R_G_temporal_inf",
+        "R_G_temporal_middle",
+        "R_Pole_temporal",
+        "R_S_circular_insula_ant",
+        "R_S_circular_insula_inf",
+        "R_S_circular_insula_sup",
+        "R_S_front_inf",
+        "R_S_front_middle",
+        "R_S_temporal_inf",
+        "R_S_temporal_sup",
+        "R_S_temporal_transverse"
+      ]
+    },
+    "frontoparietal": {
+      "include": [
+        "front_sup",
+        "front_middle",
+        "intrapariet",
+        "parietal_sup",
+        "precentral"
+      ],
+      "exclude": [
+        "insula"
+      ],
+      "n_vertices": 3362,
+      "vertex_fraction": 0.16412809998047256,
+      "mask_sha256": "80e1ac2ec6c997c9c60e7c3b08819e3bfa21d79ddd23623b2c7fd8b9d28868e3",
+      "selected_labels": [
+        "L_G_front_middle",
+        "L_G_front_sup",
+        "L_G_parietal_sup",
+        "L_G_precentral",
+        "L_S_front_middle",
+        "L_S_front_sup",
+        "L_S_intrapariet_and_P_trans",
+        "L_S_precentral-inf-part",
+        "L_S_precentral-sup-part",
+        "R_G_front_middle",
+        "R_G_front_sup",
+        "R_G_parietal_sup",
+        "R_G_precentral",
+        "R_S_front_middle",
+        "R_S_front_sup",
+        "R_S_intrapariet_and_P_trans",
+        "R_S_precentral-inf-part",
+        "R_S_precentral-sup-part"
+      ]
+    }
+  },
+  "vertex_overlaps": {
+    "V1": {
+      "V1": 1619,
+      "PPA": 0,
+      "language": 0,
+      "frontoparietal": 0
+    },
+    "PPA": {
+      "V1": 0,
+      "PPA": 268,
+      "language": 0,
+      "frontoparietal": 0
+    },
+    "language": {
+      "V1": 0,
+      "PPA": 0,
+      "language": 3400,
+      "frontoparietal": 0
+    },
+    "frontoparietal": {
+      "V1": 0,
+      "PPA": 0,
+      "language": 0,
+      "frontoparietal": 3362
+    }
+  },
+  "claim_boundary": "Exploratory ROI masks for proxy dry runs. These masks are not validated attention, dopamine, or executive-control measurements.",
+  "mask_npz_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz"
+}
