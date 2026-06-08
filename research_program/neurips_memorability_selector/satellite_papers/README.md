@@ -76,6 +76,23 @@ Venue target:
 - Main-track only if paired with human validation and strong equal-budget
   baselines.
 
+## Paper 7: Neural-Response-Guided Generated Video
+
+Core:
+
+- Treat TRIBE-like brain-predictive models, V-JEPA/CLIP audit frames, and
+  memorability predictors as candidate-selection or guidance signals.
+- Separate media-to-predicted-brain-response scoring from brain-to-media
+  reconstruction and from reward/guidance optimization.
+- Validate generated-video memorability with human or BMD-grounded endpoints
+  before making memorability claims.
+
+Venue target:
+
+- NeuroAI / generative media workshop first.
+- Main-track only if the selector or guidance gain survives human/BMD
+  validation against strong V-JEPA, CLIP, and quality baselines.
+
 ## Rule
 
 Do not let a satellite claim become a burden for the main paper unless it

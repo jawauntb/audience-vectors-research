@@ -135,5 +135,6 @@ population-level mechanistic claim.
 ## References
 
 - Lahner et al. BOLD Moments. Nature Communications 2024.
-- Meta/Facebook Research. TRIBE v2 repository.
+- d'Ascoli et al. A foundation model of vision, audition, and language for
+  in-silico neuroscience. arXiv 2026.
 - Spencer critique thread and follow-up Fourier/position discussion, May 2026.

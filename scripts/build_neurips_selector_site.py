@@ -420,6 +420,21 @@ way to optimize cognitive properties of generated media without immediately
 training a generator. Memorability is the first axis because it has established
 datasets, behavioral labels, and a plausible neural substrate.
 
+## Literature Positioning
+
+The surrounding literature now supports a cleaner split. Brain-to-media
+reconstruction papers show that fMRI can guide image or video reconstruction.
+Behavioral video memorability benchmarks show that short- and long-term memory
+for videos can be measured directly. Neural-response and saliency-guided
+generation papers show that predictors of viewer or neural response can become
+generation objectives.
+
+Our current work sits between those lines rather than collapsing them. TRIBE is
+a brain-predictive surrogate feature space; V-JEPA and CLIP are strong
+compute-proxy audit and preservation frames; human or measured-BMD validation is
+the gate required before claiming that selected generated videos are more
+memorable to people.
+
 ## Contributions
 
 1. We learn a compact memorability readout from TRIBE features on BOLD Moments.
@@ -625,11 +640,33 @@ Cut or avoid:
   of Images. NeurIPS 2011.
 - Newman et al. Multimodal Memorability: Modeling Effects of Semantics and Decay
   on Video Memorability. ECCV 2020.
+- Cohendet et al. VideoMem: Constructing, Analyzing, Predicting Short-term and
+  Long-term Video Memorability. ICCV 2019.
+- Sweeney et al. Overview of the MediaEval 2022 Predicting Video Memorability
+  Task. MediaEval 2022.
 - Lahner et al. Modeling short visual events through the BOLD Moments video fMRI
   dataset and metadata. Nature Communications 2024.
-- Meta/Facebook Research. TRIBE v2 repository.
+- d'Ascoli et al. A foundation model of vision, audition, and language for
+  in-silico neuroscience. arXiv 2026.
 - Bardes et al. V-JEPA 2: Self-Supervised Video Models Enable Understanding,
   Prediction and Planning. arXiv 2025.
+- Pierzchlewicz et al. Energy Guided Diffusion for Generating Neurally Exciting
+  Images. NeurIPS 2023.
+- Zhang et al. GazeFusion: Saliency-Guided Image Generation. ACM Transactions
+  on Applied Perception 2025.
+- Wang et al. Saliency Guided Optimization of Diffusion Latents. arXiv 2024.
+- Chen et al. Cinematic Mindscapes: High-quality Video Reconstruction from Brain
+  Activity. arXiv 2023.
+- Gong et al. NeuroClips: Towards High-fidelity and Smooth fMRI-to-Video
+  Reconstruction. NeurIPS 2024.
+- Sun et al. NeuroCine: Decoding Vivid Video Sequences from Human Brain
+  Activities. arXiv 2024.
+- Yang et al. SemVideo: Reconstructs What You Watch from Brain Activity via
+  Hierarchical Semantic Guidance. arXiv 2026.
+- Lu et al. MindDiffuser: Controlled Image Reconstruction from Human Brain
+  Activity with Semantic and Structural Diffusion. arXiv 2023.
+- Asgarian et al. MindMem: Multimodal for Predicting Advertisement Memorability
+  Using LLMs and Deep Learning. arXiv 2025.
 - Huang et al. VBench: Comprehensive Benchmark Suite for Video Generative
   Models. arXiv 2023.
 - Liu et al. FETV: A Benchmark for Fine-Grained Evaluation of Open-Domain
@@ -768,7 +805,8 @@ population-level mechanistic claim.
 ## References
 
 - Lahner et al. BOLD Moments. Nature Communications 2024.
-- Meta/Facebook Research. TRIBE v2 repository.
+- d'Ascoli et al. A foundation model of vision, audition, and language for
+  in-silico neuroscience. arXiv 2026.
 - Spencer critique thread and follow-up Fourier/position discussion, May 2026.
 """
 

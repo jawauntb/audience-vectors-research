@@ -48,6 +48,11 @@ too.
   CLIP. The only passing CLIP-side signal was prompt-seed CLIP cosine, which is
   an ancillary seed/prompt alignment descriptor rather than a generated-video
   verifier.
+- A 2026-06-08 literature memo now frames brain-predictive models, behavioral
+  video memorability benchmarks, and response/saliency-guided generation as a
+  credible future neural-response-guided generated-video direction. This is a
+  citation/framing update only; it does not upgrade any compute-proxy content
+  pocket into a human memorability or measured-BMD claim.
 - Prompt text is metadata-only in the current SVD runner. A prompt-rewrite
   tournament should wait until we use a prompt-conditioned generator path where
   the prompt changes the actual pixels.
