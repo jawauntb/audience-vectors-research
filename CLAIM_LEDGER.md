@@ -51,6 +51,7 @@ gate.
 | C-011 | open | BO-generated videos improve human memorability. | Needed: blinded human study on compute-stabilized candidates. | Do not claim yet. |
 | C-012 | accepted | Current BO replay evidence is prompt-pocket behavior, not broad strategy dominance. | Max-3 regenerated-control stress test on 2026-06-08: 36/36 clips generated; 2/36 visual failures; complete-candidate retention kept 10/12 candidates and scored 30/30 retained rows. Jellyfish BO retained 3/3 candidates and averaged 1.7443 vs regenerated Sobol 1.0575. Fireworks BO retained only 1/3 candidates and scored -3.9426, while regenerated Sobol averaged -5.1029. | Compute-proxy claim only. It supports "BO exploits a stable jellyfish pocket while fireworks remains visually brittle/low-scoring"; it does not support broad prompt-level BO superiority or human memorability. |
 | C-013 | accepted | The top saved BO parameter recipes do not transfer across prompt strata. | Prompt-transfer stress test on 2026-06-08: top saved BO recipes `bo07_cand01`, `bo04_cand01`, and `bo02_cand01` were retargeted across five image-backed prompt slots and compared with matched Sobol alpha/guidance controls. 30/30 clips generated; 2/30 failed visual gate; 28/28 retained rows completed full TRIBE. BO-transfer averaged -3.5444, Sobol-transfer averaged -3.0223, and blue jellyfish was the only positive prompt slot for both policies. | Compute-proxy claim only. Supports "saved high-scoring BO recipes are jellyfish-pocket recipes, not reusable global steering/guidance policies." It does not replace a true per-prompt BO/search panel. |
+| C-014 | accepted | In the prompt-broadened replay regime, prompt/seed identity dominates alpha/guidance recipe choice. | Per-prompt Sobol search on 2026-06-08: 8 shared Sobol alpha/guidance points were generated across each of five image-backed prompt slots. 40/40 clips generated; 2/40 fireworks rows failed visual gate; complete-candidate retention scored 38/38 retained rows. Prompt-only additive model explained R2 = 0.9196 of retained TRIBE score variance, while Sobol recipe index alone explained R2 = 0.0062 and alpha/guidance/interaction alone explained R2 = 0.0042. The top eight retained candidates were all blue jellyfish rows. | Compute-proxy claim only. This is a regime-diagnostic claim, not a human-memorability claim. It says the next broadening axis should be prompt/seed/content search, not more BO over alpha/guidance alone. |
 
 ## Run Registry
 
@@ -71,6 +72,7 @@ gate.
 | R-2026-06-08-next-foundation-audit | 2026-06-08 | Audit saved-table prompt coverage and preflight the next balanced regenerated-control stress test. | `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/next_research_foundation_manifest_20260608.md`; dry-run reports `/tmp/top_bo_per_prompt_all.json`, `/tmp/saved_matched_prompt_all.json`, and `/tmp/regenerated_controls_max3_start128_preflight.json`. | Saved BO replay coverage is limited to two prompt strata: 3 fireworks candidates and 17 jellyfish candidates. A balanced max-3 regenerated-control dry-run selected 6 saved BO anchors, appended 6 fresh regenerated Sobol controls from index 128+, and expanded to 36 planned replay jobs. | Clarifies that the saved table can support a within-table stress test, but true broad prompt evidence requires a new BO/search panel over more seed prompts. |
 | R-2026-06-08-max3-regenerated-controls | 2026-06-08 | Run the balanced max-3 regenerated-control stress test: 3 saved BO anchors and 3 regenerated Sobol controls per selected prompt stratum, 3 replicates each. | `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/max3_regenerated_visual_controls_result_20260608.md`; local report `data/reports/bo_regenerated_visual_controls_max3_regensobol3_reps3_steps50_motion5_noise0_start128_20260608.json`. | 36/36 clips generated; 2/36 failed visual gate (`bo09_cand01` replicate 1 and `bo03_cand01` replicate 2); complete-candidate retention kept 10/12 candidates and scored 30/30 retained rows. BO numerically beat regenerated Sobol in both retained strata, but fireworks remained low-scoring and BO retained only 1/3 fireworks candidates. | Supports C-012: current evidence is prompt-pocket behavior. The stable positive signal is jellyfish; broad prompt-level BO superiority remains unproven. |
 | R-2026-06-08-prompt-transfer-stress | 2026-06-08 | Test whether the top saved BO alpha/guidance recipes transfer across all locally image-backed prompt slots, with matched Sobol-transfer controls. | `scripts/build_bo_prompt_transfer_manifest.py`; `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/prompt_transfer_stress_test_result_20260608.md`; local reports `data/reports/bo_prompt_transfer_trial_table_top3x5_sobol3_20260608.json` and `data/reports/bo_prompt_transfer_top3x5_sobol3_reps1_steps50_motion5_noise0_20260608.json`. | 30/30 clips generated; 2/30 failed visual gate, both fireworks; complete-candidate retention kept 28/30 candidates and all retained rows completed full TRIBE. BO-transfer was negative outside jellyfish and averaged -3.5444 overall; Sobol-transfer averaged -3.0223. | Supports C-013: saved BO recipes are not portable global recipes. The next broadening step must run per-prompt search or a cheap prefilter, not transfer old BO anchors. |
+| R-2026-06-08-per-prompt-sobol-search | 2026-06-08 | Run a prompt-local Sobol search panel with 8 shared alpha/guidance points across each of five image-backed prompt slots. | `scripts/build_bo_prompt_search_manifest.py`; `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/per_prompt_sobol_search_result_20260608.md`; local reports `data/reports/bo_prompt_search_trial_table_sobol8x5_20260608.json` and `data/reports/bo_prompt_search_sobol8x5_reps1_steps50_motion5_noise0_20260608.json`. | 40/40 clips generated; 2/40 fireworks rows failed visual gate; complete-candidate retention kept 38/40 candidates and all retained rows completed full TRIBE. Blue jellyfish was the only positive prompt slot, with mean 1.6597 and best candidate `sobol_prompt_search_517_slot03` at 2.9734. Prompt identity explained nearly all retained score variance. | Supports C-014 and upgrades the next-step diagnosis: alpha/guidance-only search is exhausted as a broadening axis under the current replay regime. |
 
 Local `data/reports/*` and generated MP4s are not committed. They can be cited
 only through committed notes, PR descriptions, or regenerated reports.
@@ -86,7 +88,7 @@ only through committed notes, PR descriptions, or regenerated reports.
 | G-005 | Visual artifact gate | Top candidates are inspected for prompt drift, degenerate motion, and obvious artifacts. | Automated gate is operational as both a blocking verifier and visual-first retention filter. The max-3 regenerated-control run generated 36/36 clips, failed 2/36 rows, and retained 10/12 complete candidates before scoring. |
 | G-006 | Regenerated-control gate | Deterministic unscored controls are generated for each selected BO stratum, visual-first retention keeps complete candidates before TRIBE scoring, and at least one BO and one control remain in a matched stratum. | Passed for the max-3 2026-06-08 fireworks/jellyfish panel: regenerated controls covered all target strata, complete-candidate retention kept matched BO/control coverage in both strata, and 30/30 retained rows completed full TRIBE scoring. |
 | G-007 | Human gate | Compute-stabilized generated candidates pass blinded human evaluation. | Open. A human panel can now be prepared only for visually retained matched candidates, with explicit caveats that the regenerated-control result is small, mixed, and proxy-only. |
-| G-008 | Prompt-coverage gate | BO/control comparisons cover enough prompt or seed strata that a pooled result is not just a seed-pocket artifact. | Open. The prompt-transfer stress test now covers five image-backed prompt slots, but it tests transfer of old BO recipes rather than a true per-prompt BO/control search. It shows non-transfer and keeps broad BO superiority unproven. |
+| G-008 | Prompt-coverage gate | BO/control comparisons cover enough prompt or seed strata that a pooled result is not just a seed-pocket artifact. | Still open for BO/control claims. The prompt-transfer and per-prompt Sobol panels now cover five image-backed prompt slots, but both show that the positive signal is jellyfish-specific. Prompt identity, not alpha/guidance recipe choice, explains the broad prompt-broadened replay score structure. |
 
 ## Conceptual Guardrails
 
@@ -110,16 +112,19 @@ replicates, then report the distribution.
 
 ## Next Move
 
-Run a true prompt-broadened BO/search panel. The max-3 regenerated-control
-stress test found a stable jellyfish pocket and a weak/brittle fireworks
-stratum; the prompt-transfer stress test then showed that the best saved BO
-recipes do not transfer beyond jellyfish.
+Stop spending broadening budget on alpha/guidance-only BO. The max-3
+regenerated-control stress test found a stable jellyfish pocket and a
+weak/brittle fireworks stratum; the prompt-transfer stress test showed that the
+best saved BO recipes do not transfer beyond jellyfish; the per-prompt Sobol
+search then showed that prompt identity explains the retained replay scores far
+better than the shared alpha/guidance recipe.
 
-- strategies: BO, random/Sobol, best-of-N, and if feasible a cheap CLIP/R3D or
-  VBench-style filter before full TRIBE;
+- strategies: prompt rewriting, seed-image expansion, seed selection, and only
+  then BO/random/Sobol over alpha/guidance within promising content strata;
 - strata: matched seed images/prompts across more than the two saved-table
-  strata;
-- budget: same number of generated clips and full TRIBE scores per strategy;
+  strata, with explicit non-jellyfish candidate generation;
+- budget: same number of generated clips and full TRIBE scores per content
+  strategy;
 - generation: use settings that preserve subject identity past the first frame;
 - search: optimize or prefilter within each prompt stratum instead of retargeting
   old jellyfish-pocket recipes;
