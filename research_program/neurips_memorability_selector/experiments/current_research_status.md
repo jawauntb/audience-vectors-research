@@ -37,8 +37,16 @@ Last updated: 2026-06-08
   extracted for 84/84 exact pocket-regime replay MP4s; V-JEPA video centroid
   margin reached AUC 1.0000, abs d 3.2953, and r(score) 0.8871, with
   leave-one-pocket-out classifier balanced accuracy 0.9722. CLIP seed/video
-  centroid margins also passed. This gives the pocket residual accepted
-  compute-proxy verifiers, but human/BMD validation remains open.
+  centroid margins also passed. A descriptor-conditioned replication then
+  generated and scored 90/90 fresh-seed SVD clips with 0 visual failures. Orange
+  flowers and hanging clothes stayed positive across every retained row, hard
+  controls stayed negative, and exact V-JEPA transported prospectively with
+  centroid-margin AUC 1.0000 / abs d 2.8636 and leave-one-pocket-out balanced
+  accuracy 1.0000. Generated-video CLIP did not replicate prospectively
+  (centroid-margin AUC 0.6667, classifier balanced accuracy 0.5833). This gives
+  the two strongest pockets a TRIBE/V-JEPA compute-proxy replication, but
+  human/BMD validation remains open and CLIP should not be described as a fresh
+  prospective pass.
 
 ## Newly Built V-JEPA Pilot State
 
@@ -81,10 +89,9 @@ to TRIBE/product nor obviously irrelevant.
   and current SVD broadening should target seed-image/content expansion or a
   prompt-conditioned generator path rather than more alpha/guidance-only search.
 - We have not validated the stable positive SVD content pockets with human
-  behavior or measured-BMD alignment. Exact V-JEPA and CLIP embedding geometry
-  are now accepted as compute-proxy verifiers, so the next SVD run should
-  replicate orange flowers and hanging clothes while tracking TRIBE score plus
-  V-JEPA/CLIP centroid margins.
+  behavior or measured-BMD alignment. Orange flowers and hanging clothes now
+  have fresh-seed TRIBE/V-JEPA compute-proxy replication, but generated-video
+  CLIP did not clear the prospective verifier and no human/BMD gate has run.
 - We have not shown delayed-recognition memory gains.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.

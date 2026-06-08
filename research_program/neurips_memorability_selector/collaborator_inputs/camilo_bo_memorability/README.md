@@ -539,6 +539,41 @@ centroid-margin verifiers. The committed audit artifacts are
 `content_pocket_embedding_audit_result_20260608.md`, and
 `content_pocket_embedding_audit_summary_20260608.json`.
 
+### 2026-06-08 Descriptor-Conditioned Replication
+
+The next run tested whether the strongest two non-jellyfish positives replicate
+under fresh stochastic SVD seeds while the accepted embedding verifiers agree.
+The manifest was `descriptor_conditioned_replication_manifest_20260608.md`.
+The run used Sobol recipes 518-523 over five pockets: orange flowers and
+hanging clothes as primary positives, with aerial beach, city street, and storm
+beach as hard controls. It generated three fresh stochastic replicates per
+task-level candidate using the 250k noise-seed offset.
+
+Generation and TRIBE scoring passed cleanly: 90/90 clips generated and scored,
+0/90 failed the visual gate, and complete-candidate retention kept 30/30
+task-level candidates. Orange flowers stayed positive on 18/18 rows with mean
+TRIBE 3.8569; hanging clothes stayed positive on 18/18 rows with mean 3.1519.
+All hard controls stayed negative: aerial beach -8.7489, city street -9.3232,
+and storm beach -10.4614.
+
+Exact V-JEPA transported prospectively. V-JEPA features were extracted for 90/90
+fresh MP4s, the V-JEPA video centroid margin reached AUC 1.0000 and abs d
+2.8636, and the V-JEPA leave-one-pocket-out classifier reached balanced
+accuracy 1.0000.
+
+Generated-video CLIP did not transport prospectively in this replication. Its
+centroid-margin AUC was 0.6667 and the CLIP video leave-one-pocket-out
+classifier balanced accuracy was 0.5833. The correct claim is therefore a
+partial descriptor-conditioned pass: orange flowers and hanging clothes are
+fresh-seed TRIBE/V-JEPA-verified compute-proxy candidate pockets, not
+V-JEPA+CLIP-verified human-memory candidates.
+
+The committed artifacts are `descriptor_conditioned_replication_result_20260608.md`,
+`descriptor_conditioned_replication_vjepa_extraction_result_20260608.md`,
+`descriptor_conditioned_replication_vjepa_extraction_summary_20260608.json`,
+`descriptor_conditioned_replication_embedding_result_20260608.md`, and
+`descriptor_conditioned_replication_embedding_summary_20260608.json`.
+
 ## Validation Checklist
 
 - Confirm exact `v_mem_CLIP` derivation from cortical `v_mem`.
