@@ -160,6 +160,10 @@ recognition memorability.
 - BO-generated SVD videos are not yet broad strategy evidence. The completed
   max-3 regenerated-control stress test shows prompt-pocket behavior: a stable
   positive jellyfish pocket and a brittle, low-scoring fireworks pocket.
+- A prompt-transfer stress test retargeted the top saved BO recipes across five
+  image-backed prompt slots. The recipes did not transfer: only jellyfish stayed
+  positive, and matched Sobol-transfer controls slightly beat BO-transfer
+  overall.
 
 ### 2026-06-08 Max-3 Regenerated Visual Controls Result
 
@@ -183,6 +187,29 @@ The committed run note is
 `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/max3_regenerated_visual_controls_result_20260608.md`.
 True broad prompt evidence still requires a new BO/search panel over additional
 seed prompts.
+
+### 2026-06-08 Prompt-Transfer Stress Test Result
+
+The prompt-transfer stress test asked whether the top saved BO recipes were
+portable alpha/guidance policies. It retargeted `bo07_cand01`, `bo04_cand01`,
+and `bo02_cand01` across five locally image-backed prompt slots, with three
+matched Sobol alpha/guidance controls per slot.
+
+The run generated 30/30 clips. Two fireworks rows failed the visual gate, so
+complete-candidate retention kept 28/30 rows for full TRIBE scoring.
+
+| prompt slot | BO-transfer mean | Sobol-transfer mean | interpretation |
+|---|---:|---:|---|
+| fireworks | -4.0593 | -3.9195 | visually brittle and negative for both policies |
+| ocean cliffs | -7.5721 | -8.0602 | very negative for both policies |
+| concert stage | -2.4617 | -0.3998 | Sobol-transfer is less bad; BO recipes do not help |
+| blue jellyfish | 1.0982 | 1.2100 | only positive prompt slot; Sobol-transfer slightly higher |
+| forest canopy | -4.8986 | -4.2410 | negative for both policies |
+
+This is evidence against portable BO recipe transfer. The saved high-scoring BO
+recipes are jellyfish-pocket recipes, not reusable global steering/guidance
+policies. The committed run note is
+`research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/prompt_transfer_stress_test_result_20260608.md`.
 
 See the project conversation for the full design write-up. This README is
 just the operating manual.
