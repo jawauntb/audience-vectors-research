@@ -1,6 +1,6 @@
 # Content-Pocket Recognition Stimulus Production Manifest
 
-Date: 2026-06-08T22:28:41+00:00
+Date: 2026-06-08T22:53:28+00:00
 
 ## Discovery-Regime Audit
 
@@ -16,18 +16,19 @@ Current regime:
   images and videos, freeze launchable old-vs-lure recognition forms.
 - Gates/verifiers: seed-image distinctiveness, MP4 visual validity,
   complete-candidate retention, old-vs-lure human recognition accuracy.
-- Known limitation: no seed images or generated recognition lures are
-  accepted until screening records exist.
+- Known limitation: seed images and generated recognition lures are
+  not accepted for launch until their corresponding screening records
+  exist.
 
 Action class: production search inside the accepted recognition-memory
 validation regime.
 
 ## Status
 
-- Status: `missing_seed_images_not_ready_for_generation`
+- Status: `seed_images_screened_ready_for_svd_generation`
 - Seed image requests: 60
-- Seed images present: 0
-- Seed images missing: 60
+- Seed images present: 60
+- Seed images missing: 0
 - SVD generation jobs: 60
 - Output MP4s present: 0
 - Output MP4s missing: 60
@@ -42,9 +43,7 @@ validation regime.
 
 ## Launch Blockers
 
-- 60 seed images are missing or not materialized.
 - 60 SVD output MP4s are missing.
-- Manual image distinctiveness screening has not been recorded.
 - Generated MP4 visual screening/contact sheets have not been recorded.
 - Hosted HTTPS URLs and two-session Prolific wiring are not complete.
 
@@ -56,7 +55,6 @@ validation regime.
 
 ## Next Action
 
-Materialize the listed seed images under the manifest seed root, review
-their contact sheet for category match and distinctiveness, generate SVD
-MP4s from the generation jobs, then screen/contact-sheet those MP4s before
-freezing the launchable recognition set.
+Generate SVD MP4s from the screened seed images and generation
+jobs, then screen/contact-sheet every MP4 before freezing the
+launchable recognition set.

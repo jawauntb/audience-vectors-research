@@ -1,0 +1,65 @@
+{
+  "accepted_for_svd_generation": true,
+  "contact_sheets": [
+    {
+      "bytes": 267981,
+      "items": 15,
+      "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_screening_sheets_20260608/analysis_lures.jpg",
+      "role": "analysis_lure_seed",
+      "sha256": "1cb8bda7c3d62266d2c563e2395d6300f1ed611cdda022c6dd7839d801ed8fef"
+    },
+    {
+      "bytes": 385242,
+      "items": 25,
+      "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_screening_sheets_20260608/filler_old.jpg",
+      "role": "filler_old_seed",
+      "sha256": "582a2cf6ba2fe9c657f01cad07492c58254ec187a8b9fac5ed01445a4773e7ce"
+    },
+    {
+      "bytes": 346574,
+      "items": 20,
+      "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_screening_sheets_20260608/filler_lures.jpg",
+      "role": "filler_lure_seed",
+      "sha256": "6d56e83a53c10e8dad27e46de05b74354002e5db7c17f6462fdaf366b238d5af"
+    },
+    {
+      "bytes": 463799,
+      "items": 15,
+      "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_screening_sheets_20260608/analysis_old_vs_lure_pairs.jpg",
+      "role": "analysis_old_vs_lure_pair",
+      "sha256": "c80b426fecdd08f809693bd4086a485d72264d85eab1e366e2cace4b3e79d5b4"
+    },
+    {
+      "bytes": 598215,
+      "items": 20,
+      "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_screening_sheets_20260608/filler_old_vs_lure_pairs.jpg",
+      "role": "filler_old_vs_lure_pair",
+      "sha256": "ef147bd08a3bf28b2b8e3eb71b9422e6b0cae28e5d30cddf20d9fec449031ff2"
+    }
+  ],
+  "counts": {
+    "accepted_for_svd_generation": 60,
+    "analysis_lures": 15,
+    "filler_lures": 20,
+    "filler_old": 25,
+    "rejected": 0,
+    "seed_images_present": 60,
+    "withheld": 0
+  },
+  "created_at_utc": "2026-06-08T22:50:16Z",
+  "rejected_or_withheld": [],
+  "review": {
+    "analysis_lures": "First-pass contact-sheet review accepts the 15 analysis lures for SVD generation. They preserve broad category labels while changing composition enough to avoid obvious old-vs-lure near duplicates; no obvious text, watermark, poster layout, or severe generation artifact is visible in the screening sheets.",
+    "fillers": "First-pass contact-sheet review accepts the 45 filler seed images for unrelated filler use. Some filler pairs are naturally same-category similar, but they are not analysis claims and remain acceptable for old/new task balancing before video-level screening.",
+    "remaining_caveats": [
+      "This screening result is not human recognition-memory or memorability evidence.",
+      "SVD MP4 generation and video-level visual screening are still required before launch.",
+      "Hosted HTTPS URLs, two-session Prolific wiring, and response-collection validation are still required.",
+      "Human/BMD claim language remains blocked until the behavioral validation gate clears."
+    ]
+  },
+  "schema_version": "content_pocket_recognition_seed_screening.v1",
+  "seed_root": "data/recognition_memory_seed_images_20260608",
+  "source_materialization_result": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_materialization_20260608.json",
+  "status": "seed_image_screen_passed_for_svd_generation"
+}
