@@ -47,7 +47,7 @@ gate.
 | C-007 | tentative | BO is a sample-efficient search policy over generated video candidates under proxy objectives. | Reproduced BO replay, replicated panels, and equal-count saved-Sobol comparison. | Say "sample-efficient" or "fixed-budget search"; do not say "wall-clock efficient" or "human-memorability proven." |
 | C-008 | superseded | The original `bo07_cand01` score proves a stable best BO candidate. | Superseded by replicated replay. | Do not use. Current top by replay mean differs from original top score. |
 | C-009 | superseded | Brain alignment is the active ingredient for all global best-of-N gains. | Superseded by V-JEPA-as-judge parity in some settings. | Current claim: brain alignment is useful for held-out human memorability prediction; generator-side proxy gains need more careful controls. |
-| C-010 | rejected | Saved-table BO/Sobol comparison supports a stronger broad BO/control claim under matched seed-image coverage. | Seed-stratified BO/Sobol replay on 2026-06-05: 12/12 full TRIBE scores; BO won fireworks, Sobol won jellyfish, pooled means were close; visual artifact gate failed. A tuned visual-gated one-replicate panel later passed 4/4 clips and Sobol beat BO in both matched strata. A replicated visual-gated panel on 2026-06-07 generated 12/12 clips but failed the blocking visual gate because `sobol_007` replicate 2 repeatedly collapsed. A visual-first replacement pool later retained 4/7 complete candidates and scored 12/21 rows, but both fireworks Sobol candidates were withheld. The regenerated-control dry-run on 2026-06-08 selected fresh unscored Sobol controls but has not run the full visual-first/TRIBE gate yet. | Do not use stronger BO/control language from the saved table. The saved-table pool cannot support a full matched visual-gated BO/Sobol panel; regenerated controls are now the next pending gate, not accepted evidence. |
+| C-010 | rejected | Saved-table BO/Sobol comparison supports a stronger broad BO/control claim under matched seed-image coverage. | Seed-stratified BO/Sobol replay on 2026-06-05: 12/12 full TRIBE scores; BO won fireworks, Sobol won jellyfish, pooled means were close; visual artifact gate failed. A tuned visual-gated one-replicate panel later passed 4/4 clips and Sobol beat BO in both matched strata. A replicated visual-gated panel on 2026-06-07 generated 12/12 clips but failed the blocking visual gate because `sobol_007` replicate 2 repeatedly collapsed. A visual-first replacement pool later retained 4/7 complete candidates and scored 12/21 rows, but both fireworks Sobol candidates were withheld. A regenerated-control run on 2026-06-08 generated 24/24 clips, withheld one BO fireworks candidate under complete-candidate visual-first retention, scored 21/21 retained rows, and preserved matched BO/control coverage in both selected strata; the result was still mixed by stratum. | Do not use stronger BO/control language from the saved table. The regenerated-control path fixes the missing-control protocol gap for a small two-stratum panel, but it does not establish a broad BO/control or human-memorability claim. |
 | C-011 | open | BO-generated videos improve human memorability. | Needed: blinded human study on compute-stabilized candidates. | Do not claim yet. |
 
 ## Run Registry
@@ -65,6 +65,7 @@ gate.
 | R-2026-06-07-replicated-visual-gated-blocked | 2026-06-07 | Run the tuned seed-stratified BO/Sobol panel with 3 stochastic replicates per matched candidate under the blocking visual gate. | `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/replicated_visual_gated_blocked_result_20260607.md`; local report `data/reports/bo_visual_gated_tribe_replicates3_steps50_motion5_noise0_20260607.json`. | 12/12 videos generated; 1/12 failed visual gate (`sobol_007` replicate 2, seed `20007`); upload and TRIBE scoring were skipped. Probes at 75 steps, motion buckets 3/2, and noise 0.005 did not remove the same Sobol collapse. | Blocks the human-panel path from the one-replicate result; motivates visual-first replacement or resampling before scoring. |
 | R-2026-06-07-visual-first-max2 | 2026-06-07 | Run seed-stratified BO/Sobol replay with a visual-first complete-candidate retention pool (`max_evals=2`, 3 replicates each). | `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/visual_first_retention_result_20260607.md`; local report `data/reports/bo_visual_first_complete_candidates_max2_reps3_steps50_motion5_noise0_20260607.json`. | 21/21 videos generated; 3/21 failed visual gate; complete-candidate retention kept 4/7 candidates and scored 12/21 rows. Retained candidates: `bo06_cand01`, `bo07_cand01`, `bo04_cand01`, `sobol_005`. Withheld candidates: `bo09_cand01`, `sobol_007`, `sobol_008`. | Visual-first retention works as a protocol, but the saved-table pool lacks any retained fireworks Sobol candidate, so it still cannot support a complete matched BO/Sobol claim. |
 | R-2026-06-08-regenerated-control-preview | 2026-06-08 | Add regenerated Sobol control selection and dry-run the next matched visual-first panel. | `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/regenerated_visual_controls_manifest_20260608.md`; dry-run report `/tmp/bo_regenerated_controls_preview.json`. | Dry-run loaded 32 saved-table trials, selected 4 saved BO anchors, appended 4 deterministic unscored Sobol controls across fireworks and jellyfish, and expanded to 24 planned replay jobs. Full Modal generation/scoring not run in this gate. | Establishes the next regenerated-control protocol. Does not upgrade BO/control claims until visual-first retention and TRIBE scoring complete. |
+| R-2026-06-08-regenerated-visual-controls | 2026-06-08 | Run the regenerated-control visual-first panel with 2 saved BO anchors and 2 deterministic regenerated Sobol controls per selected prompt stratum, 3 replicates each. | `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/regenerated_visual_controls_result_20260608.md`; local report `data/reports/bo_regenerated_visual_controls_topbo2_regensobol2_reps3_steps50_motion5_noise0_20260608.json`. | 24/24 clips generated; 1/24 failed the visual gate (`bo09_cand01` replicate 1); complete-candidate retention kept 7/8 candidates and scored 21/21 retained rows. Matched BO/control coverage survived in fireworks and jellyfish. BO won jellyfish; regenerated Sobol won fireworks. | Passes the small regenerated-control structural gate and unblocks candidate-set preparation, but the scientific result remains mixed and proxy-only. |
 
 Local `data/reports/*` and generated MP4s are not committed. They can be cited
 only through committed notes, PR descriptions, or regenerated reports.
@@ -77,9 +78,9 @@ only through committed notes, PR descriptions, or regenerated reports.
 | G-002 | Replicate-stability gate | Candidate ranking is summarized by mean/std/SEM across stochastic replays. | Passed for top-2/top-5 panels; stability is weak. |
 | G-003 | Equal-budget baseline gate | BO is compared to random/Sobol/best-of-N under equal evaluation count. | Partially passed for saved Sobol top-5 in PR #10; seed coverage caveat remains. |
 | G-004 | Seed-stratified tournament gate | BO, random/Sobol, and best-of-N are compared within matched seed-image/prompt strata. | Saved-table BO/Sobol panel completed for two matched strata; result is mixed and not sufficient for stronger BO/control language. |
-| G-005 | Visual artifact gate | Top candidates are inspected for prompt drift, degenerate motion, and obvious artifacts. | Automated gate is operational as both a blocking verifier and visual-first retention filter. A `max_evals=2` replacement pool retained 4/7 complete candidates, but both fireworks Sobol candidates were withheld. |
-| G-006 | Regenerated-control gate | Deterministic unscored controls are generated for each selected BO stratum, visual-first retention keeps complete candidates before TRIBE scoring, and at least one BO and one control remain in a matched stratum. | Protocol added and dry-run passed for 24 planned replay jobs; full Modal generation/scoring still open. |
-| G-007 | Human gate | Compute-stabilized generated candidates pass blinded human evaluation. | Open for BO-generated videos after regenerated-control and visual-first gates pass. |
+| G-005 | Visual artifact gate | Top candidates are inspected for prompt drift, degenerate motion, and obvious artifacts. | Automated gate is operational as both a blocking verifier and visual-first retention filter. The regenerated-control run generated 24/24 clips, failed 1/24 rows, and retained 7/8 complete candidates before scoring. |
+| G-006 | Regenerated-control gate | Deterministic unscored controls are generated for each selected BO stratum, visual-first retention keeps complete candidates before TRIBE scoring, and at least one BO and one control remain in a matched stratum. | Passed for the small 2026-06-08 fireworks/jellyfish panel: regenerated controls covered all target strata, complete-candidate retention kept matched BO/control coverage in both strata, and 21/21 retained rows completed full TRIBE scoring. |
+| G-007 | Human gate | Compute-stabilized generated candidates pass blinded human evaluation. | Open. A human panel can now be prepared only for visually retained matched candidates, with explicit caveats that the regenerated-control result is small, mixed, and proxy-only. |
 
 ## Conceptual Guardrails
 
@@ -103,20 +104,25 @@ replicates, then report the distribution.
 
 ## Next Move
 
-Run the regenerated-control visual-first gate:
+Choose the next research fork:
 
-- command: use
-  `regenerated_visual_controls_manifest_20260608.md`;
-- panel: 2 saved BO anchors and 2 deterministic regenerated Sobol controls per
-  BO-covered prompt stratum, 3 replicates each;
-- primary pass condition: after complete-candidate visual-first retention, at
-  least one BO candidate and one regenerated Sobol control remain in the same
-  prompt stratum for TRIBE comparison;
-- outputs: regenerated-control provenance, visual failures, retained candidate
-  summaries, per-stratum mean/std/SEM, wall-clock cost, and explicit claim
-  status.
+1. Broader regenerated-control foundation:
+   - expand beyond the current fireworks/jellyfish strata;
+   - include BO, regenerated Sobol/random, saved Sobol where visual-retained,
+     and if feasible best-of-N or a cheap CLIP/R3D/VBench-style filter;
+   - keep equal generated clips and full TRIBE scores per strategy;
+   - preserve visual-first complete-candidate retention before scoring;
+   - report per-stratum mean/std/SEM and a mixed-effects summary only after
+     there is enough stratum coverage.
+2. Human-panel candidate freeze:
+   - freeze only visually retained matched candidates from
+     `regenerated_visual_controls_result_20260608.md`;
+   - make the panel small and explicitly exploratory;
+   - avoid broad BO/control wording because the compute proxy result is mixed;
+   - include the withheld `bo09_cand01` provenance as an exclusion note.
 
-Then regenerate a broader matched baseline with a visual-quality gate:
+For the stronger paper-facing claim, regenerate a broader matched baseline with
+a visual-quality gate:
 
 - strategies: BO, random/Sobol, best-of-N, and if feasible a cheap CLIP/R3D or
   VBench-style filter before full TRIBE;
