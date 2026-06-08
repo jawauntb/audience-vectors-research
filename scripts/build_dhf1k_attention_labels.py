@@ -124,6 +124,7 @@ def main() -> None:
     audit = summarize_rows(
         rows,
         dhf1k_root=args.dhf1k_root,
+        labels_csv=args.output_csv,
         split=args.split,
         rank_column=args.rank_column,
         extreme_count_per_tail=args.extreme_count_per_tail,
@@ -275,6 +276,7 @@ def summarize_rows(
     split: str,
     rank_column: str,
     extreme_count_per_tail: int | None,
+    labels_csv: Path | None = None,
     min_rows: int = DEFAULT_MIN_ROWS,
     min_distinct_rank_values: int = DEFAULT_MIN_DISTINCT_RANK_VALUES,
 ) -> dict[str, Any]:
@@ -299,8 +301,10 @@ def summarize_rows(
     )
     return {
         "schema_version": 1,
+        "experiment": "dhf1k_attention_label_audit",
         "dataset": "DHF1K",
         "source_root": str(dhf1k_root),
+        "labels_csv": str(labels_csv) if labels_csv is not None else None,
         "split": split,
         "rank_column": rank_column,
         "extreme_count_per_tail": extreme_count_per_tail,

@@ -85,6 +85,8 @@ def test_select_extreme_tails_labels_high_and_low_rows(tmp_path: Path) -> None:
         min_distinct_rank_values=2,
     )
     assert audit["n_rows"] == 2
+    assert audit["experiment"] == "dhf1k_attention_label_audit"
+    assert audit["labels_csv"] is None
     assert audit["metrics"]["mean_map_intensity"]["n"] == 2
     assert audit["ready_for_manifest_alignment"] is True
     assert audit["recommended_ground_truth_column"] == "mean_map_intensity"
