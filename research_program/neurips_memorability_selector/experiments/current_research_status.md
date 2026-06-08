@@ -24,9 +24,10 @@ Last updated: 2026-06-08
   103 unique V-JEPA embeddings, 24/24 seeds covered, 0 missing features.
 - BO/SVD generated-video evidence is currently a compute-proxy regime result,
   not a human-memorability result. The latest regenerated-control,
-  prompt-transfer, per-prompt Sobol, content-axis audit, and fixed-recipe
-  seed-content panels show prompt-pocket behavior: blue jellyfish is the stable
-  positive pocket, fireworks is visually brittle, and seed-image/content slot
+  prompt-transfer, per-prompt Sobol, content-axis audit, restored seed-bank, and
+  pocket regime-audit panels show content-pocket behavior: orange flowers and
+  hanging clothes are stable non-jellyfish positive pockets, blue jellyfish
+  remains positive, fireworks is visually brittle, and seed-image/content slot
   explains retained SVD replay score variance far better than alpha/guidance
   recipe identity.
 

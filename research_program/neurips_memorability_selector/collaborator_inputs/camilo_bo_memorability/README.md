@@ -429,6 +429,45 @@ rewriting. The next valid content-broadening move is to restore/expand the
 seed-image bank or switch to a prompt-conditioned video generator before running
 prompt-rewrite tournaments.
 
+### 2026-06-08 Restored Seed-Bank and Pocket Regime Audit
+
+The full 24-row seed catalog was restored locally from `source_image` URLs
+using `scripts/restore_bo_seed_bank.py`. Restored PNGs are raw data and remain
+local; the script makes them reproducible.
+
+The restored fixed-recipe screen replayed Sobol recipes 516 and 517 across all
+24 seed-image slots with two stochastic reps per candidate. It generated 96/96
+clips, withheld the visually brittle fireworks candidates, and scored 92/96
+rows. Seed-content-only R2 was 0.9804 while recipe-only R2 was 0.0008. The top
+retained pockets were orange flowers (mean TRIBE 4.2013), hanging clothes
+(3.6167), blue jellyfish (2.1849), and old car (1.0488). The committed run note
+is `seed_bank_restored_fixed_recipe_result_20260608.md`.
+
+The pocket regime-audit then stress-tested those four positive targets against
+three hard negative controls (aerial beach, city street, storm beach) across
+six nearby Sobol recipes (`518`-`523`) and two stochastic reps per candidate.
+It generated 84/84 clips, had 0/84 visual-gate failures, retained 42/42
+complete candidates, and scored 84/84 rows.
+
+| seed-content slot | scored / requested | mean TRIBE | min | max | positive rows |
+|---|---:|---:|---:|---:|---:|
+| orange flowers | 12 / 12 | 4.1043 | 3.6386 | 4.7864 | 12 / 12 |
+| hanging clothes | 12 / 12 | 2.8991 | 1.8805 | 3.5741 | 12 / 12 |
+| blue jellyfish | 12 / 12 | 2.0901 | 0.7267 | 3.3580 | 12 / 12 |
+| old car | 12 / 12 | 1.1695 | 0.4140 | 1.6482 | 12 / 12 |
+| aerial beach | 12 / 12 | -8.8447 | -10.0352 | -7.1844 | 0 / 12 |
+| city street | 12 / 12 | -9.2525 | -9.6196 | -8.4299 | 0 / 12 |
+| storm beach | 12 / 12 | -10.4170 | -11.3646 | -9.4116 | 0 / 12 |
+
+On all scored rows, seed-content-only R2 was 0.9912, recipe-only R2 was 0.0021,
+and seed-content + recipe R2 was 0.9983. This upgrades the restored-bank result
+from a two-recipe observation into a stable content-pocket finding. The
+accepted artifact class is not a portable alpha/guidance recipe; it is
+seed-image content-pocket structure under the current SVD replay regime. The
+committed preregistration and result notes are
+`pocket_regime_audit_manifest_20260608.md` and
+`pocket_regime_audit_result_20260608.md`.
+
 ## Validation Checklist
 
 - Confirm exact `v_mem_CLIP` derivation from cortical `v_mem`.
@@ -463,6 +502,9 @@ prompt-rewrite tournaments.
   behavior. The prompt-transfer, per-prompt Sobol, content-axis audit, and
   fixed-recipe seed-content probe now show that current SVD broadening should
   target seed-image/content expansion rather than alpha/guidance-only search.
+  The restored seed-bank and pocket regime-audit runs extend this: restored
+  non-jellyfish pockets survive local recipe stress tests while hard negative
+  controls remain negative.
 - Report wall-clock and average minutes per evaluation.
 - Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock
   efficient.

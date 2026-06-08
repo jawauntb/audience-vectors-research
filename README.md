@@ -51,7 +51,7 @@ GitHub artifact policy:
 - Keep the repo private while it references gated models, TRIBE non-commercial
   terms, unpublished human-study materials, and local generated media.
 
-## Status (updated 2026-06-08, post restored seed-bank replay)
+## Status (updated 2026-06-08, post pocket regime-audit replay)
 
 Latest committed paper source:
 `research_program/neurips_memorability_selector/main_selector_paper/paper.md`.
@@ -183,6 +183,14 @@ recognition memorability.
   explained R2 = 0.0008, and the top retained pockets were orange flowers
   (mean TRIBE 4.2013) and hanging clothes (3.6167), ahead of blue jellyfish
   (2.1849).
+- A local pocket regime-audit then stress-tested orange flowers, hanging
+  clothes, blue jellyfish, and old car against aerial beach, city street, and
+  storm beach controls across six nearby Sobol recipes and two stochastic reps.
+  It generated 84/84 clips, had 0 visual-gate failures, scored all rows, and
+  found all four positive pockets remained positive on 12/12 rows while all
+  three controls remained negative on 12/12 rows. Seed-content-only R2 was
+  0.9912, recipe-only R2 was 0.0021, and orange flowers dominated the panel
+  with mean TRIBE 4.1043 and the top six candidate families.
 
 ### 2026-06-08 Max-3 Regenerated Visual Controls Result
 
