@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_capture_score_sensitivity",
+  "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_synthetic_smoke_manifest_20260608.json",
+  "primary_label": "disjoint",
+  "gate_rho": 0.4,
+  "permutations": 999,
+  "seed": 20260608,
+  "runs": [
+    {
+      "role": "primary",
+      "label": "disjoint",
+      "roi_masks_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+      "report": {
+        "schema_version": 1,
+        "experiment": "phase1_capture_score_validation",
+        "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_synthetic_smoke_manifest_20260608.json",
+        "manifest_status": "synthetic_smoke_only",
+        "claim_update_allowed": false,
+        "n_samples": 16,
+        "n_invalid_capture_denominators": 0,
+        "gate_rho": 0.4,
+        "permutations": 999,
+        "seed": 20260608,
+        "groups": [
+          {
+            "group": "DHF1K_fixture",
+            "n_samples": 8,
+            "n_invalid_capture_denominators": 0,
+            "metrics": {
+              "capture_score": {
+                "n": 8,
+                "rho": 1.0,
+                "permutation_p_greater": 0.001,
+                "gate_passed": true
+              },
+              "capture_delta": {
+                "n": 8,
+                "rho": 1.0,
+                "permutation_p_greater": 0.001,
+                "gate_passed": false
+              },
+              "sensory_mean": {
+                "n": 8,
+                "rho": 1.0,
+                "permutation_p_greater": 0.001,
+                "gate_passed": false
+              },
+              "frontoparietal": {
+                "n": 8,
+                "rho": -1.0,
+                "permutation_p_greater": 1.0,
+                "gate_passed": false
+              }
+            }
+          },
+          {
+            "group": "SnapUGC_fixture",
+            "n_samples": 8,
+            "n_invalid_capture_denominators": 0,
+            "metrics": {
+              "capture_score": {
+                "n": 8,
+                "rho": 1.0,
+                "permutation_p_greater": 0.001,
+                "gate_passed": true
+              },
+              "capture_delta": {
+                "n": 8,
+                "rho": 1.0,
+                "permutation_p_greater": 0.001,
+                "gate_passed": false
+              },
+              "sensory_mean": {
+                "n": 8,
+                "rho": 1.0,
+                "permutation_p_greater": 0.001,
+                "gate_passed": false
+              },
+              "frontoparietal": {
+                "n": 8,
+                "rho": -1.0,
+                "permutation_p_greater": 1.0,
+                "gate_passed": false
+              }
+            }
+          }
+        ],
+        "pooled": {
+          "group": "pooled",
+          "n_samples": 16,
+          "n_invalid_capture_denominators": 0,
+          "metrics": {
+            "capture_score": {
+              "n": 16,
+              "rho": 0.9882352941176471,
+              "permutation_p_greater": 0.001,
+              "gate_passed": true
+            },
+            "capture_delta": {
+              "n": 16,
+              "rho": 0.9911764705882353,
+              "permutation_p_greater": 0.001,
+              "gate_passed": false
+            },
+            "sensory_mean": {
+              "n": 16,
+              "rho": 0.9845477279120478,
+              "permutation_p_greater": 0.001,
+              "gate_passed": false
+            },
+            "frontoparietal": {
+              "n": 16,
+              "rho": -0.9941176470588236,
+              "permutation_p_greater": 1.0,
+              "gate_passed": false
+            }
+          }
+        },
+        "gate": {
+          "passed": true,
+          "claim_validated": false,
+          "passed_groups": [
+            "DHF1K_fixture",
+            "SnapUGC_fixture"
+          ],
+          "rule": "capture_score Spearman rho >= 0.40 in at least one dataset"
+        }
+      }
+    },
+    {
+      "role": "sensitivity",
+      "label": "overlapping",
+      "roi_masks_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz",
+      "report": {
+        "schema_version": 1,
+        "experiment": "phase1_capture_score_validation",
+        "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_synthetic_smoke_manifest_20260608.json",
+        "manifest_status": "synthetic_smoke_only",
+        "claim_update_allowed": false,
+        "n_samples": 16,
+        "n_invalid_capture_denominators": 0,
+        "gate_rho": 0.4,
+        "permutations": 999,
+        "seed": 20260609,
+        "groups": [
+          {
+            "group": "DHF1K_fixture",
+            "n_samples": 8,
+            "n_invalid_capture_denominators": 0,
+            "metrics": {
+              "capture_score": {
+                "n": 8,
+                "rho": 1.0,
+                "permutation_p_greater": 0.001,
+                "gate_passed": true
+              },
+              "capture_delta": {
+                "n": 8,
+                "rho": 1.0,
+                "permutation_p_greater": 0.001,
+                "gate_passed": false
+              },
+              "sensory_mean": {
+                "n": 8,
+                "rho": 1.0,
+                "permutation_p_greater": 0.001,
+                "gate_passed": false
+              },
+              "frontoparietal": {
+                "n": 8,
+                "rho": -1.0,
+                "permutation_p_greater": 1.0,
+                "gate_passed": false
+              }
+            }
+          },
+          {
+            "group": "SnapUGC_fixture",
+            "n_samples": 8,
+            "n_invalid_capture_denominators": 0,
+            "metrics": {
+              "capture_score": {
+                "n": 8,
+                "rho": 1.0,
+                "permutation_p_greater": 0.001,
+                "gate_passed": true
+              },
+              "capture_delta": {
+                "n": 8,
+                "rho": 1.0,
+                "permutation_p_greater": 0.001,
+                "gate_passed": false
+              },
+              "sensory_mean": {
+                "n": 8,
+                "rho": 1.0,
+                "permutation_p_greater": 0.001,
+                "gate_passed": false
+              },
+              "frontoparietal": {
+                "n": 8,
+                "rho": -1.0,
+                "permutation_p_greater": 1.0,
+                "gate_passed": false
+              }
+            }
+          }
+        ],
+        "pooled": {
+          "group": "pooled",
+          "n_samples": 16,
+          "n_invalid_capture_denominators": 0,
+          "metrics": {
+            "capture_score": {
+              "n": 16,
+              "rho": 0.9882352941176471,
+              "permutation_p_greater": 0.001,
+              "gate_passed": true
+            },
+            "capture_delta": {
+              "n": 16,
+              "rho": 0.9911764705882353,
+              "permutation_p_greater": 0.001,
+              "gate_passed": false
+            },
+            "sensory_mean": {
+              "n": 16,
+              "rho": 0.9845477279120478,
+              "permutation_p_greater": 0.001,
+              "gate_passed": false
+            },
+            "frontoparietal": {
+              "n": 16,
+              "rho": -0.9941176470588236,
+              "permutation_p_greater": 1.0,
+              "gate_passed": false
+            }
+          }
+        },
+        "gate": {
+          "passed": true,
+          "claim_validated": false,
+          "passed_groups": [
+            "DHF1K_fixture",
+            "SnapUGC_fixture"
+          ],
+          "rule": "capture_score Spearman rho >= 0.40 in at least one dataset"
+        }
+      }
+    }
+  ],
+  "comparison": {
+    "capture_score_deltas": [
+      {
+        "group": "DHF1K_fixture",
+        "sensitivity_label": "overlapping",
+        "primary_rho": 1.0,
+        "sensitivity_rho": 1.0,
+        "rho_delta": 0.0,
+        "primary_n": 8,
+        "sensitivity_n": 8,
+        "primary_gate_passed": true,
+        "sensitivity_gate_passed": true
+      },
+      {
+        "group": "SnapUGC_fixture",
+        "sensitivity_label": "overlapping",
+        "primary_rho": 1.0,
+        "sensitivity_rho": 1.0,
+        "rho_delta": 0.0,
+        "primary_n": 8,
+        "sensitivity_n": 8,
+        "primary_gate_passed": true,
+        "sensitivity_gate_passed": true
+      },
+      {
+        "group": "pooled",
+        "sensitivity_label": "overlapping",
+        "primary_rho": 0.9882352941176471,
+        "sensitivity_rho": 0.9882352941176471,
+        "rho_delta": 0.0,
+        "primary_n": 16,
+        "sensitivity_n": 16,
+        "primary_gate_passed": true,
+        "sensitivity_gate_passed": true
+      }
+    ]
+  },
+  "claim_boundary": "Sensitivity compares ROI scoring policies for the same manifest. It does not validate attention capture without real external labels."
+}

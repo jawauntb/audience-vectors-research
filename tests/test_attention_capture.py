@@ -17,9 +17,11 @@ from audience_vectors.attention_capture import (
     render_phase1_markdown,
     render_preflight_markdown,
     render_roi_mask_audit_markdown,
+    render_sensitivity_markdown,
     roi_mask_audit,
     run_capture_rows,
     run_phase1_manifest,
+    run_phase1_sensitivity,
     spearman_rho,
 )
 
@@ -306,3 +308,78 @@ def test_preflight_phase1_manifest_blocks_feature_rows_without_roi_masks(
     assert report["claim_ready"] is False
     assert "feature-path samples require --roi-masks" in report["blocking_reasons"]
     assert report["feature_audit"]["n_existing"] == 3
+
+
+def test_run_phase1_sensitivity_compares_primary_and_sensitivity_masks(
+    tmp_path: Path,
+) -> None:
+    feature_dir = tmp_path / "features"
+    feature_dir.mkdir()
+    manifest = tmp_path / "manifest.json"
+    samples = []
+    for i in range(5):
+        frames = np.array(
+            [
+                [0.1 + i, 0.2 + i, 1.0, 0.6 - i * 0.05],
+                [0.2 + i, 0.3 + i, 1.0, 0.6 - i * 0.05],
+            ],
+            dtype=np.float32,
+        )
+        feature_path = feature_dir / f"s{i}.npz"
+        np.savez_compressed(feature_path, frames=frames)
+        samples.append(
+            {
+                "sample_id": f"s{i}",
+                "dataset": "DHF1K",
+                "ground_truth": float(i),
+                "tribe_feature_path": str(feature_path),
+            }
+        )
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "status": "real_external_attention_labels",
+                "samples": samples,
+            }
+        ),
+        encoding="utf-8",
+    )
+    primary_masks = tmp_path / "primary_masks.npz"
+    sensitivity_masks = tmp_path / "sensitivity_masks.npz"
+    np.savez_compressed(
+        primary_masks,
+        V1=np.array([True, False, False, False]),
+        PPA=np.array([False, True, False, False]),
+        language=np.array([False, False, True, False]),
+        frontoparietal=np.array([False, False, False, True]),
+    )
+    np.savez_compressed(
+        sensitivity_masks,
+        V1=np.array([False, False, False, True]),
+        PPA=np.array([False, False, True, False]),
+        language=np.array([False, True, False, False]),
+        frontoparietal=np.array([True, False, False, False]),
+    )
+
+    report = run_phase1_sensitivity(
+        manifest,
+        primary_label="disjoint",
+        primary_roi_masks_path=primary_masks,
+        sensitivity_roi_masks={"overlap": sensitivity_masks},
+        permutations=0,
+        seed=1,
+    )
+
+    assert report["runs"][0]["label"] == "disjoint"
+    assert report["runs"][1]["label"] == "overlap"
+    assert report["runs"][0]["report"]["pooled"]["metrics"]["capture_score"]["rho"] > 0
+    assert report["runs"][1]["report"]["pooled"]["metrics"]["capture_score"]["rho"] < 0
+    [delta] = [
+        item
+        for item in report["comparison"]["capture_score_deltas"]
+        if item["group"] == "pooled"
+    ]
+    assert delta["sensitivity_label"] == "overlap"
+    assert delta["rho_delta"] < 0
+    assert "Phase 1 Capture-Score Sensitivity" in render_sensitivity_markdown(report)

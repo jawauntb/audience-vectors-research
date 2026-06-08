@@ -27,6 +27,11 @@ format work. It does not validate attentional capture.
   fixture preflight report.
 - `results/phase1_synthetic_smoke_20260608.json`: machine-readable smoke result.
 - `results/phase1_synthetic_smoke_20260608.md`: readable smoke report.
+- `results/phase1_synthetic_smoke_sensitivity_20260608.json`: machine-readable
+  sensitivity-run smoke report. The fixture uses explicit ROI values, so mask
+  choice is intentionally a no-op here.
+- `results/phase1_synthetic_smoke_sensitivity_20260608.md`: readable
+  sensitivity-run smoke report.
 - `results/bmd_memorability_control_20260608.json`: BOLD Moments control result
   over 1,022 cached TRIBE feature files using overlapping exploratory masks.
 - `results/bmd_memorability_control_20260608.md`: readable overlapping-mask
@@ -55,6 +60,8 @@ format work. It does not validate attentional capture.
   extractor for local/remote videos listed in a CSV.
 - `scripts/preflight_attention_capture_phase1.py`: manifest/feature/label
   preflight gate before claim-relevant Phase 1 scoring.
+- `scripts/run_attention_capture_sensitivity.py`: primary-vs-sensitivity ROI
+  mask runner for disjoint primary and overlapping-mask sensitivity reports.
 
 ## Reused Infrastructure
 
@@ -172,6 +179,20 @@ uv run python scripts/run_attention_capture_phase1.py \
   --roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz \
   --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_disjoint_20260608.json \
   --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_disjoint_20260608.md \
+  --permutations 999 \
+  --seed 20260608
+```
+
+Run the archived overlapping-mask sensitivity check on the same DHF1K manifest:
+
+```bash
+uv run python scripts/run_attention_capture_sensitivity.py \
+  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_manifest_20260608.json \
+  --primary-label disjoint \
+  --primary-roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz \
+  --sensitivity-roi-masks overlapping=research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz \
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_sensitivity_20260608.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_sensitivity_20260608.md \
   --permutations 999 \
   --seed 20260608
 ```

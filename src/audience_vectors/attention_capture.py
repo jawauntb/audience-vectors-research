@@ -649,6 +649,117 @@ def run_capture_rows(
     return report
 
 
+def run_phase1_sensitivity(
+    manifest_path: Path,
+    *,
+    primary_label: str,
+    primary_roi_masks_path: Path | None,
+    sensitivity_roi_masks: dict[str, Path],
+    permutations: int = 999,
+    seed: int = 17,
+    gate_rho: float = DEFAULT_GATE_RHO,
+    epsilon: float = 1e-6,
+    include_rows: bool = False,
+) -> dict[str, Any]:
+    """Run one Phase 1 manifest through primary and sensitivity ROI masks."""
+
+    runs: list[dict[str, Any]] = []
+    all_specs: list[tuple[str, str, Path | None]] = [
+        ("primary", primary_label, primary_roi_masks_path),
+        *[
+            ("sensitivity", label, path)
+            for label, path in sorted(sensitivity_roi_masks.items())
+        ],
+    ]
+    for idx, (role, label, roi_masks_path) in enumerate(all_specs):
+        report = run_phase1_manifest(
+            manifest_path,
+            roi_masks_path=roi_masks_path,
+            permutations=permutations,
+            seed=seed + idx,
+            gate_rho=gate_rho,
+            epsilon=epsilon,
+            include_rows=include_rows,
+        )
+        runs.append(
+            {
+                "role": role,
+                "label": label,
+                "roi_masks_path": str(roi_masks_path) if roi_masks_path else None,
+                "report": report,
+            }
+        )
+
+    return {
+        "schema_version": 1,
+        "experiment": "phase1_capture_score_sensitivity",
+        "manifest_path": str(manifest_path),
+        "primary_label": primary_label,
+        "gate_rho": gate_rho,
+        "permutations": permutations,
+        "seed": seed,
+        "runs": runs,
+        "comparison": _compare_sensitivity_runs(runs),
+        "claim_boundary": (
+            "Sensitivity compares ROI scoring policies for the same manifest. "
+            "It does not validate attention capture without real external labels."
+        ),
+    }
+
+
+def render_sensitivity_markdown(report: dict[str, Any]) -> str:
+    """Render a compact Markdown report for `run_phase1_sensitivity`."""
+
+    lines = [
+        "# Phase 1 Capture-Score Sensitivity",
+        "",
+        "## Setup",
+        "",
+        f"- Manifest: {report['manifest_path']}",
+        f"- Primary: {report['primary_label']}",
+        f"- Gate rho: {float(report['gate_rho']):.2f}",
+        f"- Claim boundary: {report['claim_boundary']}",
+        "",
+        "## Runs",
+        "",
+        (
+            "| role | label | group | n valid | invalid denominators | "
+            "capture rho | gate | claim validated |"
+        ),
+        "|---|---|---|---:|---:|---:|---|---|",
+    ]
+    for run in report["runs"]:
+        pooled = run["report"]["pooled"]
+        capture = pooled["metrics"]["capture_score"]
+        lines.append(
+            "| "
+            f"{run['role']} | {run['label']} | pooled | "
+            f"{capture['n']} | {pooled['n_invalid_capture_denominators']} | "
+            f"{_fmt_optional_float(capture['rho'])} | "
+            f"{capture['gate_passed']} | "
+            f"{run['report']['gate']['claim_validated']} |"
+        )
+
+    lines.extend(
+        [
+            "",
+            "## Sensitivity Delta",
+            "",
+            "| group | sensitivity | primary rho | sensitivity rho | delta |",
+            "|---|---|---:|---:|---:|",
+        ]
+    )
+    for item in report["comparison"]["capture_score_deltas"]:
+        lines.append(
+            "| "
+            f"{item['group']} | {item['sensitivity_label']} | "
+            f"{_fmt_optional_float(item['primary_rho'])} | "
+            f"{_fmt_optional_float(item['sensitivity_rho'])} | "
+            f"{_fmt_optional_float(item['rho_delta'])} |"
+        )
+    return "\n".join(lines) + "\n"
+
+
 def summarize_capture_rows(
     rows: list[CaptureRow],
     *,
@@ -1029,6 +1140,50 @@ def _preflight_scoring(
         "n_invalid_capture_denominators": invalid,
         "n_valid_capture_denominators": len(rows) - invalid,
     }
+
+
+def _compare_sensitivity_runs(runs: list[dict[str, Any]]) -> dict[str, Any]:
+    primary = next(run for run in runs if run["role"] == "primary")
+    primary_by_group = _capture_metric_by_group(primary["report"])
+    deltas: list[dict[str, Any]] = []
+    for run in runs:
+        if run["role"] == "primary":
+            continue
+        sensitivity_by_group = _capture_metric_by_group(run["report"])
+        for group, primary_metric in primary_by_group.items():
+            sensitivity_metric = sensitivity_by_group.get(group)
+            if sensitivity_metric is None:
+                continue
+            primary_rho = primary_metric["rho"]
+            sensitivity_rho = sensitivity_metric["rho"]
+            deltas.append(
+                {
+                    "group": group,
+                    "sensitivity_label": run["label"],
+                    "primary_rho": primary_rho,
+                    "sensitivity_rho": sensitivity_rho,
+                    "rho_delta": _optional_delta(sensitivity_rho, primary_rho),
+                    "primary_n": primary_metric["n"],
+                    "sensitivity_n": sensitivity_metric["n"],
+                    "primary_gate_passed": primary_metric["gate_passed"],
+                    "sensitivity_gate_passed": sensitivity_metric["gate_passed"],
+                }
+            )
+    return {"capture_score_deltas": deltas}
+
+
+def _capture_metric_by_group(report: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    summaries = [*report["groups"], report["pooled"]]
+    return {
+        summary["group"]: summary["metrics"]["capture_score"]
+        for summary in summaries
+    }
+
+
+def _optional_delta(left: float | None, right: float | None) -> float | None:
+    if left is None or right is None:
+        return None
+    return float(left) - float(right)
 
 
 def _synthetic_rows_for_claim_block_check(

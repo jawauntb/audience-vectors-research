@@ -243,6 +243,21 @@ Preflight verifier update:
 - This is still retrieval/verification infrastructure. Passing preflight only
   means the manifest is ready to score; it does not validate the capture proxy.
 
+Sensitivity-runner update:
+
+- `scripts/run_attention_capture_sensitivity.py` now runs the same Phase 1
+  manifest through a primary ROI mask and one or more sensitivity masks, then
+  writes a comparison report.
+- The intended real-data use is disjoint masks as the primary run and the
+  archived overlapping masks as a sensitivity condition.
+- A synthetic smoke sensitivity report was generated at
+  `results/phase1_synthetic_smoke_sensitivity_20260608.*`. Because the fixture
+  supplies explicit ROI values, mask choice is a no-op and all deltas are zero;
+  this proves command wiring only.
+- On real feature-path manifests, nonzero deltas between disjoint and
+  overlapping masks should be treated as ROI-definition sensitivity, not as a
+  new attention-capture finding.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
@@ -261,6 +276,6 @@ Next move:
    ground-truth column.
 3. Run the Phase 1 preflight before the final scoring report.
 4. Report the archived overlapping-mask run as a sensitivity check if compute
-   is cheap enough.
+   is cheap enough, using `scripts/run_attention_capture_sensitivity.py`.
 5. Run the same script with cached or Modal-generated TRIBE features.
 6. Only then decide whether perturbation/neutralization is worth compute.
