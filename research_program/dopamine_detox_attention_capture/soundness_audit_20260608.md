@@ -352,6 +352,23 @@ DHF1K handoff-provenance update:
   DHF1K label audit -> label/feature alignment audit -> manifest metadata.
 - No real DHF1K label or alignment artifact was generated in this step.
 
+Preflight-provenance update:
+
+- `scripts/build_attention_capture_phase1_manifest.py` now preserves the
+  alignment audit's nested `label_audit` metadata when present.
+- `preflight_phase1_manifest` now treats provenance as part of mechanical
+  readiness for claim-updatable manifests.
+- A real claim-updatable manifest is blocked unless
+  `metadata.alignment_audit.ready_for_manifest_build=true`, with a recorded
+  verifier path, SHA-256, zero missing features, and enough aligned features
+  for the requested preflight threshold.
+- DHF1K claim-updatable manifests are additionally blocked unless the nested
+  `metadata.alignment_audit.label_audit.ready_for_manifest_alignment=true`.
+- Synthetic, smoke, fixture, and control manifests remain claim-blocked and do
+  not need this provenance for diagnostic preflight.
+- No real data artifact was generated in this step; this turns the existing
+  verifier chain into an enforced preflight gate.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
@@ -377,7 +394,9 @@ Next move:
    records the verifier hash.
 5. Run the guarded Phase 1 workflow with
    `scripts/run_attention_capture_phase1_workflow.py`, using disjoint masks as
-   primary and overlapping masks as the archived sensitivity condition.
+   primary and overlapping masks as the archived sensitivity condition. The
+   workflow preflight now enforces alignment-audit provenance before
+   claim-ready scoring.
 6. If the workflow withholds scoring, treat that as the result of the handoff
    and fix the manifest/labels/features before spending more compute.
 7. Run the same script with cached or Modal-generated TRIBE features.

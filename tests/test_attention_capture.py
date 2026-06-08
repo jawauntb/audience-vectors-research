@@ -236,6 +236,29 @@ def test_control_status_blocks_claim_validation() -> None:
     assert "rows" not in report
 
 
+def ready_alignment_metadata(*, n: int, dhf1k: bool = True) -> dict[str, object]:
+    label_audit = (
+        {
+            "path": "results/dhf1k_attention_label_audit_20260608.json",
+            "sha256": "b" * 64,
+            "ready_for_manifest_alignment": True,
+            "rank_column": "mean_map_intensity",
+        }
+        if dhf1k
+        else None
+    )
+    return {
+        "alignment_audit": {
+            "path": "results/phase1_alignment_20260608.json",
+            "sha256": "a" * 64,
+            "ready_for_manifest_build": True,
+            "n_aligned_features": n,
+            "n_missing_features": 0,
+            "label_audit": label_audit,
+        },
+    }
+
+
 def test_preflight_phase1_manifest_accepts_ready_explicit_roi_manifest(
     tmp_path: Path,
 ) -> None:
@@ -245,6 +268,7 @@ def test_preflight_phase1_manifest_accepts_ready_explicit_roi_manifest(
             {
                 "schema_version": 1,
                 "status": "real_external_attention_labels",
+                "metadata": ready_alignment_metadata(n=3),
                 "samples": [
                     {
                         "sample_id": f"s{i}",
@@ -269,9 +293,92 @@ def test_preflight_phase1_manifest_accepts_ready_explicit_roi_manifest(
     assert report["mechanical_ready"] is True
     assert report["claim_update_allowed"] is True
     assert report["claim_ready"] is True
+    assert report["provenance_audit"]["ready"] is True
+    assert report["provenance_audit"]["alignment_audit"]["label_audit_ready"] is True
     assert report["scoring_audit"]["attempted"] is True
     assert report["scoring_audit"]["n_valid_capture_denominators"] == 3
     assert "Phase 1 Capture-Score Preflight" in render_preflight_markdown(report)
+
+
+def test_preflight_phase1_manifest_blocks_missing_alignment_provenance(
+    tmp_path: Path,
+) -> None:
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "status": "real_external_attention_labels",
+                "samples": [
+                    {
+                        "sample_id": f"s{i}",
+                        "dataset": "SnapUGC",
+                        "ground_truth": float(i),
+                        "roi_values": {
+                            "V1": 0.2 + i,
+                            "PPA": 0.3 + i,
+                            "language": 0.4 + i,
+                            "frontoparietal": 1.0,
+                        },
+                    }
+                    for i in range(3)
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    report = preflight_phase1_manifest(manifest, min_samples=3)
+
+    assert report["mechanical_ready"] is False
+    assert report["claim_ready"] is False
+    assert (
+        "claim-ready manifests require metadata.alignment_audit provenance"
+        in report["blocking_reasons"]
+    )
+    assert report["provenance_audit"]["required"] is True
+
+
+def test_preflight_phase1_manifest_blocks_unready_dhf1k_label_provenance(
+    tmp_path: Path,
+) -> None:
+    manifest = tmp_path / "manifest.json"
+    metadata = ready_alignment_metadata(n=3)
+    alignment = metadata["alignment_audit"]
+    assert isinstance(alignment, dict)
+    label_audit = alignment["label_audit"]
+    assert isinstance(label_audit, dict)
+    label_audit["ready_for_manifest_alignment"] = False
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "status": "real_external_attention_labels",
+                "metadata": metadata,
+                "samples": [
+                    {
+                        "sample_id": f"s{i}",
+                        "dataset": "DHF1K",
+                        "ground_truth": float(i),
+                        "roi_values": {
+                            "V1": 0.2 + i,
+                            "PPA": 0.3 + i,
+                            "language": 0.4 + i,
+                            "frontoparietal": 1.0,
+                        },
+                    }
+                    for i in range(3)
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    report = preflight_phase1_manifest(manifest, min_samples=3)
+
+    assert report["mechanical_ready"] is False
+    assert "alignment_audit.label_audit is not ready" in report["blocking_reasons"]
+    assert report["provenance_audit"]["alignment_audit"]["label_audit_ready"] is False
 
 
 def test_preflight_phase1_manifest_blocks_feature_rows_without_roi_masks(
@@ -290,6 +397,7 @@ def test_preflight_phase1_manifest_blocks_feature_rows_without_roi_masks(
             {
                 "schema_version": 1,
                 "status": "real_external_attention_labels",
+                "metadata": ready_alignment_metadata(n=3),
                 "samples": [
                     {
                         "sample_id": f"s{i}",
@@ -394,6 +502,7 @@ def test_run_phase1_workflow_scores_claim_ready_manifest(tmp_path: Path) -> None
             {
                 "schema_version": 1,
                 "status": "real_external_attention_labels",
+                "metadata": ready_alignment_metadata(n=5),
                 "samples": [
                     {
                         "sample_id": f"s{i}",
