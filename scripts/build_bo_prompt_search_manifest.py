@@ -51,6 +51,7 @@ def sobol_prompt_search_row(
     seed_slot: SeedSlot,
     alpha_range: tuple[float, float],
     guidance_range: tuple[float, float],
+    noise_seed_offset: int,
 ) -> dict[str, Any]:
     """Create one prompt-local Sobol alpha/guidance search row."""
     task_id = safe_label(
@@ -70,7 +71,7 @@ def sobol_prompt_search_row(
             high=guidance_range[1],
         ),
         "seed_idx": seed_slot.slot,
-        "noise_seed": sobol_index,
+        "noise_seed": sobol_index + noise_seed_offset,
         "filename": None,
         "prompt": seed_slot.prompt,
         "tribe_score": None,
@@ -94,6 +95,7 @@ def build_prompt_search_manifest(
     sobol_samples_per_seed: int,
     sobol_start_index: int,
     sobol_scramble_seed: int,
+    noise_seed_offset: int,
     alpha_range: tuple[float, float],
     guidance_range: tuple[float, float],
 ) -> dict[str, Any]:
@@ -102,6 +104,8 @@ def build_prompt_search_manifest(
         raise ValueError("--sobol-samples-per-seed must be positive")
     if sobol_start_index < 0:
         raise ValueError("--sobol-start-index must be >= 0")
+    if noise_seed_offset < 0:
+        raise ValueError("--noise-seed-offset must be >= 0")
     validate_range("alpha range", alpha_range)
     validate_range("guidance range", guidance_range)
 
@@ -126,6 +130,7 @@ def build_prompt_search_manifest(
                     seed_slot=seed_slot,
                     alpha_range=alpha_range,
                     guidance_range=guidance_range,
+                    noise_seed_offset=noise_seed_offset,
                 )
             )
 
@@ -138,6 +143,7 @@ def build_prompt_search_manifest(
         "sobol_samples_per_seed": sobol_samples_per_seed,
         "sobol_start_index": sobol_start_index,
         "sobol_scramble_seed": sobol_scramble_seed,
+        "noise_seed_offset": noise_seed_offset,
         "alpha_range": list(alpha_range),
         "guidance_range": list(guidance_range),
         "n_sobol_prompt_search_trials": len(rows),
@@ -170,6 +176,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--sobol-start-index", type=int, default=512)
     parser.add_argument("--sobol-scramble-seed", type=int, default=42)
     parser.add_argument(
+        "--noise-seed-offset",
+        type=int,
+        default=0,
+        help=(
+            "Offset added to each Sobol index when setting the SVD generation "
+            "noise_seed. Use this to replay an accepted recipe neighborhood "
+            "with fresh stochastic seeds while preserving recipe indices."
+        ),
+    )
+    parser.add_argument(
         "--alpha-range",
         type=parse_range,
         default=DEFAULT_ALPHA_RANGE,
@@ -198,6 +214,7 @@ def main() -> None:
         sobol_samples_per_seed=args.sobol_samples_per_seed,
         sobol_start_index=args.sobol_start_index,
         sobol_scramble_seed=args.sobol_scramble_seed,
+        noise_seed_offset=args.noise_seed_offset,
         alpha_range=args.alpha_range,
         guidance_range=args.guidance_range,
     )

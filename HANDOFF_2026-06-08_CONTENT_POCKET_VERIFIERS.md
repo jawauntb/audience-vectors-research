@@ -147,6 +147,9 @@ First artifact:
 - Put it beside the prior Camilo BO memorability audit artifacts.
 - Name targets, controls, recipes, stochastic seeds, visual gate, TRIBE gate,
   exact V-JEPA gate, and CLIP gate.
+- Manifest created:
+  `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/descriptor_conditioned_replication_manifest_20260608.md`.
+  The next action is generation from that manifest, not recreating the protocol.
 
 Targets:
 

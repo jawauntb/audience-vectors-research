@@ -57,6 +57,7 @@ def test_prompt_search_manifest_balances_sobol_samples_per_available_seed(tmp_pa
         sobol_samples_per_seed=3,
         sobol_start_index=16,
         sobol_scramble_seed=42,
+        noise_seed_offset=0,
         alpha_range=(-4.0, 4.0),
         guidance_range=(2.0, 8.0),
     )
@@ -76,3 +77,26 @@ def test_prompt_search_manifest_balances_sobol_samples_per_available_seed(tmp_pa
     }
     assert all(-4.0 <= row["alpha"] <= 4.0 for row in rows)
     assert all(2.0 <= row["guidance"] <= 8.0 for row in rows)
+
+
+def test_prompt_search_manifest_can_offset_generation_noise_seeds(tmp_path):
+    module = load_prompt_search_module()
+    manifest = module.build_prompt_search_manifest(
+        seed_root=write_seed_root(tmp_path),
+        target_seed_slots=[1],
+        replay_seed_pool_size=4,
+        sobol_samples_per_seed=2,
+        sobol_start_index=518,
+        sobol_scramble_seed=42,
+        noise_seed_offset=250_000,
+        alpha_range=(-3.0, 4.0),
+        guidance_range=(2.5, 10.0),
+    )
+
+    rows = manifest["all_meta"]
+    assert manifest["noise_seed_offset"] == 250_000
+    assert [row["task_id"] for row in rows] == [
+        "sobol_prompt_search_518_slot01",
+        "sobol_prompt_search_519_slot01",
+    ]
+    assert [row["noise_seed"] for row in rows] == [250_518, 250_519]
