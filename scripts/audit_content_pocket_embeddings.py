@@ -675,15 +675,18 @@ def gate_summary(
         and float(row["roc_auc"]) >= min_classifier_auc
         and float(row["balanced_accuracy"]) >= min_balanced_accuracy
     ]
-    best_descriptor = descriptors[0] if descriptors else None
+    best_descriptor = passing_descriptors[0] if passing_descriptors else (
+        descriptors[0] if descriptors else None
+    )
+    classifier_pool = passing_classifiers if passing_classifiers else classifiers
     best_classifier = sorted(
-        classifiers,
+        classifier_pool,
         key=lambda row: (
             float(row["roc_auc"] or -1.0),
             float(row["balanced_accuracy"] or -1.0),
         ),
         reverse=True,
-    )[0] if classifiers else None
+    )[0] if classifier_pool else None
     return {
         "accepted": bool(passing_descriptors or passing_classifiers),
         "descriptor_rule": f"separation_auc >= {min_auc:.2f} and abs_cohen_d >= {min_abs_d:.2f}",
@@ -867,22 +870,23 @@ def render_markdown(summary: dict[str, Any]) -> str:
             "merely opaque score islands: their seed/video embeddings contain "
             "enough structure to distinguish them from hard negative controls "
             "under leakage-aware evaluation. This is still compute-proxy "
-            "evidence, not human memorability, but it gives the next replication "
-            "a real descriptor to track."
+            "evidence, not human memorability, but it gives the next "
+            "replication or validation packet a real descriptor to track."
         )
         next_move = (
-            "Run the orange-flowers and hanging-clothes stochastic replication "
-            "with the accepted embedding descriptor as a covariate and stopping "
-            "rule. If new variants preserve both positive TRIBE score and "
-            "descriptor margin, the content-pocket verifier becomes stronger."
+            "Use the accepted embedding descriptor as a covariate and stopping "
+            "rule in the next replication or human/BMD validation packet. If a "
+            "specific family fails here, keep that caveat explicit rather than "
+            "promoting it through the broader accepted-gate result."
         )
     else:
         interpretation = (
             "The CLIP embedding audit does not clear the verifier gate. The "
-            "content pockets remain stable under TRIBE, but neither lightweight "
-            "visual descriptors nor CLIP embedding structure currently explains "
-            "them strongly enough. C-017 should remain a black-box compute-proxy "
-            "finding until V-JEPA, BMD, or human evidence explains it."
+            "content pockets remain stable under TRIBE, but the tested "
+            "embedding structure does not currently explain them strongly "
+            "enough. C-017 should remain a black-box compute-proxy finding "
+            "until V-JEPA, BMD, human evidence, or another accepted descriptor "
+            "explains it."
         )
         next_move = (
             "Use V-JEPA video embeddings or a human/BMD-grounded gate before "

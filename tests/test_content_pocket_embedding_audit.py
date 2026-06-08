@@ -130,6 +130,35 @@ def test_embedding_gate_accepts_strong_descriptor_separator():
     assert gate["accepted"] is True
 
 
+def test_embedding_gate_reports_passing_classifier_over_auc_only_leader():
+    module = load_audit_module()
+    classifiers = [
+        {
+            "family": "seed",
+            "roc_auc": 1.0,
+            "balanced_accuracy": 0.5,
+        },
+        {
+            "family": "video",
+            "roc_auc": 0.96,
+            "balanced_accuracy": 0.8,
+        },
+    ]
+
+    gate = module.gate_summary(
+        [],
+        classifiers,
+        min_auc=0.85,
+        min_abs_d=1.0,
+        min_classifier_auc=0.85,
+        min_balanced_accuracy=0.75,
+    )
+
+    assert gate["accepted"] is True
+    assert gate["n_passing_classifiers"] == 1
+    assert gate["best_classifier"]["family"] == "video"
+
+
 def test_leave_pocket_out_classifier_uses_only_available_embedding_family():
     module = load_audit_module()
     candidates = synthetic_candidates(module)
