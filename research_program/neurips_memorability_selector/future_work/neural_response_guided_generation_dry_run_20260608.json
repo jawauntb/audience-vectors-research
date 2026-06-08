@@ -1,0 +1,1885 @@
+{
+  "aggregate": {
+    "agreement_matrix": {
+      "clip_seed_video_preservation": {
+        "clip_seed_video_preservation": 24,
+        "composite_proxy_score": 9,
+        "tribe_bmd_projection": 9,
+        "vjepa_centroid_margin": 11
+      },
+      "composite_proxy_score": {
+        "clip_seed_video_preservation": 9,
+        "composite_proxy_score": 24,
+        "tribe_bmd_projection": 24,
+        "vjepa_centroid_margin": 22
+      },
+      "tribe_bmd_projection": {
+        "clip_seed_video_preservation": 9,
+        "composite_proxy_score": 24,
+        "tribe_bmd_projection": 24,
+        "vjepa_centroid_margin": 22
+      },
+      "vjepa_centroid_margin": {
+        "clip_seed_video_preservation": 11,
+        "composite_proxy_score": 22,
+        "tribe_bmd_projection": 22,
+        "vjepa_centroid_margin": 24
+      }
+    },
+    "by_metric": {
+      "clip_seed_video_preservation": {
+        "by_tier": {
+          "exploratory_boundary": {
+            "n_decisions": 12,
+            "selects_content_pocket_target": 0,
+            "target_selection_rate": 0.0
+          },
+          "primary": {
+            "n_decisions": 12,
+            "selects_content_pocket_target": 9,
+            "target_selection_rate": 0.75
+          }
+        },
+        "n_decisions": 24,
+        "selects_content_pocket_target": 9,
+        "target_selection_rate": 0.375
+      },
+      "composite_proxy_score": {
+        "by_tier": {
+          "exploratory_boundary": {
+            "n_decisions": 12,
+            "selects_content_pocket_target": 12,
+            "target_selection_rate": 1.0
+          },
+          "primary": {
+            "n_decisions": 12,
+            "selects_content_pocket_target": 12,
+            "target_selection_rate": 1.0
+          }
+        },
+        "n_decisions": 24,
+        "selects_content_pocket_target": 24,
+        "target_selection_rate": 1.0
+      },
+      "tribe_bmd_projection": {
+        "by_tier": {
+          "exploratory_boundary": {
+            "n_decisions": 12,
+            "selects_content_pocket_target": 12,
+            "target_selection_rate": 1.0
+          },
+          "primary": {
+            "n_decisions": 12,
+            "selects_content_pocket_target": 12,
+            "target_selection_rate": 1.0
+          }
+        },
+        "n_decisions": 24,
+        "selects_content_pocket_target": 24,
+        "target_selection_rate": 1.0
+      },
+      "vjepa_centroid_margin": {
+        "by_tier": {
+          "exploratory_boundary": {
+            "n_decisions": 12,
+            "selects_content_pocket_target": 10,
+            "target_selection_rate": 0.8333
+          },
+          "primary": {
+            "n_decisions": 12,
+            "selects_content_pocket_target": 12,
+            "target_selection_rate": 1.0
+          }
+        },
+        "n_decisions": 24,
+        "selects_content_pocket_target": 22,
+        "target_selection_rate": 0.9167
+      }
+    },
+    "disagreement_examples": [
+      {
+        "analysis_tier": "exploratory_boundary",
+        "control_pocket": "fresh24_aerial_beach",
+        "target_pocket": "fresh24_blue_jellyfish",
+        "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_519_slot18_rep00_vs_aerial_beach",
+        "winner_sides": {
+          "clip_seed_video_preservation": "right",
+          "composite_proxy_score": "left",
+          "tribe_bmd_projection": "left",
+          "vjepa_centroid_margin": "left"
+        }
+      },
+      {
+        "analysis_tier": "exploratory_boundary",
+        "control_pocket": "fresh24_city_street",
+        "target_pocket": "fresh24_blue_jellyfish",
+        "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_519_slot18_rep01_vs_city_street",
+        "winner_sides": {
+          "clip_seed_video_preservation": "left",
+          "composite_proxy_score": "right",
+          "tribe_bmd_projection": "right",
+          "vjepa_centroid_margin": "left"
+        }
+      },
+      {
+        "analysis_tier": "exploratory_boundary",
+        "control_pocket": "fresh24_storm_beach",
+        "target_pocket": "fresh24_blue_jellyfish",
+        "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_519_slot18_rep02_vs_storm_beach",
+        "winner_sides": {
+          "clip_seed_video_preservation": "right",
+          "composite_proxy_score": "left",
+          "tribe_bmd_projection": "left",
+          "vjepa_centroid_margin": "left"
+        }
+      },
+      {
+        "analysis_tier": "exploratory_boundary",
+        "control_pocket": "fresh24_aerial_beach",
+        "target_pocket": "fresh24_blue_jellyfish",
+        "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_521_slot18_rep00_vs_aerial_beach",
+        "winner_sides": {
+          "clip_seed_video_preservation": "left",
+          "composite_proxy_score": "right",
+          "tribe_bmd_projection": "right",
+          "vjepa_centroid_margin": "right"
+        }
+      },
+      {
+        "analysis_tier": "exploratory_boundary",
+        "control_pocket": "fresh24_city_street",
+        "target_pocket": "fresh24_blue_jellyfish",
+        "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_521_slot18_rep01_vs_city_street",
+        "winner_sides": {
+          "clip_seed_video_preservation": "right",
+          "composite_proxy_score": "left",
+          "tribe_bmd_projection": "left",
+          "vjepa_centroid_margin": "right"
+        }
+      },
+      {
+        "analysis_tier": "exploratory_boundary",
+        "control_pocket": "fresh24_storm_beach",
+        "target_pocket": "fresh24_blue_jellyfish",
+        "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_521_slot18_rep02_vs_storm_beach",
+        "winner_sides": {
+          "clip_seed_video_preservation": "left",
+          "composite_proxy_score": "right",
+          "tribe_bmd_projection": "right",
+          "vjepa_centroid_margin": "right"
+        }
+      },
+      {
+        "analysis_tier": "exploratory_boundary",
+        "control_pocket": "fresh24_aerial_beach",
+        "target_pocket": "fresh24_old_car",
+        "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_518_slot00_rep00_vs_aerial_beach",
+        "winner_sides": {
+          "clip_seed_video_preservation": "left",
+          "composite_proxy_score": "right",
+          "tribe_bmd_projection": "right",
+          "vjepa_centroid_margin": "right"
+        }
+      },
+      {
+        "analysis_tier": "exploratory_boundary",
+        "control_pocket": "fresh24_city_street",
+        "target_pocket": "fresh24_old_car",
+        "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_518_slot00_rep01_vs_city_street",
+        "winner_sides": {
+          "clip_seed_video_preservation": "right",
+          "composite_proxy_score": "left",
+          "tribe_bmd_projection": "left",
+          "vjepa_centroid_margin": "left"
+        }
+      }
+    ]
+  },
+  "created_at_utc": "2026-06-08T22:08:19.003582+00:00",
+  "data_resolution": {
+    "clip_seed_video_found_side_observations": 48,
+    "mp4_found_side_observations": 48,
+    "mp4_found_unique_paths": 45,
+    "n_side_observations": 48,
+    "n_tasks": 24,
+    "n_unique_mp4_paths": 45,
+    "source_pool_counts": {
+      "boundary_pocket_audit": 24,
+      "descriptor_conditioned_replication": 24
+    },
+    "visual_first_status_counts": {
+      "retained": 48
+    },
+    "vjepa_feature_found_side_observations": 48
+  },
+  "feasible_loops": [
+    {
+      "loop": "candidate_reranking",
+      "reason": "existing MP4s can be scored by TRIBE, V-JEPA, and committed CLIP summaries without generating new pixels",
+      "status": "feasible_now"
+    },
+    {
+      "loop": "evolutionary_selection_over_generated_candidates",
+      "reason": "selection can operate on candidate pools after generation, while keeping proxy-only language",
+      "status": "feasible_now_with_existing_or_new_generated_batches"
+    },
+    {
+      "loop": "prompt_search",
+      "reason": "do not treat prompt rewrites as pixel-affecting unless the generator is prompt-conditioned in that runner",
+      "status": "blocked_for_current_svd_runner"
+    },
+    {
+      "loop": "latent_or_guidance_optimization",
+      "reason": "requires a generator path where latent, noise, guidance, or conditioning changes actually affect MP4 pixels",
+      "status": "blocked_until_generator_exposes_pixel_affecting_controls"
+    }
+  ],
+  "launch_blockers": [
+    "No local artifact blocker for this dry run; scientific overclaiming gates still apply."
+  ],
+  "pairwise_proxy_results": [
+    {
+      "analysis_tier": "exploratory_boundary",
+      "control_pocket": "fresh24_aerial_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.927882,
+        "generation_task_id": "sobol_prompt_search_519_slot18",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot18_rep00.mp4",
+        "pocket": "fresh24_blue_jellyfish",
+        "policy": "content_pocket_candidate",
+        "side": "left",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": 2.6888,
+        "video_label": "bo_replay_05_sobol_prompt_search_519_slot18_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.085655,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.927882,
+          "right_score": 0.959476,
+          "selects_target": false,
+          "winner_side": "right"
+        },
+        "composite_proxy_score": {
+          "left_score": 0.721408,
+          "right_score": -1.064944,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "tribe_bmd_projection": {
+          "left_score": 2.6888,
+          "right_score": -8.593668,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.085655,
+          "right_score": -0.102552,
+          "selects_target": true,
+          "winner_side": "left"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.959476,
+        "generation_task_id": "sobol_prompt_search_519_slot03",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_07_sobol_prompt_search_519_slot03_rep00.mp4",
+        "pocket": "fresh24_aerial_beach",
+        "policy": "hard_negative_control",
+        "side": "right",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": -8.593668,
+        "video_label": "bo_replay_07_sobol_prompt_search_519_slot03_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.102552,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_blue_jellyfish",
+      "target_side": "left",
+      "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_519_slot18_rep00_vs_aerial_beach"
+    },
+    {
+      "analysis_tier": "exploratory_boundary",
+      "control_pocket": "fresh24_city_street",
+      "left": {
+        "clip_seed_video_preservation": 0.969653,
+        "generation_task_id": "sobol_prompt_search_519_slot08",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_08_sobol_prompt_search_519_slot08_rep01.mp4",
+        "pocket": "fresh24_city_street",
+        "policy": "hard_negative_control",
+        "side": "left",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": -9.314266,
+        "video_label": "bo_replay_08_sobol_prompt_search_519_slot08_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.017559,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.969653,
+          "right_score": 0.927882,
+          "selects_target": false,
+          "winner_side": "left"
+        },
+        "composite_proxy_score": {
+          "left_score": -0.352874,
+          "right_score": 0.650725,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "tribe_bmd_projection": {
+          "left_score": -9.314266,
+          "right_score": 2.262806,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.017559,
+          "right_score": -0.085306,
+          "selects_target": false,
+          "winner_side": "left"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.927882,
+        "generation_task_id": "sobol_prompt_search_519_slot18",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot18_rep01.mp4",
+        "pocket": "fresh24_blue_jellyfish",
+        "policy": "content_pocket_candidate",
+        "side": "right",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": 2.262806,
+        "video_label": "bo_replay_05_sobol_prompt_search_519_slot18_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.085306,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_blue_jellyfish",
+      "target_side": "right",
+      "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_519_slot18_rep01_vs_city_street"
+    },
+    {
+      "analysis_tier": "exploratory_boundary",
+      "control_pocket": "fresh24_storm_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.927882,
+        "generation_task_id": "sobol_prompt_search_519_slot18",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot18_rep02.mp4",
+        "pocket": "fresh24_blue_jellyfish",
+        "policy": "content_pocket_candidate",
+        "side": "left",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": 3.044051,
+        "video_label": "bo_replay_05_sobol_prompt_search_519_slot18_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.085654,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.927882,
+          "right_score": 0.98039,
+          "selects_target": false,
+          "winner_side": "right"
+        },
+        "composite_proxy_score": {
+          "left_score": 0.782884,
+          "right_score": -1.161127,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "tribe_bmd_projection": {
+          "left_score": 3.044051,
+          "right_score": -9.409958,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.085654,
+          "right_score": -0.121204,
+          "selects_target": true,
+          "winner_side": "left"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.98039,
+        "generation_task_id": "sobol_prompt_search_519_slot14",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_09_sobol_prompt_search_519_slot14_rep02.mp4",
+        "pocket": "fresh24_storm_beach",
+        "policy": "hard_negative_control",
+        "side": "right",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": -9.409958,
+        "video_label": "bo_replay_09_sobol_prompt_search_519_slot14_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.121204,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_blue_jellyfish",
+      "target_side": "left",
+      "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_519_slot18_rep02_vs_storm_beach"
+    },
+    {
+      "analysis_tier": "exploratory_boundary",
+      "control_pocket": "fresh24_aerial_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.95497,
+        "generation_task_id": "sobol_prompt_search_521_slot03",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_17_sobol_prompt_search_521_slot03_rep00.mp4",
+        "pocket": "fresh24_aerial_beach",
+        "policy": "hard_negative_control",
+        "side": "left",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": -8.304137,
+        "video_label": "bo_replay_17_sobol_prompt_search_521_slot03_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.129985,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.95497,
+          "right_score": 0.900306,
+          "selects_target": false,
+          "winner_side": "left"
+        },
+        "composite_proxy_score": {
+          "left_score": -1.296991,
+          "right_score": 0.474051,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "tribe_bmd_projection": {
+          "left_score": -8.304137,
+          "right_score": 2.522935,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.129985,
+          "right_score": -0.079448,
+          "selects_target": true,
+          "winner_side": "right"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.900306,
+        "generation_task_id": "sobol_prompt_search_521_slot18",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_15_sobol_prompt_search_521_slot18_rep00.mp4",
+        "pocket": "fresh24_blue_jellyfish",
+        "policy": "content_pocket_candidate",
+        "side": "right",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": 2.522935,
+        "video_label": "bo_replay_15_sobol_prompt_search_521_slot18_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.079448,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_blue_jellyfish",
+      "target_side": "right",
+      "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_521_slot18_rep00_vs_aerial_beach"
+    },
+    {
+      "analysis_tier": "exploratory_boundary",
+      "control_pocket": "fresh24_city_street",
+      "left": {
+        "clip_seed_video_preservation": 0.900306,
+        "generation_task_id": "sobol_prompt_search_521_slot18",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_15_sobol_prompt_search_521_slot18_rep01.mp4",
+        "pocket": "fresh24_blue_jellyfish",
+        "policy": "content_pocket_candidate",
+        "side": "left",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": 2.366548,
+        "video_label": "bo_replay_15_sobol_prompt_search_521_slot18_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.082902,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.900306,
+          "right_score": 0.97022,
+          "selects_target": false,
+          "winner_side": "right"
+        },
+        "composite_proxy_score": {
+          "left_score": 0.417071,
+          "right_score": -0.308464,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "tribe_bmd_projection": {
+          "left_score": 2.366548,
+          "right_score": -9.538813,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.082902,
+          "right_score": -0.008594,
+          "selects_target": false,
+          "winner_side": "right"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.97022,
+        "generation_task_id": "sobol_prompt_search_521_slot08",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_18_sobol_prompt_search_521_slot08_rep01.mp4",
+        "pocket": "fresh24_city_street",
+        "policy": "hard_negative_control",
+        "side": "right",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": -9.538813,
+        "video_label": "bo_replay_18_sobol_prompt_search_521_slot08_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.008594,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_blue_jellyfish",
+      "target_side": "left",
+      "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_521_slot18_rep01_vs_city_street"
+    },
+    {
+      "analysis_tier": "exploratory_boundary",
+      "control_pocket": "fresh24_storm_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.977318,
+        "generation_task_id": "sobol_prompt_search_521_slot14",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_19_sobol_prompt_search_521_slot14_rep02.mp4",
+        "pocket": "fresh24_storm_beach",
+        "policy": "hard_negative_control",
+        "side": "left",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": -9.748032,
+        "video_label": "bo_replay_19_sobol_prompt_search_521_slot14_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.127806,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.977318,
+          "right_score": 0.900306,
+          "selects_target": false,
+          "winner_side": "left"
+        },
+        "composite_proxy_score": {
+          "left_score": -1.307162,
+          "right_score": 0.301854,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "tribe_bmd_projection": {
+          "left_score": -9.748032,
+          "right_score": 2.115169,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.127806,
+          "right_score": -0.091182,
+          "selects_target": true,
+          "winner_side": "right"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.900306,
+        "generation_task_id": "sobol_prompt_search_521_slot18",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_15_sobol_prompt_search_521_slot18_rep02.mp4",
+        "pocket": "fresh24_blue_jellyfish",
+        "policy": "content_pocket_candidate",
+        "side": "right",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": 2.115169,
+        "video_label": "bo_replay_15_sobol_prompt_search_521_slot18_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.091182,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_blue_jellyfish",
+      "target_side": "right",
+      "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_521_slot18_rep02_vs_storm_beach"
+    },
+    {
+      "analysis_tier": "exploratory_boundary",
+      "control_pocket": "fresh24_aerial_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.96775,
+        "generation_task_id": "sobol_prompt_search_518_slot03",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_02_sobol_prompt_search_518_slot03_rep00.mp4",
+        "pocket": "fresh24_aerial_beach",
+        "policy": "hard_negative_control",
+        "side": "left",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": -9.176817,
+        "video_label": "bo_replay_02_sobol_prompt_search_518_slot03_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.147933,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.96775,
+          "right_score": 0.951769,
+          "selects_target": false,
+          "winner_side": "left"
+        },
+        "composite_proxy_score": {
+          "left_score": -1.477197,
+          "right_score": 1.490893,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "tribe_bmd_projection": {
+          "left_score": -9.176817,
+          "right_score": 1.589406,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.147933,
+          "right_score": -0.002104,
+          "selects_target": true,
+          "winner_side": "right"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.951769,
+        "generation_task_id": "sobol_prompt_search_518_slot00",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_01_sobol_prompt_search_518_slot00_rep00.mp4",
+        "pocket": "fresh24_old_car",
+        "policy": "content_pocket_candidate",
+        "side": "right",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": 1.589406,
+        "video_label": "bo_replay_01_sobol_prompt_search_518_slot00_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.002104,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_old_car",
+      "target_side": "right",
+      "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_518_slot00_rep00_vs_aerial_beach"
+    },
+    {
+      "analysis_tier": "exploratory_boundary",
+      "control_pocket": "fresh24_city_street",
+      "left": {
+        "clip_seed_video_preservation": 0.951769,
+        "generation_task_id": "sobol_prompt_search_518_slot00",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_01_sobol_prompt_search_518_slot00_rep01.mp4",
+        "pocket": "fresh24_old_car",
+        "policy": "content_pocket_candidate",
+        "side": "left",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": 1.494064,
+        "video_label": "bo_replay_01_sobol_prompt_search_518_slot00_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.002224,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.951769,
+          "right_score": 0.971066,
+          "selects_target": false,
+          "winner_side": "right"
+        },
+        "composite_proxy_score": {
+          "left_score": 1.511884,
+          "right_score": -0.288375,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "tribe_bmd_projection": {
+          "left_score": 1.494064,
+          "right_score": -9.145174,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": 0.002224,
+          "right_score": -0.015102,
+          "selects_target": true,
+          "winner_side": "left"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.971066,
+        "generation_task_id": "sobol_prompt_search_518_slot08",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_03_sobol_prompt_search_518_slot08_rep01.mp4",
+        "pocket": "fresh24_city_street",
+        "policy": "hard_negative_control",
+        "side": "right",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": -9.145174,
+        "video_label": "bo_replay_03_sobol_prompt_search_518_slot08_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.015102,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_old_car",
+      "target_side": "left",
+      "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_518_slot00_rep01_vs_city_street"
+    },
+    {
+      "analysis_tier": "exploratory_boundary",
+      "control_pocket": "fresh24_storm_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.982784,
+        "generation_task_id": "sobol_prompt_search_518_slot14",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_04_sobol_prompt_search_518_slot14_rep02.mp4",
+        "pocket": "fresh24_storm_beach",
+        "policy": "hard_negative_control",
+        "side": "left",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": -11.121122,
+        "video_label": "bo_replay_04_sobol_prompt_search_518_slot14_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.153244,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.982784,
+          "right_score": 0.951769,
+          "selects_target": false,
+          "winner_side": "left"
+        },
+        "composite_proxy_score": {
+          "left_score": -1.71108,
+          "right_score": 1.469292,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "tribe_bmd_projection": {
+          "left_score": -11.121122,
+          "right_score": 1.399485,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.153244,
+          "right_score": -0.000804,
+          "selects_target": true,
+          "winner_side": "right"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.951769,
+        "generation_task_id": "sobol_prompt_search_518_slot00",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_01_sobol_prompt_search_518_slot00_rep02.mp4",
+        "pocket": "fresh24_old_car",
+        "policy": "content_pocket_candidate",
+        "side": "right",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": 1.399485,
+        "video_label": "bo_replay_01_sobol_prompt_search_518_slot00_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.000804,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_old_car",
+      "target_side": "right",
+      "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_518_slot00_rep02_vs_storm_beach"
+    },
+    {
+      "analysis_tier": "exploratory_boundary",
+      "control_pocket": "fresh24_aerial_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.960361,
+        "generation_task_id": "sobol_prompt_search_522_slot00",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_21_sobol_prompt_search_522_slot00_rep00.mp4",
+        "pocket": "fresh24_old_car",
+        "policy": "content_pocket_candidate",
+        "side": "left",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": 1.444213,
+        "video_label": "bo_replay_21_sobol_prompt_search_522_slot00_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.002252,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.960361,
+          "right_score": 0.972193,
+          "selects_target": false,
+          "winner_side": "right"
+        },
+        "composite_proxy_score": {
+          "left_score": 1.549373,
+          "right_score": -1.506984,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "tribe_bmd_projection": {
+          "left_score": 1.444213,
+          "right_score": -9.182333,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.002252,
+          "right_score": -0.156329,
+          "selects_target": true,
+          "winner_side": "left"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.972193,
+        "generation_task_id": "sobol_prompt_search_522_slot03",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_22_sobol_prompt_search_522_slot03_rep00.mp4",
+        "pocket": "fresh24_aerial_beach",
+        "policy": "hard_negative_control",
+        "side": "right",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": -9.182333,
+        "video_label": "bo_replay_22_sobol_prompt_search_522_slot03_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.156329,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_old_car",
+      "target_side": "left",
+      "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_522_slot00_rep00_vs_aerial_beach"
+    },
+    {
+      "analysis_tier": "exploratory_boundary",
+      "control_pocket": "fresh24_city_street",
+      "left": {
+        "clip_seed_video_preservation": 0.972046,
+        "generation_task_id": "sobol_prompt_search_522_slot08",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_23_sobol_prompt_search_522_slot08_rep01.mp4",
+        "pocket": "fresh24_city_street",
+        "policy": "hard_negative_control",
+        "side": "left",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": -9.294365,
+        "video_label": "bo_replay_23_sobol_prompt_search_522_slot08_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.020255,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.972046,
+          "right_score": 0.960361,
+          "selects_target": false,
+          "winner_side": "left"
+        },
+        "composite_proxy_score": {
+          "left_score": -0.349148,
+          "right_score": 1.566779,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "tribe_bmd_projection": {
+          "left_score": -9.294365,
+          "right_score": 1.465112,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.020255,
+          "right_score": -0.00066,
+          "selects_target": true,
+          "winner_side": "right"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.960361,
+        "generation_task_id": "sobol_prompt_search_522_slot00",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_21_sobol_prompt_search_522_slot00_rep01.mp4",
+        "pocket": "fresh24_old_car",
+        "policy": "content_pocket_candidate",
+        "side": "right",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": 1.465112,
+        "video_label": "bo_replay_21_sobol_prompt_search_522_slot00_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.00066,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_old_car",
+      "target_side": "right",
+      "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_522_slot00_rep01_vs_city_street"
+    },
+    {
+      "analysis_tier": "exploratory_boundary",
+      "control_pocket": "fresh24_storm_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.960361,
+        "generation_task_id": "sobol_prompt_search_522_slot00",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_21_sobol_prompt_search_522_slot00_rep02.mp4",
+        "pocket": "fresh24_old_car",
+        "policy": "content_pocket_candidate",
+        "side": "left",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": 1.59756,
+        "video_label": "bo_replay_21_sobol_prompt_search_522_slot00_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.002764,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.960361,
+          "right_score": 0.982311,
+          "selects_target": false,
+          "winner_side": "right"
+        },
+        "composite_proxy_score": {
+          "left_score": 1.571468,
+          "right_score": -1.683335,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "tribe_bmd_projection": {
+          "left_score": 1.59756,
+          "right_score": -10.935596,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.002764,
+          "right_score": -0.153208,
+          "selects_target": true,
+          "winner_side": "left"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.982311,
+        "generation_task_id": "sobol_prompt_search_522_slot14",
+        "mp4_found": true,
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_24_sobol_prompt_search_522_slot14_rep02.mp4",
+        "pocket": "fresh24_storm_beach",
+        "policy": "hard_negative_control",
+        "side": "right",
+        "source_pool": "boundary_pocket_audit",
+        "tribe_bmd_projection": -10.935596,
+        "video_label": "bo_replay_24_sobol_prompt_search_522_slot14_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.153208,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_old_car",
+      "target_side": "left",
+      "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_522_slot00_rep02_vs_storm_beach"
+    },
+    {
+      "analysis_tier": "primary",
+      "control_pocket": "fresh24_aerial_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.971105,
+        "generation_task_id": "sobol_prompt_search_520_slot03",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_12_sobol_prompt_search_520_slot03_rep00.mp4",
+        "pocket": "fresh24_aerial_beach",
+        "policy": "hard_negative_control",
+        "side": "left",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": -9.990209,
+        "video_label": "bo_replay_12_sobol_prompt_search_520_slot03_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.214154,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.971105,
+          "right_score": 0.990829,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "composite_proxy_score": {
+          "left_score": -1.87595,
+          "right_score": 1.651312,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "tribe_bmd_projection": {
+          "left_score": -9.990209,
+          "right_score": 4.153979,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.214154,
+          "right_score": 0.030891,
+          "selects_target": true,
+          "winner_side": "right"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.990829,
+        "generation_task_id": "sobol_prompt_search_520_slot12",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep00.mp4",
+        "pocket": "fresh24_hanging_clothes",
+        "policy": "content_pocket_candidate",
+        "side": "right",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": 4.153979,
+        "video_label": "bo_replay_11_sobol_prompt_search_520_slot12_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.030891,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_hanging_clothes",
+      "target_side": "right",
+      "task_id": "content_pocket_primary_hanging_clothes_sobol_prompt_search_520_slot12_rep00_vs_aerial_beach"
+    },
+    {
+      "analysis_tier": "primary",
+      "control_pocket": "fresh24_city_street",
+      "left": {
+        "clip_seed_video_preservation": 0.990829,
+        "generation_task_id": "sobol_prompt_search_520_slot12",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep01.mp4",
+        "pocket": "fresh24_hanging_clothes",
+        "policy": "content_pocket_candidate",
+        "side": "left",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": 2.498909,
+        "video_label": "bo_replay_11_sobol_prompt_search_520_slot12_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.051511,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.990829,
+          "right_score": 0.973172,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "composite_proxy_score": {
+          "left_score": 1.489303,
+          "right_score": -0.94969,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "tribe_bmd_projection": {
+          "left_score": 2.498909,
+          "right_score": -9.329524,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": 0.051511,
+          "right_score": -0.020647,
+          "selects_target": true,
+          "winner_side": "left"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.973172,
+        "generation_task_id": "sobol_prompt_search_520_slot08",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_13_sobol_prompt_search_520_slot08_rep01.mp4",
+        "pocket": "fresh24_city_street",
+        "policy": "hard_negative_control",
+        "side": "right",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": -9.329524,
+        "video_label": "bo_replay_13_sobol_prompt_search_520_slot08_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.020647,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_hanging_clothes",
+      "target_side": "left",
+      "task_id": "content_pocket_primary_hanging_clothes_sobol_prompt_search_520_slot12_rep01_vs_city_street"
+    },
+    {
+      "analysis_tier": "primary",
+      "control_pocket": "fresh24_storm_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.984433,
+        "generation_task_id": "sobol_prompt_search_520_slot14",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_14_sobol_prompt_search_520_slot14_rep02.mp4",
+        "pocket": "fresh24_storm_beach",
+        "policy": "hard_negative_control",
+        "side": "left",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": -10.916523,
+        "video_label": "bo_replay_14_sobol_prompt_search_520_slot14_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.206507,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.984433,
+          "right_score": 0.990829,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "composite_proxy_score": {
+          "left_score": -1.685116,
+          "right_score": 1.62688,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "tribe_bmd_projection": {
+          "left_score": -10.916523,
+          "right_score": 3.502567,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.206507,
+          "right_score": 0.048737,
+          "selects_target": true,
+          "winner_side": "right"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.990829,
+        "generation_task_id": "sobol_prompt_search_520_slot12",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep02.mp4",
+        "pocket": "fresh24_hanging_clothes",
+        "policy": "content_pocket_candidate",
+        "side": "right",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": 3.502567,
+        "video_label": "bo_replay_11_sobol_prompt_search_520_slot12_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.048737,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_hanging_clothes",
+      "target_side": "right",
+      "task_id": "content_pocket_primary_hanging_clothes_sobol_prompt_search_520_slot12_rep02_vs_storm_beach"
+    },
+    {
+      "analysis_tier": "primary",
+      "control_pocket": "fresh24_aerial_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.984645,
+        "generation_task_id": "sobol_prompt_search_521_slot12",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep00.mp4",
+        "pocket": "fresh24_hanging_clothes",
+        "policy": "content_pocket_candidate",
+        "side": "left",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": 3.199869,
+        "video_label": "bo_replay_16_sobol_prompt_search_521_slot12_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.061263,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.984645,
+          "right_score": 0.943282,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "composite_proxy_score": {
+          "left_score": 1.494725,
+          "right_score": -2.017973,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "tribe_bmd_projection": {
+          "left_score": 3.199869,
+          "right_score": -8.001116,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": 0.061263,
+          "right_score": -0.168726,
+          "selects_target": true,
+          "winner_side": "left"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.943282,
+        "generation_task_id": "sobol_prompt_search_521_slot03",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_17_sobol_prompt_search_521_slot03_rep00.mp4",
+        "pocket": "fresh24_aerial_beach",
+        "policy": "hard_negative_control",
+        "side": "right",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": -8.001116,
+        "video_label": "bo_replay_17_sobol_prompt_search_521_slot03_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.168726,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_hanging_clothes",
+      "target_side": "left",
+      "task_id": "content_pocket_primary_hanging_clothes_sobol_prompt_search_521_slot12_rep00_vs_aerial_beach"
+    },
+    {
+      "analysis_tier": "primary",
+      "control_pocket": "fresh24_city_street",
+      "left": {
+        "clip_seed_video_preservation": 0.968935,
+        "generation_task_id": "sobol_prompt_search_521_slot08",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_18_sobol_prompt_search_521_slot08_rep01.mp4",
+        "pocket": "fresh24_city_street",
+        "policy": "hard_negative_control",
+        "side": "left",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": -9.479427,
+        "video_label": "bo_replay_18_sobol_prompt_search_521_slot08_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.004804,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.968935,
+          "right_score": 0.984645,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "composite_proxy_score": {
+          "left_score": -0.96354,
+          "right_score": 1.501094,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "tribe_bmd_projection": {
+          "left_score": -9.479427,
+          "right_score": 3.609562,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": 0.004804,
+          "right_score": 0.047814,
+          "selects_target": true,
+          "winner_side": "right"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.984645,
+        "generation_task_id": "sobol_prompt_search_521_slot12",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep01.mp4",
+        "pocket": "fresh24_hanging_clothes",
+        "policy": "content_pocket_candidate",
+        "side": "right",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": 3.609562,
+        "video_label": "bo_replay_16_sobol_prompt_search_521_slot12_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.047814,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_hanging_clothes",
+      "target_side": "right",
+      "task_id": "content_pocket_primary_hanging_clothes_sobol_prompt_search_521_slot12_rep01_vs_city_street"
+    },
+    {
+      "analysis_tier": "primary",
+      "control_pocket": "fresh24_storm_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.984645,
+        "generation_task_id": "sobol_prompt_search_521_slot12",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep02.mp4",
+        "pocket": "fresh24_hanging_clothes",
+        "policy": "content_pocket_candidate",
+        "side": "left",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": 3.999482,
+        "video_label": "bo_replay_16_sobol_prompt_search_521_slot12_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.045766,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.984645,
+          "right_score": 0.972377,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "composite_proxy_score": {
+          "left_score": 1.550618,
+          "right_score": -1.79514,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "tribe_bmd_projection": {
+          "left_score": 3.999482,
+          "right_score": -9.874088,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": 0.045766,
+          "right_score": -0.205438,
+          "selects_target": true,
+          "winner_side": "left"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.972377,
+        "generation_task_id": "sobol_prompt_search_521_slot14",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_19_sobol_prompt_search_521_slot14_rep02.mp4",
+        "pocket": "fresh24_storm_beach",
+        "policy": "hard_negative_control",
+        "side": "right",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": -9.874088,
+        "video_label": "bo_replay_19_sobol_prompt_search_521_slot14_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.205438,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_hanging_clothes",
+      "target_side": "left",
+      "task_id": "content_pocket_primary_hanging_clothes_sobol_prompt_search_521_slot12_rep02_vs_storm_beach"
+    },
+    {
+      "analysis_tier": "primary",
+      "control_pocket": "fresh24_aerial_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.966521,
+        "generation_task_id": "sobol_prompt_search_519_slot10",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep00.mp4",
+        "pocket": "fresh24_orange_flowers",
+        "policy": "content_pocket_candidate",
+        "side": "left",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": 3.701335,
+        "video_label": "bo_replay_05_sobol_prompt_search_519_slot10_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.086431,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.966521,
+          "right_score": 0.953765,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "composite_proxy_score": {
+          "left_score": 1.266593,
+          "right_score": -1.714201,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "tribe_bmd_projection": {
+          "left_score": 3.701335,
+          "right_score": -7.784473,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": 0.086431,
+          "right_score": -0.159362,
+          "selects_target": true,
+          "winner_side": "left"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.953765,
+        "generation_task_id": "sobol_prompt_search_519_slot03",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_07_sobol_prompt_search_519_slot03_rep00.mp4",
+        "pocket": "fresh24_aerial_beach",
+        "policy": "hard_negative_control",
+        "side": "right",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": -7.784473,
+        "video_label": "bo_replay_07_sobol_prompt_search_519_slot03_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.159362,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_orange_flowers",
+      "target_side": "left",
+      "task_id": "content_pocket_primary_orange_flowers_sobol_prompt_search_519_slot10_rep00_vs_aerial_beach"
+    },
+    {
+      "analysis_tier": "primary",
+      "control_pocket": "fresh24_city_street",
+      "left": {
+        "clip_seed_video_preservation": 0.970054,
+        "generation_task_id": "sobol_prompt_search_519_slot08",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_08_sobol_prompt_search_519_slot08_rep01.mp4",
+        "pocket": "fresh24_city_street",
+        "policy": "hard_negative_control",
+        "side": "left",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": -9.013377,
+        "video_label": "bo_replay_08_sobol_prompt_search_519_slot08_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.019928,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.970054,
+          "right_score": 0.966521,
+          "selects_target": false,
+          "winner_side": "left"
+        },
+        "composite_proxy_score": {
+          "left_score": -0.969468,
+          "right_score": 1.34891,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "tribe_bmd_projection": {
+          "left_score": -9.013377,
+          "right_score": 4.451239,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.019928,
+          "right_score": 0.079293,
+          "selects_target": true,
+          "winner_side": "right"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.966521,
+        "generation_task_id": "sobol_prompt_search_519_slot10",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep01.mp4",
+        "pocket": "fresh24_orange_flowers",
+        "policy": "content_pocket_candidate",
+        "side": "right",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": 4.451239,
+        "video_label": "bo_replay_05_sobol_prompt_search_519_slot10_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.079293,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_orange_flowers",
+      "target_side": "right",
+      "task_id": "content_pocket_primary_orange_flowers_sobol_prompt_search_519_slot10_rep01_vs_city_street"
+    },
+    {
+      "analysis_tier": "primary",
+      "control_pocket": "fresh24_storm_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.966521,
+        "generation_task_id": "sobol_prompt_search_519_slot10",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep02.mp4",
+        "pocket": "fresh24_orange_flowers",
+        "policy": "content_pocket_candidate",
+        "side": "left",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": 4.157979,
+        "video_label": "bo_replay_05_sobol_prompt_search_519_slot10_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.077773,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.966521,
+          "right_score": 0.979276,
+          "selects_target": false,
+          "winner_side": "right"
+        },
+        "composite_proxy_score": {
+          "left_score": 1.299292,
+          "right_score": -1.764442,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "tribe_bmd_projection": {
+          "left_score": 4.157979,
+          "right_score": -10.67312,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": 0.077773,
+          "right_score": -0.206604,
+          "selects_target": true,
+          "winner_side": "left"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.979276,
+        "generation_task_id": "sobol_prompt_search_519_slot14",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_09_sobol_prompt_search_519_slot14_rep02.mp4",
+        "pocket": "fresh24_storm_beach",
+        "policy": "hard_negative_control",
+        "side": "right",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": -10.67312,
+        "video_label": "bo_replay_09_sobol_prompt_search_519_slot14_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.206604,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_orange_flowers",
+      "target_side": "left",
+      "task_id": "content_pocket_primary_orange_flowers_sobol_prompt_search_519_slot10_rep02_vs_storm_beach"
+    },
+    {
+      "analysis_tier": "primary",
+      "control_pocket": "fresh24_aerial_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.971105,
+        "generation_task_id": "sobol_prompt_search_520_slot03",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_12_sobol_prompt_search_520_slot03_rep00.mp4",
+        "pocket": "fresh24_aerial_beach",
+        "policy": "hard_negative_control",
+        "side": "left",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": -9.990209,
+        "video_label": "bo_replay_12_sobol_prompt_search_520_slot03_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.214154,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.971105,
+          "right_score": 0.976914,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "composite_proxy_score": {
+          "left_score": -1.87595,
+          "right_score": 1.610459,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "tribe_bmd_projection": {
+          "left_score": -9.990209,
+          "right_score": 3.872216,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.214154,
+          "right_score": 0.107891,
+          "selects_target": true,
+          "winner_side": "right"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.976914,
+        "generation_task_id": "sobol_prompt_search_520_slot10",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep00.mp4",
+        "pocket": "fresh24_orange_flowers",
+        "policy": "content_pocket_candidate",
+        "side": "right",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": 3.872216,
+        "video_label": "bo_replay_10_sobol_prompt_search_520_slot10_rep00",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.107891,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_orange_flowers",
+      "target_side": "right",
+      "task_id": "content_pocket_primary_orange_flowers_sobol_prompt_search_520_slot10_rep00_vs_aerial_beach"
+    },
+    {
+      "analysis_tier": "primary",
+      "control_pocket": "fresh24_city_street",
+      "left": {
+        "clip_seed_video_preservation": 0.976914,
+        "generation_task_id": "sobol_prompt_search_520_slot10",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep01.mp4",
+        "pocket": "fresh24_orange_flowers",
+        "policy": "content_pocket_candidate",
+        "side": "left",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": 4.306248,
+        "video_label": "bo_replay_10_sobol_prompt_search_520_slot10_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.128085,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.976914,
+          "right_score": 0.973172,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "composite_proxy_score": {
+          "left_score": 1.756431,
+          "right_score": -0.94969,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "tribe_bmd_projection": {
+          "left_score": 4.306248,
+          "right_score": -9.329524,
+          "selects_target": true,
+          "winner_side": "left"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": 0.128085,
+          "right_score": -0.020647,
+          "selects_target": true,
+          "winner_side": "left"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.973172,
+        "generation_task_id": "sobol_prompt_search_520_slot08",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_13_sobol_prompt_search_520_slot08_rep01.mp4",
+        "pocket": "fresh24_city_street",
+        "policy": "hard_negative_control",
+        "side": "right",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": -9.329524,
+        "video_label": "bo_replay_13_sobol_prompt_search_520_slot08_rep01",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.020647,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_orange_flowers",
+      "target_side": "left",
+      "task_id": "content_pocket_primary_orange_flowers_sobol_prompt_search_520_slot10_rep01_vs_city_street"
+    },
+    {
+      "analysis_tier": "primary",
+      "control_pocket": "fresh24_storm_beach",
+      "left": {
+        "clip_seed_video_preservation": 0.984433,
+        "generation_task_id": "sobol_prompt_search_520_slot14",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_14_sobol_prompt_search_520_slot14_rep02.mp4",
+        "pocket": "fresh24_storm_beach",
+        "policy": "hard_negative_control",
+        "side": "left",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": -10.916523,
+        "video_label": "bo_replay_14_sobol_prompt_search_520_slot14_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": -0.206507,
+        "vjepa_feature_found": true
+      },
+      "proxy_decisions": {
+        "clip_seed_video_preservation": {
+          "left_score": 0.984433,
+          "right_score": 0.976914,
+          "selects_target": false,
+          "winner_side": "left"
+        },
+        "composite_proxy_score": {
+          "left_score": -1.685116,
+          "right_score": 1.650658,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "tribe_bmd_projection": {
+          "left_score": -10.916523,
+          "right_score": 4.056302,
+          "selects_target": true,
+          "winner_side": "right"
+        },
+        "vjepa_centroid_margin": {
+          "left_score": -0.206507,
+          "right_score": 0.111084,
+          "selects_target": true,
+          "winner_side": "right"
+        }
+      },
+      "right": {
+        "clip_seed_video_preservation": 0.976914,
+        "generation_task_id": "sobol_prompt_search_520_slot10",
+        "mp4_found": true,
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep02.mp4",
+        "pocket": "fresh24_orange_flowers",
+        "policy": "content_pocket_candidate",
+        "side": "right",
+        "source_pool": "descriptor_conditioned_replication",
+        "tribe_bmd_projection": 4.056302,
+        "video_label": "bo_replay_10_sobol_prompt_search_520_slot10_rep02",
+        "visual_first_status": "retained",
+        "visual_gate_passed": true,
+        "vjepa_centroid_margin": 0.111084,
+        "vjepa_feature_found": true
+      },
+      "target_pocket": "fresh24_orange_flowers",
+      "target_side": "right",
+      "task_id": "content_pocket_primary_orange_flowers_sobol_prompt_search_520_slot10_rep02_vs_storm_beach"
+    }
+  ],
+  "relation_to_content_pocket_validation": "The frozen 24-task set is used here only as an existing target for a no-generation proxy-agreement dry run. It remains separate from the manual MP4 screening, hosted-video, forced-choice, and measured-BMD validation lane.",
+  "reward_components": [
+    {
+      "differentiability": "black-box scalar unless the full TRIBE/BMD scorer is wired into a differentiable generator loop",
+      "locally_available_now": true,
+      "name": "tribe_bmd_projection",
+      "overclaiming_guard": "proxy for the model projection only; not human memorability",
+      "required_inputs": [
+        "generated MP4",
+        "TRIBE/BMD replay scoring artifact"
+      ],
+      "role_in_dry_run": "higher raw replay projection selects the side"
+    },
+    {
+      "differentiability": "black-box embedding scorer for current use; differentiable only inside a separately supported model pipeline",
+      "locally_available_now": true,
+      "name": "vjepa_centroid_margin",
+      "overclaiming_guard": "representation agreement signal only; not a validated reward model",
+      "required_inputs": [
+        "generated MP4",
+        "exact V-JEPA `.npz` features"
+      ],
+      "role_in_dry_run": "positive-minus-control centroid margin within each analysis tier"
+    },
+    {
+      "differentiability": "black-box embedding similarity in this repo context",
+      "locally_available_now": true,
+      "name": "clip_seed_video_preservation",
+      "overclaiming_guard": "preservation/semantic guardrail; can disagree with TRIBE and content-pocket labels",
+      "required_inputs": [
+        "generated MP4",
+        "seed image",
+        "committed CLIP diagnostic summary"
+      ],
+      "role_in_dry_run": "higher seed-video CLIP cosine selects the side as a preservation guardrail"
+    },
+    {
+      "differentiability": "inherits black-box status of component scorers",
+      "formula": "z(TRIBE) + 0.5*z(V-JEPA centroid margin) + 0.25*z(CLIP seed-video preservation), z-scored within tier",
+      "locally_available_now": true,
+      "name": "composite_proxy_score",
+      "overclaiming_guard": "candidate-selection heuristic only; no validation claim",
+      "required_inputs": [
+        "all component scores above"
+      ],
+      "role_in_dry_run": "illustrates whether a simple composite would rerank existing candidates differently"
+    }
+  ],
+  "schema_version": "neural_response_guided_generation_dry_run.v1",
+  "scope": {
+    "human_memorability_validation_claim": false,
+    "lane": "parallel_satellite_feasibility_track",
+    "modifies_frozen_validation_set": false,
+    "no_generation": true,
+    "proxy_only": true
+  },
+  "smallest_safe_next_spike": [
+    "Run this proxy-only scorer on a larger generated candidate batch with held-out naming and no human-validation language.",
+    "Review disagreement cases where CLIP preservation picks controls but TRIBE/V-JEPA pick content-pocket candidates.",
+    "Only after proxy behavior is documented, decide whether a new candidate-generation batch is worth human or measured-BMD evaluation."
+  ],
+  "source_inputs": {
+    "embedding_summaries": {
+      "boundary_pocket_audit": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/boundary_pocket_audit_embedding_summary_20260608.json",
+      "descriptor_conditioned_replication": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/descriptor_conditioned_replication_embedding_summary_20260608.json"
+    },
+    "pairwise_tasks": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_validation_pairwise_tasks_20260608.json",
+    "replay_reports": {
+      "boundary_pocket_audit": "data/reports/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608.json",
+      "descriptor_conditioned_replication": "data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json"
+    },
+    "vjepa_feature_dirs": {
+      "boundary_pocket_audit": "data/features/vjepa_boundary_pocket_audit_20260608",
+      "descriptor_conditioned_replication": "data/features/vjepa_descriptor_conditioned_replication_20260608"
+    }
+  },
+  "stop_rules": [
+    "Stop if the task is framed as proving human memorability or replacing human/BMD validation.",
+    "Stop if the frozen 24-task content-pocket stimulus set would be edited by a proxy experiment.",
+    "Stop if prompt text is varied in a runner where prompt text does not affect generated pixels.",
+    "Stop if V-JEPA, CLIP, saliency, or TRIBE outputs are described as validated human reward models.",
+    "Stop before launch if MP4s, V-JEPA features, or visual-gate statuses are missing for the intended candidate pool."
+  ]
+}
