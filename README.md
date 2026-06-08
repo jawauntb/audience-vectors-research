@@ -164,6 +164,10 @@ recognition memorability.
   image-backed prompt slots. The recipes did not transfer: only jellyfish stayed
   positive, and matched Sobol-transfer controls slightly beat BO-transfer
   overall.
+- A per-prompt Sobol search over the same five image-backed prompt slots found
+  that prompt/seed identity dominates alpha/guidance choice: prompt-only R2 =
+  0.9196 on retained TRIBE scores, while recipe-only R2 = 0.0062. All top eight
+  retained rows were blue jellyfish.
 
 ### 2026-06-08 Max-3 Regenerated Visual Controls Result
 
@@ -210,6 +214,32 @@ This is evidence against portable BO recipe transfer. The saved high-scoring BO
 recipes are jellyfish-pocket recipes, not reusable global steering/guidance
 policies. The committed run note is
 `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/prompt_transfer_stress_test_result_20260608.md`.
+
+### 2026-06-08 Per-Prompt Sobol Search Result
+
+The per-prompt search panel tested eight shared Sobol alpha/guidance points
+across each of the five locally image-backed prompt slots. It generated 40/40
+clips; two fireworks rows failed the visual gate, so complete-candidate
+retention scored 38/40 retained candidates with full TRIBE.
+
+| prompt slot | scored / requested | mean TRIBE | best score |
+|---|---:|---:|---:|
+| fireworks | 6 / 8 | -3.9068 | -1.9761 |
+| ocean cliffs | 8 / 8 | -8.1526 | -6.8832 |
+| concert stage | 8 / 8 | -1.3808 | -0.1553 |
+| blue jellyfish | 8 / 8 | 1.6597 | 2.9734 |
+| forest canopy | 8 / 8 | -3.7246 | -1.7318 |
+
+Prompt identity explained almost all retained score variance (prompt-only R2 =
+0.9196), while Sobol recipe index alone explained almost none (R2 = 0.0062).
+The top eight retained candidates were all blue jellyfish. The committed run
+note is
+`research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/per_prompt_sobol_search_result_20260608.md`.
+
+The new operating conclusion is that alpha/guidance-only search is exhausted as
+a broadening axis under the current replay regime. The next search should add
+content variables: prompt rewriting, seed-image selection, or seed-bank
+expansion before more BO over alpha/guidance.
 
 See the project conversation for the full design write-up. This README is
 just the operating manual.
