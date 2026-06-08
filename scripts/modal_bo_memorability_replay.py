@@ -526,8 +526,118 @@ def attach_visual_artifact_gate(
     }
 
 
+def row_task_id(row: dict[str, Any]) -> str:
+    trial = row.get("trial")
+    if isinstance(trial, dict) and trial.get("task_id") is not None:
+        return str(trial["task_id"])
+    return row_label(row)
+
+
+def apply_visual_first_retention(
+    rows: list[dict[str, Any]],
+    *,
+    mode: str,
+) -> dict[str, Any]:
+    """Mark rows retained for scoring after visual gating."""
+    if mode == "none":
+        for row in rows:
+            row["visual_first_status"] = "not_applied"
+        return {
+            "schema_version": 1,
+            "mode": mode,
+            "n_rows": len(rows),
+            "n_retained_rows": len(rows),
+            "n_withheld_rows": 0,
+            "n_candidates": len({row_task_id(row) for row in rows}),
+            "n_retained_candidates": len({row_task_id(row) for row in rows}),
+            "n_withheld_candidates": 0,
+            "retained_task_ids": sorted({row_task_id(row) for row in rows}),
+            "withheld_task_ids": [],
+        }
+
+    if mode not in {"passing-videos", "complete-candidates"}:
+        raise ValueError(f"unsupported visual-first retention mode: {mode}")
+
+    row_passes = {
+        row_label(row): bool(
+            (row.get("visual_artifact_gate") or {}).get("passes_visual_gate")
+        )
+        for row in rows
+    }
+    retained_labels: set[str]
+    if mode == "passing-videos":
+        retained_labels = {label for label, passes in row_passes.items() if passes}
+    else:
+        labels_by_task: dict[str, list[str]] = {}
+        for row in rows:
+            labels_by_task.setdefault(row_task_id(row), []).append(row_label(row))
+        retained_tasks = {
+            task_id
+            for task_id, labels in labels_by_task.items()
+            if labels and all(row_passes[label] for label in labels)
+        }
+        retained_labels = {
+            row_label(row) for row in rows if row_task_id(row) in retained_tasks
+        }
+
+    retained_task_ids: set[str] = set()
+    withheld_task_ids: set[str] = set()
+    retained_rows = 0
+    for row in rows:
+        retained = row_label(row) in retained_labels
+        row["visual_first_retained"] = retained
+        if retained:
+            row["visual_first_status"] = "retained"
+            retained_rows += 1
+            retained_task_ids.add(row_task_id(row))
+            continue
+
+        withheld_task_ids.add(row_task_id(row))
+        gate = row.get("visual_artifact_gate") or {}
+        if gate.get("passes_visual_gate") is False:
+            row["visual_first_status"] = "withheld_visual_failure"
+        else:
+            row["visual_first_status"] = "withheld_candidate_has_visual_failure"
+
+    return {
+        "schema_version": 1,
+        "mode": mode,
+        "n_rows": len(rows),
+        "n_retained_rows": retained_rows,
+        "n_withheld_rows": len(rows) - retained_rows,
+        "n_candidates": len({row_task_id(row) for row in rows}),
+        "n_retained_candidates": len(retained_task_ids),
+        "n_withheld_candidates": len(withheld_task_ids),
+        "retained_task_ids": sorted(retained_task_ids),
+        "withheld_task_ids": sorted(withheld_task_ids),
+        "withheld_failures": [
+            {
+                "label": row_label(row),
+                "task_id": row_task_id(row),
+                "status": row.get("visual_first_status"),
+                "artifact_flags": (row.get("visual_artifact_gate") or {}).get(
+                    "artifact_flags",
+                    [],
+                ),
+            }
+            for row in rows
+            if not row.get("visual_first_retained")
+        ],
+    }
+
+
 def validate_run_inputs(args: argparse.Namespace, *, require_artifacts: bool) -> None:
     """Fail early if a non-dry replay is missing local run artifacts."""
+    skip_visual_gate = bool(getattr(args, "skip_visual_gate", False))
+    fail_on_visual_artifacts = bool(getattr(args, "fail_on_visual_artifacts", False))
+    visual_first_retention = str(getattr(args, "visual_first_retention", "none"))
+    if skip_visual_gate and visual_first_retention != "none":
+        raise ValueError("--visual-first-retention requires the visual gate")
+    if fail_on_visual_artifacts and visual_first_retention != "none":
+        raise ValueError(
+            "--fail-on-visual-artifacts cannot be combined with "
+            "--visual-first-retention"
+        )
     if args.trial_table is None or not args.trial_table.exists():
         raise FileNotFoundError(f"trial table not found: {args.trial_table}")
     if args.seed_root is None or not args.seed_root.exists():
@@ -575,6 +685,7 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
 
     rows: list[dict[str, Any]]
     visual_artifact_gate: dict[str, Any] | None = None
+    visual_first_retention: dict[str, Any] | None = None
     visual_gate_blocked_scoring = False
     if args.dry_run:
         log("dry run only; not generating or scoring videos")
@@ -648,15 +759,33 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
                 args.fail_on_visual_artifacts
                 and not visual_artifact_gate["passes_visual_gate"]
             )
+            if args.visual_first_retention != "none":
+                visual_first_retention = apply_visual_first_retention(
+                    rows,
+                    mode=args.visual_first_retention,
+                )
+                log(
+                    "visual-first retention kept "
+                    f"{visual_first_retention['n_retained_rows']}/"
+                    f"{visual_first_retention['n_rows']} rows and "
+                    f"{visual_first_retention['n_retained_candidates']}/"
+                    f"{visual_first_retention['n_candidates']} candidates"
+                )
 
         if visual_gate_blocked_scoring:
             log("visual artifact gate failed; skipping upload and TRIBE scoring")
         else:
-            upload_generated_videos(rows, volume_name=args.volume)
+            scoring_rows = [
+                row
+                for row in rows
+                if args.visual_first_retention == "none"
+                or row.get("visual_first_retained")
+            ]
+            upload_generated_videos(scoring_rows, volume_name=args.volume)
             log(f"loading cortical v_mem from {args.cortical_vmem}")
             cortical_vmem = load_unit_npz_vector(args.cortical_vmem, key=args.vmem_key)
             await score_rows_with_tribe(
-                rows,
+                scoring_rows,
                 app_name=args.app_name,
                 cortical_vmem=cortical_vmem,
                 concurrency=args.tribe_concurrency,
@@ -686,6 +815,8 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         "tribe_input": args.tribe_input,
         "skip_visual_gate": bool(args.skip_visual_gate),
         "fail_on_visual_artifacts": bool(args.fail_on_visual_artifacts),
+        "visual_first_retention_mode": args.visual_first_retention,
+        "visual_first_retention": visual_first_retention,
         "visual_artifact_gate": visual_artifact_gate,
         "visual_gate_blocked_scoring": visual_gate_blocked_scoring,
         "dry_run": bool(args.dry_run),
@@ -843,6 +974,17 @@ def parse_args() -> argparse.Namespace:
             "After generation, write the replay report and exit nonzero if any "
             "generated video fails the visual artifact gate. Upload/TRIBE scoring "
             "is skipped when the gate fails."
+        ),
+    )
+    parser.add_argument(
+        "--visual-first-retention",
+        choices=["none", "passing-videos", "complete-candidates"],
+        default="none",
+        help=(
+            "After visual gating, choose which generated videos are retained for "
+            "upload/TRIBE scoring. `passing-videos` scores only passing videos. "
+            "`complete-candidates` scores only candidates whose full replicate "
+            "set passed the visual gate."
         ),
     )
     parser.add_argument(

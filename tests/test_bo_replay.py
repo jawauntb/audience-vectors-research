@@ -251,6 +251,8 @@ def test_parse_args_exposes_svd_generation_controls(monkeypatch):
             "0",
             "--svd-fps",
             "11",
+            "--visual-first-retention",
+            "complete-candidates",
         ],
     )
 
@@ -261,6 +263,75 @@ def test_parse_args_exposes_svd_generation_controls(monkeypatch):
     assert args.svd_motion_bucket_id == 40
     assert args.svd_noise_aug_strength == pytest.approx(0.0)
     assert args.svd_fps == 11
+    assert args.visual_first_retention == "complete-candidates"
+
+
+def test_apply_visual_first_retention_requires_complete_candidate_replicates():
+    module = load_modal_replay_module()
+    rows = [
+        {
+            "label": "candidate_a_rep00",
+            "trial": {"task_id": "candidate_a"},
+            "visual_artifact_gate": {"passes_visual_gate": True},
+        },
+        {
+            "label": "candidate_a_rep01",
+            "trial": {"task_id": "candidate_a"},
+            "visual_artifact_gate": {"passes_visual_gate": True},
+        },
+        {
+            "label": "candidate_b_rep00",
+            "trial": {"task_id": "candidate_b"},
+            "visual_artifact_gate": {"passes_visual_gate": True},
+        },
+        {
+            "label": "candidate_b_rep01",
+            "trial": {"task_id": "candidate_b"},
+            "visual_artifact_gate": {
+                "passes_visual_gate": False,
+                "artifact_flags": ["tail_sharpness_collapse"],
+            },
+        },
+    ]
+
+    summary = module.apply_visual_first_retention(
+        rows,
+        mode="complete-candidates",
+    )
+
+    assert summary["n_retained_rows"] == 2
+    assert summary["n_withheld_rows"] == 2
+    assert summary["retained_task_ids"] == ["candidate_a"]
+    assert summary["withheld_task_ids"] == ["candidate_b"]
+    assert rows[0]["visual_first_status"] == "retained"
+    assert rows[2]["visual_first_status"] == "withheld_candidate_has_visual_failure"
+    assert rows[3]["visual_first_status"] == "withheld_visual_failure"
+    assert summary["withheld_failures"][-1]["artifact_flags"] == [
+        "tail_sharpness_collapse"
+    ]
+
+
+def test_apply_visual_first_retention_can_keep_only_passing_videos():
+    module = load_modal_replay_module()
+    rows = [
+        {
+            "label": "candidate_a_rep00",
+            "trial": {"task_id": "candidate_a"},
+            "visual_artifact_gate": {"passes_visual_gate": True},
+        },
+        {
+            "label": "candidate_a_rep01",
+            "trial": {"task_id": "candidate_a"},
+            "visual_artifact_gate": {"passes_visual_gate": False},
+        },
+    ]
+
+    summary = module.apply_visual_first_retention(rows, mode="passing-videos")
+
+    assert summary["n_retained_rows"] == 1
+    assert summary["n_withheld_rows"] == 1
+    assert rows[0]["visual_first_retained"]
+    assert not rows[1]["visual_first_retained"]
 
 
 def test_attach_visual_artifact_gate_summarizes_generated_rows(monkeypatch, tmp_path):

@@ -77,6 +77,9 @@ Visual gate options:
 - `--fail-on-visual-artifacts`: write the report and exit nonzero if any
   generated video fails the visual gate; upload and TRIBE scoring are skipped
   when the gate fails.
+- `--visual-first-retention`: visual-first scoring mode. Use `passing-videos`
+  to upload/score only visual-passing rows, or `complete-candidates` to
+  upload/score only candidates whose full replicate set passes the visual gate.
 - `--visual-gate-samples`: number of evenly spaced frames sampled per video.
 
 SVD quality controls:
@@ -349,8 +352,11 @@ This run should be used to narrow the BO claim, not strengthen it.
   settings (`50` steps, motion bucket `5`, noise `0`) passed 4/4 clips and
   completed 4/4 TRIBE scores in a one-replicate panel, but the three-replicate
   panel failed 1/12 clips because `sobol_007` replicate 2 repeatedly collapsed.
-  The human-panel path is blocked until the protocol does visual-first
-  replacement or resampling under a matched budget.
+  A visual-first `max_evals=2` replacement pool generated 21/21 clips, withheld
+  3/7 complete candidates, and scored 12/21 retained rows. The saved-table pool
+  still lacks a retained fireworks Sobol candidate, so the human-panel path
+  remains blocked until controls are regenerated with visual screening before
+  scoring.
 - Report wall-clock and average minutes per evaluation.
 - Treat runtime as a limitation: BO is sample-efficient, not yet wall-clock
   efficient.
