@@ -1,0 +1,1792 @@
+{
+  "analysis_counts_per_form": {
+    "hard_negative_control": 3,
+    "primary_positive": 2
+  },
+  "created_at_utc": "2026-06-08T22:19:35+00:00",
+  "current_regime_reading": "This upgrades the validation endpoint from perceived memorability preference to old-vs-lure recognition memory. It still remains unlaunched until new lures and fillers are generated and screened.",
+  "exclusion_rules": [
+    "Exclude participants who do not complete both sessions with a matched participant_id.",
+    "Exclude participants with incomplete old-target exposure in Session 1.",
+    "Exclude trials where either old or lure MP4 fails to load.",
+    "Pre-register response-time and attention-check exclusions before launch.",
+    "Keep excluded rows in the exported dataset with exclusion reasons."
+  ],
+  "filler_requirements": {
+    "candidate_filler_seed_pockets": [
+      "fresh24_golden_grass",
+      "fresh24_red_mailbox",
+      "fresh24_suspension_bridge",
+      "fresh24_lighthouse",
+      "fresh24_coastal_tracks",
+      "fresh24_ocean_cliffs",
+      "fresh24_concert_stage",
+      "fresh24_misty_woods",
+      "fresh24_wheat_closeup",
+      "fresh24_cloud_mountain",
+      "fresh24_mountain_fog",
+      "fresh24_forest_canopy",
+      "fresh24_dewy_grass",
+      "fresh24_sparse_forest"
+    ],
+    "rule": "Fillers must be unrelated to primary and hard-negative analysis arms and must not be reused as analysis lures.",
+    "session1_unrelated_filler_targets_per_participant": 25,
+    "session2_unrelated_filler_recognition_trials_per_participant": 20
+  },
+  "launch_blockers": [
+    "Need distinct same-category lure seed images for every old target variant.",
+    "Need generated lure MP4s from those seed images.",
+    "Need unrelated filler targets and filler lures.",
+    "Need MP4 screening/contact sheets for generated lures and fillers.",
+    "Need hosted HTTPS URLs and Prolific two-session setup."
+  ],
+  "lure_generation_requests": [
+    {
+      "analysis_group": "primary_positive",
+      "arm_id": "orange_flowers",
+      "distinctiveness_requirements": [
+        "same broad category as orange flowers",
+        "not a close-up near-duplicate of the frozen target clip",
+        "different flower arrangement, background, and camera angle",
+        "orange remains visible but color layout differs from old target"
+      ],
+      "generation_request": {
+        "alpha": 2.813289761543274,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 7.6452042162418365,
+        "matched_recipe_index": 519,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765190
+      },
+      "lure_id": "orange_flowers_lure_v00",
+      "matched_old_video": {
+        "label": "bo_replay_05_sobol_prompt_search_519_slot10_rep01",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep01.mp4",
+        "recipe_index": 519,
+        "replay_tribe_score": 4.451238632202148,
+        "replicate_index": 1,
+        "sha256": "3242160a045724e92bf3612899c1032907d6523b1521bd6d3afa5308947e6987",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep01.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": 2.813289761543274,
+          "guidance": 7.6452042162418365,
+          "lookup_status": "found",
+          "prompt": "Orange flowers fill the frame while petals and leaves move softly in warm light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 260519
+        }
+      },
+      "pocket": "fresh24_orange_flowers",
+      "prompt": "A different cluster of orange flowers in a wider garden setting, with a distinct camera angle, background, and petal layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/orange_flowers_lure_v00.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "orange_flowers_old_v00"
+    },
+    {
+      "analysis_group": "primary_positive",
+      "arm_id": "orange_flowers",
+      "distinctiveness_requirements": [
+        "same broad category as orange flowers",
+        "not a close-up near-duplicate of the frozen target clip",
+        "different flower arrangement, background, and camera angle",
+        "orange remains visible but color layout differs from old target"
+      ],
+      "generation_request": {
+        "alpha": 2.3916587829589844,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 2.56687861867249,
+        "matched_recipe_index": 520,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765201
+      },
+      "lure_id": "orange_flowers_lure_v01",
+      "matched_old_video": {
+        "label": "bo_replay_10_sobol_prompt_search_520_slot10_rep01",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep01.mp4",
+        "recipe_index": 520,
+        "replay_tribe_score": 4.306247711181641,
+        "replicate_index": 1,
+        "sha256": "e65bfdf346cb825e3887b5ca1242ef3a9d24366cfa4cc4401f85cadcc7fa3836",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep01.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": 2.3916587829589844,
+          "guidance": 2.56687861867249,
+          "lookup_status": "found",
+          "prompt": "Orange flowers fill the frame while petals and leaves move softly in warm light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 260520
+        }
+      },
+      "pocket": "fresh24_orange_flowers",
+      "prompt": "A different cluster of orange flowers in a wider garden setting, with a distinct camera angle, background, and petal layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/orange_flowers_lure_v01.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "orange_flowers_old_v01"
+    },
+    {
+      "analysis_group": "primary_positive",
+      "arm_id": "orange_flowers",
+      "distinctiveness_requirements": [
+        "same broad category as orange flowers",
+        "not a close-up near-duplicate of the frozen target clip",
+        "different flower arrangement, background, and camera angle",
+        "orange remains visible but color layout differs from old target"
+      ],
+      "generation_request": {
+        "alpha": 2.813289761543274,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 7.6452042162418365,
+        "matched_recipe_index": 519,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765192
+      },
+      "lure_id": "orange_flowers_lure_v02",
+      "matched_old_video": {
+        "label": "bo_replay_05_sobol_prompt_search_519_slot10_rep02",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep02.mp4",
+        "recipe_index": 519,
+        "replay_tribe_score": 4.1579790115356445,
+        "replicate_index": 2,
+        "sha256": "cb69fba9f033db54759113c7e1e65ed35a66788da9d22f5333d5c9d11f2dfae7",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep02.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": 2.813289761543274,
+          "guidance": 7.6452042162418365,
+          "lookup_status": "found",
+          "prompt": "Orange flowers fill the frame while petals and leaves move softly in warm light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 270519
+        }
+      },
+      "pocket": "fresh24_orange_flowers",
+      "prompt": "A different cluster of orange flowers in a wider garden setting, with a distinct camera angle, background, and petal layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/orange_flowers_lure_v02.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "orange_flowers_old_v02"
+    },
+    {
+      "analysis_group": "primary_positive",
+      "arm_id": "hanging_clothes",
+      "distinctiveness_requirements": [
+        "same broad category as hanging clothes",
+        "not a rack-centered near-duplicate of the frozen target clip",
+        "different setting, hanger/clothesline geometry, and camera angle",
+        "fabric colors differ enough to support exact old-vs-lure memory"
+      ],
+      "generation_request": {
+        "alpha": 2.3916587829589844,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 2.56687861867249,
+        "matched_recipe_index": 520,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765200
+      },
+      "lure_id": "hanging_clothes_lure_v00",
+      "matched_old_video": {
+        "label": "bo_replay_11_sobol_prompt_search_520_slot12_rep00",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep00.mp4",
+        "recipe_index": 520,
+        "replay_tribe_score": 4.153979301452637,
+        "replicate_index": 0,
+        "sha256": "c55dbdc8cc33f5470e87fa87b4e84cbffbb31bf3cf638798f2a9f1de9d857784",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep00.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": 2.3916587829589844,
+          "guidance": 2.56687861867249,
+          "lookup_status": "found",
+          "prompt": "Colorful clothes hang in a row on a rack while fabric shifts slightly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 250520
+        }
+      },
+      "pocket": "fresh24_hanging_clothes",
+      "prompt": "Colorful clothes hang outdoors on a clothesline in a different composition, with fabric shifting gently in natural light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/hanging_clothes_lure_v00.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "hanging_clothes_old_v00"
+    },
+    {
+      "analysis_group": "primary_positive",
+      "arm_id": "hanging_clothes",
+      "distinctiveness_requirements": [
+        "same broad category as hanging clothes",
+        "not a rack-centered near-duplicate of the frozen target clip",
+        "different setting, hanger/clothesline geometry, and camera angle",
+        "fabric colors differ enough to support exact old-vs-lure memory"
+      ],
+      "generation_request": {
+        "alpha": -1.9609311372041702,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 8.631222248077393,
+        "matched_recipe_index": 521,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765211
+      },
+      "lure_id": "hanging_clothes_lure_v01",
+      "matched_old_video": {
+        "label": "bo_replay_16_sobol_prompt_search_521_slot12_rep02",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep02.mp4",
+        "recipe_index": 521,
+        "replay_tribe_score": 3.999481678009033,
+        "replicate_index": 2,
+        "sha256": "2bf41916e632adfe081ea1f9aa7105b55e5e3c134826c1a82deeb73651c43364",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep02.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": -1.9609311372041702,
+          "guidance": 8.631222248077393,
+          "lookup_status": "found",
+          "prompt": "Colorful clothes hang in a row on a rack while fabric shifts slightly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 270521
+        }
+      },
+      "pocket": "fresh24_hanging_clothes",
+      "prompt": "Colorful clothes hang outdoors on a clothesline in a different composition, with fabric shifting gently in natural light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/hanging_clothes_lure_v01.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "hanging_clothes_old_v01"
+    },
+    {
+      "analysis_group": "primary_positive",
+      "arm_id": "hanging_clothes",
+      "distinctiveness_requirements": [
+        "same broad category as hanging clothes",
+        "not a rack-centered near-duplicate of the frozen target clip",
+        "different setting, hanger/clothesline geometry, and camera angle",
+        "fabric colors differ enough to support exact old-vs-lure memory"
+      ],
+      "generation_request": {
+        "alpha": -1.9609311372041702,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 8.631222248077393,
+        "matched_recipe_index": 521,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765212
+      },
+      "lure_id": "hanging_clothes_lure_v02",
+      "matched_old_video": {
+        "label": "bo_replay_16_sobol_prompt_search_521_slot12_rep01",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep01.mp4",
+        "recipe_index": 521,
+        "replay_tribe_score": 3.6095619201660156,
+        "replicate_index": 1,
+        "sha256": "72621b8cddced561c79739d9942ce3b58a5627b2b61a4e49166649694d727362",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep01.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": -1.9609311372041702,
+          "guidance": 8.631222248077393,
+          "lookup_status": "found",
+          "prompt": "Colorful clothes hang in a row on a rack while fabric shifts slightly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 260521
+        }
+      },
+      "pocket": "fresh24_hanging_clothes",
+      "prompt": "Colorful clothes hang outdoors on a clothesline in a different composition, with fabric shifting gently in natural light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/hanging_clothes_lure_v02.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "hanging_clothes_old_v02"
+    },
+    {
+      "analysis_group": "hard_negative_control",
+      "arm_id": "aerial_beach",
+      "distinctiveness_requirements": [
+        "same broad category as aerial beach",
+        "different shoreline geometry and beach layout from old target",
+        "avoid near-identical haze/color banding"
+      ],
+      "generation_request": {
+        "alpha": 2.3916587829589844,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 2.56687861867249,
+        "matched_recipe_index": 520,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765200
+      },
+      "lure_id": "aerial_beach_lure_v00",
+      "matched_old_video": {
+        "label": "bo_replay_12_sobol_prompt_search_520_slot03_rep00",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_12_sobol_prompt_search_520_slot03_rep00.mp4",
+        "recipe_index": 520,
+        "replay_tribe_score": -9.990208625793457,
+        "replicate_index": 0,
+        "sha256": "92fb54a209ac213eca4df65a3fff76d3aee36410773c918f04dcbd1ce8a79a84",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_12_sobol_prompt_search_520_slot03_rep00.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": 2.3916587829589844,
+          "guidance": 2.56687861867249,
+          "lookup_status": "found",
+          "prompt": "A wide beach and shallow shoreline stretch into hazy light as tiny figures move near the water. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 250520
+        }
+      },
+      "pocket": "fresh24_aerial_beach",
+      "prompt": "A different wide aerial beach with shallow shoreline water and tiny figures, using a distinct coastline shape and camera framing. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/aerial_beach_lure_v00.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "aerial_beach_old_v00"
+    },
+    {
+      "analysis_group": "hard_negative_control",
+      "arm_id": "aerial_beach",
+      "distinctiveness_requirements": [
+        "same broad category as aerial beach",
+        "different shoreline geometry and beach layout from old target",
+        "avoid near-identical haze/color banding"
+      ],
+      "generation_request": {
+        "alpha": -1.9609311372041702,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 8.631222248077393,
+        "matched_recipe_index": 521,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765211
+      },
+      "lure_id": "aerial_beach_lure_v01",
+      "matched_old_video": {
+        "label": "bo_replay_17_sobol_prompt_search_521_slot03_rep00",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_17_sobol_prompt_search_521_slot03_rep00.mp4",
+        "recipe_index": 521,
+        "replay_tribe_score": -8.001115798950195,
+        "replicate_index": 0,
+        "sha256": "bd546409b18be41811c33a35da431f60c17eb551ba14ba855ad1d5d3370ac7e1",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_17_sobol_prompt_search_521_slot03_rep00.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": -1.9609311372041702,
+          "guidance": 8.631222248077393,
+          "lookup_status": "found",
+          "prompt": "A wide beach and shallow shoreline stretch into hazy light as tiny figures move near the water. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 250521
+        }
+      },
+      "pocket": "fresh24_aerial_beach",
+      "prompt": "A different wide aerial beach with shallow shoreline water and tiny figures, using a distinct coastline shape and camera framing. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/aerial_beach_lure_v01.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "aerial_beach_old_v01"
+    },
+    {
+      "analysis_group": "hard_negative_control",
+      "arm_id": "aerial_beach",
+      "distinctiveness_requirements": [
+        "same broad category as aerial beach",
+        "different shoreline geometry and beach layout from old target",
+        "avoid near-identical haze/color banding"
+      ],
+      "generation_request": {
+        "alpha": 2.813289761543274,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 7.6452042162418365,
+        "matched_recipe_index": 519,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765192
+      },
+      "lure_id": "aerial_beach_lure_v02",
+      "matched_old_video": {
+        "label": "bo_replay_07_sobol_prompt_search_519_slot03_rep00",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_07_sobol_prompt_search_519_slot03_rep00.mp4",
+        "recipe_index": 519,
+        "replay_tribe_score": -7.784473419189453,
+        "replicate_index": 0,
+        "sha256": "c2cd004626715b1e75209b53e38815ac7808489ce177c8a30c7ae441c0113bea",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_07_sobol_prompt_search_519_slot03_rep00.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": 2.813289761543274,
+          "guidance": 7.6452042162418365,
+          "lookup_status": "found",
+          "prompt": "A wide beach and shallow shoreline stretch into hazy light as tiny figures move near the water. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 250519
+        }
+      },
+      "pocket": "fresh24_aerial_beach",
+      "prompt": "A different wide aerial beach with shallow shoreline water and tiny figures, using a distinct coastline shape and camera framing. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/aerial_beach_lure_v02.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "aerial_beach_old_v02"
+    },
+    {
+      "analysis_group": "hard_negative_control",
+      "arm_id": "city_street",
+      "distinctiveness_requirements": [
+        "same broad category as city street",
+        "different street geometry, building facades, and tree placement",
+        "avoid near-identical centerline perspective"
+      ],
+      "generation_request": {
+        "alpha": -1.9609311372041702,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 8.631222248077393,
+        "matched_recipe_index": 521,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765210
+      },
+      "lure_id": "city_street_lure_v00",
+      "matched_old_video": {
+        "label": "bo_replay_18_sobol_prompt_search_521_slot08_rep01",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_18_sobol_prompt_search_521_slot08_rep01.mp4",
+        "recipe_index": 521,
+        "replay_tribe_score": -9.479427337646484,
+        "replicate_index": 1,
+        "sha256": "1d62a289162578e318442cb3a0d214d2725ad6d0354b3236e7a9fc0d787df286",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_18_sobol_prompt_search_521_slot08_rep01.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": -1.9609311372041702,
+          "guidance": 8.631222248077393,
+          "lookup_status": "found",
+          "prompt": "A city street runs between tall buildings while trees and traffic move in the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 260521
+        }
+      },
+      "pocket": "fresh24_city_street",
+      "prompt": "A different city street between tall buildings with trees and distant motion, using a distinct street angle and building layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/city_street_lure_v00.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "city_street_old_v00"
+    },
+    {
+      "analysis_group": "hard_negative_control",
+      "arm_id": "city_street",
+      "distinctiveness_requirements": [
+        "same broad category as city street",
+        "different street geometry, building facades, and tree placement",
+        "avoid near-identical centerline perspective"
+      ],
+      "generation_request": {
+        "alpha": 2.3916587829589844,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 2.56687861867249,
+        "matched_recipe_index": 520,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765201
+      },
+      "lure_id": "city_street_lure_v01",
+      "matched_old_video": {
+        "label": "bo_replay_13_sobol_prompt_search_520_slot08_rep01",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_13_sobol_prompt_search_520_slot08_rep01.mp4",
+        "recipe_index": 520,
+        "replay_tribe_score": -9.329524040222168,
+        "replicate_index": 1,
+        "sha256": "339c184d573d89a717d0eb2076a25d5f4e935e603d8d13a9334a4d7dda13fed7",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_13_sobol_prompt_search_520_slot08_rep01.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": 2.3916587829589844,
+          "guidance": 2.56687861867249,
+          "lookup_status": "found",
+          "prompt": "A city street runs between tall buildings while trees and traffic move in the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 260520
+        }
+      },
+      "pocket": "fresh24_city_street",
+      "prompt": "A different city street between tall buildings with trees and distant motion, using a distinct street angle and building layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/city_street_lure_v01.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "city_street_old_v01"
+    },
+    {
+      "analysis_group": "hard_negative_control",
+      "arm_id": "city_street",
+      "distinctiveness_requirements": [
+        "same broad category as city street",
+        "different street geometry, building facades, and tree placement",
+        "avoid near-identical centerline perspective"
+      ],
+      "generation_request": {
+        "alpha": 2.813289761543274,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 7.6452042162418365,
+        "matched_recipe_index": 519,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765192
+      },
+      "lure_id": "city_street_lure_v02",
+      "matched_old_video": {
+        "label": "bo_replay_08_sobol_prompt_search_519_slot08_rep01",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_08_sobol_prompt_search_519_slot08_rep01.mp4",
+        "recipe_index": 519,
+        "replay_tribe_score": -9.01337718963623,
+        "replicate_index": 1,
+        "sha256": "76fe6bea52c95261e138b792c6cd739e7727e6e2e17706cdd6467e1f33fda7cb",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_08_sobol_prompt_search_519_slot08_rep01.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": 2.813289761543274,
+          "guidance": 7.6452042162418365,
+          "lookup_status": "found",
+          "prompt": "A city street runs between tall buildings while trees and traffic move in the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 260519
+        }
+      },
+      "pocket": "fresh24_city_street",
+      "prompt": "A different city street between tall buildings with trees and distant motion, using a distinct street angle and building layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/city_street_lure_v02.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "city_street_old_v02"
+    },
+    {
+      "analysis_group": "hard_negative_control",
+      "arm_id": "storm_beach",
+      "distinctiveness_requirements": [
+        "same broad category as storm beach",
+        "different cliffs, wave line, and horizon composition",
+        "avoid near-identical dark shoreline framing"
+      ],
+      "generation_request": {
+        "alpha": 2.3916587829589844,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 2.56687861867249,
+        "matched_recipe_index": 520,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765200
+      },
+      "lure_id": "storm_beach_lure_v00",
+      "matched_old_video": {
+        "label": "bo_replay_14_sobol_prompt_search_520_slot14_rep02",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_14_sobol_prompt_search_520_slot14_rep02.mp4",
+        "recipe_index": 520,
+        "replay_tribe_score": -10.916522979736328,
+        "replicate_index": 2,
+        "sha256": "9d94abb2bb70d79853bb09b47a1779cdf7b8338b6bf52ff32cb9396f589a47d1",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_14_sobol_prompt_search_520_slot14_rep02.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": 2.3916587829589844,
+          "guidance": 2.56687861867249,
+          "lookup_status": "found",
+          "prompt": "A stormy beach and steep cliffs sit under heavy clouds as waves move along the shore. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 270520
+        }
+      },
+      "pocket": "fresh24_storm_beach",
+      "prompt": "A different stormy beach under heavy clouds with waves and cliffs, using a distinct shoreline and cliff arrangement. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/storm_beach_lure_v00.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "storm_beach_old_v00"
+    },
+    {
+      "analysis_group": "hard_negative_control",
+      "arm_id": "storm_beach",
+      "distinctiveness_requirements": [
+        "same broad category as storm beach",
+        "different cliffs, wave line, and horizon composition",
+        "avoid near-identical dark shoreline framing"
+      ],
+      "generation_request": {
+        "alpha": 2.813289761543274,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 7.6452042162418365,
+        "matched_recipe_index": 519,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765191
+      },
+      "lure_id": "storm_beach_lure_v01",
+      "matched_old_video": {
+        "label": "bo_replay_09_sobol_prompt_search_519_slot14_rep02",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_09_sobol_prompt_search_519_slot14_rep02.mp4",
+        "recipe_index": 519,
+        "replay_tribe_score": -10.67311954498291,
+        "replicate_index": 2,
+        "sha256": "076668585835035f3725c6b58e51e4110fbbf3a39371da93bbf456d2951239fd",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_09_sobol_prompt_search_519_slot14_rep02.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": 2.813289761543274,
+          "guidance": 7.6452042162418365,
+          "lookup_status": "found",
+          "prompt": "A stormy beach and steep cliffs sit under heavy clouds as waves move along the shore. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 270519
+        }
+      },
+      "pocket": "fresh24_storm_beach",
+      "prompt": "A different stormy beach under heavy clouds with waves and cliffs, using a distinct shoreline and cliff arrangement. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/storm_beach_lure_v01.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "storm_beach_old_v01"
+    },
+    {
+      "analysis_group": "hard_negative_control",
+      "arm_id": "storm_beach",
+      "distinctiveness_requirements": [
+        "same broad category as storm beach",
+        "different cliffs, wave line, and horizon composition",
+        "avoid near-identical dark shoreline framing"
+      ],
+      "generation_request": {
+        "alpha": -1.9609311372041702,
+        "generator": "current image-conditioned SVD runner",
+        "guidance": 8.631222248077393,
+        "matched_recipe_index": 521,
+        "must_not_optimize_lure_for_memorability": true,
+        "must_screen_before_use": true,
+        "suggested_noise_seed": 765212
+      },
+      "lure_id": "storm_beach_lure_v02",
+      "matched_old_video": {
+        "label": "bo_replay_19_sobol_prompt_search_521_slot14_rep02",
+        "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_19_sobol_prompt_search_521_slot14_rep02.mp4",
+        "recipe_index": 521,
+        "replay_tribe_score": -9.874088287353516,
+        "replicate_index": 2,
+        "sha256": "1a34595b81a17c23748b969b703222f853d22325f9ac9bf55377aa33c3690c50",
+        "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_19_sobol_prompt_search_521_slot14_rep02.mp4",
+        "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+        "source_trial": {
+          "alpha": -1.9609311372041702,
+          "guidance": 8.631222248077393,
+          "lookup_status": "found",
+          "prompt": "A stormy beach and steep cliffs sit under heavy clouds as waves move along the shore. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+          "source_noise_seed": 270521
+        }
+      },
+      "pocket": "fresh24_storm_beach",
+      "prompt": "A different stormy beach under heavy clouds with waves and cliffs, using a distinct shoreline and cliff arrangement. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "seed_image_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/storm_beach_lure_v02.png",
+      "seed_image_status": "required_not_committed",
+      "target_id": "storm_beach_old_v02"
+    }
+  ],
+  "old_targets_by_arm": {
+    "aerial_beach": [
+      {
+        "analysis_group": "hard_negative_control",
+        "arm_id": "aerial_beach",
+        "old_video": {
+          "label": "bo_replay_12_sobol_prompt_search_520_slot03_rep00",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_12_sobol_prompt_search_520_slot03_rep00.mp4",
+          "recipe_index": 520,
+          "replay_tribe_score": -9.990208625793457,
+          "replicate_index": 0,
+          "sha256": "92fb54a209ac213eca4df65a3fff76d3aee36410773c918f04dcbd1ce8a79a84",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_12_sobol_prompt_search_520_slot03_rep00.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": 2.3916587829589844,
+            "guidance": 2.56687861867249,
+            "lookup_status": "found",
+            "prompt": "A wide beach and shallow shoreline stretch into hazy light as tiny figures move near the water. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 250520
+          }
+        },
+        "pocket": "fresh24_aerial_beach",
+        "target_id": "aerial_beach_old_v00",
+        "variant_index": 0
+      },
+      {
+        "analysis_group": "hard_negative_control",
+        "arm_id": "aerial_beach",
+        "old_video": {
+          "label": "bo_replay_17_sobol_prompt_search_521_slot03_rep00",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_17_sobol_prompt_search_521_slot03_rep00.mp4",
+          "recipe_index": 521,
+          "replay_tribe_score": -8.001115798950195,
+          "replicate_index": 0,
+          "sha256": "bd546409b18be41811c33a35da431f60c17eb551ba14ba855ad1d5d3370ac7e1",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_17_sobol_prompt_search_521_slot03_rep00.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": -1.9609311372041702,
+            "guidance": 8.631222248077393,
+            "lookup_status": "found",
+            "prompt": "A wide beach and shallow shoreline stretch into hazy light as tiny figures move near the water. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 250521
+          }
+        },
+        "pocket": "fresh24_aerial_beach",
+        "target_id": "aerial_beach_old_v01",
+        "variant_index": 1
+      },
+      {
+        "analysis_group": "hard_negative_control",
+        "arm_id": "aerial_beach",
+        "old_video": {
+          "label": "bo_replay_07_sobol_prompt_search_519_slot03_rep00",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_07_sobol_prompt_search_519_slot03_rep00.mp4",
+          "recipe_index": 519,
+          "replay_tribe_score": -7.784473419189453,
+          "replicate_index": 0,
+          "sha256": "c2cd004626715b1e75209b53e38815ac7808489ce177c8a30c7ae441c0113bea",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_07_sobol_prompt_search_519_slot03_rep00.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": 2.813289761543274,
+            "guidance": 7.6452042162418365,
+            "lookup_status": "found",
+            "prompt": "A wide beach and shallow shoreline stretch into hazy light as tiny figures move near the water. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 250519
+          }
+        },
+        "pocket": "fresh24_aerial_beach",
+        "target_id": "aerial_beach_old_v02",
+        "variant_index": 2
+      }
+    ],
+    "city_street": [
+      {
+        "analysis_group": "hard_negative_control",
+        "arm_id": "city_street",
+        "old_video": {
+          "label": "bo_replay_18_sobol_prompt_search_521_slot08_rep01",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_18_sobol_prompt_search_521_slot08_rep01.mp4",
+          "recipe_index": 521,
+          "replay_tribe_score": -9.479427337646484,
+          "replicate_index": 1,
+          "sha256": "1d62a289162578e318442cb3a0d214d2725ad6d0354b3236e7a9fc0d787df286",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_18_sobol_prompt_search_521_slot08_rep01.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": -1.9609311372041702,
+            "guidance": 8.631222248077393,
+            "lookup_status": "found",
+            "prompt": "A city street runs between tall buildings while trees and traffic move in the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 260521
+          }
+        },
+        "pocket": "fresh24_city_street",
+        "target_id": "city_street_old_v00",
+        "variant_index": 0
+      },
+      {
+        "analysis_group": "hard_negative_control",
+        "arm_id": "city_street",
+        "old_video": {
+          "label": "bo_replay_13_sobol_prompt_search_520_slot08_rep01",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_13_sobol_prompt_search_520_slot08_rep01.mp4",
+          "recipe_index": 520,
+          "replay_tribe_score": -9.329524040222168,
+          "replicate_index": 1,
+          "sha256": "339c184d573d89a717d0eb2076a25d5f4e935e603d8d13a9334a4d7dda13fed7",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_13_sobol_prompt_search_520_slot08_rep01.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": 2.3916587829589844,
+            "guidance": 2.56687861867249,
+            "lookup_status": "found",
+            "prompt": "A city street runs between tall buildings while trees and traffic move in the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 260520
+          }
+        },
+        "pocket": "fresh24_city_street",
+        "target_id": "city_street_old_v01",
+        "variant_index": 1
+      },
+      {
+        "analysis_group": "hard_negative_control",
+        "arm_id": "city_street",
+        "old_video": {
+          "label": "bo_replay_08_sobol_prompt_search_519_slot08_rep01",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_08_sobol_prompt_search_519_slot08_rep01.mp4",
+          "recipe_index": 519,
+          "replay_tribe_score": -9.01337718963623,
+          "replicate_index": 1,
+          "sha256": "76fe6bea52c95261e138b792c6cd739e7727e6e2e17706cdd6467e1f33fda7cb",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_08_sobol_prompt_search_519_slot08_rep01.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": 2.813289761543274,
+            "guidance": 7.6452042162418365,
+            "lookup_status": "found",
+            "prompt": "A city street runs between tall buildings while trees and traffic move in the distance. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 260519
+          }
+        },
+        "pocket": "fresh24_city_street",
+        "target_id": "city_street_old_v02",
+        "variant_index": 2
+      }
+    ],
+    "hanging_clothes": [
+      {
+        "analysis_group": "primary_positive",
+        "arm_id": "hanging_clothes",
+        "old_video": {
+          "label": "bo_replay_11_sobol_prompt_search_520_slot12_rep00",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep00.mp4",
+          "recipe_index": 520,
+          "replay_tribe_score": 4.153979301452637,
+          "replicate_index": 0,
+          "sha256": "c55dbdc8cc33f5470e87fa87b4e84cbffbb31bf3cf638798f2a9f1de9d857784",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep00.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": 2.3916587829589844,
+            "guidance": 2.56687861867249,
+            "lookup_status": "found",
+            "prompt": "Colorful clothes hang in a row on a rack while fabric shifts slightly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 250520
+          }
+        },
+        "pocket": "fresh24_hanging_clothes",
+        "target_id": "hanging_clothes_old_v00",
+        "variant_index": 0
+      },
+      {
+        "analysis_group": "primary_positive",
+        "arm_id": "hanging_clothes",
+        "old_video": {
+          "label": "bo_replay_16_sobol_prompt_search_521_slot12_rep02",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep02.mp4",
+          "recipe_index": 521,
+          "replay_tribe_score": 3.999481678009033,
+          "replicate_index": 2,
+          "sha256": "2bf41916e632adfe081ea1f9aa7105b55e5e3c134826c1a82deeb73651c43364",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep02.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": -1.9609311372041702,
+            "guidance": 8.631222248077393,
+            "lookup_status": "found",
+            "prompt": "Colorful clothes hang in a row on a rack while fabric shifts slightly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 270521
+          }
+        },
+        "pocket": "fresh24_hanging_clothes",
+        "target_id": "hanging_clothes_old_v01",
+        "variant_index": 1
+      },
+      {
+        "analysis_group": "primary_positive",
+        "arm_id": "hanging_clothes",
+        "old_video": {
+          "label": "bo_replay_16_sobol_prompt_search_521_slot12_rep01",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep01.mp4",
+          "recipe_index": 521,
+          "replay_tribe_score": 3.6095619201660156,
+          "replicate_index": 1,
+          "sha256": "72621b8cddced561c79739d9942ce3b58a5627b2b61a4e49166649694d727362",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep01.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": -1.9609311372041702,
+            "guidance": 8.631222248077393,
+            "lookup_status": "found",
+            "prompt": "Colorful clothes hang in a row on a rack while fabric shifts slightly. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 260521
+          }
+        },
+        "pocket": "fresh24_hanging_clothes",
+        "target_id": "hanging_clothes_old_v02",
+        "variant_index": 2
+      }
+    ],
+    "orange_flowers": [
+      {
+        "analysis_group": "primary_positive",
+        "arm_id": "orange_flowers",
+        "old_video": {
+          "label": "bo_replay_05_sobol_prompt_search_519_slot10_rep01",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep01.mp4",
+          "recipe_index": 519,
+          "replay_tribe_score": 4.451238632202148,
+          "replicate_index": 1,
+          "sha256": "3242160a045724e92bf3612899c1032907d6523b1521bd6d3afa5308947e6987",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep01.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": 2.813289761543274,
+            "guidance": 7.6452042162418365,
+            "lookup_status": "found",
+            "prompt": "Orange flowers fill the frame while petals and leaves move softly in warm light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 260519
+          }
+        },
+        "pocket": "fresh24_orange_flowers",
+        "target_id": "orange_flowers_old_v00",
+        "variant_index": 0
+      },
+      {
+        "analysis_group": "primary_positive",
+        "arm_id": "orange_flowers",
+        "old_video": {
+          "label": "bo_replay_10_sobol_prompt_search_520_slot10_rep01",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep01.mp4",
+          "recipe_index": 520,
+          "replay_tribe_score": 4.306247711181641,
+          "replicate_index": 1,
+          "sha256": "e65bfdf346cb825e3887b5ca1242ef3a9d24366cfa4cc4401f85cadcc7fa3836",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep01.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": 2.3916587829589844,
+            "guidance": 2.56687861867249,
+            "lookup_status": "found",
+            "prompt": "Orange flowers fill the frame while petals and leaves move softly in warm light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 260520
+          }
+        },
+        "pocket": "fresh24_orange_flowers",
+        "target_id": "orange_flowers_old_v01",
+        "variant_index": 1
+      },
+      {
+        "analysis_group": "primary_positive",
+        "arm_id": "orange_flowers",
+        "old_video": {
+          "label": "bo_replay_05_sobol_prompt_search_519_slot10_rep02",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep02.mp4",
+          "recipe_index": 519,
+          "replay_tribe_score": 4.1579790115356445,
+          "replicate_index": 2,
+          "sha256": "cb69fba9f033db54759113c7e1e65ed35a66788da9d22f5333d5c9d11f2dfae7",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep02.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": 2.813289761543274,
+            "guidance": 7.6452042162418365,
+            "lookup_status": "found",
+            "prompt": "Orange flowers fill the frame while petals and leaves move softly in warm light. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 270519
+          }
+        },
+        "pocket": "fresh24_orange_flowers",
+        "target_id": "orange_flowers_old_v02",
+        "variant_index": 2
+      }
+    ],
+    "storm_beach": [
+      {
+        "analysis_group": "hard_negative_control",
+        "arm_id": "storm_beach",
+        "old_video": {
+          "label": "bo_replay_14_sobol_prompt_search_520_slot14_rep02",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_14_sobol_prompt_search_520_slot14_rep02.mp4",
+          "recipe_index": 520,
+          "replay_tribe_score": -10.916522979736328,
+          "replicate_index": 2,
+          "sha256": "9d94abb2bb70d79853bb09b47a1779cdf7b8338b6bf52ff32cb9396f589a47d1",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_14_sobol_prompt_search_520_slot14_rep02.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": 2.3916587829589844,
+            "guidance": 2.56687861867249,
+            "lookup_status": "found",
+            "prompt": "A stormy beach and steep cliffs sit under heavy clouds as waves move along the shore. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 270520
+          }
+        },
+        "pocket": "fresh24_storm_beach",
+        "target_id": "storm_beach_old_v00",
+        "variant_index": 0
+      },
+      {
+        "analysis_group": "hard_negative_control",
+        "arm_id": "storm_beach",
+        "old_video": {
+          "label": "bo_replay_09_sobol_prompt_search_519_slot14_rep02",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_09_sobol_prompt_search_519_slot14_rep02.mp4",
+          "recipe_index": 519,
+          "replay_tribe_score": -10.67311954498291,
+          "replicate_index": 2,
+          "sha256": "076668585835035f3725c6b58e51e4110fbbf3a39371da93bbf456d2951239fd",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_09_sobol_prompt_search_519_slot14_rep02.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": 2.813289761543274,
+            "guidance": 7.6452042162418365,
+            "lookup_status": "found",
+            "prompt": "A stormy beach and steep cliffs sit under heavy clouds as waves move along the shore. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 270519
+          }
+        },
+        "pocket": "fresh24_storm_beach",
+        "target_id": "storm_beach_old_v01",
+        "variant_index": 1
+      },
+      {
+        "analysis_group": "hard_negative_control",
+        "arm_id": "storm_beach",
+        "old_video": {
+          "label": "bo_replay_19_sobol_prompt_search_521_slot14_rep02",
+          "local_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_19_sobol_prompt_search_521_slot14_rep02.mp4",
+          "recipe_index": 521,
+          "replay_tribe_score": -9.874088287353516,
+          "replicate_index": 2,
+          "sha256": "1a34595b81a17c23748b969b703222f853d22325f9ac9bf55377aa33c3690c50",
+          "source_absolute_path": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_19_sobol_prompt_search_521_slot14_rep02.mp4",
+          "source_report": "/Users/jawaun/.codex/worktrees/descriptor-conditioned-replication-run-20260608/isc_mod/data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json",
+          "source_trial": {
+            "alpha": -1.9609311372041702,
+            "guidance": 8.631222248077393,
+            "lookup_status": "found",
+            "prompt": "A stormy beach and steep cliffs sit under heavy clouds as waves move along the shore. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+            "source_noise_seed": 270521
+          }
+        },
+        "pocket": "fresh24_storm_beach",
+        "target_id": "storm_beach_old_v02",
+        "variant_index": 2
+      }
+    ]
+  },
+  "participant_assignment": {
+    "form_count": 6,
+    "method": "hash Prolific participant ID modulo n_forms",
+    "requirements": [
+      "Persist the assigned form_id from Session 1 to Session 2.",
+      "Do not let a participant complete more than one form.",
+      "Keep all randomization logs, including side assignment and trial order."
+    ]
+  },
+  "primary_gate": {
+    "chance": 0.5,
+    "endpoint": "old-vs-lure 2AFC recognition accuracy",
+    "fallback_tests": [
+      "participant-level paired contrast between primary_positive and hard_negative_control accuracy",
+      "item-level bootstrap over target_id and participant"
+    ],
+    "primary_success": [
+      "pooled primary_positive recognition accuracy exceeds hard_negative_control accuracy",
+      "fresh24_orange_flowers effect direction is positive",
+      "fresh24_hanging_clothes effect direction is positive",
+      "same-category lure false familiarity does not collapse accuracy to chance"
+    ],
+    "recommended_model": "mixed-effects logistic regression with fixed effect for analysis_group and random intercepts for participant and target_id"
+  },
+  "prolific_setup_requirements": {
+    "evidence_gate_sample": "target 300 usable Session 2 participants; minimum 200 usable Session 2 participants before interpreting the primary gate",
+    "session_gap": "24-48 hours preferred",
+    "study_type": "two-session delayed recognition memory study",
+    "technical_dry_run": "allowed for plumbing only; exclude dry-run rows from the evidence gate"
+  },
+  "question": "Do humans actually recognize primary content-pocket clips better than matched hard-negative controls?",
+  "response_collection_schema": {
+    "session1_fields": [
+      "participant_id",
+      "form_id",
+      "trial_id",
+      "target_id",
+      "arm_id",
+      "analysis_group",
+      "video_url",
+      "cover_task_rating",
+      "exposure_completed",
+      "started_at",
+      "completed_at"
+    ],
+    "session2_fields": [
+      "participant_id",
+      "form_id",
+      "trial_id",
+      "target_id",
+      "arm_id",
+      "analysis_group",
+      "old_video_url",
+      "lure_video_url",
+      "old_side",
+      "choice_side",
+      "correct_choice",
+      "is_correct",
+      "response_time_ms",
+      "started_at",
+      "completed_at"
+    ]
+  },
+  "sample_size_plan": {
+    "minimum_session2_usable": 200,
+    "rationale": "Two-session attrition is expected; 300 usable delayed participants gives 600 primary-positive and 900 control recognition outcomes before item-level modeling.",
+    "recommended_session1_slots": 350,
+    "target_session2_usable": 300
+  },
+  "schema_version": "content_pocket_recognition_memory_design.v1",
+  "session_forms": [
+    {
+      "assignment": "assign by participant-id hash modulo n_forms",
+      "form_id": "recognition_form_00",
+      "session1": {
+        "analysis_encoding_targets": [
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "orange_flowers",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep01.mp4",
+            "target_id": "orange_flowers_old_v00"
+          },
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "hanging_clothes",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep02.mp4",
+            "target_id": "hanging_clothes_old_v01"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "aerial_beach",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_07_sobol_prompt_search_519_slot03_rep00.mp4",
+            "target_id": "aerial_beach_old_v02"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "city_street",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_18_sobol_prompt_search_521_slot08_rep01.mp4",
+            "target_id": "city_street_old_v00"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "storm_beach",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_09_sobol_prompt_search_519_slot14_rep02.mp4",
+            "target_id": "storm_beach_old_v01"
+          }
+        ],
+        "cover_task": "rate visual clarity or pleasantness after each clip",
+        "required_unrelated_filler_targets": 25
+      },
+      "session2": {
+        "analysis_recognition_trials": [
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "orange_flowers",
+            "correct_choice": "left",
+            "lure_id": "orange_flowers_lure_v00",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/orange_flowers_lure_v00.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep01.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "orange_flowers_old_v00",
+            "trial_id": "form00_orange_flowers_old_v00_recognition"
+          },
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "hanging_clothes",
+            "correct_choice": "right",
+            "lure_id": "hanging_clothes_lure_v01",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/hanging_clothes_lure_v01.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep02.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "hanging_clothes_old_v01",
+            "trial_id": "form00_hanging_clothes_old_v01_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "aerial_beach",
+            "correct_choice": "left",
+            "lure_id": "aerial_beach_lure_v02",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/aerial_beach_lure_v02.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_07_sobol_prompt_search_519_slot03_rep00.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "aerial_beach_old_v02",
+            "trial_id": "form00_aerial_beach_old_v02_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "city_street",
+            "correct_choice": "right",
+            "lure_id": "city_street_lure_v00",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/city_street_lure_v00.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_18_sobol_prompt_search_521_slot08_rep01.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "city_street_old_v00",
+            "trial_id": "form00_city_street_old_v00_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "storm_beach",
+            "correct_choice": "left",
+            "lure_id": "storm_beach_lure_v01",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/storm_beach_lure_v01.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_09_sobol_prompt_search_519_slot14_rep02.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "storm_beach_old_v01",
+            "trial_id": "form00_storm_beach_old_v01_recognition"
+          }
+        ],
+        "delay": "24-48 hours preferred; 10-20 minute short-term variant is weaker",
+        "required_unrelated_filler_recognition_trials": 20
+      }
+    },
+    {
+      "assignment": "assign by participant-id hash modulo n_forms",
+      "form_id": "recognition_form_01",
+      "session1": {
+        "analysis_encoding_targets": [
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "orange_flowers",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep01.mp4",
+            "target_id": "orange_flowers_old_v01"
+          },
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "hanging_clothes",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep01.mp4",
+            "target_id": "hanging_clothes_old_v02"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "aerial_beach",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_12_sobol_prompt_search_520_slot03_rep00.mp4",
+            "target_id": "aerial_beach_old_v00"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "city_street",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_13_sobol_prompt_search_520_slot08_rep01.mp4",
+            "target_id": "city_street_old_v01"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "storm_beach",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_19_sobol_prompt_search_521_slot14_rep02.mp4",
+            "target_id": "storm_beach_old_v02"
+          }
+        ],
+        "cover_task": "rate visual clarity or pleasantness after each clip",
+        "required_unrelated_filler_targets": 25
+      },
+      "session2": {
+        "analysis_recognition_trials": [
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "orange_flowers",
+            "correct_choice": "right",
+            "lure_id": "orange_flowers_lure_v01",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/orange_flowers_lure_v01.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep01.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "orange_flowers_old_v01",
+            "trial_id": "form01_orange_flowers_old_v01_recognition"
+          },
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "hanging_clothes",
+            "correct_choice": "left",
+            "lure_id": "hanging_clothes_lure_v02",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/hanging_clothes_lure_v02.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep01.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "hanging_clothes_old_v02",
+            "trial_id": "form01_hanging_clothes_old_v02_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "aerial_beach",
+            "correct_choice": "right",
+            "lure_id": "aerial_beach_lure_v00",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/aerial_beach_lure_v00.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_12_sobol_prompt_search_520_slot03_rep00.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "aerial_beach_old_v00",
+            "trial_id": "form01_aerial_beach_old_v00_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "city_street",
+            "correct_choice": "left",
+            "lure_id": "city_street_lure_v01",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/city_street_lure_v01.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_13_sobol_prompt_search_520_slot08_rep01.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "city_street_old_v01",
+            "trial_id": "form01_city_street_old_v01_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "storm_beach",
+            "correct_choice": "right",
+            "lure_id": "storm_beach_lure_v02",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/storm_beach_lure_v02.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_19_sobol_prompt_search_521_slot14_rep02.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "storm_beach_old_v02",
+            "trial_id": "form01_storm_beach_old_v02_recognition"
+          }
+        ],
+        "delay": "24-48 hours preferred; 10-20 minute short-term variant is weaker",
+        "required_unrelated_filler_recognition_trials": 20
+      }
+    },
+    {
+      "assignment": "assign by participant-id hash modulo n_forms",
+      "form_id": "recognition_form_02",
+      "session1": {
+        "analysis_encoding_targets": [
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "orange_flowers",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep02.mp4",
+            "target_id": "orange_flowers_old_v02"
+          },
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "hanging_clothes",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep00.mp4",
+            "target_id": "hanging_clothes_old_v00"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "aerial_beach",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_17_sobol_prompt_search_521_slot03_rep00.mp4",
+            "target_id": "aerial_beach_old_v01"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "city_street",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_08_sobol_prompt_search_519_slot08_rep01.mp4",
+            "target_id": "city_street_old_v02"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "storm_beach",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_14_sobol_prompt_search_520_slot14_rep02.mp4",
+            "target_id": "storm_beach_old_v00"
+          }
+        ],
+        "cover_task": "rate visual clarity or pleasantness after each clip",
+        "required_unrelated_filler_targets": 25
+      },
+      "session2": {
+        "analysis_recognition_trials": [
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "orange_flowers",
+            "correct_choice": "left",
+            "lure_id": "orange_flowers_lure_v02",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/orange_flowers_lure_v02.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep02.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "orange_flowers_old_v02",
+            "trial_id": "form02_orange_flowers_old_v02_recognition"
+          },
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "hanging_clothes",
+            "correct_choice": "right",
+            "lure_id": "hanging_clothes_lure_v00",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/hanging_clothes_lure_v00.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep00.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "hanging_clothes_old_v00",
+            "trial_id": "form02_hanging_clothes_old_v00_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "aerial_beach",
+            "correct_choice": "left",
+            "lure_id": "aerial_beach_lure_v01",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/aerial_beach_lure_v01.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_17_sobol_prompt_search_521_slot03_rep00.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "aerial_beach_old_v01",
+            "trial_id": "form02_aerial_beach_old_v01_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "city_street",
+            "correct_choice": "right",
+            "lure_id": "city_street_lure_v02",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/city_street_lure_v02.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_08_sobol_prompt_search_519_slot08_rep01.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "city_street_old_v02",
+            "trial_id": "form02_city_street_old_v02_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "storm_beach",
+            "correct_choice": "left",
+            "lure_id": "storm_beach_lure_v00",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/storm_beach_lure_v00.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_14_sobol_prompt_search_520_slot14_rep02.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "storm_beach_old_v00",
+            "trial_id": "form02_storm_beach_old_v00_recognition"
+          }
+        ],
+        "delay": "24-48 hours preferred; 10-20 minute short-term variant is weaker",
+        "required_unrelated_filler_recognition_trials": 20
+      }
+    },
+    {
+      "assignment": "assign by participant-id hash modulo n_forms",
+      "form_id": "recognition_form_03",
+      "session1": {
+        "analysis_encoding_targets": [
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "orange_flowers",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep01.mp4",
+            "target_id": "orange_flowers_old_v00"
+          },
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "hanging_clothes",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep02.mp4",
+            "target_id": "hanging_clothes_old_v01"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "aerial_beach",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_07_sobol_prompt_search_519_slot03_rep00.mp4",
+            "target_id": "aerial_beach_old_v02"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "city_street",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_18_sobol_prompt_search_521_slot08_rep01.mp4",
+            "target_id": "city_street_old_v00"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "storm_beach",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_09_sobol_prompt_search_519_slot14_rep02.mp4",
+            "target_id": "storm_beach_old_v01"
+          }
+        ],
+        "cover_task": "rate visual clarity or pleasantness after each clip",
+        "required_unrelated_filler_targets": 25
+      },
+      "session2": {
+        "analysis_recognition_trials": [
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "orange_flowers",
+            "correct_choice": "right",
+            "lure_id": "orange_flowers_lure_v00",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/orange_flowers_lure_v00.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep01.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "orange_flowers_old_v00",
+            "trial_id": "form03_orange_flowers_old_v00_recognition"
+          },
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "hanging_clothes",
+            "correct_choice": "left",
+            "lure_id": "hanging_clothes_lure_v01",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/hanging_clothes_lure_v01.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep02.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "hanging_clothes_old_v01",
+            "trial_id": "form03_hanging_clothes_old_v01_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "aerial_beach",
+            "correct_choice": "right",
+            "lure_id": "aerial_beach_lure_v02",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/aerial_beach_lure_v02.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_07_sobol_prompt_search_519_slot03_rep00.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "aerial_beach_old_v02",
+            "trial_id": "form03_aerial_beach_old_v02_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "city_street",
+            "correct_choice": "left",
+            "lure_id": "city_street_lure_v00",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/city_street_lure_v00.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_18_sobol_prompt_search_521_slot08_rep01.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "city_street_old_v00",
+            "trial_id": "form03_city_street_old_v00_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "storm_beach",
+            "correct_choice": "right",
+            "lure_id": "storm_beach_lure_v01",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/storm_beach_lure_v01.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_09_sobol_prompt_search_519_slot14_rep02.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "storm_beach_old_v01",
+            "trial_id": "form03_storm_beach_old_v01_recognition"
+          }
+        ],
+        "delay": "24-48 hours preferred; 10-20 minute short-term variant is weaker",
+        "required_unrelated_filler_recognition_trials": 20
+      }
+    },
+    {
+      "assignment": "assign by participant-id hash modulo n_forms",
+      "form_id": "recognition_form_04",
+      "session1": {
+        "analysis_encoding_targets": [
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "orange_flowers",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep01.mp4",
+            "target_id": "orange_flowers_old_v01"
+          },
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "hanging_clothes",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep01.mp4",
+            "target_id": "hanging_clothes_old_v02"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "aerial_beach",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_12_sobol_prompt_search_520_slot03_rep00.mp4",
+            "target_id": "aerial_beach_old_v00"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "city_street",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_13_sobol_prompt_search_520_slot08_rep01.mp4",
+            "target_id": "city_street_old_v01"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "storm_beach",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_19_sobol_prompt_search_521_slot14_rep02.mp4",
+            "target_id": "storm_beach_old_v02"
+          }
+        ],
+        "cover_task": "rate visual clarity or pleasantness after each clip",
+        "required_unrelated_filler_targets": 25
+      },
+      "session2": {
+        "analysis_recognition_trials": [
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "orange_flowers",
+            "correct_choice": "left",
+            "lure_id": "orange_flowers_lure_v01",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/orange_flowers_lure_v01.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep01.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "orange_flowers_old_v01",
+            "trial_id": "form04_orange_flowers_old_v01_recognition"
+          },
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "hanging_clothes",
+            "correct_choice": "right",
+            "lure_id": "hanging_clothes_lure_v02",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/hanging_clothes_lure_v02.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep01.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "hanging_clothes_old_v02",
+            "trial_id": "form04_hanging_clothes_old_v02_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "aerial_beach",
+            "correct_choice": "left",
+            "lure_id": "aerial_beach_lure_v00",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/aerial_beach_lure_v00.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_12_sobol_prompt_search_520_slot03_rep00.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "aerial_beach_old_v00",
+            "trial_id": "form04_aerial_beach_old_v00_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "city_street",
+            "correct_choice": "right",
+            "lure_id": "city_street_lure_v01",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/city_street_lure_v01.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_13_sobol_prompt_search_520_slot08_rep01.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "city_street_old_v01",
+            "trial_id": "form04_city_street_old_v01_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "storm_beach",
+            "correct_choice": "left",
+            "lure_id": "storm_beach_lure_v02",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/storm_beach_lure_v02.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_19_sobol_prompt_search_521_slot14_rep02.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "storm_beach_old_v02",
+            "trial_id": "form04_storm_beach_old_v02_recognition"
+          }
+        ],
+        "delay": "24-48 hours preferred; 10-20 minute short-term variant is weaker",
+        "required_unrelated_filler_recognition_trials": 20
+      }
+    },
+    {
+      "assignment": "assign by participant-id hash modulo n_forms",
+      "form_id": "recognition_form_05",
+      "session1": {
+        "analysis_encoding_targets": [
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "orange_flowers",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep02.mp4",
+            "target_id": "orange_flowers_old_v02"
+          },
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "hanging_clothes",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep00.mp4",
+            "target_id": "hanging_clothes_old_v00"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "aerial_beach",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_17_sobol_prompt_search_521_slot03_rep00.mp4",
+            "target_id": "aerial_beach_old_v01"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "city_street",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_08_sobol_prompt_search_519_slot08_rep01.mp4",
+            "target_id": "city_street_old_v02"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "storm_beach",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_14_sobol_prompt_search_520_slot14_rep02.mp4",
+            "target_id": "storm_beach_old_v00"
+          }
+        ],
+        "cover_task": "rate visual clarity or pleasantness after each clip",
+        "required_unrelated_filler_targets": 25
+      },
+      "session2": {
+        "analysis_recognition_trials": [
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "orange_flowers",
+            "correct_choice": "right",
+            "lure_id": "orange_flowers_lure_v02",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/orange_flowers_lure_v02.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep02.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "orange_flowers_old_v02",
+            "trial_id": "form05_orange_flowers_old_v02_recognition"
+          },
+          {
+            "analysis_group": "primary_positive",
+            "arm_id": "hanging_clothes",
+            "correct_choice": "left",
+            "lure_id": "hanging_clothes_lure_v00",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/hanging_clothes_lure_v00.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep00.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "hanging_clothes_old_v00",
+            "trial_id": "form05_hanging_clothes_old_v00_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "aerial_beach",
+            "correct_choice": "right",
+            "lure_id": "aerial_beach_lure_v01",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/aerial_beach_lure_v01.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_17_sobol_prompt_search_521_slot03_rep00.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "aerial_beach_old_v01",
+            "trial_id": "form05_aerial_beach_old_v01_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "city_street",
+            "correct_choice": "left",
+            "lure_id": "city_street_lure_v02",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/city_street_lure_v02.png",
+            "old_side": "left",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_08_sobol_prompt_search_519_slot08_rep01.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "city_street_old_v02",
+            "trial_id": "form05_city_street_old_v02_recognition"
+          },
+          {
+            "analysis_group": "hard_negative_control",
+            "arm_id": "storm_beach",
+            "correct_choice": "right",
+            "lure_id": "storm_beach_lure_v00",
+            "lure_seed_required_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/recognition_lure_seed_requests_20260608/storm_beach_lure_v00.png",
+            "old_side": "right",
+            "old_video_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_14_sobol_prompt_search_520_slot14_rep02.mp4",
+            "question": "Which clip did you see in the first part?",
+            "target_id": "storm_beach_old_v00",
+            "trial_id": "form05_storm_beach_old_v00_recognition"
+          }
+        ],
+        "delay": "24-48 hours preferred; 10-20 minute short-term variant is weaker",
+        "required_unrelated_filler_recognition_trials": 20
+      }
+    }
+  ],
+  "source_stimulus_manifest": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_validation_stimuli_manifest_20260608.json",
+  "source_task_payload_sha256": "b151326f1e120d7d6c6440c97e9341784bb3b25a1393b8ca7a8481fbcb3cef6c",
+  "status": "design_not_launchable_until_lures_generated_screened_and_hosted",
+  "target_arms": [
+    {
+      "analysis_group": "primary_positive",
+      "arm_id": "orange_flowers",
+      "pocket": "fresh24_orange_flowers",
+      "source_role": "candidate",
+      "source_tier": "primary"
+    },
+    {
+      "analysis_group": "primary_positive",
+      "arm_id": "hanging_clothes",
+      "pocket": "fresh24_hanging_clothes",
+      "source_role": "candidate",
+      "source_tier": "primary"
+    },
+    {
+      "analysis_group": "hard_negative_control",
+      "arm_id": "aerial_beach",
+      "pocket": "fresh24_aerial_beach",
+      "source_role": "control",
+      "source_tier": "primary"
+    },
+    {
+      "analysis_group": "hard_negative_control",
+      "arm_id": "city_street",
+      "pocket": "fresh24_city_street",
+      "source_role": "control",
+      "source_tier": "primary"
+    },
+    {
+      "analysis_group": "hard_negative_control",
+      "arm_id": "storm_beach",
+      "pocket": "fresh24_storm_beach",
+      "source_role": "control",
+      "source_tier": "primary"
+    }
+  ],
+  "withheld_or_rejected_rules": [
+    "Do not launch if lure seed images are near-duplicates of old targets.",
+    "Do not launch if generated lures fail visual screening or contain text/watermark artifacts.",
+    "Do not pool exploratory boundary arms into the primary gate.",
+    "Do not claim actual human memorability until the recognition gate clears."
+  ]
+}

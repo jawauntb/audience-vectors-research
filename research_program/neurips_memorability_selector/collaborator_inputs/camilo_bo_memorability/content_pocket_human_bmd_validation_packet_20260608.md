@@ -46,6 +46,8 @@ Frozen validation stimuli:
 - `content_pocket_validation_mp4_screening_20260608.md`
 - `content_pocket_validation_hosted_video_url_map_template_20260608.json`
 - `content_pocket_validation_screening_sheets_20260608/`
+- `content_pocket_recognition_memory_design_20260608.json`
+- `content_pocket_recognition_memory_packet_20260608.md`
 
 Local data-lake inputs:
 
@@ -125,7 +127,36 @@ Frozen task pool:
   controls, with no obvious sampled-frame text/watermark, frame collapse, or
   attention-check leakage. Final human/IRB-facing screening is still required.
 
-## Recommended Human Pilot
+## Recognition-Memory Upgrade
+
+The direct actual-memory readout is now specified in:
+
+- `content_pocket_recognition_memory_design_20260608.json`
+- `content_pocket_recognition_memory_packet_20260608.md`
+
+This design uses sparse Session 1 exposure followed by delayed Session 2
+old-vs-lure recognition. Each participant sees only one old target from each
+analysis arm, then later chooses the exact old clip against a newly generated
+same-category lure.
+
+Why this matters:
+
+- It tests actual recognition memory rather than perceived memorability.
+- It directly addresses the risk that orange-flower or hanging-clothes clips
+  are too visually similar by requiring distinct same-category lures.
+- It keeps hard negatives in the same old-vs-lure format, so primary positives
+  must beat false-familiarity pressure rather than simply look more appealing.
+
+Launch state:
+
+- Designed: 15 frozen old targets, 15 required lure seed-image requests, six
+  sparse forms, target 300 usable delayed participants, minimum 200 usable
+  delayed participants before interpreting the gate.
+- Not launchable: lure seed images, generated lure MP4s, unrelated fillers,
+  lure/filler screening sheets, hosted URLs, and final Prolific setup are still
+  missing.
+
+## Weaker Perceived-Memorability Pilot
 
 Primary question:
 
@@ -198,11 +229,15 @@ Not allowed:
 
 ## Next Action
 
-Use the hosted-video URL map template to upload the frozen MP4 stimulus set,
-complete final human/IRB-facing content screening, and then run either:
+For an actual human memorability claim, use the recognition-memory packet:
+acquire distinct lure seed images, generate matched lure and filler MP4s,
+screen/contact-sheet them, freeze the complete recognition set, and then run
+the two-session delayed Prolific study.
 
-1. a blinded human forced-choice survey, or
-2. a measured-BMD/BMD-grounded transfer report.
+Alternative lower-claim paths:
+
+1. run the blinded forced-choice survey as perceived-memorability evidence, or
+2. run a measured-BMD/BMD-grounded transfer report.
 
 Keep the compute-proxy packet and the human/BMD result as separate artifacts so
 the claim ledger can distinguish candidate selection from validation.
