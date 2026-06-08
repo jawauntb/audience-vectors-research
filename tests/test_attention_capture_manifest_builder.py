@@ -120,6 +120,7 @@ def test_build_manifest_records_ready_alignment_audit(tmp_path: Path) -> None:
     assert audit_metadata["path"] == str(alignment)
     assert audit_metadata["ready_for_manifest_build"] is True
     assert audit_metadata["n_aligned_features"] == 3
+    assert audit_metadata["label_audit"]["path"] is None
     assert len(audit_metadata["sha256"]) == 64
 
 

@@ -82,7 +82,8 @@ format work. It does not validate attentional capture.
 - `scripts/extract_attention_capture_tribe_features.py`: generic TRIBE NPZ
   extractor for local/remote videos listed in a CSV.
 - `scripts/preflight_attention_capture_phase1.py`: manifest/feature/label
-  preflight gate before claim-relevant Phase 1 scoring.
+  preflight gate before claim-relevant Phase 1 scoring. Claim-updatable
+  manifests must carry alignment-audit provenance in metadata.
 - `scripts/run_attention_capture_sensitivity.py`: primary-vs-sensitivity ROI
   mask runner for disjoint primary and overlapping-mask sensitivity reports.
 - `scripts/run_attention_capture_phase1_workflow.py`: guarded Phase 1
@@ -290,6 +291,12 @@ uv run python scripts/preflight_attention_capture_phase1.py \
   --min-distinct-ground-truth 3
 ```
 
+For real claim-updatable manifests, preflight requires
+`metadata.alignment_audit.ready_for_manifest_build=true`, a recorded alignment
+audit path and SHA-256, zero missing features in that audit, and enough aligned
+features for the requested sample threshold. DHF1K manifests additionally
+require a ready nested `metadata.alignment_audit.label_audit`.
+
 Preferred guarded workflow for the real DHF1K run:
 
 ```bash
@@ -341,7 +348,8 @@ columns as a stress test rather than treating map intensity as a validated
 capture metric.
 
 For a generic real manifest, run the same preflight before scoring with the
-disjoint ROI masks:
+disjoint ROI masks. Generic real manifests must be built with
+`--alignment-audit`; otherwise preflight withholds claim-ready scoring:
 
 ```bash
 uv run python scripts/preflight_attention_capture_phase1.py \

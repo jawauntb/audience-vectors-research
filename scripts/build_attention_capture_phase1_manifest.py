@@ -215,6 +215,7 @@ def validate_alignment_audit(
         "n_aligned_features": int(payload.get("n_aligned_features") or 0),
         "n_missing_features": int(payload.get("n_missing_features") or 0),
         "ground_truth_summary": payload.get("ground_truth_summary"),
+        "label_audit": payload.get("label_audit"),
     }
 
 

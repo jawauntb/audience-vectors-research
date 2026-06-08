@@ -447,20 +447,27 @@ def preflight_phase1_manifest(
         min_distinct_ground_truth=min_distinct_ground_truth,
     )
     kind_counts = _preflight_sample_kind_counts(sample_dicts)
+    manifest_status = str(manifest.get("status") or "unspecified")
+    claim_update_allowed = not _is_claim_blocked_run(
+        manifest_status,
+        _synthetic_rows_for_claim_block_check(sample_dicts),
+    )
+    provenance_audit = _preflight_manifest_provenance(
+        manifest,
+        samples=sample_dicts,
+        min_samples=min_samples,
+        claim_update_allowed=claim_update_allowed,
+    )
     reasons, warnings = _preflight_readiness_reasons(
         n_samples=len(sample_dicts),
         min_samples=min_samples,
         kind_counts=kind_counts,
         feature_audit=feature_audit,
         label_groups=label_groups,
+        provenance_audit=provenance_audit,
         roi_masks_path=roi_masks_path,
     )
 
-    manifest_status = str(manifest.get("status") or "unspecified")
-    claim_update_allowed = not _is_claim_blocked_run(
-        manifest_status,
-        _synthetic_rows_for_claim_block_check(sample_dicts),
-    )
     if not claim_update_allowed:
         warnings.append("manifest status or dataset names block claim updates")
 
@@ -490,6 +497,7 @@ def preflight_phase1_manifest(
         "sample_kind_counts": kind_counts,
         "label_groups": label_groups,
         "feature_audit": feature_audit,
+        "provenance_audit": provenance_audit,
         "scoring_audit": scoring_audit,
         "min_samples": min_samples,
         "min_distinct_ground_truth": min_distinct_ground_truth,
@@ -518,6 +526,7 @@ def render_preflight_markdown(report: dict[str, Any]) -> str:
         f"- Claim ready: {report['claim_ready']}",
         f"- Samples: {report['n_samples']}",
         f"- ROI masks: {report.get('roi_masks_path') or 'none'}",
+        f"- Provenance ready: {report['provenance_audit']['ready']}",
         f"- Claim boundary: {report['claim_boundary']}",
         "",
         "## Blocking Reasons",
@@ -554,6 +563,7 @@ def render_preflight_markdown(report: dict[str, Any]) -> str:
         )
 
     feature_audit = report["feature_audit"]
+    provenance_audit = report["provenance_audit"]
     scoring_audit = report["scoring_audit"]
     lines.extend(
         [
@@ -564,6 +574,23 @@ def render_preflight_markdown(report: dict[str, Any]) -> str:
             f"- Existing features: {feature_audit['n_existing']}",
             f"- Missing features: {feature_audit['n_missing']}",
             f"- Shape mismatches: {feature_audit['n_shape_mismatch']}",
+            "",
+            "## Provenance Audit",
+            "",
+            f"- Required: {provenance_audit['required']}",
+            f"- Ready: {provenance_audit['ready']}",
+            (
+                "- Alignment audit sha256: "
+                f"{provenance_audit['alignment_audit']['sha256'] or 'n/a'}"
+            ),
+            (
+                "- Alignment audit path: "
+                f"{provenance_audit['alignment_audit']['path'] or 'n/a'}"
+            ),
+            (
+                "- Label audit ready: "
+                f"{provenance_audit['alignment_audit']['label_audit_ready']}"
+            ),
             "",
             "## Scoring Audit",
             "",
@@ -1136,6 +1163,7 @@ def _preflight_readiness_reasons(
     kind_counts: dict[str, int],
     feature_audit: dict[str, Any],
     label_groups: list[dict[str, Any]],
+    provenance_audit: dict[str, Any],
     roi_masks_path: Path | None,
 ) -> tuple[list[str], list[str]]:
     reasons: list[str] = []
@@ -1156,7 +1184,150 @@ def _preflight_readiness_reasons(
         )
     if not any(group["ready"] for group in label_groups):
         reasons.append("no dataset group has enough non-degenerate ground truth labels")
+    reasons.extend(str(reason) for reason in provenance_audit["blocking_reasons"])
     return reasons, warnings
+
+
+def _preflight_manifest_provenance(
+    manifest: dict[str, Any],
+    *,
+    samples: list[dict[str, Any]],
+    min_samples: int,
+    claim_update_allowed: bool,
+) -> dict[str, Any]:
+    required = bool(claim_update_allowed)
+    alignment = _alignment_audit_metadata(manifest)
+    reasons: list[str] = []
+    if required:
+        if not isinstance(alignment, dict):
+            reasons.append(
+                "claim-ready manifests require metadata.alignment_audit provenance"
+            )
+        else:
+            reasons.extend(
+                _alignment_audit_provenance_reasons(
+                    alignment,
+                    samples=samples,
+                    min_samples=min_samples,
+                )
+            )
+
+    return {
+        "required": required,
+        "ready": not reasons,
+        "blocking_reasons": reasons,
+        "alignment_audit": _alignment_audit_summary(alignment),
+    }
+
+
+def _alignment_audit_metadata(manifest: dict[str, Any]) -> dict[str, Any] | None:
+    metadata = manifest.get("metadata")
+    if not isinstance(metadata, dict):
+        return None
+    alignment = metadata.get("alignment_audit")
+    return alignment if isinstance(alignment, dict) else None
+
+
+def _alignment_audit_summary(alignment: dict[str, Any] | None) -> dict[str, Any]:
+    if not isinstance(alignment, dict):
+        return {
+            "path": None,
+            "sha256": None,
+            "ready_for_manifest_build": None,
+            "n_aligned_features": None,
+            "n_missing_features": None,
+            "label_audit_ready": None,
+        }
+    label_audit = alignment.get("label_audit")
+    label_audit_ready = (
+        label_audit.get("ready_for_manifest_alignment")
+        if isinstance(label_audit, dict)
+        else None
+    )
+    return {
+        "path": alignment.get("path"),
+        "sha256": alignment.get("sha256"),
+        "ready_for_manifest_build": alignment.get("ready_for_manifest_build"),
+        "n_aligned_features": alignment.get("n_aligned_features"),
+        "n_missing_features": alignment.get("n_missing_features"),
+        "label_audit_ready": label_audit_ready,
+    }
+
+
+def _alignment_audit_provenance_reasons(
+    alignment: dict[str, Any],
+    *,
+    samples: list[dict[str, Any]],
+    min_samples: int,
+) -> list[str]:
+    reasons: list[str] = []
+    if alignment.get("ready_for_manifest_build") is not True:
+        reasons.append("metadata.alignment_audit is not ready for manifest build")
+    if not isinstance(alignment.get("path"), str) or not alignment.get("path"):
+        reasons.append("metadata.alignment_audit.path is missing")
+    sha = alignment.get("sha256")
+    if not _looks_like_sha256(sha):
+        reasons.append("metadata.alignment_audit.sha256 is missing or invalid")
+
+    n_aligned = _optional_int(alignment.get("n_aligned_features"))
+    if n_aligned is None or n_aligned < min_samples:
+        reasons.append(
+            "metadata.alignment_audit.n_aligned_features is below minimum "
+            f"{min_samples}"
+        )
+    if n_aligned is not None and n_aligned < len(samples):
+        reasons.append(
+            "metadata.alignment_audit.n_aligned_features is below manifest sample count"
+        )
+
+    n_missing = _optional_int(alignment.get("n_missing_features"))
+    if n_missing is None:
+        reasons.append("metadata.alignment_audit.n_missing_features is missing")
+    elif n_missing:
+        reasons.append(
+            f"metadata.alignment_audit reports {n_missing} missing features"
+        )
+
+    reasons.extend(_dhf1k_label_audit_provenance_reasons(alignment, samples=samples))
+    return reasons
+
+
+def _dhf1k_label_audit_provenance_reasons(
+    alignment: dict[str, Any],
+    *,
+    samples: list[dict[str, Any]],
+) -> list[str]:
+    if not _manifest_contains_dataset(samples, "DHF1K"):
+        return []
+    label_audit = alignment.get("label_audit")
+    if not isinstance(label_audit, dict):
+        return ["DHF1K manifests require alignment_audit.label_audit"]
+    if label_audit.get("ready_for_manifest_alignment") is not True:
+        return ["alignment_audit.label_audit is not ready"]
+    return []
+
+
+def _looks_like_sha256(value: object) -> bool:
+    if not isinstance(value, str) or len(value) != 64:
+        return False
+    return all(char in "0123456789abcdefABCDEF" for char in value)
+
+
+def _optional_int(value: object) -> int | None:
+    if not isinstance(value, int | float | str):
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _manifest_contains_dataset(samples: list[dict[str, Any]], needle: str) -> bool:
+    needle_lower = needle.lower()
+    return any(
+        needle_lower in str(sample.get("dataset") or "").lower()
+        for sample in samples
+    )
 
 
 def _preflight_sample_kind_counts(samples: list[dict[str, Any]]) -> dict[str, int]:
