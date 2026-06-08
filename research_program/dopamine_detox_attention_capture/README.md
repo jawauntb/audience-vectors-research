@@ -21,6 +21,10 @@ format work. It does not validate attentional capture.
 
 - `soundness_audit_20260608.md`: pre-run assessment of the approach.
 - `phase1_synthetic_smoke_manifest_20260608.json`: tiny fixture manifest.
+- `phase1_synthetic_alignment_labels_20260608.csv`: tiny synthetic label CSV
+  used only to smoke-test label-to-feature alignment.
+- `fixtures/phase1_synthetic_alignment_features_20260608/*.npz`: tiny synthetic
+  TRIBE-shaped `frames` NPZ files used only for the alignment smoke test.
 - `results/phase1_synthetic_smoke_preflight_20260608.json`: machine-readable
   manifest preflight for the synthetic fixture.
 - `results/phase1_synthetic_smoke_preflight_20260608.md`: readable synthetic
@@ -42,6 +46,10 @@ format work. It does not validate attentional capture.
   manifests.
 - `results/phase1_data_readiness_20260608.md`: readable local data-readiness
   audit.
+- `results/phase1_synthetic_alignment_20260608.json`: label-to-feature
+  alignment smoke report over the tiny synthetic fixture.
+- `results/phase1_synthetic_alignment_20260608.md`: readable alignment smoke
+  report.
 - `results/bmd_memorability_control_20260608.json`: BOLD Moments control result
   over 1,022 cached TRIBE feature files using overlapping exploratory masks.
 - `results/bmd_memorability_control_20260608.md`: readable overlapping-mask
@@ -77,6 +85,8 @@ format work. It does not validate attentional capture.
   is not ready, and optionally emits primary plus sensitivity reports.
 - `scripts/audit_attention_capture_data_readiness.py`: local readiness audit for
   external labels/videos, cached TRIBE NPZs, ROI masks, and existing manifests.
+- `scripts/audit_attention_capture_manifest_alignment.py`: label-to-feature
+  alignment audit to run before building a real manifest.
 
 ## Reused Infrastructure
 
@@ -152,6 +162,24 @@ The scan found reusable cached TRIBE feature directories, including
 but no local DHF1K/SnapUGC/VQualA external-label source. Those cached features
 remain useful infrastructure; they do not unblock Phase 1 until they are aligned
 to a real external attention-label manifest.
+
+Smoke-test label-to-feature alignment:
+
+```bash
+uv run python scripts/audit_attention_capture_manifest_alignment.py \
+  --labels-csv research_program/dopamine_detox_attention_capture/phase1_synthetic_alignment_labels_20260608.csv \
+  --feature-dir research_program/dopamine_detox_attention_capture/fixtures/phase1_synthetic_alignment_features_20260608 \
+  --dataset synthetic_alignment_fixture \
+  --ground-truth-column ecr \
+  --min-samples 3 \
+  --min-distinct-ground-truth 3 \
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_synthetic_alignment_20260608.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_synthetic_alignment_20260608.md
+```
+
+The synthetic alignment fixture is not claim evidence; it only proves that a
+label CSV, feature directory, and manifest-builder inputs can be audited before
+the strict manifest builder runs.
 
 Build a real Phase 1 manifest from external labels and cached TRIBE NPZ files:
 

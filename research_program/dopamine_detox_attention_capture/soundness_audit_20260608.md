@@ -293,6 +293,22 @@ Data-readiness audit update:
   the blocker is absent external attention labels/videos, not a negative
   capture-score validation.
 
+Manifest-alignment audit update:
+
+- `scripts/audit_attention_capture_manifest_alignment.py` now audits the join
+  between an external label CSV and a cached TRIBE feature directory before the
+  strict manifest builder runs.
+- It checks sample-ID uniqueness, feature-file presence under the chosen
+  template, finite ground-truth values, distinct label count, label variance,
+  and minimum aligned sample count. This catches handoff errors before they
+  become silent sample loss or a failed GPU/scoring run.
+- A synthetic alignment smoke report was generated at
+  `results/phase1_synthetic_alignment_20260608.*` using a tiny committed
+  fixture CSV and three tiny TRIBE-shaped `frames` NPZ files. It reports
+  `ready_for_manifest_build=true` for the fixture only.
+- This is retrieval/verification infrastructure. It does not score TRIBE
+  features and cannot validate the attention-capture proxy.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
@@ -309,12 +325,15 @@ Next move:
 2. Build a real Phase 1 manifest for SnapUGC and/or DHF1K from external labels
    and cached TRIBE NPZ files, using the disjoint ROI mask NPZ as the default
    scoring source.
-3. For DHF1K, run the label audit before GPU scoring and choose a non-degenerate
+3. Before building the manifest, run
+   `scripts/audit_attention_capture_manifest_alignment.py` on the chosen label
+   CSV and feature directory.
+4. For DHF1K, run the label audit before GPU scoring and choose a non-degenerate
    ground-truth column.
-4. Run the guarded Phase 1 workflow with
+5. Run the guarded Phase 1 workflow with
    `scripts/run_attention_capture_phase1_workflow.py`, using disjoint masks as
    primary and overlapping masks as the archived sensitivity condition.
-5. If the workflow withholds scoring, treat that as the result of the handoff
+6. If the workflow withholds scoring, treat that as the result of the handoff
    and fix the manifest/labels/features before spending more compute.
-6. Run the same script with cached or Modal-generated TRIBE features.
-7. Only then decide whether perturbation/neutralization is worth compute.
+7. Run the same script with cached or Modal-generated TRIBE features.
+8. Only then decide whether perturbation/neutralization is worth compute.

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_manifest_alignment_audit",
+  "dataset": "synthetic_alignment_fixture",
+  "labels_csv": "research_program/dopamine_detox_attention_capture/phase1_synthetic_alignment_labels_20260608.csv",
+  "feature_dir": "research_program/dopamine_detox_attention_capture/fixtures/phase1_synthetic_alignment_features_20260608",
+  "sample_id_column": "sample_id",
+  "ground_truth_column": "ecr",
+  "feature_template": "{sample_id}.npz",
+  "n_label_rows": 3,
+  "n_unique_sample_ids": 3,
+  "n_duplicate_sample_ids": 0,
+  "duplicate_sample_ids": [],
+  "n_aligned_features": 3,
+  "n_missing_features": 0,
+  "n_invalid_ground_truth": 0,
+  "ground_truth_summary": {
+    "n": 3,
+    "n_distinct": 3,
+    "mean": 0.5,
+    "std": 0.24494897427831783,
+    "min": 0.2,
+    "max": 0.8
+  },
+  "min_samples": 3,
+  "min_distinct_ground_truth": 3,
+  "ready_for_manifest_build": true,
+  "blocking_reasons": [],
+  "missing_features": [],
+  "invalid_ground_truth_rows": [],
+  "claim_boundary": "This audit checks CSV/feature alignment only. It does not score TRIBE features or validate attentional capture."
+}
