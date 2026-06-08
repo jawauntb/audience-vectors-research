@@ -1,0 +1,800 @@
+{
+  "created_at_utc": "2026-06-08T21:40:57+00:00",
+  "n_tasks": 24,
+  "schema_version": "content_pocket_pairwise_tasks.v1",
+  "study": "content_pocket_human_bmd_validation_20260608",
+  "tasks": [
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "primary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_orange_flowers",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep00.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_05_sobol_prompt_search_519_slot10_rep00"
+      },
+      "metadata": {
+        "analysis_tier": "primary",
+        "candidate_mean_tribe_score": 4.1035176912943525,
+        "control_pocket": "fresh24_aerial_beach",
+        "control_replay_tribe_score": -7.784473419189453,
+        "control_slot_index": 3,
+        "positive_pocket": "fresh24_orange_flowers",
+        "positive_replay_tribe_score": 3.7013354301452637,
+        "positive_slot_index": 10,
+        "replicate_index": 0,
+        "sobol_recipe_index": 519,
+        "target_side": "left"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_aerial_beach",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_07_sobol_prompt_search_519_slot03_rep00.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_07_sobol_prompt_search_519_slot03_rep00"
+      },
+      "seed": "fresh24_orange_flowers:sobol_prompt_search_519_slot10:rep00:fresh24_aerial_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_primary_orange_flowers_sobol_prompt_search_519_slot10_rep00_vs_aerial_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "primary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_city_street",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_08_sobol_prompt_search_519_slot08_rep01.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_08_sobol_prompt_search_519_slot08_rep01"
+      },
+      "metadata": {
+        "analysis_tier": "primary",
+        "candidate_mean_tribe_score": 4.1035176912943525,
+        "control_pocket": "fresh24_city_street",
+        "control_replay_tribe_score": -9.01337718963623,
+        "control_slot_index": 8,
+        "positive_pocket": "fresh24_orange_flowers",
+        "positive_replay_tribe_score": 4.451238632202148,
+        "positive_slot_index": 10,
+        "replicate_index": 1,
+        "sobol_recipe_index": 519,
+        "target_side": "right"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_orange_flowers",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep01.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_05_sobol_prompt_search_519_slot10_rep01"
+      },
+      "seed": "fresh24_orange_flowers:sobol_prompt_search_519_slot10:rep01:fresh24_city_street",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_primary_orange_flowers_sobol_prompt_search_519_slot10_rep01_vs_city_street"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "primary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_orange_flowers",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep02.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_05_sobol_prompt_search_519_slot10_rep02"
+      },
+      "metadata": {
+        "analysis_tier": "primary",
+        "candidate_mean_tribe_score": 4.1035176912943525,
+        "control_pocket": "fresh24_storm_beach",
+        "control_replay_tribe_score": -10.67311954498291,
+        "control_slot_index": 14,
+        "positive_pocket": "fresh24_orange_flowers",
+        "positive_replay_tribe_score": 4.1579790115356445,
+        "positive_slot_index": 10,
+        "replicate_index": 2,
+        "sobol_recipe_index": 519,
+        "target_side": "left"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_storm_beach",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_09_sobol_prompt_search_519_slot14_rep02.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_09_sobol_prompt_search_519_slot14_rep02"
+      },
+      "seed": "fresh24_orange_flowers:sobol_prompt_search_519_slot10:rep02:fresh24_storm_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_primary_orange_flowers_sobol_prompt_search_519_slot10_rep02_vs_storm_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "primary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_aerial_beach",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_12_sobol_prompt_search_520_slot03_rep00.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_12_sobol_prompt_search_520_slot03_rep00"
+      },
+      "metadata": {
+        "analysis_tier": "primary",
+        "candidate_mean_tribe_score": 4.078255256017049,
+        "control_pocket": "fresh24_aerial_beach",
+        "control_replay_tribe_score": -9.990208625793457,
+        "control_slot_index": 3,
+        "positive_pocket": "fresh24_orange_flowers",
+        "positive_replay_tribe_score": 3.872215986251831,
+        "positive_slot_index": 10,
+        "replicate_index": 0,
+        "sobol_recipe_index": 520,
+        "target_side": "right"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_orange_flowers",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep00.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_10_sobol_prompt_search_520_slot10_rep00"
+      },
+      "seed": "fresh24_orange_flowers:sobol_prompt_search_520_slot10:rep00:fresh24_aerial_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_primary_orange_flowers_sobol_prompt_search_520_slot10_rep00_vs_aerial_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "primary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_orange_flowers",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep01.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_10_sobol_prompt_search_520_slot10_rep01"
+      },
+      "metadata": {
+        "analysis_tier": "primary",
+        "candidate_mean_tribe_score": 4.078255256017049,
+        "control_pocket": "fresh24_city_street",
+        "control_replay_tribe_score": -9.329524040222168,
+        "control_slot_index": 8,
+        "positive_pocket": "fresh24_orange_flowers",
+        "positive_replay_tribe_score": 4.306247711181641,
+        "positive_slot_index": 10,
+        "replicate_index": 1,
+        "sobol_recipe_index": 520,
+        "target_side": "left"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_city_street",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_13_sobol_prompt_search_520_slot08_rep01.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_13_sobol_prompt_search_520_slot08_rep01"
+      },
+      "seed": "fresh24_orange_flowers:sobol_prompt_search_520_slot10:rep01:fresh24_city_street",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_primary_orange_flowers_sobol_prompt_search_520_slot10_rep01_vs_city_street"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "primary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_storm_beach",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_14_sobol_prompt_search_520_slot14_rep02.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_14_sobol_prompt_search_520_slot14_rep02"
+      },
+      "metadata": {
+        "analysis_tier": "primary",
+        "candidate_mean_tribe_score": 4.078255256017049,
+        "control_pocket": "fresh24_storm_beach",
+        "control_replay_tribe_score": -10.916522979736328,
+        "control_slot_index": 14,
+        "positive_pocket": "fresh24_orange_flowers",
+        "positive_replay_tribe_score": 4.056302070617676,
+        "positive_slot_index": 10,
+        "replicate_index": 2,
+        "sobol_recipe_index": 520,
+        "target_side": "right"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_orange_flowers",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep02.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_10_sobol_prompt_search_520_slot10_rep02"
+      },
+      "seed": "fresh24_orange_flowers:sobol_prompt_search_520_slot10:rep02:fresh24_storm_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_primary_orange_flowers_sobol_prompt_search_520_slot10_rep02_vs_storm_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "primary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_hanging_clothes",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep00.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_16_sobol_prompt_search_521_slot12_rep00"
+      },
+      "metadata": {
+        "analysis_tier": "primary",
+        "candidate_mean_tribe_score": 3.602970918019613,
+        "control_pocket": "fresh24_aerial_beach",
+        "control_replay_tribe_score": -8.001115798950195,
+        "control_slot_index": 3,
+        "positive_pocket": "fresh24_hanging_clothes",
+        "positive_replay_tribe_score": 3.199869155883789,
+        "positive_slot_index": 12,
+        "replicate_index": 0,
+        "sobol_recipe_index": 521,
+        "target_side": "left"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_aerial_beach",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_17_sobol_prompt_search_521_slot03_rep00.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_17_sobol_prompt_search_521_slot03_rep00"
+      },
+      "seed": "fresh24_hanging_clothes:sobol_prompt_search_521_slot12:rep00:fresh24_aerial_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_primary_hanging_clothes_sobol_prompt_search_521_slot12_rep00_vs_aerial_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "primary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_city_street",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_18_sobol_prompt_search_521_slot08_rep01.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_18_sobol_prompt_search_521_slot08_rep01"
+      },
+      "metadata": {
+        "analysis_tier": "primary",
+        "candidate_mean_tribe_score": 3.602970918019613,
+        "control_pocket": "fresh24_city_street",
+        "control_replay_tribe_score": -9.479427337646484,
+        "control_slot_index": 8,
+        "positive_pocket": "fresh24_hanging_clothes",
+        "positive_replay_tribe_score": 3.6095619201660156,
+        "positive_slot_index": 12,
+        "replicate_index": 1,
+        "sobol_recipe_index": 521,
+        "target_side": "right"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_hanging_clothes",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep01.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_16_sobol_prompt_search_521_slot12_rep01"
+      },
+      "seed": "fresh24_hanging_clothes:sobol_prompt_search_521_slot12:rep01:fresh24_city_street",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_primary_hanging_clothes_sobol_prompt_search_521_slot12_rep01_vs_city_street"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "primary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_hanging_clothes",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep02.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_16_sobol_prompt_search_521_slot12_rep02"
+      },
+      "metadata": {
+        "analysis_tier": "primary",
+        "candidate_mean_tribe_score": 3.602970918019613,
+        "control_pocket": "fresh24_storm_beach",
+        "control_replay_tribe_score": -9.874088287353516,
+        "control_slot_index": 14,
+        "positive_pocket": "fresh24_hanging_clothes",
+        "positive_replay_tribe_score": 3.999481678009033,
+        "positive_slot_index": 12,
+        "replicate_index": 2,
+        "sobol_recipe_index": 521,
+        "target_side": "left"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_storm_beach",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_19_sobol_prompt_search_521_slot14_rep02.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_19_sobol_prompt_search_521_slot14_rep02"
+      },
+      "seed": "fresh24_hanging_clothes:sobol_prompt_search_521_slot12:rep02:fresh24_storm_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_primary_hanging_clothes_sobol_prompt_search_521_slot12_rep02_vs_storm_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "primary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_aerial_beach",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_12_sobol_prompt_search_520_slot03_rep00.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_12_sobol_prompt_search_520_slot03_rep00"
+      },
+      "metadata": {
+        "analysis_tier": "primary",
+        "candidate_mean_tribe_score": 3.385152022043864,
+        "control_pocket": "fresh24_aerial_beach",
+        "control_replay_tribe_score": -9.990208625793457,
+        "control_slot_index": 3,
+        "positive_pocket": "fresh24_hanging_clothes",
+        "positive_replay_tribe_score": 4.153979301452637,
+        "positive_slot_index": 12,
+        "replicate_index": 0,
+        "sobol_recipe_index": 520,
+        "target_side": "right"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_hanging_clothes",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep00.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_11_sobol_prompt_search_520_slot12_rep00"
+      },
+      "seed": "fresh24_hanging_clothes:sobol_prompt_search_520_slot12:rep00:fresh24_aerial_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_primary_hanging_clothes_sobol_prompt_search_520_slot12_rep00_vs_aerial_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "primary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_hanging_clothes",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep01.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_11_sobol_prompt_search_520_slot12_rep01"
+      },
+      "metadata": {
+        "analysis_tier": "primary",
+        "candidate_mean_tribe_score": 3.385152022043864,
+        "control_pocket": "fresh24_city_street",
+        "control_replay_tribe_score": -9.329524040222168,
+        "control_slot_index": 8,
+        "positive_pocket": "fresh24_hanging_clothes",
+        "positive_replay_tribe_score": 2.4989094734191895,
+        "positive_slot_index": 12,
+        "replicate_index": 1,
+        "sobol_recipe_index": 520,
+        "target_side": "left"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_city_street",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_13_sobol_prompt_search_520_slot08_rep01.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_13_sobol_prompt_search_520_slot08_rep01"
+      },
+      "seed": "fresh24_hanging_clothes:sobol_prompt_search_520_slot12:rep01:fresh24_city_street",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_primary_hanging_clothes_sobol_prompt_search_520_slot12_rep01_vs_city_street"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "primary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_storm_beach",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_14_sobol_prompt_search_520_slot14_rep02.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_14_sobol_prompt_search_520_slot14_rep02"
+      },
+      "metadata": {
+        "analysis_tier": "primary",
+        "candidate_mean_tribe_score": 3.385152022043864,
+        "control_pocket": "fresh24_storm_beach",
+        "control_replay_tribe_score": -10.916522979736328,
+        "control_slot_index": 14,
+        "positive_pocket": "fresh24_hanging_clothes",
+        "positive_replay_tribe_score": 3.5025672912597656,
+        "positive_slot_index": 12,
+        "replicate_index": 2,
+        "sobol_recipe_index": 520,
+        "target_side": "right"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_hanging_clothes",
+        "path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep02.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_11_sobol_prompt_search_520_slot12_rep02"
+      },
+      "seed": "fresh24_hanging_clothes:sobol_prompt_search_520_slot12:rep02:fresh24_storm_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_primary_hanging_clothes_sobol_prompt_search_520_slot12_rep02_vs_storm_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "exploratory_boundary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_blue_jellyfish",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot18_rep00.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_05_sobol_prompt_search_519_slot18_rep00"
+      },
+      "metadata": {
+        "analysis_tier": "exploratory_boundary",
+        "candidate_mean_tribe_score": 2.6652191480000815,
+        "control_pocket": "fresh24_aerial_beach",
+        "control_replay_tribe_score": -8.593667984008789,
+        "control_slot_index": 3,
+        "positive_pocket": "fresh24_blue_jellyfish",
+        "positive_replay_tribe_score": 2.68880033493042,
+        "positive_slot_index": 18,
+        "replicate_index": 0,
+        "sobol_recipe_index": 519,
+        "target_side": "left"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_aerial_beach",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_07_sobol_prompt_search_519_slot03_rep00.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_07_sobol_prompt_search_519_slot03_rep00"
+      },
+      "seed": "fresh24_blue_jellyfish:sobol_prompt_search_519_slot18:rep00:fresh24_aerial_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_519_slot18_rep00_vs_aerial_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "exploratory_boundary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_city_street",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_08_sobol_prompt_search_519_slot08_rep01.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_08_sobol_prompt_search_519_slot08_rep01"
+      },
+      "metadata": {
+        "analysis_tier": "exploratory_boundary",
+        "candidate_mean_tribe_score": 2.6652191480000815,
+        "control_pocket": "fresh24_city_street",
+        "control_replay_tribe_score": -9.314266204833984,
+        "control_slot_index": 8,
+        "positive_pocket": "fresh24_blue_jellyfish",
+        "positive_replay_tribe_score": 2.262805938720703,
+        "positive_slot_index": 18,
+        "replicate_index": 1,
+        "sobol_recipe_index": 519,
+        "target_side": "right"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_blue_jellyfish",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot18_rep01.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_05_sobol_prompt_search_519_slot18_rep01"
+      },
+      "seed": "fresh24_blue_jellyfish:sobol_prompt_search_519_slot18:rep01:fresh24_city_street",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_519_slot18_rep01_vs_city_street"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "exploratory_boundary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_blue_jellyfish",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot18_rep02.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_05_sobol_prompt_search_519_slot18_rep02"
+      },
+      "metadata": {
+        "analysis_tier": "exploratory_boundary",
+        "candidate_mean_tribe_score": 2.6652191480000815,
+        "control_pocket": "fresh24_storm_beach",
+        "control_replay_tribe_score": -9.409957885742188,
+        "control_slot_index": 14,
+        "positive_pocket": "fresh24_blue_jellyfish",
+        "positive_replay_tribe_score": 3.044051170349121,
+        "positive_slot_index": 18,
+        "replicate_index": 2,
+        "sobol_recipe_index": 519,
+        "target_side": "left"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_storm_beach",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_09_sobol_prompt_search_519_slot14_rep02.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_09_sobol_prompt_search_519_slot14_rep02"
+      },
+      "seed": "fresh24_blue_jellyfish:sobol_prompt_search_519_slot18:rep02:fresh24_storm_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_519_slot18_rep02_vs_storm_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "exploratory_boundary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_aerial_beach",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_17_sobol_prompt_search_521_slot03_rep00.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_17_sobol_prompt_search_521_slot03_rep00"
+      },
+      "metadata": {
+        "analysis_tier": "exploratory_boundary",
+        "candidate_mean_tribe_score": 2.33488392829895,
+        "control_pocket": "fresh24_aerial_beach",
+        "control_replay_tribe_score": -8.304137229919434,
+        "control_slot_index": 3,
+        "positive_pocket": "fresh24_blue_jellyfish",
+        "positive_replay_tribe_score": 2.522934675216675,
+        "positive_slot_index": 18,
+        "replicate_index": 0,
+        "sobol_recipe_index": 521,
+        "target_side": "right"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_blue_jellyfish",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_15_sobol_prompt_search_521_slot18_rep00.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_15_sobol_prompt_search_521_slot18_rep00"
+      },
+      "seed": "fresh24_blue_jellyfish:sobol_prompt_search_521_slot18:rep00:fresh24_aerial_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_521_slot18_rep00_vs_aerial_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "exploratory_boundary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_blue_jellyfish",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_15_sobol_prompt_search_521_slot18_rep01.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_15_sobol_prompt_search_521_slot18_rep01"
+      },
+      "metadata": {
+        "analysis_tier": "exploratory_boundary",
+        "candidate_mean_tribe_score": 2.33488392829895,
+        "control_pocket": "fresh24_city_street",
+        "control_replay_tribe_score": -9.538812637329102,
+        "control_slot_index": 8,
+        "positive_pocket": "fresh24_blue_jellyfish",
+        "positive_replay_tribe_score": 2.3665480613708496,
+        "positive_slot_index": 18,
+        "replicate_index": 1,
+        "sobol_recipe_index": 521,
+        "target_side": "left"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_city_street",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_18_sobol_prompt_search_521_slot08_rep01.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_18_sobol_prompt_search_521_slot08_rep01"
+      },
+      "seed": "fresh24_blue_jellyfish:sobol_prompt_search_521_slot18:rep01:fresh24_city_street",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_521_slot18_rep01_vs_city_street"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "exploratory_boundary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_storm_beach",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_19_sobol_prompt_search_521_slot14_rep02.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_19_sobol_prompt_search_521_slot14_rep02"
+      },
+      "metadata": {
+        "analysis_tier": "exploratory_boundary",
+        "candidate_mean_tribe_score": 2.33488392829895,
+        "control_pocket": "fresh24_storm_beach",
+        "control_replay_tribe_score": -9.748031616210938,
+        "control_slot_index": 14,
+        "positive_pocket": "fresh24_blue_jellyfish",
+        "positive_replay_tribe_score": 2.115169048309326,
+        "positive_slot_index": 18,
+        "replicate_index": 2,
+        "sobol_recipe_index": 521,
+        "target_side": "right"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_blue_jellyfish",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_15_sobol_prompt_search_521_slot18_rep02.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_15_sobol_prompt_search_521_slot18_rep02"
+      },
+      "seed": "fresh24_blue_jellyfish:sobol_prompt_search_521_slot18:rep02:fresh24_storm_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_exploratory_boundary_blue_jellyfish_sobol_prompt_search_521_slot18_rep02_vs_storm_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "exploratory_boundary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_old_car",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_21_sobol_prompt_search_522_slot00_rep00.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_21_sobol_prompt_search_522_slot00_rep00"
+      },
+      "metadata": {
+        "analysis_tier": "exploratory_boundary",
+        "candidate_mean_tribe_score": 1.5022950569788616,
+        "control_pocket": "fresh24_aerial_beach",
+        "control_replay_tribe_score": -9.182332992553711,
+        "control_slot_index": 3,
+        "positive_pocket": "fresh24_old_car",
+        "positive_replay_tribe_score": 1.4442133903503418,
+        "positive_slot_index": 0,
+        "replicate_index": 0,
+        "sobol_recipe_index": 522,
+        "target_side": "left"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_aerial_beach",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_22_sobol_prompt_search_522_slot03_rep00.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_22_sobol_prompt_search_522_slot03_rep00"
+      },
+      "seed": "fresh24_old_car:sobol_prompt_search_522_slot00:rep00:fresh24_aerial_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_522_slot00_rep00_vs_aerial_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "exploratory_boundary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_city_street",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_23_sobol_prompt_search_522_slot08_rep01.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_23_sobol_prompt_search_522_slot08_rep01"
+      },
+      "metadata": {
+        "analysis_tier": "exploratory_boundary",
+        "candidate_mean_tribe_score": 1.5022950569788616,
+        "control_pocket": "fresh24_city_street",
+        "control_replay_tribe_score": -9.294364929199219,
+        "control_slot_index": 8,
+        "positive_pocket": "fresh24_old_car",
+        "positive_replay_tribe_score": 1.4651116132736206,
+        "positive_slot_index": 0,
+        "replicate_index": 1,
+        "sobol_recipe_index": 522,
+        "target_side": "right"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_old_car",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_21_sobol_prompt_search_522_slot00_rep01.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_21_sobol_prompt_search_522_slot00_rep01"
+      },
+      "seed": "fresh24_old_car:sobol_prompt_search_522_slot00:rep01:fresh24_city_street",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_522_slot00_rep01_vs_city_street"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "exploratory_boundary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_old_car",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_21_sobol_prompt_search_522_slot00_rep02.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_21_sobol_prompt_search_522_slot00_rep02"
+      },
+      "metadata": {
+        "analysis_tier": "exploratory_boundary",
+        "candidate_mean_tribe_score": 1.5022950569788616,
+        "control_pocket": "fresh24_storm_beach",
+        "control_replay_tribe_score": -10.935596466064453,
+        "control_slot_index": 14,
+        "positive_pocket": "fresh24_old_car",
+        "positive_replay_tribe_score": 1.597560167312622,
+        "positive_slot_index": 0,
+        "replicate_index": 2,
+        "sobol_recipe_index": 522,
+        "target_side": "left"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_storm_beach",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_24_sobol_prompt_search_522_slot14_rep02.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_24_sobol_prompt_search_522_slot14_rep02"
+      },
+      "seed": "fresh24_old_car:sobol_prompt_search_522_slot00:rep02:fresh24_storm_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_522_slot00_rep02_vs_storm_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "exploratory_boundary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_aerial_beach",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_02_sobol_prompt_search_518_slot03_rep00.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_02_sobol_prompt_search_518_slot03_rep00"
+      },
+      "metadata": {
+        "analysis_tier": "exploratory_boundary",
+        "candidate_mean_tribe_score": 1.4943184455235798,
+        "control_pocket": "fresh24_aerial_beach",
+        "control_replay_tribe_score": -9.176816940307617,
+        "control_slot_index": 3,
+        "positive_pocket": "fresh24_old_car",
+        "positive_replay_tribe_score": 1.5894062519073486,
+        "positive_slot_index": 0,
+        "replicate_index": 0,
+        "sobol_recipe_index": 518,
+        "target_side": "right"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_old_car",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_01_sobol_prompt_search_518_slot00_rep00.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_01_sobol_prompt_search_518_slot00_rep00"
+      },
+      "seed": "fresh24_old_car:sobol_prompt_search_518_slot00:rep00:fresh24_aerial_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_518_slot00_rep00_vs_aerial_beach"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "exploratory_boundary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_old_car",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_01_sobol_prompt_search_518_slot00_rep01.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_01_sobol_prompt_search_518_slot00_rep01"
+      },
+      "metadata": {
+        "analysis_tier": "exploratory_boundary",
+        "candidate_mean_tribe_score": 1.4943184455235798,
+        "control_pocket": "fresh24_city_street",
+        "control_replay_tribe_score": -9.145174026489258,
+        "control_slot_index": 8,
+        "positive_pocket": "fresh24_old_car",
+        "positive_replay_tribe_score": 1.4940640926361084,
+        "positive_slot_index": 0,
+        "replicate_index": 1,
+        "sobol_recipe_index": 518,
+        "target_side": "left"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_city_street",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_03_sobol_prompt_search_518_slot08_rep01.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_03_sobol_prompt_search_518_slot08_rep01"
+      },
+      "seed": "fresh24_old_car:sobol_prompt_search_518_slot00:rep01:fresh24_city_street",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_518_slot00_rep01_vs_city_street"
+    },
+    {
+      "baseline_policy": "hard_negative_control",
+      "comparison": "exploratory_boundary_content_pocket_vs_hard_negative",
+      "left": {
+        "label": "fresh24_storm_beach",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_04_sobol_prompt_search_518_slot14_rep02.mp4",
+        "policy": "hard_negative_control",
+        "video_label": "bo_replay_04_sobol_prompt_search_518_slot14_rep02"
+      },
+      "metadata": {
+        "analysis_tier": "exploratory_boundary",
+        "candidate_mean_tribe_score": 1.4943184455235798,
+        "control_pocket": "fresh24_storm_beach",
+        "control_replay_tribe_score": -11.121122360229492,
+        "control_slot_index": 14,
+        "positive_pocket": "fresh24_old_car",
+        "positive_replay_tribe_score": 1.3994849920272827,
+        "positive_slot_index": 0,
+        "replicate_index": 2,
+        "sobol_recipe_index": 518,
+        "target_side": "right"
+      },
+      "question": "Which clip feels more memorable?",
+      "right": {
+        "label": "fresh24_old_car",
+        "path": "data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608/bo_replay_01_sobol_prompt_search_518_slot00_rep02.mp4",
+        "policy": "content_pocket_candidate",
+        "video_label": "bo_replay_01_sobol_prompt_search_518_slot00_rep02"
+      },
+      "seed": "fresh24_old_car:sobol_prompt_search_518_slot00:rep02:fresh24_storm_beach",
+      "target_policy": "content_pocket_candidate",
+      "task_id": "content_pocket_exploratory_boundary_old_car_sobol_prompt_search_518_slot00_rep02_vs_storm_beach"
+    }
+  ]
+}
