@@ -71,9 +71,9 @@ Key citation:
 ## 4. TRIBE Provides A Brain-Encoding Substrate, Not A Human Oracle
 
 TRIBE v2 is a multimodal brain encoding model that predicts fMRI brain responses
-to naturalistic video, audio, and text. The public repository describes it as a
-unified Transformer mapping multimodal representations onto cortical surface
-predictions.
+to naturalistic video, audio, and text. The 2026 arXiv paper describes it as a
+tri-modal foundation model for in-silico neuroscience, trained across large
+naturalistic and experimental fMRI corpora.
 
 Use in paper:
 
@@ -86,8 +86,9 @@ Use in paper:
 
 Key citation:
 
-- Meta/Facebook Research TRIBE v2 repository:
-  https://github.com/facebookresearch/tribev2
+- d'Ascoli et al. "A foundation model of vision, audition, and language for
+  in-silico neuroscience." arXiv 2026.
+  https://arxiv.org/abs/2605.04326
 
 ## 4.5. V-JEPA Is The Necessary Non-Brain Video Baseline
 

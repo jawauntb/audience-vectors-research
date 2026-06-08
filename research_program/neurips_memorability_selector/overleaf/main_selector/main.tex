@@ -81,7 +81,12 @@ Image memorability work established that memorability is not merely private
 taste; some images are consistently remembered better than others
 \citep{isola2011memorability}. Video memorability extends the problem to dynamic
 events and temporal decay, requiring both visual and semantic representations
-\citep{newman2020memento}.
+\citep{newman2020memento,cohendet2019videomem}. MediaEval's video
+memorability tasks further show that the benchmark ecosystem distinguishes
+short-term memorability, dataset generalization, and EEG-adjacent prediction
+subtasks \citep{sweeney2022mediaeval}. Applied systems such as MindMem are
+useful commercial-adjacent memorability predictors, but they should not be read
+as neuroscience validation \citep{asgarian2025mindmem}.
 
 \paragraph{Brain-aligned video representations.}
 BOLD Moments provides short naturalistic videos, fMRI responses, and
@@ -90,6 +95,24 @@ brain-aligned memorability readout \citep{lahner2024boldmoments}. TRIBE v2 is a
 multimodal brain-encoding model that maps video, audio, and language features to
 predicted cortical responses \citep{tribev2}. In this paper, TRIBE is used as a
 brain-aligned feature space, not as a literal brain scan or preference oracle.
+
+\paragraph{Brain-to-media reconstruction.}
+Recent brain decoding work reconstructs images or videos from measured fMRI
+using diffusion, CLIP-style embeddings, semantic guidance, and temporal
+reconstruction modules
+\citep{lu2023minddiffuser,chen2023mindvideo,gong2024neuroclips,sun2024neurocine,yang2026semvideo}.
+This is adjacent to our setting but distinct: those methods decode media from
+brain activity, whereas our current selector scores generated media with
+predicted-response and video-representation models.
+
+\paragraph{Response-guided generation.}
+Energy-guided diffusion uses a neuronal encoding model as an objective for
+generating neurally exciting images \citep{pierzchlewicz2023energyguided}.
+Saliency-guided generation methods similarly use predicted human attention to
+condition generation or optimize diffusion latents
+\citep{zhang2025gazefusion,wang2024sgool}. These papers motivate future
+neural-response-guided video generation, but they do not turn our current
+proxy-scored video candidates into human memorability evidence.
 
 \paragraph{Video generation evaluation.}
 Benchmarks such as VBench and FETV show that video generation evaluation is
