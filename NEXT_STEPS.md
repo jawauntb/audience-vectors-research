@@ -31,6 +31,12 @@ too.
 - Lightweight seed/video visual descriptors did not explain C-017 strongly
   enough to become a verifier. The best near-miss was seed-image colorfulness
   at AUC 0.8333 and abs d 1.8471, below the pre-registered AUC >= 0.85 gate.
+- CLIP seed-image and generated-video embedding geometry did explain the
+  positive-vs-hard-negative content-pocket residual strongly enough to become a
+  compute-proxy verifier. Seed-image pocket-held-out centroid margin reached
+  AUC 1.0000, abs d 2.8573, and r(score) 0.8541; generated-video CLIP centroid
+  margin reached AUC 0.8796 and abs d 2.0280. V-JEPA was not claimed because
+  exact pocket-replay V-JEPA feature files were not available.
 - Prompt text is metadata-only in the current SVD runner. A prompt-rewrite
   tournament should wait until we use a prompt-conditioned generator path where
   the prompt changes the actual pixels.
@@ -68,8 +74,8 @@ validation.
 | Priority | Task | Why | Gate | Next artifact | Status |
 |---|---|---|---|---|---|
 | P0 | Lightweight visual feature audit of positive vs negative content pockets | Tests whether simple non-score descriptors explain the accepted pocket residual | Not accepted: no seed/video descriptor cleared AUC >= 0.85 and abs d >= 1.00; best near-miss was seed-image colorfulness at AUC 0.8333 | Content-pocket feature audit manifest and result note | Done |
-| P0 | CLIP/V-JEPA embedding audit of positive vs negative content pockets | Tests whether stronger semantic/video embeddings explain the pocket residual where simple visual descriptors failed | Embedding centroid, classifier, or distance-based descriptor separates positives from hard negatives under pocket-held-out or otherwise leakage-aware validation | Content-pocket embedding audit manifest and result note | Next |
-| P1 | Stochastic replication around orange flowers and hanging clothes | Consolidates the best non-jellyfish positives before spending human-validation budget | Positive mean persists across new stochastic seeds, visual gates pass, and hard negatives remain negative under matched recipes | Expanded pocket replication manifest and result note | Queued |
+| P0 | CLIP/V-JEPA embedding audit of positive vs negative content pockets | Tests whether stronger semantic/video embeddings explain the pocket residual where simple visual descriptors failed | Accepted for CLIP: seed-image centroid margin AUC 1.0000 / abs d 2.8573; video centroid margin AUC 0.8796 / abs d 2.0280; seed/video classifiers AUC 1.0000 / 0.9514. V-JEPA exact features were unavailable and not claimed. | Content-pocket embedding audit manifest and result note | Done |
+| P1 | Stochastic replication around orange flowers and hanging clothes | Consolidates the best non-jellyfish positives before spending human-validation budget | Positive mean persists across new stochastic seeds, visual gates pass, hard negatives remain negative under matched recipes, and the accepted CLIP centroid-margin verifier remains positive | Expanded pocket replication manifest and result note | Next |
 | P1 | Blue jellyfish and old car boundary audit | Checks whether weaker positives are stable enough to keep or should be demoted | Stable positive mean with acceptable variance, or demote to exploratory/supporting only | Boundary audit note | Queued |
 | P2 | Prompt-conditioned generator transition | Moves from metadata-only prompt text to a generator where prompt operations can actually change content | Prompt interventions change generated video content while preserving visual validity and improving candidate selection | Prompt-conditioned generator manifest | Queued |
 | P2 | V-JEPA-augmented candidate screen | Reintroduces the broader selector stack only after content pockets are stabilized | V-JEPA adjudication improves or de-risks candidate ranking against TRIBE-only selection | Selector-stack comparison note | Queued |
@@ -78,41 +84,47 @@ validation.
 
 ## Immediate Next Experiment
 
-Question: do stronger CLIP/V-JEPA-style embeddings explain the stable positive
-pockets after lightweight seed/video visual descriptors failed their gate?
+Question: do orange flowers and hanging clothes replicate under fresh stochastic
+seeds while preserving both positive TRIBE replay score and the accepted CLIP
+content-pocket verifier?
 
-Action class: search inside the current compute-proxy regime. It becomes a
-small discovery move only if it creates a new accepted embedding descriptor,
-verifier, or artifact class that survives the hard negative controls.
+Action class: search inside the accepted SVD content-pocket regime. It becomes
+discovery-relevant only if a descriptor-conditioned replication turns the CLIP
+centroid margin from a retrospective verifier into a prospective selection
+constraint.
 
-Positive targets: orange flowers, hanging clothes, blue jellyfish, old car.
+Positive targets: orange flowers and hanging clothes. Keep blue jellyfish and
+old car as boundary/supporting positives unless budget allows a second block.
 
-Negative controls: aerial beach, city street, storm beach.
+Negative controls: aerial beach, city street, and storm beach under matched
+recipes/noise seeds.
 
-Suggested descriptors:
+Suggested design:
 
-- CLIP image/video embedding distance from positive and negative seed/video
-  centroids.
-- V-JEPA embeddings for generated videos if local features already exist or can
-  be produced cheaply.
-- Pocket-held-out or leakage-aware classifiers so repeated recipes within the
-  same seed pocket cannot fake generalization.
-- Existing TRIBE score, recipe id, Sobol index, and visual-gate status as
-  covariates.
+- Use the local recipe neighborhood that already passed the pocket-regime gate,
+  but add new stochastic seeds for the strongest two positive pockets.
+- Score all retained rows with TRIBE and compute the accepted CLIP seed/video
+  centroid-margin descriptors.
+- Treat V-JEPA as an optional extra only if exact pocket-replay embeddings are
+  produced for the new clips; do not reuse mismatched Wan/BMD V-JEPA features.
+- Preserve failed or withheld clips as rejected artifacts with visual-gate
+  reasons.
 
 Acceptance gate:
 
-- At least one embedding descriptor family separates accepted positives from
-  hard negatives without using the memorability score directly; or
-- the result note explicitly rejects embedding-level explanation and keeps C-017
-  as a black-box compute-proxy pocket finding until human/BMD validation.
+- Orange flowers and hanging clothes stay positive in mean TRIBE score across
+  fresh stochastic seeds;
+- hard negative controls stay negative under matched recipes;
+- generated-video CLIP centroid margin remains positive for the replicated
+  positives and does not collapse toward the negative centroid;
+- visual gates pass under complete-candidate retention.
 
 Required outputs:
 
-- a manifest naming inputs, descriptors, positives, controls, and withheld
-  cases;
-- a result note with accepted and rejected explanations;
-- claim-ledger update only if the result changes C-017's scope.
+- a descriptor-conditioned replication manifest;
+- a result note with TRIBE score, CLIP verifier, visual-gate, and hard-negative
+  control summaries;
+- claim-ledger update only if the replication changes C-017/C-018 scope.
 
 ## Stop Rules
 
