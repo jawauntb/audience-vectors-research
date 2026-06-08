@@ -75,7 +75,7 @@ validation.
 |---|---|---|---|---|---|
 | P0 | Lightweight visual feature audit of positive vs negative content pockets | Tests whether simple non-score descriptors explain the accepted pocket residual | Not accepted: no seed/video descriptor cleared AUC >= 0.85 and abs d >= 1.00; best near-miss was seed-image colorfulness at AUC 0.8333 | Content-pocket feature audit manifest and result note | Done |
 | P0 | CLIP/V-JEPA embedding audit of positive vs negative content pockets | Tests whether stronger semantic/video embeddings explain the pocket residual where simple visual descriptors failed | Accepted for exact V-JEPA and CLIP: V-JEPA video centroid margin AUC 1.0000 / abs d 3.2953, V-JEPA classifier balanced accuracy 0.9722; CLIP seed/video centroid margins also passed. | Content-pocket embedding audit manifest and result note | Done |
-| P1 | Stochastic replication around orange flowers and hanging clothes | Consolidates the best non-jellyfish positives before spending human-validation budget | Positive mean persists across new stochastic seeds, visual gates pass, hard negatives remain negative under matched recipes, and the accepted V-JEPA/CLIP centroid-margin verifiers remain positive | Expanded pocket replication manifest and result note | Next |
+| P1 | Stochastic replication around orange flowers and hanging clothes | Consolidates the best non-jellyfish positives before spending human-validation budget | Positive mean persists across new stochastic seeds, visual gates pass, hard negatives remain negative under matched recipes, and the accepted V-JEPA/CLIP centroid-margin verifiers remain positive | Descriptor-conditioned replication manifest and result note | Manifest created; generation next |
 | P1 | Blue jellyfish and old car boundary audit | Checks whether weaker positives are stable enough to keep or should be demoted | Stable positive mean with acceptable variance, or demote to exploratory/supporting only | Boundary audit note | Queued |
 | P2 | Prompt-conditioned generator transition | Moves from metadata-only prompt text to a generator where prompt operations can actually change content | Prompt interventions change generated video content while preserving visual validity and improving candidate selection | Prompt-conditioned generator manifest | Queued |
 | P2 | V-JEPA-augmented candidate screen | Reintroduces the broader selector stack only after content pockets are stabilized | V-JEPA adjudication improves or de-risks candidate ranking against TRIBE-only selection | Selector-stack comparison note | Queued |
@@ -121,7 +121,8 @@ Acceptance gate:
 
 Required outputs:
 
-- a descriptor-conditioned replication manifest;
+- descriptor-conditioned replication manifest:
+  `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/descriptor_conditioned_replication_manifest_20260608.md`;
 - a result note with TRIBE score, V-JEPA/CLIP verifier, visual-gate, and
   hard-negative control summaries;
 - claim-ledger update only if the replication changes C-017/C-018 scope.
