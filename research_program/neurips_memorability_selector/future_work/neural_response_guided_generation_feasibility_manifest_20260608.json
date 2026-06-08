@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "kind": "neural_response_guided_generation_feasibility",
+  "date": "2026-06-08",
+  "status": "future_work_proxy_only",
+  "claim_boundary": {
+    "claim_ledger_update_required": false,
+    "allowed_language": [
+      "proxy signal",
+      "candidate-selection signal",
+      "ranker",
+      "audit frame",
+      "no-generation dry run"
+    ],
+    "blocked_language": [
+      "validated human memorability reward model",
+      "TRIBE/V-JEPA/CLIP proves memorability",
+      "proxy-selected videos are human-memorable",
+      "prompt rewriting changes current SVD pixels"
+    ]
+  },
+  "reward_components": [
+    {
+      "id": "tribe_bmd_projection",
+      "local_status": "operational_service_and_replay_score",
+      "source_files": [
+        "src/audience_vectors/services/tribe_service.py",
+        "scripts/modal_bo_memorability_replay.py",
+        "src/audience_vectors/bo_replay.py"
+      ],
+      "required_inputs": [
+        "mp4_bytes_or_video_path",
+        "unit_bmd_memorability_direction"
+      ],
+      "expected_artifacts": [
+        "per_clip_replay_tribe_score",
+        "ranked_candidate_table"
+      ],
+      "differentiability": "black_box_in_current_repo_loop",
+      "safe_use": "primary_proxy_reranker",
+      "not_safe_use": "validated_human_reward"
+    },
+    {
+      "id": "exact_vjepa_embedding",
+      "local_status": "operational_modal_service_for_exact_mp4s",
+      "source_files": [
+        "src/audience_vectors/services/vjepa_service.py",
+        "scripts/extract_pocket_replay_vjepa.py",
+        "scripts/audit_content_pocket_embeddings.py"
+      ],
+      "required_inputs": [
+        "exact_mp4_bytes_or_video_path",
+        "vjepa_modal_app"
+      ],
+      "expected_artifacts": [
+        "npz_embedding_per_video",
+        "centroid_margin_or_classifier_report"
+      ],
+      "differentiability": "black_box_in_current_repo_loop",
+      "safe_use": "embedding_verifier_or_disagreement_signal",
+      "not_safe_use": "human_memorability_label"
+    },
+    {
+      "id": "clip_seed_video_prompt",
+      "local_status": "operational_local_embedding_scripts",
+      "source_files": [
+        "scripts/audit_content_pocket_embeddings.py",
+        "scripts/score_wan22_composite_preservation.py"
+      ],
+      "required_inputs": [
+        "seed_image",
+        "sampled_video_frames",
+        "optional_prompt_text"
+      ],
+      "expected_artifacts": [
+        "seed_video_cosine",
+        "prompt_video_cosine",
+        "composite_preservation_report"
+      ],
+      "differentiability": "differentiable_inside_clip_but_black_box_for_generation",
+      "safe_use": "preservation_gate_or_composite_guardrail",
+      "not_safe_use": "fresh_generated_video_human_verifier"
+    },
+    {
+      "id": "visual_artifact_gate",
+      "local_status": "operational_guardrail",
+      "source_files": [
+        "src/audience_vectors/visual_artifact_gate.py",
+        "scripts/modal_bo_memorability_replay.py"
+      ],
+      "required_inputs": [
+        "generated_mp4"
+      ],
+      "expected_artifacts": [
+        "passes_visual_gate",
+        "artifact_flags"
+      ],
+      "differentiability": "non_differentiable",
+      "safe_use": "blocking_quality_gate",
+      "not_safe_use": "memorability_reward"
+    },
+    {
+      "id": "behavioral_memorability_predictors",
+      "local_status": "citation_level_only",
+      "source_files": [
+        "research_program/neurips_memorability_selector/literature/neural_response_guided_generation_20260608.md"
+      ],
+      "required_inputs": [
+        "specific_predictor_model_or_dataset_access"
+      ],
+      "expected_artifacts": [
+        "external_predictor_score_report"
+      ],
+      "differentiability": "unknown_until_model_selected",
+      "safe_use": "future_benchmark_or_auxiliary_ranker",
+      "not_safe_use": "current_local_reward"
+    },
+    {
+      "id": "saliency_gaze_predictors",
+      "local_status": "citation_level_only",
+      "source_files": [
+        "research_program/neurips_memorability_selector/literature/neural_response_guided_generation_20260608.md"
+      ],
+      "required_inputs": [
+        "chosen_saliency_or_gaze_model",
+        "frame_or_clip_preprocessing"
+      ],
+      "expected_artifacts": [
+        "saliency_map_or_attention_score_report"
+      ],
+      "differentiability": "not_available_in_current_repo",
+      "safe_use": "future_attention_guidance_or_gate",
+      "not_safe_use": "current_memorability_validation"
+    }
+  ],
+  "pixel_affecting_controls": {
+    "current_svd_replay": [
+      "seed_idx_seed_image_selection",
+      "noise_seed",
+      "alpha_with_clip_image_steering_vector",
+      "guidance_scale",
+      "num_frames",
+      "num_inference_steps",
+      "motion_bucket_id",
+      "noise_aug_strength"
+    ],
+    "current_svd_metadata_only": [
+      "prompt_text"
+    ],
+    "prompt_conditioned_paths": [
+      "wan22_prompt",
+      "wan22_image_bytes",
+      "wan22_sample_guide_scale",
+      "wan22_sample_shift",
+      "wan22_seed",
+      "cogvideox_prompt",
+      "cogvideox_t5_steering_alpha",
+      "cogvideox_guidance_scale",
+      "veo_prompt"
+    ],
+    "not_exposed": [
+      "generator_gradients",
+      "latent_tensor_optimization",
+      "saliency_guided_latent_optimization"
+    ]
+  },
+  "feasible_loops": [
+    {
+      "id": "candidate_reranking",
+      "status": "feasible_now",
+      "requires_generation": false,
+      "notes": "Score existing or newly generated candidates and compare proxy rankers."
+    },
+    {
+      "id": "no_generation_agreement_dry_run",
+      "status": "recommended_first_spike",
+      "requires_generation": false,
+      "notes": "Use frozen or already generated MP4s; compare TRIBE, V-JEPA, CLIP, and visual gate agreement."
+    },
+    {
+      "id": "black_box_candidate_search",
+      "status": "feasible_but_wait_for_dry_run",
+      "requires_generation": true,
+      "notes": "Use Sobol, BO, or evolutionary search over pixel-affecting controls only."
+    },
+    {
+      "id": "prompt_search",
+      "status": "blocked_for_current_svd_available_on_prompt_conditioned_paths",
+      "requires_generation": true,
+      "notes": "Allowed only when prompt text reaches the generator."
+    },
+    {
+      "id": "latent_guidance_optimization",
+      "status": "not_currently_exposed",
+      "requires_generation": true,
+      "notes": "Needs new generator plumbing and separate safety gates."
+    },
+    {
+      "id": "reward_distillation",
+      "status": "blocked_until_selector_validation",
+      "requires_generation": true,
+      "notes": "Needs validated selector, preservation gates, and held-out human/BMD evaluation."
+    }
+  ],
+  "smallest_safe_spike": {
+    "id": "no_generation_proxy_agreement_dry_run",
+    "recommended_source_pool": [
+      "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_validation_pairwise_tasks_20260608.json",
+      "existing_generated_candidate_pool_with_local_mp4s"
+    ],
+    "expected_artifacts": [
+      "research_program/neurips_memorability_selector/future_work/neural_response_guided_generation_dry_run_20260608.json",
+      "research_program/neurips_memorability_selector/future_work/neural_response_guided_generation_dry_run_20260608.md"
+    ],
+    "stop_rules": [
+      "do_not_generate_new_videos",
+      "do_not_change_frozen_content_pocket_stimuli",
+      "do_not_update_claim_ledger_for_proxy_only_results",
+      "do_not_call_proxy_agreement_validation",
+      "stop_if_required_mp4s_or_features_are_missing_without_documented_inventory"
+    ]
+  },
+  "launch_blockers": [
+    "local_data_lake_mp4s_not_committed_to_clean_worktree",
+    "modal_tribe_and_vjepa_app_availability",
+    "bmd_direction_artifact_availability",
+    "clip_local_ml_environment",
+    "manual_mp4_screening_before_human_or_bmd_launch",
+    "prompt_conditioned_generator_required_for_prompt_search"
+  ],
+  "relation_to_content_pocket_validation": {
+    "lane_status": "separate_prelaunch_validation_lane",
+    "frozen_task_count": 24,
+    "unique_mp4_paths": 45,
+    "allowed_relation": "future_proxy_dry_run_evaluation_target",
+    "blocked_relation": "replacement_for_human_or_measured_bmd_validation"
+  }
+}
