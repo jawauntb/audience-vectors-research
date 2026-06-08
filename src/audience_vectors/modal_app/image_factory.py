@@ -52,15 +52,18 @@ TRIBE_HF_REPO_ID = "facebook/tribev2"
 TRIBE_HF_REVISION = "f894e783020944dcd96e5568550afe2aa9743f9f"
 TRIBE_GIT_REF = "72399081ed3f1040c4d996cefb2864a4c46f5b8e"
 _TRIBE_EXCA_VERSION = "0.5.25"
+_TRIBE_TRANSFORMERS_VERSION = "4.56.1"
 TRIBE_UV_PIP_INSTALL_REQUIREMENTS = (
     f"git+https://github.com/facebookresearch/tribev2.git@{TRIBE_GIT_REF}",
     f"exca=={_TRIBE_EXCA_VERSION}",
+    f"transformers=={_TRIBE_TRANSFORMERS_VERSION}",
 )
 _TRIBE_IMPORT_RUNTIME_PREFLIGHT_COMMAND = (
     'python -c "import exca.steps.base as exca_base; '
     "exca_base.NoValue(); "
+    "from transformers import AutoProcessor, AutoVideoProcessor; "
     "from tribev2 import TribeModel; "
-    'print(TribeModel.__name__)"'
+    'print(AutoProcessor.__name__, AutoVideoProcessor.__name__, TribeModel.__name__)"'
 )
 
 # whisperx + cuDNN dance: whisperx 3.4.3 pins ctranslate2<4.5, whose CUDA

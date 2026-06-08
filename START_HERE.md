@@ -1,6 +1,6 @@
 # Start Here
 
-Last updated: 2026-06-05.
+Last updated: 2026-06-08.
 
 This repo now has three layers that were previously blended together:
 
@@ -112,10 +112,15 @@ When editing the paper text, update both:
 
 Before new human trials, use compute-side work to stabilize candidate selection:
 
-- replicated BO/TRIBE replay for stochastic generated videos;
-- fixed-budget comparisons against random/Sobol/best-of-N;
-- prompt-clustered ranking stability;
-- seed-stratified tournament panels across matched prompts and budgets;
+- preserve the claim boundary: BO/SVD/LoRA/Modal work is compute-proxy evidence
+  until a human or BMD-grounded gate validates the candidate set;
+- for current SVD replay, stop spending broadening budget on alpha/guidance-only
+  search. Prompt-transfer, per-prompt Sobol, and fixed-recipe seed-content panels
+  show that seed-image/content identity dominates the score structure;
+- expand or restore the seed-image bank, then run equal-budget seed-selection
+  tournaments with visual-first retention and stochastic replicates;
+- or switch to a prompt-conditioned generator path before running prompt-rewrite
+  tournaments, because prompt text is metadata-only in the current SVD runner;
 - then human validation only on candidates that survive the compute screen.
 
 Do not frame proxy-only improvements as human memorability gains.

@@ -15,6 +15,7 @@ def test_tribe_image_pins_exca_with_tribev2_install() -> None:
         f"{image_factory.TRIBE_GIT_REF}"
     ) in requirements
     assert "exca==0.5.25" in requirements
+    assert "transformers==4.56.1" in requirements
 
 
 def test_tribe_image_import_preflight_covers_exca_and_tribe() -> None:
@@ -22,4 +23,5 @@ def test_tribe_image_import_preflight_covers_exca_and_tribe() -> None:
 
     assert "import exca.steps.base as exca_base" in command
     assert "exca_base.NoValue()" in command
+    assert "from transformers import AutoProcessor, AutoVideoProcessor" in command
     assert "from tribev2 import TribeModel" in command

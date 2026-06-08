@@ -48,18 +48,21 @@ currently a generation-conditioning variable for SVD replay. The actionable
 content variables under the current runner are seed-image selection and
 seed-bank expansion.
 
-## Attempted Follow-Up Probe
+## Follow-Up Probe
 
-I attempted the next small fixed-recipe seed-content replicate panel using Sobol
-indices 516 and 517 across the five available seed images with two stochastic
-replicates each. The dry-run expanded correctly to 20 jobs, but the full Modal
-run was blocked before the first generation completed:
+The next small fixed-recipe seed-content replicate panel used Sobol indices 516
+and 517 across the five available seed images with two stochastic replicates
+each. It was initially blocked by a Modal workspace spend-limit error:
 
 ```text
 workspace billing cycle spend limit reached
 ```
 
-No new scored replay result was produced by that attempted probe.
+After switching to the company Modal profile and repinning the TRIBE image to
+`transformers==4.56.1`, the run completed. The result is recorded in
+`seed_content_fixed_recipe_probe_result_20260608.md`: 20/20 clips generated,
+16/16 retained rows scored, and seed-content slot explained R2 = 0.9494 of
+retained TRIBE score variance while recipe identity explained R2 = 0.0026.
 
 ## Interpretation
 
@@ -76,4 +79,3 @@ The next valid content-broadening step is one of:
    Wan2.2, or Veo before running prompt-rewrite tournaments;
 3. modify SVD replay plumbing only if a prompt-conditioned SVD variant is
    actually available.
-
