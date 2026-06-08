@@ -309,6 +309,20 @@ Manifest-alignment audit update:
 - This is retrieval/verification infrastructure. It does not score TRIBE
   features and cannot validate the attention-capture proxy.
 
+Manifest-provenance update:
+
+- `scripts/build_attention_capture_phase1_manifest.py` can now consume an
+  alignment audit via `--alignment-audit`.
+- The builder fails if the audit is not `ready_for_manifest_build=true` or if
+  the audit does not match the label CSV, feature directory, sample-ID column,
+  ground-truth column, feature template, or dataset being used.
+- A synthetic alignment manifest was generated at
+  `phase1_synthetic_alignment_manifest_20260608.json`. It records the alignment
+  audit path, SHA-256, aligned feature count, missing feature count, and label
+  summary under `metadata.alignment_audit`.
+- This closes a reproducibility gap: a real Phase 1 manifest can now carry the
+  exact verifier artifact that allowed it to be built.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
@@ -322,12 +336,12 @@ Next move:
 
 1. Mount or acquire real SnapUGC/VQualA labels or a DHF1K dataset root; rerun
    `scripts/audit_attention_capture_data_readiness.py`.
-2. Build a real Phase 1 manifest for SnapUGC and/or DHF1K from external labels
-   and cached TRIBE NPZ files, using the disjoint ROI mask NPZ as the default
-   scoring source.
-3. Before building the manifest, run
+2. Before building the manifest, run
    `scripts/audit_attention_capture_manifest_alignment.py` on the chosen label
    CSV and feature directory.
+3. Build a real Phase 1 manifest for SnapUGC and/or DHF1K from external labels
+   and cached TRIBE NPZ files, passing `--alignment-audit` so the manifest
+   records the verifier hash.
 4. For DHF1K, run the label audit before GPU scoring and choose a non-degenerate
    ground-truth column.
 5. Run the guarded Phase 1 workflow with

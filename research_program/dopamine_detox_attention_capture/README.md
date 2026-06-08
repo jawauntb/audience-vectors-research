@@ -23,6 +23,8 @@ format work. It does not validate attentional capture.
 - `phase1_synthetic_smoke_manifest_20260608.json`: tiny fixture manifest.
 - `phase1_synthetic_alignment_labels_20260608.csv`: tiny synthetic label CSV
   used only to smoke-test label-to-feature alignment.
+- `phase1_synthetic_alignment_manifest_20260608.json`: synthetic manifest built
+  from the alignment fixture while recording the alignment-audit hash.
 - `fixtures/phase1_synthetic_alignment_features_20260608/*.npz`: tiny synthetic
   TRIBE-shaped `frames` NPZ files used only for the alignment smoke test.
 - `results/phase1_synthetic_smoke_preflight_20260608.json`: machine-readable
@@ -71,7 +73,8 @@ format work. It does not validate attentional capture.
   mask audit.
 - `scripts/build_attention_capture_phase1_manifest.py`: CSV-to-manifest bridge
   for real SnapUGC, DHF1K, or similar external-label datasets once cached TRIBE
-  NPZ files exist.
+  NPZ files exist. It can consume an alignment audit and record its hash in the
+  manifest metadata.
 - `scripts/build_dhf1k_attention_labels.py`: DHF1K annotation-map label builder
   that emits gaze/saliency CSV rows plus a label audit.
 - `scripts/extract_attention_capture_tribe_features.py`: generic TRIBE NPZ
@@ -181,6 +184,20 @@ The synthetic alignment fixture is not claim evidence; it only proves that a
 label CSV, feature directory, and manifest-builder inputs can be audited before
 the strict manifest builder runs.
 
+Build the synthetic alignment manifest with audit provenance:
+
+```bash
+uv run python scripts/build_attention_capture_phase1_manifest.py \
+  --labels-csv research_program/dopamine_detox_attention_capture/phase1_synthetic_alignment_labels_20260608.csv \
+  --feature-dir research_program/dopamine_detox_attention_capture/fixtures/phase1_synthetic_alignment_features_20260608 \
+  --output research_program/dopamine_detox_attention_capture/phase1_synthetic_alignment_manifest_20260608.json \
+  --dataset synthetic_alignment_fixture \
+  --ground-truth-name ecr \
+  --ground-truth-column ecr \
+  --status synthetic_smoke_only \
+  --alignment-audit research_program/dopamine_detox_attention_capture/results/phase1_synthetic_alignment_20260608.json
+```
+
 Build a real Phase 1 manifest from external labels and cached TRIBE NPZ files:
 
 ```bash
@@ -191,7 +208,8 @@ uv run python scripts/build_attention_capture_phase1_manifest.py \
   --dataset SnapUGC \
   --ground-truth-name ECR \
   --sample-id-column sample_id \
-  --ground-truth-column ecr
+  --ground-truth-column ecr \
+  --alignment-audit research_program/dopamine_detox_attention_capture/results/phase1_real_alignment.json
 ```
 
 For DHF1K specifically, first derive external saliency labels from the official
@@ -231,7 +249,8 @@ uv run python scripts/build_attention_capture_phase1_manifest.py \
   --output research_program/dopamine_detox_attention_capture/phase1_dhf1k_manifest_20260608.json \
   --dataset DHF1K \
   --ground-truth-name mean_map_intensity \
-  --ground-truth-column mean_map_intensity
+  --ground-truth-column mean_map_intensity \
+  --alignment-audit research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_alignment_20260608.json
 ```
 
 Preflight the manifest before claim-relevant scoring:

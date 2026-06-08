@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+from hashlib import sha256
 from pathlib import Path
 from typing import Any
 
@@ -47,6 +48,15 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Skip rows whose expected feature file is absent.",
     )
+    parser.add_argument(
+        "--alignment-audit",
+        type=Path,
+        default=None,
+        help=(
+            "Optional output from audit_attention_capture_manifest_alignment.py. "
+            "When supplied, it must be ready and match these manifest inputs."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -63,6 +73,7 @@ def main() -> None:
         status=args.status,
         limit=args.limit,
         allow_missing_features=args.allow_missing_features,
+        alignment_audit=args.alignment_audit,
     )
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -85,7 +96,17 @@ def build_manifest(
     status: str = "real_external_attention_labels",
     limit: int | None = None,
     allow_missing_features: bool = False,
+    alignment_audit: Path | None = None,
 ) -> dict[str, Any]:
+    alignment_metadata = validate_alignment_audit(
+        alignment_audit=alignment_audit,
+        labels_csv=labels_csv,
+        feature_dir=feature_dir,
+        dataset=dataset,
+        sample_id_column=sample_id_column,
+        ground_truth_column=ground_truth_column,
+        feature_template=feature_template,
+    )
     rows = _read_label_rows(labels_csv)
     samples: list[dict[str, Any]] = []
     missing_features: list[dict[str, str]] = []
@@ -146,8 +167,88 @@ def build_manifest(
             "n_samples": len(samples),
             "n_missing_features": len(missing_features),
             "missing_features": missing_features,
+            "alignment_audit": alignment_metadata,
         },
     }
+
+
+def validate_alignment_audit(
+    *,
+    alignment_audit: Path | None,
+    labels_csv: Path,
+    feature_dir: Path,
+    dataset: str,
+    sample_id_column: str,
+    ground_truth_column: str,
+    feature_template: str,
+) -> dict[str, Any] | None:
+    if alignment_audit is None:
+        return None
+
+    payload = json.loads(alignment_audit.read_text(encoding="utf-8"))
+    if payload.get("experiment") != "phase1_manifest_alignment_audit":
+        raise ValueError(f"{alignment_audit} is not a Phase 1 alignment audit")
+    if not payload.get("ready_for_manifest_build"):
+        reasons = payload.get("blocking_reasons") or []
+        reason_text = "; ".join(str(reason) for reason in reasons) or "unknown reason"
+        raise ValueError(f"{alignment_audit} is not ready: {reason_text}")
+
+    mismatches = alignment_audit_mismatches(
+        payload,
+        labels_csv=labels_csv,
+        feature_dir=feature_dir,
+        dataset=dataset,
+        sample_id_column=sample_id_column,
+        ground_truth_column=ground_truth_column,
+        feature_template=feature_template,
+    )
+    if mismatches:
+        raise ValueError(
+            f"{alignment_audit} does not match manifest inputs: "
+            + "; ".join(mismatches)
+        )
+
+    return {
+        "path": str(alignment_audit),
+        "sha256": sha256(alignment_audit.read_bytes()).hexdigest(),
+        "ready_for_manifest_build": True,
+        "n_aligned_features": int(payload.get("n_aligned_features") or 0),
+        "n_missing_features": int(payload.get("n_missing_features") or 0),
+        "ground_truth_summary": payload.get("ground_truth_summary"),
+    }
+
+
+def alignment_audit_mismatches(
+    payload: dict[str, Any],
+    *,
+    labels_csv: Path,
+    feature_dir: Path,
+    dataset: str,
+    sample_id_column: str,
+    ground_truth_column: str,
+    feature_template: str,
+) -> list[str]:
+    mismatches: list[str] = []
+    if not same_path(payload.get("labels_csv"), labels_csv):
+        mismatches.append("labels_csv differs")
+    if not same_path(payload.get("feature_dir"), feature_dir):
+        mismatches.append("feature_dir differs")
+    if payload.get("sample_id_column") != sample_id_column:
+        mismatches.append("sample_id_column differs")
+    if payload.get("ground_truth_column") != ground_truth_column:
+        mismatches.append("ground_truth_column differs")
+    if payload.get("feature_template") != feature_template:
+        mismatches.append("feature_template differs")
+    audit_dataset = str(payload.get("dataset") or "unknown")
+    if audit_dataset not in ("unknown", dataset):
+        mismatches.append("dataset differs")
+    return mismatches
+
+
+def same_path(value: object, expected: Path) -> bool:
+    if not isinstance(value, str) or not value:
+        return False
+    return Path(value).expanduser().resolve() == expected.expanduser().resolve()
 
 
 def _read_label_rows(path: Path) -> list[dict[str, str]]:
