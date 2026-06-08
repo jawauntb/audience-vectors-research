@@ -53,6 +53,15 @@ too.
   credible future neural-response-guided generated-video direction. This is a
   citation/framing update only; it does not upgrade any compute-proxy content
   pocket into a human memorability or measured-BMD claim.
+- The blue jellyfish / old car boundary audit generated and scored 90/90 fresh
+  stochastic clips with 0 visual failures. Both boundary pockets stayed
+  positive under TRIBE and all hard controls stayed negative. The boundary
+  embedding gate was accepted through CLIP-side readouts, but exact V-JEPA did
+  not pass the boundary audit. Blue jellyfish and old car are secondary
+  boundary arms, not primary V-JEPA-verified candidates.
+- A V-JEPA-caveated human/BMD validation packet is now assembled. The primary
+  success gate is orange flowers plus hanging clothes; blue jellyfish and old
+  car are exploratory boundary arms only.
 - Prompt text is metadata-only in the current SVD runner. A prompt-rewrite
   tournament should wait until we use a prompt-conditioned generator path where
   the prompt changes the actual pixels.
@@ -93,7 +102,8 @@ validation.
 | P0 | CLIP/V-JEPA embedding audit of positive vs negative content pockets | Tests whether stronger semantic/video embeddings explain the pocket residual where simple visual descriptors failed | Accepted for exact V-JEPA and CLIP: V-JEPA video centroid margin AUC 1.0000 / abs d 3.2953, V-JEPA classifier balanced accuracy 0.9722; CLIP seed/video centroid margins also passed. | Content-pocket embedding audit manifest and result note | Done |
 | P1 | Stochastic replication around orange flowers and hanging clothes | Consolidates the best non-jellyfish positives before spending human-validation budget | Partial pass: 90/90 clips generated/scored, 0 visual failures, target TRIBE means positive, hard controls negative, exact V-JEPA accepted; generated-video CLIP not accepted prospectively | Descriptor-conditioned replication result note | Done; claim narrowed |
 | P1 | Resolve prospective CLIP verifier gap | Decides whether the next human/BMD packet can use a V-JEPA-only compute screen or needs another descriptor check first | Done: generated-video CLIP remained not accepted after 8-frame/text diagnostic; prompt-seed CLIP passed only as an ancillary seed/prompt descriptor | `descriptor_conditioned_replication_clip_diagnostic_result_20260608.md` | Done |
-| P1 | Blue jellyfish and old car boundary audit | Checks whether weaker positives are stable enough to keep or should be demoted | Stable positive mean with acceptable variance, or demote to exploratory/supporting only | Boundary audit note | Queued |
+| P1 | Blue jellyfish and old car boundary audit | Checks whether weaker positives are stable enough to keep or should be demoted | Partial pass: 90/90 clips generated/scored, 0 visual failures, both pockets positive, hard controls negative; CLIP-side boundary verifier accepted; exact V-JEPA not accepted | `boundary_pocket_audit_result_20260608.md` | Done; boundary arms only |
+| P1 | V-JEPA-caveated human/BMD validation packet | Freezes what can move to human/BMD spend without smuggling compute-proxy caveats into the claim | Packet assembled with orange flowers/hanging clothes as primary candidates and blue jellyfish/old car as exploratory boundary arms | `content_pocket_human_bmd_validation_packet_20260608.md` | Done |
 | P2 | Prompt-conditioned generator transition | Moves from metadata-only prompt text to a generator where prompt operations can actually change content | Prompt interventions change generated video content while preserving visual validity and improving candidate selection | Prompt-conditioned generator manifest | Queued |
 | P2 | V-JEPA-augmented candidate screen | Reintroduces the broader selector stack only after content pockets are stabilized | V-JEPA adjudication improves or de-risks candidate ranking against TRIBE-only selection | Selector-stack comparison note | Queued |
 | Human-owned | Human pilot or delayed-recognition study | Needed before final human memorability claims | Participants prefer selected candidates or delayed recognition improves under pre-registered analysis | Prolific/IRB packet and analysis report | Parked until compute screen |
@@ -102,16 +112,15 @@ validation.
 ## Immediate Next Decision
 
 Question: after orange flowers and hanging clothes replicated under fresh
-stochastic seeds with TRIBE and exact V-JEPA, and after the targeted CLIP
-diagnostic confirmed that generated-video CLIP still does not transport, should
-the next spend be a V-JEPA-caveated human/BMD packet or a boundary audit for
-weaker pockets?
+stochastic seeds with TRIBE and exact V-JEPA, after generated-video CLIP failed
+the prospective diagnostic, and after blue jellyfish/old car passed TRIBE but
+not V-JEPA in the boundary audit, what should launch next?
 
 Action class: still search inside the accepted SVD content-pocket regime. It
 becomes discovery-relevant only if a new descriptor rule, validation packet, or
 boundary audit changes what counts as a stable candidate-selection gate.
 
-Current result to preserve:
+Current results to preserve:
 
 - `descriptor_conditioned_replication_result_20260608.md` records a partial
   gate pass: 90/90 clips generated and scored, 0 visual failures, orange flowers
@@ -127,15 +136,25 @@ Current result to preserve:
   abs d 0.9884; classifier balanced accuracy 0.5833). `clip_prompt_seed`
   passed as an ancillary prompt/seed descriptor (AUC 1.0000, abs d 2.6251), but
   it is not a generated-video verifier.
+- `boundary_pocket_audit_result_20260608.md` records a boundary partial pass:
+  90/90 clips generated/scored, 0 visual failures, blue jellyfish mean 1.8844,
+  old car mean 1.3110, and all hard controls negative. Exact V-JEPA did not
+  pass the boundary verifier (descriptor AUC 0.8194; classifier AUC 0.8333).
+  CLIP-side boundary checks did pass (`clip_seed_video` AUC 0.9722 / abs d
+  2.2252; `clip_video` classifier AUC 0.9676 / balanced accuracy 0.7917).
+- `content_pocket_human_bmd_validation_packet_20260608.md` defines the tiered
+  validation packet: orange flowers and hanging clothes are primary candidates;
+  blue jellyfish and old car are exploratory boundary arms.
 
 Near-term options:
 
-1. Build a human/BMD validation packet with orange flowers and hanging clothes
-   explicitly labeled as TRIBE/V-JEPA-verified compute-proxy candidates, with
-   generated-video CLIP recorded as a failed prospective verifier and
-   prompt-seed CLIP recorded only as an ancillary seed/prompt sanity check.
-2. Run the blue jellyfish and old car boundary audit if the goal is to broaden
-   candidate pockets before human/BMD spend.
+1. Freeze the exact MP4 stimulus set from the validation packet and build a
+   blinded human forced-choice survey.
+2. Build a measured-BMD or BMD-grounded transfer report from the same frozen
+   stimulus set.
+3. Keep a prompt-conditioned generator transition separate; do not run prompt
+   rewriting in the current image-conditioned SVD runner as if it changes the
+   pixels.
 
 ## Stop Rules
 

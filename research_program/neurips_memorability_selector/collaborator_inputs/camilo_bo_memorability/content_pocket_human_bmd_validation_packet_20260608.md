@@ -1,0 +1,162 @@
+# Content-Pocket Human/BMD Validation Packet
+
+Date: 2026-06-08
+
+## Purpose
+
+Prepare the next validation spend for the SVD content-pocket result without
+overclaiming compute-proxy evidence. The packet tests whether the strongest
+TRIBE/V-JEPA compute-proxy pockets transfer to human memorability behavior or
+measured-BMD grounding.
+
+This packet is V-JEPA-caveated:
+
+- `fresh24_orange_flowers` and `fresh24_hanging_clothes` are primary
+  TRIBE/V-JEPA-verified compute-proxy candidates.
+- `fresh24_blue_jellyfish` and `fresh24_old_car` are secondary boundary arms.
+  They passed fresh TRIBE replication and CLIP-side boundary checks, but they
+  did not pass the fresh boundary V-JEPA verifier.
+- No pocket in this packet is a proven human-memorability or measured-BMD
+  result yet.
+
+## Source Evidence
+
+Primary candidate evidence:
+
+- `descriptor_conditioned_replication_manifest_20260608.md`
+- `descriptor_conditioned_replication_result_20260608.md`
+- `descriptor_conditioned_replication_vjepa_extraction_result_20260608.md`
+- `descriptor_conditioned_replication_embedding_result_20260608.md`
+- `descriptor_conditioned_replication_clip_diagnostic_result_20260608.md`
+
+Boundary-arm evidence:
+
+- `boundary_pocket_audit_manifest_20260608.md`
+- `boundary_pocket_audit_result_20260608.md`
+- `boundary_pocket_audit_vjepa_extraction_result_20260608.md`
+- `boundary_pocket_audit_embedding_result_20260608.md`
+
+Local data-lake inputs:
+
+- Primary replay report:
+  `data/reports/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608.json`
+- Primary generated videos:
+  `data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608`
+- Boundary replay report:
+  `data/reports/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608.json`
+- Boundary generated videos:
+  `data/generated/bo_boundary_pocket_audit_sobol518_523_x5_noise350k_reps3_steps50_motion5_noise0_20260608`
+
+## Candidate Tiers
+
+| tier | pocket | role | compute status | packet use |
+|---|---|---|---|---|
+| primary | `fresh24_orange_flowers` | positive candidate | TRIBE positive; exact V-JEPA accepted prospectively; generated-video CLIP not accepted | primary human/BMD success gate |
+| primary | `fresh24_hanging_clothes` | positive candidate | TRIBE positive; exact V-JEPA accepted prospectively; generated-video CLIP not accepted | primary human/BMD success gate |
+| secondary | `fresh24_blue_jellyfish` | boundary positive | TRIBE positive; CLIP boundary verifier accepted; exact V-JEPA not accepted in boundary audit | exploratory generality arm |
+| secondary | `fresh24_old_car` | boundary positive | TRIBE positive; CLIP boundary verifier accepted; exact V-JEPA not accepted in boundary audit | exploratory generality arm |
+| control | `fresh24_aerial_beach` | hard negative | negative in primary and boundary audits | matched control |
+| control | `fresh24_city_street` | hard negative | negative in primary and boundary audits | matched control |
+| control | `fresh24_storm_beach` | hard negative | negative in primary and boundary audits | matched control |
+
+## Stimulus Construction Rules
+
+Use complete-candidate retained clips only.
+
+- Preserve every generated, rejected, withheld, and failed artifact in the local
+  data lake.
+- For primary analysis, draw positive stimuli only from orange flowers and
+  hanging clothes.
+- Match hard-negative controls by Sobol recipe index and stochastic replicate
+  schedule when possible.
+- Keep blue jellyfish and old car in a separately labeled exploratory block.
+  Do not pool them into the primary success test.
+- Prefer task-level candidates with positive mean TRIBE score and no failed
+  stochastic replicate.
+- Preserve the three stochastic replicates for each chosen task-level candidate
+  until the final survey/BMD stimulus set is frozen.
+- Before launch, manually inspect the selected MP4s for semantic subject
+  retention, frame collapse, text/watermark artifacts, and obvious
+  attention-check leakage.
+
+## Recommended Human Pilot
+
+Primary question:
+
+Do humans judge orange-flower and hanging-clothes clips as more memorable than
+matched hard negative controls?
+
+Design:
+
+- Blinded forced choice, positive pocket clip versus matched hard-negative
+  control.
+- Within-participant randomized side/order.
+- At least two task-level candidates per primary pocket.
+- Include all three hard-negative control pockets across the packet.
+- Add attention checks that are not visually confusable with the target
+  content-pocket clips.
+
+Primary gate:
+
+- Pooled primary-pocket choices exceed 50% under a pre-registered binomial or
+  mixed-effects logistic test.
+- Each primary pocket has a positive estimated effect direction.
+- Report pocket-level effects separately even if the pooled test passes.
+
+Secondary boundary gate:
+
+- Analyze blue jellyfish and old car separately from the primary result.
+- Treat positive results as generality evidence and negative or mixed results
+  as a boundary on the content-pocket regime.
+
+## Recommended BMD Or Measured-Brain Gate
+
+Primary question:
+
+Do primary candidate pockets show stronger measured-BMD or BMD-grounded
+memorability-direction support than matched hard negatives?
+
+Design:
+
+- Use the frozen primary stimuli and matched hard-negative controls.
+- Score or measure against the BMD memorability direction using the same
+  preprocessing and split discipline as the accepted core selector work.
+- Keep any TRIBE-only result labeled as proxy evidence unless measured-BMD or
+  held-out BMD labels are explicitly involved.
+
+Primary gate:
+
+- Orange flowers and hanging clothes separate from hard negatives in the
+  BMD-grounded readout.
+- Pocket-level effects have the same sign for both primary pockets.
+- Secondary boundary arms are analyzed separately and do not rescue a failed
+  primary gate.
+
+## Claim Language If The Packet Passes
+
+Allowed:
+
+- "Orange flowers and hanging clothes were TRIBE/V-JEPA compute-proxy
+  candidates before human/BMD validation."
+- "The human/BMD packet validated the primary content-pocket candidates under
+  the pre-registered gate."
+- "Blue jellyfish and old car were exploratory boundary arms."
+
+Not allowed:
+
+- "All four pockets were V-JEPA-verified in fresh replication."
+- "Generated-video CLIP prospectively verified orange flowers and hanging
+  clothes."
+- "Proxy-only scores prove human memorability."
+- "The current SVD prompt text caused the content-pocket effect."
+
+## Next Action
+
+Freeze the exact MP4 stimulus set from the primary replay report and this
+packet's selection rules. Then build either:
+
+1. a blinded human forced-choice survey, or
+2. a measured-BMD/BMD-grounded transfer report.
+
+Keep the compute-proxy packet and the human/BMD result as separate artifacts so
+the claim ledger can distinguish candidate selection from validation.

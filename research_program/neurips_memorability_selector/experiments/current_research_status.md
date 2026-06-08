@@ -49,7 +49,14 @@ Last updated: 2026-06-08
   cosine passed only as an ancillary seed/prompt descriptor. This gives the two
   strongest pockets a TRIBE/V-JEPA compute-proxy replication, but human/BMD
   validation remains open and CLIP should not be described as a fresh
-  prospective generated-video pass.
+  prospective generated-video pass. A follow-up blue jellyfish / old car
+  boundary audit generated and scored 90/90 fresh-seed clips with 0 visual
+  failures. Both boundary pockets stayed positive and hard controls stayed
+  negative, but the verifier split was different: CLIP-side boundary checks
+  passed while exact V-JEPA did not clear the pre-registered boundary gate. The
+  human/BMD validation packet is therefore tiered: orange flowers and hanging
+  clothes are primary TRIBE/V-JEPA candidates; blue jellyfish and old car are
+  secondary exploratory boundary arms.
 
 ## Newly Built V-JEPA Pilot State
 
@@ -94,9 +101,9 @@ to TRIBE/product nor obviously irrelevant.
 - We have not validated the stable positive SVD content pockets with human
   behavior or measured-BMD alignment. Orange flowers and hanging clothes now
   have fresh-seed TRIBE/V-JEPA compute-proxy replication, but generated-video
-  CLIP did not clear the prospective verifier, the follow-up CLIP diagnostic
-  accepted only an ancillary prompt-seed descriptor, and no human/BMD gate has
-  run.
+  CLIP did not clear the prospective verifier. Blue jellyfish and old car passed
+  fresh TRIBE and CLIP-side boundary checks, but not the exact V-JEPA boundary
+  verifier. The validation packet is assembled, but no human/BMD gate has run.
 - We have not shown delayed-recognition memory gains.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.
@@ -131,3 +138,14 @@ property beyond standard video-feature baselines.
    where the selectors disagree.
 4. Run prompt-clustered bootstrap and mixed-effects logistic analysis.
 5. Only then decide whether LoRA/DPO distillation is worth the budget.
+
+## Content-Pocket Validation Packet
+
+The SVD content-pocket validation packet is ready as a separate compute-proxy
+artifact:
+
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_human_bmd_validation_packet_20260608.md`
+
+Use it only for a human/BMD validation launch. It does not change the current
+main-pilot priority above unless the team decides to spend validation budget on
+the content-pocket fork.
