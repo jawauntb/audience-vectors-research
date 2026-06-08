@@ -62,8 +62,9 @@ Gate:
 
 Expected interpretation:
 
-- If accepted, update C-017 and G-010 to say the content-pocket residual now has
-  an accepted CLIP embedding verifier, while keeping human/BMD validation open.
+- If accepted, update C-017/C-018 and G-010 to say the content-pocket residual
+  now has an accepted embedding verifier, while keeping human/BMD validation
+  open.
 - If rejected, keep C-017 scoped as a stable but black-box TRIBE compute-proxy
   content-pocket finding and prioritize exact V-JEPA, measured-BMD, or human
   validation before further blind replication.

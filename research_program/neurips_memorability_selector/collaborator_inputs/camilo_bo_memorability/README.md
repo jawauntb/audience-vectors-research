@@ -505,29 +505,36 @@ artifacts are `content_pocket_feature_audit_manifest_20260608.md`,
 ### 2026-06-08 Content-Pocket Embedding Audit
 
 The stronger embedding audit then asked whether CLIP/V-JEPA-style representations
-explain the pocket residual that simple visual descriptors missed. The script
-`scripts/audit_content_pocket_embeddings.py` encoded the exact pocket-regime
-seed images and generated SVD replay clips with `openai/clip-vit-base-patch32`,
-aggregated replicates to 42 task-level candidates, and tested pocket-held-out
-centroid margins plus leave-one-pocket-out classifiers. Exact V-JEPA feature
-files for these replay-video stems were not available, so V-JEPA was recorded
-as missing rather than mixed with mismatched Wan/BMD features.
+explain the pocket residual that simple visual descriptors missed.
+`scripts/extract_pocket_replay_vjepa.py` first populated the missing exact
+V-JEPA artifact family by uploading all 84 pocket-regime replay MP4s by bytes
+to the Modal V-JEPA predictor and saving `.npz` files by video stem. Coverage
+was complete: 84/84 exact generated videos produced V-JEPA features. The script
+`scripts/audit_content_pocket_embeddings.py` then encoded the exact
+pocket-regime seed images and generated SVD replay clips with
+`openai/clip-vit-base-patch32`, loaded the exact V-JEPA features, aggregated
+replicates to 42 task-level candidates, and tested pocket-held-out centroid
+margins plus leave-one-pocket-out classifiers.
 
-The CLIP gate passed.
+The embedding gate passed, with exact V-JEPA as the strongest family.
 
 | family | feature | direction | positive mean | negative mean | AUC | abs d | r(score) |
 |---|---|---|---:|---:|---:|---:|---:|
+| vjepa_video | pocket-held-out centroid margin | higher for positive | 0.1029 | -0.0871 | 1.0000 | 3.2953 | 0.8871 |
 | clip_seed_image | pocket-held-out centroid margin | higher for positive | 0.0605 | -0.0409 | 1.0000 | 2.8573 | 0.8541 |
 | clip_video | pocket-held-out centroid margin | higher for positive | 0.0604 | -0.0359 | 0.8796 | 2.0280 | 0.7620 |
 
-The leakage-aware classifiers also passed: seed-image CLIP reached AUC 1.0000
-and balanced accuracy 0.8333, while generated-video CLIP reached AUC 0.9514 and
-balanced accuracy 0.8333. This promotes CLIP embedding geometry to an accepted
-compute-proxy verifier for the content-pocket residual. It still does not prove
-human memorability, delayed recognition, or exact V-JEPA agreement. The next
+The leakage-aware classifiers also passed: V-JEPA reached AUC 1.0000 and
+balanced accuracy 0.9722; seed-image CLIP reached AUC 1.0000 and balanced
+accuracy 0.8333; generated-video CLIP reached AUC 0.9514 and balanced accuracy
+0.8333. This promotes exact V-JEPA and CLIP embedding geometry to accepted
+compute-proxy verifiers for the content-pocket residual. It still does not prove
+human memorability, delayed recognition, or measured-BMD alignment. The next
 SVD experiment should replicate orange flowers and hanging clothes under fresh
-stochastic seeds while preserving both positive TRIBE score and the CLIP
-centroid-margin verifier. The committed audit artifacts are
+stochastic seeds while preserving positive TRIBE score and the V-JEPA/CLIP
+centroid-margin verifiers. The committed audit artifacts are
+`content_pocket_vjepa_extraction_result_20260608.md`,
+`content_pocket_vjepa_extraction_summary_20260608.json`,
 `content_pocket_embedding_audit_manifest_20260608.md`,
 `content_pocket_embedding_audit_result_20260608.md`, and
 `content_pocket_embedding_audit_summary_20260608.json`.

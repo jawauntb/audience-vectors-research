@@ -32,12 +32,13 @@ Last updated: 2026-06-08
   recipe identity. A follow-up lightweight feature audit did not explain the
   positive pockets strongly enough to accept a descriptor verifier: the best
   near-miss was seed-image colorfulness (AUC 0.8333, abs d 1.8471), below the
-  pre-registered AUC >= 0.85 gate. A stronger CLIP embedding audit did clear
-  the descriptor-explanation gate: seed-image pocket-held-out centroid margin
-  reached AUC 1.0000, abs d 2.8573, and r(score) 0.8541; generated-video CLIP
-  centroid margin reached AUC 0.8796 and abs d 2.0280. This gives the pocket
-  residual an accepted compute-proxy verifier, but exact V-JEPA features for
-  those replay videos and human/BMD validation remain open.
+  pre-registered AUC >= 0.85 gate. Stronger exact V-JEPA and CLIP embedding
+  audits did clear the descriptor-explanation gate. V-JEPA features were
+  extracted for 84/84 exact pocket-regime replay MP4s; V-JEPA video centroid
+  margin reached AUC 1.0000, abs d 3.2953, and r(score) 0.8871, with
+  leave-one-pocket-out classifier balanced accuracy 0.9722. CLIP seed/video
+  centroid margins also passed. This gives the pocket residual accepted
+  compute-proxy verifiers, but human/BMD validation remains open.
 
 ## Newly Built V-JEPA Pilot State
 
@@ -80,10 +81,10 @@ to TRIBE/product nor obviously irrelevant.
   and current SVD broadening should target seed-image/content expansion or a
   prompt-conditioned generator path rather than more alpha/guidance-only search.
 - We have not validated the stable positive SVD content pockets with human
-  behavior, measured-BMD alignment, or exact V-JEPA features for the pocket
-  replay videos. CLIP embedding geometry is now accepted as a compute-proxy
-  verifier, so the next SVD run should replicate orange flowers and hanging
-  clothes while tracking both TRIBE score and CLIP centroid margin.
+  behavior or measured-BMD alignment. Exact V-JEPA and CLIP embedding geometry
+  are now accepted as compute-proxy verifiers, so the next SVD run should
+  replicate orange flowers and hanging clothes while tracking TRIBE score plus
+  V-JEPA/CLIP centroid margins.
 - We have not shown delayed-recognition memory gains.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.

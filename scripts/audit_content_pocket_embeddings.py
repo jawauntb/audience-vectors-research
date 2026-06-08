@@ -856,19 +856,25 @@ def render_markdown(summary: dict[str, Any]) -> str:
         )
 
     if gate["accepted"]:
+        best_family = (
+            str(gate["best_descriptor"]["family"])
+            if gate["best_descriptor"]
+            else "embedding"
+        )
         interpretation = (
-            "The CLIP embedding audit clears the verifier gate. That means the "
-            "stable positive pockets are not merely opaque score islands: their "
-            "seed/video embeddings contain enough structure to distinguish them "
-            "from hard negative controls under leakage-aware evaluation. This is "
-            "still compute-proxy evidence, not human memorability, but it gives "
-            "the next replication a real descriptor to track."
+            "The embedding audit clears the verifier gate. The best accepted "
+            f"family is {best_family}, and the stable positive pockets are not "
+            "merely opaque score islands: their seed/video embeddings contain "
+            "enough structure to distinguish them from hard negative controls "
+            "under leakage-aware evaluation. This is still compute-proxy "
+            "evidence, not human memorability, but it gives the next replication "
+            "a real descriptor to track."
         )
         next_move = (
             "Run the orange-flowers and hanging-clothes stochastic replication "
-            "with the accepted CLIP descriptor as a covariate and stopping rule. "
-            "If new variants preserve both positive TRIBE score and descriptor "
-            "margin, the content-pocket verifier becomes stronger."
+            "with the accepted embedding descriptor as a covariate and stopping "
+            "rule. If new variants preserve both positive TRIBE score and "
+            "descriptor margin, the content-pocket verifier becomes stronger."
         )
     else:
         interpretation = (
