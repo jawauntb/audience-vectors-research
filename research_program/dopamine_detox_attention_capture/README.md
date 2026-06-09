@@ -179,6 +179,11 @@ building, but `dhf1k_labels_ready` stays false until a
 fixture, smoke, and control CSV/feature paths may appear in diagnostics, but do
 not count as real external labels or real feature caches.
 
+`real_manifest_ready` is also provenance-gated. A claim-updatable manifest must
+carry `metadata.alignment_audit` with `ready_for_manifest_build=true`, a valid
+SHA-256, enough aligned features for its sample count, and zero missing
+features. DHF1K manifests additionally require a ready nested label audit.
+
 Smoke-test label-to-feature alignment:
 
 ```bash
