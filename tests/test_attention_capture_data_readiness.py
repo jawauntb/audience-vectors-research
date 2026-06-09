@@ -95,6 +95,10 @@ def test_build_readiness_report_detects_phase1_inputs(tmp_path: Path) -> None:
     assert report["dhf1k_label_audits"][0]["ready_for_handoff"] is True
     assert report["snapugc_label_candidates"][0]["n_rows"] == 2
     assert report["tribe_feature_dirs"][0]["ready_as_feature_cache"] is True
+    assert report["roi_masks"]["disjoint"]["path"] == (
+        "research_program/dopamine_detox_attention_capture/results/"
+        "destrieux_roi_masks_disjoint_20260608.npz"
+    )
     assert "Phase 1 Data Readiness Audit" in module.render_readiness_markdown(report)
     assert "DHF1K Label Audits" in module.render_readiness_markdown(report)
 
@@ -209,6 +213,17 @@ def test_claim_updatable_manifest_requires_alignment_provenance(
     )
     assert report["readiness"]["real_manifest_ready"] is False
     assert report["readiness"]["phase1_can_run_now"] is False
+    assert any(
+        reason.startswith("manifest not workflow-ready:")
+        and "claim-updatable manifest requires metadata.alignment_audit" in reason
+        for reason in report["readiness"]["blocking_reasons"]
+    )
+    assert "no external attention-label source found" not in report["readiness"][
+        "blocking_reasons"
+    ]
+    assert report["readiness"][
+        "recommended_next_action"
+    ] == "fix Phase 1 manifest provenance, then rerun the guarded workflow"
 
 
 def test_ready_manifest_provenance_unblocks_workflow_readiness(
