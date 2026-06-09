@@ -145,6 +145,7 @@ Audit local data readiness before trying a real Phase 1 handoff:
 ```bash
 uv run python scripts/audit_attention_capture_data_readiness.py \
   --search-root . \
+  --search-root data/attention_capture \
   --search-root /Users/jawaun/isc_mod/data \
   --search-root /Users/jawaun/data \
   --search-root /Users/jawaun/datasets \
@@ -171,6 +172,11 @@ The scan found reusable cached TRIBE feature directories, including
 but no local DHF1K/SnapUGC/VQualA external-label source. Those cached features
 remain useful infrastructure; they do not unblock Phase 1 until they are aligned
 to a real external attention-label manifest.
+
+The preferred local intake point is `data/attention_capture/`, which is ignored
+for datasets but tracked with a README. Mount DHF1K at
+`data/attention_capture/DHF1K/` or place granted SnapUGC/VQualA labels under
+`data/attention_capture/` before rerunning the readiness audit.
 
 DHF1K readiness is intentionally split: a dataset root can be ready for label
 building, but `dhf1k_labels_ready` stays false until a
@@ -240,7 +246,7 @@ https://github.com/wenguanwang/DHF1K.
 
 ```bash
 uv run python scripts/build_dhf1k_attention_labels.py \
-  --dhf1k-root /absolute/path/to/DHF1K \
+  --dhf1k-root data/attention_capture/DHF1K \
   --split annotated \
   --rank-column mean_map_intensity \
   --extreme-count-per-tail 175 \

@@ -6,8 +6,12 @@
 *.key
 
 # Data lake — never commit datasets, clips, features, or model weights
-data/
+data/*
 !data/.gitkeep
+!data/attention_capture/
+data/attention_capture/*
+!data/attention_capture/.gitkeep
+!data/attention_capture/README.md
 
 # Vendored third-party repos should be added intentionally, e.g. as submodules.
 vendor/
