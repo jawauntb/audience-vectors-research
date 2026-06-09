@@ -1,0 +1,36 @@
+{
+  "schema_version": "content_pocket_recognition_response_analysis_plan.v1",
+  "created_at_utc": "2026-06-09T00:28:31Z",
+  "status": "analysis_plan_ready_no_response_data",
+  "analysis_script": "scripts/analyze_content_pocket_recognition_responses.py",
+  "expected_response_inputs": [
+    "JSON payloads from Session 1 and Session 2 launch pages",
+    "JSONL files containing one wrapped or direct payload per line",
+    "CSV exports with response_json, payload, body, data, or json columns"
+  ],
+  "default_command": "uv run python scripts/analyze_content_pocket_recognition_responses.py --responses data/prolific/content_pocket_recognition_20260608 --out-json research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_response_analysis_result_20260608.json --out-md research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_response_analysis_result_20260608.md",
+  "primary_gate": {
+    "minimum_usable_delayed_participants": 200,
+    "complete_case_requirement": "Participant must have usable Session 1 exposure and Session 2 recognition rows for all five analysis arms: orange_flowers, hanging_clothes, aerial_beach, city_street, storm_beach.",
+    "pass_conditions": [
+      "Pooled primary_positive recognition accuracy exceeds hard_negative_control recognition accuracy.",
+      "orange_flowers recognition accuracy exceeds pooled hard_negative_control recognition accuracy.",
+      "hanging_clothes recognition accuracy exceeds pooled hard_negative_control recognition accuracy.",
+      "Pooled primary_positive, orange_flowers, and hanging_clothes accuracies are above chance.",
+      "Pooled primary_positive versus hard_negative_control two-proportion z-test has two-sided p < 0.05."
+    ]
+  },
+  "exclusion_policy": [
+    "Manual dry-run or shakedown participant IDs/prefixes are passed through --exclude-participant-id or --exclude-participant-prefix.",
+    "Participants missing Session 1 or Session 2 payloads are not usable for the gate.",
+    "Form mismatches between sessions are excluded with reason form_mismatch.",
+    "Session 1 media_error or incomplete exposure excludes the matched analysis trial.",
+    "Session 2 left_media_error, right_media_error, or any_media_error excludes the matched recognition trial.",
+    "Participants without all five usable analysis arms are excluded from the complete-case primary gate."
+  ],
+  "claim_boundary": [
+    "This plan and script do not create human-memory evidence.",
+    "Underpowered, dry-run, media-error, missing-session, and incomplete-case outputs are not human memorability evidence.",
+    "Only a passed delayed Session 2 analysis can support a human recognition-memory claim for the primary pockets."
+  ]
+}
