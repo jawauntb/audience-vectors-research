@@ -412,6 +412,16 @@ Manifest-readiness provenance tightening:
 - Synthetic, fixture, smoke, and control manifests remain listed as diagnostics
   but cannot become `workflow-ready` in the data-readiness report.
 
+Readiness-blocker reporting update:
+
+- Manifest-level provenance blockers are now lifted into top-level
+  `readiness.blocking_reasons`, so a real-looking manifest that lacks
+  alignment provenance directs the handoff to fix manifest provenance instead
+  of reporting only a generic missing-label blocker.
+- Repo-owned ROI mask paths in the readiness artifact are reported relative to
+  the repository root, avoiding worktree-specific path churn during repeated
+  verifier regenerations.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and

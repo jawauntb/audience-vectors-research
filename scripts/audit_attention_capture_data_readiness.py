@@ -299,15 +299,15 @@ def audit_roi_masks(repo_root: Path) -> dict[str, Any]:
     disjoint = results / "destrieux_roi_masks_disjoint_20260608.npz"
     overlapping = results / "destrieux_roi_masks_20260608.npz"
     return {
-        "disjoint": audit_roi_mask_file(disjoint),
-        "overlapping": audit_roi_mask_file(overlapping),
+        "disjoint": audit_roi_mask_file(disjoint, repo_root=repo_root),
+        "overlapping": audit_roi_mask_file(overlapping, repo_root=repo_root),
         "ready_for_primary_scoring": disjoint.exists(),
     }
 
 
-def audit_roi_mask_file(path: Path) -> dict[str, Any]:
+def audit_roi_mask_file(path: Path, *, repo_root: Path) -> dict[str, Any]:
     return {
-        "path": str(path),
+        "path": display_path(path, repo_root=repo_root),
         "exists": path.exists(),
     }
 
@@ -492,6 +492,7 @@ def derive_readiness(
     features_ready = any(item["ready_as_feature_cache"] for item in feature_dirs)
     masks_ready = bool(roi_masks["ready_for_primary_scoring"])
     manifest_ready = any(item["ready_for_workflow"] for item in manifests)
+    manifest_blockers = manifest_readiness_blockers(manifests)
     blockers = readiness_blockers(
         dhf1k_root_ready=dhf1k_root_ready,
         dhf1k_label_ready=dhf1k_label_ready,
@@ -500,6 +501,7 @@ def derive_readiness(
         features_ready=features_ready,
         masks_ready=masks_ready,
         manifest_ready=manifest_ready,
+        manifest_blockers=manifest_blockers,
     )
     return {
         "dhf1k_root_ready_for_label_build": dhf1k_root_ready,
@@ -518,8 +520,23 @@ def derive_readiness(
             features_ready=features_ready,
             masks_ready=masks_ready,
             manifest_ready=manifest_ready,
+            manifest_blockers=manifest_blockers,
         ),
     }
+
+
+def manifest_readiness_blockers(manifests: list[dict[str, Any]]) -> list[str]:
+    blockers: list[str] = []
+    for manifest in manifests:
+        if manifest["claim_blocked"] or manifest["ready_for_workflow"]:
+            continue
+        reasons = manifest.get("provenance_blocking_reasons") or []
+        if not reasons:
+            reasons = ["manifest is not workflow-ready"]
+        blockers.append(
+            f"{manifest['path']}: " + "; ".join(str(reason) for reason in reasons)
+        )
+    return blockers
 
 
 def readiness_blockers(
@@ -531,9 +548,15 @@ def readiness_blockers(
     features_ready: bool,
     masks_ready: bool,
     manifest_ready: bool,
+    manifest_blockers: list[str],
 ) -> list[str]:
     blockers: list[str] = []
-    if not (dhf1k_label_ready or snapugc_ready or manifest_ready):
+    blockers.extend(
+        f"manifest not workflow-ready: {reason}"
+        for reason in manifest_blockers
+    )
+    has_claim_updatable_manifest = bool(manifest_ready or manifest_blockers)
+    if not (dhf1k_label_ready or snapugc_ready or has_claim_updatable_manifest):
         if dhf1k_root_ready:
             blockers.append("DHF1K root found but no ready DHF1K label audit found")
         else:
@@ -555,9 +578,12 @@ def recommended_next_action(
     features_ready: bool,
     masks_ready: bool,
     manifest_ready: bool,
+    manifest_blockers: list[str],
 ) -> str:
     if manifest_ready and masks_ready:
         return "run scripts/run_attention_capture_phase1_workflow.py"
+    if manifest_blockers:
+        return "fix Phase 1 manifest provenance, then rerun the guarded workflow"
     if dhf1k_label_ready and features_ready:
         return "build the DHF1K Phase 1 manifest, then run the guarded workflow"
     if snapugc_ready and features_ready:
@@ -774,6 +800,13 @@ def optional_int(value: object) -> int | None:
         return int(value)
     except (TypeError, ValueError):
         return None
+
+
+def display_path(path: Path, *, repo_root: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(repo_root.resolve()))
+    except ValueError:
+        return str(path)
 
 
 def path_exists_from_audit(raw_path: object, *, audit_path: Path) -> bool:

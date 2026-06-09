@@ -183,6 +183,8 @@ not count as real external labels or real feature caches.
 carry `metadata.alignment_audit` with `ready_for_manifest_build=true`, a valid
 SHA-256, enough aligned features for its sample count, and zero missing
 features. DHF1K manifests additionally require a ready nested label audit.
+If a discovered manifest fails this provenance gate, the top-level readiness
+blockers point to the manifest fix before recommending more data acquisition.
 
 Smoke-test label-to-feature alignment:
 

@@ -295,11 +295,11 @@
   ],
   "roi_masks": {
     "disjoint": {
-      "path": "/Users/jawaun/.codex/worktrees/attention-capture-manifest-readiness-20260608/isc_mod/research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+      "path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
       "exists": true
     },
     "overlapping": {
-      "path": "/Users/jawaun/.codex/worktrees/attention-capture-manifest-readiness-20260608/isc_mod/research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz",
+      "path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz",
       "exists": true
     },
     "ready_for_primary_scoring": true
