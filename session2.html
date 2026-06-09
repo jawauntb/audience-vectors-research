@@ -121,6 +121,7 @@ function downloadJSON() {
 }
 document.getElementById("participant-id").value = queryParam("PROLIFIC_PID") || queryParam("participant_id");
 let ended = {left:false,right:false};
+let mediaError = {left:false,right:false};
 let choice = null;
 function start() {
   form = assignForm(participantId());
@@ -142,7 +143,7 @@ function sideUrl(trial, side) {
 }
 function render() {
   const trial = trials[index];
-  ended = {left:false,right:false}; choice = null; currentStartedAt = new Date().toISOString();
+  ended = {left:false,right:false}; mediaError = {left:false,right:false}; choice = null; currentStartedAt = new Date().toISOString();
   document.getElementById("next").disabled = true;
   document.getElementById("left-choice").classList.remove("selected");
   document.getElementById("right-choice").classList.remove("selected");
@@ -153,8 +154,8 @@ function render() {
   left.src = sideUrl(trial, "left"); right.src = sideUrl(trial, "right");
   left.onended = () => { ended.left = true; setChoiceEnabled(); };
   right.onended = () => { ended.right = true; setChoiceEnabled(); };
-  left.onerror = () => { ended.left = true; setChoiceEnabled(); };
-  right.onerror = () => { ended.right = true; setChoiceEnabled(); };
+  left.onerror = () => { mediaError.left = true; ended.left = true; setChoiceEnabled(); };
+  right.onerror = () => { mediaError.right = true; ended.right = true; setChoiceEnabled(); };
   left.load(); right.load(); setChoiceEnabled();
 }
 function replay() {
@@ -169,7 +170,7 @@ function choose(side) {
 }
 function next() {
   const trial = trials[index];
-  responses.push({...trial, choice_side: choice, is_correct: choice === trial.correct_choice, response_time_ms: Date.now() - Date.parse(currentStartedAt), started_at: currentStartedAt, completed_at: new Date().toISOString()});
+  responses.push({...trial, choice_side: choice, is_correct: choice === trial.correct_choice, left_media_error: mediaError.left, right_media_error: mediaError.right, any_media_error: mediaError.left || mediaError.right, response_time_ms: Date.now() - Date.parse(currentStartedAt), started_at: currentStartedAt, completed_at: new Date().toISOString()});
   index += 1;
   if (index >= trials.length) finish(); else render();
 }

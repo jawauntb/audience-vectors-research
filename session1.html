@@ -120,6 +120,7 @@ function downloadJSON() {
 }
 document.getElementById("participant-id").value = queryParam("PROLIFIC_PID") || queryParam("participant_id");
 let videoEnded = false;
+let videoError = false;
 let rating = null;
 function start() {
   form = assignForm(participantId());
@@ -144,21 +145,21 @@ function renderRatingButtons() {
 }
 function render() {
   const trial = trials[index];
-  videoEnded = false; rating = null; currentStartedAt = new Date().toISOString();
+  videoEnded = false; videoError = false; rating = null; currentStartedAt = new Date().toISOString();
   document.getElementById("next").disabled = true;
   document.getElementById("trial-index").textContent = String(index + 1);
   document.getElementById("progress").style.width = `${(index / trials.length) * 100}%`;
   const clip = document.getElementById("clip");
   clip.src = trial.video_url;
   clip.onended = () => { videoEnded = true; renderRatingButtons(); };
-  clip.onerror = () => { videoEnded = true; renderRatingButtons(); };
+  clip.onerror = () => { videoError = true; videoEnded = true; renderRatingButtons(); };
   clip.load();
   renderRatingButtons();
 }
 function replay() { const clip = document.getElementById("clip"); clip.currentTime = 0; clip.play(); }
 function next() {
   const trial = trials[index];
-  responses.push({...trial, cover_task_rating: rating, exposure_completed: videoEnded, started_at: currentStartedAt, completed_at: new Date().toISOString()});
+  responses.push({...trial, cover_task_rating: rating, exposure_completed: videoEnded, media_error: videoError, started_at: currentStartedAt, completed_at: new Date().toISOString()});
   index += 1;
   if (index >= trials.length) finish(); else render();
 }

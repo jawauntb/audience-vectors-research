@@ -1,6 +1,6 @@
 {
   "accepted_video_screening": true,
-  "created_at_utc": "2026-06-09T00:01:15+00:00",
+  "created_at_utc": "2026-06-09T00:16:46+00:00",
   "instructions": [
     "Use session1_url and session2_url from the launch asset manifest as the Prolific study URLs.",
     "Pass ?submit_url=<endpoint> if using automatic response POST collection.",
