@@ -326,16 +326,19 @@ def audit_phase1_manifest(path: Path) -> dict[str, Any]:
         payload = {}
     samples = payload.get("samples")
     status = str(payload.get("status") or "unspecified")
+    sample_rows = [sample for sample in samples or [] if isinstance(sample, dict)]
     datasets = sorted(
         {
             str(sample.get("dataset") or "unknown")
-            for sample in samples or []
-            if isinstance(sample, dict)
+            for sample in sample_rows
         },
     )
-    claim_blocked = any(
-        term in status.lower()
-        for term in ("synthetic", "fixture", "smoke", "control", "not_attention")
+    claim_blocked = is_claim_blocked_manifest(status=status, datasets=datasets)
+    provenance = audit_manifest_provenance(
+        payload,
+        n_samples=len(samples) if isinstance(samples, list) else 0,
+        datasets=datasets,
+        required=not claim_blocked,
     )
     return {
         "path": str(path),
@@ -343,8 +346,134 @@ def audit_phase1_manifest(path: Path) -> dict[str, Any]:
         "n_samples": len(samples) if isinstance(samples, list) else 0,
         "datasets": datasets,
         "claim_blocked": claim_blocked,
-        "ready_for_workflow": bool(samples) and not claim_blocked,
+        "provenance_required": provenance["required"],
+        "provenance_ready": provenance["ready"],
+        "provenance_blocking_reasons": provenance["blocking_reasons"],
+        "alignment_audit": provenance["alignment_audit"],
+        "ready_for_workflow": bool(samples)
+        and not claim_blocked
+        and provenance["ready"],
     }
+
+
+def is_claim_blocked_manifest(*, status: str, datasets: list[str]) -> bool:
+    haystack = " ".join([status, *datasets]).lower()
+    return any(term in haystack for term in CLAIM_BLOCKED_HINTS)
+
+
+def audit_manifest_provenance(
+    manifest: dict[str, Any],
+    *,
+    n_samples: int,
+    datasets: list[str],
+    required: bool,
+) -> dict[str, Any]:
+    alignment = alignment_audit_metadata(manifest)
+    reasons: list[str] = []
+    if required:
+        if not isinstance(alignment, dict):
+            reasons.append(
+                "claim-updatable manifest requires metadata.alignment_audit"
+            )
+        else:
+            reasons.extend(
+                manifest_alignment_blocking_reasons(
+                    alignment,
+                    n_samples=n_samples,
+                    datasets=datasets,
+                ),
+            )
+
+    return {
+        "required": required,
+        "ready": not reasons,
+        "blocking_reasons": reasons,
+        "alignment_audit": alignment_audit_summary(alignment),
+    }
+
+
+def alignment_audit_metadata(manifest: dict[str, Any]) -> dict[str, Any] | None:
+    metadata = manifest.get("metadata")
+    if not isinstance(metadata, dict):
+        return None
+    alignment = metadata.get("alignment_audit")
+    return alignment if isinstance(alignment, dict) else None
+
+
+def alignment_audit_summary(alignment: dict[str, Any] | None) -> dict[str, Any]:
+    if not isinstance(alignment, dict):
+        return {
+            "path": None,
+            "sha256": None,
+            "ready_for_manifest_build": None,
+            "n_aligned_features": None,
+            "n_missing_features": None,
+            "label_audit_ready": None,
+        }
+    label_audit = alignment.get("label_audit")
+    label_audit_ready = (
+        label_audit.get("ready_for_manifest_alignment")
+        if isinstance(label_audit, dict)
+        else None
+    )
+    return {
+        "path": alignment.get("path"),
+        "sha256": alignment.get("sha256"),
+        "ready_for_manifest_build": alignment.get("ready_for_manifest_build"),
+        "n_aligned_features": alignment.get("n_aligned_features"),
+        "n_missing_features": alignment.get("n_missing_features"),
+        "label_audit_ready": label_audit_ready,
+    }
+
+
+def manifest_alignment_blocking_reasons(
+    alignment: dict[str, Any],
+    *,
+    n_samples: int,
+    datasets: list[str],
+) -> list[str]:
+    reasons: list[str] = []
+    if alignment.get("ready_for_manifest_build") is not True:
+        reasons.append("metadata.alignment_audit is not ready for manifest build")
+    if not isinstance(alignment.get("path"), str) or not alignment.get("path"):
+        reasons.append("metadata.alignment_audit.path is missing")
+    if not looks_like_sha256(alignment.get("sha256")):
+        reasons.append("metadata.alignment_audit.sha256 is missing or invalid")
+
+    n_aligned = optional_int(alignment.get("n_aligned_features"))
+    if n_aligned is None:
+        reasons.append("metadata.alignment_audit.n_aligned_features is missing")
+    elif n_aligned < n_samples:
+        reasons.append(
+            "metadata.alignment_audit.n_aligned_features is below manifest "
+            "sample count"
+        )
+
+    n_missing = optional_int(alignment.get("n_missing_features"))
+    if n_missing is None:
+        reasons.append("metadata.alignment_audit.n_missing_features is missing")
+    elif n_missing:
+        reasons.append(
+            f"metadata.alignment_audit reports {n_missing} missing features"
+        )
+
+    reasons.extend(dhf1k_manifest_label_audit_reasons(alignment, datasets=datasets))
+    return reasons
+
+
+def dhf1k_manifest_label_audit_reasons(
+    alignment: dict[str, Any],
+    *,
+    datasets: list[str],
+) -> list[str]:
+    if not any(dataset.upper() == "DHF1K" for dataset in datasets):
+        return []
+    label_audit = alignment.get("label_audit")
+    if not isinstance(label_audit, dict):
+        return ["DHF1K manifests require alignment_audit.label_audit"]
+    if label_audit.get("ready_for_manifest_alignment") is not True:
+        return ["alignment_audit.label_audit is not ready"]
+    return []
 
 
 def derive_readiness(
@@ -564,16 +693,20 @@ def render_manifest_section(items: list[dict[str, Any]]) -> list[str]:
         "",
         "## Phase 1 Manifests",
         "",
-        "| path | status | samples | claim blocked | workflow-ready |",
-        "|---|---|---:|---|---|",
+        (
+            "| path | status | samples | claim blocked | provenance required | "
+            "provenance ready | workflow-ready |"
+        ),
+        "|---|---|---:|---|---|---|---|",
     ]
     if not items:
-        lines.append("| none | n/a | 0 | True | False |")
+        lines.append("| none | n/a | 0 | True | False | False | False |")
     for item in items:
         lines.append(
             "| "
             f"{item['path']} | {item['status']} | {item['n_samples']} | "
-            f"{item['claim_blocked']} | {item['ready_for_workflow']} |"
+            f"{item['claim_blocked']} | {item['provenance_required']} | "
+            f"{item['provenance_ready']} | {item['ready_for_workflow']} |"
         )
     return lines
 
@@ -626,6 +759,21 @@ def npz_frames_shape(path: Path) -> str | None:
         return None
     frames = np.asarray(payload["frames"])
     return "x".join(str(dim) for dim in frames.shape)
+
+
+def looks_like_sha256(value: object) -> bool:
+    if not isinstance(value, str) or len(value) != 64:
+        return False
+    return all(char in "0123456789abcdefABCDEF" for char in value)
+
+
+def optional_int(value: object) -> int | None:
+    if not isinstance(value, int | float | str):
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
 
 
 def path_exists_from_audit(raw_path: object, *, audit_path: Path) -> bool:

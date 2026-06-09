@@ -62,7 +62,7 @@
 
 ## Phase 1 Manifests
 
-| path | status | samples | claim blocked | workflow-ready |
-|---|---|---:|---|---|
-| research_program/dopamine_detox_attention_capture/phase1_synthetic_alignment_manifest_20260608.json | synthetic_smoke_only | 3 | True | False |
-| research_program/dopamine_detox_attention_capture/phase1_synthetic_smoke_manifest_20260608.json | synthetic_smoke_only | 16 | True | False |
+| path | status | samples | claim blocked | provenance required | provenance ready | workflow-ready |
+|---|---|---:|---|---|---|---|
+| research_program/dopamine_detox_attention_capture/phase1_synthetic_alignment_manifest_20260608.json | synthetic_smoke_only | 3 | True | False | True | False |
+| research_program/dopamine_detox_attention_capture/phase1_synthetic_smoke_manifest_20260608.json | synthetic_smoke_only | 16 | True | False | True | False |

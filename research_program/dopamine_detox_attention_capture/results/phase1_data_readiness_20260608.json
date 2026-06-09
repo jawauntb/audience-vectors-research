@@ -295,11 +295,11 @@
   ],
   "roi_masks": {
     "disjoint": {
-      "path": "/Users/jawaun/.codex/worktrees/attention-capture-next-gate-20260608/isc_mod/research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+      "path": "/Users/jawaun/.codex/worktrees/attention-capture-manifest-readiness-20260608/isc_mod/research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
       "exists": true
     },
     "overlapping": {
-      "path": "/Users/jawaun/.codex/worktrees/attention-capture-next-gate-20260608/isc_mod/research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz",
+      "path": "/Users/jawaun/.codex/worktrees/attention-capture-manifest-readiness-20260608/isc_mod/research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz",
       "exists": true
     },
     "ready_for_primary_scoring": true
@@ -313,6 +313,17 @@
         "synthetic_alignment_fixture"
       ],
       "claim_blocked": true,
+      "provenance_required": false,
+      "provenance_ready": true,
+      "provenance_blocking_reasons": [],
+      "alignment_audit": {
+        "path": "research_program/dopamine_detox_attention_capture/results/phase1_synthetic_alignment_20260608.json",
+        "sha256": "617ab2d49a58b643297517d6557dda43cc942b710b9d4e33975e61ba48fe246a",
+        "ready_for_manifest_build": true,
+        "n_aligned_features": 3,
+        "n_missing_features": 0,
+        "label_audit_ready": null
+      },
       "ready_for_workflow": false
     },
     {
@@ -324,6 +335,17 @@
         "SnapUGC_fixture"
       ],
       "claim_blocked": true,
+      "provenance_required": false,
+      "provenance_ready": true,
+      "provenance_blocking_reasons": [],
+      "alignment_audit": {
+        "path": null,
+        "sha256": null,
+        "ready_for_manifest_build": null,
+        "n_aligned_features": null,
+        "n_missing_features": null,
+        "label_audit_ready": null
+      },
       "ready_for_workflow": false
     }
   ],

@@ -398,6 +398,20 @@ Data-readiness handoff tightening:
   scanner. The current verdict remains `phase1_can_run_now=false` because no
   real external DHF1K/SnapUGC/VQualA label source is mounted.
 
+Manifest-readiness provenance tightening:
+
+- `scripts/audit_attention_capture_data_readiness.py` now applies the same
+  alignment-provenance shape to discovered Phase 1 manifests before marking
+  `real_manifest_ready=true`.
+- A claim-updatable manifest must carry `metadata.alignment_audit` with
+  `ready_for_manifest_build=true`, a valid verifier SHA-256, aligned feature
+  coverage at least equal to the manifest sample count, and zero missing
+  features.
+- DHF1K manifests additionally require a ready nested
+  `alignment_audit.label_audit`.
+- Synthetic, fixture, smoke, and control manifests remain listed as diagnostics
+  but cannot become `workflow-ready` in the data-readiness report.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
