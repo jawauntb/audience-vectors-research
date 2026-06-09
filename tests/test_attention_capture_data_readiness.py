@@ -62,7 +62,7 @@ def test_build_readiness_report_detects_phase1_inputs(tmp_path: Path) -> None:
         ),
         encoding="utf-8",
     )
-    feature_dir = tmp_path / "tribe_features"
+    feature_dir = tmp_path / "tribe_dhf1k_features"
     feature_dir.mkdir()
     np.savez_compressed(
         feature_dir / "video_a.npz",
@@ -89,6 +89,7 @@ def test_build_readiness_report_detects_phase1_inputs(tmp_path: Path) -> None:
     assert report["readiness"]["dhf1k_label_audit_ready"] is True
     assert report["readiness"]["snapugc_labels_ready"] is True
     assert report["readiness"]["tribe_features_ready"] is True
+    assert report["readiness"]["dhf1k_tribe_features_ready"] is True
     assert report["readiness"]["roi_masks_ready"] is True
     assert report["readiness"]["blocking_reasons"] == []
     assert report["dhf1k_candidates"][0]["ready_for_label_build"] is True
@@ -101,6 +102,55 @@ def test_build_readiness_report_detects_phase1_inputs(tmp_path: Path) -> None:
     )
     assert "Phase 1 Data Readiness Audit" in module.render_readiness_markdown(report)
     assert "DHF1K Label Audits" in module.render_readiness_markdown(report)
+
+
+def test_ready_dhf1k_labels_need_dhf1k_specific_feature_cache(
+    tmp_path: Path,
+) -> None:
+    module = load_module()
+    dhf1k_labels = tmp_path / "dhf1k_attention_labels_extremes.csv"
+    dhf1k_labels.write_text(
+        "sample_id,mean_map_intensity\n"
+        "dhf1k_001,0.1\n"
+        "dhf1k_002,0.9\n",
+        encoding="utf-8",
+    )
+    dhf1k_audit = tmp_path / "dhf1k_attention_label_audit.json"
+    dhf1k_audit.write_text(
+        json.dumps(
+            {
+                "experiment": "dhf1k_attention_label_audit",
+                "labels_csv": str(dhf1k_labels),
+                "rank_column": "mean_map_intensity",
+                "recommended_ground_truth_column": "mean_map_intensity",
+                "n_rows": 2,
+                "ready_for_manifest_alignment": True,
+                "blocking_reasons": [],
+            },
+        ),
+        encoding="utf-8",
+    )
+    generic_features = tmp_path / "tribe_features"
+    generic_features.mkdir()
+    np.savez_compressed(
+        generic_features / "unrelated_video.npz",
+        frames=np.zeros((2, 4), dtype=np.float32),
+    )
+
+    report = module.build_readiness_report(
+        search_roots=[tmp_path],
+        repo_root=tmp_path,
+    )
+
+    assert report["readiness"]["dhf1k_labels_ready"] is True
+    assert report["readiness"]["tribe_features_ready"] is True
+    assert report["readiness"]["dhf1k_tribe_features_ready"] is False
+    assert "DHF1K labels ready but no DHF1K TRIBE feature directory found" in report[
+        "readiness"
+    ]["blocking_reasons"]
+    assert report["readiness"][
+        "recommended_next_action"
+    ] == "extract DHF1K TRIBE features from the audited DHF1K labels"
 
 
 def test_dhf1k_root_without_ready_label_audit_blocks_label_handoff(
@@ -166,6 +216,53 @@ def test_dhf1k_mount_subfolder_is_ready_for_label_build(tmp_path: Path) -> None:
     assert "DHF1K root found but no ready DHF1K label audit found" in report[
         "readiness"
     ]["blocking_reasons"]
+
+
+def test_dhf1k_official_direct_annotation_layout_is_ready(
+    tmp_path: Path,
+) -> None:
+    module = load_module()
+    dhf1k = tmp_path / "DHF1K"
+    (dhf1k / "video").mkdir(parents=True)
+    (dhf1k / "video" / "0001.AVI").write_bytes(b"fake")
+    maps = dhf1k / "annotation" / "0001"
+    maps.mkdir(parents=True)
+    (maps / "0001.png").write_bytes(b"fake")
+    fixation = dhf1k / "annotation" / "0001" / "fixation"
+    fixation.mkdir(parents=True)
+    (fixation / "0001.png").write_bytes(b"fake")
+
+    report = module.build_readiness_report(
+        search_roots=[tmp_path],
+        repo_root=tmp_path,
+    )
+
+    assert report["readiness"]["dhf1k_root_present"] is True
+    assert report["readiness"]["dhf1k_root_ready_for_label_build"] is True
+    assert report["dhf1k_candidates"][0]["n_annotation_map_video_dirs"] == 1
+    assert report["dhf1k_candidates"][0]["n_fixation_video_dirs"] == 1
+
+
+def test_partial_dhf1k_mount_reports_missing_pieces(tmp_path: Path) -> None:
+    module = load_module()
+    dhf1k = tmp_path / "DHF1K"
+    maps = dhf1k / "annotation" / "0001"
+    maps.mkdir(parents=True)
+    (maps / "0001.png").write_bytes(b"fake")
+
+    report = module.build_readiness_report(
+        search_roots=[tmp_path],
+        repo_root=tmp_path,
+    )
+
+    assert report["readiness"]["dhf1k_root_present"] is True
+    assert report["readiness"]["dhf1k_root_ready_for_label_build"] is False
+    assert "DHF1K root found but missing videos or annotation maps" in report[
+        "readiness"
+    ]["blocking_reasons"]
+    assert report["readiness"][
+        "recommended_next_action"
+    ] == "complete the DHF1K mount with videos and annotation maps"
 
 
 def test_synthetic_ecr_csv_is_not_real_snapugc_candidate(tmp_path: Path) -> None:

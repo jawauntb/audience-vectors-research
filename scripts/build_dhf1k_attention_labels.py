@@ -105,6 +105,15 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_MIN_DISTINCT_RANK_VALUES,
         help="Minimum distinct finite values required in the selected rank column.",
     )
+    parser.add_argument(
+        "--metric-scope",
+        choices=("all", "rank"),
+        default="all",
+        help=(
+            "Compute all audit metrics, or only the selected rank-column metric "
+            "for faster manifest handoff."
+        ),
+    )
     parser.add_argument("--limit", type=int, default=None)
     return parser.parse_args()
 
@@ -115,6 +124,10 @@ def main() -> None:
         dhf1k_root=args.dhf1k_root,
         split=args.split,
         limit=args.limit,
+        metric_columns=metric_columns_for_scope(
+            scope=args.metric_scope,
+            rank_column=args.rank_column,
+        ),
     )
     rows = select_extreme_tails(
         rows,
@@ -127,6 +140,7 @@ def main() -> None:
         labels_csv=args.output_csv,
         split=args.split,
         rank_column=args.rank_column,
+        metric_scope=args.metric_scope,
         extreme_count_per_tail=args.extreme_count_per_tail,
         min_rows=args.min_rows,
         min_distinct_rank_values=args.min_distinct_rank_values,
@@ -145,12 +159,18 @@ def build_rows(
     dhf1k_root: Path,
     split: str = "annotated",
     limit: int | None = None,
+    metric_columns: set[str] | None = None,
 ) -> list[DHF1KRow]:
     start, end = SPLIT_RANGES[split]
     rows: list[DHF1KRow] = []
     for video_index in range(start, end + 1):
         video_id = f"{video_index:03d}"
-        row = build_row(dhf1k_root=dhf1k_root, video_id=video_id, split=split)
+        row = build_row(
+            dhf1k_root=dhf1k_root,
+            video_id=video_id,
+            split=split,
+            metric_columns=metric_columns,
+        )
         if row is not None:
             rows.append(row)
         if limit is not None and len(rows) >= limit:
@@ -158,63 +178,152 @@ def build_rows(
     return rows
 
 
-def build_row(*, dhf1k_root: Path, video_id: str, split: str) -> DHF1KRow | None:
+def build_row(
+    *,
+    dhf1k_root: Path,
+    video_id: str,
+    split: str,
+    metric_columns: set[str] | None = None,
+) -> DHF1KRow | None:
+    metrics = normalize_metric_columns(metric_columns)
     video_path = find_video_path(dhf1k_root / "video", video_id)
-    maps_dir = dhf1k_root / "annotation" / video_id / "maps"
-    fixation_dir = dhf1k_root / "annotation" / video_id / "fixation"
-    map_paths = sorted(maps_dir.glob("*.png"))
-    fixation_paths = sorted(fixation_dir.glob("*.png"))
+    annotation_dir = find_annotation_video_dir(dhf1k_root / "annotation", video_id)
+    map_paths = annotation_map_paths(annotation_dir)
+    fixation_dir = annotation_dir / "fixation" if annotation_dir is not None else None
+    fixation_paths = sorted(fixation_dir.glob("*.png")) if fixation_dir else []
     if video_path is None or not map_paths:
         return None
 
-    map_stats = image_sequence_stats(map_paths)
+    map_stats = map_sequence_stats(map_paths, metric_columns=metrics)
     fixation_density = (
-        image_sequence_stats(fixation_paths)["mean_intensity"]
-        if fixation_paths
+        mean_image_sequence_intensity(fixation_paths)
+        if fixation_paths and "mean_fixation_density" in metrics
         else None
     )
     return DHF1KRow(
         sample_id=f"dhf1k_{video_id}",
         video_id=video_id,
         split=dhf1k_split_for_video_id(video_id),
-        video_path=str(video_path.resolve()),
+        video_path=portable_video_path(video_path),
         n_map_frames=len(map_paths),
         n_fixation_frames=len(fixation_paths),
-        mean_map_intensity=map_stats["mean_intensity"],
-        peak_map_intensity=map_stats["peak_intensity"],
-        peak_to_mean_map_ratio=map_stats["peak_to_mean_ratio"],
-        mean_map_concentration=map_stats["mean_concentration"],
+        mean_map_intensity=map_stats["mean_map_intensity"],
+        peak_map_intensity=map_stats["peak_map_intensity"],
+        peak_to_mean_map_ratio=map_stats["peak_to_mean_map_ratio"],
+        mean_map_concentration=map_stats["mean_map_concentration"],
         mean_fixation_density=fixation_density,
     )
 
 
+def metric_columns_for_scope(*, scope: str, rank_column: str) -> set[str] | None:
+    if scope == "all":
+        return None
+    if scope == "rank":
+        return {rank_column}
+    raise ValueError(f"unsupported metric scope: {scope}")
+
+
+def normalize_metric_columns(metric_columns: set[str] | None) -> set[str]:
+    if metric_columns is None:
+        return set(RANK_COLUMNS)
+    unknown = metric_columns - set(RANK_COLUMNS)
+    if unknown:
+        raise ValueError(f"unknown metric columns: {sorted(unknown)}")
+    return set(metric_columns)
+
+
+def portable_video_path(video_path: Path) -> str:
+    resolved = video_path.resolve()
+    try:
+        return str(resolved.relative_to(Path.cwd().resolve()))
+    except ValueError:
+        return str(resolved)
+
+
+def video_id_variants(video_id: str) -> list[str]:
+    value = int(video_id)
+    return [f"{value:03d}", f"{value:04d}"]
+
+
 def find_video_path(video_dir: Path, video_id: str) -> Path | None:
-    for suffix in (".AVI", ".avi", ".mp4", ".MP4", ".mov", ".MOV"):
-        candidate = video_dir / f"{video_id}{suffix}"
-        if candidate.exists():
+    for candidate_id in video_id_variants(video_id):
+        for suffix in (".AVI", ".avi", ".mp4", ".MP4", ".mov", ".MOV"):
+            candidate = video_dir / f"{candidate_id}{suffix}"
+            if candidate.exists():
+                return candidate
+    return None
+
+
+def find_annotation_video_dir(annotation_dir: Path, video_id: str) -> Path | None:
+    for candidate_id in video_id_variants(video_id):
+        candidate = annotation_dir / candidate_id
+        if candidate.is_dir():
             return candidate
     return None
 
 
-def image_sequence_stats(image_paths: list[Path]) -> dict[str, float]:
+def annotation_map_paths(annotation_video_dir: Path | None) -> list[Path]:
+    if annotation_video_dir is None:
+        return []
+    nested_maps = sorted((annotation_video_dir / "maps").glob("*.png"))
+    if nested_maps:
+        return nested_maps
+    return sorted(annotation_video_dir.glob("*.png"))
+
+
+def map_sequence_stats(
+    image_paths: list[Path],
+    *,
+    metric_columns: set[str],
+) -> dict[str, float | None]:
     means: list[float] = []
     peaks: list[float] = []
     ratios: list[float] = []
     concentrations: list[float] = []
+    needs_mean = (
+        "mean_map_intensity" in metric_columns
+        or "peak_to_mean_map_ratio" in metric_columns
+    )
+    needs_peak = (
+        "peak_map_intensity" in metric_columns
+        or "peak_to_mean_map_ratio" in metric_columns
+    )
     for path in image_paths:
         image = np.asarray(Image.open(path).convert("L"), dtype=np.float32) / 255.0
-        mean_value = float(image.mean())
-        peak_value = float(image.max())
-        means.append(mean_value)
-        peaks.append(peak_value)
-        ratios.append(float(peak_value / max(mean_value, 1e-12)))
-        concentrations.append(spatial_concentration(image))
+        mean_value = float(image.mean()) if needs_mean else None
+        peak_value = float(image.max()) if needs_peak else None
+        if "mean_map_intensity" in metric_columns:
+            assert mean_value is not None
+            means.append(mean_value)
+        if "peak_map_intensity" in metric_columns:
+            assert peak_value is not None
+            peaks.append(peak_value)
+        if "peak_to_mean_map_ratio" in metric_columns:
+            assert mean_value is not None
+            assert peak_value is not None
+            ratios.append(float(peak_value / max(mean_value, 1e-12)))
+        if "mean_map_concentration" in metric_columns:
+            concentrations.append(spatial_concentration(image))
     return {
-        "mean_intensity": float(np.mean(means)),
-        "peak_intensity": float(np.mean(peaks)),
-        "peak_to_mean_ratio": float(np.mean(ratios)),
-        "mean_concentration": float(np.mean(concentrations)),
+        "mean_map_intensity": mean_or_none(means),
+        "peak_map_intensity": mean_or_none(peaks),
+        "peak_to_mean_map_ratio": mean_or_none(ratios),
+        "mean_map_concentration": mean_or_none(concentrations),
     }
+
+
+def mean_image_sequence_intensity(image_paths: list[Path]) -> float:
+    means: list[float] = []
+    for path in image_paths:
+        image = np.asarray(Image.open(path).convert("L"), dtype=np.float32) / 255.0
+        means.append(float(image.mean()))
+    return float(np.mean(means))
+
+
+def mean_or_none(values: list[float]) -> float | None:
+    if not values:
+        return None
+    return float(np.mean(values))
 
 
 def spatial_concentration(image: np.ndarray) -> float:
@@ -276,6 +385,7 @@ def summarize_rows(
     split: str,
     rank_column: str,
     extreme_count_per_tail: int | None,
+    metric_scope: str = "all",
     labels_csv: Path | None = None,
     min_rows: int = DEFAULT_MIN_ROWS,
     min_distinct_rank_values: int = DEFAULT_MIN_DISTINCT_RANK_VALUES,
@@ -307,6 +417,12 @@ def summarize_rows(
         "labels_csv": str(labels_csv) if labels_csv is not None else None,
         "split": split,
         "rank_column": rank_column,
+        "metric_scope": metric_scope,
+        "computed_metric_columns": [
+            column
+            for column in RANK_COLUMNS
+            if int(metric_summaries[column]["n"] or 0) > 0
+        ],
         "extreme_count_per_tail": extreme_count_per_tail,
         "min_rows": min_rows,
         "min_distinct_rank_values": min_distinct_rank_values,
@@ -425,7 +541,11 @@ def dhf1k_label_blocking_reasons(
 
 def write_rows_csv(rows: list[DHF1KRow], path: Path) -> None:
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(CSV_COLUMNS))
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=list(CSV_COLUMNS),
+            lineterminator="\n",
+        )
         writer.writeheader()
         for row in rows:
             writer.writerow({column: csv_value(getattr(row, column)) for column in CSV_COLUMNS})

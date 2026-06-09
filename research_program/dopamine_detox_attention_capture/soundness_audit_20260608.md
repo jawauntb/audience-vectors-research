@@ -226,8 +226,9 @@ DHF1K readiness update:
   CSV-driven TRIBE feature extractor for local or Modal-visible videos. Byte
   transport is the default so local DHF1K videos can be scored without a Modal
   volume upload pre-step.
-- No local SnapUGC or DHF1K assets were found in the searched data paths during
-  this pass, so no real Phase 1 claim has been attempted.
+- Superseded on 2026-06-09: DHF1K is now mounted locally under
+  `data/attention_capture/DHF1K/`, and the label gate below has been run.
+  No real Phase 1 TRIBE/capture-score claim has been attempted.
 
 Preflight verifier update:
 
@@ -284,14 +285,15 @@ Data-readiness audit update:
   `results/phase1_data_readiness_20260608.*` after scanning `.`,
   `/Users/jawaun/isc_mod/data`, `/Users/jawaun/data`, and
   `/Users/jawaun/datasets`.
-- Result: `phase1_can_run_now=false`. Disjoint ROI masks are present and cached
-  TRIBE feature directories exist, including `/Users/jawaun/isc_mod/data/features/tribe`
-  with 1,022 NPZ files whose sampled payloads contain `frames`; however, no
-  local DHF1K root, SnapUGC/VQualA ECR label CSV, or real claim-ready Phase 1
-  manifest was found.
-- This is a withheld/rejected handoff state, not a failed scientific result:
-  the blocker is absent external attention labels/videos, not a negative
-  capture-score validation.
+- 2026-06-09 update: DHF1K raw data and labels are now locally ready. The scan
+  found `data/attention_capture/DHF1K/` with 1,000 videos, 700 annotation-map
+  directories, and a ready `dhf1k_attention_label_audit` for 350 extreme-tail
+  rows. `phase1_can_run_now` remains false because no DHF1K-specific TRIBE
+  feature cache, DHF1K label-to-feature alignment audit, or real claim-ready
+  Phase 1 manifest exists yet.
+- This is a withheld handoff state, not a failed scientific result: the current
+  blocker is DHF1K feature extraction/alignment, not a negative capture-score
+  validation.
 
 Manifest-alignment audit update:
 
@@ -333,8 +335,15 @@ DHF1K label-gate update:
 - The audit also records `candidate_ground_truth_columns` and
   `recommended_ground_truth_column`, so DHF1K handoff no longer depends on
   manually eyeballing metric summaries before manifest alignment.
-- No real DHF1K label artifact was generated in this step; this is a verifier
-  upgrade that will run once a DHF1K root is mounted.
+- 2026-06-09 update: the label gate was run against the mounted public DHF1K
+  data. It wrote 350 extreme-tail rows with 175 low and 175 high samples, using
+  `mean_map_intensity` as the selected rank column. The JSON audit reports
+  `ready_for_manifest_alignment=true`, 350 distinct finite rank values, and no
+  blocking reasons.
+- One zero-byte annotation map from the earlier interrupted extraction was
+  repaired from the official DHF1K annotation archive before the successful
+  label build. This keeps the mounted-data event in the evidence ledger rather
+  than silently treating directory counts as sufficient.
 
 DHF1K handoff-provenance update:
 

@@ -157,21 +157,23 @@ Current readiness verdict:
 
 ```text
 phase1_can_run_now: false
-dhf1k_root_ready_for_label_build: false
-dhf1k_label_audit_ready: false
-dhf1k_labels_ready: false
+dhf1k_root_ready_for_label_build: true
+dhf1k_label_audit_ready: true
+dhf1k_labels_ready: true
 snapugc_labels_ready: false
 tribe_features_ready: true
+dhf1k_tribe_features_ready: false
 roi_masks_ready: true
 real_manifest_ready: false
-blocking_reasons: no external attention-label source found
+blocking_reasons: DHF1K labels ready but no DHF1K TRIBE feature directory found
 ```
 
-The scan found reusable cached TRIBE feature directories, including
-`/Users/jawaun/isc_mod/data/features/tribe` with 1,022 sampled-frame NPZ files,
-but no local DHF1K/SnapUGC/VQualA external-label source. Those cached features
-remain useful infrastructure; they do not unblock Phase 1 until they are aligned
-to a real external attention-label manifest.
+The scan found a mounted DHF1K root at `data/attention_capture/DHF1K/` with
+1,000 videos and 700 annotation-map directories. The DHF1K label audit is ready
+for manifest alignment, but no DHF1K-specific TRIBE feature cache has been
+created yet. Existing generic TRIBE feature caches remain useful infrastructure;
+they do not unblock a DHF1K manifest until they are aligned to the audited
+DHF1K sample IDs.
 
 The preferred local intake point is `data/attention_capture/`, which is ignored
 for datasets but tracked with a README. Mount DHF1K at
@@ -249,6 +251,7 @@ uv run python scripts/build_dhf1k_attention_labels.py \
   --dhf1k-root data/attention_capture/DHF1K \
   --split annotated \
   --rank-column mean_map_intensity \
+  --metric-scope rank \
   --extreme-count-per-tail 175 \
   --min-rows 350 \
   --min-distinct-rank-values 3 \

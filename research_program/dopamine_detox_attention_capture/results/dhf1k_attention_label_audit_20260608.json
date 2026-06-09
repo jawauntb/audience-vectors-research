@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "experiment": "dhf1k_attention_label_audit",
+  "dataset": "DHF1K",
+  "source_root": "data/attention_capture/DHF1K",
+  "labels_csv": "research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv",
+  "split": "annotated",
+  "rank_column": "mean_map_intensity",
+  "metric_scope": "rank",
+  "computed_metric_columns": [
+    "mean_map_intensity"
+  ],
+  "extreme_count_per_tail": 175,
+  "min_rows": 350,
+  "min_distinct_rank_values": 3,
+  "n_rows": 350,
+  "metrics": {
+    "mean_map_intensity": {
+      "n": 350,
+      "n_distinct": 350,
+      "mean": 0.01644090171736881,
+      "std": 0.0028136543466087934,
+      "min": 0.011030344508105406,
+      "max": 0.023418446092828348
+    },
+    "peak_map_intensity": {
+      "n": 0,
+      "n_distinct": 0,
+      "mean": null,
+      "std": null,
+      "min": null,
+      "max": null
+    },
+    "peak_to_mean_map_ratio": {
+      "n": 0,
+      "n_distinct": 0,
+      "mean": null,
+      "std": null,
+      "min": null,
+      "max": null
+    },
+    "mean_map_concentration": {
+      "n": 0,
+      "n_distinct": 0,
+      "mean": null,
+      "std": null,
+      "min": null,
+      "max": null
+    },
+    "mean_fixation_density": {
+      "n": 0,
+      "n_distinct": 0,
+      "mean": null,
+      "std": null,
+      "min": null,
+      "max": null
+    }
+  },
+  "rank_column_summary": {
+    "n": 350,
+    "n_distinct": 350,
+    "mean": 0.01644090171736881,
+    "std": 0.0028136543466087934,
+    "min": 0.011030344508105406,
+    "max": 0.023418446092828348
+  },
+  "rank_column_ready": true,
+  "ready_for_manifest_alignment": true,
+  "blocking_reasons": [],
+  "candidate_ground_truth_columns": [
+    {
+      "column": "mean_map_intensity",
+      "n": 350,
+      "n_distinct": 350,
+      "std": 0.0028136543466087934
+    }
+  ],
+  "recommended_ground_truth_column": "mean_map_intensity",
+  "claim_boundary": "DHF1K labels are external gaze/saliency labels, not retention, dopamine, or executive-control measurements."
+}
