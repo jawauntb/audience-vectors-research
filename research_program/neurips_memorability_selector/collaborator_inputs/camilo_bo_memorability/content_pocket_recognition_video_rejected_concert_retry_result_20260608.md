@@ -1,6 +1,6 @@
 # Content-Pocket Recognition Video Generation Result
 
-Date: 2026-06-09T00:11:05+00:00
+Date: 2026-06-08T23:28:19+00:00
 
 ## Discovery-Regime Audit
 
@@ -23,11 +23,11 @@ validation regime.
 
 ## Counts
 
-- Requested: 60
-- Generated: 0
-- Already present: 60
+- Requested: 1
+- Generated: 1
+- Already present: 0
 - Failed: 0
-- Present after run: 60
+- Present after run: 1
 
 ## Claim Boundary
 

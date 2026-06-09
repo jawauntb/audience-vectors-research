@@ -1,0 +1,95 @@
+{
+  "accepted_for_hosting": false,
+  "agent_contact_sheet_review": "Replacement run for filler_lure_v06 after the seed 890006 clip was preserved as a rejected artifact for tail_sharpness_collapse.",
+  "contact_sheets": [
+    {
+      "bytes": 35335,
+      "exists": true,
+      "items": 1,
+      "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_video_replacement_screening_sheets_20260608/filler_lure_video.jpg",
+      "role": "filler_lure_video",
+      "sha256": "d17cf8120e5192531fca30685abecd038b29f131bc3755c45dd22db7d2216021"
+    }
+  ],
+  "counts": {
+    "contact_sheets": 1,
+    "screening_failures": 1,
+    "videos_screened": 1,
+    "visual_gate_failures": 1
+  },
+  "created_at_utc": "2026-06-08T23:28:20+00:00",
+  "launch_blockers": [
+    "This is an agent sampled-frame pre-screen, not final IRB/faculty sign-off.",
+    "Stable HTTPS hosted video URLs are still required before launch.",
+    "Two-session Prolific wiring and response collection remain open.",
+    "Human recognition-memory validation has not run."
+  ],
+  "role_counts": {
+    "filler_lure_video": 1
+  },
+  "rows": [
+    {
+      "actual_sha256": "e873227b6141888a64412e563dcb3460630125d9f6ee14e18a87d29eedcd02c0",
+      "alpha": 0.0,
+      "error": null,
+      "exists": true,
+      "frame_count": 25,
+      "frame_sample_ok": true,
+      "generation_seconds": 83.75745100000495,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v06",
+      "matched_id": "filler_old_v06",
+      "noise_seed": 990006,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1366911,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v06.mp4",
+        "sha256": "e873227b6141888a64412e563dcb3460630125d9f6ee14e18a87d29eedcd02c0"
+      },
+      "prompt": "A different concert stage with distinct lighting and performer layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "screening_flags": [
+        "tail_sharpness_collapse"
+      ],
+      "seed_image": {
+        "bytes": 1795198,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v06.png",
+        "sha256": "6d3ee0364e876058c41a0393e0002924ee7f59550ef1117e272c9ad6d8bbf73e"
+      },
+      "source_pocket": "fresh24_concert_stage",
+      "status": "generated",
+      "visual_gate": {
+        "artifact_flags": [
+          "tail_sharpness_collapse"
+        ],
+        "collapse_score": 0.3815800994071503,
+        "contrast": {
+          "end": 0.19954557716846466,
+          "mid": 0.193470761179924,
+          "start": 0.21337635815143585
+        },
+        "min_tail_contrast": 0.193470761179924,
+        "passes_visual_gate": false,
+        "sharpness": {
+          "end": 0.0005733234575018287,
+          "mid": 0.000716869137249887,
+          "start": 0.0017366677056998014
+        },
+        "tail_contrast_ratio": 0.9067113285423528,
+        "tail_sharpness_ratio": 0.3301284726433465
+      }
+    }
+  ],
+  "samples_per_video": 3,
+  "schema_version": "content_pocket_recognition_video_screening.v1",
+  "source_generation_result": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_video_replacement_result_20260608.json",
+  "source_production_manifest": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_stimulus_production_manifest_20260608.json",
+  "status": "agent_video_screen_requires_review",
+  "thresholds": {
+    "min_tail_contrast": 0.04,
+    "min_tail_contrast_ratio": 0.55,
+    "min_tail_sharpness_ratio": 0.35
+  }
+}

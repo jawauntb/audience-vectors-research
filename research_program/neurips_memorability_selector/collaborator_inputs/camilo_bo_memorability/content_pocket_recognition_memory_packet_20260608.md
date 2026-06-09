@@ -9,9 +9,10 @@ content-pocket candidates. Unlike the current forced-choice survey, this
 design asks whether participants can later recognize the exact clip they
 saw, against a newly generated same-category lure.
 
-This packet is not launchable yet. It defines the old targets, the lure
-generation requirements, the sparse-exposure form structure, and the
-pre-registered success gate.
+The launch-prep assets for this packet are now ready for final Prolific
+configuration. This packet defines the old targets, the lure generation
+requirements, the sparse-exposure form structure, and the pre-registered
+success gate; it still does not contain human-memory evidence.
 
 ## Discovery-Regime Audit
 
@@ -102,15 +103,13 @@ exported dataset with explicit exclusion reasons.
 
 ## Launch Blockers
 
-- Need distinct same-category lure seed images for every old target variant.
-- Need generated lure MP4s from those seed images.
-- Need unrelated filler targets and filler lures.
-- Need MP4 screening/contact sheets for generated lures and fillers.
-- Need hosted HTTPS URLs and Prolific two-session setup.
+- Final human/IRB-facing content review is not recorded.
+- Final Prolific project configuration, completion codes, response endpoint,
+  and Session 2 invite timing are not recorded.
+- Delayed Session 2 recognition-memory data have not been collected.
 
 ## Next Action
 
-Acquire or generate the required distinct lure seed images, generate lure
-and filler MP4s under matched SVD settings, screen them, then freeze the
-complete recognition stimulus set before creating the two-session
-Prolific study.
+Complete final human/IRB-facing review, configure the two Prolific sessions
+with the public GitHub Pages URLs and response endpoint, then run the delayed
+old-vs-lure recognition-memory study.

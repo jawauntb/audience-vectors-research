@@ -1,6 +1,6 @@
 # Content-Pocket Recognition Seed Screening Result
 
-Date: 2026-06-08T22:50:16Z
+Date: 2026-06-08T23:35:17Z
 
 ## Discovery-Regime Audit
 
@@ -10,9 +10,10 @@ SVD MP4 generation without accepting obvious near-duplicate lures?
 Current regime:
 
 - Artifact types: seed PNGs, seed hashes, contact sheets, old-vs-lure pair
-  sheets, screening status.
-- Operations: OpenAI Image API seed materialization, contact-sheet review, and
-  production-manifest gate refresh.
+  sheets, screening status, superseded/rejected local artifacts.
+- Operations: OpenAI Image API seed materialization, contact-sheet review,
+  replacement of a brittle unrelated filler pair, and production-manifest
+  gate refresh.
 - Gates/verifiers: all 60 seed images present; no visible text/watermark/severe
   artifacts; analysis lures remain same-category but compositionally distinct
   from matched old targets; fillers remain acceptable as unrelated balancing
@@ -32,13 +33,20 @@ Accepted for SVD generation: yes.
 - Filler old seeds accepted: 25/25.
 - Filler lure seeds accepted: 20/20.
 - Rejected or withheld: 0.
+- Superseded filler seed pairs: 1.
 
-First-pass review accepts the 15 analysis lures for SVD generation. They
+The concert-stage filler pair `filler_old_v06` / `filler_lure_v06` was
+superseded by a ceramic-teacup filler pair after the concert-stage lure
+twice triggered sampled-frame `tail_sharpness_collapse` in video screening.
+The superseded seeds and rejected concert-stage video attempts are preserved
+as ignored local data-lake artifacts and are not silently discarded.
+
+Refreshed review accepts the 15 analysis lures for SVD generation. They
 preserve the required broad categories while changing composition enough to
 avoid obvious old-vs-lure near duplicates in the screening sheets. No obvious
 text, watermark, poster layout, or severe generation artifact is visible.
 
-First-pass review also accepts the 45 filler seed images for unrelated filler
+Refreshed review also accepts the 45 filler seed images for unrelated filler
 use. Some filler pairs are naturally same-category similar, but they are not
 analysis claims and remain acceptable for old/new task balancing before
 video-level screening.
@@ -55,14 +63,14 @@ video-level screening.
 
 - This screening result is not human recognition-memory or memorability
   evidence.
-- SVD MP4 generation and video-level visual screening are still required before
-  launch.
+- SVD MP4 generation and video-level visual screening are still required
+  before launch.
 - Hosted HTTPS URLs, two-session Prolific wiring, and response-collection
   validation are still required.
-- Human/BMD claim language remains blocked until the behavioral validation gate
-  clears.
+- Human/BMD claim language remains blocked until the behavioral validation
+  gate clears.
 
 ## Next Action
 
-Run the 60 SVD generation jobs from the production manifest, then build MP4
-contact sheets and screen every video before freezing the Prolific launch set.
+Use the refreshed SVD MP4 screening report, then host accepted videos at
+stable HTTPS URLs and wire the two-session Prolific recognition study.

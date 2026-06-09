@@ -52,6 +52,9 @@ DEFAULT_SCREENING_MD = (
 DEFAULT_SHEET_DIR = (
     ARTIFACT_DIR / "content_pocket_recognition_video_screening_sheets_20260608"
 )
+DEFAULT_LAUNCH_ASSETS = (
+    ARTIFACT_DIR / "content_pocket_recognition_launch_assets_20260608.json"
+)
 
 
 @dataclass(frozen=True)
@@ -135,12 +138,15 @@ def selected_jobs(
     manifest: dict[str, Any],
     *,
     roles: set[str] | None,
+    job_ids: set[str] | None,
     limit: int | None,
     only_missing: bool,
 ) -> list[dict[str, Any]]:
     jobs = list(manifest["generation_jobs"])
     if roles:
         jobs = [job for job in jobs if str(job["role"]) in roles]
+    if job_ids:
+        jobs = [job for job in jobs if str(job["job_id"]) in job_ids]
     if only_missing:
         jobs = [
             job
@@ -341,6 +347,37 @@ def screen_video_row(
     return screened, frames
 
 
+def launch_assets_ready(path: Path | None) -> bool:
+    if path is None or not path.exists():
+        return False
+    payload = load_json(path)
+    counts = payload.get("counts", {})
+    return bool(
+        payload.get("status") == "hosted_launch_assets_ready"
+        and counts.get("missing_videos") == 0
+    )
+
+
+def screening_launch_blockers(*, launch_ready: bool) -> list[str]:
+    blockers = [
+        "This is an agent sampled-frame pre-screen, not final IRB/faculty sign-off.",
+    ]
+    if launch_ready:
+        blockers.append(
+            "Final Prolific project configuration, completion codes, and response "
+            "endpoint are not recorded."
+        )
+    else:
+        blockers.extend(
+            [
+                "Stable HTTPS hosted video URLs are still required before launch.",
+                "Two-session Prolific wiring and response collection remain open.",
+            ]
+        )
+    blockers.append("Human recognition-memory validation has not run.")
+    return blockers
+
+
 def build_screening_report(
     *,
     generation_report: dict[str, Any],
@@ -348,6 +385,7 @@ def build_screening_report(
     samples: int,
     thresholds: ArtifactThresholds,
     agent_review_note: str,
+    launch_assets_result: Path | None = None,
 ) -> tuple[dict[str, Any], str]:
     rows: list[dict[str, Any]] = []
     frames_by_job: dict[str, list[np.ndarray]] = {}
@@ -385,6 +423,7 @@ def build_screening_report(
         if not failures
         else "agent_video_screen_requires_review"
     )
+    ready_launch_assets = launch_assets_ready(launch_assets_result)
     report = {
         "schema_version": "content_pocket_recognition_video_screening.v1",
         "created_at_utc": datetime.now(UTC).replace(microsecond=0).isoformat(),
@@ -404,12 +443,10 @@ def build_screening_report(
         "contact_sheets": contact_sheets,
         "agent_contact_sheet_review": agent_review_note,
         "rows": rows,
-        "launch_blockers": [
-            "This is an agent sampled-frame pre-screen, not final IRB/faculty sign-off.",
-            "Stable HTTPS hosted video URLs are still required before launch.",
-            "Two-session Prolific wiring and response collection remain open.",
-            "Human recognition-memory validation has not run.",
-        ],
+        "launch_assets_ready": ready_launch_assets,
+        "launch_blockers": screening_launch_blockers(
+            launch_ready=ready_launch_assets
+        ),
     }
     return report, render_screening_markdown(report)
 
@@ -535,6 +572,19 @@ def render_screening_markdown(report: dict[str, Any]) -> str:
     else:
         lines.append("None from sampled-frame video screening.")
 
+    if report.get("launch_assets_ready"):
+        next_action = [
+            "Complete final human/IRB-facing content review, configure the",
+            "two Prolific sessions with completion codes and the response",
+            "endpoint, then run the delayed recognition-memory study.",
+        ]
+    else:
+        next_action = [
+            "Review the contact sheets and generated MP4s, host the accepted videos",
+            "at stable HTTPS URLs, then wire those URLs into the two-session",
+            "recognition study.",
+        ]
+
     lines.extend(
         [
             "",
@@ -544,9 +594,7 @@ def render_screening_markdown(report: dict[str, Any]) -> str:
             "",
             "## Next Action",
             "",
-            "Review the contact sheets and generated MP4s, host the accepted videos",
-            "at stable HTTPS URLs, then wire those URLs into the two-session",
-            "recognition study.",
+            *next_action,
             "",
         ]
     )
@@ -599,6 +647,7 @@ def run_generation(
     steering_artifact: Path,
     steering_key: str,
     roles: set[str] | None,
+    job_ids: set[str] | None,
     limit: int | None,
     only_missing: bool,
     overwrite: bool,
@@ -609,6 +658,7 @@ def run_generation(
     jobs = selected_jobs(
         manifest,
         roles=roles,
+        job_ids=job_ids,
         limit=limit,
         only_missing=only_missing,
     )
@@ -651,7 +701,9 @@ def main() -> int:
     parser.add_argument("--screening-json", type=Path, default=DEFAULT_SCREENING_JSON)
     parser.add_argument("--screening-md", type=Path, default=DEFAULT_SCREENING_MD)
     parser.add_argument("--sheet-dir", type=Path, default=DEFAULT_SHEET_DIR)
+    parser.add_argument("--launch-assets-result", type=Path, default=DEFAULT_LAUNCH_ASSETS)
     parser.add_argument("--role", action="append", default=[])
+    parser.add_argument("--job-id", action="append", default=[])
     parser.add_argument("--limit", type=int)
     parser.add_argument("--include-existing", action="store_true")
     parser.add_argument("--overwrite", action="store_true")
@@ -688,6 +740,7 @@ def main() -> int:
     if args.limit is not None and args.limit <= 0:
         raise ValueError("--limit must be positive")
     roles = set(args.role) if args.role else None
+    job_ids = set(args.job_id) if args.job_id else None
     config = GenerationConfig(
         app_name=args.app_name,
         num_frames=args.svd_num_frames,
@@ -703,6 +756,7 @@ def main() -> int:
         steering_artifact=args.steering_artifact,
         steering_key=args.steering_key,
         roles=roles,
+        job_ids=job_ids,
         limit=args.limit,
         only_missing=not args.include_existing,
         overwrite=args.overwrite,
@@ -731,6 +785,7 @@ def main() -> int:
         samples=args.screening_samples,
         thresholds=thresholds,
         agent_review_note=args.agent_review_note,
+        launch_assets_result=args.launch_assets_result,
     )
     write_json(args.screening_json, screening_report)
     args.screening_md.parent.mkdir(parents=True, exist_ok=True)

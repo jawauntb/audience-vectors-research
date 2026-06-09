@@ -33,6 +33,9 @@ DEFAULT_SEED_SCREENING_RESULT = (
 DEFAULT_VIDEO_SCREENING_RESULT = (
     ARTIFACT_DIR / "content_pocket_recognition_video_screening_20260608.json"
 )
+DEFAULT_LAUNCH_ASSETS = (
+    ARTIFACT_DIR / "content_pocket_recognition_launch_assets_20260608.json"
+)
 DEFAULT_SEED_ROOT = Path("data/recognition_memory_seed_images_20260608")
 DEFAULT_VIDEO_OUT_DIR = Path("data/generated/content_pocket_recognition_memory_20260608")
 
@@ -42,6 +45,10 @@ NEUTRAL_FILLER_ALPHA = 0.0
 NEUTRAL_FILLER_GUIDANCE = 7.5
 FILLER_OLD_NOISE_SEED_BASE = 880_000
 FILLER_LURE_NOISE_SEED_BASE = 890_000
+# Fresh replacement seed for the one filler lure rejected by sampled-frame screening.
+FILLER_LURE_NOISE_SEED_OVERRIDES = {
+    6: 990_006,
+}
 
 
 @dataclass(frozen=True)
@@ -287,6 +294,26 @@ FILLER_TEMPLATES: tuple[FillerTemplate, ...] = (
     ),
 )
 
+FILLER_TEMPLATE_OVERRIDES = {
+    6: FillerTemplate(
+        pocket="fresh24_ceramic_teacups",
+        label="ceramic teacups",
+        old_prompt=(
+            "Two ceramic teacups on a sunlit wooden table with a simple cloth "
+            "napkin. Natural realistic short video, clear central subject, "
+            "continuous motion, stable composition, no text, no watermark."
+        ),
+        lure_prompt=(
+            "A different arrangement of ceramic teacups on a bright kitchen "
+            "table, with distinct cup shapes and camera angle. Natural "
+            "realistic short video, clear central subject, continuous motion, "
+            "stable composition, no text, no watermark."
+        ),
+        old_requirements=("unrelated to primary and hard-negative analysis arms",),
+        lure_requirements=("same broad category as the filler old target",),
+    )
+}
+
 
 def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -418,6 +445,8 @@ def build_analysis_lure_artifacts(
 
 
 def filler_template(index: int) -> FillerTemplate:
+    if index in FILLER_TEMPLATE_OVERRIDES:
+        return FILLER_TEMPLATE_OVERRIDES[index]
     return FILLER_TEMPLATES[index % len(FILLER_TEMPLATES)]
 
 
@@ -506,7 +535,10 @@ def build_filler_artifacts(
                 prompt=template.lure_prompt,
                 alpha=NEUTRAL_FILLER_ALPHA,
                 guidance=NEUTRAL_FILLER_GUIDANCE,
-                noise_seed=FILLER_LURE_NOISE_SEED_BASE + index,
+                noise_seed=FILLER_LURE_NOISE_SEED_OVERRIDES.get(
+                    index,
+                    FILLER_LURE_NOISE_SEED_BASE + index,
+                ),
                 matched_id=matched_id,
                 source_pocket=template.pocket,
             )
@@ -570,11 +602,37 @@ def load_optional_video_screening_status(path: Path) -> dict[str, Any]:
     }
 
 
+def load_optional_launch_assets_status(path: Path | None) -> dict[str, Any]:
+    if path is None or not path.exists():
+        return {
+            "path": str(path) if path is not None else None,
+            "exists": False,
+            "status": None,
+            "hosted_launch_assets_ready": False,
+            "session_urls": {},
+            "counts": {},
+        }
+    payload = load_json(path)
+    counts = payload.get("counts", {})
+    return {
+        "path": str(path),
+        "exists": True,
+        "status": payload.get("status"),
+        "hosted_launch_assets_ready": bool(
+            payload.get("status") == "hosted_launch_assets_ready"
+            and counts.get("missing_videos") == 0
+        ),
+        "session_urls": payload.get("session_urls", {}),
+        "counts": counts,
+    }
+
+
 def production_status(
     counts: dict[str, int],
     *,
     seed_screening: dict[str, Any],
     video_screening: dict[str, Any],
+    launch_assets: dict[str, Any],
 ) -> str:
     if counts["seed_images_missing"]:
         return "missing_seed_images_not_ready_for_generation"
@@ -584,6 +642,8 @@ def production_status(
         return "seed_images_screened_ready_for_svd_generation"
     if not video_screening["accepted_for_hosting"]:
         return "generated_videos_present_screening_required"
+    if launch_assets["hosted_launch_assets_ready"]:
+        return "recognition_launch_assets_ready_for_prolific_setup"
     return "recognition_videos_screened_ready_for_hosting"
 
 
@@ -592,6 +652,7 @@ def launch_blockers(
     *,
     seed_screening: dict[str, Any],
     video_screening: dict[str, Any],
+    launch_assets: dict[str, Any],
 ) -> list[str]:
     blockers = []
     if counts["seed_images_missing"]:
@@ -607,10 +668,14 @@ def launch_blockers(
             blockers.append("Generated MP4 visual screening has unresolved flags.")
         else:
             blockers.append("Generated MP4 visual screening/contact sheets have not been recorded.")
+    if video_screening["accepted_for_hosting"] and not launch_assets[
+        "hosted_launch_assets_ready"
+    ]:
+        blockers.append("Hosted HTTPS URLs and two-session Prolific wiring are not complete.")
     blockers.extend(
         [
             "Final human/IRB-facing content review is not complete.",
-            "Hosted HTTPS URLs and two-session Prolific wiring are not complete.",
+            "Final Prolific project configuration, completion codes, and response endpoint are not recorded.",
         ]
     )
     return blockers
@@ -625,6 +690,7 @@ def build_manifest(
     video_screening_result: Path,
     filler_old_count: int,
     filler_recognition_count: int,
+    launch_assets_result: Path | None = None,
 ) -> tuple[dict[str, Any], str]:
     design = load_json(design_path)
     analysis_seed_requests, analysis_jobs = build_analysis_lure_artifacts(
@@ -643,6 +709,7 @@ def build_manifest(
     counts = artifact_counts(seed_requests, generation_jobs)
     seed_screening = load_optional_screening_status(seed_screening_result)
     video_screening = load_optional_video_screening_status(video_screening_result)
+    launch_assets = load_optional_launch_assets_status(launch_assets_result)
     manifest = {
         "schema_version": "content_pocket_recognition_stimulus_production.v1",
         "created_at_utc": datetime.now(UTC).replace(microsecond=0).isoformat(),
@@ -650,6 +717,7 @@ def build_manifest(
             counts,
             seed_screening=seed_screening,
             video_screening=video_screening,
+            launch_assets=launch_assets,
         ),
         "source_recognition_design": str(design_path),
         "source_task_payload_sha256": design["source_task_payload_sha256"],
@@ -657,6 +725,7 @@ def build_manifest(
         "video_output_dir": str(video_out_dir),
         "seed_image_screening": seed_screening,
         "video_screening": video_screening,
+        "launch_assets": launch_assets,
         "question": (
             "Can the recognition-memory validation set be materialized without "
             "using near-duplicate same-category lures?"
@@ -687,6 +756,7 @@ def build_manifest(
             counts,
             seed_screening=seed_screening,
             video_screening=video_screening,
+            launch_assets=launch_assets,
         ),
         "claim_boundary": [
             "This artifact is a production manifest, not human evidence.",
@@ -699,7 +769,13 @@ def build_manifest(
 
 def render_markdown(manifest: dict[str, Any]) -> str:
     counts = manifest["artifact_counts"]
-    if manifest["video_screening"]["accepted_for_hosting"]:
+    if manifest["launch_assets"]["hosted_launch_assets_ready"]:
+        next_action = [
+            "Complete final human/IRB-facing content review, configure the",
+            "two Prolific sessions with the recorded HTTPS URLs, and preserve",
+            "all response rows and exclusions before any memory claim.",
+        ]
+    elif manifest["video_screening"]["accepted_for_hosting"]:
         next_action = [
             "Review the generated MP4 contact sheets, complete final",
             "human/IRB-facing content review, host accepted videos at stable",
@@ -759,6 +835,7 @@ def render_markdown(manifest: dict[str, Any]) -> str:
         f"- SVD generation jobs: {counts['generation_jobs']}",
         f"- Output MP4s present: {counts['output_videos_present']}",
         f"- Output MP4s missing: {counts['output_videos_missing']}",
+        f"- Hosted launch assets ready: {manifest['launch_assets']['hosted_launch_assets_ready']}",
         "",
         "## Required Production Blocks",
         "",
@@ -799,6 +876,11 @@ def main() -> int:
         type=Path,
         default=DEFAULT_VIDEO_SCREENING_RESULT,
     )
+    parser.add_argument(
+        "--launch-assets-result",
+        type=Path,
+        default=DEFAULT_LAUNCH_ASSETS,
+    )
     parser.add_argument("--out-json", type=Path, default=DEFAULT_OUT_JSON)
     parser.add_argument("--out-md", type=Path, default=DEFAULT_OUT_MD)
     parser.add_argument("--filler-old-count", type=int, default=DEFAULT_FILLER_OLD_COUNT)
@@ -817,6 +899,7 @@ def main() -> int:
         video_screening_result=args.video_screening_result,
         filler_old_count=args.filler_old_count,
         filler_recognition_count=args.filler_recognition_count,
+        launch_assets_result=args.launch_assets_result,
     )
     write_json(args.out_json, manifest)
     args.out_md.parent.mkdir(parents=True, exist_ok=True)

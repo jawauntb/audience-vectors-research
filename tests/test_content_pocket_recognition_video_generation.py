@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import sys
 from pathlib import Path
 
@@ -56,11 +57,32 @@ def test_selected_jobs_filters_roles_and_missing(tmp_path):
     jobs = module.selected_jobs(
         manifest,
         roles={"filler_old_video"},
+        job_ids=None,
         limit=None,
         only_missing=True,
     )
 
     assert [job["role"] for job in jobs] == ["filler_old_video"]
+
+
+def test_selected_jobs_filters_job_ids(tmp_path):
+    module = load_video_module()
+    first = generation_job(tmp_path, role="filler_lure_video", output_exists=True)
+    second = {
+        **generation_job(tmp_path, role="filler_lure_video", output_exists=True),
+        "job_id": "filler_lure_v06",
+    }
+    manifest = {"generation_jobs": [first, second]}
+
+    jobs = module.selected_jobs(
+        manifest,
+        roles=None,
+        job_ids={"filler_lure_v06"},
+        limit=None,
+        only_missing=False,
+    )
+
+    assert [job["job_id"] for job in jobs] == ["filler_lure_v06"]
 
 
 def test_generation_counts_tracks_present_outputs(tmp_path):
@@ -91,3 +113,23 @@ def test_contact_sheet_skips_empty_groups(tmp_path):
 
     assert result["exists"] is False
     assert result["items"] == 0
+
+
+def test_launch_asset_blockers_drop_hosting_after_assets_ready(tmp_path):
+    module = load_video_module()
+    launch_assets = tmp_path / "launch_assets.json"
+    launch_assets.write_text(
+        json.dumps(
+            {
+                "status": "hosted_launch_assets_ready",
+                "counts": {"missing_videos": 0},
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    assert module.launch_assets_ready(launch_assets) is True
+    blockers = module.screening_launch_blockers(launch_ready=True)
+
+    assert not any("Hosted HTTPS" in blocker for blocker in blockers)
+    assert any("Final Prolific project configuration" in blocker for blocker in blockers)

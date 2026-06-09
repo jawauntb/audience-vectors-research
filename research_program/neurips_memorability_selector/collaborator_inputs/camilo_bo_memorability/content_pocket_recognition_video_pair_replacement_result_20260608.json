@@ -1,0 +1,89 @@
+{
+  "claim_boundary": [
+    "Generated recognition MP4s are not human-memory evidence.",
+    "Video-level screening and final human/IRB-facing review are required before launch.",
+    "Failed or visually rejected videos must be retained with reasons."
+  ],
+  "config": {
+    "app_name": "audience-vectors-dev",
+    "fps": 7,
+    "motion_bucket_id": 5,
+    "noise_aug_strength": 0.0,
+    "num_frames": 25,
+    "num_inference_steps": 50,
+    "steering_artifact": "/Users/jawaun/isc_mod/data/reports/adapter_tribe_to_clip_h.pt",
+    "steering_key": "v_mem_clip_h_via_adapter",
+    "timeout_seconds": 1800
+  },
+  "counts": {
+    "already_present": 0,
+    "failed": 0,
+    "generated": 2,
+    "present_after_run": 2,
+    "requested": 2
+  },
+  "created_at_utc": "2026-06-08T23:32:42+00:00",
+  "dry_run": false,
+  "result_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_video_pair_replacement_result_20260608.json",
+  "role_counts": {
+    "filler_lure_video": 1,
+    "filler_old_video": 1
+  },
+  "rows": [
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 60.091397542004415,
+      "guidance": 7.5,
+      "job_id": "filler_old_v06",
+      "matched_id": null,
+      "noise_seed": 880006,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1096476,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v06.mp4",
+        "sha256": "593d41b9637b42f5e888d0a17f720ccc8a83ef8be96a56a1f8abe45e1c3c7c46"
+      },
+      "prompt": "Two ceramic teacups on a sunlit wooden table with a simple cloth napkin. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_old_video",
+      "seed_image": {
+        "bytes": 1620283,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v06.png",
+        "sha256": "31c165ed76707cdb36264875a7ccaf5920ddfea2115f925e73b972509040dbc6"
+      },
+      "source_pocket": "fresh24_ceramic_teacups",
+      "status": "generated"
+    },
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 64.18577895800263,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v06",
+      "matched_id": "filler_old_v06",
+      "noise_seed": 990006,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 922240,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v06.mp4",
+        "sha256": "56f514224a0fa743d91653116f562026dbff77b503e0e7f9583b5d38b64a9abe"
+      },
+      "prompt": "A different arrangement of ceramic teacups on a bright kitchen table, with distinct cup shapes and camera angle. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 1738395,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v06.png",
+        "sha256": "5a266693d51d2b5fa8973eaf8351947ff4b91317c138827e3f9cb55154ee3cc5"
+      },
+      "source_pocket": "fresh24_ceramic_teacups",
+      "status": "generated"
+    }
+  ],
+  "schema_version": "content_pocket_recognition_video_generation.v1",
+  "source_production_manifest": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_stimulus_production_manifest_20260608.json",
+  "status": "generation_complete"
+}

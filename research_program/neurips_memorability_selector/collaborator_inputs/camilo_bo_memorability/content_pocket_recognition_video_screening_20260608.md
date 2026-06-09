@@ -1,6 +1,6 @@
 # Content-Pocket Recognition Video Screening
 
-Date: 2026-06-08T23:13:44+00:00
+Date: 2026-06-09T00:11:25+00:00
 
 ## Status
 
@@ -8,17 +8,17 @@ Agent sampled-frame screening only. This artifact checks generated
 recognition MP4 availability and sampled-frame visual stability. It does
 not launch a study and does not validate human memorability.
 
-Result: 1 video screening failures require review.
+Result: No automated video screening failures were found.
 
 ## Summary
 
 - Videos screened: 60
 - Sampled frames per video: 3
 - Contact sheets: 3
-- Automated screening failures: 1
-- Visual-gate failures: 1
-- Accepted for hosting prep: false
-- Agent contact-sheet review: Contact sheets generated for review; final human/IRB-facing screening still required.
+- Automated screening failures: 0
+- Visual-gate failures: 0
+- Accepted for hosting prep: true
+- Agent contact-sheet review: Full 60-video sampled-frame screening after replacing only filler pair v06 with a ceramic-teacup filler pair; no automated video screening failures remain.
 
 ## Role Counts
 
@@ -38,19 +38,16 @@ Result: 1 video screening failures require review.
 
 ## Screening Flags
 
-| role | job | flags |
-|---|---|---|
-| `filler_lure_video` | `filler_lure_v06` | `tail_sharpness_collapse` |
+None from sampled-frame video screening.
 
 ## Launch Blockers
 
 - This is an agent sampled-frame pre-screen, not final IRB/faculty sign-off.
-- Stable HTTPS hosted video URLs are still required before launch.
-- Two-session Prolific wiring and response collection remain open.
+- Final Prolific project configuration, completion codes, and response endpoint are not recorded.
 - Human recognition-memory validation has not run.
 
 ## Next Action
 
-Review the contact sheets and generated MP4s, host the accepted videos
-at stable HTTPS URLs, then wire those URLs into the two-session
-recognition study.
+Complete final human/IRB-facing content review, configure the
+two Prolific sessions with completion codes and the response
+endpoint, then run the delayed recognition-memory study.

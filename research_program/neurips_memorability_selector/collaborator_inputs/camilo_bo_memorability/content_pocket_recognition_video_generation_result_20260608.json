@@ -13,16 +13,16 @@
     "num_inference_steps": 50,
     "steering_artifact": "/Users/jawaun/isc_mod/data/reports/adapter_tribe_to_clip_h.pt",
     "steering_key": "v_mem_clip_h_via_adapter",
-    "timeout_seconds": 1800
+    "timeout_seconds": 1200
   },
   "counts": {
-    "already_present": 1,
+    "already_present": 60,
     "failed": 0,
-    "generated": 59,
+    "generated": 0,
     "present_after_run": 60,
     "requested": 60
   },
-  "created_at_utc": "2026-06-08T23:13:27+00:00",
+  "created_at_utc": "2026-06-09T00:11:05+00:00",
   "dry_run": false,
   "result_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_video_generation_result_20260608.json",
   "role_counts": {
@@ -60,7 +60,7 @@
     {
       "alpha": 2.3916587829589844,
       "error": null,
-      "generation_seconds": 50.001885415993456,
+      "generation_seconds": null,
       "guidance": 2.56687861867249,
       "job_id": "orange_flowers_lure_v01",
       "matched_id": "orange_flowers_old_v01",
@@ -81,12 +81,12 @@
         "sha256": "c41cb4bafd021ed2904aac4787460111e8c8c88c1630b1820c281ce88bd440f1"
       },
       "source_pocket": "fresh24_orange_flowers",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 2.813289761543274,
       "error": null,
-      "generation_seconds": 64.76484962499671,
+      "generation_seconds": null,
       "guidance": 7.6452042162418365,
       "job_id": "orange_flowers_lure_v02",
       "matched_id": "orange_flowers_old_v02",
@@ -107,12 +107,12 @@
         "sha256": "3f73ecaaaa413aa6237d18dc2da76dae1550b732181c102251d27f2c0aee030a"
       },
       "source_pocket": "fresh24_orange_flowers",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 2.3916587829589844,
       "error": null,
-      "generation_seconds": 66.42568287500035,
+      "generation_seconds": null,
       "guidance": 2.56687861867249,
       "job_id": "hanging_clothes_lure_v00",
       "matched_id": "hanging_clothes_old_v00",
@@ -133,12 +133,12 @@
         "sha256": "68d1d30ac121b43cdc90d176e96571b29fd2ff85865d0aeeebc062652dfc2a05"
       },
       "source_pocket": "fresh24_hanging_clothes",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": -1.9609311372041702,
       "error": null,
-      "generation_seconds": 67.80118987499736,
+      "generation_seconds": null,
       "guidance": 8.631222248077393,
       "job_id": "hanging_clothes_lure_v01",
       "matched_id": "hanging_clothes_old_v01",
@@ -159,12 +159,12 @@
         "sha256": "1d70f3c2c49cf9bb14fbeb4179fc38e4570af49f0c1b2d80312a6dbf23fb1de6"
       },
       "source_pocket": "fresh24_hanging_clothes",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": -1.9609311372041702,
       "error": null,
-      "generation_seconds": 67.88161774999753,
+      "generation_seconds": null,
       "guidance": 8.631222248077393,
       "job_id": "hanging_clothes_lure_v02",
       "matched_id": "hanging_clothes_old_v02",
@@ -185,12 +185,12 @@
         "sha256": "c65ede306ec63c383aedcd5a58a90e61f93fb73ee8bd2b41bc6656d56313c310"
       },
       "source_pocket": "fresh24_hanging_clothes",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 2.3916587829589844,
       "error": null,
-      "generation_seconds": 70.48839312499331,
+      "generation_seconds": null,
       "guidance": 2.56687861867249,
       "job_id": "aerial_beach_lure_v00",
       "matched_id": "aerial_beach_old_v00",
@@ -211,12 +211,12 @@
         "sha256": "e945030ed11a61ded2a001f9987658e35b1642748573b37430bd94412a250558"
       },
       "source_pocket": "fresh24_aerial_beach",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": -1.9609311372041702,
       "error": null,
-      "generation_seconds": 71.88921200000186,
+      "generation_seconds": null,
       "guidance": 8.631222248077393,
       "job_id": "aerial_beach_lure_v01",
       "matched_id": "aerial_beach_old_v01",
@@ -237,12 +237,12 @@
         "sha256": "0b704f9e2e2d824a24cfab8b1f7c1c2b5f1c6dbe9cf75c12c798da805863fab1"
       },
       "source_pocket": "fresh24_aerial_beach",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 2.813289761543274,
       "error": null,
-      "generation_seconds": 71.45556262500031,
+      "generation_seconds": null,
       "guidance": 7.6452042162418365,
       "job_id": "aerial_beach_lure_v02",
       "matched_id": "aerial_beach_old_v02",
@@ -263,12 +263,12 @@
         "sha256": "18ba3e2cb6edc646d7575ae04a21b7f9799bcd86d4ef51f14abdbfa8ba45188a"
       },
       "source_pocket": "fresh24_aerial_beach",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": -1.9609311372041702,
       "error": null,
-      "generation_seconds": 73.63086900000053,
+      "generation_seconds": null,
       "guidance": 8.631222248077393,
       "job_id": "city_street_lure_v00",
       "matched_id": "city_street_old_v00",
@@ -289,12 +289,12 @@
         "sha256": "684f7feec08d029a6f088831ebb022fb92598918aa721a0772ab9a23e709cfb0"
       },
       "source_pocket": "fresh24_city_street",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 2.3916587829589844,
       "error": null,
-      "generation_seconds": 72.91684641600295,
+      "generation_seconds": null,
       "guidance": 2.56687861867249,
       "job_id": "city_street_lure_v01",
       "matched_id": "city_street_old_v01",
@@ -315,12 +315,12 @@
         "sha256": "61bb96e28d2ca332bebe1b1458e60dd0b3fa866577473371fd55f426f675fad8"
       },
       "source_pocket": "fresh24_city_street",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 2.813289761543274,
       "error": null,
-      "generation_seconds": 72.12797120899631,
+      "generation_seconds": null,
       "guidance": 7.6452042162418365,
       "job_id": "city_street_lure_v02",
       "matched_id": "city_street_old_v02",
@@ -341,12 +341,12 @@
         "sha256": "8ff5aa65991b6077168610c453e974709ce2c2c8a8cc0e05fa23149f5687c9af"
       },
       "source_pocket": "fresh24_city_street",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 2.3916587829589844,
       "error": null,
-      "generation_seconds": 71.60253825000109,
+      "generation_seconds": null,
       "guidance": 2.56687861867249,
       "job_id": "storm_beach_lure_v00",
       "matched_id": "storm_beach_old_v00",
@@ -367,12 +367,12 @@
         "sha256": "7864e630745274957d4893964ccc443970b2d0f15ab08f35d0554010f3eacc24"
       },
       "source_pocket": "fresh24_storm_beach",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 2.813289761543274,
       "error": null,
-      "generation_seconds": 74.69994387499901,
+      "generation_seconds": null,
       "guidance": 7.6452042162418365,
       "job_id": "storm_beach_lure_v01",
       "matched_id": "storm_beach_old_v01",
@@ -393,12 +393,12 @@
         "sha256": "dba204cacc00e639f641ec88bfe264e002ae35a32ca2fb3b077632adec717f03"
       },
       "source_pocket": "fresh24_storm_beach",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": -1.9609311372041702,
       "error": null,
-      "generation_seconds": 74.2234307079998,
+      "generation_seconds": null,
       "guidance": 8.631222248077393,
       "job_id": "storm_beach_lure_v02",
       "matched_id": "storm_beach_old_v02",
@@ -419,12 +419,12 @@
         "sha256": "b27caef5f61f2fbbc90281fbd4b8b78c1f91f61e6c648742045ebe854c6597f7"
       },
       "source_pocket": "fresh24_storm_beach",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 73.72777045900148,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v00",
       "matched_id": null,
@@ -445,12 +445,12 @@
         "sha256": "ea2ea0118cd8923f87a49ac516b633bebc8e7c075a7bf9794f30fe40b5e0df84"
       },
       "source_pocket": "fresh24_golden_grass",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 73.06356937500095,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v01",
       "matched_id": null,
@@ -471,12 +471,12 @@
         "sha256": "20f3535b4dc90bfb5962a77b1c38c823b4d022aafc28a2723b1bce615b58122e"
       },
       "source_pocket": "fresh24_red_mailbox",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 72.94735283300543,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v02",
       "matched_id": null,
@@ -497,12 +497,12 @@
         "sha256": "8936558fd9cbe7ff8d3312b673c8e6e624a158f120e0ff4c581d976738a864c1"
       },
       "source_pocket": "fresh24_suspension_bridge",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 72.48350820799533,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v03",
       "matched_id": null,
@@ -523,12 +523,12 @@
         "sha256": "ab2e91263e88e97f2efd9f72487ce50d48cf80a7827c7731d314d92b5acf59d2"
       },
       "source_pocket": "fresh24_lighthouse",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 93.37785216700286,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v04",
       "matched_id": null,
@@ -549,12 +549,12 @@
         "sha256": "2d23da507a6d070271b061bde9842819f71d22f044f605ba614b2791455c3938"
       },
       "source_pocket": "fresh24_coastal_tracks",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 94.44176524999784,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v05",
       "matched_id": null,
@@ -575,38 +575,38 @@
         "sha256": "12b1a01cb664a437672b1d2a4acb3f0ae72ccbd9e11e641cbcdae655d4c6c1e1"
       },
       "source_pocket": "fresh24_ocean_cliffs",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 94.8374791249953,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v06",
       "matched_id": null,
       "noise_seed": 880006,
       "old_target_id": null,
       "output_video": {
-        "bytes": 1356512,
+        "bytes": 1096476,
         "exists": true,
         "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v06.mp4",
-        "sha256": "fe46e469fdddaa223684d9cdde622d8c70e1a33f2ca2a12773907d7d9162b6fe"
+        "sha256": "593d41b9637b42f5e888d0a17f720ccc8a83ef8be96a56a1f8abe45e1c3c7c46"
       },
-      "prompt": "A small concert stage with musicians under lights. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "prompt": "Two ceramic teacups on a sunlit wooden table with a simple cloth napkin. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
       "role": "filler_old_video",
       "seed_image": {
-        "bytes": 1623230,
+        "bytes": 1620283,
         "exists": true,
         "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v06.png",
-        "sha256": "9589544b2535eaf929575cffaa844493a944944d2d7711804540bc396003067b"
+        "sha256": "31c165ed76707cdb36264875a7ccaf5920ddfea2115f925e73b972509040dbc6"
       },
-      "source_pocket": "fresh24_concert_stage",
-      "status": "generated"
+      "source_pocket": "fresh24_ceramic_teacups",
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 96.16782516700187,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v07",
       "matched_id": null,
@@ -627,12 +627,12 @@
         "sha256": "0975e3d31b7750593de0aa8f4b29f2b32dcdac865b68bd1b1bfef712a8414b5d"
       },
       "source_pocket": "fresh24_misty_woods",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 97.35911370800022,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v08",
       "matched_id": null,
@@ -653,12 +653,12 @@
         "sha256": "97db6709c276683d28de87e44f2a2ba227e189a0b590fa0d5866fbec729b7631"
       },
       "source_pocket": "fresh24_wheat_closeup",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 97.20721374999994,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v09",
       "matched_id": null,
@@ -679,12 +679,12 @@
         "sha256": "0b4e309017483ee0bba94335339df66afb1aa29d3996e6a34bf70d306740b337"
       },
       "source_pocket": "fresh24_cloud_mountain",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 99.00353687499592,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v10",
       "matched_id": null,
@@ -705,12 +705,12 @@
         "sha256": "c45299e911388796e1fa49ecd1b8d80565f9e403ced45595503b03e1ac5ee986"
       },
       "source_pocket": "fresh24_mountain_fog",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 100.17759954200301,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v11",
       "matched_id": null,
@@ -731,12 +731,12 @@
         "sha256": "9ccdacbd59cfefb484fd058f38ef65fe7659c26cf868d7b82d65f8bda7c8ea59"
       },
       "source_pocket": "fresh24_forest_canopy",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 99.67564504099573,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v12",
       "matched_id": null,
@@ -757,12 +757,12 @@
         "sha256": "c34aa875b121ba7cf97b91e8f56aa4e0f98436675ff524b28b42ff488d9d2f2c"
       },
       "source_pocket": "fresh24_dewy_grass",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 99.44049595799879,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v13",
       "matched_id": null,
@@ -783,12 +783,12 @@
         "sha256": "fd833e61e505dcede079e13795f59ba8cf7b58cd399a4afe0761a5beb45a8d3a"
       },
       "source_pocket": "fresh24_sparse_forest",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 98.96436437500233,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v14",
       "matched_id": null,
@@ -809,12 +809,12 @@
         "sha256": "1c5d695b83b0faa29a762b6eaa5eb8d0f597ada64d635b6dd616424f739e7224"
       },
       "source_pocket": "fresh24_golden_grass",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 98.51297641699784,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v15",
       "matched_id": null,
@@ -835,12 +835,12 @@
         "sha256": "a67b4c4eb65a0fd6d58e58131eaabe8f5e2fccefaa3d032c5a65ff4783c70c53"
       },
       "source_pocket": "fresh24_red_mailbox",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 98.05229058300029,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v16",
       "matched_id": null,
@@ -861,12 +861,12 @@
         "sha256": "cb07d6e97f7bd0a74f4b4cf94b51e32b26da50aa1afd7bf1582afb143031c5c5"
       },
       "source_pocket": "fresh24_suspension_bridge",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 97.62420770899917,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v17",
       "matched_id": null,
@@ -887,12 +887,12 @@
         "sha256": "958ed5638e632078c228175f0bec5f1dc2246b84548b32ca9475902493d953d4"
       },
       "source_pocket": "fresh24_lighthouse",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 100.05802929199854,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v18",
       "matched_id": null,
@@ -913,12 +913,12 @@
         "sha256": "18b9ff53470428c7cd272970ba329ad39d3c5ac542d7939a6dff0b3a6f3cb4a8"
       },
       "source_pocket": "fresh24_coastal_tracks",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 99.6992592089955,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v19",
       "matched_id": null,
@@ -939,12 +939,12 @@
         "sha256": "86813ec01a708254c2ca1f482cd3166255ec3b3cf2af34e7282a00a0e2990d38"
       },
       "source_pocket": "fresh24_ocean_cliffs",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 102.67986737500178,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v20",
       "matched_id": null,
@@ -965,12 +965,12 @@
         "sha256": "07279b6889332e220aa88212b419f8e323aa5f8d8b98ddce296ee548adf1a03c"
       },
       "source_pocket": "fresh24_concert_stage",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 113.50748258300155,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v21",
       "matched_id": null,
@@ -991,12 +991,12 @@
         "sha256": "6a994098e5d6d2e217bac5a78123dcfa57dc2e8b058ac3fb89c6ee1f18ee9462"
       },
       "source_pocket": "fresh24_misty_woods",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 114.57768733299599,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v22",
       "matched_id": null,
@@ -1017,12 +1017,12 @@
         "sha256": "8bac4e253331f2720f16d17e8d2b06ff927f3df30a358b714e5675be635e20dc"
       },
       "source_pocket": "fresh24_wheat_closeup",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 119.60519345899957,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v23",
       "matched_id": null,
@@ -1043,12 +1043,12 @@
         "sha256": "3f74ee8171804d2dd9c62023dd72688584a9407a0a8b136ba98cd755c6d8c469"
       },
       "source_pocket": "fresh24_cloud_mountain",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 120.02530541599845,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_old_v24",
       "matched_id": null,
@@ -1069,12 +1069,12 @@
         "sha256": "7f81b44378b21d064f6ee579d3996cf6f88cb262c9fa9b856580ee9fc52b9d46"
       },
       "source_pocket": "fresh24_mountain_fog",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 120.56536358300218,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v00",
       "matched_id": "filler_old_v00",
@@ -1095,12 +1095,12 @@
         "sha256": "ec322e67a4c5dcf7bd16e82e3511705f6534ac801b5f0b445843d91f7622d887"
       },
       "source_pocket": "fresh24_golden_grass",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 121.86545620900142,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v01",
       "matched_id": "filler_old_v01",
@@ -1121,12 +1121,12 @@
         "sha256": "a06bfb58828485420986ecac8107e00b3c9717079e6f2b880376f19d5800a61b"
       },
       "source_pocket": "fresh24_red_mailbox",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 123.98366379200161,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v02",
       "matched_id": "filler_old_v02",
@@ -1147,12 +1147,12 @@
         "sha256": "d9916a439ced8ad4ac7758ab11ca22eda8a8739e2d506a451fabf77fe805ac34"
       },
       "source_pocket": "fresh24_suspension_bridge",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 123.48649612499867,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v03",
       "matched_id": "filler_old_v03",
@@ -1173,12 +1173,12 @@
         "sha256": "a792208b990c8548228e4e4e631791abe93f4f747065b1581aecca82ca442fca"
       },
       "source_pocket": "fresh24_lighthouse",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 126.87175766700238,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v04",
       "matched_id": "filler_old_v04",
@@ -1199,12 +1199,12 @@
         "sha256": "6b67a61f404bfb639e8b46f527dc0d3dfca5217f004b747e591617a6ded44b59"
       },
       "source_pocket": "fresh24_coastal_tracks",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 126.51422370799992,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v05",
       "matched_id": "filler_old_v05",
@@ -1225,38 +1225,38 @@
         "sha256": "2e6ddde88dbd0e15cfe811368ec1ddd9b1628fd4266b1eca1b085b1d2cec097f"
       },
       "source_pocket": "fresh24_ocean_cliffs",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 126.62390949999826,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v06",
       "matched_id": "filler_old_v06",
-      "noise_seed": 890006,
+      "noise_seed": 990006,
       "old_target_id": null,
       "output_video": {
-        "bytes": 1627647,
+        "bytes": 922240,
         "exists": true,
         "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v06.mp4",
-        "sha256": "12faed8b8e58834f56844d5335cdc21aa41a767d9a1df903686cd02787763cb0"
+        "sha256": "56f514224a0fa743d91653116f562026dbff77b503e0e7f9583b5d38b64a9abe"
       },
-      "prompt": "A different concert stage with distinct lighting and performer layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "prompt": "A different arrangement of ceramic teacups on a bright kitchen table, with distinct cup shapes and camera angle. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
       "role": "filler_lure_video",
       "seed_image": {
-        "bytes": 1795198,
+        "bytes": 1738395,
         "exists": true,
         "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v06.png",
-        "sha256": "6d3ee0364e876058c41a0393e0002924ee7f59550ef1117e272c9ad6d8bbf73e"
+        "sha256": "5a266693d51d2b5fa8973eaf8351947ff4b91317c138827e3f9cb55154ee3cc5"
       },
-      "source_pocket": "fresh24_concert_stage",
-      "status": "generated"
+      "source_pocket": "fresh24_ceramic_teacups",
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 126.36154495899973,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v07",
       "matched_id": "filler_old_v07",
@@ -1277,12 +1277,12 @@
         "sha256": "af1aa0f9a3b9711bb6b397e415b9578bd0b9d6eb7f583b0ec592eb93c77a1caf"
       },
       "source_pocket": "fresh24_misty_woods",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 126.03600458300207,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v08",
       "matched_id": "filler_old_v08",
@@ -1303,12 +1303,12 @@
         "sha256": "19f0b24f564b63b475a9c58ff995090d98b7343217bcbe0b4dcea6623b691ce0"
       },
       "source_pocket": "fresh24_wheat_closeup",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 125.71607483299886,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v09",
       "matched_id": "filler_old_v09",
@@ -1329,12 +1329,12 @@
         "sha256": "1c435170c3c371cbf714422cb0b1b11a2f28d43f321cd5e1744a717f8b71f363"
       },
       "source_pocket": "fresh24_cloud_mountain",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 125.32600708400423,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v10",
       "matched_id": "filler_old_v10",
@@ -1355,12 +1355,12 @@
         "sha256": "534cbcc0a1e604a9ddfef5353818d5803e814d2f279f39540683c2fdc8213ba6"
       },
       "source_pocket": "fresh24_mountain_fog",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 125.00324720799836,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v11",
       "matched_id": "filler_old_v11",
@@ -1381,12 +1381,12 @@
         "sha256": "4d876c2332ecc358f8d9026118ace042ec89d03f6a32bd5ce0ade1d237e66faf"
       },
       "source_pocket": "fresh24_forest_canopy",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 124.56427350000013,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v12",
       "matched_id": "filler_old_v12",
@@ -1407,12 +1407,12 @@
         "sha256": "c0c39513044410c1025bbcdbac0b8a5e5a79e97570d76f6e7c755c7e2a6fc85f"
       },
       "source_pocket": "fresh24_dewy_grass",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 127.73774750000302,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v13",
       "matched_id": "filler_old_v13",
@@ -1433,12 +1433,12 @@
         "sha256": "0bb5cd1351c588ea6af7878b11a47e5c22d9e98efd8a99a10374a9dca6f88ec5"
       },
       "source_pocket": "fresh24_sparse_forest",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 134.51897083399672,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v14",
       "matched_id": "filler_old_v14",
@@ -1459,12 +1459,12 @@
         "sha256": "8bc36402294b83caddac43e7024b24dc10ed9fb4b50a65ecb206fdec1736b26a"
       },
       "source_pocket": "fresh24_golden_grass",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 140.20789183299348,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v15",
       "matched_id": "filler_old_v15",
@@ -1485,12 +1485,12 @@
         "sha256": "86905f9f3979c254f4d386276b913fbe4d17e80ffb5497fdbd93c275d6d9adfa"
       },
       "source_pocket": "fresh24_red_mailbox",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 141.24447187500482,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v16",
       "matched_id": "filler_old_v16",
@@ -1511,12 +1511,12 @@
         "sha256": "468f74ef4c593d78bf0423658562d8da2c47d7378a5892ed81fa291ee395ba0b"
       },
       "source_pocket": "fresh24_suspension_bridge",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 147.19055833399761,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v17",
       "matched_id": "filler_old_v17",
@@ -1537,12 +1537,12 @@
         "sha256": "d383b1ca9e9bc2fc8610df0e31c629cf00f259343d1b26694190932553ba99c1"
       },
       "source_pocket": "fresh24_lighthouse",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 147.9147489579991,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v18",
       "matched_id": "filler_old_v18",
@@ -1563,12 +1563,12 @@
         "sha256": "b90e89e0488c1b3e1fd732defd950858ecd5f4daf7fee60b6da42541dfa69fd8"
       },
       "source_pocket": "fresh24_coastal_tracks",
-      "status": "generated"
+      "status": "already_present"
     },
     {
       "alpha": 0.0,
       "error": null,
-      "generation_seconds": 148.7886996659945,
+      "generation_seconds": null,
       "guidance": 7.5,
       "job_id": "filler_lure_v19",
       "matched_id": "filler_old_v19",
@@ -1589,7 +1589,7 @@
         "sha256": "a56de5814c422dc3a7879d9b5138119b8f262268c6f9a675329726668a07f54b"
       },
       "source_pocket": "fresh24_ocean_cliffs",
-      "status": "generated"
+      "status": "already_present"
     }
   ],
   "schema_version": "content_pocket_recognition_video_generation.v1",

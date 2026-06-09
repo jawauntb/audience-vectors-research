@@ -66,11 +66,40 @@ def test_selected_requests_filters_roles_and_missing(tmp_path):
     requests = module.selected_requests(
         manifest,
         roles={"filler_old_seed"},
+        request_ids=None,
         limit=None,
         only_missing=True,
     )
 
     assert [request["request_id"] for request in requests] == ["b"]
+
+
+def test_selected_requests_filters_request_ids(tmp_path):
+    module = load_materializer_module()
+    manifest = {
+        "seed_image_requests": [
+            {
+                "request_id": "filler_old_v06",
+                "role": "filler_old_seed",
+                "seed_image": {"path": str(tmp_path / "old.png")},
+            },
+            {
+                "request_id": "filler_lure_v06",
+                "role": "filler_lure_seed",
+                "seed_image": {"path": str(tmp_path / "lure.png")},
+            },
+        ]
+    }
+
+    requests = module.selected_requests(
+        manifest,
+        roles=None,
+        request_ids={"filler_lure_v06"},
+        limit=None,
+        only_missing=False,
+    )
+
+    assert [request["request_id"] for request in requests] == ["filler_lure_v06"]
 
 
 def test_contact_sheet_skips_empty_groups(tmp_path):

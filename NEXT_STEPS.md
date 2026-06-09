@@ -71,6 +71,12 @@ too.
   complete: 45/45 stimuli byte/hash/frame-gate screened, 0 automated failures,
   4 contact sheets produced, and a hosted-video URL map template prepared.
   Final human/IRB-facing content screening and hosted HTTPS URLs remain open.
+- The stronger two-session recognition-memory launch set has cleared the
+  stimulus-prep subgates: the flagged concert-stage filler lure was preserved
+  as a rejected artifact, replaced with a ceramic-teacups filler pair, refreshed
+  video screening passed 60/60 MP4s, and public GitHub Pages launch assets plus
+  Prolific setup notes are ready. Human recognition data have not been collected
+  yet.
 - Prompt text is metadata-only in the current SVD runner. A prompt-rewrite
   tournament should wait until we use a prompt-conditioned generator path where
   the prompt changes the actual pixels.
@@ -115,11 +121,11 @@ validation.
 | P1 | V-JEPA-caveated human/BMD validation packet | Freezes what can move to human/BMD spend without smuggling compute-proxy caveats into the claim | Packet assembled with orange flowers/hanging clothes as primary candidates and blue jellyfish/old car as exploratory boundary arms | `content_pocket_human_bmd_validation_packet_20260608.md` | Done |
 | P1 | Exact content-pocket MP4 stimulus freeze | Turns the validation packet into an auditable fixed task pool before human/BMD spend | Frozen: 24 pairwise tasks, 45 unique MP4 paths, no missing selected files or matched controls; survey HTML built but not launched | `content_pocket_validation_stimuli_manifest_20260608.json` and `content_pocket_validation_pairwise_tasks_20260608.json` | Done; screen/host next |
 | P1 | Frozen MP4 prelaunch screening | Checks launch readiness without changing the proxy-selected claim | Done: 45/45 selected MP4s present and hash-matched, sampled-frame visual gate passed, contact-sheet review found no obvious sampled-frame text/watermark/collapse/leakage; final human/IRB screening still required | `content_pocket_validation_mp4_screening_20260608.md` and `content_pocket_validation_hosted_video_url_map_template_20260608.json` | Done; host/sign off next |
-| P1 | Direct recognition-memory validation design | Upgrades the human endpoint from perceived memorability to exact old-vs-lure memory while controlling same-category false familiarity | Designed but not launchable: 15 frozen old targets, 15 required same-category lure seed requests, six sparse forms, 300 usable delayed participants target | `content_pocket_recognition_memory_design_20260608.json` and `content_pocket_recognition_memory_packet_20260608.md` | Done; generate/screen lures and fillers next |
-| P1 | Recognition stimulus production manifest | Turns the recognition design into concrete seed-image requests and SVD generation jobs without accepting near-duplicate lures | MP4 subgate generated but not fully cleared: 60/60 output MP4s present, 3 video contact sheets produced, analysis lures passed automated sampled-frame screening, and one filler lure (`filler_lure_v06`) was flagged for `tail_sharpness_collapse` | `content_pocket_recognition_stimulus_production_manifest_20260608.json` and `.md` | Done; review/replace one filler before hosting |
+| P1 | Direct recognition-memory validation design | Upgrades the human endpoint from perceived memorability to exact old-vs-lure memory while controlling same-category false familiarity | Designed and launch-prep ready: 15 frozen old targets, 15 same-category lures, six sparse forms, 300 usable delayed participants target, and public two-session launch assets | `content_pocket_recognition_memory_design_20260608.json`, `content_pocket_recognition_memory_packet_20260608.md`, and `content_pocket_recognition_prolific_setup_20260608.md` | Done; final Prolific setup next |
+| P1 | Recognition stimulus production manifest | Turns the recognition design into concrete seed-image requests and SVD generation jobs without accepting near-duplicate lures | Launch-prep subgate passed: `filler_lure_v06` concert-stage attempts were preserved as rejected artifacts, the ceramic-teacups replacement pair passed, 60/60 MP4s passed refreshed screening, 75 videos were hosted on public GitHub Pages, and two-session Prolific HTML/setup artifacts are ready | `content_pocket_recognition_stimulus_production_manifest_20260608.json`, `content_pocket_recognition_launch_assets_20260608.md`, and `content_pocket_recognition_prolific_setup_20260608.md` | Done; final human/IRB review and Prolific configuration next |
 | P2 | Prompt-conditioned generator transition | Moves from metadata-only prompt text to a generator where prompt operations can actually change content | Prompt interventions change generated video content while preserving visual validity and improving candidate selection | Prompt-conditioned generator manifest | Queued |
 | P2 | V-JEPA-augmented candidate screen | Reintroduces the broader selector stack only after content pockets are stabilized | V-JEPA adjudication improves or de-risks candidate ranking against TRIBE-only selection | Selector-stack comparison note | Queued |
-| Human-owned | Two-session recognition-memory study | Needed before final human memorability claims | Primary-positive old-vs-lure recognition exceeds hard-negative-control recognition under the pre-registered analysis; dry-run rows excluded | Prolific/IRB packet and analysis report | Blocked on lure/filler generation, screening, hosting |
+| Human-owned | Two-session recognition-memory study | Needed before final human memorability claims | Primary-positive old-vs-lure recognition exceeds hard-negative-control recognition under the pre-registered analysis; dry-run rows excluded | Prolific export and recognition-memory analysis report | Ready for final human/IRB content review, response endpoint entry, and Prolific project setup |
 | Async | Memento10k, VideoMem, or measured-BMD transfer checks | Tests cross-dataset and measured-brain grounding | External dataset correlation or measured-fMRI direction alignment clears pre-registered threshold | Dataset transfer report | Parked |
 
 ## Immediate Next Decision
@@ -171,31 +177,39 @@ Current results to preserve:
   until final human/IRB-facing review is complete.
 - `content_pocket_recognition_memory_design_20260608.json` and
   `content_pocket_recognition_memory_packet_20260608.md` define the stronger
-  old-vs-lure human-memory study. It is deliberately not launchable until
-  distinct same-category lures and unrelated fillers are generated, screened,
-  and hosted.
+  old-vs-lure human-memory study. The launch-prep assets are now ready, but the
+  human-memory gate remains unrun.
 - `content_pocket_recognition_stimulus_production_manifest_20260608.json` and
   `.md` enumerate the concrete production work: 15 analysis lures, 25 filler
   old targets, 20 filler lures, 60 seed-image requests, and 60 SVD output jobs.
-  Current status is `generated_videos_present_screening_required`.
+  Current status is `recognition_launch_assets_ready_for_prolific_setup`.
 - `content_pocket_recognition_seed_materialization_20260608.json` and `.md`
   record the seed-image materialization inventory: 60/60 seed PNGs present, 0
   failures, and five screening sheets.
 - `content_pocket_recognition_seed_screening_result_20260608.json` and `.md`
   record first-pass image screening acceptance for SVD generation. This is not
   human recognition-memory evidence.
+- `content_pocket_recognition_video_rejected_concert_retry_*_20260608.*`
+  preserves the failed concert-stage filler-lure retry rather than silently
+  discarding it.
+- `content_pocket_recognition_video_pair_replacement_result_20260608.md` and
+  `content_pocket_recognition_video_pair_replacement_screening_20260608.md`
+  record the accepted ceramic-teacups replacement for filler index 6.
 - `content_pocket_recognition_video_generation_result_20260608.json` and `.md`
-  record SVD generation: 60/60 MP4s present after the run, with 59 newly
-  generated and one smoke clip already present.
+  record SVD generation: 60/60 MP4s present after the refreshed run.
 - `content_pocket_recognition_video_screening_20260608.json` and `.md` record
-  sampled-frame video screening: 59/60 videos passed automatically; the lone
-  flag is filler lure `filler_lure_v06` (`tail_sharpness_collapse`). Analysis
-  lures have no automated screening flags.
+  refreshed sampled-frame video screening: 60/60 videos passed automatically.
+- `content_pocket_recognition_launch_assets_20260608.md`,
+  `content_pocket_recognition_hosted_video_url_map_20260608.json`, and
+  `content_pocket_recognition_prolific_setup_20260608.md` record public HTTPS
+  launch pages, 75 hosted MP4s, session completion codes, and the participant
+  target/minimum for the delayed recognition-memory study.
 
 Near-term options:
 
-1. Review or replace `filler_lure_v06`, preserve the flagged MP4 as a rejected
-   or reviewed artifact, then rerun video screening before hosting.
+1. Complete final human/IRB-facing content review, enter the response endpoint
+   and completion codes in Prolific, and launch the two-session delayed
+   recognition-memory study.
 2. Build a measured-BMD or BMD-grounded transfer report from the same frozen
    stimulus set.
 3. Optionally run the older blinded forced-choice survey as a weaker perceived

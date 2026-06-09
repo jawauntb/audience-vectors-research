@@ -1,0 +1,40 @@
+{
+  "schema_version": "content_pocket_recognition_prolific_setup.v1",
+  "created_at_utc": "2026-06-09T00:05:55Z",
+  "status": "ready_for_final_prolific_configuration",
+  "source_launch_assets": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_launch_assets_20260608.json",
+  "public_pages_verified": true,
+  "video_content_type_verified": true,
+  "session_urls": {
+    "session1_base_url": "https://jawauntb.github.io/audience-vectors-research/session1.html",
+    "session2_base_url": "https://jawauntb.github.io/audience-vectors-research/session2.html",
+    "session1_prolific_url_template": "https://jawauntb.github.io/audience-vectors-research/session1.html?PROLIFIC_PID={{%PROLIFIC_PID%}}&STUDY_ID={{%STUDY_ID%}}&SESSION_ID={{%SESSION_ID%}}&submit_url=<YOUR_HTTPS_RESPONSE_ENDPOINT>",
+    "session2_prolific_url_template": "https://jawauntb.github.io/audience-vectors-research/session2.html?PROLIFIC_PID={{%PROLIFIC_PID%}}&STUDY_ID={{%STUDY_ID%}}&SESSION_ID={{%SESSION_ID%}}&submit_url=<YOUR_HTTPS_RESPONSE_ENDPOINT>"
+  },
+  "completion_codes": {
+    "session1": "CPR_SESSION1_DONE",
+    "session2": "CPR_SESSION2_DONE"
+  },
+  "sample_size": {
+    "recommended_session1_slots": 350,
+    "target_session2_usable_participants": 300,
+    "minimum_session2_usable_participants_before_interpreting_gate": 200,
+    "dry_run_policy": "Any optional link/video/endpoint shakedown rows must be excluded from the evidence gate."
+  },
+  "prolific_configuration": {
+    "study_type": "two-session delayed recognition-memory study",
+    "session_delay": "24-48 hours",
+    "session2_eligibility": "Invite only Session 1 completers using the same PROLIFIC_PID.",
+    "participant_assignment": "The HTML hashes PROLIFIC_PID to one of six sparse forms and uses the same hash in both sessions.",
+    "response_endpoint": "Pass an HTTPS POST endpoint in submit_url or endpoint; URL-encode it if it contains query parameters."
+  },
+  "response_error_fields": {
+    "session1": ["media_error"],
+    "session2": ["left_media_error", "right_media_error", "any_media_error"]
+  },
+  "claim_boundary": [
+    "This setup is not human-memory evidence.",
+    "Do not claim actual memorability until delayed Session 2 recognition data clear the pre-registered gate.",
+    "Excluded participants and failed-load trials must remain in the exported dataset with explicit exclusion reasons."
+  ]
+}

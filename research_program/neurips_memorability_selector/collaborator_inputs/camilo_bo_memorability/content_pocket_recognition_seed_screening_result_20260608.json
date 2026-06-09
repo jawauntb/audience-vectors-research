@@ -3,38 +3,43 @@
   "contact_sheets": [
     {
       "bytes": 267981,
+      "exists": true,
       "items": 15,
       "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_screening_sheets_20260608/analysis_lures.jpg",
       "role": "analysis_lure_seed",
       "sha256": "1cb8bda7c3d62266d2c563e2395d6300f1ed611cdda022c6dd7839d801ed8fef"
     },
     {
-      "bytes": 385242,
+      "bytes": 385222,
+      "exists": true,
       "items": 25,
       "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_screening_sheets_20260608/filler_old.jpg",
       "role": "filler_old_seed",
-      "sha256": "582a2cf6ba2fe9c657f01cad07492c58254ec187a8b9fac5ed01445a4773e7ce"
+      "sha256": "4936c339446d68a231f5f7dab00620a6fe9927c142623d57b7e229f9081415c0"
     },
     {
-      "bytes": 346574,
+      "bytes": 343804,
+      "exists": true,
       "items": 20,
       "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_screening_sheets_20260608/filler_lures.jpg",
       "role": "filler_lure_seed",
-      "sha256": "6d56e83a53c10e8dad27e46de05b74354002e5db7c17f6462fdaf366b238d5af"
+      "sha256": "598e734c1db66eed0494d4c277f7036e0bd913358798ed0caad68cbf3d66c511"
     },
     {
       "bytes": 463799,
+      "exists": true,
       "items": 15,
       "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_screening_sheets_20260608/analysis_old_vs_lure_pairs.jpg",
       "role": "analysis_old_vs_lure_pair",
       "sha256": "c80b426fecdd08f809693bd4086a485d72264d85eab1e366e2cace4b3e79d5b4"
     },
     {
-      "bytes": 598215,
+      "bytes": 595283,
+      "exists": true,
       "items": 20,
       "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_screening_sheets_20260608/filler_old_vs_lure_pairs.jpg",
       "role": "filler_old_vs_lure_pair",
-      "sha256": "ef147bd08a3bf28b2b8e3eb71b9422e6b0cae28e5d30cddf20d9fec449031ff2"
+      "sha256": "f8b24c97c33e0fe84ae8c4283a7b0dd5459386410293c99bd807cd628d2eb876"
     }
   ],
   "counts": {
@@ -44,13 +49,27 @@
     "filler_old": 25,
     "rejected": 0,
     "seed_images_present": 60,
+    "superseded_seed_pairs": 1,
     "withheld": 0
   },
-  "created_at_utc": "2026-06-08T22:50:16Z",
+  "created_at_utc": "2026-06-08T23:35:17Z",
   "rejected_or_withheld": [],
+  "replacement_review": {
+    "accepted": true,
+    "local_preservation": [
+      "data/recognition_memory_seed_images_20260608/superseded/fillers/old/filler_old_v06_concert_stage.png",
+      "data/recognition_memory_seed_images_20260608/superseded/fillers/lures/filler_lure_v06_concert_stage.png",
+      "data/generated/content_pocket_recognition_memory_20260608/superseded/fillers/old/filler_old_v06_concert_stage.mp4",
+      "data/generated/content_pocket_recognition_memory_20260608/rejected/fillers/lures/filler_lure_v06_noise890006_tail_sharpness_collapse.mp4",
+      "data/generated/content_pocket_recognition_memory_20260608/rejected/fillers/lures/filler_lure_v06_noise990006_tail_sharpness_collapse.mp4"
+    ],
+    "reason": "The concert-stage filler lure repeatedly triggered sampled-frame tail_sharpness_collapse under SVD video screening, so the filler pair was replaced rather than relaxing the video gate.",
+    "replacement_pair": "filler_old_v06 / filler_lure_v06 ceramic-teacup filler pair",
+    "superseded_pair": "filler_old_v06 / filler_lure_v06 concert-stage filler pair"
+  },
   "review": {
-    "analysis_lures": "First-pass contact-sheet review accepts the 15 analysis lures for SVD generation. They preserve broad category labels while changing composition enough to avoid obvious old-vs-lure near duplicates; no obvious text, watermark, poster layout, or severe generation artifact is visible in the screening sheets.",
-    "fillers": "First-pass contact-sheet review accepts the 45 filler seed images for unrelated filler use. Some filler pairs are naturally same-category similar, but they are not analysis claims and remain acceptable for old/new task balancing before video-level screening.",
+    "analysis_lures": "Refreshed contact-sheet review accepts the 15 analysis lures for SVD generation. They preserve broad category labels while changing composition enough to avoid obvious old-vs-lure near duplicates; no obvious text, watermark, poster layout, or severe generation artifact is visible in the screening sheets.",
+    "fillers": "Refreshed contact-sheet review accepts the 45 filler seed images for unrelated filler use, including the ceramic-teacup replacement for filler pair v06. Some filler pairs are naturally same-category similar, but they are not analysis claims and remain acceptable for old/new task balancing before video-level screening.",
     "remaining_caveats": [
       "This screening result is not human recognition-memory or memorability evidence.",
       "SVD MP4 generation and video-level visual screening are still required before launch.",

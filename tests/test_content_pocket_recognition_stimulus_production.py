@@ -195,6 +195,94 @@ def test_screened_videos_are_ready_for_hosting_review(tmp_path):
     assert "host accepted videos" in markdown
 
 
+def test_hosted_launch_assets_advance_to_prolific_setup(tmp_path):
+    module = load_production_module()
+    seed_root = tmp_path / "seeds"
+    video_out_dir = tmp_path / "videos"
+    for name in ("orange_flowers_lure_v00", "hanging_clothes_lure_v00"):
+        seed = seed_root / "analysis_lures" / f"{name}.png"
+        seed.parent.mkdir(parents=True, exist_ok=True)
+        seed.write_bytes(b"seed bytes")
+        video = video_out_dir / "analysis_lures" / f"{name}.mp4"
+        video.parent.mkdir(parents=True, exist_ok=True)
+        video.write_bytes(b"video bytes")
+    seed_screening = tmp_path / "seed_screening.json"
+    seed_screening.write_text(
+        json.dumps(
+            {
+                "status": "seed_image_screen_passed_for_svd_generation",
+                "accepted_for_svd_generation": True,
+            }
+        ),
+        encoding="utf-8",
+    )
+    video_screening = tmp_path / "video_screening.json"
+    video_screening.write_text(
+        json.dumps(
+            {
+                "status": "agent_video_screen_passed_for_hosting",
+                "accepted_for_hosting": True,
+            }
+        ),
+        encoding="utf-8",
+    )
+    launch_assets = tmp_path / "launch_assets.json"
+    launch_assets.write_text(
+        json.dumps(
+            {
+                "status": "hosted_launch_assets_ready",
+                "counts": {"missing_videos": 0},
+                "session_urls": {
+                    "session1_url": "https://example.test/session1.html",
+                    "session2_url": "https://example.test/session2.html",
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    manifest, markdown = module.build_manifest(
+        design_path=write_design(tmp_path),
+        seed_root=seed_root,
+        video_out_dir=video_out_dir,
+        seed_screening_result=seed_screening,
+        video_screening_result=video_screening,
+        launch_assets_result=launch_assets,
+        filler_old_count=0,
+        filler_recognition_count=0,
+    )
+
+    assert manifest["status"] == "recognition_launch_assets_ready_for_prolific_setup"
+    assert manifest["launch_assets"]["hosted_launch_assets_ready"] is True
+    assert "Hosted HTTPS URLs" not in "\n".join(manifest["launch_blockers"])
+    assert "configure the" in markdown
+
+
+def test_rejected_filler_lure_uses_replacement_noise_seed(tmp_path):
+    module = load_production_module()
+
+    manifest, _markdown = module.build_manifest(
+        design_path=write_design(tmp_path),
+        seed_root=tmp_path / "seeds",
+        video_out_dir=tmp_path / "videos",
+        seed_screening_result=tmp_path / "screening.json",
+        video_screening_result=tmp_path / "video_screening.json",
+        filler_old_count=7,
+        filler_recognition_count=7,
+    )
+
+    jobs = {job["job_id"]: job for job in manifest["generation_jobs"]}
+    assert jobs["filler_lure_v05"]["noise_seed"] == 890_005
+    assert jobs["filler_lure_v06"]["noise_seed"] == 990_006
+
+
+def test_rejected_filler_template_override_is_index_specific():
+    module = load_production_module()
+
+    assert module.filler_template(6).pocket == "fresh24_ceramic_teacups"
+    assert module.filler_template(20).pocket == "fresh24_concert_stage"
+
+
 def test_filler_recognition_count_cannot_exceed_old_count(tmp_path):
     module = load_production_module()
 
