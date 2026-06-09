@@ -1,0 +1,2959 @@
+{
+  "form_count": 6,
+  "forms": [
+    {
+      "form_id": "recognition_form_00",
+      "session1_trials": [
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "orange_flowers",
+          "target_id": "orange_flowers_old_v00",
+          "trial_id": "orange_flowers_old_v00_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_05_sobol_prompt_search_519_slot10_rep01_3242160a0457.mp4"
+        },
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "hanging_clothes",
+          "target_id": "hanging_clothes_old_v01",
+          "trial_id": "hanging_clothes_old_v01_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_16_sobol_prompt_search_521_slot12_rep02_2bf41916e632.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "aerial_beach",
+          "target_id": "aerial_beach_old_v02",
+          "trial_id": "aerial_beach_old_v02_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_07_sobol_prompt_search_519_slot03_rep00_c2cd00462671.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "city_street",
+          "target_id": "city_street_old_v00",
+          "trial_id": "city_street_old_v00_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_18_sobol_prompt_search_521_slot08_rep01_1d62a2891625.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "storm_beach",
+          "target_id": "storm_beach_old_v01",
+          "trial_id": "storm_beach_old_v01_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_09_sobol_prompt_search_519_slot14_rep02_076668585835.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v00",
+          "trial_id": "filler_old_v00",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v00_0e1fda4d149d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v01",
+          "trial_id": "filler_old_v01",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v01_4c6aa439467d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v02",
+          "trial_id": "filler_old_v02",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v02_e685686cec5d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v03",
+          "trial_id": "filler_old_v03",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v03_42cfd330dbae.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v04",
+          "trial_id": "filler_old_v04",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v04_007eb2b934ee.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v05",
+          "trial_id": "filler_old_v05",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v05_31d42eb02bde.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v06",
+          "trial_id": "filler_old_v06",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v06_593d41b9637b.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v07",
+          "trial_id": "filler_old_v07",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v07_3dfd457cffc0.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v08",
+          "trial_id": "filler_old_v08",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v08_2ee517634585.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v09",
+          "trial_id": "filler_old_v09",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v09_1d34cdc3f37e.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v10",
+          "trial_id": "filler_old_v10",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v10_011bcf2ab826.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v11",
+          "trial_id": "filler_old_v11",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v11_0a1083aa33ef.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v12",
+          "trial_id": "filler_old_v12",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v12_f8fa82c1a8d3.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v13",
+          "trial_id": "filler_old_v13",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v13_f4c69ff3e6dc.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v14",
+          "trial_id": "filler_old_v14",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v14_ef8b61174922.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v15",
+          "trial_id": "filler_old_v15",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v15_7e0721d8d30b.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v16",
+          "trial_id": "filler_old_v16",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v16_de09be49bc25.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v17",
+          "trial_id": "filler_old_v17",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v17_25d2919e9e7a.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v18",
+          "trial_id": "filler_old_v18",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v18_979716ba4e97.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v19",
+          "trial_id": "filler_old_v19",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v19_7a88995c7a53.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v20",
+          "trial_id": "filler_old_v20",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v20_c6bb1a51b7fa.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v21",
+          "trial_id": "filler_old_v21",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v21_45333d0e3a97.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v22",
+          "trial_id": "filler_old_v22",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v22_6723d6aa320e.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v23",
+          "trial_id": "filler_old_v23",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v23_10233e92a675.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v24",
+          "trial_id": "filler_old_v24",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v24_9d3314f193aa.mp4"
+        }
+      ],
+      "session2_trials": [
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "orange_flowers",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/orange_flowers_lure_v00_8f12f08ec901.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_05_sobol_prompt_search_519_slot10_rep01_3242160a0457.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "orange_flowers_old_v00",
+          "trial_id": "form00_orange_flowers_old_v00_recognition"
+        },
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "hanging_clothes",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/hanging_clothes_lure_v01_7b3666251409.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_16_sobol_prompt_search_521_slot12_rep02_2bf41916e632.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "hanging_clothes_old_v01",
+          "trial_id": "form00_hanging_clothes_old_v01_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "aerial_beach",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/aerial_beach_lure_v02_e0a3a752ee21.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_07_sobol_prompt_search_519_slot03_rep00_c2cd00462671.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "aerial_beach_old_v02",
+          "trial_id": "form00_aerial_beach_old_v02_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "city_street",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/city_street_lure_v00_099024512539.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_18_sobol_prompt_search_521_slot08_rep01_1d62a2891625.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "city_street_old_v00",
+          "trial_id": "form00_city_street_old_v00_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "storm_beach",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/storm_beach_lure_v01_4646ac9dc036.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_09_sobol_prompt_search_519_slot14_rep02_076668585835.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "storm_beach_old_v01",
+          "trial_id": "form00_storm_beach_old_v01_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v00_a160f0cf4288.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v00_0e1fda4d149d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v00",
+          "trial_id": "filler_old_v00_vs_filler_lure_v00_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v01_f07e9e59a0fa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v01_4c6aa439467d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v01",
+          "trial_id": "filler_old_v01_vs_filler_lure_v01_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v02_8653a1cb9ddd.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v02_e685686cec5d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v02",
+          "trial_id": "filler_old_v02_vs_filler_lure_v02_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v03_fee863520efa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v03_42cfd330dbae.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v03",
+          "trial_id": "filler_old_v03_vs_filler_lure_v03_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v04_31d24e8abf94.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v04_007eb2b934ee.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v04",
+          "trial_id": "filler_old_v04_vs_filler_lure_v04_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v05_de05e7267697.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v05_31d42eb02bde.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v05",
+          "trial_id": "filler_old_v05_vs_filler_lure_v05_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v06_56f514224a0f.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v06_593d41b9637b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v06",
+          "trial_id": "filler_old_v06_vs_filler_lure_v06_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v07_e9d7708ab182.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v07_3dfd457cffc0.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v07",
+          "trial_id": "filler_old_v07_vs_filler_lure_v07_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v08_03c429317758.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v08_2ee517634585.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v08",
+          "trial_id": "filler_old_v08_vs_filler_lure_v08_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v09_eb6610401eae.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v09_1d34cdc3f37e.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v09",
+          "trial_id": "filler_old_v09_vs_filler_lure_v09_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v10_20b58a2f364a.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v10_011bcf2ab826.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v10",
+          "trial_id": "filler_old_v10_vs_filler_lure_v10_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v11_d51727fa593b.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v11_0a1083aa33ef.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v11",
+          "trial_id": "filler_old_v11_vs_filler_lure_v11_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v12_cf59b1c60ced.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v12_f8fa82c1a8d3.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v12",
+          "trial_id": "filler_old_v12_vs_filler_lure_v12_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v13_ce7b1a09fcf2.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v13_f4c69ff3e6dc.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v13",
+          "trial_id": "filler_old_v13_vs_filler_lure_v13_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v14_532a94b86c70.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v14_ef8b61174922.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v14",
+          "trial_id": "filler_old_v14_vs_filler_lure_v14_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v15_88a80d31f020.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v15_7e0721d8d30b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v15",
+          "trial_id": "filler_old_v15_vs_filler_lure_v15_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v16_ba45a59f510f.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v16_de09be49bc25.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v16",
+          "trial_id": "filler_old_v16_vs_filler_lure_v16_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v17_f75c392975fa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v17_25d2919e9e7a.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v17",
+          "trial_id": "filler_old_v17_vs_filler_lure_v17_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v18_bffa4208ce22.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v18_979716ba4e97.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v18",
+          "trial_id": "filler_old_v18_vs_filler_lure_v18_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v19_12656ef01eee.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v19_7a88995c7a53.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v19",
+          "trial_id": "filler_old_v19_vs_filler_lure_v19_recognition"
+        }
+      ]
+    },
+    {
+      "form_id": "recognition_form_01",
+      "session1_trials": [
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "orange_flowers",
+          "target_id": "orange_flowers_old_v01",
+          "trial_id": "orange_flowers_old_v01_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_10_sobol_prompt_search_520_slot10_rep01_e65bfdf346cb.mp4"
+        },
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "hanging_clothes",
+          "target_id": "hanging_clothes_old_v02",
+          "trial_id": "hanging_clothes_old_v02_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_16_sobol_prompt_search_521_slot12_rep01_72621b8cddce.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "aerial_beach",
+          "target_id": "aerial_beach_old_v00",
+          "trial_id": "aerial_beach_old_v00_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_12_sobol_prompt_search_520_slot03_rep00_92fb54a209ac.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "city_street",
+          "target_id": "city_street_old_v01",
+          "trial_id": "city_street_old_v01_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_13_sobol_prompt_search_520_slot08_rep01_339c184d573d.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "storm_beach",
+          "target_id": "storm_beach_old_v02",
+          "trial_id": "storm_beach_old_v02_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_19_sobol_prompt_search_521_slot14_rep02_1a34595b81a1.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v00",
+          "trial_id": "filler_old_v00",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v00_0e1fda4d149d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v01",
+          "trial_id": "filler_old_v01",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v01_4c6aa439467d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v02",
+          "trial_id": "filler_old_v02",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v02_e685686cec5d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v03",
+          "trial_id": "filler_old_v03",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v03_42cfd330dbae.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v04",
+          "trial_id": "filler_old_v04",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v04_007eb2b934ee.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v05",
+          "trial_id": "filler_old_v05",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v05_31d42eb02bde.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v06",
+          "trial_id": "filler_old_v06",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v06_593d41b9637b.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v07",
+          "trial_id": "filler_old_v07",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v07_3dfd457cffc0.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v08",
+          "trial_id": "filler_old_v08",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v08_2ee517634585.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v09",
+          "trial_id": "filler_old_v09",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v09_1d34cdc3f37e.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v10",
+          "trial_id": "filler_old_v10",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v10_011bcf2ab826.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v11",
+          "trial_id": "filler_old_v11",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v11_0a1083aa33ef.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v12",
+          "trial_id": "filler_old_v12",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v12_f8fa82c1a8d3.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v13",
+          "trial_id": "filler_old_v13",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v13_f4c69ff3e6dc.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v14",
+          "trial_id": "filler_old_v14",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v14_ef8b61174922.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v15",
+          "trial_id": "filler_old_v15",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v15_7e0721d8d30b.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v16",
+          "trial_id": "filler_old_v16",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v16_de09be49bc25.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v17",
+          "trial_id": "filler_old_v17",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v17_25d2919e9e7a.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v18",
+          "trial_id": "filler_old_v18",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v18_979716ba4e97.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v19",
+          "trial_id": "filler_old_v19",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v19_7a88995c7a53.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v20",
+          "trial_id": "filler_old_v20",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v20_c6bb1a51b7fa.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v21",
+          "trial_id": "filler_old_v21",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v21_45333d0e3a97.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v22",
+          "trial_id": "filler_old_v22",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v22_6723d6aa320e.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v23",
+          "trial_id": "filler_old_v23",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v23_10233e92a675.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v24",
+          "trial_id": "filler_old_v24",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v24_9d3314f193aa.mp4"
+        }
+      ],
+      "session2_trials": [
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "orange_flowers",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/orange_flowers_lure_v01_96cac8c1c39b.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_10_sobol_prompt_search_520_slot10_rep01_e65bfdf346cb.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "orange_flowers_old_v01",
+          "trial_id": "form01_orange_flowers_old_v01_recognition"
+        },
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "hanging_clothes",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/hanging_clothes_lure_v02_449d849cf251.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_16_sobol_prompt_search_521_slot12_rep01_72621b8cddce.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "hanging_clothes_old_v02",
+          "trial_id": "form01_hanging_clothes_old_v02_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "aerial_beach",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/aerial_beach_lure_v00_6d7e67dc69d8.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_12_sobol_prompt_search_520_slot03_rep00_92fb54a209ac.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "aerial_beach_old_v00",
+          "trial_id": "form01_aerial_beach_old_v00_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "city_street",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/city_street_lure_v01_625684565381.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_13_sobol_prompt_search_520_slot08_rep01_339c184d573d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "city_street_old_v01",
+          "trial_id": "form01_city_street_old_v01_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "storm_beach",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/storm_beach_lure_v02_9680ce7d9f8b.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_19_sobol_prompt_search_521_slot14_rep02_1a34595b81a1.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "storm_beach_old_v02",
+          "trial_id": "form01_storm_beach_old_v02_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v00_a160f0cf4288.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v00_0e1fda4d149d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v00",
+          "trial_id": "filler_old_v00_vs_filler_lure_v00_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v01_f07e9e59a0fa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v01_4c6aa439467d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v01",
+          "trial_id": "filler_old_v01_vs_filler_lure_v01_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v02_8653a1cb9ddd.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v02_e685686cec5d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v02",
+          "trial_id": "filler_old_v02_vs_filler_lure_v02_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v03_fee863520efa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v03_42cfd330dbae.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v03",
+          "trial_id": "filler_old_v03_vs_filler_lure_v03_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v04_31d24e8abf94.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v04_007eb2b934ee.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v04",
+          "trial_id": "filler_old_v04_vs_filler_lure_v04_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v05_de05e7267697.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v05_31d42eb02bde.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v05",
+          "trial_id": "filler_old_v05_vs_filler_lure_v05_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v06_56f514224a0f.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v06_593d41b9637b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v06",
+          "trial_id": "filler_old_v06_vs_filler_lure_v06_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v07_e9d7708ab182.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v07_3dfd457cffc0.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v07",
+          "trial_id": "filler_old_v07_vs_filler_lure_v07_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v08_03c429317758.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v08_2ee517634585.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v08",
+          "trial_id": "filler_old_v08_vs_filler_lure_v08_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v09_eb6610401eae.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v09_1d34cdc3f37e.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v09",
+          "trial_id": "filler_old_v09_vs_filler_lure_v09_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v10_20b58a2f364a.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v10_011bcf2ab826.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v10",
+          "trial_id": "filler_old_v10_vs_filler_lure_v10_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v11_d51727fa593b.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v11_0a1083aa33ef.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v11",
+          "trial_id": "filler_old_v11_vs_filler_lure_v11_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v12_cf59b1c60ced.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v12_f8fa82c1a8d3.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v12",
+          "trial_id": "filler_old_v12_vs_filler_lure_v12_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v13_ce7b1a09fcf2.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v13_f4c69ff3e6dc.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v13",
+          "trial_id": "filler_old_v13_vs_filler_lure_v13_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v14_532a94b86c70.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v14_ef8b61174922.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v14",
+          "trial_id": "filler_old_v14_vs_filler_lure_v14_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v15_88a80d31f020.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v15_7e0721d8d30b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v15",
+          "trial_id": "filler_old_v15_vs_filler_lure_v15_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v16_ba45a59f510f.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v16_de09be49bc25.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v16",
+          "trial_id": "filler_old_v16_vs_filler_lure_v16_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v17_f75c392975fa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v17_25d2919e9e7a.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v17",
+          "trial_id": "filler_old_v17_vs_filler_lure_v17_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v18_bffa4208ce22.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v18_979716ba4e97.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v18",
+          "trial_id": "filler_old_v18_vs_filler_lure_v18_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v19_12656ef01eee.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v19_7a88995c7a53.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v19",
+          "trial_id": "filler_old_v19_vs_filler_lure_v19_recognition"
+        }
+      ]
+    },
+    {
+      "form_id": "recognition_form_02",
+      "session1_trials": [
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "orange_flowers",
+          "target_id": "orange_flowers_old_v02",
+          "trial_id": "orange_flowers_old_v02_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_05_sobol_prompt_search_519_slot10_rep02_cb69fba9f033.mp4"
+        },
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "hanging_clothes",
+          "target_id": "hanging_clothes_old_v00",
+          "trial_id": "hanging_clothes_old_v00_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_11_sobol_prompt_search_520_slot12_rep00_c55dbdc8cc33.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "aerial_beach",
+          "target_id": "aerial_beach_old_v01",
+          "trial_id": "aerial_beach_old_v01_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_17_sobol_prompt_search_521_slot03_rep00_bd546409b18b.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "city_street",
+          "target_id": "city_street_old_v02",
+          "trial_id": "city_street_old_v02_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_08_sobol_prompt_search_519_slot08_rep01_76fe6bea52c9.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "storm_beach",
+          "target_id": "storm_beach_old_v00",
+          "trial_id": "storm_beach_old_v00_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_14_sobol_prompt_search_520_slot14_rep02_9d94abb2bb70.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v00",
+          "trial_id": "filler_old_v00",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v00_0e1fda4d149d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v01",
+          "trial_id": "filler_old_v01",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v01_4c6aa439467d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v02",
+          "trial_id": "filler_old_v02",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v02_e685686cec5d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v03",
+          "trial_id": "filler_old_v03",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v03_42cfd330dbae.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v04",
+          "trial_id": "filler_old_v04",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v04_007eb2b934ee.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v05",
+          "trial_id": "filler_old_v05",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v05_31d42eb02bde.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v06",
+          "trial_id": "filler_old_v06",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v06_593d41b9637b.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v07",
+          "trial_id": "filler_old_v07",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v07_3dfd457cffc0.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v08",
+          "trial_id": "filler_old_v08",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v08_2ee517634585.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v09",
+          "trial_id": "filler_old_v09",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v09_1d34cdc3f37e.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v10",
+          "trial_id": "filler_old_v10",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v10_011bcf2ab826.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v11",
+          "trial_id": "filler_old_v11",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v11_0a1083aa33ef.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v12",
+          "trial_id": "filler_old_v12",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v12_f8fa82c1a8d3.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v13",
+          "trial_id": "filler_old_v13",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v13_f4c69ff3e6dc.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v14",
+          "trial_id": "filler_old_v14",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v14_ef8b61174922.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v15",
+          "trial_id": "filler_old_v15",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v15_7e0721d8d30b.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v16",
+          "trial_id": "filler_old_v16",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v16_de09be49bc25.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v17",
+          "trial_id": "filler_old_v17",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v17_25d2919e9e7a.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v18",
+          "trial_id": "filler_old_v18",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v18_979716ba4e97.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v19",
+          "trial_id": "filler_old_v19",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v19_7a88995c7a53.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v20",
+          "trial_id": "filler_old_v20",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v20_c6bb1a51b7fa.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v21",
+          "trial_id": "filler_old_v21",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v21_45333d0e3a97.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v22",
+          "trial_id": "filler_old_v22",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v22_6723d6aa320e.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v23",
+          "trial_id": "filler_old_v23",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v23_10233e92a675.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v24",
+          "trial_id": "filler_old_v24",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v24_9d3314f193aa.mp4"
+        }
+      ],
+      "session2_trials": [
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "orange_flowers",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/orange_flowers_lure_v02_9e401caf3fff.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_05_sobol_prompt_search_519_slot10_rep02_cb69fba9f033.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "orange_flowers_old_v02",
+          "trial_id": "form02_orange_flowers_old_v02_recognition"
+        },
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "hanging_clothes",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/hanging_clothes_lure_v00_30ced169acec.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_11_sobol_prompt_search_520_slot12_rep00_c55dbdc8cc33.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "hanging_clothes_old_v00",
+          "trial_id": "form02_hanging_clothes_old_v00_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "aerial_beach",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/aerial_beach_lure_v01_b5b829a0b736.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_17_sobol_prompt_search_521_slot03_rep00_bd546409b18b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "aerial_beach_old_v01",
+          "trial_id": "form02_aerial_beach_old_v01_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "city_street",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/city_street_lure_v02_0096b4e2776e.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_08_sobol_prompt_search_519_slot08_rep01_76fe6bea52c9.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "city_street_old_v02",
+          "trial_id": "form02_city_street_old_v02_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "storm_beach",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/storm_beach_lure_v00_c739c63c8f02.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_14_sobol_prompt_search_520_slot14_rep02_9d94abb2bb70.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "storm_beach_old_v00",
+          "trial_id": "form02_storm_beach_old_v00_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v00_a160f0cf4288.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v00_0e1fda4d149d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v00",
+          "trial_id": "filler_old_v00_vs_filler_lure_v00_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v01_f07e9e59a0fa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v01_4c6aa439467d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v01",
+          "trial_id": "filler_old_v01_vs_filler_lure_v01_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v02_8653a1cb9ddd.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v02_e685686cec5d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v02",
+          "trial_id": "filler_old_v02_vs_filler_lure_v02_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v03_fee863520efa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v03_42cfd330dbae.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v03",
+          "trial_id": "filler_old_v03_vs_filler_lure_v03_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v04_31d24e8abf94.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v04_007eb2b934ee.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v04",
+          "trial_id": "filler_old_v04_vs_filler_lure_v04_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v05_de05e7267697.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v05_31d42eb02bde.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v05",
+          "trial_id": "filler_old_v05_vs_filler_lure_v05_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v06_56f514224a0f.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v06_593d41b9637b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v06",
+          "trial_id": "filler_old_v06_vs_filler_lure_v06_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v07_e9d7708ab182.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v07_3dfd457cffc0.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v07",
+          "trial_id": "filler_old_v07_vs_filler_lure_v07_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v08_03c429317758.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v08_2ee517634585.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v08",
+          "trial_id": "filler_old_v08_vs_filler_lure_v08_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v09_eb6610401eae.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v09_1d34cdc3f37e.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v09",
+          "trial_id": "filler_old_v09_vs_filler_lure_v09_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v10_20b58a2f364a.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v10_011bcf2ab826.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v10",
+          "trial_id": "filler_old_v10_vs_filler_lure_v10_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v11_d51727fa593b.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v11_0a1083aa33ef.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v11",
+          "trial_id": "filler_old_v11_vs_filler_lure_v11_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v12_cf59b1c60ced.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v12_f8fa82c1a8d3.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v12",
+          "trial_id": "filler_old_v12_vs_filler_lure_v12_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v13_ce7b1a09fcf2.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v13_f4c69ff3e6dc.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v13",
+          "trial_id": "filler_old_v13_vs_filler_lure_v13_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v14_532a94b86c70.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v14_ef8b61174922.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v14",
+          "trial_id": "filler_old_v14_vs_filler_lure_v14_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v15_88a80d31f020.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v15_7e0721d8d30b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v15",
+          "trial_id": "filler_old_v15_vs_filler_lure_v15_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v16_ba45a59f510f.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v16_de09be49bc25.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v16",
+          "trial_id": "filler_old_v16_vs_filler_lure_v16_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v17_f75c392975fa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v17_25d2919e9e7a.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v17",
+          "trial_id": "filler_old_v17_vs_filler_lure_v17_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v18_bffa4208ce22.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v18_979716ba4e97.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v18",
+          "trial_id": "filler_old_v18_vs_filler_lure_v18_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v19_12656ef01eee.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v19_7a88995c7a53.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v19",
+          "trial_id": "filler_old_v19_vs_filler_lure_v19_recognition"
+        }
+      ]
+    },
+    {
+      "form_id": "recognition_form_03",
+      "session1_trials": [
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "orange_flowers",
+          "target_id": "orange_flowers_old_v00",
+          "trial_id": "orange_flowers_old_v00_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_05_sobol_prompt_search_519_slot10_rep01_3242160a0457.mp4"
+        },
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "hanging_clothes",
+          "target_id": "hanging_clothes_old_v01",
+          "trial_id": "hanging_clothes_old_v01_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_16_sobol_prompt_search_521_slot12_rep02_2bf41916e632.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "aerial_beach",
+          "target_id": "aerial_beach_old_v02",
+          "trial_id": "aerial_beach_old_v02_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_07_sobol_prompt_search_519_slot03_rep00_c2cd00462671.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "city_street",
+          "target_id": "city_street_old_v00",
+          "trial_id": "city_street_old_v00_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_18_sobol_prompt_search_521_slot08_rep01_1d62a2891625.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "storm_beach",
+          "target_id": "storm_beach_old_v01",
+          "trial_id": "storm_beach_old_v01_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_09_sobol_prompt_search_519_slot14_rep02_076668585835.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v00",
+          "trial_id": "filler_old_v00",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v00_0e1fda4d149d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v01",
+          "trial_id": "filler_old_v01",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v01_4c6aa439467d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v02",
+          "trial_id": "filler_old_v02",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v02_e685686cec5d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v03",
+          "trial_id": "filler_old_v03",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v03_42cfd330dbae.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v04",
+          "trial_id": "filler_old_v04",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v04_007eb2b934ee.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v05",
+          "trial_id": "filler_old_v05",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v05_31d42eb02bde.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v06",
+          "trial_id": "filler_old_v06",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v06_593d41b9637b.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v07",
+          "trial_id": "filler_old_v07",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v07_3dfd457cffc0.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v08",
+          "trial_id": "filler_old_v08",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v08_2ee517634585.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v09",
+          "trial_id": "filler_old_v09",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v09_1d34cdc3f37e.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v10",
+          "trial_id": "filler_old_v10",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v10_011bcf2ab826.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v11",
+          "trial_id": "filler_old_v11",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v11_0a1083aa33ef.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v12",
+          "trial_id": "filler_old_v12",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v12_f8fa82c1a8d3.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v13",
+          "trial_id": "filler_old_v13",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v13_f4c69ff3e6dc.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v14",
+          "trial_id": "filler_old_v14",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v14_ef8b61174922.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v15",
+          "trial_id": "filler_old_v15",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v15_7e0721d8d30b.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v16",
+          "trial_id": "filler_old_v16",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v16_de09be49bc25.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v17",
+          "trial_id": "filler_old_v17",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v17_25d2919e9e7a.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v18",
+          "trial_id": "filler_old_v18",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v18_979716ba4e97.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v19",
+          "trial_id": "filler_old_v19",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v19_7a88995c7a53.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v20",
+          "trial_id": "filler_old_v20",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v20_c6bb1a51b7fa.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v21",
+          "trial_id": "filler_old_v21",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v21_45333d0e3a97.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v22",
+          "trial_id": "filler_old_v22",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v22_6723d6aa320e.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v23",
+          "trial_id": "filler_old_v23",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v23_10233e92a675.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v24",
+          "trial_id": "filler_old_v24",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v24_9d3314f193aa.mp4"
+        }
+      ],
+      "session2_trials": [
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "orange_flowers",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/orange_flowers_lure_v00_8f12f08ec901.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_05_sobol_prompt_search_519_slot10_rep01_3242160a0457.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "orange_flowers_old_v00",
+          "trial_id": "form03_orange_flowers_old_v00_recognition"
+        },
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "hanging_clothes",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/hanging_clothes_lure_v01_7b3666251409.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_16_sobol_prompt_search_521_slot12_rep02_2bf41916e632.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "hanging_clothes_old_v01",
+          "trial_id": "form03_hanging_clothes_old_v01_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "aerial_beach",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/aerial_beach_lure_v02_e0a3a752ee21.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_07_sobol_prompt_search_519_slot03_rep00_c2cd00462671.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "aerial_beach_old_v02",
+          "trial_id": "form03_aerial_beach_old_v02_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "city_street",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/city_street_lure_v00_099024512539.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_18_sobol_prompt_search_521_slot08_rep01_1d62a2891625.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "city_street_old_v00",
+          "trial_id": "form03_city_street_old_v00_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "storm_beach",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/storm_beach_lure_v01_4646ac9dc036.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_09_sobol_prompt_search_519_slot14_rep02_076668585835.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "storm_beach_old_v01",
+          "trial_id": "form03_storm_beach_old_v01_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v00_a160f0cf4288.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v00_0e1fda4d149d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v00",
+          "trial_id": "filler_old_v00_vs_filler_lure_v00_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v01_f07e9e59a0fa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v01_4c6aa439467d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v01",
+          "trial_id": "filler_old_v01_vs_filler_lure_v01_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v02_8653a1cb9ddd.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v02_e685686cec5d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v02",
+          "trial_id": "filler_old_v02_vs_filler_lure_v02_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v03_fee863520efa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v03_42cfd330dbae.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v03",
+          "trial_id": "filler_old_v03_vs_filler_lure_v03_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v04_31d24e8abf94.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v04_007eb2b934ee.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v04",
+          "trial_id": "filler_old_v04_vs_filler_lure_v04_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v05_de05e7267697.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v05_31d42eb02bde.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v05",
+          "trial_id": "filler_old_v05_vs_filler_lure_v05_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v06_56f514224a0f.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v06_593d41b9637b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v06",
+          "trial_id": "filler_old_v06_vs_filler_lure_v06_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v07_e9d7708ab182.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v07_3dfd457cffc0.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v07",
+          "trial_id": "filler_old_v07_vs_filler_lure_v07_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v08_03c429317758.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v08_2ee517634585.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v08",
+          "trial_id": "filler_old_v08_vs_filler_lure_v08_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v09_eb6610401eae.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v09_1d34cdc3f37e.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v09",
+          "trial_id": "filler_old_v09_vs_filler_lure_v09_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v10_20b58a2f364a.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v10_011bcf2ab826.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v10",
+          "trial_id": "filler_old_v10_vs_filler_lure_v10_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v11_d51727fa593b.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v11_0a1083aa33ef.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v11",
+          "trial_id": "filler_old_v11_vs_filler_lure_v11_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v12_cf59b1c60ced.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v12_f8fa82c1a8d3.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v12",
+          "trial_id": "filler_old_v12_vs_filler_lure_v12_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v13_ce7b1a09fcf2.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v13_f4c69ff3e6dc.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v13",
+          "trial_id": "filler_old_v13_vs_filler_lure_v13_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v14_532a94b86c70.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v14_ef8b61174922.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v14",
+          "trial_id": "filler_old_v14_vs_filler_lure_v14_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v15_88a80d31f020.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v15_7e0721d8d30b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v15",
+          "trial_id": "filler_old_v15_vs_filler_lure_v15_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v16_ba45a59f510f.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v16_de09be49bc25.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v16",
+          "trial_id": "filler_old_v16_vs_filler_lure_v16_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v17_f75c392975fa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v17_25d2919e9e7a.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v17",
+          "trial_id": "filler_old_v17_vs_filler_lure_v17_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v18_bffa4208ce22.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v18_979716ba4e97.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v18",
+          "trial_id": "filler_old_v18_vs_filler_lure_v18_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v19_12656ef01eee.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v19_7a88995c7a53.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v19",
+          "trial_id": "filler_old_v19_vs_filler_lure_v19_recognition"
+        }
+      ]
+    },
+    {
+      "form_id": "recognition_form_04",
+      "session1_trials": [
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "orange_flowers",
+          "target_id": "orange_flowers_old_v01",
+          "trial_id": "orange_flowers_old_v01_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_10_sobol_prompt_search_520_slot10_rep01_e65bfdf346cb.mp4"
+        },
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "hanging_clothes",
+          "target_id": "hanging_clothes_old_v02",
+          "trial_id": "hanging_clothes_old_v02_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_16_sobol_prompt_search_521_slot12_rep01_72621b8cddce.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "aerial_beach",
+          "target_id": "aerial_beach_old_v00",
+          "trial_id": "aerial_beach_old_v00_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_12_sobol_prompt_search_520_slot03_rep00_92fb54a209ac.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "city_street",
+          "target_id": "city_street_old_v01",
+          "trial_id": "city_street_old_v01_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_13_sobol_prompt_search_520_slot08_rep01_339c184d573d.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "storm_beach",
+          "target_id": "storm_beach_old_v02",
+          "trial_id": "storm_beach_old_v02_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_19_sobol_prompt_search_521_slot14_rep02_1a34595b81a1.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v00",
+          "trial_id": "filler_old_v00",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v00_0e1fda4d149d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v01",
+          "trial_id": "filler_old_v01",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v01_4c6aa439467d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v02",
+          "trial_id": "filler_old_v02",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v02_e685686cec5d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v03",
+          "trial_id": "filler_old_v03",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v03_42cfd330dbae.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v04",
+          "trial_id": "filler_old_v04",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v04_007eb2b934ee.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v05",
+          "trial_id": "filler_old_v05",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v05_31d42eb02bde.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v06",
+          "trial_id": "filler_old_v06",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v06_593d41b9637b.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v07",
+          "trial_id": "filler_old_v07",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v07_3dfd457cffc0.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v08",
+          "trial_id": "filler_old_v08",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v08_2ee517634585.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v09",
+          "trial_id": "filler_old_v09",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v09_1d34cdc3f37e.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v10",
+          "trial_id": "filler_old_v10",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v10_011bcf2ab826.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v11",
+          "trial_id": "filler_old_v11",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v11_0a1083aa33ef.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v12",
+          "trial_id": "filler_old_v12",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v12_f8fa82c1a8d3.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v13",
+          "trial_id": "filler_old_v13",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v13_f4c69ff3e6dc.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v14",
+          "trial_id": "filler_old_v14",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v14_ef8b61174922.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v15",
+          "trial_id": "filler_old_v15",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v15_7e0721d8d30b.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v16",
+          "trial_id": "filler_old_v16",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v16_de09be49bc25.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v17",
+          "trial_id": "filler_old_v17",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v17_25d2919e9e7a.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v18",
+          "trial_id": "filler_old_v18",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v18_979716ba4e97.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v19",
+          "trial_id": "filler_old_v19",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v19_7a88995c7a53.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v20",
+          "trial_id": "filler_old_v20",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v20_c6bb1a51b7fa.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v21",
+          "trial_id": "filler_old_v21",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v21_45333d0e3a97.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v22",
+          "trial_id": "filler_old_v22",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v22_6723d6aa320e.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v23",
+          "trial_id": "filler_old_v23",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v23_10233e92a675.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v24",
+          "trial_id": "filler_old_v24",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v24_9d3314f193aa.mp4"
+        }
+      ],
+      "session2_trials": [
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "orange_flowers",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/orange_flowers_lure_v01_96cac8c1c39b.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_10_sobol_prompt_search_520_slot10_rep01_e65bfdf346cb.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "orange_flowers_old_v01",
+          "trial_id": "form04_orange_flowers_old_v01_recognition"
+        },
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "hanging_clothes",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/hanging_clothes_lure_v02_449d849cf251.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_16_sobol_prompt_search_521_slot12_rep01_72621b8cddce.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "hanging_clothes_old_v02",
+          "trial_id": "form04_hanging_clothes_old_v02_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "aerial_beach",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/aerial_beach_lure_v00_6d7e67dc69d8.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_12_sobol_prompt_search_520_slot03_rep00_92fb54a209ac.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "aerial_beach_old_v00",
+          "trial_id": "form04_aerial_beach_old_v00_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "city_street",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/city_street_lure_v01_625684565381.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_13_sobol_prompt_search_520_slot08_rep01_339c184d573d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "city_street_old_v01",
+          "trial_id": "form04_city_street_old_v01_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "storm_beach",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/storm_beach_lure_v02_9680ce7d9f8b.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_19_sobol_prompt_search_521_slot14_rep02_1a34595b81a1.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "storm_beach_old_v02",
+          "trial_id": "form04_storm_beach_old_v02_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v00_a160f0cf4288.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v00_0e1fda4d149d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v00",
+          "trial_id": "filler_old_v00_vs_filler_lure_v00_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v01_f07e9e59a0fa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v01_4c6aa439467d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v01",
+          "trial_id": "filler_old_v01_vs_filler_lure_v01_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v02_8653a1cb9ddd.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v02_e685686cec5d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v02",
+          "trial_id": "filler_old_v02_vs_filler_lure_v02_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v03_fee863520efa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v03_42cfd330dbae.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v03",
+          "trial_id": "filler_old_v03_vs_filler_lure_v03_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v04_31d24e8abf94.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v04_007eb2b934ee.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v04",
+          "trial_id": "filler_old_v04_vs_filler_lure_v04_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v05_de05e7267697.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v05_31d42eb02bde.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v05",
+          "trial_id": "filler_old_v05_vs_filler_lure_v05_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v06_56f514224a0f.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v06_593d41b9637b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v06",
+          "trial_id": "filler_old_v06_vs_filler_lure_v06_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v07_e9d7708ab182.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v07_3dfd457cffc0.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v07",
+          "trial_id": "filler_old_v07_vs_filler_lure_v07_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v08_03c429317758.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v08_2ee517634585.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v08",
+          "trial_id": "filler_old_v08_vs_filler_lure_v08_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v09_eb6610401eae.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v09_1d34cdc3f37e.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v09",
+          "trial_id": "filler_old_v09_vs_filler_lure_v09_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v10_20b58a2f364a.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v10_011bcf2ab826.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v10",
+          "trial_id": "filler_old_v10_vs_filler_lure_v10_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v11_d51727fa593b.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v11_0a1083aa33ef.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v11",
+          "trial_id": "filler_old_v11_vs_filler_lure_v11_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v12_cf59b1c60ced.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v12_f8fa82c1a8d3.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v12",
+          "trial_id": "filler_old_v12_vs_filler_lure_v12_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v13_ce7b1a09fcf2.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v13_f4c69ff3e6dc.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v13",
+          "trial_id": "filler_old_v13_vs_filler_lure_v13_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v14_532a94b86c70.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v14_ef8b61174922.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v14",
+          "trial_id": "filler_old_v14_vs_filler_lure_v14_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v15_88a80d31f020.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v15_7e0721d8d30b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v15",
+          "trial_id": "filler_old_v15_vs_filler_lure_v15_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v16_ba45a59f510f.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v16_de09be49bc25.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v16",
+          "trial_id": "filler_old_v16_vs_filler_lure_v16_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v17_f75c392975fa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v17_25d2919e9e7a.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v17",
+          "trial_id": "filler_old_v17_vs_filler_lure_v17_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v18_bffa4208ce22.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v18_979716ba4e97.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v18",
+          "trial_id": "filler_old_v18_vs_filler_lure_v18_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v19_12656ef01eee.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v19_7a88995c7a53.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v19",
+          "trial_id": "filler_old_v19_vs_filler_lure_v19_recognition"
+        }
+      ]
+    },
+    {
+      "form_id": "recognition_form_05",
+      "session1_trials": [
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "orange_flowers",
+          "target_id": "orange_flowers_old_v02",
+          "trial_id": "orange_flowers_old_v02_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_05_sobol_prompt_search_519_slot10_rep02_cb69fba9f033.mp4"
+        },
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "hanging_clothes",
+          "target_id": "hanging_clothes_old_v00",
+          "trial_id": "hanging_clothes_old_v00_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_11_sobol_prompt_search_520_slot12_rep00_c55dbdc8cc33.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "aerial_beach",
+          "target_id": "aerial_beach_old_v01",
+          "trial_id": "aerial_beach_old_v01_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_17_sobol_prompt_search_521_slot03_rep00_bd546409b18b.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "city_street",
+          "target_id": "city_street_old_v02",
+          "trial_id": "city_street_old_v02_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_08_sobol_prompt_search_519_slot08_rep01_76fe6bea52c9.mp4"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "storm_beach",
+          "target_id": "storm_beach_old_v00",
+          "trial_id": "storm_beach_old_v00_encoding",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_14_sobol_prompt_search_520_slot14_rep02_9d94abb2bb70.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v00",
+          "trial_id": "filler_old_v00",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v00_0e1fda4d149d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v01",
+          "trial_id": "filler_old_v01",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v01_4c6aa439467d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v02",
+          "trial_id": "filler_old_v02",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v02_e685686cec5d.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v03",
+          "trial_id": "filler_old_v03",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v03_42cfd330dbae.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v04",
+          "trial_id": "filler_old_v04",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v04_007eb2b934ee.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v05",
+          "trial_id": "filler_old_v05",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v05_31d42eb02bde.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v06",
+          "trial_id": "filler_old_v06",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v06_593d41b9637b.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v07",
+          "trial_id": "filler_old_v07",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v07_3dfd457cffc0.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v08",
+          "trial_id": "filler_old_v08",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v08_2ee517634585.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v09",
+          "trial_id": "filler_old_v09",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v09_1d34cdc3f37e.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v10",
+          "trial_id": "filler_old_v10",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v10_011bcf2ab826.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v11",
+          "trial_id": "filler_old_v11",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v11_0a1083aa33ef.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v12",
+          "trial_id": "filler_old_v12",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v12_f8fa82c1a8d3.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v13",
+          "trial_id": "filler_old_v13",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v13_f4c69ff3e6dc.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v14",
+          "trial_id": "filler_old_v14",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v14_ef8b61174922.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v15",
+          "trial_id": "filler_old_v15",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v15_7e0721d8d30b.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v16",
+          "trial_id": "filler_old_v16",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v16_de09be49bc25.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v17",
+          "trial_id": "filler_old_v17",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v17_25d2919e9e7a.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v18",
+          "trial_id": "filler_old_v18",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v18_979716ba4e97.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v19",
+          "trial_id": "filler_old_v19",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v19_7a88995c7a53.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v20",
+          "trial_id": "filler_old_v20",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v20_c6bb1a51b7fa.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v21",
+          "trial_id": "filler_old_v21",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v21_45333d0e3a97.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v22",
+          "trial_id": "filler_old_v22",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v22_6723d6aa320e.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v23",
+          "trial_id": "filler_old_v23",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v23_10233e92a675.mp4"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "target_id": "filler_old_v24",
+          "trial_id": "filler_old_v24",
+          "video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v24_9d3314f193aa.mp4"
+        }
+      ],
+      "session2_trials": [
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "orange_flowers",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/orange_flowers_lure_v02_9e401caf3fff.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_05_sobol_prompt_search_519_slot10_rep02_cb69fba9f033.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "orange_flowers_old_v02",
+          "trial_id": "form05_orange_flowers_old_v02_recognition"
+        },
+        {
+          "analysis_group": "primary_positive",
+          "arm_id": "hanging_clothes",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/hanging_clothes_lure_v00_30ced169acec.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_11_sobol_prompt_search_520_slot12_rep00_c55dbdc8cc33.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "hanging_clothes_old_v00",
+          "trial_id": "form05_hanging_clothes_old_v00_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "aerial_beach",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/aerial_beach_lure_v01_b5b829a0b736.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_17_sobol_prompt_search_521_slot03_rep00_bd546409b18b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "aerial_beach_old_v01",
+          "trial_id": "form05_aerial_beach_old_v01_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "city_street",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/city_street_lure_v02_0096b4e2776e.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_08_sobol_prompt_search_519_slot08_rep01_76fe6bea52c9.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "city_street_old_v02",
+          "trial_id": "form05_city_street_old_v02_recognition"
+        },
+        {
+          "analysis_group": "hard_negative_control",
+          "arm_id": "storm_beach",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/storm_beach_lure_v00_c739c63c8f02.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_14_sobol_prompt_search_520_slot14_rep02_9d94abb2bb70.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "storm_beach_old_v00",
+          "trial_id": "form05_storm_beach_old_v00_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v00_a160f0cf4288.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v00_0e1fda4d149d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v00",
+          "trial_id": "filler_old_v00_vs_filler_lure_v00_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v01_f07e9e59a0fa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v01_4c6aa439467d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v01",
+          "trial_id": "filler_old_v01_vs_filler_lure_v01_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v02_8653a1cb9ddd.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v02_e685686cec5d.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v02",
+          "trial_id": "filler_old_v02_vs_filler_lure_v02_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v03_fee863520efa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v03_42cfd330dbae.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v03",
+          "trial_id": "filler_old_v03_vs_filler_lure_v03_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v04_31d24e8abf94.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v04_007eb2b934ee.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v04",
+          "trial_id": "filler_old_v04_vs_filler_lure_v04_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v05_de05e7267697.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v05_31d42eb02bde.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v05",
+          "trial_id": "filler_old_v05_vs_filler_lure_v05_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v06_56f514224a0f.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v06_593d41b9637b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v06",
+          "trial_id": "filler_old_v06_vs_filler_lure_v06_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v07_e9d7708ab182.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v07_3dfd457cffc0.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v07",
+          "trial_id": "filler_old_v07_vs_filler_lure_v07_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v08_03c429317758.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v08_2ee517634585.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v08",
+          "trial_id": "filler_old_v08_vs_filler_lure_v08_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v09_eb6610401eae.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v09_1d34cdc3f37e.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v09",
+          "trial_id": "filler_old_v09_vs_filler_lure_v09_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v10_20b58a2f364a.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v10_011bcf2ab826.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v10",
+          "trial_id": "filler_old_v10_vs_filler_lure_v10_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v11_d51727fa593b.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v11_0a1083aa33ef.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v11",
+          "trial_id": "filler_old_v11_vs_filler_lure_v11_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v12_cf59b1c60ced.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v12_f8fa82c1a8d3.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v12",
+          "trial_id": "filler_old_v12_vs_filler_lure_v12_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v13_ce7b1a09fcf2.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v13_f4c69ff3e6dc.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v13",
+          "trial_id": "filler_old_v13_vs_filler_lure_v13_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v14_532a94b86c70.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v14_ef8b61174922.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v14",
+          "trial_id": "filler_old_v14_vs_filler_lure_v14_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v15_88a80d31f020.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v15_7e0721d8d30b.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v15",
+          "trial_id": "filler_old_v15_vs_filler_lure_v15_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v16_ba45a59f510f.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v16_de09be49bc25.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v16",
+          "trial_id": "filler_old_v16_vs_filler_lure_v16_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v17_f75c392975fa.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v17_25d2919e9e7a.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v17",
+          "trial_id": "filler_old_v17_vs_filler_lure_v17_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "left",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v18_bffa4208ce22.mp4",
+          "old_side": "left",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v18_979716ba4e97.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v18",
+          "trial_id": "filler_old_v18_vs_filler_lure_v18_recognition"
+        },
+        {
+          "analysis_group": "unrelated_filler",
+          "arm_id": "unrelated_filler",
+          "correct_choice": "right",
+          "lure_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v19_12656ef01eee.mp4",
+          "old_side": "right",
+          "old_video_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v19_7a88995c7a53.mp4",
+          "question": "Which clip did you see in the first part?",
+          "target_id": "filler_old_v19",
+          "trial_id": "filler_old_v19_vs_filler_lure_v19_recognition"
+        }
+      ]
+    }
+  ],
+  "schema_version": "content_pocket_recognition_launch_payload.v1",
+  "study": "content_pocket_recognition_memory_20260608"
+}

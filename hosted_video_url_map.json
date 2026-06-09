@@ -1,0 +1,617 @@
+{
+  "accepted_video_screening": true,
+  "created_at_utc": "2026-06-09T00:01:15+00:00",
+  "instructions": [
+    "Use session1_url and session2_url from the launch asset manifest as the Prolific study URLs.",
+    "Pass ?submit_url=<endpoint> if using automatic response POST collection.",
+    "Do not treat this URL map as human-memory evidence."
+  ],
+  "prepared_for": [
+    "content_pocket_recognition_session1_prolific_20260608.html",
+    "content_pocket_recognition_session2_prolific_20260608.html"
+  ],
+  "schema_version": "content_pocket_recognition_hosted_video_url_map.v1",
+  "site_base_url": "https://jawauntb.github.io/audience-vectors-research",
+  "videos": [
+    {
+      "asset_path": "videos/bo_replay_05_sobol_prompt_search_519_slot10_rep01_3242160a0457.mp4",
+      "bytes": 2303275,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_05_sobol_prompt_search_519_slot10_rep01_3242160a0457.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep01.mp4",
+      "screened": true,
+      "sha256": "3242160a045724e92bf3612899c1032907d6523b1521bd6d3afa5308947e6987"
+    },
+    {
+      "asset_path": "videos/bo_replay_05_sobol_prompt_search_519_slot10_rep02_cb69fba9f033.mp4",
+      "bytes": 2205586,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_05_sobol_prompt_search_519_slot10_rep02_cb69fba9f033.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_05_sobol_prompt_search_519_slot10_rep02.mp4",
+      "screened": true,
+      "sha256": "cb69fba9f033db54759113c7e1e65ed35a66788da9d22f5333d5c9d11f2dfae7"
+    },
+    {
+      "asset_path": "videos/bo_replay_07_sobol_prompt_search_519_slot03_rep00_c2cd00462671.mp4",
+      "bytes": 1318556,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_07_sobol_prompt_search_519_slot03_rep00_c2cd00462671.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_07_sobol_prompt_search_519_slot03_rep00.mp4",
+      "screened": true,
+      "sha256": "c2cd004626715b1e75209b53e38815ac7808489ce177c8a30c7ae441c0113bea"
+    },
+    {
+      "asset_path": "videos/bo_replay_08_sobol_prompt_search_519_slot08_rep01_76fe6bea52c9.mp4",
+      "bytes": 1515341,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_08_sobol_prompt_search_519_slot08_rep01_76fe6bea52c9.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_08_sobol_prompt_search_519_slot08_rep01.mp4",
+      "screened": true,
+      "sha256": "76fe6bea52c95261e138b792c6cd739e7727e6e2e17706cdd6467e1f33fda7cb"
+    },
+    {
+      "asset_path": "videos/bo_replay_09_sobol_prompt_search_519_slot14_rep02_076668585835.mp4",
+      "bytes": 1866531,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_09_sobol_prompt_search_519_slot14_rep02_076668585835.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_09_sobol_prompt_search_519_slot14_rep02.mp4",
+      "screened": true,
+      "sha256": "076668585835035f3725c6b58e51e4110fbbf3a39371da93bbf456d2951239fd"
+    },
+    {
+      "asset_path": "videos/bo_replay_10_sobol_prompt_search_520_slot10_rep01_e65bfdf346cb.mp4",
+      "bytes": 867822,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_10_sobol_prompt_search_520_slot10_rep01_e65bfdf346cb.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_10_sobol_prompt_search_520_slot10_rep01.mp4",
+      "screened": true,
+      "sha256": "e65bfdf346cb825e3887b5ca1242ef3a9d24366cfa4cc4401f85cadcc7fa3836"
+    },
+    {
+      "asset_path": "videos/bo_replay_11_sobol_prompt_search_520_slot12_rep00_c55dbdc8cc33.mp4",
+      "bytes": 1116127,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_11_sobol_prompt_search_520_slot12_rep00_c55dbdc8cc33.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_11_sobol_prompt_search_520_slot12_rep00.mp4",
+      "screened": true,
+      "sha256": "c55dbdc8cc33f5470e87fa87b4e84cbffbb31bf3cf638798f2a9f1de9d857784"
+    },
+    {
+      "asset_path": "videos/bo_replay_12_sobol_prompt_search_520_slot03_rep00_92fb54a209ac.mp4",
+      "bytes": 1097909,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_12_sobol_prompt_search_520_slot03_rep00_92fb54a209ac.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_12_sobol_prompt_search_520_slot03_rep00.mp4",
+      "screened": true,
+      "sha256": "92fb54a209ac213eca4df65a3fff76d3aee36410773c918f04dcbd1ce8a79a84"
+    },
+    {
+      "asset_path": "videos/bo_replay_13_sobol_prompt_search_520_slot08_rep01_339c184d573d.mp4",
+      "bytes": 2196604,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_13_sobol_prompt_search_520_slot08_rep01_339c184d573d.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_13_sobol_prompt_search_520_slot08_rep01.mp4",
+      "screened": true,
+      "sha256": "339c184d573d89a717d0eb2076a25d5f4e935e603d8d13a9334a4d7dda13fed7"
+    },
+    {
+      "asset_path": "videos/bo_replay_14_sobol_prompt_search_520_slot14_rep02_9d94abb2bb70.mp4",
+      "bytes": 1821321,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_14_sobol_prompt_search_520_slot14_rep02_9d94abb2bb70.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_14_sobol_prompt_search_520_slot14_rep02.mp4",
+      "screened": true,
+      "sha256": "9d94abb2bb70d79853bb09b47a1779cdf7b8338b6bf52ff32cb9396f589a47d1"
+    },
+    {
+      "asset_path": "videos/bo_replay_16_sobol_prompt_search_521_slot12_rep01_72621b8cddce.mp4",
+      "bytes": 1058757,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_16_sobol_prompt_search_521_slot12_rep01_72621b8cddce.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep01.mp4",
+      "screened": true,
+      "sha256": "72621b8cddced561c79739d9942ce3b58a5627b2b61a4e49166649694d727362"
+    },
+    {
+      "asset_path": "videos/bo_replay_16_sobol_prompt_search_521_slot12_rep02_2bf41916e632.mp4",
+      "bytes": 1065544,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_16_sobol_prompt_search_521_slot12_rep02_2bf41916e632.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_16_sobol_prompt_search_521_slot12_rep02.mp4",
+      "screened": true,
+      "sha256": "2bf41916e632adfe081ea1f9aa7105b55e5e3c134826c1a82deeb73651c43364"
+    },
+    {
+      "asset_path": "videos/bo_replay_17_sobol_prompt_search_521_slot03_rep00_bd546409b18b.mp4",
+      "bytes": 1598363,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_17_sobol_prompt_search_521_slot03_rep00_bd546409b18b.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_17_sobol_prompt_search_521_slot03_rep00.mp4",
+      "screened": true,
+      "sha256": "bd546409b18be41811c33a35da431f60c17eb551ba14ba855ad1d5d3370ac7e1"
+    },
+    {
+      "asset_path": "videos/bo_replay_18_sobol_prompt_search_521_slot08_rep01_1d62a2891625.mp4",
+      "bytes": 1676471,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_18_sobol_prompt_search_521_slot08_rep01_1d62a2891625.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_18_sobol_prompt_search_521_slot08_rep01.mp4",
+      "screened": true,
+      "sha256": "1d62a289162578e318442cb3a0d214d2725ad6d0354b3236e7a9fc0d787df286"
+    },
+    {
+      "asset_path": "videos/bo_replay_19_sobol_prompt_search_521_slot14_rep02_1a34595b81a1.mp4",
+      "bytes": 1604803,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/bo_replay_19_sobol_prompt_search_521_slot14_rep02_1a34595b81a1.mp4",
+      "local_path": "data/generated/bo_descriptor_conditioned_replication_sobol518_523_x5_noise250k_reps3_steps50_motion5_noise0_20260608/bo_replay_19_sobol_prompt_search_521_slot14_rep02.mp4",
+      "screened": true,
+      "sha256": "1a34595b81a17c23748b969b703222f853d22325f9ac9bf55377aa33c3690c50"
+    },
+    {
+      "asset_path": "videos/aerial_beach_lure_v00_6d7e67dc69d8.mp4",
+      "bytes": 3089467,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/aerial_beach_lure_v00_6d7e67dc69d8.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/aerial_beach_lure_v00.mp4",
+      "screened": true,
+      "sha256": "6d7e67dc69d88072a9e45318438af6058bc09d6e2b649d0d10c43d981e50d3b7"
+    },
+    {
+      "asset_path": "videos/aerial_beach_lure_v01_b5b829a0b736.mp4",
+      "bytes": 2513937,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/aerial_beach_lure_v01_b5b829a0b736.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/aerial_beach_lure_v01.mp4",
+      "screened": true,
+      "sha256": "b5b829a0b736a4abc4b434cfba06d823f0b17beae06c6ca78685bf3b1fe3f541"
+    },
+    {
+      "asset_path": "videos/aerial_beach_lure_v02_e0a3a752ee21.mp4",
+      "bytes": 2490579,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/aerial_beach_lure_v02_e0a3a752ee21.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/aerial_beach_lure_v02.mp4",
+      "screened": true,
+      "sha256": "e0a3a752ee2154cabbd00753b1f7f5095ae316f3c91a8eec5bfb9086f1fd4287"
+    },
+    {
+      "asset_path": "videos/city_street_lure_v00_099024512539.mp4",
+      "bytes": 2358290,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/city_street_lure_v00_099024512539.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/city_street_lure_v00.mp4",
+      "screened": true,
+      "sha256": "09902451253974d2981dc2175844d20246a8bd1cf677fe9936e22b6e50cf262d"
+    },
+    {
+      "asset_path": "videos/city_street_lure_v01_625684565381.mp4",
+      "bytes": 1356252,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/city_street_lure_v01_625684565381.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/city_street_lure_v01.mp4",
+      "screened": true,
+      "sha256": "62568456538144b1c29b93bc1f00fc40946c8262a0f4ec9a6e49394e36ee73ec"
+    },
+    {
+      "asset_path": "videos/city_street_lure_v02_0096b4e2776e.mp4",
+      "bytes": 1754316,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/city_street_lure_v02_0096b4e2776e.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/city_street_lure_v02.mp4",
+      "screened": true,
+      "sha256": "0096b4e2776e2e72abecaba46e0fb3e147bc8046095f9f4c389805b3d1921d43"
+    },
+    {
+      "asset_path": "videos/hanging_clothes_lure_v00_30ced169acec.mp4",
+      "bytes": 1334505,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/hanging_clothes_lure_v00_30ced169acec.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/hanging_clothes_lure_v00.mp4",
+      "screened": true,
+      "sha256": "30ced169acec8e9760fa9714be0541a67727a2df48e6cbc229c457694f853573"
+    },
+    {
+      "asset_path": "videos/hanging_clothes_lure_v01_7b3666251409.mp4",
+      "bytes": 2166378,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/hanging_clothes_lure_v01_7b3666251409.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/hanging_clothes_lure_v01.mp4",
+      "screened": true,
+      "sha256": "7b3666251409761a419de01b5db7ea5c312c19dd7e4e2c21dfa37cc152d0d2ba"
+    },
+    {
+      "asset_path": "videos/hanging_clothes_lure_v02_449d849cf251.mp4",
+      "bytes": 1874486,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/hanging_clothes_lure_v02_449d849cf251.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/hanging_clothes_lure_v02.mp4",
+      "screened": true,
+      "sha256": "449d849cf251b469bc77c0befb196bf5ea70b425e5ad84f5a22bef98c6e99c2c"
+    },
+    {
+      "asset_path": "videos/orange_flowers_lure_v00_8f12f08ec901.mp4",
+      "bytes": 1957927,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/orange_flowers_lure_v00_8f12f08ec901.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/orange_flowers_lure_v00.mp4",
+      "screened": true,
+      "sha256": "8f12f08ec9017b302e75a9db6da27984bfd248568bae569bc2b348e30c86404c"
+    },
+    {
+      "asset_path": "videos/orange_flowers_lure_v01_96cac8c1c39b.mp4",
+      "bytes": 2194708,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/orange_flowers_lure_v01_96cac8c1c39b.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/orange_flowers_lure_v01.mp4",
+      "screened": true,
+      "sha256": "96cac8c1c39b96b52b8ea5437b01998af6bd6a5d78aa0dc067c8524981eb2381"
+    },
+    {
+      "asset_path": "videos/orange_flowers_lure_v02_9e401caf3fff.mp4",
+      "bytes": 1437545,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/orange_flowers_lure_v02_9e401caf3fff.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/orange_flowers_lure_v02.mp4",
+      "screened": true,
+      "sha256": "9e401caf3fff71a161e0b86bc7005915729257d3c8faa942ba996727d023e3bc"
+    },
+    {
+      "asset_path": "videos/storm_beach_lure_v00_c739c63c8f02.mp4",
+      "bytes": 1919849,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/storm_beach_lure_v00_c739c63c8f02.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/storm_beach_lure_v00.mp4",
+      "screened": true,
+      "sha256": "c739c63c8f02a82b331db41ed81032a4bd869cf9bc7f214383b4c53beb66e929"
+    },
+    {
+      "asset_path": "videos/storm_beach_lure_v01_4646ac9dc036.mp4",
+      "bytes": 1635606,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/storm_beach_lure_v01_4646ac9dc036.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/storm_beach_lure_v01.mp4",
+      "screened": true,
+      "sha256": "4646ac9dc0363e28f768d58d18e7b200383996232e4a08aefd337131f4b112e5"
+    },
+    {
+      "asset_path": "videos/storm_beach_lure_v02_9680ce7d9f8b.mp4",
+      "bytes": 1964164,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/storm_beach_lure_v02_9680ce7d9f8b.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/analysis_lures/storm_beach_lure_v02.mp4",
+      "screened": true,
+      "sha256": "9680ce7d9f8b9e7d3854b125bb1ee0ecfb2e8cf0a45a15380990a858707c4615"
+    },
+    {
+      "asset_path": "videos/filler_lure_v00_a160f0cf4288.mp4",
+      "bytes": 1657116,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v00_a160f0cf4288.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v00.mp4",
+      "screened": true,
+      "sha256": "a160f0cf428852d500d2224af590e2999082ce978a6facf045f08eaba956a888"
+    },
+    {
+      "asset_path": "videos/filler_lure_v01_f07e9e59a0fa.mp4",
+      "bytes": 1618520,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v01_f07e9e59a0fa.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v01.mp4",
+      "screened": true,
+      "sha256": "f07e9e59a0fa60c7da3439e944b787a0ba34c863f5c514573b15871cc83ce5c4"
+    },
+    {
+      "asset_path": "videos/filler_lure_v02_8653a1cb9ddd.mp4",
+      "bytes": 2272161,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v02_8653a1cb9ddd.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v02.mp4",
+      "screened": true,
+      "sha256": "8653a1cb9dddd1abbb5f7ebd7358a467a6bd6462a7264e7f55efd4fc9b45feae"
+    },
+    {
+      "asset_path": "videos/filler_lure_v03_fee863520efa.mp4",
+      "bytes": 1969396,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v03_fee863520efa.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v03.mp4",
+      "screened": true,
+      "sha256": "fee863520efae0d0ab9738d18413d2f3bc66f338acb32b9bda0de1a5cd4c94fc"
+    },
+    {
+      "asset_path": "videos/filler_lure_v04_31d24e8abf94.mp4",
+      "bytes": 2112157,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v04_31d24e8abf94.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v04.mp4",
+      "screened": true,
+      "sha256": "31d24e8abf941029d17823f2757e5e9f743933ffb553d5dfe8f76c1447a171af"
+    },
+    {
+      "asset_path": "videos/filler_lure_v05_de05e7267697.mp4",
+      "bytes": 2289893,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v05_de05e7267697.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v05.mp4",
+      "screened": true,
+      "sha256": "de05e726769757cdd29cf2a7410641b606ee63456223ac7a4728e836366c993f"
+    },
+    {
+      "asset_path": "videos/filler_lure_v06_56f514224a0f.mp4",
+      "bytes": 922240,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v06_56f514224a0f.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v06.mp4",
+      "screened": true,
+      "sha256": "56f514224a0fa743d91653116f562026dbff77b503e0e7f9583b5d38b64a9abe"
+    },
+    {
+      "asset_path": "videos/filler_lure_v07_e9d7708ab182.mp4",
+      "bytes": 2075319,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v07_e9d7708ab182.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v07.mp4",
+      "screened": true,
+      "sha256": "e9d7708ab182c2fa0070de7bde2ac36f1ae19761434c6e39d2d94c3dec7447e1"
+    },
+    {
+      "asset_path": "videos/filler_lure_v08_03c429317758.mp4",
+      "bytes": 1152444,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v08_03c429317758.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v08.mp4",
+      "screened": true,
+      "sha256": "03c42931775819839b494f714b18db4dfb1e6ee13d3a1a39f275112992a03e79"
+    },
+    {
+      "asset_path": "videos/filler_lure_v09_eb6610401eae.mp4",
+      "bytes": 1471558,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v09_eb6610401eae.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v09.mp4",
+      "screened": true,
+      "sha256": "eb6610401eae6eed09e6fdb12b633090542e1835df3e8c268ba936f95e5ae0e7"
+    },
+    {
+      "asset_path": "videos/filler_lure_v10_20b58a2f364a.mp4",
+      "bytes": 2295822,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v10_20b58a2f364a.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v10.mp4",
+      "screened": true,
+      "sha256": "20b58a2f364ac6e01fa5fab3876df53be8e034af66655fbbe137432938c4ca98"
+    },
+    {
+      "asset_path": "videos/filler_lure_v11_d51727fa593b.mp4",
+      "bytes": 3609924,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v11_d51727fa593b.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v11.mp4",
+      "screened": true,
+      "sha256": "d51727fa593b9d17d1e3c87512b21e20ec38667f4ff713b8c5804d2640536825"
+    },
+    {
+      "asset_path": "videos/filler_lure_v12_cf59b1c60ced.mp4",
+      "bytes": 1415776,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v12_cf59b1c60ced.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v12.mp4",
+      "screened": true,
+      "sha256": "cf59b1c60ced9f6ca580c7d09a756e7c585d908b29896f68cf92cf3212dbbd4e"
+    },
+    {
+      "asset_path": "videos/filler_lure_v13_ce7b1a09fcf2.mp4",
+      "bytes": 2944335,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v13_ce7b1a09fcf2.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v13.mp4",
+      "screened": true,
+      "sha256": "ce7b1a09fcf26953492fc5ac456815221a57eed8d8384e0f25616e35fee2bf86"
+    },
+    {
+      "asset_path": "videos/filler_lure_v14_532a94b86c70.mp4",
+      "bytes": 2055650,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v14_532a94b86c70.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v14.mp4",
+      "screened": true,
+      "sha256": "532a94b86c70207bf6ebf3eeaa1ec43de0fe3b587aa27333bffaba517bfc086c"
+    },
+    {
+      "asset_path": "videos/filler_lure_v15_88a80d31f020.mp4",
+      "bytes": 1301205,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v15_88a80d31f020.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v15.mp4",
+      "screened": true,
+      "sha256": "88a80d31f020a71af3e7376ea3e387e87e93b7913ffa025488d854c9a61ff7d6"
+    },
+    {
+      "asset_path": "videos/filler_lure_v16_ba45a59f510f.mp4",
+      "bytes": 1510187,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v16_ba45a59f510f.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v16.mp4",
+      "screened": true,
+      "sha256": "ba45a59f510fb214f9bd9314caa15512272fe990d7358a7d787b7ae610101702"
+    },
+    {
+      "asset_path": "videos/filler_lure_v17_f75c392975fa.mp4",
+      "bytes": 2626063,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v17_f75c392975fa.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v17.mp4",
+      "screened": true,
+      "sha256": "f75c392975fa6d30e235ee883c7b975f5597e5963cec2e06c3f34ae4bfb16e71"
+    },
+    {
+      "asset_path": "videos/filler_lure_v18_bffa4208ce22.mp4",
+      "bytes": 2278883,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v18_bffa4208ce22.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v18.mp4",
+      "screened": true,
+      "sha256": "bffa4208ce22c3f60bb5befca86df5d894d17bb3f8a2f0217547e64069bc2515"
+    },
+    {
+      "asset_path": "videos/filler_lure_v19_12656ef01eee.mp4",
+      "bytes": 2268217,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_lure_v19_12656ef01eee.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v19.mp4",
+      "screened": true,
+      "sha256": "12656ef01eee9d4708361fd31f1c5c92b305d91982904dae31dcd7325c2c6715"
+    },
+    {
+      "asset_path": "videos/filler_old_v00_0e1fda4d149d.mp4",
+      "bytes": 1494971,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v00_0e1fda4d149d.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v00.mp4",
+      "screened": true,
+      "sha256": "0e1fda4d149d490d8cc53efac1310c4eb005dc1510a6a08c4283bb86e8a18305"
+    },
+    {
+      "asset_path": "videos/filler_old_v01_4c6aa439467d.mp4",
+      "bytes": 939017,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v01_4c6aa439467d.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v01.mp4",
+      "screened": true,
+      "sha256": "4c6aa439467d9d66c18ab421d6f6726eada333909018a602b0baa604546a1264"
+    },
+    {
+      "asset_path": "videos/filler_old_v02_e685686cec5d.mp4",
+      "bytes": 2316089,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v02_e685686cec5d.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v02.mp4",
+      "screened": true,
+      "sha256": "e685686cec5d17e2698e3c8a02c9d280a4711214944e66a1aa124d795a4eeb5b"
+    },
+    {
+      "asset_path": "videos/filler_old_v03_42cfd330dbae.mp4",
+      "bytes": 1746991,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v03_42cfd330dbae.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v03.mp4",
+      "screened": true,
+      "sha256": "42cfd330dbae5edff3f9db6d8bc3f470aa93951ee8499dc64a9110d79e7fff8f"
+    },
+    {
+      "asset_path": "videos/filler_old_v04_007eb2b934ee.mp4",
+      "bytes": 2518795,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v04_007eb2b934ee.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v04.mp4",
+      "screened": true,
+      "sha256": "007eb2b934eea6ad542f62f337849feb08de5ff06b206790d9f9e2b2b1916ec0"
+    },
+    {
+      "asset_path": "videos/filler_old_v05_31d42eb02bde.mp4",
+      "bytes": 2964560,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v05_31d42eb02bde.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v05.mp4",
+      "screened": true,
+      "sha256": "31d42eb02bde492f5629c9440a1566a59c77a1b871fcf2fb956a5b2d1ecba233"
+    },
+    {
+      "asset_path": "videos/filler_old_v06_593d41b9637b.mp4",
+      "bytes": 1096476,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v06_593d41b9637b.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v06.mp4",
+      "screened": true,
+      "sha256": "593d41b9637b42f5e888d0a17f720ccc8a83ef8be96a56a1f8abe45e1c3c7c46"
+    },
+    {
+      "asset_path": "videos/filler_old_v07_3dfd457cffc0.mp4",
+      "bytes": 2916598,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v07_3dfd457cffc0.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v07.mp4",
+      "screened": true,
+      "sha256": "3dfd457cffc0eec100c3d6174827f3a0df98c996f22bfaeec16f5f66ba7609c4"
+    },
+    {
+      "asset_path": "videos/filler_old_v08_2ee517634585.mp4",
+      "bytes": 1803847,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v08_2ee517634585.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v08.mp4",
+      "screened": true,
+      "sha256": "2ee517634585f36ed5b6afee01ae0e49655f25e2150199bc32de22403524ff95"
+    },
+    {
+      "asset_path": "videos/filler_old_v09_1d34cdc3f37e.mp4",
+      "bytes": 1511860,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v09_1d34cdc3f37e.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v09.mp4",
+      "screened": true,
+      "sha256": "1d34cdc3f37e9d0ec0261857160e1e8f0f9e50ae94de4cdecee7c2265a15f3a6"
+    },
+    {
+      "asset_path": "videos/filler_old_v10_011bcf2ab826.mp4",
+      "bytes": 2036746,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v10_011bcf2ab826.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v10.mp4",
+      "screened": true,
+      "sha256": "011bcf2ab826a2531afda55a30cfcee89333ed344a7a7220a241e1e97e18792c"
+    },
+    {
+      "asset_path": "videos/filler_old_v11_0a1083aa33ef.mp4",
+      "bytes": 3923144,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v11_0a1083aa33ef.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v11.mp4",
+      "screened": true,
+      "sha256": "0a1083aa33ef191e7e9b5719a21dfd2d4fdcf0e7361fa4fa9f3e305845ee0ddf"
+    },
+    {
+      "asset_path": "videos/filler_old_v12_f8fa82c1a8d3.mp4",
+      "bytes": 1592847,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v12_f8fa82c1a8d3.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v12.mp4",
+      "screened": true,
+      "sha256": "f8fa82c1a8d3930edce0f76ad0d7b8469f4cd43d884c44f20505575f7bb47d58"
+    },
+    {
+      "asset_path": "videos/filler_old_v13_f4c69ff3e6dc.mp4",
+      "bytes": 2817604,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v13_f4c69ff3e6dc.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v13.mp4",
+      "screened": true,
+      "sha256": "f4c69ff3e6dc4ba0deed83fa81137483183862b9983c2e9855e0535a77fbbf1b"
+    },
+    {
+      "asset_path": "videos/filler_old_v14_ef8b61174922.mp4",
+      "bytes": 1369722,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v14_ef8b61174922.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v14.mp4",
+      "screened": true,
+      "sha256": "ef8b611749223070ef484a8b31185cfaafe23e30003969685b3cb4813ec1fba0"
+    },
+    {
+      "asset_path": "videos/filler_old_v15_7e0721d8d30b.mp4",
+      "bytes": 1383970,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v15_7e0721d8d30b.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v15.mp4",
+      "screened": true,
+      "sha256": "7e0721d8d30b6231bec2d7b4316957023096d0805c9f93ecbe562726017d592f"
+    },
+    {
+      "asset_path": "videos/filler_old_v16_de09be49bc25.mp4",
+      "bytes": 2426187,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v16_de09be49bc25.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v16.mp4",
+      "screened": true,
+      "sha256": "de09be49bc25aad2a6d89e37a5b5aadf6699fd30d89bd1541a5e1d9f6e089e04"
+    },
+    {
+      "asset_path": "videos/filler_old_v17_25d2919e9e7a.mp4",
+      "bytes": 1489201,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v17_25d2919e9e7a.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v17.mp4",
+      "screened": true,
+      "sha256": "25d2919e9e7a63328546d81538ee04442d04a00c3888661d440edab40fe3b8ab"
+    },
+    {
+      "asset_path": "videos/filler_old_v18_979716ba4e97.mp4",
+      "bytes": 2132584,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v18_979716ba4e97.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v18.mp4",
+      "screened": true,
+      "sha256": "979716ba4e9777d2c6ad3ea0e9d1baec1a2ea2058d95aa56663553c30771b79e"
+    },
+    {
+      "asset_path": "videos/filler_old_v19_7a88995c7a53.mp4",
+      "bytes": 1815502,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v19_7a88995c7a53.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v19.mp4",
+      "screened": true,
+      "sha256": "7a88995c7a531f617efff81b0e9113258431a0b5a1810d117c0328c442b75665"
+    },
+    {
+      "asset_path": "videos/filler_old_v20_c6bb1a51b7fa.mp4",
+      "bytes": 1597066,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v20_c6bb1a51b7fa.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v20.mp4",
+      "screened": true,
+      "sha256": "c6bb1a51b7fa40ff5188fb291fe50d66941bc621a332aa1ace4cd91cb3872921"
+    },
+    {
+      "asset_path": "videos/filler_old_v21_45333d0e3a97.mp4",
+      "bytes": 1543281,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v21_45333d0e3a97.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v21.mp4",
+      "screened": true,
+      "sha256": "45333d0e3a97aeda925d971077a8a6f335d93954958f3a91adfc89d654b89fb0"
+    },
+    {
+      "asset_path": "videos/filler_old_v22_6723d6aa320e.mp4",
+      "bytes": 1188659,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v22_6723d6aa320e.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v22.mp4",
+      "screened": true,
+      "sha256": "6723d6aa320e1550fda44cff8b2928e95c427ba88b58e290e24d11afeb85dad4"
+    },
+    {
+      "asset_path": "videos/filler_old_v23_10233e92a675.mp4",
+      "bytes": 2274151,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v23_10233e92a675.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v23.mp4",
+      "screened": true,
+      "sha256": "10233e92a67568b5c51359d6214253fe9f8ecf1d64c8ce1b269a3717f8ea6847"
+    },
+    {
+      "asset_path": "videos/filler_old_v24_9d3314f193aa.mp4",
+      "bytes": 1916545,
+      "hosted_url": "https://jawauntb.github.io/audience-vectors-research/videos/filler_old_v24_9d3314f193aa.mp4",
+      "local_path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v24.mp4",
+      "screened": true,
+      "sha256": "9d3314f193aa878ad6d2f2e54a319962127c8c99b01127ab20263818a9bd68d7"
+    }
+  ]
+}
