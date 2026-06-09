@@ -150,7 +150,7 @@ def audit_dhf1k_root(path: Path) -> dict[str, Any]:
     video_dir = path / "video"
     annotation_dir = path / "annotation"
     video_count = count_direct_files(video_dir, VIDEO_SUFFIXES)
-    map_video_count = count_annotation_video_dirs(annotation_dir, "maps")
+    map_video_count = count_annotation_map_video_dirs(annotation_dir)
     fixation_video_count = count_annotation_video_dirs(annotation_dir, "fixation")
     return {
         "path": str(path),
@@ -486,39 +486,51 @@ def derive_readiness(
     roi_masks: dict[str, Any],
     manifests: list[dict[str, Any]],
 ) -> dict[str, Any]:
+    dhf1k_root_present = bool(dhf1k_candidates)
     dhf1k_root_ready = any(item["ready_for_label_build"] for item in dhf1k_candidates)
     dhf1k_label_ready = any(item["ready_for_handoff"] for item in dhf1k_label_audits)
     dhf1k_label_audit_present = bool(dhf1k_label_audits)
     snapugc_ready = bool(snapugc_candidates)
     features_ready = any(item["ready_as_feature_cache"] for item in feature_dirs)
+    dhf1k_features_ready = any(
+        item["ready_as_feature_cache"]
+        and "dhf1k" in Path(str(item["path"])).name.lower()
+        for item in feature_dirs
+    )
     masks_ready = bool(roi_masks["ready_for_primary_scoring"])
     manifest_ready = any(item["ready_for_workflow"] for item in manifests)
     manifest_blockers = manifest_readiness_blockers(manifests)
     blockers = readiness_blockers(
+        dhf1k_root_present=dhf1k_root_present,
         dhf1k_root_ready=dhf1k_root_ready,
         dhf1k_label_ready=dhf1k_label_ready,
         dhf1k_label_audit_present=dhf1k_label_audit_present,
         snapugc_ready=snapugc_ready,
         features_ready=features_ready,
+        dhf1k_features_ready=dhf1k_features_ready,
         masks_ready=masks_ready,
         manifest_ready=manifest_ready,
         manifest_blockers=manifest_blockers,
     )
     return {
+        "dhf1k_root_present": dhf1k_root_present,
         "dhf1k_root_ready_for_label_build": dhf1k_root_ready,
         "dhf1k_label_audit_ready": dhf1k_label_ready,
         "dhf1k_labels_ready": dhf1k_label_ready,
         "snapugc_labels_ready": snapugc_ready,
         "tribe_features_ready": features_ready,
+        "dhf1k_tribe_features_ready": dhf1k_features_ready,
         "roi_masks_ready": masks_ready,
         "real_manifest_ready": manifest_ready,
         "phase1_can_run_now": bool(manifest_ready and masks_ready),
         "blocking_reasons": blockers,
         "recommended_next_action": recommended_next_action(
             dhf1k_root_ready=dhf1k_root_ready,
+            dhf1k_root_present=dhf1k_root_present,
             dhf1k_label_ready=dhf1k_label_ready,
             snapugc_ready=snapugc_ready,
             features_ready=features_ready,
+            dhf1k_features_ready=dhf1k_features_ready,
             masks_ready=masks_ready,
             manifest_ready=manifest_ready,
             manifest_blockers=manifest_blockers,
@@ -542,11 +554,13 @@ def manifest_readiness_blockers(manifests: list[dict[str, Any]]) -> list[str]:
 
 def readiness_blockers(
     *,
+    dhf1k_root_present: bool,
     dhf1k_root_ready: bool,
     dhf1k_label_ready: bool,
     dhf1k_label_audit_present: bool,
     snapugc_ready: bool,
     features_ready: bool,
+    dhf1k_features_ready: bool,
     masks_ready: bool,
     manifest_ready: bool,
     manifest_blockers: list[str],
@@ -560,10 +574,16 @@ def readiness_blockers(
     if not (dhf1k_label_ready or snapugc_ready or has_claim_updatable_manifest):
         if dhf1k_root_ready:
             blockers.append("DHF1K root found but no ready DHF1K label audit found")
+        elif dhf1k_root_present:
+            blockers.append("DHF1K root found but missing videos or annotation maps")
         else:
             blockers.append("no external attention-label source found")
     if dhf1k_label_audit_present and not dhf1k_label_ready and not manifest_ready:
         blockers.append("DHF1K label audit is not ready for manifest alignment")
+    if dhf1k_label_ready and not dhf1k_features_ready and not manifest_ready:
+        blockers.append(
+            "DHF1K labels ready but no DHF1K TRIBE feature directory found"
+        )
     if not features_ready and not manifest_ready:
         blockers.append("no cached TRIBE feature directory found")
     if not masks_ready:
@@ -573,10 +593,12 @@ def readiness_blockers(
 
 def recommended_next_action(
     *,
+    dhf1k_root_present: bool,
     dhf1k_root_ready: bool,
     dhf1k_label_ready: bool,
     snapugc_ready: bool,
     features_ready: bool,
+    dhf1k_features_ready: bool,
     masks_ready: bool,
     manifest_ready: bool,
     manifest_blockers: list[str],
@@ -585,16 +607,18 @@ def recommended_next_action(
         return "run scripts/run_attention_capture_phase1_workflow.py"
     if manifest_blockers:
         return "fix Phase 1 manifest provenance, then rerun the guarded workflow"
-    if dhf1k_label_ready and features_ready:
-        return "build the DHF1K Phase 1 manifest, then run the guarded workflow"
+    if dhf1k_label_ready and dhf1k_features_ready:
+        return "audit DHF1K label-to-feature alignment, then build the manifest"
     if snapugc_ready and features_ready:
-        return "build the SnapUGC Phase 1 manifest, then run the guarded workflow"
-    if dhf1k_label_ready and not features_ready:
+        return "audit SnapUGC label-to-feature alignment, then build the manifest"
+    if dhf1k_label_ready and not dhf1k_features_ready:
         return "extract DHF1K TRIBE features from the audited DHF1K labels"
     if snapugc_ready and not features_ready:
         return "extract TRIBE features for the SnapUGC/VQualA label CSV"
     if dhf1k_root_ready:
         return "build DHF1K labels and confirm ready_for_manifest_alignment=true"
+    if dhf1k_root_present:
+        return "complete the DHF1K mount with videos and annotation maps"
     return "acquire or mount external DHF1K/SnapUGC labels and videos"
 
 
@@ -614,6 +638,10 @@ def render_readiness_markdown(report: dict[str, Any]) -> str:
         f"- DHF1K labels ready: {readiness['dhf1k_labels_ready']}",
         f"- SnapUGC labels ready: {readiness['snapugc_labels_ready']}",
         f"- TRIBE features ready: {readiness['tribe_features_ready']}",
+        (
+            "- DHF1K TRIBE features ready: "
+            f"{readiness['dhf1k_tribe_features_ready']}"
+        ),
         f"- ROI masks ready: {readiness['roi_masks_ready']}",
         f"- Real manifest ready: {readiness['real_manifest_ready']}",
         f"- Recommended next action: {readiness['recommended_next_action']}",
@@ -750,6 +778,18 @@ def count_annotation_video_dirs(annotation_dir: Path, child_name: str) -> int:
     count = 0
     for child in safe_iterdir(annotation_dir):
         if child.is_dir() and any((child / child_name).glob("*.png")):
+            count += 1
+    return count
+
+
+def count_annotation_map_video_dirs(annotation_dir: Path) -> int:
+    if not annotation_dir.is_dir():
+        return 0
+    count = 0
+    for child in safe_iterdir(annotation_dir):
+        if not child.is_dir():
+            continue
+        if any((child / "maps").glob("*.png")) or any(child.glob("*.png")):
             count += 1
     return count
 

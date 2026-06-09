@@ -3,31 +3,32 @@
 ## Verdict
 
 - Phase 1 can run now: False
-- DHF1K root ready for label build: False
-- DHF1K label audit ready: False
-- DHF1K labels ready: False
+- DHF1K root ready for label build: True
+- DHF1K label audit ready: True
+- DHF1K labels ready: True
 - SnapUGC labels ready: False
 - TRIBE features ready: True
+- DHF1K TRIBE features ready: False
 - ROI masks ready: True
 - Real manifest ready: False
-- Recommended next action: acquire or mount external DHF1K/SnapUGC labels and videos
+- Recommended next action: extract DHF1K TRIBE features from the audited DHF1K labels
 - Claim boundary: This report audits local data availability only. It does not score TRIBE features or validate attentional capture.
 
 ## Blocking Reasons
 
-- no external attention-label source found
+- DHF1K labels ready but no DHF1K TRIBE feature directory found
 
 ## DHF1K Candidates
 
 | path | videos | map dirs | fixation dirs | ready |
 |---|---:|---:|---:|---|
-| none | 0 | 0 | 0 | False |
+| data/attention_capture/DHF1K | 1000 | 700 | 700 | True |
 
 ## DHF1K Label Audits
 
 | path | labels CSV exists | rank column | rows | ready |
 |---|---|---|---:|---|
-| none | False | n/a | 0 | False |
+| research_program/dopamine_detox_attention_capture/results/dhf1k_attention_label_audit_20260608.json | True | mean_map_intensity | 350 | True |
 
 ## SnapUGC/VQualA Label Candidates
 

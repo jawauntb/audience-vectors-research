@@ -44,6 +44,24 @@ def make_fake_dhf1k_video(root: Path, video_id: str, map_value: int) -> None:
     write_png(fixation_dir / "0001.png", fixation)
 
 
+def make_official_layout_dhf1k_video(
+    root: Path,
+    *,
+    canonical_id: str,
+    archive_id: str,
+    map_value: int,
+) -> None:
+    video_dir = root / "video"
+    video_dir.mkdir(parents=True, exist_ok=True)
+    (video_dir / f"{archive_id}.AVI").write_bytes(b"fake video")
+    annotation_dir = root / "annotation" / archive_id
+    write_png(annotation_dir / "0001.png", np.full((4, 4), map_value))
+    fixation = np.zeros((4, 4), dtype=np.uint8)
+    fixation[2, 2] = 255
+    write_png(annotation_dir / "fixation" / "0001.png", fixation)
+    assert int(canonical_id) == int(archive_id)
+
+
 def test_build_rows_reads_dhf1k_maps_and_video_paths(tmp_path: Path) -> None:
     module = load_module()
     make_fake_dhf1k_video(tmp_path, "001", 32)
@@ -57,6 +75,68 @@ def test_build_rows_reads_dhf1k_maps_and_video_paths(tmp_path: Path) -> None:
     assert rows[0].n_fixation_frames == 1
     assert rows[1].mean_map_intensity > rows[0].mean_map_intensity
     assert rows[0].video_path.endswith("001.AVI")
+
+
+def test_build_rows_accepts_official_direct_map_layout(tmp_path: Path) -> None:
+    module = load_module()
+    make_official_layout_dhf1k_video(
+        tmp_path,
+        canonical_id="001",
+        archive_id="0001",
+        map_value=96,
+    )
+
+    rows = module.build_rows(dhf1k_root=tmp_path, split="train", limit=1)
+
+    assert [row.sample_id for row in rows] == ["dhf1k_001"]
+    assert rows[0].video_id == "001"
+    assert rows[0].n_map_frames == 1
+    assert rows[0].n_fixation_frames == 1
+    assert rows[0].video_path.endswith("0001.AVI")
+
+
+def test_build_rows_uses_repo_relative_video_paths(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    module = load_module()
+    root = tmp_path / "DHF1K"
+    make_fake_dhf1k_video(root, "001", 32)
+    monkeypatch.chdir(tmp_path)
+
+    rows = module.build_rows(dhf1k_root=Path("DHF1K"), split="train", limit=1)
+
+    assert rows[0].video_path == "DHF1K/video/001.AVI"
+
+
+def test_build_rows_can_compute_only_rank_metric(tmp_path: Path) -> None:
+    module = load_module()
+    make_fake_dhf1k_video(tmp_path, "001", 32)
+
+    rows = module.build_rows(
+        dhf1k_root=tmp_path,
+        split="train",
+        limit=1,
+        metric_columns={"mean_map_intensity"},
+    )
+
+    assert rows[0].mean_map_intensity is not None
+    assert rows[0].peak_map_intensity is None
+    assert rows[0].peak_to_mean_map_ratio is None
+    assert rows[0].mean_map_concentration is None
+    assert rows[0].mean_fixation_density is None
+    audit = module.summarize_rows(
+        rows,
+        dhf1k_root=tmp_path,
+        split="train",
+        rank_column="mean_map_intensity",
+        metric_scope="rank",
+        extreme_count_per_tail=None,
+        min_rows=1,
+        min_distinct_rank_values=1,
+    )
+    assert audit["metric_scope"] == "rank"
+    assert audit["computed_metric_columns"] == ["mean_map_intensity"]
 
 
 def test_select_extreme_tails_labels_high_and_low_rows(tmp_path: Path) -> None:

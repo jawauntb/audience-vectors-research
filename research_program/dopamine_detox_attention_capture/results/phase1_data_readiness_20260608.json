@@ -8,6 +8,11 @@
       "is_dir": true
     },
     {
+      "path": "data",
+      "exists": true,
+      "is_dir": true
+    },
+    {
       "path": "data/attention_capture",
       "exists": true,
       "is_dir": true
@@ -28,8 +33,30 @@
       "is_dir": false
     }
   ],
-  "dhf1k_candidates": [],
-  "dhf1k_label_audits": [],
+  "dhf1k_candidates": [
+    {
+      "path": "data/attention_capture/DHF1K",
+      "has_video_dir": true,
+      "has_annotation_dir": true,
+      "n_videos": 1000,
+      "n_annotation_map_video_dirs": 700,
+      "n_fixation_video_dirs": 700,
+      "ready_for_label_build": true
+    }
+  ],
+  "dhf1k_label_audits": [
+    {
+      "path": "research_program/dopamine_detox_attention_capture/results/dhf1k_attention_label_audit_20260608.json",
+      "labels_csv": "research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv",
+      "labels_csv_exists": true,
+      "rank_column": "mean_map_intensity",
+      "recommended_ground_truth_column": "mean_map_intensity",
+      "n_rows": 350,
+      "ready_for_manifest_alignment": true,
+      "ready_for_handoff": true,
+      "blocking_reasons": []
+    }
+  ],
   "snapugc_label_candidates": [],
   "tribe_feature_dirs": [
     {
@@ -355,18 +382,20 @@
     }
   ],
   "readiness": {
-    "dhf1k_root_ready_for_label_build": false,
-    "dhf1k_label_audit_ready": false,
-    "dhf1k_labels_ready": false,
+    "dhf1k_root_present": true,
+    "dhf1k_root_ready_for_label_build": true,
+    "dhf1k_label_audit_ready": true,
+    "dhf1k_labels_ready": true,
     "snapugc_labels_ready": false,
     "tribe_features_ready": true,
+    "dhf1k_tribe_features_ready": false,
     "roi_masks_ready": true,
     "real_manifest_ready": false,
     "phase1_can_run_now": false,
     "blocking_reasons": [
-      "no external attention-label source found"
+      "DHF1K labels ready but no DHF1K TRIBE feature directory found"
     ],
-    "recommended_next_action": "acquire or mount external DHF1K/SnapUGC labels and videos"
+    "recommended_next_action": "extract DHF1K TRIBE features from the audited DHF1K labels"
   },
   "claim_boundary": "This report audits local data availability only. It does not score TRIBE features or validate attentional capture."
 }
