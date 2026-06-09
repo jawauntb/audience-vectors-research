@@ -21,6 +21,7 @@ SNAPUGC_HINTS = (
 )
 ID_COLUMN_HINTS = ("sample_id", "video_id", "video", "id")
 GROUND_TRUTH_HINTS = ("ecr", "completion", "retention", "engagement")
+CLAIM_BLOCKED_HINTS = ("synthetic", "fixture", "smoke", "control", "not_attention")
 MAX_DISCOVERY_FILES = 5000
 
 
@@ -75,6 +76,7 @@ def build_readiness_report(
     roots = [audit_search_root(path) for path in search_roots]
     existing_roots = [Path(root["path"]) for root in roots if root["exists"]]
     dhf1k_candidates = find_dhf1k_candidates(existing_roots)
+    dhf1k_label_audits = find_dhf1k_label_audits(existing_roots)
     snapugc_candidates = find_snapugc_label_csvs(existing_roots)
     feature_dirs = find_tribe_feature_dirs(
         existing_roots,
@@ -84,6 +86,7 @@ def build_readiness_report(
     manifests = find_phase1_manifests(existing_roots)
     readiness = derive_readiness(
         dhf1k_candidates=dhf1k_candidates,
+        dhf1k_label_audits=dhf1k_label_audits,
         snapugc_candidates=snapugc_candidates,
         feature_dirs=feature_dirs,
         roi_masks=roi_masks,
@@ -95,6 +98,7 @@ def build_readiness_report(
         "experiment": "phase1_attention_capture_data_readiness",
         "search_roots": roots,
         "dhf1k_candidates": dhf1k_candidates,
+        "dhf1k_label_audits": dhf1k_label_audits,
         "snapugc_label_candidates": snapugc_candidates,
         "tribe_feature_dirs": feature_dirs,
         "roi_masks": roi_masks,
@@ -158,6 +162,44 @@ def audit_dhf1k_root(path: Path) -> dict[str, Any]:
     }
 
 
+def find_dhf1k_label_audits(search_roots: list[Path]) -> list[dict[str, Any]]:
+    audits: list[dict[str, Any]] = []
+    for path in iter_matching_files(search_roots, "*.json"):
+        audit = audit_dhf1k_label_audit(path)
+        if audit is not None:
+            audits.append(audit)
+    return sorted(audits, key=lambda item: item["path"])
+
+
+def audit_dhf1k_label_audit(path: Path) -> dict[str, Any] | None:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+
+    if not isinstance(payload, dict):
+        return None
+    if payload.get("experiment") != "dhf1k_attention_label_audit":
+        return None
+
+    labels_csv = payload.get("labels_csv")
+    labels_csv_exists = path_exists_from_audit(labels_csv, audit_path=path)
+    ready_flag = bool(payload.get("ready_for_manifest_alignment"))
+    return {
+        "path": str(path),
+        "labels_csv": labels_csv,
+        "labels_csv_exists": labels_csv_exists,
+        "rank_column": payload.get("rank_column"),
+        "recommended_ground_truth_column": payload.get(
+            "recommended_ground_truth_column",
+        ),
+        "n_rows": payload.get("n_rows"),
+        "ready_for_manifest_alignment": ready_flag,
+        "ready_for_handoff": ready_flag and labels_csv_exists,
+        "blocking_reasons": payload.get("blocking_reasons") or [],
+    }
+
+
 def find_snapugc_label_csvs(search_roots: list[Path]) -> list[dict[str, Any]]:
     candidates: list[dict[str, Any]] = []
     for path in iter_matching_files(search_roots, "*.csv"):
@@ -179,6 +221,7 @@ def audit_label_csv(path: Path) -> dict[str, Any]:
 
     normalized = [column.strip().lower() for column in header]
     haystack = " ".join([path.name.lower(), *normalized])
+    claim_blocked = any(hint in str(path).lower() for hint in CLAIM_BLOCKED_HINTS)
     has_dataset_hint = any(hint in haystack for hint in SNAPUGC_HINTS)
     has_id = any(column in ID_COLUMN_HINTS for column in normalized)
     has_ground_truth = any(
@@ -189,7 +232,10 @@ def audit_label_csv(path: Path) -> dict[str, Any]:
         "path": str(path),
         "columns": header,
         "n_rows": n_rows,
-        "candidate": bool(has_dataset_hint and has_id and has_ground_truth),
+        "candidate": bool(
+            has_dataset_hint and has_id and has_ground_truth and not claim_blocked
+        ),
+        "claim_blocked": claim_blocked,
         "has_id_column": has_id,
         "has_ground_truth_column": has_ground_truth,
     }
@@ -229,6 +275,7 @@ def audit_feature_dir(
     sampled = sorted(paths)[:sample_limit]
     frame_shapes: dict[str, int] = {}
     frames_npz = 0
+    claim_blocked = any(hint in str(parent).lower() for hint in CLAIM_BLOCKED_HINTS)
     for path in sampled:
         shape = npz_frames_shape(path)
         if shape is None:
@@ -241,7 +288,8 @@ def audit_feature_dir(
         "n_sampled": len(sampled),
         "n_frames_npz_sampled": frames_npz,
         "frame_shape_counts": frame_shapes,
-        "ready_as_feature_cache": bool(frames_npz),
+        "claim_blocked": claim_blocked,
+        "ready_as_feature_cache": bool(frames_npz) and not claim_blocked,
     }
 
 
@@ -302,25 +350,32 @@ def audit_phase1_manifest(path: Path) -> dict[str, Any]:
 def derive_readiness(
     *,
     dhf1k_candidates: list[dict[str, Any]],
+    dhf1k_label_audits: list[dict[str, Any]],
     snapugc_candidates: list[dict[str, Any]],
     feature_dirs: list[dict[str, Any]],
     roi_masks: dict[str, Any],
     manifests: list[dict[str, Any]],
 ) -> dict[str, Any]:
-    dhf1k_ready = any(item["ready_for_label_build"] for item in dhf1k_candidates)
+    dhf1k_root_ready = any(item["ready_for_label_build"] for item in dhf1k_candidates)
+    dhf1k_label_ready = any(item["ready_for_handoff"] for item in dhf1k_label_audits)
+    dhf1k_label_audit_present = bool(dhf1k_label_audits)
     snapugc_ready = bool(snapugc_candidates)
     features_ready = any(item["ready_as_feature_cache"] for item in feature_dirs)
     masks_ready = bool(roi_masks["ready_for_primary_scoring"])
     manifest_ready = any(item["ready_for_workflow"] for item in manifests)
     blockers = readiness_blockers(
-        dhf1k_ready=dhf1k_ready,
+        dhf1k_root_ready=dhf1k_root_ready,
+        dhf1k_label_ready=dhf1k_label_ready,
+        dhf1k_label_audit_present=dhf1k_label_audit_present,
         snapugc_ready=snapugc_ready,
         features_ready=features_ready,
         masks_ready=masks_ready,
         manifest_ready=manifest_ready,
     )
     return {
-        "dhf1k_labels_ready": dhf1k_ready,
+        "dhf1k_root_ready_for_label_build": dhf1k_root_ready,
+        "dhf1k_label_audit_ready": dhf1k_label_ready,
+        "dhf1k_labels_ready": dhf1k_label_ready,
         "snapugc_labels_ready": snapugc_ready,
         "tribe_features_ready": features_ready,
         "roi_masks_ready": masks_ready,
@@ -328,7 +383,8 @@ def derive_readiness(
         "phase1_can_run_now": bool(manifest_ready and masks_ready),
         "blocking_reasons": blockers,
         "recommended_next_action": recommended_next_action(
-            dhf1k_ready=dhf1k_ready,
+            dhf1k_root_ready=dhf1k_root_ready,
+            dhf1k_label_ready=dhf1k_label_ready,
             snapugc_ready=snapugc_ready,
             features_ready=features_ready,
             masks_ready=masks_ready,
@@ -339,15 +395,22 @@ def derive_readiness(
 
 def readiness_blockers(
     *,
-    dhf1k_ready: bool,
+    dhf1k_root_ready: bool,
+    dhf1k_label_ready: bool,
+    dhf1k_label_audit_present: bool,
     snapugc_ready: bool,
     features_ready: bool,
     masks_ready: bool,
     manifest_ready: bool,
 ) -> list[str]:
     blockers: list[str] = []
-    if not (dhf1k_ready or snapugc_ready or manifest_ready):
-        blockers.append("no external attention-label source found")
+    if not (dhf1k_label_ready or snapugc_ready or manifest_ready):
+        if dhf1k_root_ready:
+            blockers.append("DHF1K root found but no ready DHF1K label audit found")
+        else:
+            blockers.append("no external attention-label source found")
+    if dhf1k_label_audit_present and not dhf1k_label_ready and not manifest_ready:
+        blockers.append("DHF1K label audit is not ready for manifest alignment")
     if not features_ready and not manifest_ready:
         blockers.append("no cached TRIBE feature directory found")
     if not masks_ready:
@@ -357,7 +420,8 @@ def readiness_blockers(
 
 def recommended_next_action(
     *,
-    dhf1k_ready: bool,
+    dhf1k_root_ready: bool,
+    dhf1k_label_ready: bool,
     snapugc_ready: bool,
     features_ready: bool,
     masks_ready: bool,
@@ -365,12 +429,16 @@ def recommended_next_action(
 ) -> str:
     if manifest_ready and masks_ready:
         return "run scripts/run_attention_capture_phase1_workflow.py"
-    if dhf1k_ready and not features_ready:
-        return "extract DHF1K TRIBE features from the audited DHF1K labels"
-    if dhf1k_ready and features_ready:
+    if dhf1k_label_ready and features_ready:
         return "build the DHF1K Phase 1 manifest, then run the guarded workflow"
     if snapugc_ready and features_ready:
         return "build the SnapUGC Phase 1 manifest, then run the guarded workflow"
+    if dhf1k_label_ready and not features_ready:
+        return "extract DHF1K TRIBE features from the audited DHF1K labels"
+    if snapugc_ready and not features_ready:
+        return "extract TRIBE features for the SnapUGC/VQualA label CSV"
+    if dhf1k_root_ready:
+        return "build DHF1K labels and confirm ready_for_manifest_alignment=true"
     return "acquire or mount external DHF1K/SnapUGC labels and videos"
 
 
@@ -382,6 +450,11 @@ def render_readiness_markdown(report: dict[str, Any]) -> str:
         "## Verdict",
         "",
         f"- Phase 1 can run now: {readiness['phase1_can_run_now']}",
+        (
+            "- DHF1K root ready for label build: "
+            f"{readiness['dhf1k_root_ready_for_label_build']}"
+        ),
+        f"- DHF1K label audit ready: {readiness['dhf1k_label_audit_ready']}",
         f"- DHF1K labels ready: {readiness['dhf1k_labels_ready']}",
         f"- SnapUGC labels ready: {readiness['snapugc_labels_ready']}",
         f"- TRIBE features ready: {readiness['tribe_features_ready']}",
@@ -398,6 +471,7 @@ def render_readiness_markdown(report: dict[str, Any]) -> str:
         "- none",
     )
     lines.extend(render_dhf1k_section(report["dhf1k_candidates"]))
+    lines.extend(render_dhf1k_label_audit_section(report["dhf1k_label_audits"]))
     lines.extend(render_snapugc_section(report["snapugc_label_candidates"]))
     lines.extend(render_feature_section(report["tribe_feature_dirs"]))
     lines.extend(render_manifest_section(report["phase1_manifests"]))
@@ -421,6 +495,26 @@ def render_dhf1k_section(items: list[dict[str, Any]]) -> list[str]:
             f"{item['n_annotation_map_video_dirs']} | "
             f"{item['n_fixation_video_dirs']} | "
             f"{item['ready_for_label_build']} |"
+        )
+    return lines
+
+
+def render_dhf1k_label_audit_section(items: list[dict[str, Any]]) -> list[str]:
+    lines = [
+        "",
+        "## DHF1K Label Audits",
+        "",
+        "| path | labels CSV exists | rank column | rows | ready |",
+        "|---|---|---|---:|---|",
+    ]
+    if not items:
+        lines.append("| none | False | n/a | 0 | False |")
+    for item in items:
+        lines.append(
+            "| "
+            f"{item['path']} | {item['labels_csv_exists']} | "
+            f"{item['rank_column'] or 'n/a'} | "
+            f"{item['n_rows'] or 0} | {item['ready_for_handoff']} |"
         )
     return lines
 
@@ -449,16 +543,17 @@ def render_feature_section(items: list[dict[str, Any]]) -> list[str]:
         "",
         "## TRIBE Feature Cache Candidates",
         "",
-        "| path | npz files | sampled frames arrays | ready |",
-        "|---|---:|---:|---|",
+        "| path | npz files | sampled frames arrays | claim blocked | ready |",
+        "|---|---:|---:|---|---|",
     ]
     if not items:
-        lines.append("| none | 0 | 0 | False |")
+        lines.append("| none | 0 | 0 | False | False |")
     for item in items[:20]:
         lines.append(
             "| "
             f"{item['path']} | {item['n_npz_files']} | "
             f"{item['n_frames_npz_sampled']} | "
+            f"{item['claim_blocked']} | "
             f"{item['ready_as_feature_cache']} |"
         )
     return lines
@@ -531,6 +626,16 @@ def npz_frames_shape(path: Path) -> str | None:
         return None
     frames = np.asarray(payload["frames"])
     return "x".join(str(dim) for dim in frames.shape)
+
+
+def path_exists_from_audit(raw_path: object, *, audit_path: Path) -> bool:
+    if not raw_path:
+        return False
+    candidate = Path(str(raw_path)).expanduser()
+    candidates = [candidate]
+    if not candidate.is_absolute():
+        candidates.extend([Path.cwd() / candidate, audit_path.parent / candidate])
+    return any(path.exists() for path in candidates)
 
 
 def safe_iterdir(path: Path) -> list[Path]:

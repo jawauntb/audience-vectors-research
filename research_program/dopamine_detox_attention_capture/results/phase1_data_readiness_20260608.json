@@ -24,6 +24,7 @@
     }
   ],
   "dhf1k_candidates": [],
+  "dhf1k_label_audits": [],
   "snapugc_label_candidates": [],
   "tribe_feature_dirs": [
     {
@@ -35,6 +36,7 @@
         "4x20484": 7,
         "3x20484": 1
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -45,6 +47,7 @@
       "frame_shape_counts": {
         "6x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -55,6 +58,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -65,6 +69,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -75,6 +80,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -85,6 +91,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -95,6 +102,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -105,6 +113,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -115,6 +124,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -125,6 +135,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -135,6 +146,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -145,6 +157,7 @@
       "frame_shape_counts": {
         "6x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -155,6 +168,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -165,6 +179,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -175,6 +190,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -185,6 +201,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -195,6 +212,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -205,6 +223,7 @@
       "frame_shape_counts": {
         "4x20484": 8
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
     },
     {
@@ -215,7 +234,8 @@
       "frame_shape_counts": {
         "7x20484": 5
       },
-      "ready_as_feature_cache": true
+      "claim_blocked": true,
+      "ready_as_feature_cache": false
     },
     {
       "path": "/Users/jawaun/isc_mod/data/features/tribe_svd_smoke_large",
@@ -225,7 +245,8 @@
       "frame_shape_counts": {
         "4x20484": 5
       },
-      "ready_as_feature_cache": true
+      "claim_blocked": true,
+      "ready_as_feature_cache": false
     },
     {
       "path": "/Users/jawaun/isc_mod/data/features/tribe_svd_smoke",
@@ -235,7 +256,8 @@
       "frame_shape_counts": {
         "4x20484": 5
       },
-      "ready_as_feature_cache": true
+      "claim_blocked": true,
+      "ready_as_feature_cache": false
     },
     {
       "path": "/Users/jawaun/isc_mod/data/features/tribe_cogvideox_smoke_adapter",
@@ -245,7 +267,8 @@
       "frame_shape_counts": {
         "7x20484": 5
       },
-      "ready_as_feature_cache": true
+      "claim_blocked": true,
+      "ready_as_feature_cache": false
     },
     {
       "path": "/Users/jawaun/isc_mod/data/features/tribe_wan22_lora_eval_2x2_s12",
@@ -255,21 +278,43 @@
       "frame_shape_counts": {
         "4x20484": 4
       },
+      "claim_blocked": false,
       "ready_as_feature_cache": true
+    },
+    {
+      "path": "research_program/dopamine_detox_attention_capture/fixtures/phase1_synthetic_alignment_features_20260608",
+      "n_npz_files": 3,
+      "n_sampled": 3,
+      "n_frames_npz_sampled": 3,
+      "frame_shape_counts": {
+        "2x4": 3
+      },
+      "claim_blocked": true,
+      "ready_as_feature_cache": false
     }
   ],
   "roi_masks": {
     "disjoint": {
-      "path": "/Users/jawaun/.codex/worktrees/dopamine-detox-capture-score-20260608/isc_mod/research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+      "path": "/Users/jawaun/.codex/worktrees/attention-capture-next-gate-20260608/isc_mod/research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
       "exists": true
     },
     "overlapping": {
-      "path": "/Users/jawaun/.codex/worktrees/dopamine-detox-capture-score-20260608/isc_mod/research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz",
+      "path": "/Users/jawaun/.codex/worktrees/attention-capture-next-gate-20260608/isc_mod/research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz",
       "exists": true
     },
     "ready_for_primary_scoring": true
   },
   "phase1_manifests": [
+    {
+      "path": "research_program/dopamine_detox_attention_capture/phase1_synthetic_alignment_manifest_20260608.json",
+      "status": "synthetic_smoke_only",
+      "n_samples": 3,
+      "datasets": [
+        "synthetic_alignment_fixture"
+      ],
+      "claim_blocked": true,
+      "ready_for_workflow": false
+    },
     {
       "path": "research_program/dopamine_detox_attention_capture/phase1_synthetic_smoke_manifest_20260608.json",
       "status": "synthetic_smoke_only",
@@ -283,6 +328,8 @@
     }
   ],
   "readiness": {
+    "dhf1k_root_ready_for_label_build": false,
+    "dhf1k_label_audit_ready": false,
     "dhf1k_labels_ready": false,
     "snapugc_labels_ready": false,
     "tribe_features_ready": true,

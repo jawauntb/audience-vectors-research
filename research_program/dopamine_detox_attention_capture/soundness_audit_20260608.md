@@ -383,6 +383,21 @@ Synthetic diagnostic under provenance gate:
 - This confirms the intended behavior: synthetic fixtures can test the pipeline
   mechanically, but they remain blocked from claim updates.
 
+Data-readiness handoff tightening:
+
+- `scripts/audit_attention_capture_data_readiness.py` now separates
+  `dhf1k_root_ready_for_label_build` from `dhf1k_label_audit_ready`.
+- `dhf1k_labels_ready` is true only when a discovered
+  `dhf1k_attention_label_audit` artifact is ready for manifest alignment and
+  its emitted label CSV still exists.
+- Synthetic, fixture, smoke, and control CSV/feature paths are excluded from
+  real SnapUGC/DHF1K readiness decisions. They may still appear in the report
+  as diagnostics, but they cannot satisfy the external-label or feature-cache
+  handoff gates.
+- `results/phase1_data_readiness_20260608.*` was regenerated under this stricter
+  scanner. The current verdict remains `phase1_can_run_now=false` because no
+  real external DHF1K/SnapUGC/VQualA label source is mounted.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and

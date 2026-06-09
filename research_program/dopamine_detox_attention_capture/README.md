@@ -156,6 +156,8 @@ Current readiness verdict:
 
 ```text
 phase1_can_run_now: false
+dhf1k_root_ready_for_label_build: false
+dhf1k_label_audit_ready: false
 dhf1k_labels_ready: false
 snapugc_labels_ready: false
 tribe_features_ready: true
@@ -169,6 +171,13 @@ The scan found reusable cached TRIBE feature directories, including
 but no local DHF1K/SnapUGC/VQualA external-label source. Those cached features
 remain useful infrastructure; they do not unblock Phase 1 until they are aligned
 to a real external attention-label manifest.
+
+DHF1K readiness is intentionally split: a dataset root can be ready for label
+building, but `dhf1k_labels_ready` stays false until a
+`dhf1k_attention_label_audit` artifact reports
+`ready_for_manifest_alignment=true` and its label CSV still exists. Synthetic,
+fixture, smoke, and control CSV/feature paths may appear in diagnostics, but do
+not count as real external labels or real feature caches.
 
 Smoke-test label-to-feature alignment:
 
