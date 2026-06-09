@@ -143,8 +143,10 @@ BMD-grounded gate validates the candidate set.
   concert-stage filler lure (`filler_lure_v06`) was preserved as a rejected
   artifact, replaced with a ceramic-teacups filler pair, and the refreshed
   recognition video pre-screen passed 60/60 MP4s. Public GitHub Pages launch
-  assets are ready; next step is final human/IRB-facing review and Prolific
-  project configuration, not another filler replacement;
+  assets are ready. The response-analysis plan/script is also ready; next step
+  is final human/IRB-facing review, Prolific project configuration, response
+  collection, and then the fixed recognition-response analysis, not another
+  filler replacement;
 - switch to a prompt-conditioned generator path before running prompt-rewrite
   tournaments, because prompt text is metadata-only in the current SVD runner;
 - keep neural-response-guided generation as a separate satellite track.

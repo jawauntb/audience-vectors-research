@@ -75,7 +75,8 @@ too.
   stimulus-prep subgates: the flagged concert-stage filler lure was preserved
   as a rejected artifact, replaced with a ceramic-teacups filler pair, refreshed
   video screening passed 60/60 MP4s, and public GitHub Pages launch assets plus
-  Prolific setup notes are ready. Human recognition data have not been collected
+  Prolific setup notes are ready. A fixed response-analysis plan and script are
+  ready for the eventual export. Human recognition data have not been collected
   yet.
 - Prompt text is metadata-only in the current SVD runner. A prompt-rewrite
   tournament should wait until we use a prompt-conditioned generator path where
@@ -123,9 +124,10 @@ validation.
 | P1 | Frozen MP4 prelaunch screening | Checks launch readiness without changing the proxy-selected claim | Done: 45/45 selected MP4s present and hash-matched, sampled-frame visual gate passed, contact-sheet review found no obvious sampled-frame text/watermark/collapse/leakage; final human/IRB screening still required | `content_pocket_validation_mp4_screening_20260608.md` and `content_pocket_validation_hosted_video_url_map_template_20260608.json` | Done; host/sign off next |
 | P1 | Direct recognition-memory validation design | Upgrades the human endpoint from perceived memorability to exact old-vs-lure memory while controlling same-category false familiarity | Designed and launch-prep ready: 15 frozen old targets, 15 same-category lures, six sparse forms, 300 usable delayed participants target, and public two-session launch assets | `content_pocket_recognition_memory_design_20260608.json`, `content_pocket_recognition_memory_packet_20260608.md`, and `content_pocket_recognition_prolific_setup_20260608.md` | Done; final Prolific setup next |
 | P1 | Recognition stimulus production manifest | Turns the recognition design into concrete seed-image requests and SVD generation jobs without accepting near-duplicate lures | Launch-prep subgate passed: `filler_lure_v06` concert-stage attempts were preserved as rejected artifacts, the ceramic-teacups replacement pair passed, 60/60 MP4s passed refreshed screening, 75 videos were hosted on public GitHub Pages, and two-session Prolific HTML/setup artifacts are ready | `content_pocket_recognition_stimulus_production_manifest_20260608.json`, `content_pocket_recognition_launch_assets_20260608.md`, and `content_pocket_recognition_prolific_setup_20260608.md` | Done; final human/IRB review and Prolific configuration next |
+| P1 | Recognition response analysis gate | Freezes how the two-session Prolific export becomes a claim/no-claim result without deleting dry-run, media-error, or incomplete rows | Analysis plan/script ready with JSON/JSONL/CSV payload loading, latest-payload selection, explicit manual exclusions, complete-case five-arm gate, Wilson CIs, z-test, and paired sign test; no response data yet | `scripts/analyze_content_pocket_recognition_responses.py` and `content_pocket_recognition_response_analysis_plan_20260608.md` | Done; run after response export |
 | P2 | Prompt-conditioned generator transition | Moves from metadata-only prompt text to a generator where prompt operations can actually change content | Prompt interventions change generated video content while preserving visual validity and improving candidate selection | Prompt-conditioned generator manifest | Queued |
 | P2 | V-JEPA-augmented candidate screen | Reintroduces the broader selector stack only after content pockets are stabilized | V-JEPA adjudication improves or de-risks candidate ranking against TRIBE-only selection | Selector-stack comparison note | Queued |
-| Human-owned | Two-session recognition-memory study | Needed before final human memorability claims | Primary-positive old-vs-lure recognition exceeds hard-negative-control recognition under the pre-registered analysis; dry-run rows excluded | Prolific export and recognition-memory analysis report | Ready for final human/IRB content review, response endpoint entry, and Prolific project setup |
+| Human-owned | Two-session recognition-memory study | Needed before final human memorability claims | Primary-positive old-vs-lure recognition exceeds hard-negative-control recognition under the fixed analysis gate; dry-run rows are explicitly reason-coded/excluded, not deleted | Prolific export and recognition-memory analysis report | Ready for final human/IRB content review, response endpoint entry, Prolific project setup, and later response-analysis run |
 | Async | Memento10k, VideoMem, or measured-BMD transfer checks | Tests cross-dataset and measured-brain grounding | External dataset correlation or measured-fMRI direction alignment clears pre-registered threshold | Dataset transfer report | Parked |
 
 ## Immediate Next Decision
@@ -204,12 +206,17 @@ Current results to preserve:
   `content_pocket_recognition_prolific_setup_20260608.md` record public HTTPS
   launch pages, 75 hosted MP4s, session completion codes, and the participant
   target/minimum for the delayed recognition-memory study.
+- `content_pocket_recognition_response_analysis_plan_20260608.md` and
+  `scripts/analyze_content_pocket_recognition_responses.py` freeze the response
+  ingestion/exclusion/contrast logic before Prolific data are collected. This is
+  analysis plumbing only, not human recognition-memory evidence.
 
 Near-term options:
 
 1. Complete final human/IRB-facing content review, enter the response endpoint
-   and completion codes in Prolific, and launch the two-session delayed
-   recognition-memory study.
+   and completion codes in Prolific, launch the two-session delayed
+   recognition-memory study, and run the fixed response-analysis script on the
+   export.
 2. Build a measured-BMD or BMD-grounded transfer report from the same frozen
    stimulus set.
 3. Optionally run the older blinded forced-choice survey as a weaker perceived
