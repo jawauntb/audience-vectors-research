@@ -61,6 +61,7 @@ def default_search_roots() -> list[Path]:
     return [
         Path("."),
         Path("data"),
+        Path("data/attention_capture"),
         Path("/Users/jawaun/isc_mod/data"),
         Path("/Users/jawaun/data"),
         Path("/Users/jawaun/datasets"),

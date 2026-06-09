@@ -139,6 +139,35 @@ def test_dhf1k_root_without_ready_label_audit_blocks_label_handoff(
     ] == "build DHF1K labels and confirm ready_for_manifest_alignment=true"
 
 
+def test_attention_capture_mount_root_is_a_default_search_root() -> None:
+    module = load_module()
+
+    assert Path("data/attention_capture") in module.default_search_roots()
+
+
+def test_dhf1k_mount_subfolder_is_ready_for_label_build(tmp_path: Path) -> None:
+    module = load_module()
+    mount = tmp_path / "data" / "attention_capture"
+    dhf1k = mount / "DHF1K"
+    (dhf1k / "video").mkdir(parents=True)
+    (dhf1k / "video" / "001.AVI").write_bytes(b"fake")
+    maps = dhf1k / "annotation" / "001" / "maps"
+    maps.mkdir(parents=True)
+    (maps / "0001.png").write_bytes(b"fake")
+
+    report = module.build_readiness_report(
+        search_roots=[mount],
+        repo_root=tmp_path,
+    )
+
+    assert report["dhf1k_candidates"][0]["path"] == str(dhf1k)
+    assert report["readiness"]["dhf1k_root_ready_for_label_build"] is True
+    assert report["readiness"]["dhf1k_labels_ready"] is False
+    assert "DHF1K root found but no ready DHF1K label audit found" in report[
+        "readiness"
+    ]["blocking_reasons"]
+
+
 def test_synthetic_ecr_csv_is_not_real_snapugc_candidate(tmp_path: Path) -> None:
     module = load_module()
     synthetic_labels = tmp_path / "phase1_synthetic_alignment_labels.csv"

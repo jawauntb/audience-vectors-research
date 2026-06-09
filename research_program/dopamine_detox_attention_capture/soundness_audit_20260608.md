@@ -422,6 +422,17 @@ Readiness-blocker reporting update:
   the repository root, avoiding worktree-specific path churn during repeated
   verifier regenerations.
 
+External-data intake update:
+
+- `data/attention_capture/` is now the preferred local mount point for
+  claim-relevant Phase 1 data and is scanned by the readiness audit by default.
+- Git tracks only the mount README and placeholders; datasets, clips, labels,
+  features, and model outputs remain ignored.
+- This does not change the scientific verdict. It only makes the next real
+  unblock explicit: mount DHF1K at `data/attention_capture/DHF1K/` or place
+  granted SnapUGC/VQualA labels under `data/attention_capture/`, then rerun the
+  readiness audit and label/audit handoff.
+
 Residual content:
 
 - Explained by old regime: TRIBE can produce reusable cortical features and
