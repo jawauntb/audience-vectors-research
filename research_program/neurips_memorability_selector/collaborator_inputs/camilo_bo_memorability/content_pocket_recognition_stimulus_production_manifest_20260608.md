@@ -1,6 +1,6 @@
 # Content-Pocket Recognition Stimulus Production Manifest
 
-Date: 2026-06-08T23:17:30+00:00
+Date: 2026-06-09T00:11:30+00:00
 
 ## Discovery-Regime Audit
 
@@ -25,13 +25,14 @@ validation regime.
 
 ## Status
 
-- Status: `generated_videos_present_screening_required`
+- Status: `recognition_launch_assets_ready_for_prolific_setup`
 - Seed image requests: 60
 - Seed images present: 60
 - Seed images missing: 0
 - SVD generation jobs: 60
 - Output MP4s present: 60
 - Output MP4s missing: 0
+- Hosted launch assets ready: True
 
 ## Required Production Blocks
 
@@ -43,9 +44,8 @@ validation regime.
 
 ## Launch Blockers
 
-- Generated MP4 visual screening has unresolved flags.
 - Final human/IRB-facing content review is not complete.
-- Hosted HTTPS URLs and two-session Prolific wiring are not complete.
+- Final Prolific project configuration, completion codes, and response endpoint are not recorded.
 
 ## Claim Boundary
 
@@ -55,6 +55,6 @@ validation regime.
 
 ## Next Action
 
-Review or replace the generated MP4s flagged by video screening,
-preserve rejected artifacts with reasons, then rerun screening before
-hosting accepted videos.
+Complete final human/IRB-facing content review, configure the
+two Prolific sessions with the recorded HTTPS URLs, and preserve
+all response rows and exclusions before any memory claim.

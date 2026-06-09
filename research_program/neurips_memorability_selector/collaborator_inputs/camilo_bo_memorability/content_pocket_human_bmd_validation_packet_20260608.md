@@ -170,9 +170,11 @@ Launch state:
   produced, and first-pass image distinctiveness accepted for SVD generation.
 - MP4 generation completed: 60/60 recognition MP4s are present and 3 video
   screening sheets were produced.
-- Not launchable: sampled-frame video screening flagged filler lure
-  `filler_lure_v06` for `tail_sharpness_collapse`; review or replace it before
-  hosting. Hosted URLs and final Prolific setup are still missing.
+- Recognition-memory launch-prep is ready: the flagged concert-stage
+  `filler_lure_v06` was preserved as rejected evidence, replaced with a
+  ceramic-teacups filler pair, refreshed screening passed 60/60 generated MP4s,
+  and public GitHub Pages launch assets plus Prolific setup notes are ready.
+  Delayed recognition-memory data have not been collected yet.
 
 ## Weaker Perceived-Memorability Pilot
 
@@ -248,8 +250,9 @@ Not allowed:
 ## Next Action
 
 For an actual human memorability claim, use the recognition-memory packet:
-review or replace the flagged filler lure, host the accepted MP4s, freeze the
-complete recognition set, and then run the two-session delayed Prolific study.
+complete final human/IRB-facing review, configure the two Prolific sessions
+with the hosted launch assets, and then run the two-session delayed Prolific
+study.
 
 Alternative lower-claim paths:
 

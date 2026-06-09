@@ -65,7 +65,12 @@ Last updated: 2026-06-08
   hard-negative controls, with no obvious sampled-frame text/watermark, frame
   collapse, or attention-check leakage. Final human/IRB-facing screening,
   hosted URLs, and validation still remain open, so this does not change the
-  claim status.
+  claim status. The stronger two-session recognition-memory path is now further
+  along: the flagged filler lure was preserved as rejected evidence, replaced
+  with a ceramic-teacups filler pair, refreshed video screening passed 60/60
+  generated recognition MP4s, and public GitHub Pages launch assets plus
+  Prolific setup notes are ready. No delayed-recognition data have been
+  collected yet.
 
 ## Newly Built V-JEPA Pilot State
 
@@ -115,9 +120,10 @@ to TRIBE/product nor obviously irrelevant.
   verifier. The validation packet, exact MP4 stimulus freeze, agent
   sampled-frame pre-screen, recognition-memory design, recognition stimulus
   production manifest, and recognition seed-image materialization/screening
-  artifacts are assembled, and the recognition MP4 set has been generated.
-  Video pre-screening found one filler-lure automated flag, so the set is not
-  launch-ready and no human/BMD gate has run.
+  artifacts are assembled. The one flagged filler-lure video was preserved and
+  replaced, refreshed screening passed 60/60 generated recognition MP4s, and
+  public HTTPS launch assets are ready for Prolific setup. Final human/IRB-facing
+  review and delayed Session 2 data remain open, so no human/BMD gate has run.
 - We have not shown delayed-recognition memory gains.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.
@@ -178,15 +184,17 @@ artifact:
 - `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_video_screening_20260608.json`
 - `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_video_screening_20260608.md`
 - `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_video_screening_sheets_20260608/`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_launch_assets_20260608.md`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_hosted_video_url_map_20260608.json`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_prolific_setup_20260608.md`
 
 Use it only for a human/BMD validation launch. For a direct actual-memory claim,
 the stronger path is the two-session recognition-memory packet. The production
 manifest now enumerates 60 required seed images and 60 SVD jobs; current status
-is `generated_videos_present_screening_required`. The seed-image subgate has
-passed and 60/60 recognition MP4s are present, but sampled-frame video
-screening flagged one filler lure (`filler_lure_v06`,
-`tail_sharpness_collapse`). Review/replacement, hosting, and two-session
-Prolific wiring remain open. The older forced-choice survey is a weaker
-perceived-memorability readout. This does not change the current main-pilot
-priority above unless the team decides to spend validation budget on the
-content-pocket fork.
+is `recognition_launch_assets_ready_for_prolific_setup`. The seed-image subgate
+passed, the flagged filler lure was preserved and replaced, refreshed video
+screening passed 60/60 generated MP4s, and public GitHub Pages/Prolific setup
+artifacts are ready. The older forced-choice survey is a weaker
+perceived-memorability readout. This does not change the claim boundary: actual
+recognition-memory evidence still requires final human/IRB-facing review and
+delayed Session 2 data.

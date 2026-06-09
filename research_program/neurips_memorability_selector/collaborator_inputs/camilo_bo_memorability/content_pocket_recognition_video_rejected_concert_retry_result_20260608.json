@@ -1,0 +1,62 @@
+{
+  "claim_boundary": [
+    "Generated recognition MP4s are not human-memory evidence.",
+    "Video-level screening and final human/IRB-facing review are required before launch.",
+    "Failed or visually rejected videos must be retained with reasons."
+  ],
+  "config": {
+    "app_name": "audience-vectors-dev",
+    "fps": 7,
+    "motion_bucket_id": 5,
+    "noise_aug_strength": 0.0,
+    "num_frames": 25,
+    "num_inference_steps": 50,
+    "steering_artifact": "/Users/jawaun/isc_mod/data/reports/adapter_tribe_to_clip_h.pt",
+    "steering_key": "v_mem_clip_h_via_adapter",
+    "timeout_seconds": 1800
+  },
+  "counts": {
+    "already_present": 0,
+    "failed": 0,
+    "generated": 1,
+    "present_after_run": 1,
+    "requested": 1
+  },
+  "created_at_utc": "2026-06-08T23:28:19+00:00",
+  "dry_run": false,
+  "result_path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_video_replacement_result_20260608.json",
+  "role_counts": {
+    "filler_lure_video": 1
+  },
+  "rows": [
+    {
+      "alpha": 0.0,
+      "error": null,
+      "generation_seconds": 83.75745100000495,
+      "guidance": 7.5,
+      "job_id": "filler_lure_v06",
+      "matched_id": "filler_old_v06",
+      "noise_seed": 990006,
+      "old_target_id": null,
+      "output_video": {
+        "bytes": 1366911,
+        "exists": true,
+        "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v06.mp4",
+        "sha256": "e873227b6141888a64412e563dcb3460630125d9f6ee14e18a87d29eedcd02c0"
+      },
+      "prompt": "A different concert stage with distinct lighting and performer layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "role": "filler_lure_video",
+      "seed_image": {
+        "bytes": 1795198,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v06.png",
+        "sha256": "6d3ee0364e876058c41a0393e0002924ee7f59550ef1117e272c9ad6d8bbf73e"
+      },
+      "source_pocket": "fresh24_concert_stage",
+      "status": "generated"
+    }
+  ],
+  "schema_version": "content_pocket_recognition_video_generation.v1",
+  "source_production_manifest": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_stimulus_production_manifest_20260608.json",
+  "status": "generation_complete"
+}

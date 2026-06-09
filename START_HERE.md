@@ -139,10 +139,12 @@ BMD-grounded gate validates the candidate set.
   identity dominates the score structure;
 - orange flowers and hanging clothes are the primary recognition-memory pockets;
   aerial beach, city street, and storm beach remain the hard negative controls;
-- recognition seed images and matched SVD MP4s are materialized. The recognition
-  video pre-screen generated 60/60 MP4s and flagged one filler lure
-  (`filler_lure_v06`) for `tail_sharpness_collapse`; review or replace that
-  filler before hosting and any recognition launch;
+- recognition seed images and matched SVD MP4s are materialized. The flagged
+  concert-stage filler lure (`filler_lure_v06`) was preserved as a rejected
+  artifact, replaced with a ceramic-teacups filler pair, and the refreshed
+  recognition video pre-screen passed 60/60 MP4s. Public GitHub Pages launch
+  assets are ready; next step is final human/IRB-facing review and Prolific
+  project configuration, not another filler replacement;
 - switch to a prompt-conditioned generator path before running prompt-rewrite
   tournaments, because prompt text is metadata-only in the current SVD runner;
 - keep neural-response-guided generation as a separate satellite track.

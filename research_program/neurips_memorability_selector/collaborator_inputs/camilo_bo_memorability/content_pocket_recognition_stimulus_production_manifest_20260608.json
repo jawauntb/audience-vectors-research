@@ -12,7 +12,7 @@
     "Do not claim actual memorability until the recognition gate clears.",
     "Do not use near-duplicate lures to rescue an underpowered recognition result."
   ],
-  "created_at_utc": "2026-06-08T23:17:30+00:00",
+  "created_at_utc": "2026-06-09T00:11:30+00:00",
   "current_regime_reading": "Production search inside the accepted content-pocket recognition memory regime. This does not change claims until human recognition or BMD-grounded validation clears.",
   "generation_jobs": [
     {
@@ -572,20 +572,20 @@
       "noise_seed": 880006,
       "old_target_id": null,
       "output_video": {
-        "bytes": 1356512,
+        "bytes": 1096476,
         "exists": true,
         "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/old/filler_old_v06.mp4",
-        "sha256": "fe46e469fdddaa223684d9cdde622d8c70e1a33f2ca2a12773907d7d9162b6fe"
+        "sha256": "593d41b9637b42f5e888d0a17f720ccc8a83ef8be96a56a1f8abe45e1c3c7c46"
       },
-      "prompt": "A small concert stage with musicians under lights. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "prompt": "Two ceramic teacups on a sunlit wooden table with a simple cloth napkin. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
       "role": "filler_old_video",
       "seed_image": {
-        "bytes": 1623230,
+        "bytes": 1620283,
         "exists": true,
         "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v06.png",
-        "sha256": "9589544b2535eaf929575cffaa844493a944944d2d7711804540bc396003067b"
+        "sha256": "31c165ed76707cdb36264875a7ccaf5920ddfea2115f925e73b972509040dbc6"
       },
-      "source_pocket": "fresh24_concert_stage"
+      "source_pocket": "fresh24_ceramic_teacups"
     },
     {
       "alpha": 0.0,
@@ -1219,23 +1219,23 @@
       "matched_id": "filler_old_v06",
       "must_not_optimize_for_memorability": true,
       "must_screen_before_use": true,
-      "noise_seed": 890006,
+      "noise_seed": 990006,
       "old_target_id": null,
       "output_video": {
-        "bytes": 1627647,
+        "bytes": 922240,
         "exists": true,
         "path": "data/generated/content_pocket_recognition_memory_20260608/fillers/lures/filler_lure_v06.mp4",
-        "sha256": "12faed8b8e58834f56844d5335cdc21aa41a767d9a1df903686cd02787763cb0"
+        "sha256": "56f514224a0fa743d91653116f562026dbff77b503e0e7f9583b5d38b64a9abe"
       },
-      "prompt": "A different concert stage with distinct lighting and performer layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "prompt": "A different arrangement of ceramic teacups on a bright kitchen table, with distinct cup shapes and camera angle. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
       "role": "filler_lure_video",
       "seed_image": {
-        "bytes": 1795198,
+        "bytes": 1738395,
         "exists": true,
         "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v06.png",
-        "sha256": "6d3ee0364e876058c41a0393e0002924ee7f59550ef1117e272c9ad6d8bbf73e"
+        "sha256": "5a266693d51d2b5fa8973eaf8351947ff4b91317c138827e3f9cb55154ee3cc5"
       },
-      "source_pocket": "fresh24_concert_stage"
+      "source_pocket": "fresh24_ceramic_teacups"
     },
     {
       "alpha": 0.0,
@@ -1576,10 +1576,27 @@
       "source_pocket": "fresh24_ocean_cliffs"
     }
   ],
+  "launch_assets": {
+    "counts": {
+      "copied_videos": 75,
+      "missing_videos": 0,
+      "required_videos": 75,
+      "session1_trials_per_form": 30,
+      "session2_trials_per_form": 25,
+      "session_forms": 6
+    },
+    "exists": true,
+    "hosted_launch_assets_ready": true,
+    "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_launch_assets_20260608.json",
+    "session_urls": {
+      "session1_url": "https://jawauntb.github.io/audience-vectors-research/session1.html",
+      "session2_url": "https://jawauntb.github.io/audience-vectors-research/session2.html"
+    },
+    "status": "hosted_launch_assets_ready"
+  },
   "launch_blockers": [
-    "Generated MP4 visual screening has unresolved flags.",
     "Final human/IRB-facing content review is not complete.",
-    "Hosted HTTPS URLs and two-session Prolific wiring are not complete."
+    "Final Prolific project configuration, completion codes, and response endpoint are not recorded."
   ],
   "question": "Can the recognition-memory validation set be materialized without using near-duplicate same-category lures?",
   "schema_version": "content_pocket_recognition_stimulus_production.v1",
@@ -2057,7 +2074,7 @@
     {
       "matched_id": null,
       "must_not_optimize_for_memorability": true,
-      "prompt": "A small concert stage with musicians under lights. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "prompt": "Two ceramic teacups on a sunlit wooden table with a simple cloth napkin. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
       "request_id": "filler_old_v06",
       "requirements": [
         "unrelated to primary and hard-negative analysis arms",
@@ -2066,12 +2083,12 @@
       ],
       "role": "filler_old_seed",
       "seed_image": {
-        "bytes": 1623230,
+        "bytes": 1620283,
         "exists": true,
         "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v06.png",
-        "sha256": "9589544b2535eaf929575cffaa844493a944944d2d7711804540bc396003067b"
+        "sha256": "31c165ed76707cdb36264875a7ccaf5920ddfea2115f925e73b972509040dbc6"
       },
-      "source_pocket": "fresh24_concert_stage",
+      "source_pocket": "fresh24_ceramic_teacups",
       "status": "present"
     },
     {
@@ -2557,7 +2574,7 @@
     {
       "matched_id": "filler_old_v06",
       "must_not_optimize_for_memorability": true,
-      "prompt": "A different concert stage with distinct lighting and performer layout. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
+      "prompt": "A different arrangement of ceramic teacups on a bright kitchen table, with distinct cup shapes and camera angle. Natural realistic short video, clear central subject, continuous motion, stable composition, no text, no watermark.",
       "request_id": "filler_lure_v06",
       "requirements": [
         "same broad category as the filler old target",
@@ -2566,12 +2583,12 @@
       ],
       "role": "filler_lure_seed",
       "seed_image": {
-        "bytes": 1795198,
+        "bytes": 1738395,
         "exists": true,
         "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v06.png",
-        "sha256": "6d3ee0364e876058c41a0393e0002924ee7f59550ef1117e272c9ad6d8bbf73e"
+        "sha256": "5a266693d51d2b5fa8973eaf8351947ff4b91317c138827e3f9cb55154ee3cc5"
       },
-      "source_pocket": "fresh24_concert_stage",
+      "source_pocket": "fresh24_ceramic_teacups",
       "status": "present"
     },
     {
@@ -2844,12 +2861,12 @@
   "seed_root": "data/recognition_memory_seed_images_20260608",
   "source_recognition_design": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_memory_design_20260608.json",
   "source_task_payload_sha256": "b151326f1e120d7d6c6440c97e9341784bb3b25a1393b8ca7a8481fbcb3cef6c",
-  "status": "generated_videos_present_screening_required",
+  "status": "recognition_launch_assets_ready_for_prolific_setup",
   "video_output_dir": "data/generated/content_pocket_recognition_memory_20260608",
   "video_screening": {
-    "accepted_for_hosting": false,
+    "accepted_for_hosting": true,
     "exists": true,
     "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_video_screening_20260608.json",
-    "status": "agent_video_screen_requires_review"
+    "status": "agent_video_screen_passed_for_hosting"
   }
 }

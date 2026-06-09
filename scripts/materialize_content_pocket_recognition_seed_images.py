@@ -269,12 +269,19 @@ def selected_requests(
     manifest: dict[str, Any],
     *,
     roles: set[str] | None,
+    request_ids: set[str] | None,
     limit: int | None,
     only_missing: bool,
 ) -> list[dict[str, Any]]:
     requests = list(manifest["seed_image_requests"])
     if roles:
         requests = [request for request in requests if request["role"] in roles]
+    if request_ids:
+        requests = [
+            request
+            for request in requests
+            if str(request["request_id"]) in request_ids
+        ]
     if only_missing:
         requests = [
             request
@@ -583,6 +590,7 @@ def run_materialization(
     env_file: Path,
     use_doppler: bool,
     roles: set[str] | None,
+    request_ids: set[str] | None,
     limit: int | None,
     only_missing: bool,
     overwrite: bool,
@@ -594,6 +602,7 @@ def run_materialization(
     requests = selected_requests(
         manifest,
         roles=roles,
+        request_ids=request_ids,
         limit=limit,
         only_missing=only_missing,
     )
@@ -712,6 +721,7 @@ def main() -> int:
     parser.add_argument("--max-retries", type=int, default=2)
     parser.add_argument("--retry-sleep-seconds", type=float, default=8.0)
     parser.add_argument("--roles", help="comma-separated roles to generate")
+    parser.add_argument("--request-id", action="append", default=[])
     parser.add_argument("--limit", type=int)
     parser.add_argument("--include-existing", action="store_true")
     parser.add_argument("--overwrite", action="store_true")
@@ -735,6 +745,7 @@ def main() -> int:
         env_file=args.env_file,
         use_doppler=args.use_doppler,
         roles=parse_roles(args.roles),
+        request_ids=set(args.request_id) if args.request_id else None,
         limit=args.limit,
         only_missing=not args.include_existing,
         overwrite=args.overwrite,

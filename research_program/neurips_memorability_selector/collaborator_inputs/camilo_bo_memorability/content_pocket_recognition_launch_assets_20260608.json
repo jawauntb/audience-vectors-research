@@ -1,0 +1,44 @@
+{
+  "artifacts": {
+    "archive": "data/sites/content_pocket_recognition_launch_20260608.tar.gz",
+    "session1_html": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_session1_prolific_20260608.html",
+    "session2_html": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_session2_prolific_20260608.html",
+    "site_dir": "data/sites/content_pocket_recognition_launch_20260608",
+    "url_map": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_hosted_video_url_map_20260608.json"
+  },
+  "counts": {
+    "copied_videos": 75,
+    "missing_videos": 0,
+    "required_videos": 75,
+    "session1_trials_per_form": 30,
+    "session2_trials_per_form": 25,
+    "session_forms": 6
+  },
+  "created_at_utc": "2026-06-09T00:16:53+00:00",
+  "launch_blockers": [
+    "Final human/IRB-facing content review is not recorded in this artifact.",
+    "Prolific study configuration, completion URLs, compensation, and invite timing must be set in Prolific.",
+    "Human recognition-memory validation has not run."
+  ],
+  "missing_videos": [],
+  "payload_sha256": "ed7b76e463441236db8651c0cd9a80eb08ce9a6c8ab75902e18512bf007e236d",
+  "schema_version": "content_pocket_recognition_launch_assets.v1",
+  "session_html_sha256": {
+    "session1": "ecff767ac7a9737e5ece92becd9b209036ba7fe92450ae91ebba5126bf6e9eea",
+    "session2": "7d2e0d309d6fb39cfb736df4aa70b8daad093317ff11e06ffe7e92a5c3d3e510"
+  },
+  "session_urls": {
+    "session1_url": "https://jawauntb.github.io/audience-vectors-research/session1.html",
+    "session2_url": "https://jawauntb.github.io/audience-vectors-research/session2.html"
+  },
+  "site_base_url": "https://jawauntb.github.io/audience-vectors-research",
+  "source_design": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_memory_design_20260608.json",
+  "source_production_manifest": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_stimulus_production_manifest_20260608.json",
+  "source_video_screening": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_video_screening_20260608.json",
+  "status": "hosted_launch_assets_ready",
+  "video_base_url": "",
+  "video_roles": {
+    "analysis_old_target": 15,
+    "recognition_generated": 60
+  }
+}

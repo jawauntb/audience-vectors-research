@@ -1,0 +1,131 @@
+{
+  "claim_boundary": [
+    "Seed materialization is not human-memory evidence.",
+    "Generated seed images require manual screening before SVD generation.",
+    "Near-duplicate lures must be rejected, not averaged away."
+  ],
+  "contact_sheets": [
+    {
+      "exists": false,
+      "items": 0,
+      "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_replacement_screening_sheets_20260608/analysis_lures.jpg",
+      "role": "analysis_lure_seed"
+    },
+    {
+      "bytes": 20718,
+      "exists": true,
+      "items": 1,
+      "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_replacement_screening_sheets_20260608/filler_old.jpg",
+      "role": "filler_old_seed",
+      "sha256": "b10e0a0aa7f63c8ccff1e2437887c42a28366357947a8f3af7e9b5613fb22e3f"
+    },
+    {
+      "bytes": 19840,
+      "exists": true,
+      "items": 1,
+      "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_replacement_screening_sheets_20260608/filler_lures.jpg",
+      "role": "filler_lure_seed",
+      "sha256": "e06d6685b046831b6a538eafde353145a15355e87269bc69bcf6f3046a6ca5e0"
+    },
+    {
+      "bytes": 269851,
+      "exists": true,
+      "items": 15,
+      "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_replacement_screening_sheets_20260608/analysis_old_vs_lure_pairs.jpg",
+      "role": "analysis_old_vs_lure_pair",
+      "sha256": "697cd2d0e014f59a86430ed930400f53fbcddcbd6a43f738e31e30182c84743b"
+    },
+    {
+      "bytes": 30862,
+      "exists": true,
+      "items": 1,
+      "path": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_seed_replacement_screening_sheets_20260608/filler_old_vs_lure_pairs.jpg",
+      "role": "filler_old_vs_lure_pair",
+      "sha256": "d4f2fdf1203e8c70982b657e98ebcd84c3ab95d9a66da7b8fec511e98b80f40b"
+    }
+  ],
+  "counts": {
+    "already_present": 0,
+    "failed": 0,
+    "generated": 2,
+    "present_after_run": 2,
+    "requested": 2
+  },
+  "created_at_utc": "2026-06-08T23:31:00+00:00",
+  "dry_run": false,
+  "model": "gpt-image-2",
+  "quality": "low",
+  "rows": [
+    {
+      "error": null,
+      "generation_seconds": 14.747216166993894,
+      "matched_id": "filler_old_v06",
+      "openai_response": {
+        "created": 1780961454,
+        "model": "gpt-image-2",
+        "quality": "low",
+        "size": "1536x864",
+        "usage": {
+          "input_tokens": 239,
+          "input_tokens_details": {
+            "image_tokens": 0,
+            "text_tokens": 239
+          },
+          "output_tokens": 120,
+          "output_tokens_details": {
+            "image_tokens": 120,
+            "text_tokens": 0
+          },
+          "total_tokens": 359
+        }
+      },
+      "request_id": "filler_lure_v06",
+      "role": "filler_lure_seed",
+      "seed_image": {
+        "bytes": 1738395,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/lures/filler_lure_v06.png",
+        "sha256": "5a266693d51d2b5fa8973eaf8351947ff4b91317c138827e3f9cb55154ee3cc5"
+      },
+      "source_pocket": "fresh24_ceramic_teacups",
+      "status": "generated"
+    },
+    {
+      "error": null,
+      "generation_seconds": 14.06156029200065,
+      "matched_id": null,
+      "openai_response": {
+        "created": 1780961453,
+        "model": "gpt-image-2",
+        "quality": "low",
+        "size": "1536x864",
+        "usage": {
+          "input_tokens": 232,
+          "input_tokens_details": {
+            "image_tokens": 0,
+            "text_tokens": 232
+          },
+          "output_tokens": 120,
+          "output_tokens_details": {
+            "image_tokens": 120,
+            "text_tokens": 0
+          },
+          "total_tokens": 352
+        }
+      },
+      "request_id": "filler_old_v06",
+      "role": "filler_old_seed",
+      "seed_image": {
+        "bytes": 1620283,
+        "exists": true,
+        "path": "data/recognition_memory_seed_images_20260608/fillers/old/filler_old_v06.png",
+        "sha256": "31c165ed76707cdb36264875a7ccaf5920ddfea2115f925e73b972509040dbc6"
+      },
+      "source_pocket": "fresh24_ceramic_teacups",
+      "status": "generated"
+    }
+  ],
+  "schema_version": "content_pocket_recognition_seed_materialization.v1",
+  "size": "1536x864",
+  "source_production_manifest": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_stimulus_production_manifest_20260608.json"
+}
