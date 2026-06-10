@@ -22,9 +22,15 @@ DEFAULT_VOLUME_NAMES = (
     "audience-analyzer-runs-v1",
     "wan22-lora-data-v1",
     "wan22-lora-outputs-v1",
+    "wan22-lora-cache-v1",
+    "svd-weights-v1",
     "svd-outputs-v1",
+    "wan22-weights-v1",
     "wan22-outputs-v1",
     "cogvideox-outputs-v1",
+    "cogvideox-weights-v1",
+    "tribe-v2-weights-v1",
+    "vjepa-weights-v1",
     "bmd-videos-v1",
     "fr-dev-data",
     "fr-prd-data",
@@ -35,6 +41,23 @@ DEFAULT_VOLUME_NAMES = (
 )
 DEFAULT_SECRET_NAMES = (
     "underlying-analyzer-env",
+    "fr-dev-internal-api",
+    "fr-dev-github-app",
+    "fr-dev-llm-api-keys",
+    "fr-prd-internal-api",
+    "fr-prd-github-app",
+    "fr-prd-llm-api-keys",
+    "fr-stg-internal-api",
+    "fr-stg-github-app",
+    "fr-stg-llm-api-keys",
+    "flytrap-review-prod-internal-api",
+    "flytrap-review-prod-github-app",
+    "flytrap-review-prod-llm-api-keys",
+    "flytrap-review-staging-internal-api",
+    "flytrap-review-staging-github-app",
+    "flytrap-review-staging-llm-api-keys",
+    "internal-api",
+    "github-app",
     "llm-api-keys",
 )
 TOKEN_ENVS = (
@@ -156,6 +179,10 @@ def main(
         "generated_at": datetime.now(UTC).isoformat(),
         "volume_report": volume_report,
         "secret_report": secret_report,
+        "configuration": {
+            "volume_names": list(DEFAULT_VOLUME_NAMES),
+            "secret_names": list(DEFAULT_SECRET_NAMES),
+        },
         "publication_unblocks": summarize_publication_unblocks(
             volume_report=volume_report,
             secret_report=secret_report,
@@ -491,6 +518,7 @@ def render_modal_asset_markdown(report: dict[str, Any]) -> str:
     unblocks = report["publication_unblocks"]
     secret = report["secret_report"]
     volume = report["volume_report"]
+    configuration = report.get("configuration") or {}
     lines = [
         "# Attention-Capture Modal Asset Audit",
         "",
@@ -501,6 +529,11 @@ def render_modal_asset_markdown(report: dict[str, Any]) -> str:
         f"- Feature caches maybe available: {unblocks['feature_caches_maybe_available']}",
         f"- Full multimodal token env present: {unblocks['full_multimodal_token_env_present']}",
         f"- Claim boundary: {report['claim_boundary']}",
+        "",
+        "## Configuration",
+        "",
+        f"- Volumes checked: {len(configuration.get('volume_names') or [])}",
+        f"- Secrets checked: {len(configuration.get('secret_names') or [])}",
         "",
         "## Blocking Reasons",
         "",

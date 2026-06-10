@@ -40,6 +40,13 @@ def parse_args() -> argparse.Namespace:
         default=[],
         help="Modal-hosted asset audit JSON. May be passed multiple times.",
     )
+    parser.add_argument(
+        "--tribe-full-preflight-audit",
+        action="append",
+        type=Path,
+        default=[],
+        help="TRIBE full-mode Modal preflight audit JSON. May be passed multiple times.",
+    )
     parser.add_argument("--output-json", type=Path, required=True)
     parser.add_argument("--output-md", type=Path, required=True)
     parser.add_argument("--min-paper-datasets", type=int, default=2)
@@ -59,6 +66,7 @@ def main() -> None:
         workflow_jsons=args.workflow_json,
         feature_cache_audits=args.feature_cache_audit,
         modal_asset_audits=args.modal_asset_audit,
+        tribe_full_preflight_audits=args.tribe_full_preflight_audit,
         min_paper_datasets=args.min_paper_datasets,
         token_envs=tuple(args.token_env or DEFAULT_TOKEN_ENVS),
     )
@@ -76,6 +84,7 @@ def build_publication_path_report(
     workflow_jsons: list[Path],
     feature_cache_audits: list[Path] | None = None,
     modal_asset_audits: list[Path] | None = None,
+    tribe_full_preflight_audits: list[Path] | None = None,
     min_paper_datasets: int = 2,
     token_envs: tuple[str, ...] = DEFAULT_TOKEN_ENVS,
 ) -> dict[str, Any]:
@@ -86,6 +95,10 @@ def build_publication_path_report(
     ]
     modal_audits = [
         summarize_modal_asset_audit(path) for path in modal_asset_audits or []
+    ]
+    tribe_full_preflights = [
+        summarize_tribe_full_preflight_audit(path)
+        for path in tribe_full_preflight_audits or []
     ]
     credential_audit = audit_text_model_credentials(token_envs)
     completed_real_workflows = [
@@ -111,7 +124,14 @@ def build_publication_path_report(
     modal_token_present = any(
         audit["full_multimodal_token_env_present"] for audit in modal_audits
     )
-    full_multimodal_ready = credential_audit["any_present"] or modal_token_present
+    tribe_full_preflight_ready = any(
+        audit["ok"] and audit["event_mode"] == "full" for audit in tribe_full_preflights
+    )
+    full_multimodal_ready = (
+        credential_audit["any_present"]
+        or modal_token_present
+        or tribe_full_preflight_ready
+    )
     has_audio_only_workflow = any(workflow["audio_only"] for workflow in workflows)
     phase1_gate_passed = bool(passed_workflows)
     enough_datasets_for_paper = len(scored_datasets) >= min_paper_datasets
@@ -122,6 +142,7 @@ def build_publication_path_report(
         retention_labels_ready=retention_labels_ready,
         modal_asset_audits_supplied=bool(modal_audits),
         modal_retention_labels_available=modal_retention_labels_available,
+        tribe_full_preflight_audits_supplied=bool(tribe_full_preflights),
         full_multimodal_ready=full_multimodal_ready,
         has_audio_only_workflow=has_audio_only_workflow,
         enough_datasets_for_paper=enough_datasets_for_paper,
@@ -132,6 +153,7 @@ def build_publication_path_report(
         workflows=workflows,
         cache_audits=cache_audits,
         modal_audits=modal_audits,
+        tribe_full_preflights=tribe_full_preflights,
     )
     return {
         "schema_version": 1,
@@ -141,12 +163,16 @@ def build_publication_path_report(
         "workflow_jsons": [str(path) for path in workflow_jsons],
         "feature_cache_audit_jsons": [str(path) for path in feature_cache_audits or []],
         "modal_asset_audit_jsons": [str(path) for path in modal_asset_audits or []],
+        "tribe_full_preflight_audit_jsons": [
+            str(path) for path in tribe_full_preflight_audits or []
+        ],
         "min_paper_datasets": min_paper_datasets,
         "readiness_summary": summarize_readiness(readiness),
         "credential_audit": credential_audit,
         "full_multimodal_ready": full_multimodal_ready,
         "feature_cache_audit_summaries": cache_audits,
         "modal_asset_audit_summaries": modal_audits,
+        "tribe_full_preflight_summaries": tribe_full_preflights,
         "workflow_summaries": workflows,
         "phase1_gate_passed": phase1_gate_passed,
         "phase2_ready": phase1_gate_passed,
@@ -159,7 +185,7 @@ def build_publication_path_report(
             "This audit decides whether current evidence can support the "
             "attention-capture paper claim. It is stricter than data readiness: "
             "a runnable manifest is not enough when the scoring gate failed or "
-            "retention/full-multimodal evidence is absent."
+            "required external or full-mode evidence is absent."
         ),
     }
 
@@ -312,6 +338,24 @@ def summarize_modal_asset_audit(path: Path) -> dict[str, Any]:
     }
 
 
+def summarize_tribe_full_preflight_audit(path: Path) -> dict[str, Any]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    preflight = payload.get("preflight") or {}
+    return {
+        "path": str(path),
+        "ok": bool(payload.get("ok")),
+        "app_name": payload.get("app_name"),
+        "media_path": payload.get("media_path"),
+        "event_mode": payload.get("event_mode"),
+        "events_rows": preflight.get("events_rows"),
+        "duration_seconds": preflight.get("duration_seconds"),
+        "event_columns": list(preflight.get("event_columns") or []),
+        "error_type": payload.get("error_type"),
+        "error": payload.get("error"),
+        "claim_boundary": payload.get("claim_boundary"),
+    }
+
+
 def summarize_readiness(readiness: dict[str, Any]) -> dict[str, Any]:
     values = readiness.get("readiness") if isinstance(readiness, dict) else None
     if not isinstance(values, dict):
@@ -334,6 +378,7 @@ def publication_blockers(
     retention_labels_ready: bool,
     modal_asset_audits_supplied: bool,
     modal_retention_labels_available: bool,
+    tribe_full_preflight_audits_supplied: bool,
     full_multimodal_ready: bool,
     has_audio_only_workflow: bool,
     enough_datasets_for_paper: bool,
@@ -358,15 +403,20 @@ def publication_blockers(
         else:
             blockers.append("no SnapUGC/VQualA retention label CSV is mounted")
     if has_audio_only_workflow and not full_multimodal_ready:
-        if modal_asset_audits_supplied:
+        if tribe_full_preflight_audits_supplied:
+            blockers.append(
+                "completed TRIBE workflows are audio-only and no successful "
+                "full multimodal TRIBE preflight is available"
+            )
+        elif modal_asset_audits_supplied:
             blockers.append(
                 "completed TRIBE workflows are audio-only and no local or Modal "
-                "HuggingFace text model token is present"
+                "HuggingFace text model token or full-mode preflight is present"
             )
         else:
             blockers.append(
                 "completed TRIBE workflows are audio-only and no HuggingFace "
-                "text model token is present"
+                "text model token or full-mode preflight is present"
             )
     if not enough_datasets_for_paper:
         blockers.append(
@@ -382,6 +432,25 @@ def publication_warnings(
     workflows: list[dict[str, Any]],
     cache_audits: list[dict[str, Any]],
     modal_audits: list[dict[str, Any]],
+    tribe_full_preflights: list[dict[str, Any]],
+) -> list[str]:
+    warnings = feature_cache_warnings(readiness=readiness, cache_audits=cache_audits)
+    if any(workflow["best_capture_score"] is None for workflow in workflows):
+        warnings.append("at least one workflow lacks a capture_score metric")
+    if any(audit["n_truncated_volumes"] for audit in modal_audits):
+        warnings.append(
+            "at least one Modal asset audit hit its per-volume scan limit; rerun "
+            "with a larger --max-entries-per-volume before treating absence as final"
+        )
+    if any(not audit["ok"] for audit in tribe_full_preflights):
+        warnings.append("at least one TRIBE full-mode preflight audit failed")
+    return warnings
+
+
+def feature_cache_warnings(
+    *,
+    readiness: dict[str, Any],
+    cache_audits: list[dict[str, Any]],
 ) -> list[str]:
     warnings: list[str] = []
     feature_dirs = (
@@ -424,13 +493,6 @@ def publication_warnings(
                 "feature cache audit lacks archive URI or deterministic rerun "
                 f"commands: {audit['path']}"
             )
-    if any(workflow["best_capture_score"] is None for workflow in workflows):
-        warnings.append("at least one workflow lacks a capture_score metric")
-    if any(audit["n_truncated_volumes"] for audit in modal_audits):
-        warnings.append(
-            "at least one Modal asset audit hit its per-volume scan limit; rerun "
-            "with a larger --max-entries-per-volume before treating absence as final"
-        )
     return warnings
 
 
@@ -447,10 +509,14 @@ def next_actions(blockers: list[str], warnings: list[str]) -> list[str]:
             "Mount granted SnapUGC/VQualA labels and build a retention manifest "
             "with alignment-audit provenance."
         )
-    if any("HuggingFace" in blocker for blocker in blockers):
+    if any(
+        "HuggingFace" in blocker or "full multimodal TRIBE preflight" in blocker
+        for blocker in blockers
+    ):
         actions.append(
             "Provide a HuggingFace token with access to the gated TRIBE text "
-            "model path, then rerun full multimodal feature extraction."
+            "model path or pass a full-mode TRIBE preflight from cached Modal "
+            "weights, then rerun full multimodal feature extraction."
         )
     if any("external datasets" in blocker for blocker in blockers):
         actions.append(
@@ -486,7 +552,7 @@ def render_publication_markdown(report: dict[str, Any]) -> str:
         f"- Paper claim allowed: {report['paper_claim_allowed']}",
         f"- Phase 2 ready: {report['phase2_ready']}",
         f"- Phase 1 gate passed: {report['phase1_gate_passed']}",
-        f"- Full multimodal credential present: {report['full_multimodal_ready']}",
+        f"- Full multimodal path ready: {report['full_multimodal_ready']}",
         f"- Claim boundary: {report['claim_boundary']}",
         "",
         "## Blocking Reasons",
@@ -509,6 +575,9 @@ def render_publication_markdown(report: dict[str, Any]) -> str:
     lines.extend(render_workflow_table(report["workflow_summaries"]))
     lines.extend(render_feature_cache_table(report["feature_cache_audit_summaries"]))
     lines.extend(render_modal_asset_table(report["modal_asset_audit_summaries"]))
+    lines.extend(
+        render_tribe_full_preflight_table(report["tribe_full_preflight_summaries"])
+    )
     return "\n".join(lines) + "\n"
 
 
@@ -591,6 +660,31 @@ def render_modal_asset_table(modal_audits: list[dict[str, Any]]) -> list[str]:
             f"{audit['full_multimodal_token_env_present']} | "
             f"{audit['n_truncated_volumes']} | "
             f"{table_cell(blockers)} |"
+        )
+    return lines
+
+
+def render_tribe_full_preflight_table(preflights: list[dict[str, Any]]) -> list[str]:
+    lines = [
+        "",
+        "## TRIBE Full-Preflight Evidence",
+        "",
+        "| audit | ok | event mode | events | duration | media | error |",
+        "|---|---|---|---:|---:|---|---|",
+    ]
+    if not preflights:
+        lines.append("| none | False | n/a | 0 | n/a | n/a | n/a |")
+        return lines
+    for audit in preflights:
+        lines.append(
+            "| "
+            f"{table_cell(audit['path'])} | "
+            f"{audit['ok']} | "
+            f"{audit['event_mode'] or 'n/a'} | "
+            f"{audit['events_rows'] or 0} | "
+            f"{format_float(audit['duration_seconds'])} | "
+            f"{table_cell(audit['media_path'] or 'n/a')} | "
+            f"{table_cell(audit['error'] or 'none')} |"
         )
     return lines
 

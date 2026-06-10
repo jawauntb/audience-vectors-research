@@ -6,14 +6,13 @@
 - Paper claim allowed: False
 - Phase 2 ready: False
 - Phase 1 gate passed: False
-- Full multimodal credential present: False
-- Claim boundary: This audit decides whether current evidence can support the attention-capture paper claim. It is stricter than data readiness: a runnable manifest is not enough when the scoring gate failed or retention/full-multimodal evidence is absent.
+- Full multimodal path ready: True
+- Claim boundary: This audit decides whether current evidence can support the attention-capture paper claim. It is stricter than data readiness: a runnable manifest is not enough when the scoring gate failed or required external or full-mode evidence is absent.
 
 ## Blocking Reasons
 
 - current H2 capture_score failed the Phase 1 rho gate
 - no SnapUGC/VQualA retention label CSV is mounted or available in audited Modal volumes
-- completed TRIBE workflows are audio-only and no local or Modal HuggingFace text model token is present
 - fewer than 2 external datasets have completed claim-ready workflow reports
 
 ## Warnings
@@ -24,7 +23,6 @@
 
 - Do not enter Phase 2/3 neutralization from the current H2 score; either acquire retention labels for an independent test or preregister a revised score before evaluating held-out data.
 - Mount granted SnapUGC/VQualA labels and build a retention manifest with alignment-audit provenance.
-- Provide a HuggingFace token with access to the gated TRIBE text model path, then rerun full multimodal feature extraction.
 - Require at least one held-out external validation dataset before claiming publication readiness.
 
 ## Workflow Evidence
@@ -44,4 +42,10 @@
 
 | audit | volumes | labels | datasets | features | modal token | truncated | blockers |
 |---|---:|---|---|---|---|---:|---|
-| research_program/dopamine_detox_attention_capture/results/modal_asset_audit_20260610.json | 14 | False | False | True | False | 0 | no Modal-hosted SnapUGC/VQualA retention label candidate found; no Modal secret exposes a HuggingFace token env name |
+| research_program/dopamine_detox_attention_capture/results/modal_asset_audit_20260610.json | 20 | False | False | True | False | 0 | no Modal-hosted SnapUGC/VQualA retention label candidate found; no Modal secret exposes a HuggingFace token env name |
+
+## TRIBE Full-Preflight Evidence
+
+| audit | ok | event mode | events | duration | media | error |
+|---|---|---|---:|---:|---|---|
+| research_program/dopamine_detox_attention_capture/results/tribe_full_preflight_audit_20260610.json | True | full | 1 | 3.5720 | /bmd-videos/generated/bo_memorability_replay/bo_replay_00_sobol_prompt_search_518_slot18_rep00.mp4 | none |
