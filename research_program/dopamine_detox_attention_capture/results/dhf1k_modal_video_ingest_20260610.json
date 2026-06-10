@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "experiment": "dhf1k_modal_video_ingest",
+  "generated_at": "2026-06-10T17:39:24.641816+00:00",
+  "labels_csv": "research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_20260609.csv",
+  "sample_id_column": "sample_id",
+  "video_id_column": "video_id",
+  "n_expected_video_ids": 350,
+  "modal_volume_name": "bmd-videos-v1",
+  "modal_root": "/bmd-videos",
+  "target_prefix": "attention_capture/DHF1K",
+  "official_source": {
+    "folder_id": "1sW0tf9RQMO4RR7SyKhU8Kmbm4jwkFGpQ",
+    "video_file_id": "1UEFQmRdDbtVT-ePjMZVrv9oVV0ra631s",
+    "video_archive": "video.rar",
+    "folder_url": "https://drive.google.com/drive/folders/1sW0tf9RQMO4RR7SyKhU8Kmbm4jwkFGpQ"
+  },
+  "ingest": {
+    "ok": true,
+    "ready": true,
+    "target_video_dir": "/bmd-videos/attention_capture/DHF1K/video",
+    "source_video_dir": "/tmp/dhf1k_video_ingest/extracted/video",
+    "archive_path": "/tmp/dhf1k_video_ingest/video.rar",
+    "archive_size_bytes": 4032563381,
+    "download_seconds": 117.807307454,
+    "extract_seconds": 81.19129511800001,
+    "total_seconds": 220.70681891,
+    "copy_all_videos": false,
+    "expected_min_videos": 350,
+    "google_drive_video_file_id": "1UEFQmRdDbtVT-ePjMZVrv9oVV0ra631s",
+    "copy_report": {
+      "ok": true,
+      "source_video_count": 1000,
+      "target_video_count": 350,
+      "n_copied": 350,
+      "n_existing": 0,
+      "n_missing_expected": 0,
+      "missing_expected_video_ids": [],
+      "copied_preview": [
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/003.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/003.AVI",
+          "size_bytes": 3381814
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/004.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/004.AVI",
+          "size_bytes": 6245522
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/007.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/007.AVI",
+          "size_bytes": 3024320
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/008.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/008.AVI",
+          "size_bytes": 3870350
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/009.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/009.AVI",
+          "size_bytes": 1560378
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/012.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/012.AVI",
+          "size_bytes": 6860040
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/013.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/013.AVI",
+          "size_bytes": 2605584
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/016.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/016.AVI",
+          "size_bytes": 2082520
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/017.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/017.AVI",
+          "size_bytes": 4572822
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/018.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/018.AVI",
+          "size_bytes": 4698590
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/019.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/019.AVI",
+          "size_bytes": 6135516
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/020.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/020.AVI",
+          "size_bytes": 4108480
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/021.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/021.AVI",
+          "size_bytes": 3512906
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/024.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/024.AVI",
+          "size_bytes": 4220490
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/025.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/025.AVI",
+          "size_bytes": 1828576
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/030.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/030.AVI",
+          "size_bytes": 2955592
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/032.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/032.AVI",
+          "size_bytes": 3035068
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/034.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/034.AVI",
+          "size_bytes": 3552704
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/035.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/035.AVI",
+          "size_bytes": 4153888
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/036.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/036.AVI",
+          "size_bytes": 4021642
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/037.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/037.AVI",
+          "size_bytes": 3206834
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/038.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/038.AVI",
+          "size_bytes": 7958590
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/041.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/041.AVI",
+          "size_bytes": 3850942
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/043.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/043.AVI",
+          "size_bytes": 4069610
+        },
+        {
+          "source_path": "/tmp/dhf1k_video_ingest/extracted/video/046.AVI",
+          "target_path": "/bmd-videos/attention_capture/DHF1K/video/046.AVI",
+          "size_bytes": 5526542
+        }
+      ],
+      "existing_preview": []
+    },
+    "claim_boundary": "This ingests public DHF1K media into a Modal Volume for later TRIBE feature extraction. It does not compute labels, score TRIBE, or validate attentional capture."
+  },
+  "ready": true,
+  "claim_boundary": "This ingests public DHF1K media into a Modal Volume for later TRIBE feature extraction. It does not compute labels, score TRIBE, or validate attentional capture."
+}

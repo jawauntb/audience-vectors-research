@@ -217,6 +217,77 @@ def write_tribe_full_preflight_audit(
     )
 
 
+def write_tribe_full_prediction_smoke_audit(
+    path: Path,
+    *,
+    ok: bool = True,
+    event_mode: str = "full",
+) -> None:
+    path.write_text(
+        json.dumps(
+            {
+                "experiment": "attention_capture_tribe_full_prediction_smoke_audit",
+                "ok": ok,
+                "app_name": "audience-vectors-dev",
+                "media_path": "/bmd-videos/example.mp4",
+                "event_mode": event_mode,
+                "prediction": (
+                    {
+                        "duration_seconds": 3.2,
+                        "frames_rows": 1,
+                        "frames_cols": 20484,
+                        "all_finite": True,
+                    }
+                    if ok
+                    else None
+                ),
+                "error_type": None if ok else "OSError",
+                "error": None if ok else "Cannot access gated repo",
+                "claim_boundary": "prediction smoke only",
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
+def write_dhf1k_modal_media_audit(path: Path, *, ready: bool = False) -> None:
+    path.write_text(
+        json.dumps(
+            {
+                "experiment": "dhf1k_modal_media_audit",
+                "labels_csv": "dhf1k_labels.csv",
+                "output_modal_csv": "dhf1k_labels_modal.csv",
+                "modal_volume_name": "bmd-videos-v1",
+                "modal_root": "/bmd-videos",
+                "modal_prefix": "attention_capture/DHF1K",
+                "ready_for_full_feature_extraction": ready,
+                "blocking_reasons": (
+                    []
+                    if ready
+                    else [
+                        (
+                            "350 expected DHF1K videos are missing from Modal "
+                            "volume bmd-videos-v1"
+                        )
+                    ]
+                ),
+                "remote_audit": {
+                    "n_expected": 350,
+                    "n_found": 350 if ready else 0,
+                    "n_missing": 0 if ready else 350,
+                    "n_zero_byte_found": 0,
+                },
+                "recommended_full_extraction_command": (
+                    "uv run --extra modal python "
+                    "scripts/extract_attention_capture_tribe_features.py"
+                ),
+                "claim_boundary": "media availability only",
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
 def test_publication_audit_blocks_current_failed_audio_only_path(
     tmp_path: Path,
     monkeypatch,
@@ -348,7 +419,7 @@ def test_publication_audit_uses_modal_token_for_full_multimodal_path(
     assert not any("audio-only" in reason for reason in report["blocking_reasons"])
 
 
-def test_publication_audit_uses_full_preflight_for_multimodal_path(
+def test_full_preflight_alone_does_not_clear_multimodal_prediction_gate(
     tmp_path: Path,
     monkeypatch,
 ) -> None:
@@ -373,11 +444,74 @@ def test_publication_audit_uses_full_preflight_for_multimodal_path(
     )
     markdown = module.render_publication_markdown(report)
 
-    assert report["full_multimodal_ready"] is True
-    assert not any("audio-only" in reason for reason in report["blocking_reasons"])
+    assert report["full_multimodal_ready"] is False
+    assert any("prediction smoke" in reason for reason in report["blocking_reasons"])
     assert report["tribe_full_preflight_summaries"][0]["ok"] is True
     assert "TRIBE Full-Preflight Evidence" in markdown
     assert "/bmd-videos/example.mp4" in markdown
+
+
+def test_successful_full_prediction_smoke_clears_multimodal_path(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    module = load_module()
+    for name in module.DEFAULT_TOKEN_ENVS:
+        monkeypatch.delenv(name, raising=False)
+    readiness = tmp_path / "readiness.json"
+    workflow = tmp_path / "dhf1k_audio_only_workflow.json"
+    smoke = tmp_path / "tribe_full_prediction_smoke.json"
+    write_readiness(readiness, snapugc_ready=False)
+    write_workflow(workflow, dataset="DHF1K", rho=-0.03, passed=False, audio_only=True)
+    write_tribe_full_prediction_smoke_audit(smoke, ok=True)
+
+    report = module.build_publication_path_report(
+        readiness_json=readiness,
+        workflow_jsons=[workflow],
+        tribe_full_prediction_smoke_audits=[smoke],
+        min_paper_datasets=2,
+    )
+    markdown = module.render_publication_markdown(report)
+
+    assert report["full_multimodal_ready"] is True
+    assert not any("audio-only" in reason for reason in report["blocking_reasons"])
+    assert "TRIBE Full-Prediction Smoke Evidence" in markdown
+    assert "1 x 20484" in markdown
+
+
+def test_dhf1k_modal_media_audit_blocks_full_mode_rerun_until_videos_mount(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    module = load_module()
+    for name in module.DEFAULT_TOKEN_ENVS:
+        monkeypatch.delenv(name, raising=False)
+    readiness = tmp_path / "readiness.json"
+    workflow = tmp_path / "dhf1k_audio_only_workflow.json"
+    preflight = tmp_path / "tribe_full_preflight.json"
+    media = tmp_path / "dhf1k_modal_media.json"
+    write_readiness(readiness, snapugc_ready=False)
+    write_workflow(workflow, dataset="DHF1K", rho=-0.03, passed=False, audio_only=True)
+    write_tribe_full_preflight_audit(preflight, ok=True)
+    smoke = tmp_path / "tribe_full_prediction_smoke.json"
+    write_tribe_full_prediction_smoke_audit(smoke, ok=True)
+    write_dhf1k_modal_media_audit(media, ready=False)
+
+    report = module.build_publication_path_report(
+        readiness_json=readiness,
+        workflow_jsons=[workflow],
+        tribe_full_preflight_audits=[preflight],
+        tribe_full_prediction_smoke_audits=[smoke],
+        dhf1k_modal_media_audits=[media],
+        min_paper_datasets=2,
+    )
+    markdown = module.render_publication_markdown(report)
+
+    assert report["full_multimodal_ready"] is True
+    assert report["dhf1k_modal_media_ready"] is False
+    assert any("DHF1K videos required" in reason for reason in report["blocking_reasons"])
+    assert "DHF1K Modal Media Evidence" in markdown
+    assert "350 | 0 | 350" in markdown
 
 
 def test_failed_full_preflight_keeps_audio_only_blocker(
@@ -403,7 +537,7 @@ def test_failed_full_preflight_keeps_audio_only_blocker(
 
     assert report["full_multimodal_ready"] is False
     assert any(
-        "no successful full multimodal TRIBE preflight" in reason
+        "no successful full multimodal TRIBE prediction smoke" in reason
         for reason in report["blocking_reasons"]
     )
     assert "at least one TRIBE full-mode preflight audit failed" in report["warnings"]
