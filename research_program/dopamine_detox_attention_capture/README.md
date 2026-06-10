@@ -1,7 +1,9 @@
 # Dopamine Detox Attention-Capture Experiment
 
 Status: Phase 1 DHF1K audio-only validation run complete; current
-`capture_score` gate failed.
+`capture_score` gate failed. The DHF1K audio-only feature cache now has
+checksum provenance, but still needs an archive location or deterministic rerun
+path before paper claims.
 
 This subfolder sets up the short-form-video attention-capture experiment from
 the June 2026 proposal, with the claim boundary inherited from the existing
@@ -26,6 +28,12 @@ TRIBE scoring. Local label scanning is no longer the preferred route for the
 fixation-density ground truth: `scripts/build_dhf1k_fixation_labels_modal.py`
 dispatches one annotated DHF1K video per CPU task and writes a standard label
 audit/CSV pair.
+
+Compute placement rule: use Modal CPU fanout for dataset/label scans,
+manifest preflights, and checksum audits when source artifacts already live in
+a Modal Volume; use Modal GPU containers for TRIBE inference; use local compute
+only for small report rendering or already-local artifacts where upload would be
+slower than the work.
 
 Two DHF1K audio-only validation runs are now preserved:
 
@@ -71,7 +79,7 @@ blocking_reasons:
   - completed TRIBE workflows are audio-only and no HuggingFace text model token is present
   - fewer than 2 external datasets have completed claim-ready workflow reports
 warning:
-  - DHF1K TRIBE feature cache is external to the repo
+  - TRIBE feature cache has checksum provenance, but the cache is still external to git and needs an archive location or deterministic rerun path
 ```
 
 The shortest sound trajectory is therefore:
@@ -83,8 +91,8 @@ The shortest sound trajectory is therefore:
    remain part of the paper.
 4. If the score is revised, preregister the formula before evaluating held-out
    data.
-5. Archive or regenerate the DHF1K TRIBE feature cache with checksums outside
-   git.
+5. Archive the DHF1K TRIBE feature cache outside git or document a
+   deterministic rerun path from the checksum audit.
 
 ## Files
 
@@ -129,6 +137,11 @@ The shortest sound trajectory is therefore:
   machine-readable paper-readiness audit.
 - `results/attention_capture_publication_path_audit_20260610.md`: current
   readable paper-readiness audit.
+- `results/dhf1k_audio_only_feature_cache_audit_20260610.json`: portable
+  checksum/provenance audit for the external DHF1K audio-only TRIBE feature
+  cache.
+- `results/dhf1k_audio_only_feature_cache_audit_20260610.md`: readable
+  checksum/provenance audit for the same cache.
 - `results/phase1_synthetic_alignment_20260608.json`: label-to-feature
   alignment smoke report over the tiny synthetic fixture.
 - `results/phase1_synthetic_alignment_20260608.md`: readable alignment smoke
@@ -179,10 +192,15 @@ The shortest sound trajectory is therefore:
 - `scripts/audit_attention_capture_manifest_alignment.py`: label-to-feature
   alignment audit to run before building a real manifest. For DHF1K, it can
   consume the upstream label audit and carry that verifier hash forward.
+- `scripts/audit_attention_capture_feature_cache.py`: portable feature-cache
+  checksum/provenance audit for external TRIBE NPZ directories. This verifies
+  artifact integrity and manifest coverage; it does not validate attentional
+  capture.
 - `scripts/audit_attention_capture_publication_path.py`: stricter
   paper-readiness audit that consumes readiness and workflow reports, then
   blocks publication/Phase 2 when the score gate, retention labels,
-  full-multimodal credentials, or held-out evidence are missing.
+  full-multimodal credentials, feature-cache provenance, or held-out evidence
+  are missing.
 
 ## Reused Infrastructure
 
@@ -249,6 +267,7 @@ uv run python scripts/audit_attention_capture_publication_path.py \
   --readiness-json research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.json \
   --workflow-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_audio_only_workflow_20260609.json \
   --workflow-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_workflow_20260609.json \
+  --feature-cache-audit research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json \
   --output-json research_program/dopamine_detox_attention_capture/results/attention_capture_publication_path_audit_20260610.json \
   --output-md research_program/dopamine_detox_attention_capture/results/attention_capture_publication_path_audit_20260610.md
 ```
@@ -386,6 +405,21 @@ uv run python scripts/extract_attention_capture_tribe_features.py \
   --transport bytes \
   --event-mode audio-only \
   --concurrency 8
+```
+
+Audit the external feature cache before manifest construction or paper-readiness
+claims. This audit checks cache integrity and manifest coverage only; it does
+not validate attentional capture. If the cache is already in a Modal Volume,
+run equivalent CPU fanout next to the volume rather than downloading it locally.
+
+```bash
+uv run python scripts/audit_attention_capture_feature_cache.py \
+  --feature-dir data/features/tribe_dhf1k_attention_audio_only \
+  --display-feature-dir data/features/tribe_dhf1k_attention_audio_only \
+  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_audio_only_manifest_20260609.json \
+  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json \
+  --output-json research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.md
 ```
 
 Then audit DHF1K label-to-feature alignment, including the upstream label audit:

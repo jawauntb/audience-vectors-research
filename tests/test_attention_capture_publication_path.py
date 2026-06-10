@@ -95,6 +95,25 @@ def write_workflow(
     )
 
 
+def write_feature_cache_audit(path: Path, *, ready: bool = True) -> None:
+    path.write_text(
+        json.dumps(
+            {
+                "feature_dir": "data/features/tribe_dhf1k_attention_audio_only",
+                "ready_for_reuse": ready,
+                "n_npz_files": 516 if ready else 0,
+                "n_expected_sample_ids": 516,
+                "n_missing_expected_sample_ids": 0 if ready else 1,
+                "n_bad_npz": 0,
+                "n_shape_mismatches": 0,
+                "aggregate_sha256": "a" * 64,
+                "blocking_reasons": [] if ready else ["missing sample"],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
 def test_publication_audit_blocks_current_failed_audio_only_path(
     tmp_path: Path,
     monkeypatch,
@@ -115,14 +134,47 @@ def test_publication_audit_blocks_current_failed_audio_only_path(
 
     assert report["publication_ready"] is False
     assert report["phase2_ready"] is False
-    assert "current H2 capture_score failed the Phase 1 rho gate" in report[
-        "blocking_reasons"
-    ]
-    assert "no SnapUGC/VQualA retention label CSV is mounted" in report[
-        "blocking_reasons"
-    ]
+    assert (
+        "current H2 capture_score failed the Phase 1 rho gate"
+        in report["blocking_reasons"]
+    )
+    assert (
+        "no SnapUGC/VQualA retention label CSV is mounted" in report["blocking_reasons"]
+    )
     assert any("audio-only" in reason for reason in report["blocking_reasons"])
     assert any("feature cache" in warning for warning in report["warnings"])
+
+
+def test_publication_audit_records_feature_cache_provenance(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    module = load_module()
+    for name in module.DEFAULT_TOKEN_ENVS:
+        monkeypatch.delenv(name, raising=False)
+    readiness = tmp_path / "readiness.json"
+    workflow = tmp_path / "dhf1k_audio_only_workflow.json"
+    cache = tmp_path / "feature_cache.json"
+    write_readiness(readiness, snapugc_ready=False)
+    write_workflow(workflow, dataset="DHF1K", rho=-0.03, passed=False, audio_only=True)
+    write_feature_cache_audit(cache)
+
+    report = module.build_publication_path_report(
+        readiness_json=readiness,
+        workflow_jsons=[workflow],
+        feature_cache_audits=[cache],
+        min_paper_datasets=2,
+    )
+    markdown = module.render_publication_markdown(report)
+
+    assert report["feature_cache_audit_summaries"][0]["ready_for_reuse"] is True
+    assert any("checksum provenance" in warning for warning in report["warnings"])
+    assert not any(
+        "archived or regenerated" in warning for warning in report["warnings"]
+    )
+    assert "Feature Cache Evidence" in markdown
+    assert "data/features/tribe_dhf1k_attention_audio_only" in markdown
+    assert "aaaaaaaaaaaa" in markdown
 
 
 def test_publication_audit_accepts_multidataset_retention_and_token_path(
