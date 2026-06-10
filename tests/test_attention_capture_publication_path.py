@@ -95,12 +95,26 @@ def write_workflow(
     )
 
 
-def write_feature_cache_audit(path: Path, *, ready: bool = True) -> None:
+def write_feature_cache_audit(
+    path: Path,
+    *,
+    ready: bool = True,
+    reproduction_ready: bool = False,
+) -> None:
     path.write_text(
         json.dumps(
             {
                 "feature_dir": "data/features/tribe_dhf1k_attention_audio_only",
                 "ready_for_reuse": ready,
+                "ready_for_reproduction": reproduction_ready,
+                "archive_uri": None,
+                "rerun_commands": (
+                    [
+                        "uv run python scripts/extract_attention_capture_tribe_features.py"
+                    ]
+                    if reproduction_ready
+                    else []
+                ),
                 "n_npz_files": 516 if ready else 0,
                 "n_expected_sample_ids": 516,
                 "n_missing_expected_sample_ids": 0 if ready else 1,
@@ -168,6 +182,7 @@ def test_publication_audit_records_feature_cache_provenance(
     markdown = module.render_publication_markdown(report)
 
     assert report["feature_cache_audit_summaries"][0]["ready_for_reuse"] is True
+    assert report["feature_cache_audit_summaries"][0]["ready_for_reproduction"] is False
     assert any("checksum provenance" in warning for warning in report["warnings"])
     assert not any(
         "archived or regenerated" in warning for warning in report["warnings"]
@@ -175,6 +190,36 @@ def test_publication_audit_records_feature_cache_provenance(
     assert "Feature Cache Evidence" in markdown
     assert "data/features/tribe_dhf1k_attention_audio_only" in markdown
     assert "aaaaaaaaaaaa" in markdown
+
+
+def test_publication_audit_accepts_feature_cache_rerun_path(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    module = load_module()
+    for name in module.DEFAULT_TOKEN_ENVS:
+        monkeypatch.delenv(name, raising=False)
+    readiness = tmp_path / "readiness.json"
+    workflow = tmp_path / "dhf1k_audio_only_workflow.json"
+    cache = tmp_path / "feature_cache.json"
+    write_readiness(readiness, snapugc_ready=False)
+    write_workflow(workflow, dataset="DHF1K", rho=-0.03, passed=False, audio_only=True)
+    write_feature_cache_audit(cache, reproduction_ready=True)
+
+    report = module.build_publication_path_report(
+        readiness_json=readiness,
+        workflow_jsons=[workflow],
+        feature_cache_audits=[cache],
+        min_paper_datasets=2,
+    )
+    markdown = module.render_publication_markdown(report)
+
+    cache_summary = report["feature_cache_audit_summaries"][0]
+    assert cache_summary["ready_for_reuse"] is True
+    assert cache_summary["ready_for_reproduction"] is True
+    assert cache_summary["n_rerun_commands"] == 1
+    assert not any("feature cache" in warning for warning in report["warnings"])
+    assert "True | True | 516 | 516 | 1 | aaaaaaaaaaaa" in markdown
 
 
 def test_publication_audit_accepts_multidataset_retention_and_token_path(

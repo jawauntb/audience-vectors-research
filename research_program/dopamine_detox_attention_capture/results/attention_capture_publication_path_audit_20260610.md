@@ -18,7 +18,7 @@
 
 ## Warnings
 
-- TRIBE feature cache has checksum provenance, but the cache is still external to git and needs an archive location or deterministic rerun path
+- none
 
 ## Next Actions
 
@@ -26,7 +26,6 @@
 - Mount granted SnapUGC/VQualA labels and build a retention manifest with alignment-audit provenance.
 - Provide a HuggingFace token with access to the gated TRIBE text model path, then rerun full multimodal feature extraction.
 - Require at least one held-out external validation dataset before claiming publication readiness.
-- Add an object-storage/archive location or deterministic rerun instructions for the external TRIBE feature cache.
 
 ## Workflow Evidence
 
@@ -37,6 +36,6 @@
 
 ## Feature Cache Evidence
 
-| audit | feature dir | ready | npz files | expected ids | aggregate sha256 |
-|---|---|---|---:|---:|---|
-| research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json | data/features/tribe_dhf1k_attention_audio_only | True | 516 | 516 | 990c7605e215 |
+| audit | feature dir | ready | reproduction | npz files | expected ids | rerun cmds | aggregate sha256 |
+|---|---|---|---|---:|---:|---:|---|
+| research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json | data/features/tribe_dhf1k_attention_audio_only | True | True | 516 | 516 | 3 | 990c7605e215 |

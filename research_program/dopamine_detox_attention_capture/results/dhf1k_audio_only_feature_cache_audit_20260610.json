@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "experiment": "attention_capture_feature_cache_audit",
   "feature_dir": "data/features/tribe_dhf1k_attention_audio_only",
   "source_feature_dir_exists": true,
@@ -16,6 +16,13 @@
   "n_shape_mismatches": 0,
   "total_bytes": 786743319,
   "aggregate_sha256": "990c7605e215799d8d0afbb7a3fedaa7e4436af17e20703eb2c38f19747be776",
+  "archive_uri": null,
+  "rerun_commands": [
+    "uv run python scripts/extract_attention_capture_tribe_features.py --source-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv --output-dir data/features/tribe_dhf1k_attention_audio_only --sample-id-column sample_id --media-path-column video_path --transport bytes --event-mode audio-only --concurrency 8",
+    "uv run python scripts/extract_attention_capture_tribe_features.py --source-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_20260609.csv --output-dir data/features/tribe_dhf1k_attention_audio_only --sample-id-column sample_id --media-path-column video_path --transport bytes --event-mode audio-only --concurrency 8",
+    "uv run python scripts/audit_attention_capture_feature_cache.py --feature-dir data/features/tribe_dhf1k_attention_audio_only --display-feature-dir data/features/tribe_dhf1k_attention_audio_only --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_audio_only_manifest_20260609.json --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json --output-json research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json --output-md research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.md"
+  ],
+  "ready_for_reproduction": true,
   "event_mode_counts": {
     "audio-only": 516
   },

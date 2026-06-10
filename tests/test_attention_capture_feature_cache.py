@@ -74,7 +74,9 @@ def test_feature_cache_audit_accepts_complete_cache(tmp_path: Path) -> None:
         expected_vertices=4,
     )
 
+    assert report["schema_version"] == 2
     assert report["ready_for_reuse"] is True
+    assert report["ready_for_reproduction"] is False
     assert report["feature_dir"] == "data/features/tribe_dhf1k_attention_audio_only"
     assert report["n_npz_files"] == 2
     assert report["n_expected_sample_ids"] == 2
@@ -87,7 +89,36 @@ def test_feature_cache_audit_accepts_complete_cache(tmp_path: Path) -> None:
     assert report["files"][0]["media_path"] == "video/dhf1k_001.AVI"
     markdown = module.render_feature_cache_markdown(report)
     assert "Ready for reuse: True" in markdown
+    assert "Ready for reproduction: False" in markdown
     assert "audio-only=2" in markdown
+
+
+def test_feature_cache_audit_records_deterministic_rerun_path(tmp_path: Path) -> None:
+    module = load_module()
+    feature_dir = tmp_path / "features"
+    feature_dir.mkdir()
+    write_feature(feature_dir / "dhf1k_001.npz", "dhf1k_001")
+    manifest = tmp_path / "manifest.json"
+    write_manifest(manifest, ["dhf1k_001"])
+
+    report = module.audit_feature_cache(
+        feature_dir=feature_dir,
+        manifest_paths=[manifest],
+        expected_vertices=4,
+        rerun_commands=[
+            "uv run python scripts/extract_attention_capture_tribe_features.py"
+        ],
+    )
+    markdown = module.render_feature_cache_markdown(report)
+
+    assert report["ready_for_reuse"] is True
+    assert report["ready_for_reproduction"] is True
+    assert report["archive_uri"] is None
+    assert report["rerun_commands"] == [
+        "uv run python scripts/extract_attention_capture_tribe_features.py"
+    ]
+    assert "Ready for reproduction: True" in markdown
+    assert "extract_attention_capture_tribe_features.py" in markdown
 
 
 def test_feature_cache_audit_normalizes_absolute_media_metadata(tmp_path: Path) -> None:
