@@ -33,6 +33,23 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-json", type=Path, required=True)
     parser.add_argument("--output-md", type=Path, required=True)
     parser.add_argument("--expected-vertices", type=int, default=20484)
+    parser.add_argument(
+        "--archive-uri",
+        default=None,
+        help=(
+            "Optional durable artifact location for the audited cache, such as "
+            "an object-storage URI. Credential-bearing URLs should not be used."
+        ),
+    )
+    parser.add_argument(
+        "--rerun-command",
+        action="append",
+        default=[],
+        help=(
+            "Deterministic command that can regenerate or re-audit the cache. "
+            "May be passed multiple times."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -43,6 +60,8 @@ def main() -> None:
         display_feature_dir=args.display_feature_dir,
         manifest_paths=args.manifest,
         expected_vertices=args.expected_vertices,
+        archive_uri=args.archive_uri,
+        rerun_commands=args.rerun_command,
     )
     args.output_json.parent.mkdir(parents=True, exist_ok=True)
     args.output_md.parent.mkdir(parents=True, exist_ok=True)
@@ -60,8 +79,11 @@ def audit_feature_cache(
     display_feature_dir: str | None = None,
     manifest_paths: list[Path] | None = None,
     expected_vertices: int = 20484,
+    archive_uri: str | None = None,
+    rerun_commands: list[str] | None = None,
 ) -> dict[str, Any]:
     manifest_paths = manifest_paths or []
+    rerun_commands = rerun_commands or []
     feature_paths = sorted(feature_dir.glob("*.npz"))
     file_audits = [
         audit_feature_file(path, feature_dir=feature_dir) for path in feature_paths
@@ -91,7 +113,7 @@ def audit_feature_cache(
         shape_mismatches=shape_mismatches,
     )
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "experiment": "attention_capture_feature_cache_audit",
         "feature_dir": display_feature_dir or str(feature_dir),
         "source_feature_dir_exists": feature_dir.is_dir(),
@@ -105,6 +127,11 @@ def audit_feature_cache(
         "n_shape_mismatches": len(shape_mismatches),
         "total_bytes": sum(int(item["size_bytes"]) for item in file_audits),
         "aggregate_sha256": aggregate_sha256,
+        "archive_uri": archive_uri,
+        "rerun_commands": rerun_commands,
+        "ready_for_reproduction": bool(
+            not blocking_reasons and (archive_uri or rerun_commands)
+        ),
         "event_mode_counts": dict(
             Counter(str(item["event_mode"]) for item in file_audits)
         ),
@@ -274,6 +301,9 @@ def render_feature_cache_markdown(report: dict[str, Any]) -> str:
         f"- Shape mismatches: {report['n_shape_mismatches']}",
         f"- Total bytes: {report['total_bytes']}",
         f"- Aggregate SHA-256: {report['aggregate_sha256']}",
+        f"- Archive URI: {report['archive_uri'] or 'n/a'}",
+        f"- Rerun commands: {len(report['rerun_commands'])}",
+        f"- Ready for reproduction: {report['ready_for_reproduction']}",
         f"- Claim boundary: {report['claim_boundary']}",
         "",
         "## Blocking Reasons",
@@ -287,6 +317,16 @@ def render_feature_cache_markdown(report: dict[str, Any]) -> str:
     lines.append(f"- Event modes: {format_counts(report['event_mode_counts'])}")
     lines.append(f"- Transports: {format_counts(report['transport_counts'])}")
     lines.append(f"- Frame shapes: {format_counts(report['frame_shape_counts'])}")
+    lines.extend(["", "## Reproduction Path", ""])
+    if report["archive_uri"]:
+        lines.append(f"- Archive URI: {report['archive_uri']}")
+    else:
+        lines.append("- Archive URI: n/a")
+    rerun_commands = report["rerun_commands"]
+    if rerun_commands:
+        lines.extend(f"- `{command}`" for command in rerun_commands)
+    else:
+        lines.append("- Rerun commands: n/a")
     lines.extend(["", "## File Preview", ""])
     lines.extend(
         [

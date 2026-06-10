@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "experiment": "attention_capture_publication_path_audit",
-  "generated_at": "2026-06-10T01:12:15.658130+00:00",
+  "generated_at": "2026-06-10T16:25:06.860068+00:00",
   "readiness_json": "research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.json",
   "workflow_jsons": [
     "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_audio_only_workflow_20260609.json",
@@ -53,6 +53,9 @@
       "n_bad_npz": 0,
       "n_shape_mismatches": 0,
       "aggregate_sha256": "990c7605e215799d8d0afbb7a3fedaa7e4436af17e20703eb2c38f19747be776",
+      "archive_uri": null,
+      "n_rerun_commands": 3,
+      "ready_for_reproduction": true,
       "blocking_reasons": []
     }
   ],
@@ -118,15 +121,12 @@
     "completed TRIBE workflows are audio-only and no HuggingFace text model token is present",
     "fewer than 2 external datasets have completed claim-ready workflow reports"
   ],
-  "warnings": [
-    "TRIBE feature cache has checksum provenance, but the cache is still external to git and needs an archive location or deterministic rerun path"
-  ],
+  "warnings": [],
   "next_actions": [
     "Do not enter Phase 2/3 neutralization from the current H2 score; either acquire retention labels for an independent test or preregister a revised score before evaluating held-out data.",
     "Mount granted SnapUGC/VQualA labels and build a retention manifest with alignment-audit provenance.",
     "Provide a HuggingFace token with access to the gated TRIBE text model path, then rerun full multimodal feature extraction.",
-    "Require at least one held-out external validation dataset before claiming publication readiness.",
-    "Add an object-storage/archive location or deterministic rerun instructions for the external TRIBE feature cache."
+    "Require at least one held-out external validation dataset before claiming publication readiness."
   ],
   "claim_boundary": "This audit decides whether current evidence can support the attention-capture paper claim. It is stricter than data readiness: a runnable manifest is not enough when the scoring gate failed or retention/full-multimodal evidence is absent."
 }

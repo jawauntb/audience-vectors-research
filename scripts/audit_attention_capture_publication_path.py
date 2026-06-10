@@ -245,6 +245,9 @@ def summarize_feature_cache_audit(path: Path) -> dict[str, Any]:
         "n_bad_npz": payload.get("n_bad_npz"),
         "n_shape_mismatches": payload.get("n_shape_mismatches"),
         "aggregate_sha256": payload.get("aggregate_sha256"),
+        "archive_uri": payload.get("archive_uri"),
+        "n_rerun_commands": len(payload.get("rerun_commands") or []),
+        "ready_for_reproduction": bool(payload.get("ready_for_reproduction")),
         "blocking_reasons": payload.get("blocking_reasons") or [],
     }
 
@@ -305,26 +308,42 @@ def publication_warnings(
         readiness.get("tribe_feature_dirs") if isinstance(readiness, dict) else None
     )
     ready_cache_audit = any(audit["ready_for_reuse"] for audit in cache_audits)
+    reproduction_ready_cache_audit = any(
+        audit["ready_for_reproduction"] for audit in cache_audits
+    )
+    cache_reproduction_warning_emitted = False
     if isinstance(feature_dirs, list):
         absolute_feature_dirs = [
             str(item.get("path"))
             for item in feature_dirs
             if isinstance(item, dict) and str(item.get("path", "")).startswith("/")
         ]
-        if absolute_feature_dirs and ready_cache_audit:
+        if absolute_feature_dirs and reproduction_ready_cache_audit:
+            pass
+        elif absolute_feature_dirs and ready_cache_audit:
             warnings.append(
                 "TRIBE feature cache has checksum provenance, but the cache is "
                 "still external to git and needs an archive location or "
                 "deterministic rerun path"
             )
+            cache_reproduction_warning_emitted = True
         elif absolute_feature_dirs:
             warnings.append(
                 "TRIBE feature cache is external to the repo and should be "
                 "archived or regenerated for reproducibility"
             )
+            cache_reproduction_warning_emitted = True
     for audit in cache_audits:
         if not audit["ready_for_reuse"]:
             warnings.append(f"feature cache audit is not reusable: {audit['path']}")
+        elif (
+            not audit["ready_for_reproduction"]
+            and not cache_reproduction_warning_emitted
+        ):
+            warnings.append(
+                "feature cache audit lacks archive URI or deterministic rerun "
+                f"commands: {audit['path']}"
+            )
     if any(workflow["best_capture_score"] is None for workflow in workflows):
         warnings.append("at least one workflow lacks a capture_score metric")
     return warnings
@@ -438,18 +457,23 @@ def render_feature_cache_table(cache_audits: list[dict[str, Any]]) -> list[str]:
         "",
         "## Feature Cache Evidence",
         "",
-        "| audit | feature dir | ready | npz files | expected ids | aggregate sha256 |",
-        "|---|---|---|---:|---:|---|",
+        (
+            "| audit | feature dir | ready | reproduction | npz files | "
+            "expected ids | rerun cmds | aggregate sha256 |"
+        ),
+        "|---|---|---|---|---:|---:|---:|---|",
     ]
     if not cache_audits:
-        lines.append("| none | n/a | False | 0 | 0 | n/a |")
+        lines.append("| none | n/a | False | False | 0 | 0 | 0 | n/a |")
         return lines
     for audit in cache_audits:
         lines.append(
             "| "
             f"{audit['path']} | {audit['feature_dir'] or 'n/a'} | "
-            f"{audit['ready_for_reuse']} | {audit['n_npz_files'] or 0} | "
+            f"{audit['ready_for_reuse']} | {audit['ready_for_reproduction']} | "
+            f"{audit['n_npz_files'] or 0} | "
             f"{audit['n_expected_sample_ids'] or 0} | "
+            f"{audit['n_rerun_commands'] or 0} | "
             f"{str(audit['aggregate_sha256'] or 'n/a')[:12]} |"
         )
     return lines

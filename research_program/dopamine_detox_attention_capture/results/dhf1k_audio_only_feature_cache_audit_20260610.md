@@ -12,6 +12,9 @@
 - Shape mismatches: 0
 - Total bytes: 786743319
 - Aggregate SHA-256: 990c7605e215799d8d0afbb7a3fedaa7e4436af17e20703eb2c38f19747be776
+- Archive URI: n/a
+- Rerun commands: 3
+- Ready for reproduction: True
 - Claim boundary: This audit verifies cached TRIBE feature artifact integrity and manifest coverage. It does not validate attentional capture.
 
 ## Blocking Reasons
@@ -23,6 +26,13 @@
 - Event modes: audio-only=516
 - Transports: bytes=516
 - Frame shapes: 10x20484=24, 11x20484=17, 12x20484=16, 13x20484=18, 14x20484=18, 15x20484=41, 16x20484=31, 17x20484=21, 18x20484=33, 19x20484=36, 20x20484=36, 21x20484=23, 22x20484=16, 23x20484=11, 24x20484=13, 25x20484=21, 26x20484=17, 27x20484=9, 28x20484=10, 29x20484=15, 30x20484=17, 31x20484=20, 32x20484=6, 33x20484=4, 34x20484=3, 35x20484=3, 36x20484=2, 37x20484=4, 38x20484=1, 39x20484=4, 40x20484=1, 41x20484=1, 43x20484=1, 52x20484=1, 7x20484=3, 8x20484=8, 9x20484=11
+
+## Reproduction Path
+
+- Archive URI: n/a
+- `uv run python scripts/extract_attention_capture_tribe_features.py --source-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv --output-dir data/features/tribe_dhf1k_attention_audio_only --sample-id-column sample_id --media-path-column video_path --transport bytes --event-mode audio-only --concurrency 8`
+- `uv run python scripts/extract_attention_capture_tribe_features.py --source-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_20260609.csv --output-dir data/features/tribe_dhf1k_attention_audio_only --sample-id-column sample_id --media-path-column video_path --transport bytes --event-mode audio-only --concurrency 8`
+- `uv run python scripts/audit_attention_capture_feature_cache.py --feature-dir data/features/tribe_dhf1k_attention_audio_only --display-feature-dir data/features/tribe_dhf1k_attention_audio_only --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_audio_only_manifest_20260609.json --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json --output-json research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json --output-md research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.md`
 
 ## File Preview
 

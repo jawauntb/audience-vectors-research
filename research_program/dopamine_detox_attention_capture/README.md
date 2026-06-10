@@ -2,8 +2,8 @@
 
 Status: Phase 1 DHF1K audio-only validation run complete; current
 `capture_score` gate failed. The DHF1K audio-only feature cache now has
-checksum provenance, but still needs an archive location or deterministic rerun
-path before paper claims.
+checksum provenance and a deterministic rerun path. The paper remains blocked
+on scientific/external-evidence grounds, not cache reproducibility.
 
 This subfolder sets up the short-form-video attention-capture experiment from
 the June 2026 proposal, with the claim boundary inherited from the existing
@@ -78,8 +78,8 @@ blocking_reasons:
   - no SnapUGC/VQualA retention label CSV is mounted
   - completed TRIBE workflows are audio-only and no HuggingFace text model token is present
   - fewer than 2 external datasets have completed claim-ready workflow reports
-warning:
-  - TRIBE feature cache has checksum provenance, but the cache is still external to git and needs an archive location or deterministic rerun path
+warnings:
+  - none
 ```
 
 The shortest sound trajectory is therefore:
@@ -91,8 +91,10 @@ The shortest sound trajectory is therefore:
    remain part of the paper.
 4. If the score is revised, preregister the formula before evaluating held-out
    data.
-5. Archive the DHF1K TRIBE feature cache outside git or document a
-   deterministic rerun path from the checksum audit.
+
+The DHF1K audio-only feature-cache reproducibility warning is resolved by the
+checksum audit plus recorded rerun commands. An object-storage archive is still
+useful for byte-for-byte reuse, but it is no longer the shortest-path blocker.
 
 ## Files
 
@@ -138,10 +140,10 @@ The shortest sound trajectory is therefore:
 - `results/attention_capture_publication_path_audit_20260610.md`: current
   readable paper-readiness audit.
 - `results/dhf1k_audio_only_feature_cache_audit_20260610.json`: portable
-  checksum/provenance audit for the external DHF1K audio-only TRIBE feature
-  cache.
+  checksum/provenance/rerun audit for the external DHF1K audio-only TRIBE
+  feature cache.
 - `results/dhf1k_audio_only_feature_cache_audit_20260610.md`: readable
-  checksum/provenance audit for the same cache.
+  checksum/provenance/rerun audit for the same cache.
 - `results/phase1_synthetic_alignment_20260608.json`: label-to-feature
   alignment smoke report over the tiny synthetic fixture.
 - `results/phase1_synthetic_alignment_20260608.md`: readable alignment smoke
@@ -194,8 +196,8 @@ The shortest sound trajectory is therefore:
   consume the upstream label audit and carry that verifier hash forward.
 - `scripts/audit_attention_capture_feature_cache.py`: portable feature-cache
   checksum/provenance audit for external TRIBE NPZ directories. This verifies
-  artifact integrity and manifest coverage; it does not validate attentional
-  capture.
+  artifact integrity and manifest coverage, and can record archive URIs or
+  deterministic rerun commands; it does not validate attentional capture.
 - `scripts/audit_attention_capture_publication_path.py`: stricter
   paper-readiness audit that consumes readiness and workflow reports, then
   blocks publication/Phase 2 when the score gate, retention labels,
@@ -418,6 +420,9 @@ uv run python scripts/audit_attention_capture_feature_cache.py \
   --display-feature-dir data/features/tribe_dhf1k_attention_audio_only \
   --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_audio_only_manifest_20260609.json \
   --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json \
+  --rerun-command "uv run python scripts/extract_attention_capture_tribe_features.py --source-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv --output-dir data/features/tribe_dhf1k_attention_audio_only --sample-id-column sample_id --media-path-column video_path --transport bytes --event-mode audio-only --concurrency 8" \
+  --rerun-command "uv run python scripts/extract_attention_capture_tribe_features.py --source-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_20260609.csv --output-dir data/features/tribe_dhf1k_attention_audio_only --sample-id-column sample_id --media-path-column video_path --transport bytes --event-mode audio-only --concurrency 8" \
+  --rerun-command "uv run python scripts/audit_attention_capture_feature_cache.py --feature-dir data/features/tribe_dhf1k_attention_audio_only --display-feature-dir data/features/tribe_dhf1k_attention_audio_only --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_audio_only_manifest_20260609.json --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json --output-json research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json --output-md research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.md" \
   --output-json research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json \
   --output-md research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.md
 ```
