@@ -132,7 +132,7 @@ def build_manifest(
                     "dataset": dataset,
                     "ground_truth": ground_truth,
                     "ground_truth_name": ground_truth_name,
-                    "tribe_feature_path": str(feature_path.resolve()),
+                    "tribe_feature_path": portable_feature_path(feature_path),
                 }
             )
         if limit is not None and len(samples) >= limit:
@@ -250,6 +250,16 @@ def same_path(value: object, expected: Path) -> bool:
     if not isinstance(value, str) or not value:
         return False
     return Path(value).expanduser().resolve() == expected.expanduser().resolve()
+
+
+def portable_feature_path(feature_path: Path) -> str:
+    if not feature_path.is_absolute():
+        return str(feature_path)
+    resolved = feature_path.resolve()
+    try:
+        return str(resolved.relative_to(Path.cwd().resolve()))
+    except ValueError:
+        return str(resolved)
 
 
 def _read_label_rows(path: Path) -> list[dict[str, str]]:

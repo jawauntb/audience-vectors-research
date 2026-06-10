@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_capture_score_preflight",
+  "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json",
+  "manifest_status": "real_external_attention_labels",
+  "roi_masks_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+  "n_samples": 350,
+  "sample_kind_counts": {
+    "roi_values": 0,
+    "tribe_feature_path": 350,
+    "both": 0,
+    "neither": 0
+  },
+  "label_groups": [
+    {
+      "dataset": "DHF1K",
+      "n": 350,
+      "n_finite": 350,
+      "n_distinct": 350,
+      "mean": 0.0007440533707201671,
+      "std": 9.45746002309232e-05,
+      "min": 0.000539913901596821,
+      "max": 0.001002299901729296,
+      "ready": true
+    }
+  ],
+  "feature_audit": {
+    "n_feature_path_samples": 350,
+    "n_existing": 350,
+    "n_missing": 0,
+    "n_shape_mismatch": 0,
+    "feature_shape_counts": {
+      "20484": 350
+    },
+    "missing_features": [],
+    "shape_mismatches": [],
+    "roi_shape": "20484"
+  },
+  "provenance_audit": {
+    "required": true,
+    "ready": true,
+    "blocking_reasons": [],
+    "alignment_audit": {
+      "path": "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_alignment_20260609.json",
+      "sha256": "fde522251a93544973b9b1638ea53313452b4a699eb92b42531c5c2900f1f2d4",
+      "ready_for_manifest_build": true,
+      "n_aligned_features": 350,
+      "n_missing_features": 0,
+      "label_audit_ready": true
+    }
+  },
+  "scoring_audit": {
+    "attempted": true,
+    "attempted_reason": null,
+    "n_invalid_capture_denominators": 48,
+    "n_valid_capture_denominators": 302
+  },
+  "min_samples": 30,
+  "min_distinct_ground_truth": 3,
+  "mechanical_ready": true,
+  "claim_update_allowed": true,
+  "claim_ready": true,
+  "blocking_reasons": [],
+  "warnings": [],
+  "claim_boundary": "Preflight verifies manifest mechanics and label variance only. It does not validate attentional capture."
+}

@@ -1,6 +1,7 @@
 # Dopamine Detox Attention-Capture Experiment
 
-Status: Phase 1 scaffold and synthetic smoke run.
+Status: Phase 1 DHF1K audio-only validation run complete; current
+`capture_score` gate failed.
 
 This subfolder sets up the short-form-video attention-capture experiment from
 the June 2026 proposal, with the claim boundary inherited from the existing
@@ -13,13 +14,55 @@ external human / gaze / measured-brain labels
 ```
 
 The current code path is reusable for real SnapUGC, DHF1K, or Memento10k-style
-manifests, but the committed result is only a synthetic smoke test. It proves
-that the manifest, ROI scoring, Spearman gate, denominator guard, and report
-format work. It does not validate attentional capture.
+manifests. The scaffold first proved that the manifest, ROI scoring, Spearman
+gate, denominator guard, and report format work; the 2026-06-09 DHF1K run then
+advanced to real public gaze labels under TRIBE audio-only mode. That real run
+does not validate the current attentional-capture score.
+
+## 2026-06-09 DHF1K Verdict
+
+The fast path is Modal CPU fanout for DHF1K label construction plus Modal GPU
+TRIBE scoring. Local label scanning is no longer the preferred route for the
+fixation-density ground truth: `scripts/build_dhf1k_fixation_labels_modal.py`
+dispatches one annotated DHF1K video per CPU task and writes a standard label
+audit/CSV pair.
+
+Two DHF1K audio-only validation runs are now preserved:
+
+```text
+mean_map_intensity proxy:
+  primary disjoint capture_score rho = 0.1256, permutation p = 0.0130, gate = false
+  overlapping-mask sensitivity rho = 0.2590, gate = false
+
+mean_fixation_density proposal metric:
+  primary disjoint capture_score rho = -0.0348, permutation p = 0.7380, gate = false
+  overlapping-mask sensitivity rho = 0.0245, gate = false
+```
+
+The preregistered Phase 1 gate remains `rho >= 0.40` in at least one real
+dataset, so Phase 2 trigger decomposition and Phase 3 neutralization should not
+proceed from this score. The correct public DHF1K fixation-density test is a
+clear withholding result, not a near miss.
+
+Full multimodal TRIBE remains a separate blocker: the deployed TRIBE path needs
+access to gated Llama text weights for the native transcription/text event path.
+The completed DHF1K runs used `--event-mode audio-only`, which is valid for
+audio/visual diagnostics but withholds language-dependent claims. The shortest
+credible route to a publication-grade result is now either real SnapUGC/VQualA
+retention labels with full multimodal TRIBE access, or a preregistered revised
+score trained on one evidence source and tested on a held-out source.
 
 ## Files
 
 - `soundness_audit_20260608.md`: pre-run assessment of the approach.
+- `phase1_dhf1k_verdict_20260609.md`: post-run Discovery-Regime audit and
+  shortest credible trajectory after the DHF1K gate failure.
+- `dhf1k_attention_labels_fixation_density_extremes_20260609.csv`: 350-video
+  DHF1K high/low tail label CSV ranked by mean fixation density.
+- `phase1_dhf1k_audio_only_manifest_20260609.json`: complete DHF1K
+  mean-map-intensity audio-only manifest.
+- `phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json`: complete
+  DHF1K mean-fixation-density audio-only manifest.
 - `phase1_synthetic_smoke_manifest_20260608.json`: tiny fixture manifest.
 - `phase1_synthetic_alignment_labels_20260608.csv`: tiny synthetic label CSV
   used only to smoke-test label-to-feature alignment.
@@ -79,8 +122,12 @@ format work. It does not validate attentional capture.
   that emits gaze/saliency CSV rows plus a label audit with a
   `ready_for_manifest_alignment` gate and non-degenerate ground-truth column
   recommendations.
+- `scripts/build_dhf1k_fixation_labels_modal.py`: Modal CPU label builder for
+  DHF1K mean fixation density. This is the preferred public DHF1K label route
+  for the proposal's ocular ground truth.
 - `scripts/extract_attention_capture_tribe_features.py`: generic TRIBE NPZ
-  extractor for local/remote videos listed in a CSV.
+  extractor for local/remote videos listed in a CSV, including `--event-mode
+  audio-only` for TRIBE runs where gated text weights are unavailable.
 - `scripts/preflight_attention_capture_phase1.py`: manifest/feature/label
   preflight gate before claim-relevant Phase 1 scoring. Claim-updatable
   manifests must carry alignment-audit provenance in metadata.
@@ -153,27 +200,28 @@ uv run python scripts/audit_attention_capture_data_readiness.py \
   --output-md research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.md
 ```
 
-Current readiness verdict:
+Current DHF1K audio-only readiness/verdict:
 
 ```text
-phase1_can_run_now: false
+phase1_can_run_now: true for the preserved DHF1K audio-only manifests
 dhf1k_root_ready_for_label_build: true
 dhf1k_label_audit_ready: true
 dhf1k_labels_ready: true
 snapugc_labels_ready: false
 tribe_features_ready: true
-dhf1k_tribe_features_ready: false
+dhf1k_tribe_features_ready: true for audio-only DHF1K features
 roi_masks_ready: true
-real_manifest_ready: false
-blocking_reasons: DHF1K labels ready but no DHF1K TRIBE feature directory found
+real_manifest_ready: true for DHF1K audio-only mean-map and fixation-density runs
+full_multimodal_tribe_ready: false without gated text-model credentials
+primary_h2_gate_passed: false
 ```
 
 The scan found a mounted DHF1K root at `data/attention_capture/DHF1K/` with
-1,000 videos and 700 annotation-map directories. The DHF1K label audit is ready
-for manifest alignment, but no DHF1K-specific TRIBE feature cache has been
-created yet. Existing generic TRIBE feature caches remain useful infrastructure;
-they do not unblock a DHF1K manifest until they are aligned to the audited
-DHF1K sample IDs.
+1,000 videos and 700 annotation-map directories. DHF1K-specific TRIBE audio-only
+features were extracted for the completed mean-map and fixation-density extreme
+tail manifests. Existing generic TRIBE feature caches remain useful
+infrastructure, but claim-updatable DHF1K manifests must still align to the
+audited DHF1K sample IDs.
 
 The preferred local intake point is `data/attention_capture/`, which is ignored
 for datasets but tracked with a README. Mount DHF1K at
@@ -264,54 +312,65 @@ feature extraction and manifest alignment. If the chosen `--rank-column` is
 degenerate, use one of `candidate_ground_truth_columns` from the audit and rerun
 the label builder before spending TRIBE compute.
 
+For the proposal's fixation-density ground truth, prefer the Modal CPU builder:
+
+```bash
+uv run modal run scripts/build_dhf1k_fixation_labels_modal.py \
+  --dhf1k-root data/attention_capture/DHF1K \
+  --output-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_20260609.csv \
+  --output-json research_program/dopamine_detox_attention_capture/results/dhf1k_attention_label_audit_fixation_density_20260609.json \
+  --extreme-count-per-tail 175
+```
+
 Then extract TRIBE features for those videos:
 
 ```bash
 uv run python scripts/extract_attention_capture_tribe_features.py \
-  --source-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv \
-  --output-dir data/features/tribe_dhf1k_attention \
+  --source-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_20260609.csv \
+  --output-dir data/features/tribe_dhf1k_attention_audio_only \
   --sample-id-column sample_id \
   --media-path-column video_path \
   --transport bytes \
-  --concurrency 4
+  --event-mode audio-only \
+  --concurrency 8
 ```
 
 Then audit DHF1K label-to-feature alignment, including the upstream label audit:
 
 ```bash
 uv run python scripts/audit_attention_capture_manifest_alignment.py \
-  --labels-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv \
-  --feature-dir data/features/tribe_dhf1k_attention \
-  --label-audit research_program/dopamine_detox_attention_capture/results/dhf1k_attention_label_audit_20260608.json \
+  --labels-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_20260609.csv \
+  --feature-dir data/features/tribe_dhf1k_attention_audio_only \
+  --label-audit research_program/dopamine_detox_attention_capture/results/dhf1k_attention_label_audit_fixation_density_20260609.json \
   --dataset DHF1K \
-  --ground-truth-column mean_map_intensity \
+  --ground-truth-column mean_fixation_density \
   --min-samples 350 \
   --min-distinct-ground-truth 3 \
-  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_alignment_20260608.json \
-  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_alignment_20260608.md
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_alignment_20260609.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_alignment_20260609.md
 ```
 
 Then build the DHF1K Phase 1 manifest:
 
 ```bash
 uv run python scripts/build_attention_capture_phase1_manifest.py \
-  --labels-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv \
-  --feature-dir data/features/tribe_dhf1k_attention \
-  --output research_program/dopamine_detox_attention_capture/phase1_dhf1k_manifest_20260608.json \
+  --labels-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_20260609.csv \
+  --feature-dir data/features/tribe_dhf1k_attention_audio_only \
+  --output research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json \
   --dataset DHF1K \
-  --ground-truth-name mean_map_intensity \
-  --ground-truth-column mean_map_intensity \
-  --alignment-audit research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_alignment_20260608.json
+  --ground-truth-name mean_fixation_density \
+  --ground-truth-column mean_fixation_density \
+  --alignment-audit research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_alignment_20260609.json
 ```
 
 Preflight the manifest before claim-relevant scoring:
 
 ```bash
 uv run python scripts/preflight_attention_capture_phase1.py \
-  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_manifest_20260608.json \
+  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json \
   --roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz \
-  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_preflight_20260608.json \
-  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_preflight_20260608.md \
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_preflight_20260609.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_preflight_20260609.md \
   --min-samples 30 \
   --min-distinct-ground-truth 3
 ```
@@ -326,16 +385,16 @@ Preferred guarded workflow for the real DHF1K run:
 
 ```bash
 uv run python scripts/run_attention_capture_phase1_workflow.py \
-  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_manifest_20260608.json \
+  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json \
   --primary-label disjoint \
   --roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz \
   --sensitivity-roi-masks overlapping=research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz \
-  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_workflow_20260608.json \
-  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_workflow_20260608.md \
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_workflow_20260609.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_workflow_20260609.md \
   --min-samples 30 \
   --min-distinct-ground-truth 3 \
   --permutations 999 \
-  --seed 20260608 \
+  --seed 20260609 \
   --omit-rows
 ```
 
@@ -345,32 +404,32 @@ diagnostics, never to turn a fixture into evidence.
 
 ```bash
 uv run python scripts/run_attention_capture_phase1.py \
-  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_manifest_20260608.json \
+  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json \
   --roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz \
-  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_disjoint_20260608.json \
-  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_disjoint_20260608.md \
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_disjoint_20260609.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_disjoint_20260609.md \
   --permutations 999 \
-  --seed 20260608
+  --seed 20260609
 ```
 
 Run the archived overlapping-mask sensitivity check on the same DHF1K manifest:
 
 ```bash
 uv run python scripts/run_attention_capture_sensitivity.py \
-  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_manifest_20260608.json \
+  --manifest research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json \
   --primary-label disjoint \
   --primary-roi-masks research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz \
   --sensitivity-roi-masks overlapping=research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz \
-  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_sensitivity_20260608.json \
-  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_sensitivity_20260608.md \
+  --output-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_sensitivity_20260609.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_sensitivity_20260609.md \
   --permutations 999 \
-  --seed 20260608
+  --seed 20260609
 ```
 
 The DHF1K label audit should be inspected before GPU scoring. If
-`mean_map_intensity` has weak variance, use one of the emitted concentration
-columns as a stress test rather than treating map intensity as a validated
-capture metric.
+`mean_map_intensity` has weak variance, treat it as a proxy diagnostic rather
+than the proposal's ocular ground truth. The 2026-06-09 fixation-density run is
+the current public DHF1K test of the proposal metric.
 
 For a generic real manifest, run the same preflight before scoring with the
 disjoint ROI masks. Generic real manifests must be built with

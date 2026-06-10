@@ -1,0 +1,380 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_capture_score_workflow",
+  "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json",
+  "primary_label": "disjoint",
+  "primary_roi_masks_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+  "sensitivity_roi_masks": {
+    "overlap": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz"
+  },
+  "min_samples": 30,
+  "min_distinct_ground_truth": 3,
+  "gate_rho": 0.4,
+  "permutations": 999,
+  "seed": 20260609,
+  "preflight": {
+    "schema_version": 1,
+    "experiment": "phase1_capture_score_preflight",
+    "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json",
+    "manifest_status": "real_external_attention_labels",
+    "roi_masks_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+    "n_samples": 350,
+    "sample_kind_counts": {
+      "roi_values": 0,
+      "tribe_feature_path": 350,
+      "both": 0,
+      "neither": 0
+    },
+    "label_groups": [
+      {
+        "dataset": "DHF1K",
+        "n": 350,
+        "n_finite": 350,
+        "n_distinct": 350,
+        "mean": 0.0007440533707201671,
+        "std": 9.45746002309232e-05,
+        "min": 0.000539913901596821,
+        "max": 0.001002299901729296,
+        "ready": true
+      }
+    ],
+    "feature_audit": {
+      "n_feature_path_samples": 350,
+      "n_existing": 350,
+      "n_missing": 0,
+      "n_shape_mismatch": 0,
+      "feature_shape_counts": {
+        "20484": 350
+      },
+      "missing_features": [],
+      "shape_mismatches": [],
+      "roi_shape": "20484"
+    },
+    "provenance_audit": {
+      "required": true,
+      "ready": true,
+      "blocking_reasons": [],
+      "alignment_audit": {
+        "path": "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_alignment_20260609.json",
+        "sha256": "fde522251a93544973b9b1638ea53313452b4a699eb92b42531c5c2900f1f2d4",
+        "ready_for_manifest_build": true,
+        "n_aligned_features": 350,
+        "n_missing_features": 0,
+        "label_audit_ready": true
+      }
+    },
+    "scoring_audit": {
+      "attempted": true,
+      "attempted_reason": null,
+      "n_invalid_capture_denominators": 48,
+      "n_valid_capture_denominators": 302
+    },
+    "min_samples": 30,
+    "min_distinct_ground_truth": 3,
+    "mechanical_ready": true,
+    "claim_update_allowed": true,
+    "claim_ready": true,
+    "blocking_reasons": [],
+    "warnings": [],
+    "claim_boundary": "Preflight verifies manifest mechanics and label variance only. It does not validate attentional capture."
+  },
+  "score_decision": {
+    "scoring_executed": true,
+    "reason": "claim_ready"
+  },
+  "primary_report": {
+    "schema_version": 1,
+    "experiment": "phase1_capture_score_validation",
+    "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json",
+    "manifest_status": "real_external_attention_labels",
+    "claim_update_allowed": true,
+    "n_samples": 350,
+    "n_invalid_capture_denominators": 48,
+    "gate_rho": 0.4,
+    "permutations": 999,
+    "seed": 20260609,
+    "groups": [
+      {
+        "group": "DHF1K",
+        "n_samples": 350,
+        "n_invalid_capture_denominators": 48,
+        "metrics": {
+          "capture_score": {
+            "n": 302,
+            "rho": -0.03476554339555317,
+            "permutation_p_greater": 0.738,
+            "gate_passed": false
+          },
+          "capture_delta": {
+            "n": 350,
+            "rho": 0.0164451021757612,
+            "permutation_p_greater": 0.369,
+            "gate_passed": false
+          },
+          "sensory_mean": {
+            "n": 350,
+            "rho": -0.08492444836284377,
+            "permutation_p_greater": 0.944,
+            "gate_passed": false
+          },
+          "frontoparietal": {
+            "n": 350,
+            "rho": -0.08482956712183072,
+            "permutation_p_greater": 0.928,
+            "gate_passed": false
+          }
+        }
+      }
+    ],
+    "pooled": {
+      "group": "pooled",
+      "n_samples": 350,
+      "n_invalid_capture_denominators": 48,
+      "metrics": {
+        "capture_score": {
+          "n": 302,
+          "rho": -0.03476554339555317,
+          "permutation_p_greater": 0.725,
+          "gate_passed": false
+        },
+        "capture_delta": {
+          "n": 350,
+          "rho": 0.0164451021757612,
+          "permutation_p_greater": 0.391,
+          "gate_passed": false
+        },
+        "sensory_mean": {
+          "n": 350,
+          "rho": -0.08492444836284377,
+          "permutation_p_greater": 0.939,
+          "gate_passed": false
+        },
+        "frontoparietal": {
+          "n": 350,
+          "rho": -0.08482956712183072,
+          "permutation_p_greater": 0.96,
+          "gate_passed": false
+        }
+      }
+    },
+    "gate": {
+      "passed": false,
+      "claim_validated": false,
+      "passed_groups": [],
+      "rule": "capture_score Spearman rho >= 0.40 in at least one dataset"
+    }
+  },
+  "sensitivity_report": {
+    "schema_version": 1,
+    "experiment": "phase1_capture_score_sensitivity",
+    "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json",
+    "primary_label": "disjoint",
+    "gate_rho": 0.4,
+    "permutations": 999,
+    "seed": 20260609,
+    "runs": [
+      {
+        "role": "primary",
+        "label": "disjoint",
+        "roi_masks_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+        "report": {
+          "schema_version": 1,
+          "experiment": "phase1_capture_score_validation",
+          "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json",
+          "manifest_status": "real_external_attention_labels",
+          "claim_update_allowed": true,
+          "n_samples": 350,
+          "n_invalid_capture_denominators": 48,
+          "gate_rho": 0.4,
+          "permutations": 999,
+          "seed": 20260609,
+          "groups": [
+            {
+              "group": "DHF1K",
+              "n_samples": 350,
+              "n_invalid_capture_denominators": 48,
+              "metrics": {
+                "capture_score": {
+                  "n": 302,
+                  "rho": -0.03476554339555317,
+                  "permutation_p_greater": 0.738,
+                  "gate_passed": false
+                },
+                "capture_delta": {
+                  "n": 350,
+                  "rho": 0.0164451021757612,
+                  "permutation_p_greater": 0.369,
+                  "gate_passed": false
+                },
+                "sensory_mean": {
+                  "n": 350,
+                  "rho": -0.08492444836284377,
+                  "permutation_p_greater": 0.944,
+                  "gate_passed": false
+                },
+                "frontoparietal": {
+                  "n": 350,
+                  "rho": -0.08482956712183072,
+                  "permutation_p_greater": 0.928,
+                  "gate_passed": false
+                }
+              }
+            }
+          ],
+          "pooled": {
+            "group": "pooled",
+            "n_samples": 350,
+            "n_invalid_capture_denominators": 48,
+            "metrics": {
+              "capture_score": {
+                "n": 302,
+                "rho": -0.03476554339555317,
+                "permutation_p_greater": 0.725,
+                "gate_passed": false
+              },
+              "capture_delta": {
+                "n": 350,
+                "rho": 0.0164451021757612,
+                "permutation_p_greater": 0.391,
+                "gate_passed": false
+              },
+              "sensory_mean": {
+                "n": 350,
+                "rho": -0.08492444836284377,
+                "permutation_p_greater": 0.939,
+                "gate_passed": false
+              },
+              "frontoparietal": {
+                "n": 350,
+                "rho": -0.08482956712183072,
+                "permutation_p_greater": 0.96,
+                "gate_passed": false
+              }
+            }
+          },
+          "gate": {
+            "passed": false,
+            "claim_validated": false,
+            "passed_groups": [],
+            "rule": "capture_score Spearman rho >= 0.40 in at least one dataset"
+          }
+        }
+      },
+      {
+        "role": "sensitivity",
+        "label": "overlap",
+        "roi_masks_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz",
+        "report": {
+          "schema_version": 1,
+          "experiment": "phase1_capture_score_validation",
+          "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json",
+          "manifest_status": "real_external_attention_labels",
+          "claim_update_allowed": true,
+          "n_samples": 350,
+          "n_invalid_capture_denominators": 49,
+          "gate_rho": 0.4,
+          "permutations": 999,
+          "seed": 20260610,
+          "groups": [
+            {
+              "group": "DHF1K",
+              "n_samples": 350,
+              "n_invalid_capture_denominators": 49,
+              "metrics": {
+                "capture_score": {
+                  "n": 301,
+                  "rho": 0.024529273283316094,
+                  "permutation_p_greater": 0.331,
+                  "gate_passed": false
+                },
+                "capture_delta": {
+                  "n": 350,
+                  "rho": 0.029891369375610058,
+                  "permutation_p_greater": 0.289,
+                  "gate_passed": false
+                },
+                "sensory_mean": {
+                  "n": 350,
+                  "rho": -0.04866414069852465,
+                  "permutation_p_greater": 0.812,
+                  "gate_passed": false
+                },
+                "frontoparietal": {
+                  "n": 350,
+                  "rho": -0.08620772414468689,
+                  "permutation_p_greater": 0.969,
+                  "gate_passed": false
+                }
+              }
+            }
+          ],
+          "pooled": {
+            "group": "pooled",
+            "n_samples": 350,
+            "n_invalid_capture_denominators": 49,
+            "metrics": {
+              "capture_score": {
+                "n": 301,
+                "rho": 0.024529273283316094,
+                "permutation_p_greater": 0.312,
+                "gate_passed": false
+              },
+              "capture_delta": {
+                "n": 350,
+                "rho": 0.029891369375610058,
+                "permutation_p_greater": 0.301,
+                "gate_passed": false
+              },
+              "sensory_mean": {
+                "n": 350,
+                "rho": -0.04866414069852465,
+                "permutation_p_greater": 0.805,
+                "gate_passed": false
+              },
+              "frontoparietal": {
+                "n": 350,
+                "rho": -0.08620772414468689,
+                "permutation_p_greater": 0.939,
+                "gate_passed": false
+              }
+            }
+          },
+          "gate": {
+            "passed": false,
+            "claim_validated": false,
+            "passed_groups": [],
+            "rule": "capture_score Spearman rho >= 0.40 in at least one dataset"
+          }
+        }
+      }
+    ],
+    "comparison": {
+      "capture_score_deltas": [
+        {
+          "group": "DHF1K",
+          "sensitivity_label": "overlap",
+          "primary_rho": -0.03476554339555317,
+          "sensitivity_rho": 0.024529273283316094,
+          "rho_delta": 0.05929481667886927,
+          "primary_n": 302,
+          "sensitivity_n": 301,
+          "primary_gate_passed": false,
+          "sensitivity_gate_passed": false
+        },
+        {
+          "group": "pooled",
+          "sensitivity_label": "overlap",
+          "primary_rho": -0.03476554339555317,
+          "sensitivity_rho": 0.024529273283316094,
+          "rho_delta": 0.05929481667886927,
+          "primary_n": 302,
+          "sensitivity_n": 301,
+          "primary_gate_passed": false,
+          "sensitivity_gate_passed": false
+        }
+      ]
+    },
+    "claim_boundary": "Sensitivity compares ROI scoring policies for the same manifest. It does not validate attention capture without real external labels."
+  },
+  "claim_boundary": "This workflow only allows claim-relevant scoring after preflight passes. Smoke or control manifests may be scored for diagnostics only when explicitly requested, and remain claim-blocked."
+}

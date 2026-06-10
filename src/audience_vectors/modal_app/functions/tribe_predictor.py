@@ -27,6 +27,7 @@ import subprocess
 import tempfile
 import urllib.parse
 import urllib.request
+from importlib import import_module
 from pathlib import Path
 from typing import Any
 
@@ -59,7 +60,7 @@ BMD_VIDEOS_MOUNT = "/bmd-videos"
 
 _TRIBE_VIDEO_SUFFIXES = frozenset({".mp4", ".avi", ".mkv", ".mov", ".webm"})
 _TRIBE_TEXT_SUFFIXES = frozenset({".txt"})
-_MAX_VIDEO_DURATION_SECONDS = 30.0
+_MAX_VIDEO_DURATION_SECONDS = 60.0
 _MAX_REMOTE_DOWNLOAD_BYTES = 512 * 1024 * 1024  # 512 MiB
 _INTROSPECTION_PATTERNS = (
     "pos",
@@ -88,6 +89,7 @@ class VideoPreflightResult(BaseModel):
     """Lightweight video-readiness check before expensive TRIBE prediction."""
 
     input_kind: str
+    event_mode: str
     resolved_path: str
     tribe_path: str
     exists: bool
@@ -121,6 +123,13 @@ def _download_remote(url: str) -> str:
                     raise RuntimeError("remote media exceeded size cap")
                 out.write(chunk)
     return tmp
+
+
+def _force_container_tmpdir() -> None:
+    """Keep third-party audio/transcript tooling off host-specific temp paths."""
+    for key in ("TMPDIR", "TMP", "TEMP"):
+        os.environ[key] = "/tmp"
+    tempfile.tempdir = "/tmp"
 
 
 def _resolve_local_path(path_or_url: str) -> tuple[str, bool]:
@@ -765,16 +774,42 @@ class TribeV2Predictor:
         # Inline import — keeps module-import cheap for orchestration paths.
         from tribev2 import TribeModel  # type: ignore[import-not-found]
 
+        _force_container_tmpdir()
         # Refresh BMD videos volume so containers see the latest uploaded files.
         bmd_videos_volume.reload()
 
         tribe_path = snapshot_download(TRIBE_HF_REPO_ID, revision=TRIBE_HF_REVISION)
         self.model = TribeModel.from_pretrained(tribe_path, device="cuda")
 
-    def _predict_video_impl(self, video_path_or_url: str) -> VideoPredictionResult:
+    def _video_events_dataframe(self, tribe_path: str, *, audio_only: bool):
+        if not audio_only:
+            return self.model.get_events_dataframe(video_path=tribe_path)
+
+        import pandas as pd  # inline import to keep module-load light
+
+        demo_utils = import_module("tribev2.demo_utils")
+        event = {
+            "type": "Video",
+            "filepath": str(tribe_path),
+            "start": 0,
+            "timeline": "default",
+            "subject": "default",
+        }
+        return demo_utils.get_audio_and_text_events(
+            pd.DataFrame([event]),
+            audio_only=True,
+        )
+
+    def _predict_video_impl(
+        self,
+        video_path_or_url: str,
+        *,
+        audio_only: bool = False,
+    ) -> VideoPredictionResult:
         """Predict per-vertex brain activations for a video stimulus."""
         import numpy as np  # inline import to keep module-load light
 
+        _force_container_tmpdir()
         # Uploaded generated/YouTube clips can arrive after a warm container starts.
         # Reload before path resolution so Modal volume-backed scoring is not stale.
         bmd_videos_volume.reload()
@@ -787,7 +822,7 @@ class TribeV2Predictor:
                     f"video too long: {duration:.1f}s > {_MAX_VIDEO_DURATION_SECONDS:.0f}s"
                 )
             tribe_path, cleanup_dir = _ensure_tribe_suffix(local_path)
-            events = self.model.get_events_dataframe(video_path=tribe_path)
+            events = self._video_events_dataframe(tribe_path, audio_only=audio_only)
             preds, _segments = self.model.predict(events, verbose=False)
             return VideoPredictionResult(
                 frames=np.asarray(preds).tolist(),
@@ -811,10 +846,12 @@ class TribeV2Predictor:
         video_path_or_url: str,
         *,
         input_kind: str,
+        audio_only: bool = False,
     ) -> VideoPreflightResult:
         """Validate path resolution, duration probing, and TRIBE event creation."""
         import time
 
+        _force_container_tmpdir()
         timings: dict[str, float] = {}
 
         started = time.monotonic()
@@ -836,11 +873,12 @@ class TribeV2Predictor:
             timings["ensure_suffix"] = time.monotonic() - started
 
             started = time.monotonic()
-            events = self.model.get_events_dataframe(video_path=tribe_path)
+            events = self._video_events_dataframe(tribe_path, audio_only=audio_only)
             timings["get_events_dataframe"] = time.monotonic() - started
 
             return VideoPreflightResult(
                 input_kind=input_kind,
+                event_mode="audio_only" if audio_only else "full",
                 resolved_path=local_path,
                 tribe_path=tribe_path,
                 exists=os.path.exists(local_path),
@@ -866,15 +904,20 @@ class TribeV2Predictor:
                     pass
 
     @modal.method()
-    def predict_video(self, video_path_or_url: str) -> VideoPredictionResult:
+    def predict_video(
+        self,
+        video_path_or_url: str,
+        audio_only: bool = False,
+    ) -> VideoPredictionResult:
         """Predict per-vertex brain activations for a video stimulus."""
-        return self._predict_video_impl(video_path_or_url)
+        return self._predict_video_impl(video_path_or_url, audio_only=audio_only)
 
     @modal.method()
     def predict_video_bytes(
         self,
         video_bytes: bytes,
         suffix: str = ".mp4",
+        audio_only: bool = False,
     ) -> VideoPredictionResult:
         """Predict per-vertex brain activations for an uploaded video payload."""
         fd, tmp = tempfile.mkstemp(suffix=suffix, dir="/tmp")
@@ -882,7 +925,7 @@ class TribeV2Predictor:
         try:
             with open(tmp, "wb") as out:
                 out.write(video_bytes)
-            return self._predict_video_impl(tmp)
+            return self._predict_video_impl(tmp, audio_only=audio_only)
         finally:
             try:
                 os.unlink(tmp)
@@ -890,15 +933,24 @@ class TribeV2Predictor:
                 pass
 
     @modal.method()
-    def preflight_video(self, video_path_or_url: str) -> VideoPreflightResult:
+    def preflight_video(
+        self,
+        video_path_or_url: str,
+        audio_only: bool = False,
+    ) -> VideoPreflightResult:
         """Validate a video path/URL without running expensive TRIBE prediction."""
-        return self._preflight_video_impl(video_path_or_url, input_kind="path")
+        return self._preflight_video_impl(
+            video_path_or_url,
+            input_kind="path",
+            audio_only=audio_only,
+        )
 
     @modal.method()
     def preflight_video_bytes(
         self,
         video_bytes: bytes,
         suffix: str = ".mp4",
+        audio_only: bool = False,
     ) -> VideoPreflightResult:
         """Validate an uploaded video payload without running TRIBE prediction."""
         fd, tmp = tempfile.mkstemp(suffix=suffix, dir="/tmp")
@@ -906,7 +958,11 @@ class TribeV2Predictor:
         try:
             with open(tmp, "wb") as out:
                 out.write(video_bytes)
-            return self._preflight_video_impl(tmp, input_kind="bytes")
+            return self._preflight_video_impl(
+                tmp,
+                input_kind="bytes",
+                audio_only=audio_only,
+            )
         finally:
             try:
                 os.unlink(tmp)

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import importlib.util
 import sys
 from pathlib import Path
@@ -58,3 +59,56 @@ def test_result_to_arrays_accepts_object_and_mapping_results() -> None:
     assert obj_duration == 2.5
     assert map_frames.tolist() == [[1.0, 2.0], [3.0, 4.0]]
     assert map_duration == 1.25
+
+
+def test_extract_one_passes_audio_only_mode_and_records_metadata(tmp_path: Path) -> None:
+    module = load_module()
+    media = tmp_path / "clip.mp4"
+    media.write_bytes(b"fake-video")
+    job = module.VideoFeatureJob(
+        sample_id="s1",
+        media_path=str(media),
+        output_path=tmp_path / "features" / "s1.npz",
+    )
+
+    class FakeService:
+        calls: list[dict[str, object]]
+
+        def __init__(self) -> None:
+            self.calls = []
+
+        async def predict_video_bytes(
+            self,
+            video_bytes: bytes,
+            suffix: str = ".mp4",
+            *,
+            audio_only: bool = False,
+        ):
+            self.calls.append(
+                {
+                    "video_bytes": video_bytes,
+                    "suffix": suffix,
+                    "audio_only": audio_only,
+                }
+            )
+            return SimpleNamespace(frames=[[1.0, 2.0]], duration_seconds=1.5)
+
+    service = FakeService()
+
+    output = asyncio.run(
+        module.extract_one(
+            service=service,
+            sem=asyncio.Semaphore(1),
+            job=job,
+            transport="bytes",
+            event_mode="audio-only",
+        )
+    )
+
+    assert output == job.output_path
+    assert service.calls == [
+        {"video_bytes": b"fake-video", "suffix": ".mp4", "audio_only": True}
+    ]
+    payload = np.load(job.output_path)
+    assert payload["event_mode"].item() == "audio-only"
+    assert payload["transport"].item() == "bytes"

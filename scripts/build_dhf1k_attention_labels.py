@@ -233,6 +233,8 @@ def normalize_metric_columns(metric_columns: set[str] | None) -> set[str]:
 
 
 def portable_video_path(video_path: Path) -> str:
+    if not video_path.is_absolute():
+        return str(video_path)
     resolved = video_path.resolve()
     try:
         return str(resolved.relative_to(Path.cwd().resolve()))
