@@ -26,6 +26,13 @@ def parse_args() -> argparse.Namespace:
         default=[],
         help="Phase 1 workflow JSON to include. May be passed multiple times.",
     )
+    parser.add_argument(
+        "--feature-cache-audit",
+        action="append",
+        type=Path,
+        default=[],
+        help="Feature-cache checksum audit JSON. May be passed multiple times.",
+    )
     parser.add_argument("--output-json", type=Path, required=True)
     parser.add_argument("--output-md", type=Path, required=True)
     parser.add_argument("--min-paper-datasets", type=int, default=2)
@@ -43,6 +50,7 @@ def main() -> None:
     report = build_publication_path_report(
         readiness_json=args.readiness_json,
         workflow_jsons=args.workflow_json,
+        feature_cache_audits=args.feature_cache_audit,
         min_paper_datasets=args.min_paper_datasets,
         token_envs=tuple(args.token_env or DEFAULT_TOKEN_ENVS),
     )
@@ -58,11 +66,15 @@ def build_publication_path_report(
     *,
     readiness_json: Path | None,
     workflow_jsons: list[Path],
+    feature_cache_audits: list[Path] | None = None,
     min_paper_datasets: int = 2,
     token_envs: tuple[str, ...] = DEFAULT_TOKEN_ENVS,
 ) -> dict[str, Any]:
     readiness = load_readiness(readiness_json)
     workflows = [summarize_workflow(path) for path in workflow_jsons]
+    cache_audits = [
+        summarize_feature_cache_audit(path) for path in feature_cache_audits or []
+    ]
     credential_audit = audit_text_model_credentials(token_envs)
     completed_real_workflows = [
         workflow for workflow in workflows if workflow["scoring_executed"]
@@ -98,6 +110,7 @@ def build_publication_path_report(
     warnings = publication_warnings(
         readiness=readiness,
         workflows=workflows,
+        cache_audits=cache_audits,
     )
     return {
         "schema_version": 1,
@@ -105,9 +118,11 @@ def build_publication_path_report(
         "generated_at": datetime.now(UTC).isoformat(),
         "readiness_json": str(readiness_json) if readiness_json is not None else None,
         "workflow_jsons": [str(path) for path in workflow_jsons],
+        "feature_cache_audit_jsons": [str(path) for path in feature_cache_audits or []],
         "min_paper_datasets": min_paper_datasets,
         "readiness_summary": summarize_readiness(readiness),
         "credential_audit": credential_audit,
+        "feature_cache_audit_summaries": cache_audits,
         "workflow_summaries": workflows,
         "phase1_gate_passed": phase1_gate_passed,
         "phase2_ready": phase1_gate_passed,
@@ -204,8 +219,7 @@ def best_metric(metrics: list[dict[str, Any]]) -> dict[str, Any] | None:
 
 def audit_text_model_credentials(token_envs: tuple[str, ...]) -> dict[str, Any]:
     entries = [
-        {"env": name, "present": bool(os.environ.get(name))}
-        for name in token_envs
+        {"env": name, "present": bool(os.environ.get(name))} for name in token_envs
     ]
     return {
         "token_envs_checked": list(token_envs),
@@ -216,6 +230,22 @@ def audit_text_model_credentials(token_envs: tuple[str, ...]) -> dict[str, Any]:
             "the full text-model path may be runnable; it does not prove access "
             "to any specific gated model."
         ),
+    }
+
+
+def summarize_feature_cache_audit(path: Path) -> dict[str, Any]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return {
+        "path": str(path),
+        "feature_dir": payload.get("feature_dir"),
+        "ready_for_reuse": bool(payload.get("ready_for_reuse")),
+        "n_npz_files": payload.get("n_npz_files"),
+        "n_expected_sample_ids": payload.get("n_expected_sample_ids"),
+        "n_missing_expected_sample_ids": payload.get("n_missing_expected_sample_ids"),
+        "n_bad_npz": payload.get("n_bad_npz"),
+        "n_shape_mismatches": payload.get("n_shape_mismatches"),
+        "aggregate_sha256": payload.get("aggregate_sha256"),
+        "blocking_reasons": payload.get("blocking_reasons") or [],
     }
 
 
@@ -268,20 +298,33 @@ def publication_warnings(
     *,
     readiness: dict[str, Any],
     workflows: list[dict[str, Any]],
+    cache_audits: list[dict[str, Any]],
 ) -> list[str]:
     warnings: list[str] = []
-    feature_dirs = readiness.get("tribe_feature_dirs") if isinstance(readiness, dict) else None
+    feature_dirs = (
+        readiness.get("tribe_feature_dirs") if isinstance(readiness, dict) else None
+    )
+    ready_cache_audit = any(audit["ready_for_reuse"] for audit in cache_audits)
     if isinstance(feature_dirs, list):
         absolute_feature_dirs = [
             str(item.get("path"))
             for item in feature_dirs
             if isinstance(item, dict) and str(item.get("path", "")).startswith("/")
         ]
-        if absolute_feature_dirs:
+        if absolute_feature_dirs and ready_cache_audit:
+            warnings.append(
+                "TRIBE feature cache has checksum provenance, but the cache is "
+                "still external to git and needs an archive location or "
+                "deterministic rerun path"
+            )
+        elif absolute_feature_dirs:
             warnings.append(
                 "TRIBE feature cache is external to the repo and should be "
                 "archived or regenerated for reproducibility"
             )
+    for audit in cache_audits:
+        if not audit["ready_for_reuse"]:
+            warnings.append(f"feature cache audit is not reusable: {audit['path']}")
     if any(workflow["best_capture_score"] is None for workflow in workflows):
         warnings.append("at least one workflow lacks a capture_score metric")
     return warnings
@@ -312,9 +355,8 @@ def next_actions(blockers: list[str], warnings: list[str]) -> list[str]:
         )
     if any("feature cache" in warning for warning in warnings):
         actions.append(
-            "Create a non-git artifact plan for the external TRIBE feature "
-            "cache: checksum manifest, object storage, or deterministic rerun "
-            "instructions."
+            "Add an object-storage/archive location or deterministic rerun "
+            "instructions for the external TRIBE feature cache."
         )
     return dedupe(actions)
 
@@ -361,6 +403,7 @@ def render_publication_markdown(report: dict[str, Any]) -> str:
         "- none",
     )
     lines.extend(render_workflow_table(report["workflow_summaries"]))
+    lines.extend(render_feature_cache_table(report["feature_cache_audit_summaries"]))
     return "\n".join(lines) + "\n"
 
 
@@ -386,6 +429,28 @@ def render_workflow_table(workflows: list[dict[str, Any]]) -> list[str]:
             f"{format_float(metric.get('permutation_p_greater'))} | "
             f"{metric.get('n') or 0} | "
             f"{workflow['n_invalid_capture_denominators'] or 0} |"
+        )
+    return lines
+
+
+def render_feature_cache_table(cache_audits: list[dict[str, Any]]) -> list[str]:
+    lines = [
+        "",
+        "## Feature Cache Evidence",
+        "",
+        "| audit | feature dir | ready | npz files | expected ids | aggregate sha256 |",
+        "|---|---|---|---:|---:|---|",
+    ]
+    if not cache_audits:
+        lines.append("| none | n/a | False | 0 | 0 | n/a |")
+        return lines
+    for audit in cache_audits:
+        lines.append(
+            "| "
+            f"{audit['path']} | {audit['feature_dir'] or 'n/a'} | "
+            f"{audit['ready_for_reuse']} | {audit['n_npz_files'] or 0} | "
+            f"{audit['n_expected_sample_ids'] or 0} | "
+            f"{str(audit['aggregate_sha256'] or 'n/a')[:12]} |"
         )
     return lines
 

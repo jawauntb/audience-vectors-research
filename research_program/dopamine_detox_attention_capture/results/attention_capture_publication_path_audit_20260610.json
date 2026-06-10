@@ -1,11 +1,14 @@
 {
   "schema_version": 1,
   "experiment": "attention_capture_publication_path_audit",
-  "generated_at": "2026-06-10T01:03:29.599260+00:00",
+  "generated_at": "2026-06-10T01:12:15.658130+00:00",
   "readiness_json": "research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.json",
   "workflow_jsons": [
     "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_audio_only_workflow_20260609.json",
     "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_workflow_20260609.json"
+  ],
+  "feature_cache_audit_jsons": [
+    "research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json"
   ],
   "min_paper_datasets": 2,
   "readiness_summary": {
@@ -39,6 +42,20 @@
     "any_present": false,
     "claim_boundary": "Credential values are never reported. Presence only indicates that the full text-model path may be runnable; it does not prove access to any specific gated model."
   },
+  "feature_cache_audit_summaries": [
+    {
+      "path": "research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json",
+      "feature_dir": "data/features/tribe_dhf1k_attention_audio_only",
+      "ready_for_reuse": true,
+      "n_npz_files": 516,
+      "n_expected_sample_ids": 516,
+      "n_missing_expected_sample_ids": 0,
+      "n_bad_npz": 0,
+      "n_shape_mismatches": 0,
+      "aggregate_sha256": "990c7605e215799d8d0afbb7a3fedaa7e4436af17e20703eb2c38f19747be776",
+      "blocking_reasons": []
+    }
+  ],
   "workflow_summaries": [
     {
       "path": "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_audio_only_workflow_20260609.json",
@@ -102,14 +119,14 @@
     "fewer than 2 external datasets have completed claim-ready workflow reports"
   ],
   "warnings": [
-    "TRIBE feature cache is external to the repo and should be archived or regenerated for reproducibility"
+    "TRIBE feature cache has checksum provenance, but the cache is still external to git and needs an archive location or deterministic rerun path"
   ],
   "next_actions": [
     "Do not enter Phase 2/3 neutralization from the current H2 score; either acquire retention labels for an independent test or preregister a revised score before evaluating held-out data.",
     "Mount granted SnapUGC/VQualA labels and build a retention manifest with alignment-audit provenance.",
     "Provide a HuggingFace token with access to the gated TRIBE text model path, then rerun full multimodal feature extraction.",
     "Require at least one held-out external validation dataset before claiming publication readiness.",
-    "Create a non-git artifact plan for the external TRIBE feature cache: checksum manifest, object storage, or deterministic rerun instructions."
+    "Add an object-storage/archive location or deterministic rerun instructions for the external TRIBE feature cache."
   ],
   "claim_boundary": "This audit decides whether current evidence can support the attention-capture paper claim. It is stricter than data readiness: a runnable manifest is not enough when the scoring gate failed or retention/full-multimodal evidence is absent."
 }
