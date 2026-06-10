@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_manifest_alignment_audit",
+  "dataset": "DHF1K",
+  "labels_csv": "research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_20260609.csv",
+  "feature_dir": "data/features/tribe_dhf1k_attention_audio_only",
+  "label_audit": {
+    "path": "research_program/dopamine_detox_attention_capture/results/dhf1k_attention_label_audit_fixation_density_20260609.json",
+    "sha256": "17f3deaefce5abd9aff01a2e59d9e8fff75dc03fe7e9d80f7139d3452bbf7f43",
+    "experiment": "dhf1k_attention_label_audit",
+    "ready_for_manifest_alignment": true,
+    "labels_csv_relation": "same",
+    "rank_column": "mean_fixation_density",
+    "recommended_ground_truth_column": "mean_fixation_density",
+    "n_rows": 350,
+    "blocking_reasons": []
+  },
+  "sample_id_column": "sample_id",
+  "ground_truth_column": "mean_fixation_density",
+  "feature_template": "{sample_id}.npz",
+  "n_label_rows": 350,
+  "n_unique_sample_ids": 350,
+  "n_duplicate_sample_ids": 0,
+  "duplicate_sample_ids": [],
+  "n_aligned_features": 350,
+  "n_missing_features": 0,
+  "n_invalid_ground_truth": 0,
+  "ground_truth_summary": {
+    "n": 350,
+    "n_distinct": 350,
+    "mean": 0.0007440533707201671,
+    "std": 9.45746002309232e-05,
+    "min": 0.000539913901596821,
+    "max": 0.001002299901729296
+  },
+  "min_samples": 30,
+  "min_distinct_ground_truth": 3,
+  "ready_for_manifest_build": true,
+  "blocking_reasons": [],
+  "missing_features": [],
+  "invalid_ground_truth_rows": [],
+  "claim_boundary": "This audit checks CSV/feature alignment only. It does not score TRIBE features or validate attentional capture."
+}

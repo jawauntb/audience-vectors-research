@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_dhf1k_audio_only_roi_diagnostics",
+  "labels_csv": "research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv",
+  "feature_dir": "data/features/tribe_dhf1k_attention_audio_only",
+  "reports": [
+    {
+      "mask_label": "disjoint",
+      "roi_masks_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+      "metrics": [
+        {
+          "metric": "language",
+          "n": 350,
+          "rho": -0.39022093474815533,
+          "p_two_sided": 3.5438540022025384e-14
+        },
+        {
+          "metric": "v1_ppa_delta",
+          "n": 350,
+          "rho": 0.28294467709940485,
+          "p_two_sided": 7.248222236921028e-08
+        },
+        {
+          "metric": "frontoparietal",
+          "n": 350,
+          "rho": -0.23083640332923996,
+          "p_two_sided": 1.287853922129275e-05
+        },
+        {
+          "metric": "neg_frontoparietal",
+          "n": 350,
+          "rho": 0.23083640332923996,
+          "p_two_sided": 1.287853922129275e-05
+        },
+        {
+          "metric": "v1_ppa_absden_score",
+          "n": 350,
+          "rho": 0.22747665578611137,
+          "p_two_sided": 1.731735673781523e-05
+        },
+        {
+          "metric": "capture_delta",
+          "n": 350,
+          "rho": 0.21496436705605756,
+          "p_two_sided": 5.019240919290116e-05
+        },
+        {
+          "metric": "PPA",
+          "n": 350,
+          "rho": 0.1893926131175415,
+          "p_two_sided": 0.0003668726034109644
+        },
+        {
+          "metric": "capture_score",
+          "n": 301,
+          "rho": 0.1256205584035555,
+          "p_two_sided": 0.029331233611743567
+        },
+        {
+          "metric": "v1_ppa_mean",
+          "n": 350,
+          "rho": 0.08218772631380082,
+          "p_two_sided": 0.12486036109494734
+        },
+        {
+          "metric": "sensory_mean",
+          "n": 350,
+          "rho": -0.052035083668321484,
+          "p_two_sided": 0.33171635274451167
+        },
+        {
+          "metric": "absden_capture_score",
+          "n": 350,
+          "rho": 0.033774503115477326,
+          "p_two_sided": 0.5288369446904475
+        },
+        {
+          "metric": "V1",
+          "n": 350,
+          "rho": 0.03109711682777585,
+          "p_two_sided": 0.5620273428108554
+        }
+      ],
+      "tail_summary": {
+        "low": {
+          "n": 175,
+          "ground_truth": 0.013828049620963725,
+          "frontoparietal": 0.05767591111761119,
+          "neg_frontoparietal": -0.05767591111761119,
+          "sensory_mean": 0.036134957444377336,
+          "capture_delta": -0.021540953673233856,
+          "absden_capture_score": 0.7273470120872616
+        },
+        "high": {
+          "n": 175,
+          "ground_truth": 0.019053753813773895,
+          "frontoparietal": 0.03364684522027216,
+          "neg_frontoparietal": -0.03364684522027216,
+          "sensory_mean": 0.03131863075402743,
+          "capture_delta": -0.0023282144662447367,
+          "absden_capture_score": 0.47551798595054395
+        }
+      }
+    },
+    {
+      "mask_label": "overlap",
+      "roi_masks_path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz",
+      "metrics": [
+        {
+          "metric": "language",
+          "n": 350,
+          "rho": -0.3830435467111684,
+          "p_two_sided": 1.1229845896491955e-13
+        },
+        {
+          "metric": "v1_ppa_delta",
+          "n": 350,
+          "rho": 0.31427395908771266,
+          "p_two_sided": 1.838316714923536e-09
+        },
+        {
+          "metric": "capture_delta",
+          "n": 350,
+          "rho": 0.2942405827219581,
+          "p_two_sided": 2.02665441471937e-08
+        },
+        {
+          "metric": "v1_ppa_absden_score",
+          "n": 350,
+          "rho": 0.2752864454870186,
+          "p_two_sided": 1.6662796762257699e-07
+        },
+        {
+          "metric": "capture_score",
+          "n": 296,
+          "rho": 0.2589625064201335,
+          "p_two_sided": 6.369424034718553e-06
+        },
+        {
+          "metric": "PPA",
+          "n": 350,
+          "rho": 0.2554005688676176,
+          "p_two_sided": 1.288345683375715e-06
+        },
+        {
+          "metric": "frontoparietal",
+          "n": 350,
+          "rho": -0.22092173347187677,
+          "p_two_sided": 3.047095395870525e-05
+        },
+        {
+          "metric": "neg_frontoparietal",
+          "n": 350,
+          "rho": 0.22092173347187677,
+          "p_two_sided": 3.047095395870525e-05
+        },
+        {
+          "metric": "absden_capture_score",
+          "n": 350,
+          "rho": 0.2005541736200762,
+          "p_two_sided": 0.00015869843643912497
+        },
+        {
+          "metric": "v1_ppa_mean",
+          "n": 350,
+          "rho": 0.18194373598385058,
+          "p_two_sided": 0.0006255905667147461
+        },
+        {
+          "metric": "V1",
+          "n": 350,
+          "rho": 0.1005202374829882,
+          "p_two_sided": 0.06029984578005691
+        },
+        {
+          "metric": "sensory_mean",
+          "n": 350,
+          "rho": 0.08692115270911832,
+          "p_two_sided": 0.10450339677533439
+        }
+      ],
+      "tail_summary": {
+        "low": {
+          "n": 175,
+          "ground_truth": 0.013828049620963725,
+          "frontoparietal": 0.049344170035661335,
+          "neg_frontoparietal": -0.049344170035661335,
+          "sensory_mean": 0.04786994607696431,
+          "capture_delta": -0.0014742239586970143,
+          "absden_capture_score": 1.9623952276254188
+        },
+        "high": {
+          "n": 175,
+          "ground_truth": 0.019053753813773895,
+          "frontoparietal": 0.02812442856574697,
+          "neg_frontoparietal": -0.02812442856574697,
+          "sensory_mean": 0.05804775426915425,
+          "capture_delta": 0.029923325703407288,
+          "absden_capture_score": 5.455681401541
+        }
+      }
+    }
+  ],
+  "claim_boundary": "Exploratory diagnostic after primary gate failure; not a claim-updating metric selection."
+}

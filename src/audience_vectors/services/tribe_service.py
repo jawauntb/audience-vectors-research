@@ -63,14 +63,19 @@ class TribeService:
         self._cls = modal.Cls.from_name(self.app_name, "TribeV2Predictor")
         return self._cls
 
-    async def predict_video(self, video_path_or_url: str) -> Any:
+    async def predict_video(
+        self,
+        video_path_or_url: str,
+        *,
+        audio_only: bool = False,
+    ) -> Any:
         """Run TRIBE v2 on one video. Returns VideoPredictionResult or None on soft failure."""
         if not video_path_or_url:
             return None
         try:
             cls = self._resolve_cls()
             predictor = cls()
-            return await predictor.predict_video.remote.aio(video_path_or_url)
+            return await predictor.predict_video.remote.aio(video_path_or_url, audio_only)
         except Exception as exc:  # noqa: BLE001
             if _is_validation_error(exc):
                 raise TribeValidationError(str(exc)) from exc
@@ -81,6 +86,8 @@ class TribeService:
         self,
         video_bytes: bytes,
         suffix: str = ".mp4",
+        *,
+        audio_only: bool = False,
     ) -> Any:
         """Run TRIBE v2 on one video payload. Returns VideoPredictionResult or None."""
         if not video_bytes:
@@ -88,21 +95,33 @@ class TribeService:
         try:
             cls = self._resolve_cls()
             predictor = cls()
-            return await predictor.predict_video_bytes.remote.aio(video_bytes, suffix)
+            return await predictor.predict_video_bytes.remote.aio(
+                video_bytes,
+                suffix,
+                audio_only,
+            )
         except Exception as exc:  # noqa: BLE001
             if _is_validation_error(exc):
                 raise TribeValidationError(str(exc)) from exc
             logger.exception("TRIBE predict_video_bytes failed: %s", exc)
             return None
 
-    async def preflight_video(self, video_path_or_url: str) -> Any:
+    async def preflight_video(
+        self,
+        video_path_or_url: str,
+        *,
+        audio_only: bool = False,
+    ) -> Any:
         """Validate video resolution/events without full TRIBE prediction."""
         if not video_path_or_url:
             return None
         try:
             cls = self._resolve_cls()
             predictor = cls()
-            return await predictor.preflight_video.remote.aio(video_path_or_url)
+            return await predictor.preflight_video.remote.aio(
+                video_path_or_url,
+                audio_only,
+            )
         except Exception as exc:  # noqa: BLE001
             if _is_validation_error(exc):
                 raise TribeValidationError(str(exc)) from exc
@@ -113,6 +132,8 @@ class TribeService:
         self,
         video_bytes: bytes,
         suffix: str = ".mp4",
+        *,
+        audio_only: bool = False,
     ) -> Any:
         """Validate a video payload/events without full TRIBE prediction."""
         if not video_bytes:
@@ -120,7 +141,11 @@ class TribeService:
         try:
             cls = self._resolve_cls()
             predictor = cls()
-            return await predictor.preflight_video_bytes.remote.aio(video_bytes, suffix)
+            return await predictor.preflight_video_bytes.remote.aio(
+                video_bytes,
+                suffix,
+                audio_only,
+            )
         except Exception as exc:  # noqa: BLE001
             if _is_validation_error(exc):
                 raise TribeValidationError(str(exc)) from exc

@@ -1,0 +1,2499 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_capture_score_validation",
+  "status": "real_external_attention_labels",
+  "dataset": "DHF1K",
+  "ground_truth_name": "mean_map_intensity",
+  "feature_source": {
+    "feature_dir": "data/features/tribe_dhf1k_attention_audio_only",
+    "feature_template": "{sample_id}.npz"
+  },
+  "roi_mask_recommendation": "Use results/destrieux_roi_masks_disjoint_20260608.npz for the primary Phase 1 run; keep overlapping masks as sensitivity only.",
+  "samples": [
+    {
+      "sample_id": "dhf1k_002",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012773613544778082,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_002.npz"
+    },
+    {
+      "sample_id": "dhf1k_003",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012273762022752115,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_003.npz"
+    },
+    {
+      "sample_id": "dhf1k_004",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013658999238317758,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_004.npz"
+    },
+    {
+      "sample_id": "dhf1k_005",
+      "dataset": "DHF1K",
+      "ground_truth": 0.022518741530985095,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_005.npz"
+    },
+    {
+      "sample_id": "dhf1k_008",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017914390989712307,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_008.npz"
+    },
+    {
+      "sample_id": "dhf1k_010",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017824221150824587,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_010.npz"
+    },
+    {
+      "sample_id": "dhf1k_011",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01298459130238532,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_011.npz"
+    },
+    {
+      "sample_id": "dhf1k_014",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014880175061551924,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_014.npz"
+    },
+    {
+      "sample_id": "dhf1k_015",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018277546470132737,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_015.npz"
+    },
+    {
+      "sample_id": "dhf1k_016",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020231531003069122,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_016.npz"
+    },
+    {
+      "sample_id": "dhf1k_018",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018825065081559674,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_018.npz"
+    },
+    {
+      "sample_id": "dhf1k_019",
+      "dataset": "DHF1K",
+      "ground_truth": 0.021130051371744937,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_019.npz"
+    },
+    {
+      "sample_id": "dhf1k_021",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018618792471033138,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_021.npz"
+    },
+    {
+      "sample_id": "dhf1k_022",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018748787521537295,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_022.npz"
+    },
+    {
+      "sample_id": "dhf1k_024",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018291789188009243,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_024.npz"
+    },
+    {
+      "sample_id": "dhf1k_025",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014379504741318211,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_025.npz"
+    },
+    {
+      "sample_id": "dhf1k_027",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01466424139205983,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_027.npz"
+    },
+    {
+      "sample_id": "dhf1k_028",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018517735651447296,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_028.npz"
+    },
+    {
+      "sample_id": "dhf1k_029",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013985243491928707,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_029.npz"
+    },
+    {
+      "sample_id": "dhf1k_031",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019894948295244935,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_031.npz"
+    },
+    {
+      "sample_id": "dhf1k_033",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014005848402618695,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_033.npz"
+    },
+    {
+      "sample_id": "dhf1k_034",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013159459488551047,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_034.npz"
+    },
+    {
+      "sample_id": "dhf1k_037",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020024003746408607,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_037.npz"
+    },
+    {
+      "sample_id": "dhf1k_038",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014069160340711224,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_038.npz"
+    },
+    {
+      "sample_id": "dhf1k_039",
+      "dataset": "DHF1K",
+      "ground_truth": 0.0185882594389182,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_039.npz"
+    },
+    {
+      "sample_id": "dhf1k_040",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01864311033859849,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_040.npz"
+    },
+    {
+      "sample_id": "dhf1k_041",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01808308054441128,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_041.npz"
+    },
+    {
+      "sample_id": "dhf1k_045",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013927824884730607,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_045.npz"
+    },
+    {
+      "sample_id": "dhf1k_046",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014706662699872015,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_046.npz"
+    },
+    {
+      "sample_id": "dhf1k_049",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013274674929851136,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_049.npz"
+    },
+    {
+      "sample_id": "dhf1k_050",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018246593307671564,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_050.npz"
+    },
+    {
+      "sample_id": "dhf1k_051",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01842718295339081,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_051.npz"
+    },
+    {
+      "sample_id": "dhf1k_054",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01934687482650604,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_054.npz"
+    },
+    {
+      "sample_id": "dhf1k_055",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017995550555037,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_055.npz"
+    },
+    {
+      "sample_id": "dhf1k_056",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013829882486142975,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_056.npz"
+    },
+    {
+      "sample_id": "dhf1k_060",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018044294576005388,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_060.npz"
+    },
+    {
+      "sample_id": "dhf1k_061",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01471980685059816,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_061.npz"
+    },
+    {
+      "sample_id": "dhf1k_066",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014877694894955175,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_066.npz"
+    },
+    {
+      "sample_id": "dhf1k_068",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019346768015788662,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_068.npz"
+    },
+    {
+      "sample_id": "dhf1k_069",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014728800654054363,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_069.npz"
+    },
+    {
+      "sample_id": "dhf1k_071",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014200274155441303,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_071.npz"
+    },
+    {
+      "sample_id": "dhf1k_072",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013652667804536495,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_072.npz"
+    },
+    {
+      "sample_id": "dhf1k_077",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013303987044089235,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_077.npz"
+    },
+    {
+      "sample_id": "dhf1k_081",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018758318447806562,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_081.npz"
+    },
+    {
+      "sample_id": "dhf1k_083",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013929490013969405,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_083.npz"
+    },
+    {
+      "sample_id": "dhf1k_084",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014436867759179543,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_084.npz"
+    },
+    {
+      "sample_id": "dhf1k_086",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013993557010751183,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_086.npz"
+    },
+    {
+      "sample_id": "dhf1k_087",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01259412748853944,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_087.npz"
+    },
+    {
+      "sample_id": "dhf1k_088",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013288355793075678,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_088.npz"
+    },
+    {
+      "sample_id": "dhf1k_089",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014694425531122487,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_089.npz"
+    },
+    {
+      "sample_id": "dhf1k_090",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018660076563098718,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_090.npz"
+    },
+    {
+      "sample_id": "dhf1k_091",
+      "dataset": "DHF1K",
+      "ground_truth": 0.0149364227434192,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_091.npz"
+    },
+    {
+      "sample_id": "dhf1k_093",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018597490139069157,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_093.npz"
+    },
+    {
+      "sample_id": "dhf1k_098",
+      "dataset": "DHF1K",
+      "ground_truth": 0.0202170064051946,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_098.npz"
+    },
+    {
+      "sample_id": "dhf1k_102",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014986965259306984,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_102.npz"
+    },
+    {
+      "sample_id": "dhf1k_103",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013843089320074171,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_103.npz"
+    },
+    {
+      "sample_id": "dhf1k_104",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01441337694870805,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_104.npz"
+    },
+    {
+      "sample_id": "dhf1k_105",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014534679580279314,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_105.npz"
+    },
+    {
+      "sample_id": "dhf1k_106",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018428371807363765,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_106.npz"
+    },
+    {
+      "sample_id": "dhf1k_109",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013867527873326953,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_109.npz"
+    },
+    {
+      "sample_id": "dhf1k_112",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01421180890074798,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_112.npz"
+    },
+    {
+      "sample_id": "dhf1k_117",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01259873741614361,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_117.npz"
+    },
+    {
+      "sample_id": "dhf1k_118",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018185096346841005,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_118.npz"
+    },
+    {
+      "sample_id": "dhf1k_119",
+      "dataset": "DHF1K",
+      "ground_truth": 0.011777336328772694,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_119.npz"
+    },
+    {
+      "sample_id": "dhf1k_120",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017894009429432773,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_120.npz"
+    },
+    {
+      "sample_id": "dhf1k_126",
+      "dataset": "DHF1K",
+      "ground_truth": 0.0147928983343699,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_126.npz"
+    },
+    {
+      "sample_id": "dhf1k_128",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014897961769714405,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_128.npz"
+    },
+    {
+      "sample_id": "dhf1k_129",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012712489564678279,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_129.npz"
+    },
+    {
+      "sample_id": "dhf1k_133",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013649266406853312,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_133.npz"
+    },
+    {
+      "sample_id": "dhf1k_134",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017755846969582618,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_134.npz"
+    },
+    {
+      "sample_id": "dhf1k_135",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01794649115098374,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_135.npz"
+    },
+    {
+      "sample_id": "dhf1k_136",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014780778842346774,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_136.npz"
+    },
+    {
+      "sample_id": "dhf1k_137",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014657942671986961,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_137.npz"
+    },
+    {
+      "sample_id": "dhf1k_138",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013527183453134722,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_138.npz"
+    },
+    {
+      "sample_id": "dhf1k_139",
+      "dataset": "DHF1K",
+      "ground_truth": 0.0121297685843375,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_139.npz"
+    },
+    {
+      "sample_id": "dhf1k_140",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020030652763667885,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_140.npz"
+    },
+    {
+      "sample_id": "dhf1k_141",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014956810487818132,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_141.npz"
+    },
+    {
+      "sample_id": "dhf1k_146",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014796168209505524,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_146.npz"
+    },
+    {
+      "sample_id": "dhf1k_147",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013183981724969537,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_147.npz"
+    },
+    {
+      "sample_id": "dhf1k_148",
+      "dataset": "DHF1K",
+      "ground_truth": 0.02123749538291356,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_148.npz"
+    },
+    {
+      "sample_id": "dhf1k_150",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01791373549253583,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_150.npz"
+    },
+    {
+      "sample_id": "dhf1k_155",
+      "dataset": "DHF1K",
+      "ground_truth": 0.021914349304575285,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_155.npz"
+    },
+    {
+      "sample_id": "dhf1k_156",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019653961302441778,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_156.npz"
+    },
+    {
+      "sample_id": "dhf1k_158",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01867181609275148,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_158.npz"
+    },
+    {
+      "sample_id": "dhf1k_159",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01327957575789319,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_159.npz"
+    },
+    {
+      "sample_id": "dhf1k_160",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01894867628214568,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_160.npz"
+    },
+    {
+      "sample_id": "dhf1k_172",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012787374357382456,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_172.npz"
+    },
+    {
+      "sample_id": "dhf1k_175",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012652055916295927,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_175.npz"
+    },
+    {
+      "sample_id": "dhf1k_179",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014452693644644958,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_179.npz"
+    },
+    {
+      "sample_id": "dhf1k_181",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01934115565087222,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_181.npz"
+    },
+    {
+      "sample_id": "dhf1k_183",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014381321381863254,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_183.npz"
+    },
+    {
+      "sample_id": "dhf1k_184",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017922460819261337,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_184.npz"
+    },
+    {
+      "sample_id": "dhf1k_185",
+      "dataset": "DHF1K",
+      "ground_truth": 0.0189983756417395,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_185.npz"
+    },
+    {
+      "sample_id": "dhf1k_186",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019253853058995362,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_186.npz"
+    },
+    {
+      "sample_id": "dhf1k_188",
+      "dataset": "DHF1K",
+      "ground_truth": 0.02003921623990843,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_188.npz"
+    },
+    {
+      "sample_id": "dhf1k_189",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01831577241867094,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_189.npz"
+    },
+    {
+      "sample_id": "dhf1k_190",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019705214885414227,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_190.npz"
+    },
+    {
+      "sample_id": "dhf1k_191",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017853897054361034,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_191.npz"
+    },
+    {
+      "sample_id": "dhf1k_197",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013810022012116986,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_197.npz"
+    },
+    {
+      "sample_id": "dhf1k_199",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014423615635075713,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_199.npz"
+    },
+    {
+      "sample_id": "dhf1k_201",
+      "dataset": "DHF1K",
+      "ground_truth": 0.0116107531529116,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_201.npz"
+    },
+    {
+      "sample_id": "dhf1k_203",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014117436981578128,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_203.npz"
+    },
+    {
+      "sample_id": "dhf1k_205",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013132816798357901,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_205.npz"
+    },
+    {
+      "sample_id": "dhf1k_206",
+      "dataset": "DHF1K",
+      "ground_truth": 0.02265727895610997,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_206.npz"
+    },
+    {
+      "sample_id": "dhf1k_207",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018586826633129803,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_207.npz"
+    },
+    {
+      "sample_id": "dhf1k_208",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013683144089817587,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_208.npz"
+    },
+    {
+      "sample_id": "dhf1k_209",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018808124907294384,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_209.npz"
+    },
+    {
+      "sample_id": "dhf1k_215",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013249766731557125,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_215.npz"
+    },
+    {
+      "sample_id": "dhf1k_216",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014302361708604714,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_216.npz"
+    },
+    {
+      "sample_id": "dhf1k_217",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014788901789996752,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_217.npz"
+    },
+    {
+      "sample_id": "dhf1k_218",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017990748615500457,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_218.npz"
+    },
+    {
+      "sample_id": "dhf1k_220",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013987428918238183,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_220.npz"
+    },
+    {
+      "sample_id": "dhf1k_225",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019640278119100806,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_225.npz"
+    },
+    {
+      "sample_id": "dhf1k_231",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013993149785604566,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_231.npz"
+    },
+    {
+      "sample_id": "dhf1k_238",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019345228530650845,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_238.npz"
+    },
+    {
+      "sample_id": "dhf1k_239",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013449836209920064,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_239.npz"
+    },
+    {
+      "sample_id": "dhf1k_241",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020512247362639756,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_241.npz"
+    },
+    {
+      "sample_id": "dhf1k_242",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013115225452929735,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_242.npz"
+    },
+    {
+      "sample_id": "dhf1k_244",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018953179869211124,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_244.npz"
+    },
+    {
+      "sample_id": "dhf1k_246",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014111676621072686,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_246.npz"
+    },
+    {
+      "sample_id": "dhf1k_247",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017959895661643036,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_247.npz"
+    },
+    {
+      "sample_id": "dhf1k_248",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013972591916869458,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_248.npz"
+    },
+    {
+      "sample_id": "dhf1k_249",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014345688970236439,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_249.npz"
+    },
+    {
+      "sample_id": "dhf1k_250",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01937188709231933,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_250.npz"
+    },
+    {
+      "sample_id": "dhf1k_251",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017992741352510312,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_251.npz"
+    },
+    {
+      "sample_id": "dhf1k_253",
+      "dataset": "DHF1K",
+      "ground_truth": 0.02073493591215844,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_253.npz"
+    },
+    {
+      "sample_id": "dhf1k_254",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01433892513621628,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_254.npz"
+    },
+    {
+      "sample_id": "dhf1k_256",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013522576637825067,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_256.npz"
+    },
+    {
+      "sample_id": "dhf1k_257",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014095214274642701,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_257.npz"
+    },
+    {
+      "sample_id": "dhf1k_258",
+      "dataset": "DHF1K",
+      "ground_truth": 0.02037133349070405,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_258.npz"
+    },
+    {
+      "sample_id": "dhf1k_259",
+      "dataset": "DHF1K",
+      "ground_truth": 0.023418446092828348,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_259.npz"
+    },
+    {
+      "sample_id": "dhf1k_260",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020221088784611197,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_260.npz"
+    },
+    {
+      "sample_id": "dhf1k_261",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014763187383503002,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_261.npz"
+    },
+    {
+      "sample_id": "dhf1k_262",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01296104394589546,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_262.npz"
+    },
+    {
+      "sample_id": "dhf1k_264",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01855319977763714,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_264.npz"
+    },
+    {
+      "sample_id": "dhf1k_265",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019370154558869746,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_265.npz"
+    },
+    {
+      "sample_id": "dhf1k_266",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019152030064620244,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_266.npz"
+    },
+    {
+      "sample_id": "dhf1k_269",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014789053300230564,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_269.npz"
+    },
+    {
+      "sample_id": "dhf1k_270",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018672329418169445,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_270.npz"
+    },
+    {
+      "sample_id": "dhf1k_274",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019343327634354552,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_274.npz"
+    },
+    {
+      "sample_id": "dhf1k_278",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020135702963313486,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_278.npz"
+    },
+    {
+      "sample_id": "dhf1k_279",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014197183414587412,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_279.npz"
+    },
+    {
+      "sample_id": "dhf1k_284",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014754759644838198,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_284.npz"
+    },
+    {
+      "sample_id": "dhf1k_286",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01865143961588706,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_286.npz"
+    },
+    {
+      "sample_id": "dhf1k_287",
+      "dataset": "DHF1K",
+      "ground_truth": 0.011030344508105406,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_287.npz"
+    },
+    {
+      "sample_id": "dhf1k_290",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014404835520444189,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_290.npz"
+    },
+    {
+      "sample_id": "dhf1k_291",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018242463548007595,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_291.npz"
+    },
+    {
+      "sample_id": "dhf1k_292",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01423008028888951,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_292.npz"
+    },
+    {
+      "sample_id": "dhf1k_294",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01892778605074957,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_294.npz"
+    },
+    {
+      "sample_id": "dhf1k_295",
+      "dataset": "DHF1K",
+      "ground_truth": 0.021547530763989013,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_295.npz"
+    },
+    {
+      "sample_id": "dhf1k_297",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018252132830431284,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_297.npz"
+    },
+    {
+      "sample_id": "dhf1k_301",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018905373949867983,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_301.npz"
+    },
+    {
+      "sample_id": "dhf1k_302",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014460622925972789,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_302.npz"
+    },
+    {
+      "sample_id": "dhf1k_303",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013947782703180077,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_303.npz"
+    },
+    {
+      "sample_id": "dhf1k_306",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014295835196867397,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_306.npz"
+    },
+    {
+      "sample_id": "dhf1k_308",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012959013240197081,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_308.npz"
+    },
+    {
+      "sample_id": "dhf1k_310",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01993895841598909,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_310.npz"
+    },
+    {
+      "sample_id": "dhf1k_315",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01906782293221013,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_315.npz"
+    },
+    {
+      "sample_id": "dhf1k_320",
+      "dataset": "DHF1K",
+      "ground_truth": 0.0218693902884988,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_320.npz"
+    },
+    {
+      "sample_id": "dhf1k_321",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01443229239595868,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_321.npz"
+    },
+    {
+      "sample_id": "dhf1k_324",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014002403483076506,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_324.npz"
+    },
+    {
+      "sample_id": "dhf1k_327",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014729601833369577,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_327.npz"
+    },
+    {
+      "sample_id": "dhf1k_330",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017814063769765198,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_330.npz"
+    },
+    {
+      "sample_id": "dhf1k_331",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013997085951558354,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_331.npz"
+    },
+    {
+      "sample_id": "dhf1k_334",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01809764398954982,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_334.npz"
+    },
+    {
+      "sample_id": "dhf1k_337",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018394147595649377,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_337.npz"
+    },
+    {
+      "sample_id": "dhf1k_338",
+      "dataset": "DHF1K",
+      "ground_truth": 0.022895006589061503,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_338.npz"
+    },
+    {
+      "sample_id": "dhf1k_339",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018604648299515247,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_339.npz"
+    },
+    {
+      "sample_id": "dhf1k_340",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01862587776966393,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_340.npz"
+    },
+    {
+      "sample_id": "dhf1k_341",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012490017227707552,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_341.npz"
+    },
+    {
+      "sample_id": "dhf1k_342",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014742023193325125,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_342.npz"
+    },
+    {
+      "sample_id": "dhf1k_344",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018681134362019562,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_344.npz"
+    },
+    {
+      "sample_id": "dhf1k_346",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01918946263913114,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_346.npz"
+    },
+    {
+      "sample_id": "dhf1k_348",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01904504054026412,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_348.npz"
+    },
+    {
+      "sample_id": "dhf1k_349",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017777705583484956,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_349.npz"
+    },
+    {
+      "sample_id": "dhf1k_351",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014746553105552023,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_351.npz"
+    },
+    {
+      "sample_id": "dhf1k_353",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01397242527382896,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_353.npz"
+    },
+    {
+      "sample_id": "dhf1k_354",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018678713419096438,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_354.npz"
+    },
+    {
+      "sample_id": "dhf1k_355",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013057829627723042,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_355.npz"
+    },
+    {
+      "sample_id": "dhf1k_360",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014847343449903535,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_360.npz"
+    },
+    {
+      "sample_id": "dhf1k_362",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01852535956741151,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_362.npz"
+    },
+    {
+      "sample_id": "dhf1k_364",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013167975699140726,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_364.npz"
+    },
+    {
+      "sample_id": "dhf1k_367",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014555000327817204,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_367.npz"
+    },
+    {
+      "sample_id": "dhf1k_371",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020028213773509242,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_371.npz"
+    },
+    {
+      "sample_id": "dhf1k_375",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014034235264112013,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_375.npz"
+    },
+    {
+      "sample_id": "dhf1k_378",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01780872510692465,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_378.npz"
+    },
+    {
+      "sample_id": "dhf1k_379",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01830819236334934,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_379.npz"
+    },
+    {
+      "sample_id": "dhf1k_380",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012234853776221964,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_380.npz"
+    },
+    {
+      "sample_id": "dhf1k_382",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018091028874290975,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_382.npz"
+    },
+    {
+      "sample_id": "dhf1k_383",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01810722179914423,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_383.npz"
+    },
+    {
+      "sample_id": "dhf1k_384",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013174575971089727,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_384.npz"
+    },
+    {
+      "sample_id": "dhf1k_385",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01344105333204649,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_385.npz"
+    },
+    {
+      "sample_id": "dhf1k_388",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020263366715345697,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_388.npz"
+    },
+    {
+      "sample_id": "dhf1k_391",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018269873029270838,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_391.npz"
+    },
+    {
+      "sample_id": "dhf1k_395",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014668269799305843,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_395.npz"
+    },
+    {
+      "sample_id": "dhf1k_397",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020287494786131153,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_397.npz"
+    },
+    {
+      "sample_id": "dhf1k_402",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014568531727397468,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_402.npz"
+    },
+    {
+      "sample_id": "dhf1k_404",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013631579470820726,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_404.npz"
+    },
+    {
+      "sample_id": "dhf1k_405",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018172924748997496,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_405.npz"
+    },
+    {
+      "sample_id": "dhf1k_408",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01479542474772942,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_408.npz"
+    },
+    {
+      "sample_id": "dhf1k_410",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013793951757843531,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_410.npz"
+    },
+    {
+      "sample_id": "dhf1k_412",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012712734868162061,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_412.npz"
+    },
+    {
+      "sample_id": "dhf1k_417",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013470946860678018,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_417.npz"
+    },
+    {
+      "sample_id": "dhf1k_418",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01843368203801274,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_418.npz"
+    },
+    {
+      "sample_id": "dhf1k_421",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013695044378535106,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_421.npz"
+    },
+    {
+      "sample_id": "dhf1k_423",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01966897075260998,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_423.npz"
+    },
+    {
+      "sample_id": "dhf1k_424",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01478343972693319,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_424.npz"
+    },
+    {
+      "sample_id": "dhf1k_426",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014560910529996219,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_426.npz"
+    },
+    {
+      "sample_id": "dhf1k_427",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014385323751138455,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_427.npz"
+    },
+    {
+      "sample_id": "dhf1k_428",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014533050764169319,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_428.npz"
+    },
+    {
+      "sample_id": "dhf1k_430",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012980711479765285,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_430.npz"
+    },
+    {
+      "sample_id": "dhf1k_432",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01337300858518373,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_432.npz"
+    },
+    {
+      "sample_id": "dhf1k_433",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017769434707451785,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_433.npz"
+    },
+    {
+      "sample_id": "dhf1k_434",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014448100740888288,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_434.npz"
+    },
+    {
+      "sample_id": "dhf1k_435",
+      "dataset": "DHF1K",
+      "ground_truth": 0.011760240198770245,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_435.npz"
+    },
+    {
+      "sample_id": "dhf1k_436",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017856508761888715,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_436.npz"
+    },
+    {
+      "sample_id": "dhf1k_438",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01884007594603794,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_438.npz"
+    },
+    {
+      "sample_id": "dhf1k_439",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018000305630808764,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_439.npz"
+    },
+    {
+      "sample_id": "dhf1k_443",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01363250999711454,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_443.npz"
+    },
+    {
+      "sample_id": "dhf1k_444",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013609332846733426,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_444.npz"
+    },
+    {
+      "sample_id": "dhf1k_445",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013479956745527297,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_445.npz"
+    },
+    {
+      "sample_id": "dhf1k_446",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018275930000883008,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_446.npz"
+    },
+    {
+      "sample_id": "dhf1k_447",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018874241176190753,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_447.npz"
+    },
+    {
+      "sample_id": "dhf1k_448",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012459665062752636,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_448.npz"
+    },
+    {
+      "sample_id": "dhf1k_449",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019166754601799226,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_449.npz"
+    },
+    {
+      "sample_id": "dhf1k_451",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013656268539373803,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_451.npz"
+    },
+    {
+      "sample_id": "dhf1k_453",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017879882331452962,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_453.npz"
+    },
+    {
+      "sample_id": "dhf1k_454",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014943468557829236,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_454.npz"
+    },
+    {
+      "sample_id": "dhf1k_461",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01833024052345121,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_461.npz"
+    },
+    {
+      "sample_id": "dhf1k_462",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014030986308353022,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_462.npz"
+    },
+    {
+      "sample_id": "dhf1k_465",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018919719995077876,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_465.npz"
+    },
+    {
+      "sample_id": "dhf1k_466",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018142345371207035,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_466.npz"
+    },
+    {
+      "sample_id": "dhf1k_468",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020239698044702752,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_468.npz"
+    },
+    {
+      "sample_id": "dhf1k_469",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019343543362439326,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_469.npz"
+    },
+    {
+      "sample_id": "dhf1k_471",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017854545819644258,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_471.npz"
+    },
+    {
+      "sample_id": "dhf1k_472",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01981568533918774,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_472.npz"
+    },
+    {
+      "sample_id": "dhf1k_474",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01783938522361043,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_474.npz"
+    },
+    {
+      "sample_id": "dhf1k_478",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01869527886579321,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_478.npz"
+    },
+    {
+      "sample_id": "dhf1k_479",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018761653835020906,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_479.npz"
+    },
+    {
+      "sample_id": "dhf1k_480",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014326113048045673,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_480.npz"
+    },
+    {
+      "sample_id": "dhf1k_481",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018620979473729368,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_481.npz"
+    },
+    {
+      "sample_id": "dhf1k_483",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01911152453031591,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_483.npz"
+    },
+    {
+      "sample_id": "dhf1k_484",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014248558292510333,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_484.npz"
+    },
+    {
+      "sample_id": "dhf1k_486",
+      "dataset": "DHF1K",
+      "ground_truth": 0.021517200734883595,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_486.npz"
+    },
+    {
+      "sample_id": "dhf1k_487",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020561605720066056,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_487.npz"
+    },
+    {
+      "sample_id": "dhf1k_489",
+      "dataset": "DHF1K",
+      "ground_truth": 0.0188102094082242,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_489.npz"
+    },
+    {
+      "sample_id": "dhf1k_491",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01302601724115022,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_491.npz"
+    },
+    {
+      "sample_id": "dhf1k_492",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014408965473542932,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_492.npz"
+    },
+    {
+      "sample_id": "dhf1k_494",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020327147791982227,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_494.npz"
+    },
+    {
+      "sample_id": "dhf1k_495",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01790736396020899,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_495.npz"
+    },
+    {
+      "sample_id": "dhf1k_502",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013358248594686784,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_502.npz"
+    },
+    {
+      "sample_id": "dhf1k_504",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01776897779548775,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_504.npz"
+    },
+    {
+      "sample_id": "dhf1k_505",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01387621566937181,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_505.npz"
+    },
+    {
+      "sample_id": "dhf1k_508",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014777766894417496,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_508.npz"
+    },
+    {
+      "sample_id": "dhf1k_509",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014528714044050116,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_509.npz"
+    },
+    {
+      "sample_id": "dhf1k_510",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019863749509731125,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_510.npz"
+    },
+    {
+      "sample_id": "dhf1k_511",
+      "dataset": "DHF1K",
+      "ground_truth": 0.0201615592114896,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_511.npz"
+    },
+    {
+      "sample_id": "dhf1k_512",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013720094397433491,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_512.npz"
+    },
+    {
+      "sample_id": "dhf1k_514",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018443832530757286,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_514.npz"
+    },
+    {
+      "sample_id": "dhf1k_516",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014405344225514424,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_516.npz"
+    },
+    {
+      "sample_id": "dhf1k_517",
+      "dataset": "DHF1K",
+      "ground_truth": 0.02298284652557201,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_517.npz"
+    },
+    {
+      "sample_id": "dhf1k_519",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013772284459091703,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_519.npz"
+    },
+    {
+      "sample_id": "dhf1k_520",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01915376053971126,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_520.npz"
+    },
+    {
+      "sample_id": "dhf1k_523",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018810304505795527,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_523.npz"
+    },
+    {
+      "sample_id": "dhf1k_528",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01286312139845331,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_528.npz"
+    },
+    {
+      "sample_id": "dhf1k_529",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014491821862666933,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_529.npz"
+    },
+    {
+      "sample_id": "dhf1k_530",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018440320889931174,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_530.npz"
+    },
+    {
+      "sample_id": "dhf1k_531",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020629563412532723,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_531.npz"
+    },
+    {
+      "sample_id": "dhf1k_532",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014696044902617143,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_532.npz"
+    },
+    {
+      "sample_id": "dhf1k_533",
+      "dataset": "DHF1K",
+      "ground_truth": 0.020235456022534338,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_533.npz"
+    },
+    {
+      "sample_id": "dhf1k_534",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014354741888161262,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_534.npz"
+    },
+    {
+      "sample_id": "dhf1k_536",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013698006844103234,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_536.npz"
+    },
+    {
+      "sample_id": "dhf1k_540",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014788917461955533,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_540.npz"
+    },
+    {
+      "sample_id": "dhf1k_543",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01408310409815476,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_543.npz"
+    },
+    {
+      "sample_id": "dhf1k_546",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013921915052316514,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_546.npz"
+    },
+    {
+      "sample_id": "dhf1k_551",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01215733850121102,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_551.npz"
+    },
+    {
+      "sample_id": "dhf1k_553",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01194681441337559,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_553.npz"
+    },
+    {
+      "sample_id": "dhf1k_556",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01788775119957191,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_556.npz"
+    },
+    {
+      "sample_id": "dhf1k_560",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014372321725662413,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_560.npz"
+    },
+    {
+      "sample_id": "dhf1k_562",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01483885885050246,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_562.npz"
+    },
+    {
+      "sample_id": "dhf1k_563",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017874870593307397,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_563.npz"
+    },
+    {
+      "sample_id": "dhf1k_565",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012240104385622414,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_565.npz"
+    },
+    {
+      "sample_id": "dhf1k_569",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01911352420594874,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_569.npz"
+    },
+    {
+      "sample_id": "dhf1k_571",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014469951187276626,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_571.npz"
+    },
+    {
+      "sample_id": "dhf1k_572",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01880188725291959,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_572.npz"
+    },
+    {
+      "sample_id": "dhf1k_573",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018360513422212146,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_573.npz"
+    },
+    {
+      "sample_id": "dhf1k_575",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013222772125260867,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_575.npz"
+    },
+    {
+      "sample_id": "dhf1k_576",
+      "dataset": "DHF1K",
+      "ground_truth": 0.011344506919972207,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_576.npz"
+    },
+    {
+      "sample_id": "dhf1k_577",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014233061302477602,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_577.npz"
+    },
+    {
+      "sample_id": "dhf1k_579",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017899885340762544,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_579.npz"
+    },
+    {
+      "sample_id": "dhf1k_580",
+      "dataset": "DHF1K",
+      "ground_truth": 0.02026006639330653,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_580.npz"
+    },
+    {
+      "sample_id": "dhf1k_582",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013407787913774779,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_582.npz"
+    },
+    {
+      "sample_id": "dhf1k_585",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018862691157985303,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_585.npz"
+    },
+    {
+      "sample_id": "dhf1k_587",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018578495281778303,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_587.npz"
+    },
+    {
+      "sample_id": "dhf1k_588",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014337447705835313,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_588.npz"
+    },
+    {
+      "sample_id": "dhf1k_594",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018887758155888223,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_594.npz"
+    },
+    {
+      "sample_id": "dhf1k_596",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01403053856213058,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_596.npz"
+    },
+    {
+      "sample_id": "dhf1k_600",
+      "dataset": "DHF1K",
+      "ground_truth": 0.02121792971549264,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_600.npz"
+    },
+    {
+      "sample_id": "dhf1k_601",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012214141978513001,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_601.npz"
+    },
+    {
+      "sample_id": "dhf1k_603",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018770337750728252,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_603.npz"
+    },
+    {
+      "sample_id": "dhf1k_607",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017894149867764008,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_607.npz"
+    },
+    {
+      "sample_id": "dhf1k_610",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013117921823513764,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_610.npz"
+    },
+    {
+      "sample_id": "dhf1k_613",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01818340421302906,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_613.npz"
+    },
+    {
+      "sample_id": "dhf1k_614",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01844841726539411,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_614.npz"
+    },
+    {
+      "sample_id": "dhf1k_615",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019615891342243504,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_615.npz"
+    },
+    {
+      "sample_id": "dhf1k_616",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018287045844073736,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_616.npz"
+    },
+    {
+      "sample_id": "dhf1k_617",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012211774334675716,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_617.npz"
+    },
+    {
+      "sample_id": "dhf1k_618",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019751149755675195,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_618.npz"
+    },
+    {
+      "sample_id": "dhf1k_619",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017951207600019285,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_619.npz"
+    },
+    {
+      "sample_id": "dhf1k_620",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018319587280330736,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_620.npz"
+    },
+    {
+      "sample_id": "dhf1k_621",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014616242789883832,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_621.npz"
+    },
+    {
+      "sample_id": "dhf1k_623",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01850665947500836,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_623.npz"
+    },
+    {
+      "sample_id": "dhf1k_625",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014771719410371548,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_625.npz"
+    },
+    {
+      "sample_id": "dhf1k_626",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014805723886269875,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_626.npz"
+    },
+    {
+      "sample_id": "dhf1k_627",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019170651589117665,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_627.npz"
+    },
+    {
+      "sample_id": "dhf1k_630",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018048289092804287,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_630.npz"
+    },
+    {
+      "sample_id": "dhf1k_631",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014735952227082183,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_631.npz"
+    },
+    {
+      "sample_id": "dhf1k_632",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01849255553157679,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_632.npz"
+    },
+    {
+      "sample_id": "dhf1k_633",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013543307540143571,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_633.npz"
+    },
+    {
+      "sample_id": "dhf1k_634",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014911255994114189,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_634.npz"
+    },
+    {
+      "sample_id": "dhf1k_636",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013499551963921337,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_636.npz"
+    },
+    {
+      "sample_id": "dhf1k_637",
+      "dataset": "DHF1K",
+      "ground_truth": 0.0179535209023543,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_637.npz"
+    },
+    {
+      "sample_id": "dhf1k_638",
+      "dataset": "DHF1K",
+      "ground_truth": 0.012094481221251029,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_638.npz"
+    },
+    {
+      "sample_id": "dhf1k_640",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013809456182170218,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_640.npz"
+    },
+    {
+      "sample_id": "dhf1k_641",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017870104003564587,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_641.npz"
+    },
+    {
+      "sample_id": "dhf1k_642",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018660710188552414,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_642.npz"
+    },
+    {
+      "sample_id": "dhf1k_645",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014558256403231601,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_645.npz"
+    },
+    {
+      "sample_id": "dhf1k_646",
+      "dataset": "DHF1K",
+      "ground_truth": 0.011930875475683108,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_646.npz"
+    },
+    {
+      "sample_id": "dhf1k_649",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014462155265260276,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_649.npz"
+    },
+    {
+      "sample_id": "dhf1k_653",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01873880261332687,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_653.npz"
+    },
+    {
+      "sample_id": "dhf1k_654",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014265574634514956,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_654.npz"
+    },
+    {
+      "sample_id": "dhf1k_656",
+      "dataset": "DHF1K",
+      "ground_truth": 0.022556408939123588,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_656.npz"
+    },
+    {
+      "sample_id": "dhf1k_658",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01880893812576344,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_658.npz"
+    },
+    {
+      "sample_id": "dhf1k_659",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019540605277811388,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_659.npz"
+    },
+    {
+      "sample_id": "dhf1k_665",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013004397016728899,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_665.npz"
+    },
+    {
+      "sample_id": "dhf1k_666",
+      "dataset": "DHF1K",
+      "ground_truth": 0.019014768218354062,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_666.npz"
+    },
+    {
+      "sample_id": "dhf1k_667",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01799528446871841,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_667.npz"
+    },
+    {
+      "sample_id": "dhf1k_668",
+      "dataset": "DHF1K",
+      "ground_truth": 0.017767726713601422,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_668.npz"
+    },
+    {
+      "sample_id": "dhf1k_669",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014705046298056072,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_669.npz"
+    },
+    {
+      "sample_id": "dhf1k_673",
+      "dataset": "DHF1K",
+      "ground_truth": 0.011365623518376965,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_673.npz"
+    },
+    {
+      "sample_id": "dhf1k_677",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014978857320223122,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_677.npz"
+    },
+    {
+      "sample_id": "dhf1k_680",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018400818890754223,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_680.npz"
+    },
+    {
+      "sample_id": "dhf1k_682",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018102610380920165,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_682.npz"
+    },
+    {
+      "sample_id": "dhf1k_686",
+      "dataset": "DHF1K",
+      "ground_truth": 0.021842234335855533,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_686.npz"
+    },
+    {
+      "sample_id": "dhf1k_687",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01975252402760358,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_687.npz"
+    },
+    {
+      "sample_id": "dhf1k_692",
+      "dataset": "DHF1K",
+      "ground_truth": 0.014183420029164685,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_692.npz"
+    },
+    {
+      "sample_id": "dhf1k_694",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018343310761049135,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_694.npz"
+    },
+    {
+      "sample_id": "dhf1k_697",
+      "dataset": "DHF1K",
+      "ground_truth": 0.018061560821043304,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_697.npz"
+    },
+    {
+      "sample_id": "dhf1k_698",
+      "dataset": "DHF1K",
+      "ground_truth": 0.01911559633262593,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_698.npz"
+    },
+    {
+      "sample_id": "dhf1k_700",
+      "dataset": "DHF1K",
+      "ground_truth": 0.013929932153985454,
+      "ground_truth_name": "mean_map_intensity",
+      "tribe_feature_path": "data/features/tribe_dhf1k_attention_audio_only/dhf1k_700.npz"
+    }
+  ],
+  "metadata": {
+    "labels_csv": "research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv",
+    "sample_id_column": "sample_id",
+    "ground_truth_column": "mean_map_intensity",
+    "n_label_rows": 350,
+    "n_samples": 350,
+    "n_missing_features": 0,
+    "missing_features": [],
+    "alignment_audit": {
+      "path": "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_audio_only_alignment_20260609.json",
+      "sha256": "3d29b107fca23a3f5199eca2e51fc53a3c11a76c790fede4e7b948e150186e20",
+      "ready_for_manifest_build": true,
+      "n_aligned_features": 350,
+      "n_missing_features": 0,
+      "ground_truth_summary": {
+        "n": 350,
+        "n_distinct": 350,
+        "mean": 0.01644090171736881,
+        "std": 0.0028136543466087934,
+        "min": 0.011030344508105406,
+        "max": 0.023418446092828348
+      },
+      "label_audit": {
+        "path": "research_program/dopamine_detox_attention_capture/results/dhf1k_attention_label_audit_20260608.json",
+        "sha256": "0c105494ca9a5108e8c0fa19b4a704ba4da6a5ee119209f4e52914d61c327025",
+        "experiment": "dhf1k_attention_label_audit",
+        "ready_for_manifest_alignment": true,
+        "labels_csv_relation": "same",
+        "rank_column": "mean_map_intensity",
+        "recommended_ground_truth_column": "mean_map_intensity",
+        "n_rows": 350,
+        "blocking_reasons": []
+      }
+    }
+  }
+}

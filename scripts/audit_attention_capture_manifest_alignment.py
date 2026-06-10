@@ -105,6 +105,7 @@ def audit_manifest_alignment(
         label_audit=label_audit,
         labels_csv=labels_csv,
         dataset=dataset,
+        sample_id_column=sample_id_column,
         ground_truth_column=ground_truth_column,
     )
     blocking_reasons = alignment_blocking_reasons(
@@ -157,6 +158,7 @@ def validate_label_audit(
     label_audit: Path | None,
     labels_csv: Path,
     dataset: str,
+    sample_id_column: str,
     ground_truth_column: str,
 ) -> dict[str, Any]:
     if label_audit is None:
@@ -165,6 +167,7 @@ def validate_label_audit(
             "sha256": None,
             "experiment": None,
             "ready_for_manifest_alignment": None,
+            "labels_csv_relation": None,
             "rank_column": None,
             "recommended_ground_truth_column": None,
             "n_rows": None,
@@ -185,8 +188,16 @@ def validate_label_audit(
             reasons.append("label audit is not ready")
 
     audit_labels_csv = payload.get("labels_csv")
-    if audit_labels_csv and not same_path(audit_labels_csv, labels_csv):
-        reasons.append("label audit labels_csv differs from alignment labels_csv")
+    labels_csv_relation = label_csv_relation(
+        audit_labels_csv,
+        labels_csv,
+        sample_id_column=sample_id_column,
+    )
+    if audit_labels_csv and labels_csv_relation == "mismatch":
+        reasons.append(
+            "label audit labels_csv is neither the alignment labels_csv nor "
+            "an exact row superset"
+        )
 
     audit_dataset = str(payload.get("dataset") or "unknown")
     if dataset != "unknown" and audit_dataset not in ("unknown", dataset):
@@ -203,6 +214,7 @@ def validate_label_audit(
         "sha256": sha256(label_audit.read_bytes()).hexdigest(),
         "experiment": experiment,
         "ready_for_manifest_alignment": payload.get("ready_for_manifest_alignment"),
+        "labels_csv_relation": labels_csv_relation,
         "rank_column": rank_column,
         "recommended_ground_truth_column": payload.get(
             "recommended_ground_truth_column"
@@ -300,6 +312,7 @@ def render_alignment_markdown(report: dict[str, Any]) -> str:
         f"- Dataset: {report['dataset']}",
         f"- Ready for manifest build: {report['ready_for_manifest_build']}",
         f"- Label audit ready: {report['label_audit']['ready_for_manifest_alignment']}",
+        f"- Label audit labels relation: {report['label_audit']['labels_csv_relation'] or 'n/a'}",
         f"- Label audit rank column: {report['label_audit']['rank_column'] or 'n/a'}",
         f"- Label rows: {report['n_label_rows']}",
         f"- Unique sample ids: {report['n_unique_sample_ids']}",
@@ -371,6 +384,37 @@ def same_path(value: object, expected: Path) -> bool:
     if not isinstance(value, str) or not value:
         return False
     return Path(value).expanduser().resolve() == expected.expanduser().resolve()
+
+
+def label_csv_relation(
+    audit_labels_csv: object,
+    labels_csv: Path,
+    *,
+    sample_id_column: str,
+) -> str | None:
+    if not isinstance(audit_labels_csv, str) or not audit_labels_csv:
+        return None
+    audit_path = Path(audit_labels_csv).expanduser().resolve()
+    labels_path = labels_csv.expanduser().resolve()
+    if audit_path == labels_path:
+        return "same"
+    if not audit_path.exists() or not labels_path.exists():
+        return "mismatch"
+
+    audit_rows = read_label_rows(audit_path)
+    subset_rows = read_label_rows(labels_path)
+    by_sample_id = {
+        required_cell(row, sample_id_column, audit_path): row for row in audit_rows
+    }
+    for row in subset_rows:
+        sample_id = required_cell(row, sample_id_column, labels_path)
+        audit_row = by_sample_id.get(sample_id)
+        if audit_row is None:
+            return "mismatch"
+        for key, value in row.items():
+            if audit_row.get(key) != value:
+                return "mismatch"
+    return "subset"
 
 
 def finite_float(value: Any) -> float | None:

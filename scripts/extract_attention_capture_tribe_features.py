@@ -39,6 +39,15 @@ def parse_args() -> argparse.Namespace:
             "the media path/URL directly to TRIBE."
         ),
     )
+    parser.add_argument(
+        "--event-mode",
+        choices=("full", "audio-only"),
+        default="full",
+        help=(
+            "full runs TRIBE's native audio transcription/text path; audio-only "
+            "skips transcription and withholds language-dependent claims."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -74,6 +83,7 @@ async def run(args: argparse.Namespace) -> int:
             sem=sem,
             job=job,
             transport=args.transport,
+            event_mode=args.event_mode,
         )
         for job in pending
     ]
@@ -116,20 +126,26 @@ async def extract_one(
     sem: asyncio.Semaphore,
     job: VideoFeatureJob,
     transport: str,
+    event_mode: str = "full",
 ) -> Path | None:
     if job.output_path.exists() and job.output_path.stat().st_size > 0:
         return job.output_path
 
     async with sem:
         try:
+            audio_only = event_mode == "audio-only"
             if transport == "bytes":
                 local_path = Path(job.media_path)
                 result = await service.predict_video_bytes(
                     local_path.read_bytes(),
                     suffix=local_path.suffix or ".mp4",
+                    audio_only=audio_only,
                 )
             else:
-                result = await service.predict_video(job.media_path)
+                result = await service.predict_video(
+                    job.media_path,
+                    audio_only=audio_only,
+                )
         except (FileNotFoundError, TribeValidationError) as exc:
             print(f"[skip] {job.sample_id}: {exc}", flush=True)
             return None
@@ -145,6 +161,7 @@ async def extract_one(
         sample_id=np.array(job.sample_id),
         media_path=np.array(job.media_path),
         transport=np.array(transport),
+        event_mode=np.array(event_mode),
     )
     print(f"[tribe] wrote {job.output_path} frames={frames.shape}", flush=True)
     return job.output_path
