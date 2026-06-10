@@ -33,6 +33,13 @@ def parse_args() -> argparse.Namespace:
         default=[],
         help="Feature-cache checksum audit JSON. May be passed multiple times.",
     )
+    parser.add_argument(
+        "--modal-asset-audit",
+        action="append",
+        type=Path,
+        default=[],
+        help="Modal-hosted asset audit JSON. May be passed multiple times.",
+    )
     parser.add_argument("--output-json", type=Path, required=True)
     parser.add_argument("--output-md", type=Path, required=True)
     parser.add_argument("--min-paper-datasets", type=int, default=2)
@@ -51,6 +58,7 @@ def main() -> None:
         readiness_json=args.readiness_json,
         workflow_jsons=args.workflow_json,
         feature_cache_audits=args.feature_cache_audit,
+        modal_asset_audits=args.modal_asset_audit,
         min_paper_datasets=args.min_paper_datasets,
         token_envs=tuple(args.token_env or DEFAULT_TOKEN_ENVS),
     )
@@ -67,6 +75,7 @@ def build_publication_path_report(
     readiness_json: Path | None,
     workflow_jsons: list[Path],
     feature_cache_audits: list[Path] | None = None,
+    modal_asset_audits: list[Path] | None = None,
     min_paper_datasets: int = 2,
     token_envs: tuple[str, ...] = DEFAULT_TOKEN_ENVS,
 ) -> dict[str, Any]:
@@ -74,6 +83,9 @@ def build_publication_path_report(
     workflows = [summarize_workflow(path) for path in workflow_jsons]
     cache_audits = [
         summarize_feature_cache_audit(path) for path in feature_cache_audits or []
+    ]
+    modal_audits = [
+        summarize_modal_asset_audit(path) for path in modal_asset_audits or []
     ]
     credential_audit = audit_text_model_credentials(token_envs)
     completed_real_workflows = [
@@ -93,7 +105,13 @@ def build_publication_path_report(
     retention_labels_ready = bool(
         readiness.get("readiness", {}).get("snapugc_labels_ready"),
     )
-    full_multimodal_ready = credential_audit["any_present"]
+    modal_retention_labels_available = any(
+        audit["retention_labels_maybe_available"] for audit in modal_audits
+    )
+    modal_token_present = any(
+        audit["full_multimodal_token_env_present"] for audit in modal_audits
+    )
+    full_multimodal_ready = credential_audit["any_present"] or modal_token_present
     has_audio_only_workflow = any(workflow["audio_only"] for workflow in workflows)
     phase1_gate_passed = bool(passed_workflows)
     enough_datasets_for_paper = len(scored_datasets) >= min_paper_datasets
@@ -102,6 +120,8 @@ def build_publication_path_report(
         workflows=workflows,
         phase1_gate_passed=phase1_gate_passed,
         retention_labels_ready=retention_labels_ready,
+        modal_asset_audits_supplied=bool(modal_audits),
+        modal_retention_labels_available=modal_retention_labels_available,
         full_multimodal_ready=full_multimodal_ready,
         has_audio_only_workflow=has_audio_only_workflow,
         enough_datasets_for_paper=enough_datasets_for_paper,
@@ -111,6 +131,7 @@ def build_publication_path_report(
         readiness=readiness,
         workflows=workflows,
         cache_audits=cache_audits,
+        modal_audits=modal_audits,
     )
     return {
         "schema_version": 1,
@@ -119,10 +140,13 @@ def build_publication_path_report(
         "readiness_json": str(readiness_json) if readiness_json is not None else None,
         "workflow_jsons": [str(path) for path in workflow_jsons],
         "feature_cache_audit_jsons": [str(path) for path in feature_cache_audits or []],
+        "modal_asset_audit_jsons": [str(path) for path in modal_asset_audits or []],
         "min_paper_datasets": min_paper_datasets,
         "readiness_summary": summarize_readiness(readiness),
         "credential_audit": credential_audit,
+        "full_multimodal_ready": full_multimodal_ready,
         "feature_cache_audit_summaries": cache_audits,
+        "modal_asset_audit_summaries": modal_audits,
         "workflow_summaries": workflows,
         "phase1_gate_passed": phase1_gate_passed,
         "phase2_ready": phase1_gate_passed,
@@ -252,6 +276,42 @@ def summarize_feature_cache_audit(path: Path) -> dict[str, Any]:
     }
 
 
+def summarize_modal_asset_audit(path: Path) -> dict[str, Any]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    unblocks = payload.get("publication_unblocks") or {}
+    volume_report = payload.get("volume_report") or {}
+    secret_report = payload.get("secret_report") or {}
+    audits = volume_report.get("audits") or []
+    return {
+        "path": str(path),
+        "retention_labels_maybe_available": bool(
+            unblocks.get("retention_labels_maybe_available"),
+        ),
+        "external_dataset_dirs_maybe_available": bool(
+            unblocks.get("external_dataset_dirs_maybe_available"),
+        ),
+        "feature_caches_maybe_available": bool(
+            unblocks.get("feature_caches_maybe_available"),
+        ),
+        "full_multimodal_token_env_present": bool(
+            unblocks.get("full_multimodal_token_env_present"),
+        ),
+        "blocking_reasons": list(unblocks.get("blocking_reasons") or []),
+        "n_volumes_checked": len(volume_report.get("volume_names_checked") or []),
+        "n_label_candidates": volume_report.get("n_label_candidates", 0),
+        "n_dataset_candidates": volume_report.get("n_dataset_candidates", 0),
+        "n_feature_candidates": volume_report.get("n_feature_candidates", 0),
+        "n_truncated_volumes": sum(
+            1
+            for audit in audits
+            if isinstance(audit, dict) and bool(audit.get("truncated"))
+        ),
+        "secret_names_checked": list(secret_report.get("secret_names_checked") or []),
+        "matching_env_names": list(secret_report.get("matching_env_names") or []),
+        "claim_boundary": payload.get("claim_boundary"),
+    }
+
+
 def summarize_readiness(readiness: dict[str, Any]) -> dict[str, Any]:
     values = readiness.get("readiness") if isinstance(readiness, dict) else None
     if not isinstance(values, dict):
@@ -272,6 +332,8 @@ def publication_blockers(
     workflows: list[dict[str, Any]],
     phase1_gate_passed: bool,
     retention_labels_ready: bool,
+    modal_asset_audits_supplied: bool,
+    modal_retention_labels_available: bool,
     full_multimodal_ready: bool,
     has_audio_only_workflow: bool,
     enough_datasets_for_paper: bool,
@@ -283,12 +345,29 @@ def publication_blockers(
     elif not phase1_gate_passed:
         blockers.append("current H2 capture_score failed the Phase 1 rho gate")
     if not retention_labels_ready:
-        blockers.append("no SnapUGC/VQualA retention label CSV is mounted")
+        if modal_asset_audits_supplied and modal_retention_labels_available:
+            blockers.append(
+                "Modal SnapUGC/VQualA retention label candidates still need an "
+                "audited retention manifest"
+            )
+        elif modal_asset_audits_supplied:
+            blockers.append(
+                "no SnapUGC/VQualA retention label CSV is mounted or available "
+                "in audited Modal volumes"
+            )
+        else:
+            blockers.append("no SnapUGC/VQualA retention label CSV is mounted")
     if has_audio_only_workflow and not full_multimodal_ready:
-        blockers.append(
-            "completed TRIBE workflows are audio-only and no HuggingFace text "
-            "model token is present"
-        )
+        if modal_asset_audits_supplied:
+            blockers.append(
+                "completed TRIBE workflows are audio-only and no local or Modal "
+                "HuggingFace text model token is present"
+            )
+        else:
+            blockers.append(
+                "completed TRIBE workflows are audio-only and no HuggingFace "
+                "text model token is present"
+            )
     if not enough_datasets_for_paper:
         blockers.append(
             f"fewer than {min_paper_datasets} external datasets have completed "
@@ -302,6 +381,7 @@ def publication_warnings(
     readiness: dict[str, Any],
     workflows: list[dict[str, Any]],
     cache_audits: list[dict[str, Any]],
+    modal_audits: list[dict[str, Any]],
 ) -> list[str]:
     warnings: list[str] = []
     feature_dirs = (
@@ -346,6 +426,11 @@ def publication_warnings(
             )
     if any(workflow["best_capture_score"] is None for workflow in workflows):
         warnings.append("at least one workflow lacks a capture_score metric")
+    if any(audit["n_truncated_volumes"] for audit in modal_audits):
+        warnings.append(
+            "at least one Modal asset audit hit its per-volume scan limit; rerun "
+            "with a larger --max-entries-per-volume before treating absence as final"
+        )
     return warnings
 
 
@@ -401,7 +486,7 @@ def render_publication_markdown(report: dict[str, Any]) -> str:
         f"- Paper claim allowed: {report['paper_claim_allowed']}",
         f"- Phase 2 ready: {report['phase2_ready']}",
         f"- Phase 1 gate passed: {report['phase1_gate_passed']}",
-        f"- Full multimodal credential present: {report['credential_audit']['any_present']}",
+        f"- Full multimodal credential present: {report['full_multimodal_ready']}",
         f"- Claim boundary: {report['claim_boundary']}",
         "",
         "## Blocking Reasons",
@@ -423,6 +508,7 @@ def render_publication_markdown(report: dict[str, Any]) -> str:
     )
     lines.extend(render_workflow_table(report["workflow_summaries"]))
     lines.extend(render_feature_cache_table(report["feature_cache_audit_summaries"]))
+    lines.extend(render_modal_asset_table(report["modal_asset_audit_summaries"]))
     return "\n".join(lines) + "\n"
 
 
@@ -479,10 +565,44 @@ def render_feature_cache_table(cache_audits: list[dict[str, Any]]) -> list[str]:
     return lines
 
 
+def render_modal_asset_table(modal_audits: list[dict[str, Any]]) -> list[str]:
+    lines = [
+        "",
+        "## Modal Asset Evidence",
+        "",
+        (
+            "| audit | volumes | labels | datasets | features | modal token | "
+            "truncated | blockers |"
+        ),
+        "|---|---:|---|---|---|---|---:|---|",
+    ]
+    if not modal_audits:
+        lines.append("| none | 0 | False | False | False | False | 0 | n/a |")
+        return lines
+    for audit in modal_audits:
+        blockers = "; ".join(audit["blocking_reasons"]) or "none"
+        lines.append(
+            "| "
+            f"{table_cell(audit['path'])} | "
+            f"{audit['n_volumes_checked']} | "
+            f"{audit['retention_labels_maybe_available']} | "
+            f"{audit['external_dataset_dirs_maybe_available']} | "
+            f"{audit['feature_caches_maybe_available']} | "
+            f"{audit['full_multimodal_token_env_present']} | "
+            f"{audit['n_truncated_volumes']} | "
+            f"{table_cell(blockers)} |"
+        )
+    return lines
+
+
 def format_float(value: object) -> str:
     if not isinstance(value, int | float):
         return "n/a"
     return f"{float(value):.4f}"
+
+
+def table_cell(value: object) -> str:
+    return str(value).replace("\n", " ").replace("|", "\\|")
 
 
 if __name__ == "__main__":

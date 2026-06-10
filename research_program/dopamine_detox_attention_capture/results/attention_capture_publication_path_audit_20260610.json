@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "experiment": "attention_capture_publication_path_audit",
-  "generated_at": "2026-06-10T16:25:06.860068+00:00",
+  "generated_at": "2026-06-10T16:38:35.727422+00:00",
   "readiness_json": "research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.json",
   "workflow_jsons": [
     "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_audio_only_workflow_20260609.json",
@@ -9,6 +9,9 @@
   ],
   "feature_cache_audit_jsons": [
     "research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json"
+  ],
+  "modal_asset_audit_jsons": [
+    "research_program/dopamine_detox_attention_capture/results/modal_asset_audit_20260610.json"
   ],
   "min_paper_datasets": 2,
   "readiness_summary": {
@@ -42,6 +45,7 @@
     "any_present": false,
     "claim_boundary": "Credential values are never reported. Presence only indicates that the full text-model path may be runnable; it does not prove access to any specific gated model."
   },
+  "full_multimodal_ready": false,
   "feature_cache_audit_summaries": [
     {
       "path": "research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json",
@@ -57,6 +61,30 @@
       "n_rerun_commands": 3,
       "ready_for_reproduction": true,
       "blocking_reasons": []
+    }
+  ],
+  "modal_asset_audit_summaries": [
+    {
+      "path": "research_program/dopamine_detox_attention_capture/results/modal_asset_audit_20260610.json",
+      "retention_labels_maybe_available": false,
+      "external_dataset_dirs_maybe_available": false,
+      "feature_caches_maybe_available": true,
+      "full_multimodal_token_env_present": false,
+      "blocking_reasons": [
+        "no Modal-hosted SnapUGC/VQualA retention label candidate found",
+        "no Modal secret exposes a HuggingFace token env name"
+      ],
+      "n_volumes_checked": 14,
+      "n_label_candidates": 0,
+      "n_dataset_candidates": 0,
+      "n_feature_candidates": 3,
+      "n_truncated_volumes": 0,
+      "secret_names_checked": [
+        "underlying-analyzer-env",
+        "llm-api-keys"
+      ],
+      "matching_env_names": [],
+      "claim_boundary": "This Modal CPU audit checks remote asset availability only. It does not score TRIBE features or validate attentional capture."
     }
   ],
   "workflow_summaries": [
@@ -117,8 +145,8 @@
   "paper_claim_allowed": false,
   "blocking_reasons": [
     "current H2 capture_score failed the Phase 1 rho gate",
-    "no SnapUGC/VQualA retention label CSV is mounted",
-    "completed TRIBE workflows are audio-only and no HuggingFace text model token is present",
+    "no SnapUGC/VQualA retention label CSV is mounted or available in audited Modal volumes",
+    "completed TRIBE workflows are audio-only and no local or Modal HuggingFace text model token is present",
     "fewer than 2 external datasets have completed claim-ready workflow reports"
   ],
   "warnings": [],

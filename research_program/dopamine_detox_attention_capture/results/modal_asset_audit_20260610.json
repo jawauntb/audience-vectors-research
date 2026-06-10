@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "experiment": "attention_capture_modal_asset_audit",
+  "generated_at": "2026-06-10T16:38:17.064977+00:00",
+  "volume_report": {
+    "volume_names_checked": [
+      "rde-activation-results",
+      "audience-analyzer-runs-v1",
+      "wan22-lora-data-v1",
+      "wan22-lora-outputs-v1",
+      "svd-outputs-v1",
+      "wan22-outputs-v1",
+      "cogvideox-outputs-v1",
+      "bmd-videos-v1",
+      "fr-dev-data",
+      "fr-prd-data",
+      "fr-stg-data",
+      "flytrap-review-prod-data",
+      "flytrap-review-data",
+      "tac-docker-data"
+    ],
+    "max_entries_per_volume": 20000,
+    "max_depth": 5,
+    "audits": [
+      {
+        "volume": "rde-activation-results",
+        "mount_path": "/modal-volumes/rde_activation_results",
+        "exists": true,
+        "n_entries_seen": 3,
+        "n_files_seen": 2,
+        "n_dirs_seen": 1,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": [
+          {
+            "path": "activation_geometry",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "activation_geometry/pythia160_layer3_pocket_scale_sweep_seed20260610_raw.json",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "activation_geometry/pythia160_layer3_pocket_seed20260610_raw.json",
+            "kind": "file",
+            "claim_blocked": false
+          }
+        ]
+      },
+      {
+        "volume": "audience-analyzer-runs-v1",
+        "mount_path": "/modal-volumes/audience_analyzer_runs_v1",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "wan22-lora-data-v1",
+        "mount_path": "/modal-volumes/wan22_lora_data_v1",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "wan22-lora-outputs-v1",
+        "mount_path": "/modal-volumes/wan22_lora_outputs_v1",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "svd-outputs-v1",
+        "mount_path": "/modal-volumes/svd_outputs_v1",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "wan22-outputs-v1",
+        "mount_path": "/modal-volumes/wan22_outputs_v1",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "cogvideox-outputs-v1",
+        "mount_path": "/modal-volumes/cogvideox_outputs_v1",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "bmd-videos-v1",
+        "mount_path": "/modal-volumes/bmd_videos_v1",
+        "exists": true,
+        "n_entries_seen": 314,
+        "n_files_seen": 312,
+        "n_dirs_seen": 2,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "fr-dev-data",
+        "mount_path": "/modal-volumes/fr_dev_data",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "fr-prd-data",
+        "mount_path": "/modal-volumes/fr_prd_data",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "fr-stg-data",
+        "mount_path": "/modal-volumes/fr_stg_data",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "flytrap-review-prod-data",
+        "mount_path": "/modal-volumes/flytrap_review_prod_data",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "flytrap-review-data",
+        "mount_path": "/modal-volumes/flytrap_review_data",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "tac-docker-data",
+        "mount_path": "/modal-volumes/tac_docker_data",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      }
+    ],
+    "n_label_candidates": 0,
+    "n_dataset_candidates": 0,
+    "n_feature_candidates": 3
+  },
+  "secret_report": {
+    "secret_names_checked": [
+      "underlying-analyzer-env",
+      "llm-api-keys"
+    ],
+    "token_envs_checked": [
+      "HF_TOKEN",
+      "HUGGINGFACE_TOKEN",
+      "HUGGINGFACE_HUB_TOKEN"
+    ],
+    "entries": [
+      {
+        "env": "HF_TOKEN",
+        "present": false
+      },
+      {
+        "env": "HUGGINGFACE_TOKEN",
+        "present": false
+      },
+      {
+        "env": "HUGGINGFACE_HUB_TOKEN",
+        "present": false
+      }
+    ],
+    "any_present": false,
+    "matching_env_names": [],
+    "claim_boundary": "This reports environment variable presence only. It never reports secret values and does not prove access to any gated HuggingFace model."
+  },
+  "publication_unblocks": {
+    "retention_labels_maybe_available": false,
+    "external_dataset_dirs_maybe_available": false,
+    "feature_caches_maybe_available": true,
+    "full_multimodal_token_env_present": false,
+    "blocking_reasons": [
+      "no Modal-hosted SnapUGC/VQualA retention label candidate found",
+      "no Modal secret exposes a HuggingFace token env name"
+    ]
+  },
+  "claim_boundary": "This Modal CPU audit checks remote asset availability only. It does not score TRIBE features or validate attentional capture."
+}

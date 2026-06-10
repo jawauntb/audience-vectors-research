@@ -12,8 +12,8 @@
 ## Blocking Reasons
 
 - current H2 capture_score failed the Phase 1 rho gate
-- no SnapUGC/VQualA retention label CSV is mounted
-- completed TRIBE workflows are audio-only and no HuggingFace text model token is present
+- no SnapUGC/VQualA retention label CSV is mounted or available in audited Modal volumes
+- completed TRIBE workflows are audio-only and no local or Modal HuggingFace text model token is present
 - fewer than 2 external datasets have completed claim-ready workflow reports
 
 ## Warnings
@@ -39,3 +39,9 @@
 | audit | feature dir | ready | reproduction | npz files | expected ids | rerun cmds | aggregate sha256 |
 |---|---|---|---|---:|---:|---:|---|
 | research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json | data/features/tribe_dhf1k_attention_audio_only | True | True | 516 | 516 | 3 | 990c7605e215 |
+
+## Modal Asset Evidence
+
+| audit | volumes | labels | datasets | features | modal token | truncated | blockers |
+|---|---:|---|---|---|---|---:|---|
+| research_program/dopamine_detox_attention_capture/results/modal_asset_audit_20260610.json | 14 | False | False | True | False | 0 | no Modal-hosted SnapUGC/VQualA retention label candidate found; no Modal secret exposes a HuggingFace token env name |

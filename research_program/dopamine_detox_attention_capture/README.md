@@ -2,8 +2,10 @@
 
 Status: Phase 1 DHF1K audio-only validation run complete; current
 `capture_score` gate failed. The DHF1K audio-only feature cache now has
-checksum provenance and a deterministic rerun path. The paper remains blocked
-on scientific/external-evidence grounds, not cache reproducibility.
+checksum provenance and a deterministic rerun path. A Modal CPU asset audit
+found no remote SnapUGC/VQualA retention labels and no checked Modal
+HuggingFace token env, so the paper remains blocked on scientific external
+evidence grounds, not cache reproducibility or local CPU throughput.
 
 This subfolder sets up the short-form-video attention-capture experiment from
 the June 2026 proposal, with the claim boundary inherited from the existing
@@ -75,8 +77,8 @@ phase2_ready: false
 phase1_gate_passed: false
 blocking_reasons:
   - current H2 capture_score failed the Phase 1 rho gate
-  - no SnapUGC/VQualA retention label CSV is mounted
-  - completed TRIBE workflows are audio-only and no HuggingFace text model token is present
+  - no SnapUGC/VQualA retention label CSV is mounted or available in audited Modal volumes
+  - completed TRIBE workflows are audio-only and no local or Modal HuggingFace text model token is present
   - fewer than 2 external datasets have completed claim-ready workflow reports
 warnings:
   - none
@@ -85,16 +87,19 @@ warnings:
 The shortest sound trajectory is therefore:
 
 1. Do not run Phase 2/3 neutralization from the current H2 score.
-2. Mount granted SnapUGC/VQualA retention labels and build an audited retention
-   manifest.
-3. Provide full multimodal TRIBE text-model credentials if language/text claims
-   remain part of the paper.
+2. Acquire or mount granted SnapUGC/VQualA retention labels; the audited Modal
+   volumes do not currently contain a claim-ready retention label source.
+3. Provide full multimodal TRIBE text-model credentials in local env or Modal
+   secrets if language/text claims remain part of the paper.
 4. If the score is revised, preregister the formula before evaluating held-out
    data.
 
 The DHF1K audio-only feature-cache reproducibility warning is resolved by the
 checksum audit plus recorded rerun commands. An object-storage archive is still
 useful for byte-for-byte reuse, but it is no longer the shortest-path blocker.
+`results/modal_asset_audit_20260610.*` records the Modal-side search over 14
+volumes and the checked Modal secrets; it found feature-like artifacts but no
+retention-label candidates or HuggingFace token env names.
 
 ## Files
 
@@ -139,6 +144,9 @@ useful for byte-for-byte reuse, but it is no longer the shortest-path blocker.
   machine-readable paper-readiness audit.
 - `results/attention_capture_publication_path_audit_20260610.md`: current
   readable paper-readiness audit.
+- `results/modal_asset_audit_20260610.json`: Modal CPU audit over known volumes
+  and checked secrets for remote publication unblocks.
+- `results/modal_asset_audit_20260610.md`: readable Modal asset audit.
 - `results/dhf1k_audio_only_feature_cache_audit_20260610.json`: portable
   checksum/provenance/rerun audit for the external DHF1K audio-only TRIBE
   feature cache.
@@ -198,11 +206,14 @@ useful for byte-for-byte reuse, but it is no longer the shortest-path blocker.
   checksum/provenance audit for external TRIBE NPZ directories. This verifies
   artifact integrity and manifest coverage, and can record archive URIs or
   deterministic rerun commands; it does not validate attentional capture.
+- `scripts/audit_attention_capture_modal_assets.py`: Modal CPU asset audit for
+  remote label, dataset, feature-cache, and token-presence checks. It keeps
+  heavy discovery inside Modal and reports only secret presence, never values.
 - `scripts/audit_attention_capture_publication_path.py`: stricter
-  paper-readiness audit that consumes readiness and workflow reports, then
-  blocks publication/Phase 2 when the score gate, retention labels,
-  full-multimodal credentials, feature-cache provenance, or held-out evidence
-  are missing.
+  paper-readiness audit that consumes readiness, workflow, feature-cache, and
+  Modal asset reports, then blocks publication/Phase 2 when the score gate,
+  retention labels, full-multimodal credentials, feature-cache provenance, or
+  held-out evidence are missing.
 
 ## Reused Infrastructure
 
@@ -262,6 +273,17 @@ uv run python scripts/audit_attention_capture_data_readiness.py \
   --output-md research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.md
 ```
 
+Audit Modal-hosted assets without local dataset crawling:
+
+```bash
+uv run --extra modal modal run scripts/audit_attention_capture_modal_assets.py \
+  --output-json research_program/dopamine_detox_attention_capture/results/modal_asset_audit_20260610.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/modal_asset_audit_20260610.md \
+  --max-entries-per-volume 20000 \
+  --max-depth 5 \
+  --preview-limit 80
+```
+
 Audit publication readiness after any Phase 1 run:
 
 ```bash
@@ -270,6 +292,7 @@ uv run python scripts/audit_attention_capture_publication_path.py \
   --workflow-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_audio_only_workflow_20260609.json \
   --workflow-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_workflow_20260609.json \
   --feature-cache-audit research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json \
+  --modal-asset-audit research_program/dopamine_detox_attention_capture/results/modal_asset_audit_20260610.json \
   --output-json research_program/dopamine_detox_attention_capture/results/attention_capture_publication_path_audit_20260610.json \
   --output-md research_program/dopamine_detox_attention_capture/results/attention_capture_publication_path_audit_20260610.md
 ```
