@@ -18,6 +18,8 @@ from pathlib import Path
 
 import modal
 
+from audience_vectors.modal_app.env import normalize_huggingface_token_env
+
 # Load .env from the repo root before reading os.environ for the secret.
 _REPO_ROOT = Path(__file__).resolve().parents[3]
 _ENV_PATH = _REPO_ROOT / ".env"
@@ -35,6 +37,8 @@ if _ENV_PATH.exists():
             k, _, v = line.partition("=")
             v = v.strip().strip('"').strip("'")
             os.environ.setdefault(k.strip(), v)
+
+normalize_huggingface_token_env(os.environ)
 
 APP_BASE_NAME = "audience-vectors"
 MODAL_REGION = os.environ.get("MODAL_REGION") or None
