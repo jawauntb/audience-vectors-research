@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "experiment": "attention_capture_tribe_full_preflight_audit",
+  "generated_at": "2026-06-10T17:15:22.017591+00:00",
+  "ok": true,
+  "app_name": "audience-vectors-dev",
+  "media_path": "/bmd-videos/generated/bo_memorability_replay/bo_replay_00_sobol_prompt_search_518_slot18_rep00.mp4",
+  "event_mode": "full",
+  "preflight": {
+    "input_kind": "path",
+    "event_mode": "full",
+    "resolved_path": "/bmd-videos/generated/bo_memorability_replay/bo_replay_00_sobol_prompt_search_518_slot18_rep00.mp4",
+    "tribe_path": "/bmd-videos/generated/bo_memorability_replay/bo_replay_00_sobol_prompt_search_518_slot18_rep00.mp4",
+    "exists": true,
+    "size_bytes": 1468355,
+    "duration_seconds": 3.572,
+    "events_rows": 1,
+    "event_columns": [
+      "type",
+      "start",
+      "duration",
+      "timeline",
+      "subject",
+      "session",
+      "task",
+      "run",
+      "filepath",
+      "frequency",
+      "offset",
+      "stop",
+      "context"
+    ],
+    "step_seconds": {
+      "volume_reload": 0.25423486599999734,
+      "resolve_local_path": 3.165300000063098e-05,
+      "probe_duration": 2.000114429,
+      "ensure_suffix": 1.7035999995584916e-05,
+      "get_events_dataframe": 0.7629159520000002
+    }
+  },
+  "claim_boundary": "This verifies that the deployed Modal TRIBE path can construct events for one video. It does not validate attentional capture, does not score Phase 1, and does not replace external labels."
+}

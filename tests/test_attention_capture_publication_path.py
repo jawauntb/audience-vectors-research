@@ -185,6 +185,38 @@ def write_modal_asset_audit(
     )
 
 
+def write_tribe_full_preflight_audit(
+    path: Path,
+    *,
+    ok: bool = True,
+    event_mode: str = "full",
+) -> None:
+    path.write_text(
+        json.dumps(
+            {
+                "experiment": "attention_capture_tribe_full_preflight_audit",
+                "ok": ok,
+                "app_name": "audience-vectors-dev",
+                "media_path": "/bmd-videos/example.mp4",
+                "event_mode": event_mode,
+                "preflight": (
+                    {
+                        "events_rows": 1,
+                        "duration_seconds": 3.2,
+                        "event_columns": ["type", "filepath"],
+                    }
+                    if ok
+                    else {}
+                ),
+                "error_type": None if ok else "RuntimeError",
+                "error": None if ok else "missing model",
+                "claim_boundary": "runtime preflight only",
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
 def test_publication_audit_blocks_current_failed_audio_only_path(
     tmp_path: Path,
     monkeypatch,
@@ -314,6 +346,67 @@ def test_publication_audit_uses_modal_token_for_full_multimodal_path(
     assert report["credential_audit"]["any_present"] is False
     assert report["full_multimodal_ready"] is True
     assert not any("audio-only" in reason for reason in report["blocking_reasons"])
+
+
+def test_publication_audit_uses_full_preflight_for_multimodal_path(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    module = load_module()
+    for name in module.DEFAULT_TOKEN_ENVS:
+        monkeypatch.delenv(name, raising=False)
+    readiness = tmp_path / "readiness.json"
+    workflow = tmp_path / "dhf1k_audio_only_workflow.json"
+    modal_assets = tmp_path / "modal_assets.json"
+    preflight = tmp_path / "tribe_full_preflight.json"
+    write_readiness(readiness, snapugc_ready=False)
+    write_workflow(workflow, dataset="DHF1K", rho=-0.03, passed=False, audio_only=True)
+    write_modal_asset_audit(modal_assets, token=False)
+    write_tribe_full_preflight_audit(preflight, ok=True)
+
+    report = module.build_publication_path_report(
+        readiness_json=readiness,
+        workflow_jsons=[workflow],
+        modal_asset_audits=[modal_assets],
+        tribe_full_preflight_audits=[preflight],
+        min_paper_datasets=2,
+    )
+    markdown = module.render_publication_markdown(report)
+
+    assert report["full_multimodal_ready"] is True
+    assert not any("audio-only" in reason for reason in report["blocking_reasons"])
+    assert report["tribe_full_preflight_summaries"][0]["ok"] is True
+    assert "TRIBE Full-Preflight Evidence" in markdown
+    assert "/bmd-videos/example.mp4" in markdown
+
+
+def test_failed_full_preflight_keeps_audio_only_blocker(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    module = load_module()
+    for name in module.DEFAULT_TOKEN_ENVS:
+        monkeypatch.delenv(name, raising=False)
+    readiness = tmp_path / "readiness.json"
+    workflow = tmp_path / "dhf1k_audio_only_workflow.json"
+    preflight = tmp_path / "tribe_full_preflight.json"
+    write_readiness(readiness, snapugc_ready=True)
+    write_workflow(workflow, dataset="DHF1K", rho=0.42, passed=True, audio_only=True)
+    write_tribe_full_preflight_audit(preflight, ok=False)
+
+    report = module.build_publication_path_report(
+        readiness_json=readiness,
+        workflow_jsons=[workflow],
+        tribe_full_preflight_audits=[preflight],
+        min_paper_datasets=1,
+    )
+
+    assert report["full_multimodal_ready"] is False
+    assert any(
+        "no successful full multimodal TRIBE preflight" in reason
+        for reason in report["blocking_reasons"]
+    )
+    assert "at least one TRIBE full-mode preflight audit failed" in report["warnings"]
 
 
 def test_publication_audit_accepts_multidataset_retention_and_token_path(

@@ -3,9 +3,10 @@
 Status: Phase 1 DHF1K audio-only validation run complete; current
 `capture_score` gate failed. The DHF1K audio-only feature cache now has
 checksum provenance and a deterministic rerun path. A Modal CPU asset audit
-found no remote SnapUGC/VQualA retention labels and no checked Modal
-HuggingFace token env, so the paper remains blocked on scientific external
-evidence grounds, not cache reproducibility or local CPU throughput.
+found no remote SnapUGC/VQualA retention labels, while a Modal H100 full-mode
+TRIBE preflight passed from cached weights. The paper remains blocked on the
+scientific evidence gates, not cache reproducibility, local CPU throughput, or
+basic full-multimodal runtime access.
 
 This subfolder sets up the short-form-video attention-capture experiment from
 the June 2026 proposal, with the claim boundary inherited from the existing
@@ -54,12 +55,13 @@ dataset, so Phase 2 trigger decomposition and Phase 3 neutralization should not
 proceed from this score. The correct public DHF1K fixation-density test is a
 clear withholding result, not a near miss.
 
-Full multimodal TRIBE remains a separate blocker: the deployed TRIBE path needs
-access to gated Llama text weights for the native transcription/text event path.
-The completed DHF1K runs used `--event-mode audio-only`, which is valid for
-audio/visual diagnostics but withholds language-dependent claims. The shortest
-credible route to a publication-grade result is now either real SnapUGC/VQualA
-retention labels with full multimodal TRIBE access, or a preregistered revised
+Full multimodal TRIBE runtime access is now separately verified: a one-video
+Modal H100 full-mode preflight passed using the cached
+`tribe-v2-weights-v1` Llama/TRIBE weights. The completed DHF1K runs still used
+`--event-mode audio-only`, so language-dependent claims remain withheld until
+the DHF1K or SnapUGC/VQualA features are rerun in full mode. The shortest
+credible route to a publication-grade result is now real SnapUGC/VQualA
+retention labels with full multimodal TRIBE scoring, or a preregistered revised
 score trained on one evidence source and tested on a held-out source.
 
 ## 2026-06-10 Publication Path Audit
@@ -75,10 +77,10 @@ publication_ready: false
 paper_claim_allowed: false
 phase2_ready: false
 phase1_gate_passed: false
+full_multimodal_ready: true
 blocking_reasons:
   - current H2 capture_score failed the Phase 1 rho gate
   - no SnapUGC/VQualA retention label CSV is mounted or available in audited Modal volumes
-  - completed TRIBE workflows are audio-only and no local or Modal HuggingFace text model token is present
   - fewer than 2 external datasets have completed claim-ready workflow reports
 warnings:
   - none
@@ -89,17 +91,19 @@ The shortest sound trajectory is therefore:
 1. Do not run Phase 2/3 neutralization from the current H2 score.
 2. Acquire or mount granted SnapUGC/VQualA retention labels; the audited Modal
    volumes do not currently contain a claim-ready retention label source.
-3. Provide full multimodal TRIBE text-model credentials in local env or Modal
-   secrets if language/text claims remain part of the paper.
+3. Rerun any claim-relevant DHF1K or SnapUGC/VQualA feature extraction in full
+   TRIBE mode; the current DHF1K evidence is still audio-only.
 4. If the score is revised, preregister the formula before evaluating held-out
    data.
 
 The DHF1K audio-only feature-cache reproducibility warning is resolved by the
 checksum audit plus recorded rerun commands. An object-storage archive is still
 useful for byte-for-byte reuse, but it is no longer the shortest-path blocker.
-`results/modal_asset_audit_20260610.*` records the Modal-side search over 14
-volumes and the checked Modal secrets; it found feature-like artifacts but no
+`results/modal_asset_audit_20260610.*` records the Modal-side search over 20
+volumes and 19 checked Modal secrets; it found cached TRIBE/Llama weights but no
 retention-label candidates or HuggingFace token env names.
+`results/tribe_full_preflight_audit_20260610.*` records the successful full-mode
+TRIBE event preflight over one existing Modal-hosted video.
 
 ## Files
 
@@ -147,6 +151,10 @@ retention-label candidates or HuggingFace token env names.
 - `results/modal_asset_audit_20260610.json`: Modal CPU audit over known volumes
   and checked secrets for remote publication unblocks.
 - `results/modal_asset_audit_20260610.md`: readable Modal asset audit.
+- `results/tribe_full_preflight_audit_20260610.json`: one-video Modal H100
+  full-mode TRIBE preflight audit against cached TRIBE/Llama weights.
+- `results/tribe_full_preflight_audit_20260610.md`: readable full-mode TRIBE
+  preflight audit.
 - `results/dhf1k_audio_only_feature_cache_audit_20260610.json`: portable
   checksum/provenance/rerun audit for the external DHF1K audio-only TRIBE
   feature cache.
@@ -209,11 +217,14 @@ retention-label candidates or HuggingFace token env names.
 - `scripts/audit_attention_capture_modal_assets.py`: Modal CPU asset audit for
   remote label, dataset, feature-cache, and token-presence checks. It keeps
   heavy discovery inside Modal and reports only secret presence, never values.
+- `scripts/audit_attention_capture_tribe_full_preflight.py`: one-video
+  full-mode TRIBE preflight verifier for cached Modal weights. This checks
+  runtime event construction only; it does not score Phase 1.
 - `scripts/audit_attention_capture_publication_path.py`: stricter
   paper-readiness audit that consumes readiness, workflow, feature-cache, and
-  Modal asset reports, then blocks publication/Phase 2 when the score gate,
-  retention labels, full-multimodal credentials, feature-cache provenance, or
-  held-out evidence are missing.
+  Modal verifier reports, then blocks publication/Phase 2 when the score gate,
+  retention labels, full-mode evidence, feature-cache provenance, or held-out
+  evidence are missing.
 
 ## Reused Infrastructure
 
@@ -281,7 +292,17 @@ uv run --extra modal modal run scripts/audit_attention_capture_modal_assets.py \
   --output-md research_program/dopamine_detox_attention_capture/results/modal_asset_audit_20260610.md \
   --max-entries-per-volume 20000 \
   --max-depth 5 \
-  --preview-limit 80
+  --preview-limit 120
+```
+
+Audit full-mode TRIBE event construction from cached Modal weights:
+
+```bash
+uv run --extra modal python scripts/audit_attention_capture_tribe_full_preflight.py \
+  --media-path /bmd-videos/generated/bo_memorability_replay/bo_replay_00_sobol_prompt_search_518_slot18_rep00.mp4 \
+  --output-json research_program/dopamine_detox_attention_capture/results/tribe_full_preflight_audit_20260610.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/tribe_full_preflight_audit_20260610.md \
+  --event-mode full
 ```
 
 Audit publication readiness after any Phase 1 run:
@@ -293,6 +314,7 @@ uv run python scripts/audit_attention_capture_publication_path.py \
   --workflow-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_workflow_20260609.json \
   --feature-cache-audit research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json \
   --modal-asset-audit research_program/dopamine_detox_attention_capture/results/modal_asset_audit_20260610.json \
+  --tribe-full-preflight-audit research_program/dopamine_detox_attention_capture/results/tribe_full_preflight_audit_20260610.json \
   --output-json research_program/dopamine_detox_attention_capture/results/attention_capture_publication_path_audit_20260610.json \
   --output-md research_program/dopamine_detox_attention_capture/results/attention_capture_publication_path_audit_20260610.md
 ```
@@ -309,7 +331,8 @@ tribe_features_ready: true
 dhf1k_tribe_features_ready: true for audio-only DHF1K features
 roi_masks_ready: true
 real_manifest_ready: true for DHF1K audio-only mean-map and fixation-density runs
-full_multimodal_tribe_ready: false without gated text-model credentials
+full_multimodal_tribe_runtime_ready: true from cached Modal weights
+full_multimodal_dhf1k_features_ready: false; preserved DHF1K features are audio-only
 primary_h2_gate_passed: false
 ```
 

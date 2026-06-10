@@ -1,16 +1,22 @@
 {
   "schema_version": 1,
   "experiment": "attention_capture_modal_asset_audit",
-  "generated_at": "2026-06-10T16:38:17.064977+00:00",
+  "generated_at": "2026-06-10T17:12:25.492378+00:00",
   "volume_report": {
     "volume_names_checked": [
       "rde-activation-results",
       "audience-analyzer-runs-v1",
       "wan22-lora-data-v1",
       "wan22-lora-outputs-v1",
+      "wan22-lora-cache-v1",
+      "svd-weights-v1",
       "svd-outputs-v1",
+      "wan22-weights-v1",
       "wan22-outputs-v1",
       "cogvideox-outputs-v1",
+      "cogvideox-weights-v1",
+      "tribe-v2-weights-v1",
+      "vjepa-weights-v1",
       "bmd-videos-v1",
       "fr-dev-data",
       "fr-prd-data",
@@ -26,8 +32,8 @@
         "volume": "rde-activation-results",
         "mount_path": "/modal-volumes/rde_activation_results",
         "exists": true,
-        "n_entries_seen": 3,
-        "n_files_seen": 2,
+        "n_entries_seen": 4,
+        "n_files_seen": 3,
         "n_dirs_seen": 1,
         "truncated": false,
         "label_candidates": [],
@@ -45,6 +51,11 @@
           },
           {
             "path": "activation_geometry/pythia160_layer3_pocket_seed20260610_raw.json",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "activation_geometry/pythia70_layer3_strict_opt8_seed20260610_raw.json",
             "kind": "file",
             "claim_blocked": false
           }
@@ -87,8 +98,55 @@
         "feature_candidates": []
       },
       {
+        "volume": "wan22-lora-cache-v1",
+        "mount_path": "/modal-volumes/wan22_lora_cache_v1",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "svd-weights-v1",
+        "mount_path": "/modal-volumes/svd_weights_v1",
+        "exists": true,
+        "n_entries_seen": 58,
+        "n_files_seen": 41,
+        "n_dirs_seen": 17,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": [
+          {
+            "path": "hub/models--stabilityai--stable-video-diffusion-img2vid-xt/snapshots/9e43909513c6714f1bc78bcb44d96e733cd242aa/feature_extractor",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--stabilityai--stable-video-diffusion-img2vid-xt/snapshots/9e43909513c6714f1bc78bcb44d96e733cd242aa/feature_extractor/preprocessor_config.json",
+            "kind": "file",
+            "claim_blocked": false
+          }
+        ]
+      },
+      {
         "volume": "svd-outputs-v1",
         "mount_path": "/modal-volumes/svd_outputs_v1",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "wan22-weights-v1",
+        "mount_path": "/modal-volumes/wan22_weights_v1",
         "exists": true,
         "n_entries_seen": 0,
         "n_files_seen": 0,
@@ -117,6 +175,643 @@
         "n_entries_seen": 0,
         "n_files_seen": 0,
         "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "cogvideox-weights-v1",
+        "mount_path": "/modal-volumes/cogvideox_weights_v1",
+        "exists": true,
+        "n_entries_seen": 0,
+        "n_files_seen": 0,
+        "n_dirs_seen": 0,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": []
+      },
+      {
+        "volume": "tribe-v2-weights-v1",
+        "mount_path": "/modal-volumes/tribe_v2_weights_v1",
+        "exists": true,
+        "n_entries_seen": 143,
+        "n_files_seen": 102,
+        "n_dirs_seen": 41,
+        "truncated": false,
+        "label_candidates": [],
+        "dataset_candidates": [],
+        "feature_candidates": [
+          {
+            "path": "hub",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "xet",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/.locks",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/CACHEDIR.TAG",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/.locks/models--Systran--faster-whisper-large-v3",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/.locks/models--facebook--dinov2-large",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/.locks/models--facebook--tribev2",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/.locks/models--facebook--vjepa2-vitg-fpc64-256",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/.locks/models--facebook--w2v-bert-2.0",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/.locks/models--meta-llama--Llama-3.2-3B",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/blobs",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/refs",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/snapshots",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/blobs/0adcd01e7c237205d593b707e66dd5d7bc785d2d",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/blobs/3a5e2ba63acdcac9a19ba56cf9bd27f185bfff61",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/blobs/69f74147e3334731bc3a76048724833325d2ec74642fb52620eda87352e3d4f1",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/blobs/75336feae814999bae6ccccdecf177639ffc6f9d",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/blobs/931c77a740890c46365c7ae0c9d350ba3cca908f",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/blobs/a6344aac8c09253b3b630fb776ae94478aa0275b",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/blobs/a84bfa7f20cac02ea5a99efa5eaf687ad58c1caf",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/refs/main",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/snapshots/edaa852ec7e145841d8ffdb056a99866b5f0a478",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/snapshots/edaa852ec7e145841d8ffdb056a99866b5f0a478/.gitattributes",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/snapshots/edaa852ec7e145841d8ffdb056a99866b5f0a478/README.md",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/snapshots/edaa852ec7e145841d8ffdb056a99866b5f0a478/config.json",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/snapshots/edaa852ec7e145841d8ffdb056a99866b5f0a478/model.bin",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/snapshots/edaa852ec7e145841d8ffdb056a99866b5f0a478/preprocessor_config.json",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/snapshots/edaa852ec7e145841d8ffdb056a99866b5f0a478/tokenizer.json",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--Systran--faster-whisper-large-v3/snapshots/edaa852ec7e145841d8ffdb056a99866b5f0a478/vocabulary.json",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/blobs",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/snapshots",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/blobs/399fba97a95f22c36834418bc69373364a99af3a1153da1c0fb31db567c92e23",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/blobs/3d7671e166807a113f7f8d3e1b79ebf0c32bc85d",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/blobs/5def28dd2a0ecb2561a4649703f13c4dc595ee95",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/blobs/8320e4778a7f8850d10f30d97e9138438e1851af1576fea789c43746140cc655",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/blobs/a6344aac8c09253b3b630fb776ae94478aa0275b",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/blobs/ff5b47c2edcd1d3556d63c01a65d93b58b9efce1",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/.gitattributes",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/README.md",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/config.json",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/model.safetensors",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/preprocessor_config.json",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/pytorch_model.bin",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2/blobs",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2/snapshots",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2/blobs/428e59536b10170c4e7412b803db164f0002e4c6",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2/blobs/61e6a0bb4183d357bcf27697a34a8a225238cf24",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2/blobs/767ba38f2fa96b47382a1b6ad84df160cabcfc12",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2/blobs/9c79ffff6b642b7b0c71d558c935fb3fa33f2788bfb509feead94fafbba2f321",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2/blobs/a6344aac8c09253b3b630fb776ae94478aa0275b",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2/snapshots/f894e783020944dcd96e5568550afe2aa9743f9f",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2/snapshots/f894e783020944dcd96e5568550afe2aa9743f9f/.gitattributes",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2/snapshots/f894e783020944dcd96e5568550afe2aa9743f9f/LICENSE",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2/snapshots/f894e783020944dcd96e5568550afe2aa9743f9f/README.md",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2/snapshots/f894e783020944dcd96e5568550afe2aa9743f9f/best.ckpt",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--tribev2/snapshots/f894e783020944dcd96e5568550afe2aa9743f9f/config.yaml",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/blobs",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/refs",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/snapshots",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/blobs/3534852408cef7f5c0c54dfed6e0842c24492863",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/blobs/67129f011434e605d894e69f2c8e13d9db118deabe59d54bf6e0fa62c2c5cb8e",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/blobs/6f4f3743f7c85d064d65519a905c1e04ebae69f8",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/blobs/8be436f25057b709d28aa3a4993614d6f319bb0f",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/blobs/a6344aac8c09253b3b630fb776ae94478aa0275b",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/blobs/b1b39c32857c5141adde7fc076100feaddefdf0d",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/blobs/c5dd15b27643a7fd207aa6f59373f255036b9a8b",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/blobs/f205e77aa2ade168db6b09d4bc420d156141f64ab964278a9c181a2bdf2a232b",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/refs/main",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/snapshots/875c192b7b704b87d1e1d99345769632dd5f739a",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/snapshots/875c192b7b704b87d1e1d99345769632dd5f739a/original",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/snapshots/875c192b7b704b87d1e1d99345769632dd5f739a/.gitattributes",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/snapshots/875c192b7b704b87d1e1d99345769632dd5f739a/README.md",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/snapshots/875c192b7b704b87d1e1d99345769632dd5f739a/config.json",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/snapshots/875c192b7b704b87d1e1d99345769632dd5f739a/model.safetensors",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/snapshots/875c192b7b704b87d1e1d99345769632dd5f739a/notebook.ipynb",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/snapshots/875c192b7b704b87d1e1d99345769632dd5f739a/notebook_finetuning.ipynb",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/snapshots/875c192b7b704b87d1e1d99345769632dd5f739a/video_preprocessor_config.json",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--vjepa2-vitg-fpc64-256/snapshots/875c192b7b704b87d1e1d99345769632dd5f739a/original/model.pth",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/blobs",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/refs",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/snapshots",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/blobs/23115b6e9bf0776b4cc3d480fde0a90a2ff33011",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/blobs/5db61951cdf5edab6337fd84ee619500c27aaa3d",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/blobs/8310b4270a5b499e92e20c859892dbf7429619347debb5f8feba79eb88f99b4f",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/blobs/a383a594dac18459628cd2837168cd276342a31a",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/blobs/a6344aac8c09253b3b630fb776ae94478aa0275b",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/blobs/eb890c9660ed6e3414b6812e27257b8ce5454365d5490d3ad581ea60b93be043",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/refs/main",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/snapshots/da985ba0987f70aaeb84a80f2851cfac8c697a7b",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/snapshots/da985ba0987f70aaeb84a80f2851cfac8c697a7b/.gitattributes",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/snapshots/da985ba0987f70aaeb84a80f2851cfac8c697a7b/README.md",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/snapshots/da985ba0987f70aaeb84a80f2851cfac8c697a7b/config.json",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/snapshots/da985ba0987f70aaeb84a80f2851cfac8c697a7b/conformer_shaw.pt",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/snapshots/da985ba0987f70aaeb84a80f2851cfac8c697a7b/model.safetensors",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--facebook--w2v-bert-2.0/snapshots/da985ba0987f70aaeb84a80f2851cfac8c697a7b/preprocessor_config.json",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/snapshots",
+            "kind": "dir",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/085b47c1575cb889b7024030e60b78f54f0b8c9e",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/2d73a6863086ff9d491c28e49df9fb697cd92c2b",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/4719a04514ec2f060240711b7c33ab21187cac730ecaba3040b7a0fd95a9cefb",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/47d4a5aa69cdef91a53b77f5c5583647a578ca0e",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/584d8d3e3f82f7964955174dfe5e3b1cf117a9d859f022cfdf7fcb884856e002",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/5cc5f00a5b203e90a27a3bd60d1ec393b07971e8",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/7f70e0141c2257e77489bb5359023477972e2e00",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/82e9d31979e92ab929cd544440f129d9ecd797b69e327f80f17e1c50d5551b55",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/8cfc88c52654b88fabf74e4777dd729540d88edd",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/a6344aac8c09253b3b630fb776ae94478aa0275b",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/ac3c5f21b9779e3da0677d6d3c587778fe3a331e",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/cb9ec25536e44d86778b10509d3e5bdca459a5cf",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/cfabacc2620186cd3dd4b1dde9a37e057208636e",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/d3a1f0f5f401eeadca0c7a6786bd9e877fd42e58",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/blobs/e85237a45033593adb3eb7e1a6cc5c410c4e2b360e24a422d3c1ab12a166c441",
+            "kind": "file",
+            "claim_blocked": false
+          },
+          {
+            "path": "hub/models--meta-llama--Llama-3.2-3B/snapshots/13afe5124825b4f3751f836b40dafda64c1ed062",
+            "kind": "dir",
+            "claim_blocked": false
+          }
+        ]
+      },
+      {
+        "volume": "vjepa-weights-v1",
+        "mount_path": "/modal-volumes/vjepa_weights_v1",
+        "exists": true,
+        "n_entries_seen": 24,
+        "n_files_seen": 10,
+        "n_dirs_seen": 14,
         "truncated": false,
         "label_candidates": [],
         "dataset_candidates": [],
@@ -209,11 +904,28 @@
     ],
     "n_label_candidates": 0,
     "n_dataset_candidates": 0,
-    "n_feature_candidates": 3
+    "n_feature_candidates": 126
   },
   "secret_report": {
     "secret_names_checked": [
       "underlying-analyzer-env",
+      "fr-dev-internal-api",
+      "fr-dev-github-app",
+      "fr-dev-llm-api-keys",
+      "fr-prd-internal-api",
+      "fr-prd-github-app",
+      "fr-prd-llm-api-keys",
+      "fr-stg-internal-api",
+      "fr-stg-github-app",
+      "fr-stg-llm-api-keys",
+      "flytrap-review-prod-internal-api",
+      "flytrap-review-prod-github-app",
+      "flytrap-review-prod-llm-api-keys",
+      "flytrap-review-staging-internal-api",
+      "flytrap-review-staging-github-app",
+      "flytrap-review-staging-llm-api-keys",
+      "internal-api",
+      "github-app",
       "llm-api-keys"
     ],
     "token_envs_checked": [
@@ -238,6 +950,51 @@
     "any_present": false,
     "matching_env_names": [],
     "claim_boundary": "This reports environment variable presence only. It never reports secret values and does not prove access to any gated HuggingFace model."
+  },
+  "configuration": {
+    "volume_names": [
+      "rde-activation-results",
+      "audience-analyzer-runs-v1",
+      "wan22-lora-data-v1",
+      "wan22-lora-outputs-v1",
+      "wan22-lora-cache-v1",
+      "svd-weights-v1",
+      "svd-outputs-v1",
+      "wan22-weights-v1",
+      "wan22-outputs-v1",
+      "cogvideox-outputs-v1",
+      "cogvideox-weights-v1",
+      "tribe-v2-weights-v1",
+      "vjepa-weights-v1",
+      "bmd-videos-v1",
+      "fr-dev-data",
+      "fr-prd-data",
+      "fr-stg-data",
+      "flytrap-review-prod-data",
+      "flytrap-review-data",
+      "tac-docker-data"
+    ],
+    "secret_names": [
+      "underlying-analyzer-env",
+      "fr-dev-internal-api",
+      "fr-dev-github-app",
+      "fr-dev-llm-api-keys",
+      "fr-prd-internal-api",
+      "fr-prd-github-app",
+      "fr-prd-llm-api-keys",
+      "fr-stg-internal-api",
+      "fr-stg-github-app",
+      "fr-stg-llm-api-keys",
+      "flytrap-review-prod-internal-api",
+      "flytrap-review-prod-github-app",
+      "flytrap-review-prod-llm-api-keys",
+      "flytrap-review-staging-internal-api",
+      "flytrap-review-staging-github-app",
+      "flytrap-review-staging-llm-api-keys",
+      "internal-api",
+      "github-app",
+      "llm-api-keys"
+    ]
   },
   "publication_unblocks": {
     "retention_labels_maybe_available": false,

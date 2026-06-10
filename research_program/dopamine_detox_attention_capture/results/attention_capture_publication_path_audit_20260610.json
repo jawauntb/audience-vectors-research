@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "experiment": "attention_capture_publication_path_audit",
-  "generated_at": "2026-06-10T16:38:35.727422+00:00",
+  "generated_at": "2026-06-10T17:20:42.999198+00:00",
   "readiness_json": "research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.json",
   "workflow_jsons": [
     "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_audio_only_workflow_20260609.json",
@@ -12,6 +12,9 @@
   ],
   "modal_asset_audit_jsons": [
     "research_program/dopamine_detox_attention_capture/results/modal_asset_audit_20260610.json"
+  ],
+  "tribe_full_preflight_audit_jsons": [
+    "research_program/dopamine_detox_attention_capture/results/tribe_full_preflight_audit_20260610.json"
   ],
   "min_paper_datasets": 2,
   "readiness_summary": {
@@ -45,7 +48,7 @@
     "any_present": false,
     "claim_boundary": "Credential values are never reported. Presence only indicates that the full text-model path may be runnable; it does not prove access to any specific gated model."
   },
-  "full_multimodal_ready": false,
+  "full_multimodal_ready": true,
   "feature_cache_audit_summaries": [
     {
       "path": "research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json",
@@ -74,17 +77,63 @@
         "no Modal-hosted SnapUGC/VQualA retention label candidate found",
         "no Modal secret exposes a HuggingFace token env name"
       ],
-      "n_volumes_checked": 14,
+      "n_volumes_checked": 20,
       "n_label_candidates": 0,
       "n_dataset_candidates": 0,
-      "n_feature_candidates": 3,
+      "n_feature_candidates": 126,
       "n_truncated_volumes": 0,
       "secret_names_checked": [
         "underlying-analyzer-env",
+        "fr-dev-internal-api",
+        "fr-dev-github-app",
+        "fr-dev-llm-api-keys",
+        "fr-prd-internal-api",
+        "fr-prd-github-app",
+        "fr-prd-llm-api-keys",
+        "fr-stg-internal-api",
+        "fr-stg-github-app",
+        "fr-stg-llm-api-keys",
+        "flytrap-review-prod-internal-api",
+        "flytrap-review-prod-github-app",
+        "flytrap-review-prod-llm-api-keys",
+        "flytrap-review-staging-internal-api",
+        "flytrap-review-staging-github-app",
+        "flytrap-review-staging-llm-api-keys",
+        "internal-api",
+        "github-app",
         "llm-api-keys"
       ],
       "matching_env_names": [],
       "claim_boundary": "This Modal CPU audit checks remote asset availability only. It does not score TRIBE features or validate attentional capture."
+    }
+  ],
+  "tribe_full_preflight_summaries": [
+    {
+      "path": "research_program/dopamine_detox_attention_capture/results/tribe_full_preflight_audit_20260610.json",
+      "ok": true,
+      "app_name": "audience-vectors-dev",
+      "media_path": "/bmd-videos/generated/bo_memorability_replay/bo_replay_00_sobol_prompt_search_518_slot18_rep00.mp4",
+      "event_mode": "full",
+      "events_rows": 1,
+      "duration_seconds": 3.572,
+      "event_columns": [
+        "type",
+        "start",
+        "duration",
+        "timeline",
+        "subject",
+        "session",
+        "task",
+        "run",
+        "filepath",
+        "frequency",
+        "offset",
+        "stop",
+        "context"
+      ],
+      "error_type": null,
+      "error": null,
+      "claim_boundary": "This verifies that the deployed Modal TRIBE path can construct events for one video. It does not validate attentional capture, does not score Phase 1, and does not replace external labels."
     }
   ],
   "workflow_summaries": [
@@ -146,15 +195,13 @@
   "blocking_reasons": [
     "current H2 capture_score failed the Phase 1 rho gate",
     "no SnapUGC/VQualA retention label CSV is mounted or available in audited Modal volumes",
-    "completed TRIBE workflows are audio-only and no local or Modal HuggingFace text model token is present",
     "fewer than 2 external datasets have completed claim-ready workflow reports"
   ],
   "warnings": [],
   "next_actions": [
     "Do not enter Phase 2/3 neutralization from the current H2 score; either acquire retention labels for an independent test or preregister a revised score before evaluating held-out data.",
     "Mount granted SnapUGC/VQualA labels and build a retention manifest with alignment-audit provenance.",
-    "Provide a HuggingFace token with access to the gated TRIBE text model path, then rerun full multimodal feature extraction.",
     "Require at least one held-out external validation dataset before claiming publication readiness."
   ],
-  "claim_boundary": "This audit decides whether current evidence can support the attention-capture paper claim. It is stricter than data readiness: a runnable manifest is not enough when the scoring gate failed or retention/full-multimodal evidence is absent."
+  "claim_boundary": "This audit decides whether current evidence can support the attention-capture paper claim. It is stricter than data readiness: a runnable manifest is not enough when the scoring gate failed or required external or full-mode evidence is absent."
 }
