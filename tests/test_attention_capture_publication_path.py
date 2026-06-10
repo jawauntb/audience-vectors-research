@@ -128,6 +128,63 @@ def write_feature_cache_audit(
     )
 
 
+def write_modal_asset_audit(
+    path: Path,
+    *,
+    labels: bool = False,
+    token: bool = False,
+    truncated: bool = False,
+) -> None:
+    path.write_text(
+        json.dumps(
+            {
+                "experiment": "attention_capture_modal_asset_audit",
+                "claim_boundary": (
+                    "This Modal CPU audit checks remote asset availability only."
+                ),
+                "publication_unblocks": {
+                    "retention_labels_maybe_available": labels,
+                    "external_dataset_dirs_maybe_available": labels,
+                    "feature_caches_maybe_available": True,
+                    "full_multimodal_token_env_present": token,
+                    "blocking_reasons": [
+                        reason
+                        for reason, blocked in (
+                            (
+                                "no Modal-hosted SnapUGC/VQualA retention label "
+                                "candidate found",
+                                not labels,
+                            ),
+                            (
+                                "no Modal secret exposes a HuggingFace token env name",
+                                not token,
+                            ),
+                        )
+                        if blocked
+                    ],
+                },
+                "volume_report": {
+                    "volume_names_checked": ["rde-activation-results"],
+                    "n_label_candidates": int(labels),
+                    "n_dataset_candidates": int(labels),
+                    "n_feature_candidates": 2,
+                    "audits": [
+                        {
+                            "volume": "rde-activation-results",
+                            "truncated": truncated,
+                        }
+                    ],
+                },
+                "secret_report": {
+                    "secret_names_checked": ["llm-api-keys"],
+                    "matching_env_names": ["HF_TOKEN"] if token else [],
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
 def test_publication_audit_blocks_current_failed_audio_only_path(
     tmp_path: Path,
     monkeypatch,
@@ -137,12 +194,15 @@ def test_publication_audit_blocks_current_failed_audio_only_path(
         monkeypatch.delenv(name, raising=False)
     readiness = tmp_path / "readiness.json"
     workflow = tmp_path / "dhf1k_audio_only_workflow.json"
+    modal_assets = tmp_path / "modal_assets.json"
     write_readiness(readiness, snapugc_ready=False)
     write_workflow(workflow, dataset="DHF1K", rho=-0.03, passed=False, audio_only=True)
+    write_modal_asset_audit(modal_assets)
 
     report = module.build_publication_path_report(
         readiness_json=readiness,
         workflow_jsons=[workflow],
+        modal_asset_audits=[modal_assets],
         min_paper_datasets=2,
     )
 
@@ -153,10 +213,18 @@ def test_publication_audit_blocks_current_failed_audio_only_path(
         in report["blocking_reasons"]
     )
     assert (
-        "no SnapUGC/VQualA retention label CSV is mounted" in report["blocking_reasons"]
+        "no SnapUGC/VQualA retention label CSV is mounted or available in "
+        "audited Modal volumes" in report["blocking_reasons"]
     )
     assert any("audio-only" in reason for reason in report["blocking_reasons"])
+    assert any(
+        "local or Modal HuggingFace" in reason for reason in report["blocking_reasons"]
+    )
     assert any("feature cache" in warning for warning in report["warnings"])
+    assert (
+        report["modal_asset_audit_summaries"][0]["retention_labels_maybe_available"]
+        is False
+    )
 
 
 def test_publication_audit_records_feature_cache_provenance(
@@ -222,6 +290,32 @@ def test_publication_audit_accepts_feature_cache_rerun_path(
     assert "True | True | 516 | 516 | 1 | aaaaaaaaaaaa" in markdown
 
 
+def test_publication_audit_uses_modal_token_for_full_multimodal_path(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    module = load_module()
+    for name in module.DEFAULT_TOKEN_ENVS:
+        monkeypatch.delenv(name, raising=False)
+    readiness = tmp_path / "readiness.json"
+    workflow = tmp_path / "dhf1k_audio_only_workflow.json"
+    modal_assets = tmp_path / "modal_assets.json"
+    write_readiness(readiness, snapugc_ready=False)
+    write_workflow(workflow, dataset="DHF1K", rho=-0.03, passed=False, audio_only=True)
+    write_modal_asset_audit(modal_assets, token=True)
+
+    report = module.build_publication_path_report(
+        readiness_json=readiness,
+        workflow_jsons=[workflow],
+        modal_asset_audits=[modal_assets],
+        min_paper_datasets=2,
+    )
+
+    assert report["credential_audit"]["any_present"] is False
+    assert report["full_multimodal_ready"] is True
+    assert not any("audio-only" in reason for reason in report["blocking_reasons"])
+
+
 def test_publication_audit_accepts_multidataset_retention_and_token_path(
     tmp_path: Path,
     monkeypatch,
@@ -247,6 +341,24 @@ def test_publication_audit_accepts_multidataset_retention_and_token_path(
     assert report["blocking_reasons"] == []
     assert report["credential_audit"]["entries"][0]["present"] is True
     assert "present-but-not-reported" not in json.dumps(report)
+
+
+def test_publication_markdown_renders_modal_asset_table(tmp_path: Path) -> None:
+    module = load_module()
+    modal_assets = tmp_path / "modal_assets.json"
+    write_modal_asset_audit(modal_assets, labels=False, token=False)
+
+    report = module.build_publication_path_report(
+        readiness_json=None,
+        workflow_jsons=[],
+        modal_asset_audits=[modal_assets],
+        min_paper_datasets=1,
+    )
+    markdown = module.render_publication_markdown(report)
+
+    assert "Modal Asset Evidence" in markdown
+    assert "rde-activation-results" not in markdown
+    assert "no Modal-hosted SnapUGC/VQualA retention label candidate found" in markdown
 
 
 def test_publication_markdown_renders_workflow_table(tmp_path: Path) -> None:
