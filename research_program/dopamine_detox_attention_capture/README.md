@@ -4,10 +4,9 @@ Status: Phase 1 DHF1K audio-only validation run complete; current
 `capture_score` gate failed. The DHF1K audio-only feature cache now has
 checksum provenance and a deterministic rerun path. DHF1K videos for the
 350-sample fixation-density set are mounted in Modal `bmd-videos-v1`, and
-full-mode event construction passes on an actual DHF1K AVI. Full-mode
-prediction still fails without gated `meta-llama/Llama-3.2-3B` access, so the
-paper remains blocked on scientific evidence gates and full-prediction access,
-not DHF1K media placement or local CPU throughput.
+full-mode event construction plus one-video full prediction pass on an actual
+DHF1K AVI. The paper remains blocked on scientific evidence gates, not DHF1K
+media placement, full-prediction access, or local CPU throughput.
 
 This subfolder sets up the short-form-video attention-capture experiment from
 the June 2026 proposal, with the claim boundary inherited from the existing
@@ -61,13 +60,12 @@ weights and event construction work for one existing Modal-hosted BMD video.
 Second, the official DHF1K `video.rar` archive has been ingested on Modal and
 all 350 fixation-density videos are readable under
 `/bmd-videos/attention_capture/DHF1K/video/`. Third, full prediction on an
-actual DHF1K video still fails because the downstream TRIBE text path attempts
-to access gated `meta-llama/Llama-3.2-3B` without an available token. The
-completed DHF1K runs therefore remain `--event-mode audio-only`, and
-language-dependent claims remain withheld until a successful full-prediction
-smoke passes and the DHF1K or SnapUGC/VQualA features are rerun in full mode.
+actual DHF1K video now passes with gated `meta-llama/Llama-3.2-3B` access. The
+completed DHF1K runs remain `--event-mode audio-only`, and language-dependent
+claims remain withheld until the DHF1K or SnapUGC/VQualA features are rerun in
+full mode.
 The shortest credible route to a publication-grade result is now real
-SnapUGC/VQualA retention labels plus a working full-prediction TRIBE path, or a
+SnapUGC/VQualA retention labels plus full-mode feature extraction, or a
 preregistered revised score trained on one evidence source and tested on a
 held-out source.
 
@@ -84,15 +82,14 @@ publication_ready: false
 paper_claim_allowed: false
 phase2_ready: false
 phase1_gate_passed: false
-full_multimodal_ready: false
+full_multimodal_ready: true
 dhf1k_modal_media_ready: true
 blocking_reasons:
   - current H2 capture_score failed the Phase 1 rho gate
   - no SnapUGC/VQualA retention label CSV is mounted or available in audited Modal volumes
-  - completed TRIBE workflows are audio-only and no successful full multimodal TRIBE prediction smoke is available
   - fewer than 2 external datasets have completed claim-ready workflow reports
 warnings:
-  - at least one TRIBE full-mode prediction smoke audit failed
+  - none
 ```
 
 The shortest sound trajectory is therefore:
@@ -100,9 +97,8 @@ The shortest sound trajectory is therefore:
 1. Do not run Phase 2/3 neutralization from the current H2 score.
 2. Acquire or mount granted SnapUGC/VQualA retention labels; the audited Modal
    volumes do not currently contain a claim-ready retention label source.
-3. Provide a HuggingFace token with access to the gated TRIBE text path, or
-   otherwise make the cached Llama path usable, then rerun the full-prediction
-   smoke before any full DHF1K/SnapUGC feature extraction.
+3. Rerun DHF1K/SnapUGC feature extraction in full mode before making
+   language-dependent claims.
 4. If the score is revised, preregister the formula before evaluating held-out
    data.
 
@@ -119,7 +115,7 @@ fixation-density videos are mounted and nonzero.
 `results/tribe_full_preflight_dhf1k_audit_20260610.*` records successful
 full-mode event construction on an actual DHF1K AVI.
 `results/tribe_full_prediction_smoke_dhf1k_audit_20260610.*` records the
-stricter full-prediction failure on gated Llama access.
+stricter full-prediction smoke passing on the same DHF1K AVI.
 
 ## Files
 
@@ -187,7 +183,7 @@ stricter full-prediction failure on gated Llama access.
 - `results/tribe_full_preflight_dhf1k_audit_20260610.md`: readable DHF1K
   full-mode event preflight audit.
 - `results/tribe_full_prediction_smoke_dhf1k_audit_20260610.json`: stricter
-  one-video full-prediction smoke audit; currently fails on gated Llama access.
+  one-video full-prediction smoke audit; passes on mounted DHF1K `003.AVI`.
 - `results/tribe_full_prediction_smoke_dhf1k_audit_20260610.md`: readable
   full-prediction smoke audit.
 - `results/dhf1k_audio_only_feature_cache_audit_20260610.json`: portable
@@ -372,8 +368,8 @@ uv run --extra modal modal run scripts/audit_attention_capture_dhf1k_modal_media
   --preview-limit 25
 ```
 
-Then run the two one-video DHF1K runtime gates. Event construction currently
-passes; full prediction currently fails on gated Llama access:
+Then run the two one-video DHF1K runtime gates. Event construction and full
+prediction both pass when the Modal environment has gated Llama access:
 
 ```bash
 uv run --extra modal python scripts/audit_attention_capture_tribe_full_preflight.py \
@@ -420,7 +416,7 @@ roi_masks_ready: true
 real_manifest_ready: true for DHF1K audio-only mean-map and fixation-density runs
 full_multimodal_event_preflight_ready: true from cached Modal weights
 dhf1k_modal_media_ready: true for the 350 fixation-density videos
-full_multimodal_prediction_ready: false; gated Llama access blocks full prediction
+full_multimodal_prediction_ready: true for one DHF1K full-mode smoke
 full_multimodal_dhf1k_features_ready: false; preserved DHF1K features are audio-only
 primary_h2_gate_passed: false
 ```
