@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "experiment": "attention_capture_tribe_full_prediction_smoke_audit",
+  "generated_at": "2026-06-10T19:25:24.239049+00:00",
+  "ok": true,
+  "app_name": "audience-vectors-dev",
+  "media_path": "/bmd-videos/attention_capture/DHF1K/video/003.AVI",
+  "event_mode": "full",
+  "prediction": {
+    "duration_seconds": 14.933333,
+    "frames_rows": 15,
+    "frames_cols": 20484,
+    "frames_dtype": "float64",
+    "all_finite": true
+  },
+  "error_type": null,
+  "error": null,
+  "claim_boundary": "This verifies that the deployed Modal TRIBE path can complete one video prediction. It does not validate Phase 1, does not estimate correlation, and does not replace external labels."
+}

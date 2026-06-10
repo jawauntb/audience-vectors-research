@@ -7,6 +7,7 @@
 - Phase 2 ready: False
 - Phase 1 gate passed: False
 - Full multimodal path ready: True
+- DHF1K Modal media ready: True
 - Claim boundary: This audit decides whether current evidence can support the attention-capture paper claim. It is stricter than data readiness: a runnable manifest is not enough when the scoring gate failed or required external or full-mode evidence is absent.
 
 ## Blocking Reasons
@@ -49,3 +50,16 @@
 | audit | ok | event mode | events | duration | media | error |
 |---|---|---|---:|---:|---|---|
 | research_program/dopamine_detox_attention_capture/results/tribe_full_preflight_audit_20260610.json | True | full | 1 | 3.5720 | /bmd-videos/generated/bo_memorability_replay/bo_replay_00_sobol_prompt_search_518_slot18_rep00.mp4 | none |
+| research_program/dopamine_detox_attention_capture/results/tribe_full_preflight_dhf1k_audit_20260610.json | True | full | 50 | 14.9333 | /bmd-videos/attention_capture/DHF1K/video/003.AVI | none |
+
+## TRIBE Full-Prediction Smoke Evidence
+
+| audit | ok | event mode | frames | duration | media | error |
+|---|---|---|---:|---:|---|---|
+| research_program/dopamine_detox_attention_capture/results/tribe_full_prediction_smoke_dhf1k_audit_20260610.json | True | full | 15 x 20484 | 14.9333 | /bmd-videos/attention_capture/DHF1K/video/003.AVI | none |
+
+## DHF1K Modal Media Evidence
+
+| audit | ready | expected | found | missing | zero-byte | modal prefix | modal csv | blockers |
+|---|---|---:|---:|---:|---:|---|---|---|
+| research_program/dopamine_detox_attention_capture/results/dhf1k_modal_media_audit_20260610.json | True | 350 | 350 | 0 | 0 | /bmd-videos/attention_capture/DHF1K | research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_modal_20260610.csv | none |

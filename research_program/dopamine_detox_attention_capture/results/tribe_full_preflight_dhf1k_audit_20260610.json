@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "experiment": "attention_capture_tribe_full_preflight_audit",
+  "generated_at": "2026-06-10T17:42:36.477414+00:00",
+  "ok": true,
+  "app_name": "audience-vectors-dev",
+  "media_path": "/bmd-videos/attention_capture/DHF1K/video/003.AVI",
+  "event_mode": "full",
+  "preflight": {
+    "input_kind": "path",
+    "event_mode": "full",
+    "resolved_path": "/bmd-videos/attention_capture/DHF1K/video/003.AVI",
+    "tribe_path": "/bmd-videos/attention_capture/DHF1K/video/003.AVI",
+    "exists": true,
+    "size_bytes": 3381814,
+    "duration_seconds": 14.933333,
+    "events_rows": 50,
+    "event_columns": [
+      "type",
+      "start",
+      "duration",
+      "timeline",
+      "subject",
+      "session",
+      "task",
+      "run",
+      "filepath",
+      "frequency",
+      "offset",
+      "stop",
+      "text",
+      "sequence_id",
+      "sentence",
+      "language",
+      "sentence_char",
+      "text_char",
+      "context",
+      "modality"
+    ],
+    "step_seconds": {
+      "volume_reload": 0.052387481000000236,
+      "resolve_local_path": 2.5181000001595066e-05,
+      "probe_duration": 0.4654323120000008,
+      "ensure_suffix": 3.0900999998806356e-05,
+      "get_events_dataframe": 118.32212617900001
+    }
+  },
+  "claim_boundary": "This verifies that the deployed Modal TRIBE path can construct events for one video. It does not validate attentional capture, does not score Phase 1, and does not replace external labels."
+}

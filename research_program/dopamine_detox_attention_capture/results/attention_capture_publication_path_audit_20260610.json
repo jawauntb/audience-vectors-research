@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "experiment": "attention_capture_publication_path_audit",
-  "generated_at": "2026-06-10T17:20:42.999198+00:00",
+  "generated_at": "2026-06-10T19:28:03.819653+00:00",
   "readiness_json": "research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.json",
   "workflow_jsons": [
     "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_audio_only_workflow_20260609.json",
@@ -14,7 +14,14 @@
     "research_program/dopamine_detox_attention_capture/results/modal_asset_audit_20260610.json"
   ],
   "tribe_full_preflight_audit_jsons": [
-    "research_program/dopamine_detox_attention_capture/results/tribe_full_preflight_audit_20260610.json"
+    "research_program/dopamine_detox_attention_capture/results/tribe_full_preflight_audit_20260610.json",
+    "research_program/dopamine_detox_attention_capture/results/tribe_full_preflight_dhf1k_audit_20260610.json"
+  ],
+  "tribe_full_prediction_smoke_audit_jsons": [
+    "research_program/dopamine_detox_attention_capture/results/tribe_full_prediction_smoke_dhf1k_audit_20260610.json"
+  ],
+  "dhf1k_modal_media_audit_jsons": [
+    "research_program/dopamine_detox_attention_capture/results/dhf1k_modal_media_audit_20260610.json"
   ],
   "min_paper_datasets": 2,
   "readiness_summary": {
@@ -27,28 +34,34 @@
   },
   "credential_audit": {
     "token_envs_checked": [
+      "LLAMA_READ_TOKEN",
       "HF_TOKEN",
-      "HUGGINGFACE_TOKEN",
-      "HUGGINGFACE_HUB_TOKEN"
+      "HUGGINGFACE_HUB_TOKEN",
+      "HUGGINGFACE_TOKEN"
     ],
     "entries": [
       {
-        "env": "HF_TOKEN",
-        "present": false
+        "env": "LLAMA_READ_TOKEN",
+        "present": true
       },
       {
-        "env": "HUGGINGFACE_TOKEN",
-        "present": false
+        "env": "HF_TOKEN",
+        "present": true
       },
       {
         "env": "HUGGINGFACE_HUB_TOKEN",
-        "present": false
+        "present": true
+      },
+      {
+        "env": "HUGGINGFACE_TOKEN",
+        "present": true
       }
     ],
-    "any_present": false,
+    "any_present": true,
     "claim_boundary": "Credential values are never reported. Presence only indicates that the full text-model path may be runnable; it does not prove access to any specific gated model."
   },
   "full_multimodal_ready": true,
+  "dhf1k_modal_media_ready": true,
   "feature_cache_audit_summaries": [
     {
       "path": "research_program/dopamine_detox_attention_capture/results/dhf1k_audio_only_feature_cache_audit_20260610.json",
@@ -134,6 +147,74 @@
       "error_type": null,
       "error": null,
       "claim_boundary": "This verifies that the deployed Modal TRIBE path can construct events for one video. It does not validate attentional capture, does not score Phase 1, and does not replace external labels."
+    },
+    {
+      "path": "research_program/dopamine_detox_attention_capture/results/tribe_full_preflight_dhf1k_audit_20260610.json",
+      "ok": true,
+      "app_name": "audience-vectors-dev",
+      "media_path": "/bmd-videos/attention_capture/DHF1K/video/003.AVI",
+      "event_mode": "full",
+      "events_rows": 50,
+      "duration_seconds": 14.933333,
+      "event_columns": [
+        "type",
+        "start",
+        "duration",
+        "timeline",
+        "subject",
+        "session",
+        "task",
+        "run",
+        "filepath",
+        "frequency",
+        "offset",
+        "stop",
+        "text",
+        "sequence_id",
+        "sentence",
+        "language",
+        "sentence_char",
+        "text_char",
+        "context",
+        "modality"
+      ],
+      "error_type": null,
+      "error": null,
+      "claim_boundary": "This verifies that the deployed Modal TRIBE path can construct events for one video. It does not validate attentional capture, does not score Phase 1, and does not replace external labels."
+    }
+  ],
+  "tribe_full_prediction_smoke_summaries": [
+    {
+      "path": "research_program/dopamine_detox_attention_capture/results/tribe_full_prediction_smoke_dhf1k_audit_20260610.json",
+      "ok": true,
+      "app_name": "audience-vectors-dev",
+      "media_path": "/bmd-videos/attention_capture/DHF1K/video/003.AVI",
+      "event_mode": "full",
+      "duration_seconds": 14.933333,
+      "frames_rows": 15,
+      "frames_cols": 20484,
+      "all_finite": true,
+      "error_type": null,
+      "error": null,
+      "claim_boundary": "This verifies that the deployed Modal TRIBE path can complete one video prediction. It does not validate Phase 1, does not estimate correlation, and does not replace external labels."
+    }
+  ],
+  "dhf1k_modal_media_summaries": [
+    {
+      "path": "research_program/dopamine_detox_attention_capture/results/dhf1k_modal_media_audit_20260610.json",
+      "labels_csv": "research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_20260609.csv",
+      "output_modal_csv": "research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_modal_20260610.csv",
+      "modal_volume_name": "bmd-videos-v1",
+      "modal_root": "/bmd-videos",
+      "modal_prefix": "attention_capture/DHF1K",
+      "ready_for_full_feature_extraction": true,
+      "n_expected": 350,
+      "n_found": 350,
+      "n_missing": 0,
+      "n_zero_byte_found": 0,
+      "blocking_reasons": [],
+      "recommended_full_extraction_command": "uv run --extra modal python scripts/extract_attention_capture_tribe_features.py --source-csv research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_modal_20260610.csv --output-dir data/features/tribe_dhf1k_attention_full --sample-id-column sample_id --media-path-column video_path --transport path --event-mode full --concurrency 8",
+      "claim_boundary": "This Modal CPU audit checks whether the DHF1K media files needed for full-mode TRIBE extraction are mounted. It does not score TRIBE features or validate attentional capture."
     }
   ],
   "workflow_summaries": [

@@ -47,6 +47,23 @@ def parse_args() -> argparse.Namespace:
         default=[],
         help="TRIBE full-mode Modal preflight audit JSON. May be passed multiple times.",
     )
+    parser.add_argument(
+        "--tribe-full-prediction-smoke-audit",
+        action="append",
+        type=Path,
+        default=[],
+        help=(
+            "TRIBE full-mode Modal prediction smoke audit JSON. May be passed "
+            "multiple times."
+        ),
+    )
+    parser.add_argument(
+        "--dhf1k-modal-media-audit",
+        action="append",
+        type=Path,
+        default=[],
+        help="DHF1K Modal media audit JSON. May be passed multiple times.",
+    )
     parser.add_argument("--output-json", type=Path, required=True)
     parser.add_argument("--output-md", type=Path, required=True)
     parser.add_argument("--min-paper-datasets", type=int, default=2)
@@ -67,6 +84,8 @@ def main() -> None:
         feature_cache_audits=args.feature_cache_audit,
         modal_asset_audits=args.modal_asset_audit,
         tribe_full_preflight_audits=args.tribe_full_preflight_audit,
+        tribe_full_prediction_smoke_audits=args.tribe_full_prediction_smoke_audit,
+        dhf1k_modal_media_audits=args.dhf1k_modal_media_audit,
         min_paper_datasets=args.min_paper_datasets,
         token_envs=tuple(args.token_env or DEFAULT_TOKEN_ENVS),
     )
@@ -85,6 +104,8 @@ def build_publication_path_report(
     feature_cache_audits: list[Path] | None = None,
     modal_asset_audits: list[Path] | None = None,
     tribe_full_preflight_audits: list[Path] | None = None,
+    tribe_full_prediction_smoke_audits: list[Path] | None = None,
+    dhf1k_modal_media_audits: list[Path] | None = None,
     min_paper_datasets: int = 2,
     token_envs: tuple[str, ...] = DEFAULT_TOKEN_ENVS,
 ) -> dict[str, Any]:
@@ -99,6 +120,14 @@ def build_publication_path_report(
     tribe_full_preflights = [
         summarize_tribe_full_preflight_audit(path)
         for path in tribe_full_preflight_audits or []
+    ]
+    tribe_full_prediction_smokes = [
+        summarize_tribe_full_prediction_smoke_audit(path)
+        for path in tribe_full_prediction_smoke_audits or []
+    ]
+    dhf1k_modal_media = [
+        summarize_dhf1k_modal_media_audit(path)
+        for path in dhf1k_modal_media_audits or []
     ]
     credential_audit = audit_text_model_credentials(token_envs)
     completed_real_workflows = [
@@ -124,13 +153,17 @@ def build_publication_path_report(
     modal_token_present = any(
         audit["full_multimodal_token_env_present"] for audit in modal_audits
     )
-    tribe_full_preflight_ready = any(
-        audit["ok"] and audit["event_mode"] == "full" for audit in tribe_full_preflights
+    tribe_full_prediction_ready = any(
+        audit["ok"] and audit["event_mode"] == "full"
+        for audit in tribe_full_prediction_smokes
     )
     full_multimodal_ready = (
         credential_audit["any_present"]
         or modal_token_present
-        or tribe_full_preflight_ready
+        or tribe_full_prediction_ready
+    )
+    dhf1k_modal_media_ready = any(
+        audit["ready_for_full_feature_extraction"] for audit in dhf1k_modal_media
     )
     has_audio_only_workflow = any(workflow["audio_only"] for workflow in workflows)
     phase1_gate_passed = bool(passed_workflows)
@@ -143,7 +176,12 @@ def build_publication_path_report(
         modal_asset_audits_supplied=bool(modal_audits),
         modal_retention_labels_available=modal_retention_labels_available,
         tribe_full_preflight_audits_supplied=bool(tribe_full_preflights),
+        tribe_full_prediction_smoke_audits_supplied=bool(
+            tribe_full_prediction_smokes,
+        ),
         full_multimodal_ready=full_multimodal_ready,
+        dhf1k_modal_media_audits_supplied=bool(dhf1k_modal_media),
+        dhf1k_modal_media_ready=dhf1k_modal_media_ready,
         has_audio_only_workflow=has_audio_only_workflow,
         enough_datasets_for_paper=enough_datasets_for_paper,
         min_paper_datasets=min_paper_datasets,
@@ -154,6 +192,8 @@ def build_publication_path_report(
         cache_audits=cache_audits,
         modal_audits=modal_audits,
         tribe_full_preflights=tribe_full_preflights,
+        tribe_full_prediction_smokes=tribe_full_prediction_smokes,
+        dhf1k_modal_media=dhf1k_modal_media,
     )
     return {
         "schema_version": 1,
@@ -166,13 +206,22 @@ def build_publication_path_report(
         "tribe_full_preflight_audit_jsons": [
             str(path) for path in tribe_full_preflight_audits or []
         ],
+        "tribe_full_prediction_smoke_audit_jsons": [
+            str(path) for path in tribe_full_prediction_smoke_audits or []
+        ],
+        "dhf1k_modal_media_audit_jsons": [
+            str(path) for path in dhf1k_modal_media_audits or []
+        ],
         "min_paper_datasets": min_paper_datasets,
         "readiness_summary": summarize_readiness(readiness),
         "credential_audit": credential_audit,
         "full_multimodal_ready": full_multimodal_ready,
+        "dhf1k_modal_media_ready": dhf1k_modal_media_ready,
         "feature_cache_audit_summaries": cache_audits,
         "modal_asset_audit_summaries": modal_audits,
         "tribe_full_preflight_summaries": tribe_full_preflights,
+        "tribe_full_prediction_smoke_summaries": tribe_full_prediction_smokes,
+        "dhf1k_modal_media_summaries": dhf1k_modal_media,
         "workflow_summaries": workflows,
         "phase1_gate_passed": phase1_gate_passed,
         "phase2_ready": phase1_gate_passed,
@@ -356,6 +405,50 @@ def summarize_tribe_full_preflight_audit(path: Path) -> dict[str, Any]:
     }
 
 
+def summarize_tribe_full_prediction_smoke_audit(path: Path) -> dict[str, Any]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    prediction = payload.get("prediction") or {}
+    return {
+        "path": str(path),
+        "ok": bool(payload.get("ok")),
+        "app_name": payload.get("app_name"),
+        "media_path": payload.get("media_path"),
+        "event_mode": payload.get("event_mode"),
+        "duration_seconds": prediction.get("duration_seconds"),
+        "frames_rows": prediction.get("frames_rows"),
+        "frames_cols": prediction.get("frames_cols"),
+        "all_finite": prediction.get("all_finite"),
+        "error_type": payload.get("error_type"),
+        "error": payload.get("error"),
+        "claim_boundary": payload.get("claim_boundary"),
+    }
+
+
+def summarize_dhf1k_modal_media_audit(path: Path) -> dict[str, Any]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    remote = payload.get("remote_audit") or {}
+    return {
+        "path": str(path),
+        "labels_csv": payload.get("labels_csv"),
+        "output_modal_csv": payload.get("output_modal_csv"),
+        "modal_volume_name": payload.get("modal_volume_name"),
+        "modal_root": payload.get("modal_root"),
+        "modal_prefix": payload.get("modal_prefix"),
+        "ready_for_full_feature_extraction": bool(
+            payload.get("ready_for_full_feature_extraction"),
+        ),
+        "n_expected": remote.get("n_expected"),
+        "n_found": remote.get("n_found"),
+        "n_missing": remote.get("n_missing"),
+        "n_zero_byte_found": remote.get("n_zero_byte_found"),
+        "blocking_reasons": list(payload.get("blocking_reasons") or []),
+        "recommended_full_extraction_command": payload.get(
+            "recommended_full_extraction_command",
+        ),
+        "claim_boundary": payload.get("claim_boundary"),
+    }
+
+
 def summarize_readiness(readiness: dict[str, Any]) -> dict[str, Any]:
     values = readiness.get("readiness") if isinstance(readiness, dict) else None
     if not isinstance(values, dict):
@@ -379,7 +472,10 @@ def publication_blockers(
     modal_asset_audits_supplied: bool,
     modal_retention_labels_available: bool,
     tribe_full_preflight_audits_supplied: bool,
+    tribe_full_prediction_smoke_audits_supplied: bool,
     full_multimodal_ready: bool,
+    dhf1k_modal_media_audits_supplied: bool,
+    dhf1k_modal_media_ready: bool,
     has_audio_only_workflow: bool,
     enough_datasets_for_paper: bool,
     min_paper_datasets: int,
@@ -389,41 +485,107 @@ def publication_blockers(
         blockers.append("no Phase 1 workflow reports supplied")
     elif not phase1_gate_passed:
         blockers.append("current H2 capture_score failed the Phase 1 rho gate")
-    if not retention_labels_ready:
-        if modal_asset_audits_supplied and modal_retention_labels_available:
-            blockers.append(
-                "Modal SnapUGC/VQualA retention label candidates still need an "
-                "audited retention manifest"
-            )
-        elif modal_asset_audits_supplied:
-            blockers.append(
-                "no SnapUGC/VQualA retention label CSV is mounted or available "
-                "in audited Modal volumes"
-            )
-        else:
-            blockers.append("no SnapUGC/VQualA retention label CSV is mounted")
-    if has_audio_only_workflow and not full_multimodal_ready:
-        if tribe_full_preflight_audits_supplied:
-            blockers.append(
-                "completed TRIBE workflows are audio-only and no successful "
-                "full multimodal TRIBE preflight is available"
-            )
-        elif modal_asset_audits_supplied:
-            blockers.append(
-                "completed TRIBE workflows are audio-only and no local or Modal "
-                "HuggingFace text model token or full-mode preflight is present"
-            )
-        else:
-            blockers.append(
-                "completed TRIBE workflows are audio-only and no HuggingFace "
-                "text model token or full-mode preflight is present"
-            )
+    blockers.extend(
+        retention_label_blockers(
+            retention_labels_ready=retention_labels_ready,
+            modal_asset_audits_supplied=modal_asset_audits_supplied,
+            modal_retention_labels_available=modal_retention_labels_available,
+        )
+    )
+    audio_only_blocker = audio_only_multimodal_blocker(
+        has_audio_only_workflow=has_audio_only_workflow,
+        full_multimodal_ready=full_multimodal_ready,
+        tribe_full_preflight_audits_supplied=tribe_full_preflight_audits_supplied,
+        tribe_full_prediction_smoke_audits_supplied=(
+            tribe_full_prediction_smoke_audits_supplied
+        ),
+        modal_asset_audits_supplied=modal_asset_audits_supplied,
+    )
+    if audio_only_blocker is not None:
+        blockers.append(audio_only_blocker)
+    if dhf1k_modal_media_blocked(
+        has_audio_only_workflow=has_audio_only_workflow,
+        full_multimodal_ready=full_multimodal_ready,
+        dhf1k_modal_media_audits_supplied=dhf1k_modal_media_audits_supplied,
+        dhf1k_modal_media_ready=dhf1k_modal_media_ready,
+    ):
+        blockers.append(
+            "DHF1K videos required for a full-mode TRIBE rerun are not mounted "
+            "in the audited Modal media volume"
+        )
     if not enough_datasets_for_paper:
         blockers.append(
             f"fewer than {min_paper_datasets} external datasets have completed "
             "claim-ready workflow reports"
         )
     return blockers
+
+
+def retention_label_blockers(
+    *,
+    retention_labels_ready: bool,
+    modal_asset_audits_supplied: bool,
+    modal_retention_labels_available: bool,
+) -> list[str]:
+    if retention_labels_ready:
+        return []
+    if modal_asset_audits_supplied and modal_retention_labels_available:
+        return [
+            "Modal SnapUGC/VQualA retention label candidates still need an "
+            "audited retention manifest"
+        ]
+    if modal_asset_audits_supplied:
+        return [
+            "no SnapUGC/VQualA retention label CSV is mounted or available "
+            "in audited Modal volumes"
+        ]
+    return ["no SnapUGC/VQualA retention label CSV is mounted"]
+
+
+def audio_only_multimodal_blocker(
+    *,
+    has_audio_only_workflow: bool,
+    full_multimodal_ready: bool,
+    tribe_full_preflight_audits_supplied: bool,
+    tribe_full_prediction_smoke_audits_supplied: bool,
+    modal_asset_audits_supplied: bool,
+) -> str | None:
+    if not has_audio_only_workflow or full_multimodal_ready:
+        return None
+    if tribe_full_prediction_smoke_audits_supplied:
+        return (
+            "completed TRIBE workflows are audio-only and no successful full "
+            "multimodal TRIBE prediction smoke is available"
+        )
+    if tribe_full_preflight_audits_supplied:
+        return (
+            "completed TRIBE workflows are audio-only and no successful "
+            "full multimodal TRIBE prediction smoke is available"
+        )
+    if modal_asset_audits_supplied:
+        return (
+            "completed TRIBE workflows are audio-only and no local or Modal "
+            "HuggingFace text model token or full-mode preflight is present"
+        )
+    return (
+        "completed TRIBE workflows are audio-only and no HuggingFace "
+        "text model token or full-mode preflight is present"
+    )
+
+
+def dhf1k_modal_media_blocked(
+    *,
+    has_audio_only_workflow: bool,
+    full_multimodal_ready: bool,
+    dhf1k_modal_media_audits_supplied: bool,
+    dhf1k_modal_media_ready: bool,
+) -> bool:
+    return (
+        has_audio_only_workflow
+        and full_multimodal_ready
+        and dhf1k_modal_media_audits_supplied
+        and not dhf1k_modal_media_ready
+    )
 
 
 def publication_warnings(
@@ -433,6 +595,8 @@ def publication_warnings(
     cache_audits: list[dict[str, Any]],
     modal_audits: list[dict[str, Any]],
     tribe_full_preflights: list[dict[str, Any]],
+    tribe_full_prediction_smokes: list[dict[str, Any]],
+    dhf1k_modal_media: list[dict[str, Any]],
 ) -> list[str]:
     warnings = feature_cache_warnings(readiness=readiness, cache_audits=cache_audits)
     if any(workflow["best_capture_score"] is None for workflow in workflows):
@@ -444,6 +608,13 @@ def publication_warnings(
         )
     if any(not audit["ok"] for audit in tribe_full_preflights):
         warnings.append("at least one TRIBE full-mode preflight audit failed")
+    if any(not audit["ok"] for audit in tribe_full_prediction_smokes):
+        warnings.append("at least one TRIBE full-mode prediction smoke audit failed")
+    if any(
+        audit["n_expected"] == 0 or audit["n_zero_byte_found"]
+        for audit in dhf1k_modal_media
+    ):
+        warnings.append("at least one DHF1K Modal media audit has malformed media rows")
     return warnings
 
 
@@ -510,13 +681,20 @@ def next_actions(blockers: list[str], warnings: list[str]) -> list[str]:
             "with alignment-audit provenance."
         )
     if any(
-        "HuggingFace" in blocker or "full multimodal TRIBE preflight" in blocker
+        "HuggingFace" in blocker
+        or "full multimodal TRIBE preflight" in blocker
+        or "full multimodal TRIBE prediction smoke" in blocker
         for blocker in blockers
     ):
         actions.append(
             "Provide a HuggingFace token with access to the gated TRIBE text "
-            "model path or pass a full-mode TRIBE preflight from cached Modal "
-            "weights, then rerun full multimodal feature extraction."
+            "model path or pass a full-mode TRIBE prediction smoke from cached "
+            "Modal weights, then rerun full multimodal feature extraction."
+        )
+    if any("DHF1K videos" in blocker for blocker in blockers):
+        actions.append(
+            "Mount DHF1K videos in the audited Modal media volume and rerun the "
+            "DHF1K Modal media audit before full-mode feature extraction."
         )
     if any("external datasets" in blocker for blocker in blockers):
         actions.append(
@@ -553,6 +731,7 @@ def render_publication_markdown(report: dict[str, Any]) -> str:
         f"- Phase 2 ready: {report['phase2_ready']}",
         f"- Phase 1 gate passed: {report['phase1_gate_passed']}",
         f"- Full multimodal path ready: {report['full_multimodal_ready']}",
+        f"- DHF1K Modal media ready: {report['dhf1k_modal_media_ready']}",
         f"- Claim boundary: {report['claim_boundary']}",
         "",
         "## Blocking Reasons",
@@ -578,6 +757,12 @@ def render_publication_markdown(report: dict[str, Any]) -> str:
     lines.extend(
         render_tribe_full_preflight_table(report["tribe_full_preflight_summaries"])
     )
+    lines.extend(
+        render_tribe_full_prediction_smoke_table(
+            report["tribe_full_prediction_smoke_summaries"]
+        )
+    )
+    lines.extend(render_dhf1k_modal_media_table(report["dhf1k_modal_media_summaries"]))
     return "\n".join(lines) + "\n"
 
 
@@ -685,6 +870,70 @@ def render_tribe_full_preflight_table(preflights: list[dict[str, Any]]) -> list[
             f"{format_float(audit['duration_seconds'])} | "
             f"{table_cell(audit['media_path'] or 'n/a')} | "
             f"{table_cell(audit['error'] or 'none')} |"
+        )
+    return lines
+
+
+def render_tribe_full_prediction_smoke_table(
+    smokes: list[dict[str, Any]],
+) -> list[str]:
+    lines = [
+        "",
+        "## TRIBE Full-Prediction Smoke Evidence",
+        "",
+        "| audit | ok | event mode | frames | duration | media | error |",
+        "|---|---|---|---:|---:|---|---|",
+    ]
+    if not smokes:
+        lines.append("| none | False | n/a | 0 x 0 | n/a | n/a | n/a |")
+        return lines
+    for audit in smokes:
+        frame_shape = f"{audit['frames_rows'] or 0} x {audit['frames_cols'] or 0}"
+        error = audit["error"] or "none"
+        lines.append(
+            "| "
+            f"{table_cell(audit['path'])} | "
+            f"{audit['ok']} | "
+            f"{audit['event_mode'] or 'n/a'} | "
+            f"{frame_shape} | "
+            f"{format_float(audit['duration_seconds'])} | "
+            f"{table_cell(audit['media_path'] or 'n/a')} | "
+            f"{table_cell(error)} |"
+        )
+    return lines
+
+
+def render_dhf1k_modal_media_table(audits: list[dict[str, Any]]) -> list[str]:
+    lines = [
+        "",
+        "## DHF1K Modal Media Evidence",
+        "",
+        (
+            "| audit | ready | expected | found | missing | zero-byte | modal prefix | "
+            "modal csv | blockers |"
+        ),
+        "|---|---|---:|---:|---:|---:|---|---|---|",
+    ]
+    if not audits:
+        lines.append("| none | False | 0 | 0 | 0 | 0 | n/a | n/a | n/a |")
+        return lines
+    for audit in audits:
+        blockers = "; ".join(audit["blocking_reasons"]) or "none"
+        modal_prefix = (
+            f"{str(audit['modal_root'] or '').rstrip('/')}/"
+            f"{str(audit['modal_prefix'] or '').strip('/')}"
+        )
+        lines.append(
+            "| "
+            f"{table_cell(audit['path'])} | "
+            f"{audit['ready_for_full_feature_extraction']} | "
+            f"{audit['n_expected'] or 0} | "
+            f"{audit['n_found'] or 0} | "
+            f"{audit['n_missing'] or 0} | "
+            f"{audit['n_zero_byte_found'] or 0} | "
+            f"{table_cell(modal_prefix)} | "
+            f"{table_cell(audit['output_modal_csv'] or 'n/a')} | "
+            f"{table_cell(blockers)} |"
         )
     return lines
 
