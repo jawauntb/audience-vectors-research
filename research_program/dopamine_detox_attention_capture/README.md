@@ -52,6 +52,40 @@ credible route to a publication-grade result is now either real SnapUGC/VQualA
 retention labels with full multimodal TRIBE access, or a preregistered revised
 score trained on one evidence source and tested on a held-out source.
 
+## 2026-06-10 Publication Path Audit
+
+`scripts/audit_attention_capture_publication_path.py` is the current top-level
+paper-readiness gate. It is intentionally stricter than the data-readiness audit:
+a manifest can be runnable while the paper claim remains blocked.
+
+Current verdict:
+
+```text
+publication_ready: false
+paper_claim_allowed: false
+phase2_ready: false
+phase1_gate_passed: false
+blocking_reasons:
+  - current H2 capture_score failed the Phase 1 rho gate
+  - no SnapUGC/VQualA retention label CSV is mounted
+  - completed TRIBE workflows are audio-only and no HuggingFace text model token is present
+  - fewer than 2 external datasets have completed claim-ready workflow reports
+warning:
+  - DHF1K TRIBE feature cache is external to the repo
+```
+
+The shortest sound trajectory is therefore:
+
+1. Do not run Phase 2/3 neutralization from the current H2 score.
+2. Mount granted SnapUGC/VQualA retention labels and build an audited retention
+   manifest.
+3. Provide full multimodal TRIBE text-model credentials if language/text claims
+   remain part of the paper.
+4. If the score is revised, preregister the formula before evaluating held-out
+   data.
+5. Archive or regenerate the DHF1K TRIBE feature cache with checksums outside
+   git.
+
 ## Files
 
 - `soundness_audit_20260608.md`: pre-run assessment of the approach.
@@ -91,6 +125,10 @@ score trained on one evidence source and tested on a held-out source.
   manifests.
 - `results/phase1_data_readiness_20260608.md`: readable local data-readiness
   audit.
+- `results/attention_capture_publication_path_audit_20260610.json`: current
+  machine-readable paper-readiness audit.
+- `results/attention_capture_publication_path_audit_20260610.md`: current
+  readable paper-readiness audit.
 - `results/phase1_synthetic_alignment_20260608.json`: label-to-feature
   alignment smoke report over the tiny synthetic fixture.
 - `results/phase1_synthetic_alignment_20260608.md`: readable alignment smoke
@@ -141,6 +179,10 @@ score trained on one evidence source and tested on a held-out source.
 - `scripts/audit_attention_capture_manifest_alignment.py`: label-to-feature
   alignment audit to run before building a real manifest. For DHF1K, it can
   consume the upstream label audit and carry that verifier hash forward.
+- `scripts/audit_attention_capture_publication_path.py`: stricter
+  paper-readiness audit that consumes readiness and workflow reports, then
+  blocks publication/Phase 2 when the score gate, retention labels,
+  full-multimodal credentials, or held-out evidence are missing.
 
 ## Reused Infrastructure
 
@@ -198,6 +240,17 @@ uv run python scripts/audit_attention_capture_data_readiness.py \
   --search-root /Users/jawaun/datasets \
   --output-json research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.json \
   --output-md research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.md
+```
+
+Audit publication readiness after any Phase 1 run:
+
+```bash
+uv run python scripts/audit_attention_capture_publication_path.py \
+  --readiness-json research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.json \
+  --workflow-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_audio_only_workflow_20260609.json \
+  --workflow-json research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_workflow_20260609.json \
+  --output-json research_program/dopamine_detox_attention_capture/results/attention_capture_publication_path_audit_20260610.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/attention_capture_publication_path_audit_20260610.md
 ```
 
 Current DHF1K audio-only readiness/verdict:

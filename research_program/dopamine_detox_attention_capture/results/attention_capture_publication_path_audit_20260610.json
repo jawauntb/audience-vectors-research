@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "experiment": "attention_capture_publication_path_audit",
+  "generated_at": "2026-06-10T01:03:29.599260+00:00",
+  "readiness_json": "research_program/dopamine_detox_attention_capture/results/phase1_data_readiness_20260608.json",
+  "workflow_jsons": [
+    "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_audio_only_workflow_20260609.json",
+    "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_workflow_20260609.json"
+  ],
+  "min_paper_datasets": 2,
+  "readiness_summary": {
+    "phase1_can_run_now": false,
+    "snapugc_labels_ready": false,
+    "dhf1k_labels_ready": true,
+    "dhf1k_tribe_features_ready": false,
+    "real_manifest_ready": false,
+    "recommended_next_action": "extract DHF1K TRIBE features from the audited DHF1K labels"
+  },
+  "credential_audit": {
+    "token_envs_checked": [
+      "HF_TOKEN",
+      "HUGGINGFACE_TOKEN",
+      "HUGGINGFACE_HUB_TOKEN"
+    ],
+    "entries": [
+      {
+        "env": "HF_TOKEN",
+        "present": false
+      },
+      {
+        "env": "HUGGINGFACE_TOKEN",
+        "present": false
+      },
+      {
+        "env": "HUGGINGFACE_HUB_TOKEN",
+        "present": false
+      }
+    ],
+    "any_present": false,
+    "claim_boundary": "Credential values are never reported. Presence only indicates that the full text-model path may be runnable; it does not prove access to any specific gated model."
+  },
+  "workflow_summaries": [
+    {
+      "path": "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_audio_only_workflow_20260609.json",
+      "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_dhf1k_audio_only_manifest_20260609.json",
+      "primary_label": "disjoint",
+      "scoring_executed": true,
+      "score_decision_reason": "claim_ready",
+      "claim_ready": true,
+      "gate_passed": false,
+      "gate_rule": "capture_score Spearman rho >= 0.40 in at least one dataset",
+      "gate_rho": 0.4,
+      "datasets": [
+        "DHF1K",
+        "pooled"
+      ],
+      "n_samples": 350,
+      "n_invalid_capture_denominators": 49,
+      "best_capture_score": {
+        "group": "DHF1K",
+        "n": 301,
+        "rho": 0.12562055840355546,
+        "permutation_p_greater": 0.013,
+        "gate_passed": false
+      },
+      "audio_only": true
+    },
+    {
+      "path": "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_workflow_20260609.json",
+      "manifest_path": "research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json",
+      "primary_label": "disjoint",
+      "scoring_executed": true,
+      "score_decision_reason": "claim_ready",
+      "claim_ready": true,
+      "gate_passed": false,
+      "gate_rule": "capture_score Spearman rho >= 0.40 in at least one dataset",
+      "gate_rho": 0.4,
+      "datasets": [
+        "DHF1K",
+        "pooled"
+      ],
+      "n_samples": 350,
+      "n_invalid_capture_denominators": 48,
+      "best_capture_score": {
+        "group": "DHF1K",
+        "n": 302,
+        "rho": -0.03476554339555317,
+        "permutation_p_greater": 0.738,
+        "gate_passed": false
+      },
+      "audio_only": true
+    }
+  ],
+  "phase1_gate_passed": false,
+  "phase2_ready": false,
+  "publication_ready": false,
+  "paper_claim_allowed": false,
+  "blocking_reasons": [
+    "current H2 capture_score failed the Phase 1 rho gate",
+    "no SnapUGC/VQualA retention label CSV is mounted",
+    "completed TRIBE workflows are audio-only and no HuggingFace text model token is present",
+    "fewer than 2 external datasets have completed claim-ready workflow reports"
+  ],
+  "warnings": [
+    "TRIBE feature cache is external to the repo and should be archived or regenerated for reproducibility"
+  ],
+  "next_actions": [
+    "Do not enter Phase 2/3 neutralization from the current H2 score; either acquire retention labels for an independent test or preregister a revised score before evaluating held-out data.",
+    "Mount granted SnapUGC/VQualA labels and build a retention manifest with alignment-audit provenance.",
+    "Provide a HuggingFace token with access to the gated TRIBE text model path, then rerun full multimodal feature extraction.",
+    "Require at least one held-out external validation dataset before claiming publication readiness.",
+    "Create a non-git artifact plan for the external TRIBE feature cache: checksum manifest, object storage, or deterministic rerun instructions."
+  ],
+  "claim_boundary": "This audit decides whether current evidence can support the attention-capture paper claim. It is stricter than data readiness: a runnable manifest is not enough when the scoring gate failed or retention/full-multimodal evidence is absent."
+}
