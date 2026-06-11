@@ -108,6 +108,59 @@ def test_alignment_audit_records_ready_dhf1k_label_audit(tmp_path: Path) -> None
     assert "- Label audit ready: True" in module.render_alignment_markdown(report)
 
 
+def test_alignment_audit_records_ready_retention_label_audit(tmp_path: Path) -> None:
+    module = load_module()
+    labels = tmp_path / "snapugc_labels.csv"
+    label_audit = tmp_path / "retention_label_audit.json"
+    feature_dir = tmp_path / "features"
+    feature_dir.mkdir()
+    labels.write_text(
+        (
+            "sample_id,video_path,ecr\n"
+            "snap_001,/videos/snap_001.mp4,0.2\n"
+            "snap_002,/videos/snap_002.mp4,0.5\n"
+            "snap_003,/videos/snap_003.mp4,0.8\n"
+        ),
+        encoding="utf-8",
+    )
+    label_audit.write_text(
+        json.dumps(
+            {
+                "experiment": "attention_capture_retention_label_audit",
+                "dataset": "SnapUGC",
+                "labels_csv": str(labels),
+                "sample_id_column": "sample_id",
+                "ground_truth_column": "ecr",
+                "ground_truth_name": "ecr",
+                "ready_for_manifest_alignment": True,
+                "ready_for_modal_feature_extraction": True,
+                "n_rows": 3,
+                "blocking_reasons": [],
+            },
+        ),
+        encoding="utf-8",
+    )
+    for sample_id in ("snap_001", "snap_002", "snap_003"):
+        np.savez_compressed(feature_dir / f"{sample_id}.npz", frames=np.zeros(4))
+
+    report = module.audit_manifest_alignment(
+        labels_csv=labels,
+        feature_dir=feature_dir,
+        label_audit=label_audit,
+        dataset="SnapUGC",
+        ground_truth_column="ecr",
+        min_samples=3,
+        min_distinct_ground_truth=3,
+    )
+
+    assert report["ready_for_manifest_build"] is True
+    assert report["label_audit"]["experiment"] == (
+        "attention_capture_retention_label_audit"
+    )
+    assert report["label_audit"]["ground_truth_column"] == "ecr"
+    assert report["label_audit"]["blocking_reasons"] == []
+
+
 def test_alignment_audit_accepts_exact_subset_of_dhf1k_label_audit(
     tmp_path: Path,
 ) -> None:
