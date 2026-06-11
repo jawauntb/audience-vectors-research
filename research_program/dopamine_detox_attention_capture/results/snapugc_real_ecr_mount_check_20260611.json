@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "experiment": "snapugc_real_ecr_mount_check",
+  "generated_on": "2026-06-11",
+  "verdict": {
+    "real_snapugc_ecr_labels_mounted": false,
+    "phase1_snapugc_can_run_now": false,
+    "modal_tribe_slice_launched": false,
+    "claim_ready": false
+  },
+  "checked_roots": [
+    "/Users/jawaun/.codex/worktrees",
+    "/Users/jawaun/Downloads",
+    "/Users/jawaun/Desktop",
+    "/Users/jawaun/Documents",
+    "/Users/jawaun/isc_mod",
+    "data/attention_capture"
+  ],
+  "searched_filename_or_content_hints": [
+    "snapugc",
+    "vquala",
+    "ecr",
+    "retention",
+    "completion",
+    "val_data",
+    "submission"
+  ],
+  "found_claim_relevant_files": [],
+  "found_non_claim_artifacts": [
+    "research_program/dopamine_detox_attention_capture/results/snapugc_public_format_smoke_20260611.json",
+    "research_program/dopamine_detox_attention_capture/results/snapugc_public_format_smoke_20260611.md"
+  ],
+  "required_inputs": [
+    {
+      "path": "data/attention_capture/snapugc_val_data.csv",
+      "required_columns": ["Id", "Title", "Description", "Download_link"],
+      "role": "official SnapUGC/VQualA metadata"
+    },
+    {
+      "path": "data/attention_capture/snapugc_ecr_labels.csv",
+      "required_columns": ["Id", "ECR"],
+      "role": "granted behavioral ECR labels, not public predictions"
+    },
+    {
+      "path": "data/attention_capture/snapugc_videos/",
+      "required": false,
+      "role": "optional local media mirror; a Modal media path template can be used instead"
+    }
+  ],
+  "blocked_reason": "No granted behavioral SnapUGC/VQualA ECR label CSV is mounted locally. The public submission/baseline CSV remains a format smoke source only and must not be used as ground truth.",
+  "next_commands_once_inputs_are_mounted": [
+    "uv run python scripts/build_snapugc_retention_labels.py --metadata-csv data/attention_capture/snapugc_val_data.csv --scores-csv data/attention_capture/snapugc_ecr_labels.csv --output-csv data/attention_capture/snapugc_vquala_labels.csv --output-json research_program/dopamine_detox_attention_capture/results/snapugc_retention_label_builder.json --output-md research_program/dopamine_detox_attention_capture/results/snapugc_retention_label_builder.md",
+    "uv run python scripts/audit_attention_capture_retention_labels.py --labels-csv data/attention_capture/snapugc_vquala_labels.csv --dataset SnapUGC --sample-id-column sample_id --ground-truth-column ecr --media-path-column video_path --ground-truth-name ecr --output-json research_program/dopamine_detox_attention_capture/results/snapugc_retention_label_audit.json --output-md research_program/dopamine_detox_attention_capture/results/snapugc_retention_label_audit.md",
+    "uv run python scripts/audit_attention_capture_retention_baselines.py --labels-csv data/attention_capture/snapugc_vquala_labels.csv --label-audit research_program/dopamine_detox_attention_capture/results/snapugc_retention_label_audit.json --dataset SnapUGC --sample-id-column sample_id --ground-truth-column ecr --media-path-column video_path --ground-truth-name ecr --output-json research_program/dopamine_detox_attention_capture/results/snapugc_retention_baseline_audit.json --output-md research_program/dopamine_detox_attention_capture/results/snapugc_retention_baseline_audit.md"
+  ],
+  "claim_boundary": "This mount check is a blocker artifact only. It does not score TRIBE, does not validate H2, and does not support Phase 2/3 neutralization claims."
+}
