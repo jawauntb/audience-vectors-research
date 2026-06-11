@@ -55,7 +55,11 @@ tribe_weights_volume = modal.Volume.from_name(
 bmd_videos_volume = modal.Volume.from_name(
     "bmd-videos-v1", create_if_missing=True,
 )
+attention_capture_features_volume = modal.Volume.from_name(
+    "attention-capture-features-v1", create_if_missing=True,
+)
 BMD_VIDEOS_MOUNT = "/bmd-videos"
+ATTENTION_CAPTURE_FEATURES_MOUNT = "/attention-capture-features"
 
 
 _TRIBE_VIDEO_SUFFIXES = frozenset({".mp4", ".avi", ".mkv", ".mov", ".webm"})
@@ -98,6 +102,23 @@ class VideoPreflightResult(BaseModel):
     events_rows: int
     event_columns: list[str]
     step_seconds: dict[str, float]
+
+
+class FeatureVolumeWriteResult(BaseModel):
+    """Compact metadata for a TRIBE feature file written on Modal storage."""
+
+    sample_id: str
+    media_path: str
+    event_mode: str
+    output_path: str
+    status: str
+    duration_seconds: float | None = None
+    frames_rows: int | None = None
+    frames_cols: int | None = None
+    frames_dtype: str | None = None
+    size_bytes: int | None = None
+    error_type: str | None = None
+    error: str | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -164,6 +185,47 @@ def _ensure_text_suffix(local_path: str) -> tuple[str, str | None]:
     target = os.path.join(link_dir, "stimulus.txt")
     os.symlink(os.path.abspath(local_path), target)
     return target, link_dir
+
+
+def _safe_feature_filename(sample_id: str) -> str:
+    if not sample_id or sample_id in {".", ".."}:
+        raise ValueError("sample_id cannot be empty or dot-like")
+    if any(part in sample_id for part in ("/", "\\", "\x00")):
+        raise ValueError(f"sample_id is not a safe filename stem: {sample_id!r}")
+    return f"{sample_id}.npz"
+
+
+def _feature_volume_result_from_path(
+    *,
+    output_path: Path,
+    sample_id: str,
+    media_path: str,
+    event_mode: str,
+    status: str,
+) -> FeatureVolumeWriteResult:
+    import numpy as np
+
+    with np.load(output_path, allow_pickle=False) as payload:
+        frames = np.asarray(payload["frames"])
+        duration = (
+            float(np.asarray(payload["duration_seconds"]))
+            if "duration_seconds" in payload
+            else None
+        )
+    if frames.ndim == 1:
+        frames = frames.reshape(1, -1)
+    return FeatureVolumeWriteResult(
+        sample_id=sample_id,
+        media_path=media_path,
+        event_mode=event_mode,
+        output_path=str(output_path),
+        status=status,
+        duration_seconds=duration,
+        frames_rows=int(frames.shape[0]) if frames.ndim >= 1 else 0,
+        frames_cols=int(frames.shape[1]) if frames.ndim >= 2 else 0,
+        frames_dtype=str(frames.dtype),
+        size_bytes=output_path.stat().st_size,
+    )
 
 
 def _probe_duration(local_path: str) -> float:
@@ -758,6 +820,7 @@ def introspect_tribe_model_cli(
     volumes={
         HF_CACHE_DIR: tribe_weights_volume,
         BMD_VIDEOS_MOUNT: bmd_videos_volume,
+        ATTENTION_CAPTURE_FEATURES_MOUNT: attention_capture_features_volume,
     },
     timeout=20 * 60,
     min_containers=0,
@@ -911,6 +974,88 @@ class TribeV2Predictor:
     ) -> VideoPredictionResult:
         """Predict per-vertex brain activations for a video stimulus."""
         return self._predict_video_impl(video_path_or_url, audio_only=audio_only)
+
+    @modal.method()
+    def predict_video_to_feature_volume(
+        self,
+        video_path_or_url: str,
+        sample_id: str,
+        output_prefix: str,
+        audio_only: bool = False,
+        overwrite: bool = False,
+    ) -> FeatureVolumeWriteResult:
+        """Predict a video and persist its TRIBE frames in a Modal Volume.
+
+        This is the preferred path for large Phase 1 extraction runs because it
+        avoids returning hundreds of full activation tensors to the local
+        machine. The caller receives only metadata and can rerun safely: existing
+        non-empty outputs are reported as cached unless `overwrite=True`.
+        """
+        import numpy as np
+
+        event_mode = "audio-only" if audio_only else "full"
+        try:
+            filename = _safe_feature_filename(sample_id)
+            output_dir = (
+                Path(ATTENTION_CAPTURE_FEATURES_MOUNT)
+                / output_prefix.strip("/")
+            )
+            output_path = output_dir / filename
+            if output_path.exists() and output_path.stat().st_size > 0 and not overwrite:
+                return _feature_volume_result_from_path(
+                    output_path=output_path,
+                    sample_id=sample_id,
+                    media_path=video_path_or_url,
+                    event_mode=event_mode,
+                    status="cached",
+                )
+
+            result = self._predict_video_impl(video_path_or_url, audio_only=audio_only)
+            frames = np.asarray(result.frames, dtype=np.float32)
+            if frames.ndim == 1:
+                frames = frames.reshape(1, -1)
+            if frames.ndim != 2:
+                raise ValueError(f"expected TRIBE frames to be 2D, got {frames.shape}")
+
+            output_dir.mkdir(parents=True, exist_ok=True)
+            tmp_path = output_path.with_name(f".{output_path.name}.tmp")
+            with tmp_path.open("wb") as handle:
+                np.savez_compressed(
+                    handle,
+                    frames=frames,
+                    duration_seconds=np.array(result.duration_seconds, dtype=np.float32),
+                    sample_id=np.array(sample_id),
+                    media_path=np.array(video_path_or_url),
+                    transport=np.array("path"),
+                    event_mode=np.array(event_mode),
+                )
+            os.replace(tmp_path, output_path)
+            attention_capture_features_volume.commit()
+            return FeatureVolumeWriteResult(
+                sample_id=sample_id,
+                media_path=video_path_or_url,
+                event_mode=event_mode,
+                output_path=str(output_path),
+                status="written",
+                duration_seconds=float(result.duration_seconds),
+                frames_rows=int(frames.shape[0]),
+                frames_cols=int(frames.shape[1]),
+                frames_dtype=str(frames.dtype),
+                size_bytes=output_path.stat().st_size,
+            )
+        except Exception as exc:  # noqa: BLE001
+            return FeatureVolumeWriteResult(
+                sample_id=sample_id,
+                media_path=video_path_or_url,
+                event_mode=event_mode,
+                output_path=(
+                    f"{ATTENTION_CAPTURE_FEATURES_MOUNT}/"
+                    f"{output_prefix.strip('/')}/{sample_id}.npz"
+                ),
+                status="error",
+                error_type=type(exc).__name__,
+                error=str(exc),
+            )
 
     @modal.method()
     def predict_video_bytes(
