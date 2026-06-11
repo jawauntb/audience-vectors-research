@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "experiment": "attention_capture_dhf1k_full_modal_volume_completion",
+  "date": "2026-06-11",
+  "dataset": "DHF1K",
+  "event_mode": "full",
+  "modal_app": "audience-vectors-dev",
+  "modal_volume": "attention-capture-features-v1",
+  "output_prefix": "attention_capture/DHF1K/tribe_dhf1k_attention_full_20260610",
+  "expected_feature_files": 350,
+  "observed_feature_files": 350,
+  "mechanical_ready": true,
+  "recovery": {
+    "strict_alignment_failures": [
+      "dhf1k_146",
+      "dhf1k_203",
+      "dhf1k_262"
+    ],
+    "resolution": "TRIBE full-video event construction now retries AddSentenceToWords with max_unmatched_ratio=0.50 only after the upstream strict 0.05 text-alignment failure.",
+    "cold_deploy_required": true,
+    "retry_report": "research_program/dopamine_detox_attention_capture/results/dhf1k_full_modal_volume_retry_after_cold_deploy_20260611.json"
+  },
+  "evidence": {
+    "full_resume_report": "research_program/dopamine_detox_attention_capture/results/dhf1k_full_modal_volume_extraction_20260611.json",
+    "failed_strict_retry_report": "research_program/dopamine_detox_attention_capture/results/dhf1k_full_modal_volume_retry_20260611.json",
+    "successful_retry_report": "research_program/dopamine_detox_attention_capture/results/dhf1k_full_modal_volume_retry_after_cold_deploy_20260611.json",
+    "volume_count_command": "uv run --extra modal modal volume ls attention-capture-features-v1 attention_capture/DHF1K/tribe_dhf1k_attention_full_20260610 | rg '\\\\.npz' | wc -l"
+  },
+  "claim_boundary": "This confirms full-mode DHF1K TRIBE feature extraction coverage on Modal only. It does not validate the H2 capture-score gate, replace SnapUGC/VQualA retention labels, or establish a publication-ready finding.",
+  "remaining_claim_blockers": [
+    "Build a claim-gated DHF1K full-mode manifest or a Modal-native scorer that reads this feature volume.",
+    "Run Phase 1 H2 capture-score validation against DHF1K fixation density with preregistered ROI masks.",
+    "Add at least one additional claim-ready real dataset, preferably SnapUGC/VQualA retention labels, before strong publication claims.",
+    "Preserve the prior failed H2/audio-only results as negative evidence rather than silently superseding them."
+  ]
+}

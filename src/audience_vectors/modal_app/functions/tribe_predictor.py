@@ -66,6 +66,8 @@ _TRIBE_VIDEO_SUFFIXES = frozenset({".mp4", ".avi", ".mkv", ".mov", ".webm"})
 _TRIBE_TEXT_SUFFIXES = frozenset({".txt"})
 _MAX_VIDEO_DURATION_SECONDS = 60.0
 _MAX_REMOTE_DOWNLOAD_BYTES = 512 * 1024 * 1024  # 512 MiB
+_STRICT_TEXT_ALIGNMENT_MAX_UNMATCHED_RATIO = 0.05
+_RELAXED_TEXT_ALIGNMENT_MAX_UNMATCHED_RATIO = 0.50
 _INTROSPECTION_PATTERNS = (
     "pos",
     "position",
@@ -193,6 +195,14 @@ def _safe_feature_filename(sample_id: str) -> str:
     if any(part in sample_id for part in ("/", "\\", "\x00")):
         raise ValueError(f"sample_id is not a safe filename stem: {sample_id!r}")
     return f"{sample_id}.npz"
+
+
+def _is_text_alignment_unmatched_error(exc: Exception) -> bool:
+    message = str(exc)
+    return (
+        "Ratio of unmatched words" in message
+        and "AddSentenceToWords.max_unmatched_ratio" in message
+    )
 
 
 def _feature_volume_result_from_path(
@@ -845,12 +855,8 @@ class TribeV2Predictor:
         self.model = TribeModel.from_pretrained(tribe_path, device="cuda")
 
     def _video_events_dataframe(self, tribe_path: str, *, audio_only: bool):
-        if not audio_only:
-            return self.model.get_events_dataframe(video_path=tribe_path)
-
         import pandas as pd  # inline import to keep module-load light
 
-        demo_utils = import_module("tribev2.demo_utils")
         event = {
             "type": "Video",
             "filepath": str(tribe_path),
@@ -858,10 +864,78 @@ class TribeV2Predictor:
             "timeline": "default",
             "subject": "default",
         }
-        return demo_utils.get_audio_and_text_events(
-            pd.DataFrame([event]),
-            audio_only=True,
-        )
+        events = pd.DataFrame([event])
+        if audio_only:
+            return self._audio_and_text_events_dataframe(
+                events,
+                audio_only=True,
+                max_unmatched_ratio=_STRICT_TEXT_ALIGNMENT_MAX_UNMATCHED_RATIO,
+            )
+        try:
+            return self._audio_and_text_events_dataframe(
+                events,
+                audio_only=False,
+                max_unmatched_ratio=_STRICT_TEXT_ALIGNMENT_MAX_UNMATCHED_RATIO,
+            )
+        except RuntimeError as exc:
+            if not _is_text_alignment_unmatched_error(exc):
+                raise
+            print(
+                "Retrying TRIBE text alignment with relaxed unmatched-word "
+                f"ratio {_RELAXED_TEXT_ALIGNMENT_MAX_UNMATCHED_RATIO:.2f} "
+                f"after strict failure for {tribe_path}: {exc}",
+                flush=True,
+            )
+            return self._audio_and_text_events_dataframe(
+                events,
+                audio_only=False,
+                max_unmatched_ratio=_RELAXED_TEXT_ALIGNMENT_MAX_UNMATCHED_RATIO,
+            )
+
+    def _audio_and_text_events_dataframe(
+        self,
+        events: Any,
+        *,
+        audio_only: bool,
+        max_unmatched_ratio: float,
+    ):
+        event_transforms = import_module("neuralset.events.transforms")
+        event_utils = import_module("neuralset.events.utils")
+        tribe_event_transforms = import_module("tribev2.eventstransforms")
+
+        transforms: list[Any] = [
+            event_transforms.ExtractAudioFromVideo(),
+            event_transforms.ChunkEvents(
+                event_type_to_chunk="Audio",
+                max_duration=60,
+                min_duration=30,
+            ),
+            event_transforms.ChunkEvents(
+                event_type_to_chunk="Video",
+                max_duration=60,
+                min_duration=30,
+            ),
+        ]
+        if not audio_only:
+            transforms.extend(
+                [
+                    tribe_event_transforms.ExtractWordsFromAudio(),
+                    event_transforms.AddText(),
+                    event_transforms.AddSentenceToWords(
+                        max_unmatched_ratio=max_unmatched_ratio,
+                    ),
+                    event_transforms.AddContextToWords(
+                        sentence_only=False,
+                        max_context_len=1024,
+                        split_field="",
+                    ),
+                    event_transforms.RemoveMissing(),
+                ]
+            )
+        events = event_utils.standardize_events(events)
+        for transform in transforms:
+            events = transform(events)
+        return event_utils.standardize_events(events)
 
     def _predict_video_impl(
         self,
