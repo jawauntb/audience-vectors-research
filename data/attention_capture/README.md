@@ -75,3 +75,22 @@ uv run python scripts/audit_attention_capture_retention_labels.py \
 Only a report with `ready_for_manifest_alignment=true` should be used for a
 claim-relevant Phase 1 run. `ready_for_modal_feature_extraction=true` additionally
 means the CSV has a usable media path column for the Modal feature extractor.
+
+Then run the cheap CSV-metadata baseline/control audit before launching TRIBE:
+
+```bash
+uv run python scripts/audit_attention_capture_retention_baselines.py \
+  --labels-csv data/attention_capture/snapugc_vquala_labels.csv \
+  --label-audit research_program/dopamine_detox_attention_capture/results/snapugc_retention_label_audit.json \
+  --dataset SnapUGC \
+  --sample-id-column sample_id \
+  --ground-truth-column ecr \
+  --media-path-column video_path \
+  --ground-truth-name ecr \
+  --output-json research_program/dopamine_detox_attention_capture/results/snapugc_retention_baseline_audit.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/snapugc_retention_baseline_audit.md
+```
+
+This baseline is diagnostic, not a replacement for TRIBE. It checks whether
+simple metadata has signal and whether deterministic negative controls such as
+row order or sample-id hashes look suspicious before any Modal GPU spend.

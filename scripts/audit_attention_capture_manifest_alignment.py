@@ -177,7 +177,11 @@ def validate_label_audit(
     payload = json.loads(label_audit.read_text(encoding="utf-8"))
     reasons: list[str] = []
     experiment = payload.get("experiment")
-    if experiment != "dhf1k_attention_label_audit":
+    supported_experiments = {
+        "dhf1k_attention_label_audit",
+        "attention_capture_retention_label_audit",
+    }
+    if experiment not in supported_experiments:
         reasons.append(f"label audit experiment {experiment!r} is not supported")
     if not payload.get("ready_for_manifest_alignment"):
         upstream_reasons = payload.get("blocking_reasons") or []
@@ -204,9 +208,18 @@ def validate_label_audit(
         reasons.append("label audit dataset differs from alignment dataset")
 
     rank_column = payload.get("rank_column")
-    if rank_column and rank_column != ground_truth_column:
+    retention_ground_truth = payload.get("ground_truth_name") or payload.get(
+        "ground_truth_column"
+    )
+    audited_ground_truth = rank_column or retention_ground_truth
+    if (
+        isinstance(audited_ground_truth, str)
+        and audited_ground_truth
+        and audited_ground_truth.lower() != ground_truth_column.lower()
+    ):
         reasons.append(
-            "label audit rank_column differs from alignment ground_truth_column"
+            "label audit ground-truth column differs from alignment "
+            "ground_truth_column"
         )
 
     return {
@@ -216,6 +229,8 @@ def validate_label_audit(
         "ready_for_manifest_alignment": payload.get("ready_for_manifest_alignment"),
         "labels_csv_relation": labels_csv_relation,
         "rank_column": rank_column,
+        "ground_truth_column": payload.get("ground_truth_column"),
+        "ground_truth_name": payload.get("ground_truth_name"),
         "recommended_ground_truth_column": payload.get(
             "recommended_ground_truth_column"
         ),
