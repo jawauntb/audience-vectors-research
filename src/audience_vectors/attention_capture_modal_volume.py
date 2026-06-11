@@ -355,15 +355,36 @@ def _label_audit_blocking_reasons(
     if not require_label_audit:
         return []
     if not isinstance(label_audit, dict):
-        return ["claim-ready Modal-volume scoring requires a ready label audit"]
+        return ["claim-ready Modal-volume scoring requires a ready external-label audit"]
+    experiment = label_audit.get("experiment")
     reasons = [str(reason) for reason in label_audit.get("blocking_reasons") or []]
-    if label_audit.get("experiment") != "dhf1k_attention_label_audit":
-        reasons.append("label audit experiment is not dhf1k_attention_label_audit")
+    if experiment == "dhf1k_attention_label_audit":
+        if label_audit.get("ready_for_manifest_alignment") is not True:
+            reasons.append("label audit is not ready for manifest alignment")
+        rank_column = label_audit.get("rank_column")
+        if rank_column and rank_column != ground_truth_name:
+            reasons.append("label audit rank column differs from ground truth")
+        return reasons
+    if experiment == "attention_capture_retention_label_audit":
+        if label_audit.get("ready_for_manifest_alignment") is not True:
+            reasons.append("retention label audit is not ready for manifest alignment")
+        audited_ground_truth = (
+            label_audit.get("ground_truth_name")
+            or label_audit.get("ground_truth_column")
+        )
+        if (
+            isinstance(audited_ground_truth, str)
+            and audited_ground_truth
+            and audited_ground_truth.lower() != ground_truth_name.lower()
+        ):
+            reasons.append("retention label audit ground truth differs from scoring")
+        return reasons
+    reasons.append(
+        "label audit experiment must be dhf1k_attention_label_audit or "
+        "attention_capture_retention_label_audit"
+    )
     if label_audit.get("ready_for_manifest_alignment") is not True:
         reasons.append("label audit is not ready for manifest alignment")
-    rank_column = label_audit.get("rank_column")
-    if rank_column and rank_column != ground_truth_name:
-        reasons.append("label audit rank column differs from ground truth")
     return reasons
 
 
