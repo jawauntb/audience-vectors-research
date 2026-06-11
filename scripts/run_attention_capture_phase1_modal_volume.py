@@ -134,12 +134,29 @@ def load_label_audit_metadata(
 
     payload = json.loads(label_audit.read_text(encoding="utf-8"))
     reasons: list[str] = []
-    if payload.get("experiment") != "dhf1k_attention_label_audit":
-        reasons.append("label audit experiment is not dhf1k_attention_label_audit")
-    if payload.get("ready_for_manifest_alignment") is not True:
-        reasons.append("label audit is not ready for manifest alignment")
-    if payload.get("rank_column") != ground_truth_column:
-        reasons.append("label audit rank_column differs from ground_truth_column")
+    experiment = payload.get("experiment")
+    if experiment == "dhf1k_attention_label_audit":
+        if payload.get("ready_for_manifest_alignment") is not True:
+            reasons.append("label audit is not ready for manifest alignment")
+        if payload.get("rank_column") != ground_truth_column:
+            reasons.append("label audit rank_column differs from ground_truth_column")
+    elif experiment == "attention_capture_retention_label_audit":
+        if payload.get("ready_for_manifest_alignment") is not True:
+            reasons.append("retention label audit is not ready for manifest alignment")
+        audited_ground_truth = (
+            payload.get("ground_truth_name") or payload.get("ground_truth_column")
+        )
+        if (
+            isinstance(audited_ground_truth, str)
+            and audited_ground_truth
+            and audited_ground_truth.lower() != ground_truth_column.lower()
+        ):
+            reasons.append("retention label audit ground truth differs from scoring")
+    else:
+        reasons.append(
+            "label audit experiment must be dhf1k_attention_label_audit or "
+            "attention_capture_retention_label_audit"
+        )
 
     audit_labels_csv = payload.get("labels_csv")
     if isinstance(audit_labels_csv, str) and audit_labels_csv:
@@ -149,11 +166,13 @@ def load_label_audit_metadata(
     return {
         "path": str(label_audit),
         "sha256": sha256(label_audit.read_bytes()).hexdigest(),
-        "experiment": payload.get("experiment"),
+        "experiment": experiment,
         "dataset": payload.get("dataset"),
         "labels_csv": audit_labels_csv,
         "ready_for_manifest_alignment": payload.get("ready_for_manifest_alignment"),
         "rank_column": payload.get("rank_column"),
+        "ground_truth_column": payload.get("ground_truth_column"),
+        "ground_truth_name": payload.get("ground_truth_name"),
         "recommended_ground_truth_column": payload.get(
             "recommended_ground_truth_column"
         ),

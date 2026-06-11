@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_attention_capture_data_readiness",
+  "search_roots": [
+    {
+      "path": "data/attention_capture",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "path": "research_program/dopamine_detox_attention_capture",
+      "exists": true,
+      "is_dir": true
+    }
+  ],
+  "dhf1k_candidates": [],
+  "dhf1k_label_audits": [
+    {
+      "path": "research_program/dopamine_detox_attention_capture/results/dhf1k_attention_label_audit_20260608.json",
+      "labels_csv": "research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_extremes_20260608.csv",
+      "labels_csv_exists": true,
+      "rank_column": "mean_map_intensity",
+      "recommended_ground_truth_column": "mean_map_intensity",
+      "n_rows": 350,
+      "ready_for_manifest_alignment": true,
+      "ready_for_handoff": true,
+      "blocking_reasons": []
+    },
+    {
+      "path": "research_program/dopamine_detox_attention_capture/results/dhf1k_attention_label_audit_fixation_density_20260609.json",
+      "labels_csv": "research_program/dopamine_detox_attention_capture/dhf1k_attention_labels_fixation_density_extremes_20260609.csv",
+      "labels_csv_exists": true,
+      "rank_column": "mean_fixation_density",
+      "recommended_ground_truth_column": "mean_fixation_density",
+      "n_rows": 350,
+      "ready_for_manifest_alignment": true,
+      "ready_for_handoff": true,
+      "blocking_reasons": []
+    }
+  ],
+  "snapugc_label_candidates": [],
+  "tribe_feature_dirs": [
+    {
+      "path": "research_program/dopamine_detox_attention_capture/fixtures/phase1_synthetic_alignment_features_20260608",
+      "n_npz_files": 3,
+      "n_sampled": 3,
+      "n_frames_npz_sampled": 3,
+      "frame_shape_counts": {
+        "2x4": 3
+      },
+      "claim_blocked": true,
+      "ready_as_feature_cache": false
+    }
+  ],
+  "roi_masks": {
+    "disjoint": {
+      "path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+      "exists": true
+    },
+    "overlapping": {
+      "path": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz",
+      "exists": true
+    },
+    "ready_for_primary_scoring": true
+  },
+  "phase1_manifests": [
+    {
+      "path": "research_program/dopamine_detox_attention_capture/phase1_dhf1k_audio_only_manifest_20260609.json",
+      "status": "real_external_attention_labels",
+      "n_samples": 350,
+      "datasets": [
+        "DHF1K"
+      ],
+      "claim_blocked": false,
+      "provenance_required": true,
+      "provenance_ready": true,
+      "provenance_blocking_reasons": [],
+      "alignment_audit": {
+        "path": "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_audio_only_alignment_20260609.json",
+        "sha256": "3d29b107fca23a3f5199eca2e51fc53a3c11a76c790fede4e7b948e150186e20",
+        "ready_for_manifest_build": true,
+        "n_aligned_features": 350,
+        "n_missing_features": 0,
+        "label_audit_ready": true
+      },
+      "ready_for_workflow": true
+    },
+    {
+      "path": "research_program/dopamine_detox_attention_capture/phase1_dhf1k_fixation_density_audio_only_manifest_20260609.json",
+      "status": "real_external_attention_labels",
+      "n_samples": 350,
+      "datasets": [
+        "DHF1K"
+      ],
+      "claim_blocked": false,
+      "provenance_required": true,
+      "provenance_ready": true,
+      "provenance_blocking_reasons": [],
+      "alignment_audit": {
+        "path": "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_fixation_density_audio_only_alignment_20260609.json",
+        "sha256": "fde522251a93544973b9b1638ea53313452b4a699eb92b42531c5c2900f1f2d4",
+        "ready_for_manifest_build": true,
+        "n_aligned_features": 350,
+        "n_missing_features": 0,
+        "label_audit_ready": true
+      },
+      "ready_for_workflow": true
+    },
+    {
+      "path": "research_program/dopamine_detox_attention_capture/phase1_synthetic_alignment_manifest_20260608.json",
+      "status": "synthetic_smoke_only",
+      "n_samples": 3,
+      "datasets": [
+        "synthetic_alignment_fixture"
+      ],
+      "claim_blocked": true,
+      "provenance_required": false,
+      "provenance_ready": true,
+      "provenance_blocking_reasons": [],
+      "alignment_audit": {
+        "path": "research_program/dopamine_detox_attention_capture/results/phase1_synthetic_alignment_20260608.json",
+        "sha256": "617ab2d49a58b643297517d6557dda43cc942b710b9d4e33975e61ba48fe246a",
+        "ready_for_manifest_build": true,
+        "n_aligned_features": 3,
+        "n_missing_features": 0,
+        "label_audit_ready": null
+      },
+      "ready_for_workflow": false
+    },
+    {
+      "path": "research_program/dopamine_detox_attention_capture/phase1_synthetic_smoke_manifest_20260608.json",
+      "status": "synthetic_smoke_only",
+      "n_samples": 16,
+      "datasets": [
+        "DHF1K_fixture",
+        "SnapUGC_fixture"
+      ],
+      "claim_blocked": true,
+      "provenance_required": false,
+      "provenance_ready": true,
+      "provenance_blocking_reasons": [],
+      "alignment_audit": {
+        "path": null,
+        "sha256": null,
+        "ready_for_manifest_build": null,
+        "n_aligned_features": null,
+        "n_missing_features": null,
+        "label_audit_ready": null
+      },
+      "ready_for_workflow": false
+    }
+  ],
+  "readiness": {
+    "dhf1k_root_present": false,
+    "dhf1k_root_ready_for_label_build": false,
+    "dhf1k_label_audit_ready": true,
+    "dhf1k_labels_ready": true,
+    "snapugc_labels_ready": false,
+    "tribe_features_ready": false,
+    "dhf1k_tribe_features_ready": false,
+    "roi_masks_ready": true,
+    "real_manifest_ready": true,
+    "phase1_can_run_now": true,
+    "blocking_reasons": [],
+    "recommended_next_action": "run scripts/run_attention_capture_phase1_workflow.py"
+  },
+  "claim_boundary": "This report audits local data availability only. It does not score TRIBE features or validate attentional capture."
+}

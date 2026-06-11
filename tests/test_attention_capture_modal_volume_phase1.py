@@ -74,6 +74,51 @@ def test_modal_volume_phase1_scores_local_feature_fixture(tmp_path: Path) -> Non
     assert report["primary_report"]["pooled"]["metrics"]["capture_score"]["rho"] > 0.9
 
 
+def test_modal_volume_phase1_accepts_retention_label_audit(tmp_path: Path) -> None:
+    feature_root = tmp_path / "features"
+    output_prefix = "attention_capture/SnapUGC/full"
+    feature_dir = feature_root / output_prefix
+    feature_dir.mkdir(parents=True)
+    label_records = []
+    for i in range(5):
+        np.savez_compressed(
+            feature_dir / f"snap_{i}.npz",
+            frames=np.array(
+                [[0.1 + i, 0.2 + i, 0.3 + i, 1.0]],
+                dtype=np.float32,
+            ),
+        )
+        label_records.append(
+            {"sample_id": f"snap_{i}", "ground_truth": float(i), "dataset": "SnapUGC"}
+        )
+
+    report = run_phase1_modal_volume_features(
+        label_records=label_records,
+        roi_masks={
+            "V1": np.array([True, False, False, False]),
+            "PPA": np.array([False, True, False, False]),
+            "language": np.array([False, False, True, False]),
+            "frontoparietal": np.array([False, False, False, True]),
+        },
+        feature_root=feature_root,
+        output_prefix=output_prefix,
+        dataset="SnapUGC",
+        ground_truth_name="ecr",
+        label_audit={
+            "experiment": "attention_capture_retention_label_audit",
+            "ready_for_manifest_alignment": True,
+            "ground_truth_column": "ecr",
+            "ground_truth_name": "ecr",
+            "blocking_reasons": [],
+        },
+        min_samples=5,
+        permutations=0,
+    )
+
+    assert report["mechanical_ready"] is True
+    assert report["claim_validated"] is True
+
+
 def test_modal_volume_phase1_blocks_missing_features(tmp_path: Path) -> None:
     report = run_phase1_modal_volume_features(
         label_records=[

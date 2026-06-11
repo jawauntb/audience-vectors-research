@@ -570,6 +570,35 @@ def test_publication_audit_accepts_multidataset_retention_and_token_path(
     assert "present-but-not-reported" not in json.dumps(report)
 
 
+def test_publication_audit_recognizes_llama_read_token(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    module = load_module()
+    for name in module.DEFAULT_TOKEN_ENVS:
+        monkeypatch.delenv(name, raising=False)
+    monkeypatch.setenv("LLAMA_READ_TOKEN", "present-but-not-reported")
+    readiness = tmp_path / "readiness.json"
+    workflow = tmp_path / "dhf1k_full_workflow.json"
+    write_readiness(readiness, snapugc_ready=False)
+    write_workflow(workflow, dataset="DHF1K", rho=-0.03, passed=False)
+
+    report = module.build_publication_path_report(
+        readiness_json=readiness,
+        workflow_jsons=[workflow],
+        min_paper_datasets=1,
+    )
+
+    token_entry = next(
+        entry
+        for entry in report["credential_audit"]["entries"]
+        if entry["env"] == "LLAMA_READ_TOKEN"
+    )
+    assert token_entry["present"] is True
+    assert report["full_multimodal_ready"] is True
+    assert "present-but-not-reported" not in json.dumps(report)
+
+
 def test_publication_markdown_renders_modal_asset_table(tmp_path: Path) -> None:
     module = load_module()
     modal_assets = tmp_path / "modal_assets.json"

@@ -57,3 +57,21 @@ data/attention_capture/snapugc_videos/
 
 The CSV must include a stable video/sample id and an external attention or
 retention metric such as ECR, completion rate, retention, or engagement.
+
+Before spending Modal GPU time, audit the granted labels:
+
+```bash
+uv run python scripts/audit_attention_capture_retention_labels.py \
+  --labels-csv data/attention_capture/snapugc_vquala_labels.csv \
+  --dataset SnapUGC \
+  --sample-id-column sample_id \
+  --ground-truth-column ecr \
+  --media-path-column video_path \
+  --ground-truth-name ecr \
+  --output-json research_program/dopamine_detox_attention_capture/results/snapugc_retention_label_audit.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/snapugc_retention_label_audit.md
+```
+
+Only a report with `ready_for_manifest_alignment=true` should be used for a
+claim-relevant Phase 1 run. `ready_for_modal_feature_extraction=true` additionally
+means the CSV has a usable media path column for the Modal feature extractor.
