@@ -81,6 +81,17 @@ Do not use public baseline submission files as ground-truth labels. Files named
 like `submission_baseline.csv`, `prediction*.csv`, or `baseline*.csv` are blocked
 by default because they are model predictions, not external behavioral ECR.
 
+To test only the public CSV format without any claim-relevant labels, run:
+
+```bash
+uv run python scripts/run_snapugc_public_format_smoke.py \
+  --output-json research_program/dopamine_detox_attention_capture/results/snapugc_public_format_smoke_20260611.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/snapugc_public_format_smoke_20260611.md
+```
+
+That smoke uses public baseline predictions only as a format check and writes a
+claim-blocked report.
+
 Before spending Modal GPU time, audit the granted labels:
 
 ```bash
