@@ -66,6 +66,7 @@ app = modal.App(get_app_name())
 # @app.cls at import time.
 _FUNCTION_MODULES: tuple[str, ...] = (
     "tribe_predictor",
+    "attention_capture_phase1",
     "vjepa_predictor",
     "cogvideox_generator",
     "svd_generator",

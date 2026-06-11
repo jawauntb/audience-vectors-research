@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "experiment": "phase1_dhf1k_full_modal_volume_verdict",
+  "date": "2026-06-11",
+  "dataset": "DHF1K",
+  "ground_truth_name": "mean_fixation_density",
+  "feature_source": {
+    "modal_volume_name": "attention-capture-features-v1",
+    "output_prefix": "attention_capture/DHF1K/tribe_dhf1k_attention_full_20260610",
+    "event_mode": "full",
+    "n_feature_files": 350
+  },
+  "primary": {
+    "roi_masks": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_disjoint_20260608.npz",
+    "workflow_report": "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_full_modal_volume_disjoint_workflow_20260611.json",
+    "mechanical_ready": true,
+    "claim_update_allowed": true,
+    "claim_validated": false,
+    "capture_score": {
+      "n": 312,
+      "spearman_rho": -0.026425194336600396,
+      "permutation_p_greater": 0.678,
+      "gate_passed": false
+    },
+    "capture_delta": {
+      "n": 350,
+      "spearman_rho": 0.022390433507912016,
+      "permutation_p_greater": 0.326
+    },
+    "sensory_mean": {
+      "n": 350,
+      "spearman_rho": -0.1009882063177192,
+      "permutation_p_greater": 0.966
+    },
+    "frontoparietal": {
+      "n": 350,
+      "spearman_rho": -0.1050745370516144,
+      "permutation_p_greater": 0.983
+    }
+  },
+  "sensitivity": {
+    "roi_masks": "research_program/dopamine_detox_attention_capture/results/destrieux_roi_masks_20260608.npz",
+    "workflow_report": "research_program/dopamine_detox_attention_capture/results/phase1_dhf1k_full_modal_volume_overlap_sensitivity_20260611.json",
+    "mechanical_ready": true,
+    "claim_update_allowed": true,
+    "claim_validated": false,
+    "capture_score": {
+      "n": 314,
+      "spearman_rho": 0.030004580764409558,
+      "permutation_p_greater": 0.301,
+      "gate_passed": false
+    }
+  },
+  "verdict": {
+    "h2_gate_passed": false,
+    "phase2_claim_unblocked": false,
+    "interpretation": "DHF1K full-mode TRIBE scoring is mechanically ready, but the preregistered H2 capture_score gate fails under both disjoint primary masks and overlapping sensitivity masks."
+  },
+  "claim_boundary": "This is a negative Phase 1 result for the DHF1K fixation-density dataset only. It does not rule out behavioral-retention labels such as SnapUGC/VQualA, but it blocks DHF1K-only progression to Phase 2/3 claims."
+}
