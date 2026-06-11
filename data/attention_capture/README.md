@@ -58,6 +58,29 @@ data/attention_capture/snapugc_videos/
 The CSV must include a stable video/sample id and an external attention or
 retention metric such as ECR, completion rate, retention, or engagement.
 
+If the files follow the public SnapUGC/VQualA baseline shape, first join the
+metadata CSV (`Id,Title,Description,Download_link`) with a granted score CSV
+(`Id,ECR`) into the canonical local format:
+
+```bash
+uv run python scripts/build_snapugc_retention_labels.py \
+  --metadata-csv data/attention_capture/snapugc_val_data.csv \
+  --scores-csv data/attention_capture/snapugc_ecr_labels.csv \
+  --output-csv data/attention_capture/snapugc_vquala_labels.csv \
+  --output-json research_program/dopamine_detox_attention_capture/results/snapugc_retention_label_builder.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/snapugc_retention_label_builder.md
+```
+
+For videos already mirrored into a Modal-mounted path, add a media template such
+as `--media-path-template '/bmd-videos/attention_capture/SnapUGC/{sample_id}.mp4'`.
+Without a template or local video match, the builder uses `Download_link` as
+`video_path`, which is appropriate only for a small Modal smoke/slice because
+remote URLs can expire.
+
+Do not use public baseline submission files as ground-truth labels. Files named
+like `submission_baseline.csv`, `prediction*.csv`, or `baseline*.csv` are blocked
+by default because they are model predictions, not external behavioral ECR.
+
 Before spending Modal GPU time, audit the granted labels:
 
 ```bash
