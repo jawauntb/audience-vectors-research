@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "experiment": "snapugc_public_format_smoke",
+  "generated_at": "2026-06-11T21:03:06.965557+00:00",
+  "dataset": "SnapUGC",
+  "metadata_source": "https://raw.githubusercontent.com/dasongli1/SnapUGC_Engagement/main/ECR_inference/dataset/val_data_sample.csv",
+  "scores_source": "https://raw.githubusercontent.com/dasongli1/SnapUGC_Engagement/main/ECR_inference/submission_baseline.csv",
+  "metadata_sha256": "1cb3a38ac58d92b8bb129c0b951649aa5252c333e572bbc6a84c36a161db8eca",
+  "scores_sha256": "42895c9264a7ab98587909d12da7bbdf3d1381b23c4159fe662edc09c4499b66",
+  "canonical_sha256": "ef938b97519ff93c31738a48e9f322581431a3ef7a4a929a30ee4757302e714e",
+  "public_prediction_score_file": true,
+  "claim_blocked": true,
+  "claim_blocking_reason": "The default scores source is a public baseline/prediction file, not granted behavioral ECR labels.",
+  "builder_ready": true,
+  "label_audit_ready": true,
+  "baseline_ready": true,
+  "smoke_passed": true,
+  "counts": {
+    "metadata_rows": 10,
+    "score_rows": 10,
+    "canonical_rows": 10,
+    "label_audit_rows": 10,
+    "baseline_feature_metrics": 3
+  },
+  "best_baseline_feature": {
+    "feature": "download_link_char_count",
+    "source_column": "download_link",
+    "kind": "char_count",
+    "n": 10,
+    "rho": 0.5337825136516685,
+    "abs_rho": 0.5337825136516685,
+    "feature_n_distinct": 8
+  },
+  "negative_controls": [
+    {
+      "feature": "row_index",
+      "source_column": "__row_index__",
+      "kind": "negative_control",
+      "n": 10,
+      "rho": -0.3212121212121212,
+      "abs_rho": 0.3212121212121212,
+      "feature_n_distinct": 10
+    },
+    {
+      "feature": "sample_id_hash_uniform",
+      "source_column": "sample_id",
+      "kind": "negative_control",
+      "n": 10,
+      "rho": 0.503030303030303,
+      "abs_rho": 0.503030303030303,
+      "feature_n_distinct": 10
+    }
+  ],
+  "blocking_reasons": {
+    "builder": [],
+    "label_audit": [],
+    "baseline": []
+  },
+  "warnings": [],
+  "next_actions": [
+    "Do not use this smoke report for claims.",
+    "Replace the scores source with granted behavioral ECR labels, then rerun build_snapugc_retention_labels.py without --allow-prediction-score-file.",
+    "If the real-label audits pass, run a small full-mode Modal TRIBE slice from the canonical CSV."
+  ]
+}
