@@ -1,6 +1,6 @@
 # Current Research Status
 
-Last updated: 2026-06-08
+Last updated: 2026-06-12
 
 ## Confirmed Enough To Treat As Real
 
@@ -63,15 +63,16 @@ Last updated: 2026-06-08
   produced four contact sheets, and found zero automated failures. Codex
   contact-sheet review found retained candidate subjects and visually distinct
   hard-negative controls, with no obvious sampled-frame text/watermark, frame
-  collapse, or attention-check leakage. Final human/IRB-facing screening,
-  hosted URLs, and validation still remain open, so this does not change the
-  claim status. The stronger two-session recognition-memory path is now further
-  along: the flagged filler lure was preserved as rejected evidence, replaced
-  with a ceramic-teacups filler pair, refreshed video screening passed 60/60
-  generated recognition MP4s, and public GitHub Pages launch assets plus
-  Prolific setup notes are ready. A fixed response-analysis plan/script is ready
-  for the eventual Prolific export. No delayed-recognition data have been
-  collected yet.
+  collapse, or attention-check leakage. The stronger two-session
+  recognition-memory path then produced a narrow human-behavior result: Wave 2
+  had 62 complete matched Session 2 payloads; after media-error exclusion,
+  pooled primary positives were recognized on 114/123 trials (92.7%, Wilson 95%
+  CI [86.7%, 96.1%]) and hard controls on 150/186 trials (80.6%, [74.4%,
+  85.7%]). The participant-level primary-minus-hard contrast was +11.7
+  percentage points (bootstrap 95% CI [+4.4, +19.4], sign-flip p = 0.00425).
+  This accepts a narrow delayed old-vs-lure recognition-memory claim for the
+  primary orange/hanging packet. It does not establish broad memorability,
+  measured-BMD/fMRI grounding, or generator-control claims.
 
 ## Newly Built V-JEPA Pilot State
 
@@ -113,20 +114,18 @@ to TRIBE/product nor obviously irrelevant.
   memorability. Their BO work is compute/control evidence until human-tested,
   and current SVD broadening should target seed-image/content expansion or a
   prompt-conditioned generator path rather than more alpha/guidance-only search.
-- We have not validated the stable positive SVD content pockets with human
-  behavior or measured-BMD alignment. Orange flowers and hanging clothes now
-  have fresh-seed TRIBE/V-JEPA compute-proxy replication, but generated-video
-  CLIP did not clear the prospective verifier. Blue jellyfish and old car passed
-  fresh TRIBE and CLIP-side boundary checks, but not the exact V-JEPA boundary
-  verifier. The validation packet, exact MP4 stimulus freeze, agent
-  sampled-frame pre-screen, recognition-memory design, recognition stimulus
-  production manifest, and recognition seed-image materialization/screening
-  artifacts are assembled. The one flagged filler-lure video was preserved and
-  replaced, refreshed screening passed 60/60 generated recognition MP4s, and
-  public HTTPS launch assets are ready for Prolific setup. The response-analysis
-  plan/script is ready, but final human/IRB-facing review and delayed Session 2
-  data remain open, so no human/BMD gate has run.
-- We have not shown delayed-recognition memory gains.
+- We have validated the stable positive SVD content pockets only under a narrow
+  delayed old-vs-lure human recognition endpoint. Orange flowers and hanging
+  clothes have fresh-seed TRIBE/V-JEPA compute-proxy replication, and the pooled
+  primary packet beat hard controls in Wave 2 Prolific recognition data. This
+  does not validate measured-BMD alignment, broad human memorability, long-term
+  free recall, preference, engagement, or generator-control claims. Blue
+  jellyfish and old car remain secondary boundary pockets: they passed fresh
+  TRIBE and CLIP-side boundary checks, but not the exact V-JEPA boundary
+  verifier.
+- We have not run the original larger 200-participant/per-pocket final
+  recognition-memory confirmation; orange flowers is high in absolute
+  recognition but weaker as a standalone hard-control contrast in Wave 2.
 - We have not shown that a LoRA or DPO model has actually learned
   memorability; the present model-side results are selector/proxy evidence.
 - We have a fold-safe TRIBE-internal hidden-direction intervention on 104
@@ -191,16 +190,21 @@ artifact:
 - `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_prolific_setup_20260608.md`
 - `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_response_analysis_plan_20260608.json`
 - `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_response_analysis_plan_20260608.md`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_response_analysis_result_20260612.json`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/content_pocket_recognition_response_analysis_result_20260612.md`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/figures/content_pocket_recognition_accuracy_20260612.svg`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/figures/content_pocket_recognition_contrast_20260612.svg`
+- `research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/figures/content_pocket_recognition_arm_contrasts_20260612.svg`
 - `scripts/analyze_content_pocket_recognition_responses.py`
+- `scripts/summarize_content_pocket_recognition_wave2.py`
 
-Use it only for a human/BMD validation launch. For a direct actual-memory claim,
-the stronger path is the two-session recognition-memory packet. The production
-manifest now enumerates 60 required seed images and 60 SVD jobs; current status
-is `recognition_launch_assets_ready_for_prolific_setup`. The seed-image subgate
-passed, the flagged filler lure was preserved and replaced, refreshed video
-screening passed 60/60 generated MP4s, and public GitHub Pages/Prolific setup
-artifacts are ready. The fixed response-analysis plan/script is ready for the
-eventual export. The older forced-choice survey is a weaker perceived-memorability
-readout. This does not change the claim boundary: actual recognition-memory
-evidence still requires final human/IRB-facing review, delayed Session 2 data,
-and a passed response-analysis gate.
+Use the two-session recognition-memory packet for the narrow actual-memory
+claim. The production manifest enumerated 60 required seed images and 60 SVD
+jobs; the seed-image subgate passed; the flagged filler lure was preserved and
+replaced; refreshed video screening passed 60/60 generated MP4s; public GitHub
+Pages/Prolific setup artifacts supported the run; and Wave 2 response analysis
+accepted a pooled primary-positive old-vs-lure recognition advantage. The older
+forced-choice survey is a weaker perceived-memorability readout. The claim
+boundary remains narrow: the result supports delayed old-vs-lure recognition
+for this orange/hanging packet, not broad memorability, measured-BMD grounding,
+or generator-control superiority.

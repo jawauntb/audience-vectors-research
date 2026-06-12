@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="560" viewBox="0 0 1120 560">
+<rect width="100%" height="100%" fill="#fffdf8"/>
+<text x="120" y="48" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#1a202c">Primary pockets exceed hard controls</text>
+<text x="120" y="78" font-family="Inter, Arial, sans-serif" font-size="15" fill="#4a5568">Paired participant-level contrast after excluding media-error trials.</text>
+<line x1="110" y1="230.0" x2="552" y2="230.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="98" y="235.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="13" fill="#4a5568">50%</text>
+<line x1="110" y1="178.0" x2="552" y2="178.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="98" y="183.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="13" fill="#4a5568">70%</text>
+<line x1="110" y1="126.0" x2="552" y2="126.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="98" y="131.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="13" fill="#4a5568">90%</text>
+<rect x="160" y="119.0" width="160" height="241.0" rx="10" fill="#2f855a"/>
+<rect x="412" y="150.3" width="160" height="209.7" rx="10" fill="#2b6cb0"/>
+<text x="240.0" y="394" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#1a202c">Primary positives</text>
+<text x="492.0" y="394" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#1a202c">Hard controls</text>
+<text x="240.0" y="105.0" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" fill="#1a202c">92.7%</text>
+<text x="492.0" y="136.3" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" fill="#1a202c">80.6%</text>
+<rect x="650" y="146" width="360" height="190" rx="14" fill="#edf7f0" stroke="#9ae6b4"/>
+<text x="674" y="190" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" fill="#1a202c">Paired lift</text>
+<text x="674" y="232" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="900" fill="#2f855a">+11.7 pp</text>
+<text x="674" y="266" font-family="Inter, Arial, sans-serif" font-size="14" fill="#4a5568">Bootstrap 95% CI: +4.4 to +19.4 pp</text>
+<text x="674" y="294" font-family="Inter, Arial, sans-serif" font-size="14" fill="#4a5568">Sign-flip p = 0.0042</text>
+<text x="674" y="322" font-family="Inter, Arial, sans-serif" font-size="14" fill="#4a5568">Paired participants: 61</text>
+</svg>

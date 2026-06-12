@@ -1,0 +1,273 @@
+{
+  "all_summaries": [
+    {
+      "accuracy": 0.8109677419354838,
+      "correct": 1257,
+      "exact_binom_p_vs_0_5": 3.889047321908855e-142,
+      "media_errors": 3,
+      "median_rt_ms": 11557.0,
+      "n": 1550,
+      "name": "all_trials",
+      "wilson95_high": 0.8296818239612735,
+      "wilson95_low": 0.7907160902066486
+    },
+    {
+      "accuracy": 0.8548387096774194,
+      "correct": 265,
+      "exact_binom_p_vs_0_5": 4.332158546664278e-39,
+      "media_errors": 1,
+      "median_rt_ms": 11306.5,
+      "n": 310,
+      "name": "all_nonfiller_pockets",
+      "wilson95_high": 0.8897094026985243,
+      "wilson95_low": 0.8112814760294892
+    },
+    {
+      "accuracy": 0.9274193548387096,
+      "correct": 115,
+      "exact_binom_p_vs_0_5": 1.4454106072299487e-24,
+      "media_errors": 1,
+      "median_rt_ms": 10737.0,
+      "n": 124,
+      "name": "primary_positive",
+      "wilson95_high": 0.9613478367280004,
+      "wilson95_low": 0.8678041533840009
+    },
+    {
+      "accuracy": 0.8064516129032258,
+      "correct": 150,
+      "exact_binom_p_vs_0_5": 9.628713725646342e-18,
+      "media_errors": 0,
+      "median_rt_ms": 11730.5,
+      "n": 186,
+      "name": "hard_negative_control",
+      "wilson95_high": 0.8567916369384612,
+      "wilson95_low": 0.7437094375274349
+    },
+    {
+      "accuracy": 0.8,
+      "correct": 992,
+      "exact_binom_p_vs_0_5": 1.201343918559694e-105,
+      "media_errors": 2,
+      "median_rt_ms": 11673.5,
+      "n": 1240,
+      "name": "unrelated_filler",
+      "wilson95_high": 0.8213220740530464,
+      "wilson95_low": 0.7768248961447458
+    },
+    {
+      "accuracy": 0.9032258064516129,
+      "correct": 56,
+      "exact_binom_p_vs_0_5": 2.972584851879048e-11,
+      "media_errors": 0,
+      "median_rt_ms": 11000.0,
+      "n": 62,
+      "name": "arm:orange_flowers",
+      "wilson95_high": 0.9548881279768061,
+      "wilson95_low": 0.8045118138769257
+    },
+    {
+      "accuracy": 0.9516129032258065,
+      "correct": 59,
+      "exact_binom_p_vs_0_5": 1.7249222883375394e-14,
+      "media_errors": 1,
+      "median_rt_ms": 10317.0,
+      "n": 62,
+      "name": "arm:hanging_clothes",
+      "wilson95_high": 0.9834083141494193,
+      "wilson95_low": 0.8671196207267605
+    },
+    {
+      "accuracy": 0.8387096774193549,
+      "correct": 52,
+      "exact_binom_p_vs_0_5": 5.7136137330929615e-08,
+      "media_errors": 0,
+      "median_rt_ms": 11532.0,
+      "n": 62,
+      "name": "arm:aerial_beach",
+      "wilson95_high": 0.9099593112969091,
+      "wilson95_low": 0.7279366398602256
+    },
+    {
+      "accuracy": 0.7741935483870968,
+      "correct": 48,
+      "exact_binom_p_vs_0_5": 1.7428522601631908e-05,
+      "media_errors": 0,
+      "median_rt_ms": 12099.5,
+      "n": 62,
+      "name": "arm:city_street",
+      "wilson95_high": 0.8604481696141172,
+      "wilson95_low": 0.6559437908464204
+    },
+    {
+      "accuracy": 0.8064516129032258,
+      "correct": 50,
+      "exact_binom_p_vs_0_5": 1.214380770018613e-06,
+      "media_errors": 0,
+      "median_rt_ms": 11306.5,
+      "n": 62,
+      "name": "arm:storm_beach",
+      "wilson95_high": 0.8856619175970974,
+      "wilson95_low": 0.6914820382117386
+    }
+  ],
+  "arm_contrasts_no_media_errors": {
+    "hanging_clothes": {
+      "arm_mean_accuracy": 0.9508196721311475,
+      "bootstrap95_high": 0.21857923497267762,
+      "bootstrap95_low": 0.0655737704918033,
+      "hard_negative_mean_accuracy": 0.8087431693989071,
+      "mean_difference": 0.14207650273224046,
+      "participants": 61,
+      "sign_flip_permutation_p": 0.0006899931000689993
+    },
+    "orange_flowers": {
+      "arm_mean_accuracy": 0.9032258064516129,
+      "bootstrap95_high": 0.19354838709677422,
+      "bootstrap95_low": -0.00537634408602149,
+      "hard_negative_mean_accuracy": 0.8064516129032258,
+      "mean_difference": 0.09677419354838711,
+      "participants": 62,
+      "sign_flip_permutation_p": 0.08284917150828491
+    }
+  },
+  "complete_matched_participants": 62,
+  "figures": {
+    "accuracy": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/figures/content_pocket_recognition_accuracy_20260612.svg",
+    "arm_contrasts": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/figures/content_pocket_recognition_arm_contrasts_20260612.svg",
+    "contrast": "research_program/neurips_memorability_selector/collaborator_inputs/camilo_bo_memorability/figures/content_pocket_recognition_contrast_20260612.svg"
+  },
+  "form_counts": {
+    "recognition_form_00": 12,
+    "recognition_form_01": 17,
+    "recognition_form_02": 8,
+    "recognition_form_03": 6,
+    "recognition_form_04": 10,
+    "recognition_form_05": 9
+  },
+  "generated_at": "2026-06-12T16:31:29.718114+00:00",
+  "matched_status_counts": {
+    "APPROVED": 60,
+    "AWAITING REVIEW": 2
+  },
+  "no_media_error_summaries": [
+    {
+      "accuracy": 0.926829268292683,
+      "correct": 114,
+      "exact_binom_p_vs_0_5": 2.6829234621626605e-24,
+      "media_errors": 0,
+      "median_rt_ms": 10822.0,
+      "n": 123,
+      "name": "primary_positive",
+      "wilson95_high": 0.9610296571309965,
+      "wilson95_low": 0.8667753915986173
+    },
+    {
+      "accuracy": 0.8064516129032258,
+      "correct": 150,
+      "exact_binom_p_vs_0_5": 9.628713725646342e-18,
+      "media_errors": 0,
+      "median_rt_ms": 11730.5,
+      "n": 186,
+      "name": "hard_negative_control",
+      "wilson95_high": 0.8567916369384612,
+      "wilson95_low": 0.7437094375274349
+    },
+    {
+      "accuracy": 0.8004846526655897,
+      "correct": 991,
+      "exact_binom_p_vs_0_5": 7.687077247919551e-106,
+      "media_errors": 0,
+      "median_rt_ms": 11673.5,
+      "n": 1238,
+      "name": "unrelated_filler",
+      "wilson95_high": 0.8218015131560249,
+      "wilson95_low": 0.7773087796397514
+    },
+    {
+      "accuracy": 0.9032258064516129,
+      "correct": 56,
+      "exact_binom_p_vs_0_5": 2.972584851879048e-11,
+      "media_errors": 0,
+      "median_rt_ms": 11000.0,
+      "n": 62,
+      "name": "arm:orange_flowers",
+      "wilson95_high": 0.9548881279768061,
+      "wilson95_low": 0.8045118138769257
+    },
+    {
+      "accuracy": 0.9508196721311475,
+      "correct": 58,
+      "exact_binom_p_vs_0_5": 3.285739735847716e-14,
+      "media_errors": 0,
+      "median_rt_ms": 10381.0,
+      "n": 61,
+      "name": "arm:hanging_clothes",
+      "wilson95_high": 0.9831340173312375,
+      "wilson95_low": 0.8650887247278409
+    },
+    {
+      "accuracy": 0.8387096774193549,
+      "correct": 52,
+      "exact_binom_p_vs_0_5": 5.7136137330929615e-08,
+      "media_errors": 0,
+      "median_rt_ms": 11532.0,
+      "n": 62,
+      "name": "arm:aerial_beach",
+      "wilson95_high": 0.9099593112969091,
+      "wilson95_low": 0.7279366398602256
+    },
+    {
+      "accuracy": 0.7741935483870968,
+      "correct": 48,
+      "exact_binom_p_vs_0_5": 1.7428522601631908e-05,
+      "media_errors": 0,
+      "median_rt_ms": 12099.5,
+      "n": 62,
+      "name": "arm:city_street",
+      "wilson95_high": 0.8604481696141172,
+      "wilson95_low": 0.6559437908464204
+    },
+    {
+      "accuracy": 0.8064516129032258,
+      "correct": 50,
+      "exact_binom_p_vs_0_5": 1.214380770018613e-06,
+      "media_errors": 0,
+      "median_rt_ms": 11306.5,
+      "n": 62,
+      "name": "arm:storm_beach",
+      "wilson95_high": 0.8856619175970974,
+      "wilson95_low": 0.6914820382117386
+    }
+  ],
+  "paired_primary_vs_hard_negative_all_trials": {
+    "bootstrap95_high": 0.19892473118279572,
+    "bootstrap95_low": 0.04569892473118281,
+    "hard_negative_mean_accuracy": 0.8064516129032258,
+    "mean_difference": 0.12096774193548389,
+    "participants": 62,
+    "primary_mean_accuracy": 0.9274193548387096,
+    "sign_flip_permutation_p": 0.0028699713002869973
+  },
+  "paired_primary_vs_hard_negative_no_media_errors": {
+    "bootstrap95_high": 0.1939890710382514,
+    "bootstrap95_low": 0.04371584699453553,
+    "hard_negative_mean_accuracy": 0.8087431693989071,
+    "mean_difference": 0.11748633879781423,
+    "participants": 61,
+    "primary_mean_accuracy": 0.9262295081967213,
+    "sign_flip_permutation_p": 0.004249957500424996
+  },
+  "prolific_rows": 64,
+  "prolific_status_counts": {
+    "APPROVED": 60,
+    "AWAITING REVIEW": 2,
+    "TIMED-OUT": 2
+  },
+  "session1_session2_form_mismatches": 0,
+  "session1_session2_overlap": 21,
+  "session1_visible_payloads": 24,
+  "timed_out_missing_webhook_count": 2,
+  "webhook_post_payloads": 92,
+  "webhook_rows": 180
+}
