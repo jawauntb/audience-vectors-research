@@ -107,6 +107,7 @@ Core:
   the pooled primary-positive packet against hard negative controls.
 - Scope remains exact recognition in this packet, not broad generated-video
   memorability, measured-BMD grounding, or prompt-conditioned generator control.
+- Exportable PDF: `08_content_pocket_recognition_memory.pdf`.
 
 Venue target:
 
