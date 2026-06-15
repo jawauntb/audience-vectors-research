@@ -1,0 +1,921 @@
+{
+  "balance_checks": {
+    "condition_counts_by_family": {
+      "aerial_beach": {
+        "quality_matched_control": 4,
+        "selector_top": 4
+      },
+      "blue_jellyfish": {
+        "quality_matched_control": 4,
+        "selector_top": 4
+      },
+      "butterflies_on_flowers": {
+        "quality_matched_control": 4,
+        "selector_top": 4
+      },
+      "candle_flame_table": {
+        "quality_matched_control": 4,
+        "selector_top": 4
+      },
+      "city_street": {
+        "quality_matched_control": 4,
+        "selector_top": 4
+      },
+      "hands_pottery_wheel": {
+        "quality_matched_control": 4,
+        "selector_top": 4
+      },
+      "hanging_clothes": {
+        "quality_matched_control": 4,
+        "selector_top": 4
+      },
+      "old_car": {
+        "quality_matched_control": 4,
+        "selector_top": 4
+      },
+      "orange_flowers": {
+        "quality_matched_control": 4,
+        "selector_top": 4
+      },
+      "rain_on_window": {
+        "quality_matched_control": 4,
+        "selector_top": 4
+      },
+      "storm_beach": {
+        "quality_matched_control": 4,
+        "selector_top": 4
+      },
+      "street_food_grill": {
+        "quality_matched_control": 4,
+        "selector_top": 4
+      }
+    },
+    "condition_counts_by_form": {
+      "confirmatory_form_00": {
+        "quality_matched_control": 6,
+        "selector_top": 6
+      },
+      "confirmatory_form_01": {
+        "quality_matched_control": 6,
+        "selector_top": 6
+      },
+      "confirmatory_form_02": {
+        "quality_matched_control": 6,
+        "selector_top": 6
+      },
+      "confirmatory_form_03": {
+        "quality_matched_control": 6,
+        "selector_top": 6
+      },
+      "confirmatory_form_04": {
+        "quality_matched_control": 6,
+        "selector_top": 6
+      },
+      "confirmatory_form_05": {
+        "quality_matched_control": 6,
+        "selector_top": 6
+      },
+      "confirmatory_form_06": {
+        "quality_matched_control": 6,
+        "selector_top": 6
+      },
+      "confirmatory_form_07": {
+        "quality_matched_control": 6,
+        "selector_top": 6
+      }
+    },
+    "recommended_session1_recruit_for_target": 471
+  },
+  "created_at_utc": "2026-06-15T16:00:00+00:00",
+  "experiment_id": "content_pocket_confirmatory_recognition_20260615",
+  "form_count": 8,
+  "forms": [
+    {
+      "analysis_trials": [
+        {
+          "condition": "selector_top",
+          "family_id": "orange_flowers",
+          "lure_item_id": "orange_flowers_selector_top_lure",
+          "old_item_id": "orange_flowers_selector_top_old",
+          "session1_slot": 1,
+          "session2_trial_id": "confirmatory_form_00_orange_flowers_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "hanging_clothes",
+          "lure_item_id": "hanging_clothes_quality_matched_control_lure",
+          "old_item_id": "hanging_clothes_quality_matched_control_old",
+          "session1_slot": 2,
+          "session2_trial_id": "confirmatory_form_00_hanging_clothes_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "blue_jellyfish",
+          "lure_item_id": "blue_jellyfish_selector_top_lure",
+          "old_item_id": "blue_jellyfish_selector_top_old",
+          "session1_slot": 3,
+          "session2_trial_id": "confirmatory_form_00_blue_jellyfish_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "old_car",
+          "lure_item_id": "old_car_quality_matched_control_lure",
+          "old_item_id": "old_car_quality_matched_control_old",
+          "session1_slot": 4,
+          "session2_trial_id": "confirmatory_form_00_old_car_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "aerial_beach",
+          "lure_item_id": "aerial_beach_selector_top_lure",
+          "old_item_id": "aerial_beach_selector_top_old",
+          "session1_slot": 5,
+          "session2_trial_id": "confirmatory_form_00_aerial_beach_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "city_street",
+          "lure_item_id": "city_street_quality_matched_control_lure",
+          "old_item_id": "city_street_quality_matched_control_old",
+          "session1_slot": 6,
+          "session2_trial_id": "confirmatory_form_00_city_street_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "storm_beach",
+          "lure_item_id": "storm_beach_selector_top_lure",
+          "old_item_id": "storm_beach_selector_top_old",
+          "session1_slot": 7,
+          "session2_trial_id": "confirmatory_form_00_storm_beach_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "butterflies_on_flowers",
+          "lure_item_id": "butterflies_on_flowers_quality_matched_control_lure",
+          "old_item_id": "butterflies_on_flowers_quality_matched_control_old",
+          "session1_slot": 8,
+          "session2_trial_id": "confirmatory_form_00_butterflies_on_flowers_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "street_food_grill",
+          "lure_item_id": "street_food_grill_selector_top_lure",
+          "old_item_id": "street_food_grill_selector_top_old",
+          "session1_slot": 9,
+          "session2_trial_id": "confirmatory_form_00_street_food_grill_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "rain_on_window",
+          "lure_item_id": "rain_on_window_quality_matched_control_lure",
+          "old_item_id": "rain_on_window_quality_matched_control_old",
+          "session1_slot": 10,
+          "session2_trial_id": "confirmatory_form_00_rain_on_window_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "hands_pottery_wheel",
+          "lure_item_id": "hands_pottery_wheel_selector_top_lure",
+          "old_item_id": "hands_pottery_wheel_selector_top_old",
+          "session1_slot": 11,
+          "session2_trial_id": "confirmatory_form_00_hands_pottery_wheel_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "candle_flame_table",
+          "lure_item_id": "candle_flame_table_quality_matched_control_lure",
+          "old_item_id": "candle_flame_table_quality_matched_control_old",
+          "session1_slot": 12,
+          "session2_trial_id": "confirmatory_form_00_candle_flame_table_recognition"
+        }
+      ],
+      "filler_old_count": 12,
+      "filler_recognition_count": 12,
+      "form_id": "confirmatory_form_00"
+    },
+    {
+      "analysis_trials": [
+        {
+          "condition": "selector_top",
+          "family_id": "hanging_clothes",
+          "lure_item_id": "hanging_clothes_selector_top_lure",
+          "old_item_id": "hanging_clothes_selector_top_old",
+          "session1_slot": 1,
+          "session2_trial_id": "confirmatory_form_01_hanging_clothes_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "blue_jellyfish",
+          "lure_item_id": "blue_jellyfish_quality_matched_control_lure",
+          "old_item_id": "blue_jellyfish_quality_matched_control_old",
+          "session1_slot": 2,
+          "session2_trial_id": "confirmatory_form_01_blue_jellyfish_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "old_car",
+          "lure_item_id": "old_car_selector_top_lure",
+          "old_item_id": "old_car_selector_top_old",
+          "session1_slot": 3,
+          "session2_trial_id": "confirmatory_form_01_old_car_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "aerial_beach",
+          "lure_item_id": "aerial_beach_quality_matched_control_lure",
+          "old_item_id": "aerial_beach_quality_matched_control_old",
+          "session1_slot": 4,
+          "session2_trial_id": "confirmatory_form_01_aerial_beach_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "city_street",
+          "lure_item_id": "city_street_selector_top_lure",
+          "old_item_id": "city_street_selector_top_old",
+          "session1_slot": 5,
+          "session2_trial_id": "confirmatory_form_01_city_street_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "storm_beach",
+          "lure_item_id": "storm_beach_quality_matched_control_lure",
+          "old_item_id": "storm_beach_quality_matched_control_old",
+          "session1_slot": 6,
+          "session2_trial_id": "confirmatory_form_01_storm_beach_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "butterflies_on_flowers",
+          "lure_item_id": "butterflies_on_flowers_selector_top_lure",
+          "old_item_id": "butterflies_on_flowers_selector_top_old",
+          "session1_slot": 7,
+          "session2_trial_id": "confirmatory_form_01_butterflies_on_flowers_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "street_food_grill",
+          "lure_item_id": "street_food_grill_quality_matched_control_lure",
+          "old_item_id": "street_food_grill_quality_matched_control_old",
+          "session1_slot": 8,
+          "session2_trial_id": "confirmatory_form_01_street_food_grill_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "rain_on_window",
+          "lure_item_id": "rain_on_window_selector_top_lure",
+          "old_item_id": "rain_on_window_selector_top_old",
+          "session1_slot": 9,
+          "session2_trial_id": "confirmatory_form_01_rain_on_window_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "hands_pottery_wheel",
+          "lure_item_id": "hands_pottery_wheel_quality_matched_control_lure",
+          "old_item_id": "hands_pottery_wheel_quality_matched_control_old",
+          "session1_slot": 10,
+          "session2_trial_id": "confirmatory_form_01_hands_pottery_wheel_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "candle_flame_table",
+          "lure_item_id": "candle_flame_table_selector_top_lure",
+          "old_item_id": "candle_flame_table_selector_top_old",
+          "session1_slot": 11,
+          "session2_trial_id": "confirmatory_form_01_candle_flame_table_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "orange_flowers",
+          "lure_item_id": "orange_flowers_quality_matched_control_lure",
+          "old_item_id": "orange_flowers_quality_matched_control_old",
+          "session1_slot": 12,
+          "session2_trial_id": "confirmatory_form_01_orange_flowers_recognition"
+        }
+      ],
+      "filler_old_count": 12,
+      "filler_recognition_count": 12,
+      "form_id": "confirmatory_form_01"
+    },
+    {
+      "analysis_trials": [
+        {
+          "condition": "selector_top",
+          "family_id": "blue_jellyfish",
+          "lure_item_id": "blue_jellyfish_selector_top_lure",
+          "old_item_id": "blue_jellyfish_selector_top_old",
+          "session1_slot": 1,
+          "session2_trial_id": "confirmatory_form_02_blue_jellyfish_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "old_car",
+          "lure_item_id": "old_car_quality_matched_control_lure",
+          "old_item_id": "old_car_quality_matched_control_old",
+          "session1_slot": 2,
+          "session2_trial_id": "confirmatory_form_02_old_car_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "aerial_beach",
+          "lure_item_id": "aerial_beach_selector_top_lure",
+          "old_item_id": "aerial_beach_selector_top_old",
+          "session1_slot": 3,
+          "session2_trial_id": "confirmatory_form_02_aerial_beach_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "city_street",
+          "lure_item_id": "city_street_quality_matched_control_lure",
+          "old_item_id": "city_street_quality_matched_control_old",
+          "session1_slot": 4,
+          "session2_trial_id": "confirmatory_form_02_city_street_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "storm_beach",
+          "lure_item_id": "storm_beach_selector_top_lure",
+          "old_item_id": "storm_beach_selector_top_old",
+          "session1_slot": 5,
+          "session2_trial_id": "confirmatory_form_02_storm_beach_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "butterflies_on_flowers",
+          "lure_item_id": "butterflies_on_flowers_quality_matched_control_lure",
+          "old_item_id": "butterflies_on_flowers_quality_matched_control_old",
+          "session1_slot": 6,
+          "session2_trial_id": "confirmatory_form_02_butterflies_on_flowers_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "street_food_grill",
+          "lure_item_id": "street_food_grill_selector_top_lure",
+          "old_item_id": "street_food_grill_selector_top_old",
+          "session1_slot": 7,
+          "session2_trial_id": "confirmatory_form_02_street_food_grill_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "rain_on_window",
+          "lure_item_id": "rain_on_window_quality_matched_control_lure",
+          "old_item_id": "rain_on_window_quality_matched_control_old",
+          "session1_slot": 8,
+          "session2_trial_id": "confirmatory_form_02_rain_on_window_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "hands_pottery_wheel",
+          "lure_item_id": "hands_pottery_wheel_selector_top_lure",
+          "old_item_id": "hands_pottery_wheel_selector_top_old",
+          "session1_slot": 9,
+          "session2_trial_id": "confirmatory_form_02_hands_pottery_wheel_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "candle_flame_table",
+          "lure_item_id": "candle_flame_table_quality_matched_control_lure",
+          "old_item_id": "candle_flame_table_quality_matched_control_old",
+          "session1_slot": 10,
+          "session2_trial_id": "confirmatory_form_02_candle_flame_table_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "orange_flowers",
+          "lure_item_id": "orange_flowers_selector_top_lure",
+          "old_item_id": "orange_flowers_selector_top_old",
+          "session1_slot": 11,
+          "session2_trial_id": "confirmatory_form_02_orange_flowers_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "hanging_clothes",
+          "lure_item_id": "hanging_clothes_quality_matched_control_lure",
+          "old_item_id": "hanging_clothes_quality_matched_control_old",
+          "session1_slot": 12,
+          "session2_trial_id": "confirmatory_form_02_hanging_clothes_recognition"
+        }
+      ],
+      "filler_old_count": 12,
+      "filler_recognition_count": 12,
+      "form_id": "confirmatory_form_02"
+    },
+    {
+      "analysis_trials": [
+        {
+          "condition": "selector_top",
+          "family_id": "old_car",
+          "lure_item_id": "old_car_selector_top_lure",
+          "old_item_id": "old_car_selector_top_old",
+          "session1_slot": 1,
+          "session2_trial_id": "confirmatory_form_03_old_car_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "aerial_beach",
+          "lure_item_id": "aerial_beach_quality_matched_control_lure",
+          "old_item_id": "aerial_beach_quality_matched_control_old",
+          "session1_slot": 2,
+          "session2_trial_id": "confirmatory_form_03_aerial_beach_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "city_street",
+          "lure_item_id": "city_street_selector_top_lure",
+          "old_item_id": "city_street_selector_top_old",
+          "session1_slot": 3,
+          "session2_trial_id": "confirmatory_form_03_city_street_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "storm_beach",
+          "lure_item_id": "storm_beach_quality_matched_control_lure",
+          "old_item_id": "storm_beach_quality_matched_control_old",
+          "session1_slot": 4,
+          "session2_trial_id": "confirmatory_form_03_storm_beach_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "butterflies_on_flowers",
+          "lure_item_id": "butterflies_on_flowers_selector_top_lure",
+          "old_item_id": "butterflies_on_flowers_selector_top_old",
+          "session1_slot": 5,
+          "session2_trial_id": "confirmatory_form_03_butterflies_on_flowers_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "street_food_grill",
+          "lure_item_id": "street_food_grill_quality_matched_control_lure",
+          "old_item_id": "street_food_grill_quality_matched_control_old",
+          "session1_slot": 6,
+          "session2_trial_id": "confirmatory_form_03_street_food_grill_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "rain_on_window",
+          "lure_item_id": "rain_on_window_selector_top_lure",
+          "old_item_id": "rain_on_window_selector_top_old",
+          "session1_slot": 7,
+          "session2_trial_id": "confirmatory_form_03_rain_on_window_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "hands_pottery_wheel",
+          "lure_item_id": "hands_pottery_wheel_quality_matched_control_lure",
+          "old_item_id": "hands_pottery_wheel_quality_matched_control_old",
+          "session1_slot": 8,
+          "session2_trial_id": "confirmatory_form_03_hands_pottery_wheel_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "candle_flame_table",
+          "lure_item_id": "candle_flame_table_selector_top_lure",
+          "old_item_id": "candle_flame_table_selector_top_old",
+          "session1_slot": 9,
+          "session2_trial_id": "confirmatory_form_03_candle_flame_table_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "orange_flowers",
+          "lure_item_id": "orange_flowers_quality_matched_control_lure",
+          "old_item_id": "orange_flowers_quality_matched_control_old",
+          "session1_slot": 10,
+          "session2_trial_id": "confirmatory_form_03_orange_flowers_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "hanging_clothes",
+          "lure_item_id": "hanging_clothes_selector_top_lure",
+          "old_item_id": "hanging_clothes_selector_top_old",
+          "session1_slot": 11,
+          "session2_trial_id": "confirmatory_form_03_hanging_clothes_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "blue_jellyfish",
+          "lure_item_id": "blue_jellyfish_quality_matched_control_lure",
+          "old_item_id": "blue_jellyfish_quality_matched_control_old",
+          "session1_slot": 12,
+          "session2_trial_id": "confirmatory_form_03_blue_jellyfish_recognition"
+        }
+      ],
+      "filler_old_count": 12,
+      "filler_recognition_count": 12,
+      "form_id": "confirmatory_form_03"
+    },
+    {
+      "analysis_trials": [
+        {
+          "condition": "selector_top",
+          "family_id": "aerial_beach",
+          "lure_item_id": "aerial_beach_selector_top_lure",
+          "old_item_id": "aerial_beach_selector_top_old",
+          "session1_slot": 1,
+          "session2_trial_id": "confirmatory_form_04_aerial_beach_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "city_street",
+          "lure_item_id": "city_street_quality_matched_control_lure",
+          "old_item_id": "city_street_quality_matched_control_old",
+          "session1_slot": 2,
+          "session2_trial_id": "confirmatory_form_04_city_street_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "storm_beach",
+          "lure_item_id": "storm_beach_selector_top_lure",
+          "old_item_id": "storm_beach_selector_top_old",
+          "session1_slot": 3,
+          "session2_trial_id": "confirmatory_form_04_storm_beach_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "butterflies_on_flowers",
+          "lure_item_id": "butterflies_on_flowers_quality_matched_control_lure",
+          "old_item_id": "butterflies_on_flowers_quality_matched_control_old",
+          "session1_slot": 4,
+          "session2_trial_id": "confirmatory_form_04_butterflies_on_flowers_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "street_food_grill",
+          "lure_item_id": "street_food_grill_selector_top_lure",
+          "old_item_id": "street_food_grill_selector_top_old",
+          "session1_slot": 5,
+          "session2_trial_id": "confirmatory_form_04_street_food_grill_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "rain_on_window",
+          "lure_item_id": "rain_on_window_quality_matched_control_lure",
+          "old_item_id": "rain_on_window_quality_matched_control_old",
+          "session1_slot": 6,
+          "session2_trial_id": "confirmatory_form_04_rain_on_window_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "hands_pottery_wheel",
+          "lure_item_id": "hands_pottery_wheel_selector_top_lure",
+          "old_item_id": "hands_pottery_wheel_selector_top_old",
+          "session1_slot": 7,
+          "session2_trial_id": "confirmatory_form_04_hands_pottery_wheel_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "candle_flame_table",
+          "lure_item_id": "candle_flame_table_quality_matched_control_lure",
+          "old_item_id": "candle_flame_table_quality_matched_control_old",
+          "session1_slot": 8,
+          "session2_trial_id": "confirmatory_form_04_candle_flame_table_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "orange_flowers",
+          "lure_item_id": "orange_flowers_selector_top_lure",
+          "old_item_id": "orange_flowers_selector_top_old",
+          "session1_slot": 9,
+          "session2_trial_id": "confirmatory_form_04_orange_flowers_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "hanging_clothes",
+          "lure_item_id": "hanging_clothes_quality_matched_control_lure",
+          "old_item_id": "hanging_clothes_quality_matched_control_old",
+          "session1_slot": 10,
+          "session2_trial_id": "confirmatory_form_04_hanging_clothes_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "blue_jellyfish",
+          "lure_item_id": "blue_jellyfish_selector_top_lure",
+          "old_item_id": "blue_jellyfish_selector_top_old",
+          "session1_slot": 11,
+          "session2_trial_id": "confirmatory_form_04_blue_jellyfish_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "old_car",
+          "lure_item_id": "old_car_quality_matched_control_lure",
+          "old_item_id": "old_car_quality_matched_control_old",
+          "session1_slot": 12,
+          "session2_trial_id": "confirmatory_form_04_old_car_recognition"
+        }
+      ],
+      "filler_old_count": 12,
+      "filler_recognition_count": 12,
+      "form_id": "confirmatory_form_04"
+    },
+    {
+      "analysis_trials": [
+        {
+          "condition": "selector_top",
+          "family_id": "city_street",
+          "lure_item_id": "city_street_selector_top_lure",
+          "old_item_id": "city_street_selector_top_old",
+          "session1_slot": 1,
+          "session2_trial_id": "confirmatory_form_05_city_street_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "storm_beach",
+          "lure_item_id": "storm_beach_quality_matched_control_lure",
+          "old_item_id": "storm_beach_quality_matched_control_old",
+          "session1_slot": 2,
+          "session2_trial_id": "confirmatory_form_05_storm_beach_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "butterflies_on_flowers",
+          "lure_item_id": "butterflies_on_flowers_selector_top_lure",
+          "old_item_id": "butterflies_on_flowers_selector_top_old",
+          "session1_slot": 3,
+          "session2_trial_id": "confirmatory_form_05_butterflies_on_flowers_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "street_food_grill",
+          "lure_item_id": "street_food_grill_quality_matched_control_lure",
+          "old_item_id": "street_food_grill_quality_matched_control_old",
+          "session1_slot": 4,
+          "session2_trial_id": "confirmatory_form_05_street_food_grill_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "rain_on_window",
+          "lure_item_id": "rain_on_window_selector_top_lure",
+          "old_item_id": "rain_on_window_selector_top_old",
+          "session1_slot": 5,
+          "session2_trial_id": "confirmatory_form_05_rain_on_window_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "hands_pottery_wheel",
+          "lure_item_id": "hands_pottery_wheel_quality_matched_control_lure",
+          "old_item_id": "hands_pottery_wheel_quality_matched_control_old",
+          "session1_slot": 6,
+          "session2_trial_id": "confirmatory_form_05_hands_pottery_wheel_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "candle_flame_table",
+          "lure_item_id": "candle_flame_table_selector_top_lure",
+          "old_item_id": "candle_flame_table_selector_top_old",
+          "session1_slot": 7,
+          "session2_trial_id": "confirmatory_form_05_candle_flame_table_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "orange_flowers",
+          "lure_item_id": "orange_flowers_quality_matched_control_lure",
+          "old_item_id": "orange_flowers_quality_matched_control_old",
+          "session1_slot": 8,
+          "session2_trial_id": "confirmatory_form_05_orange_flowers_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "hanging_clothes",
+          "lure_item_id": "hanging_clothes_selector_top_lure",
+          "old_item_id": "hanging_clothes_selector_top_old",
+          "session1_slot": 9,
+          "session2_trial_id": "confirmatory_form_05_hanging_clothes_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "blue_jellyfish",
+          "lure_item_id": "blue_jellyfish_quality_matched_control_lure",
+          "old_item_id": "blue_jellyfish_quality_matched_control_old",
+          "session1_slot": 10,
+          "session2_trial_id": "confirmatory_form_05_blue_jellyfish_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "old_car",
+          "lure_item_id": "old_car_selector_top_lure",
+          "old_item_id": "old_car_selector_top_old",
+          "session1_slot": 11,
+          "session2_trial_id": "confirmatory_form_05_old_car_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "aerial_beach",
+          "lure_item_id": "aerial_beach_quality_matched_control_lure",
+          "old_item_id": "aerial_beach_quality_matched_control_old",
+          "session1_slot": 12,
+          "session2_trial_id": "confirmatory_form_05_aerial_beach_recognition"
+        }
+      ],
+      "filler_old_count": 12,
+      "filler_recognition_count": 12,
+      "form_id": "confirmatory_form_05"
+    },
+    {
+      "analysis_trials": [
+        {
+          "condition": "selector_top",
+          "family_id": "storm_beach",
+          "lure_item_id": "storm_beach_selector_top_lure",
+          "old_item_id": "storm_beach_selector_top_old",
+          "session1_slot": 1,
+          "session2_trial_id": "confirmatory_form_06_storm_beach_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "butterflies_on_flowers",
+          "lure_item_id": "butterflies_on_flowers_quality_matched_control_lure",
+          "old_item_id": "butterflies_on_flowers_quality_matched_control_old",
+          "session1_slot": 2,
+          "session2_trial_id": "confirmatory_form_06_butterflies_on_flowers_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "street_food_grill",
+          "lure_item_id": "street_food_grill_selector_top_lure",
+          "old_item_id": "street_food_grill_selector_top_old",
+          "session1_slot": 3,
+          "session2_trial_id": "confirmatory_form_06_street_food_grill_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "rain_on_window",
+          "lure_item_id": "rain_on_window_quality_matched_control_lure",
+          "old_item_id": "rain_on_window_quality_matched_control_old",
+          "session1_slot": 4,
+          "session2_trial_id": "confirmatory_form_06_rain_on_window_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "hands_pottery_wheel",
+          "lure_item_id": "hands_pottery_wheel_selector_top_lure",
+          "old_item_id": "hands_pottery_wheel_selector_top_old",
+          "session1_slot": 5,
+          "session2_trial_id": "confirmatory_form_06_hands_pottery_wheel_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "candle_flame_table",
+          "lure_item_id": "candle_flame_table_quality_matched_control_lure",
+          "old_item_id": "candle_flame_table_quality_matched_control_old",
+          "session1_slot": 6,
+          "session2_trial_id": "confirmatory_form_06_candle_flame_table_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "orange_flowers",
+          "lure_item_id": "orange_flowers_selector_top_lure",
+          "old_item_id": "orange_flowers_selector_top_old",
+          "session1_slot": 7,
+          "session2_trial_id": "confirmatory_form_06_orange_flowers_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "hanging_clothes",
+          "lure_item_id": "hanging_clothes_quality_matched_control_lure",
+          "old_item_id": "hanging_clothes_quality_matched_control_old",
+          "session1_slot": 8,
+          "session2_trial_id": "confirmatory_form_06_hanging_clothes_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "blue_jellyfish",
+          "lure_item_id": "blue_jellyfish_selector_top_lure",
+          "old_item_id": "blue_jellyfish_selector_top_old",
+          "session1_slot": 9,
+          "session2_trial_id": "confirmatory_form_06_blue_jellyfish_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "old_car",
+          "lure_item_id": "old_car_quality_matched_control_lure",
+          "old_item_id": "old_car_quality_matched_control_old",
+          "session1_slot": 10,
+          "session2_trial_id": "confirmatory_form_06_old_car_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "aerial_beach",
+          "lure_item_id": "aerial_beach_selector_top_lure",
+          "old_item_id": "aerial_beach_selector_top_old",
+          "session1_slot": 11,
+          "session2_trial_id": "confirmatory_form_06_aerial_beach_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "city_street",
+          "lure_item_id": "city_street_quality_matched_control_lure",
+          "old_item_id": "city_street_quality_matched_control_old",
+          "session1_slot": 12,
+          "session2_trial_id": "confirmatory_form_06_city_street_recognition"
+        }
+      ],
+      "filler_old_count": 12,
+      "filler_recognition_count": 12,
+      "form_id": "confirmatory_form_06"
+    },
+    {
+      "analysis_trials": [
+        {
+          "condition": "selector_top",
+          "family_id": "butterflies_on_flowers",
+          "lure_item_id": "butterflies_on_flowers_selector_top_lure",
+          "old_item_id": "butterflies_on_flowers_selector_top_old",
+          "session1_slot": 1,
+          "session2_trial_id": "confirmatory_form_07_butterflies_on_flowers_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "street_food_grill",
+          "lure_item_id": "street_food_grill_quality_matched_control_lure",
+          "old_item_id": "street_food_grill_quality_matched_control_old",
+          "session1_slot": 2,
+          "session2_trial_id": "confirmatory_form_07_street_food_grill_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "rain_on_window",
+          "lure_item_id": "rain_on_window_selector_top_lure",
+          "old_item_id": "rain_on_window_selector_top_old",
+          "session1_slot": 3,
+          "session2_trial_id": "confirmatory_form_07_rain_on_window_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "hands_pottery_wheel",
+          "lure_item_id": "hands_pottery_wheel_quality_matched_control_lure",
+          "old_item_id": "hands_pottery_wheel_quality_matched_control_old",
+          "session1_slot": 4,
+          "session2_trial_id": "confirmatory_form_07_hands_pottery_wheel_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "candle_flame_table",
+          "lure_item_id": "candle_flame_table_selector_top_lure",
+          "old_item_id": "candle_flame_table_selector_top_old",
+          "session1_slot": 5,
+          "session2_trial_id": "confirmatory_form_07_candle_flame_table_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "orange_flowers",
+          "lure_item_id": "orange_flowers_quality_matched_control_lure",
+          "old_item_id": "orange_flowers_quality_matched_control_old",
+          "session1_slot": 6,
+          "session2_trial_id": "confirmatory_form_07_orange_flowers_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "hanging_clothes",
+          "lure_item_id": "hanging_clothes_selector_top_lure",
+          "old_item_id": "hanging_clothes_selector_top_old",
+          "session1_slot": 7,
+          "session2_trial_id": "confirmatory_form_07_hanging_clothes_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "blue_jellyfish",
+          "lure_item_id": "blue_jellyfish_quality_matched_control_lure",
+          "old_item_id": "blue_jellyfish_quality_matched_control_old",
+          "session1_slot": 8,
+          "session2_trial_id": "confirmatory_form_07_blue_jellyfish_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "old_car",
+          "lure_item_id": "old_car_selector_top_lure",
+          "old_item_id": "old_car_selector_top_old",
+          "session1_slot": 9,
+          "session2_trial_id": "confirmatory_form_07_old_car_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "aerial_beach",
+          "lure_item_id": "aerial_beach_quality_matched_control_lure",
+          "old_item_id": "aerial_beach_quality_matched_control_old",
+          "session1_slot": 10,
+          "session2_trial_id": "confirmatory_form_07_aerial_beach_recognition"
+        },
+        {
+          "condition": "selector_top",
+          "family_id": "city_street",
+          "lure_item_id": "city_street_selector_top_lure",
+          "old_item_id": "city_street_selector_top_old",
+          "session1_slot": 11,
+          "session2_trial_id": "confirmatory_form_07_city_street_recognition"
+        },
+        {
+          "condition": "quality_matched_control",
+          "family_id": "storm_beach",
+          "lure_item_id": "storm_beach_quality_matched_control_lure",
+          "old_item_id": "storm_beach_quality_matched_control_old",
+          "session1_slot": 12,
+          "session2_trial_id": "confirmatory_form_07_storm_beach_recognition"
+        }
+      ],
+      "filler_old_count": 12,
+      "filler_recognition_count": 12,
+      "form_id": "confirmatory_form_07"
+    }
+  ],
+  "source_config": "research_program/neurips_memorability_selector/experiments/content_pocket_confirmatory_recognition_20260615/confirmatory_study_config_20260615.json",
+  "validation_errors": [],
+  "validation_status": "passed"
+}

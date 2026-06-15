@@ -14,6 +14,23 @@ update `CLAIM_LEDGER.md` and
 `research_program/neurips_memorability_selector/experiments/current_research_status.md`
 too.
 
+## New Confirmatory Recognition Setup - 2026-06-15
+
+A larger multi-pocket delayed-recognition study scaffold now lives at:
+
+`research_program/neurips_memorability_selector/experiments/content_pocket_confirmatory_recognition_20260615/`
+
+This is a setup artifact only. It does not generate videos, spend Seedance API
+budget, collect human data, or change the claim ledger. It defines the next
+publishability-oriented experiment: 12 content families, Seedance 2.0 candidate
+generation, prospective selector-top versus quality-matched-control assignment,
+durable response capture, public stimulus bundle, and mixed-effects analysis.
+
+Immediate next action: implement the Seedance generation adapter in dry-run
+mode against the 96-job candidate manifest, verify Doppler-provided credentials
+without printing secrets, estimate cost, then review before spending API
+budget.
+
 ## Current Accepted State
 
 - Human behavior remains the strongest validation layer. The Prolific Study A
