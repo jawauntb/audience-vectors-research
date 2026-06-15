@@ -598,7 +598,20 @@ def run_live_generation(
     headers = {"Authorization": f"Bearer {api_key}"}
     rows: list[dict[str, Any]] = []
     with httpx.Client(timeout=args.request_timeout_seconds) as client:
-        for job in jobs:
+        for index, job in enumerate(jobs, start=1):
+            print(
+                json.dumps(
+                    {
+                        "event": "submit_job",
+                        "index": index,
+                        "total": len(jobs),
+                        "job_id": job["job_id"],
+                        "family_id": job["family_id"],
+                    },
+                    sort_keys=True,
+                ),
+                flush=True,
+            )
             row: dict[str, Any] = {
                 "job_id": job["job_id"],
                 "family_id": job["family_id"],
@@ -644,6 +657,20 @@ def run_live_generation(
                 row["status"] = "failed"
                 row["error"] = str(exc)
             rows.append(row)
+            print(
+                json.dumps(
+                    {
+                        "event": "finish_job",
+                        "index": index,
+                        "total": len(jobs),
+                        "job_id": row["job_id"],
+                        "family_id": row["family_id"],
+                        "status": row["status"],
+                    },
+                    sort_keys=True,
+                ),
+                flush=True,
+            )
     return rows
 
 

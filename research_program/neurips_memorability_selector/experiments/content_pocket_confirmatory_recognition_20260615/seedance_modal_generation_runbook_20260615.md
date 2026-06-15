@@ -2,7 +2,7 @@
 
 Date: 2026-06-15
 
-Status: `runbook_no_api_calls_yet`
+Status: `improved_candidate_prompt_manifest_ready`
 
 ## What Modal Should Handle
 
@@ -50,6 +50,17 @@ uv run python scripts/generate_confirmatory_seedance_videos.py \
   --dry-run
 ```
 
+Improved prompt-regime dry-run entry point:
+
+```bash
+uv run python scripts/build_confirmatory_seedance_generation_manifest.py \
+  --prompt-set improved_v1
+uv run python scripts/generate_confirmatory_seedance_videos.py \
+  --manifest research_program/neurips_memorability_selector/experiments/content_pocket_confirmatory_recognition_20260615/seedance_candidate_generation_manifest_improved_v1_20260615.json \
+  --phase candidate_old_videos \
+  --dry-run
+```
+
 To clear the model/cost preflight blockers without logging credentials:
 
 ```bash
@@ -77,19 +88,28 @@ For 96 videos at 1280x720, 5 seconds, and 24 fps, this is approximately
 `$0.76` per video and `$72.58` total before any provider-side changes,
 failures, retries, lures, fillers, or scoring costs.
 
-Live generation is deliberately opt-in and budget-capped:
+Live generation is deliberately opt-in and budget-capped. For new
+confirmatory stimuli, use the improved prompt manifest and the separate
+`candidate_old_videos_improved_v1` output root:
 
 ```bash
 cd /Users/jawaun/superoptimizers
 doppler run --project cofounder --config dev -- bash -lc '
   cd /Users/jawaun/isc_mod
   uv run python scripts/generate_confirmatory_seedance_videos.py \
+    --manifest research_program/neurips_memorability_selector/experiments/content_pocket_confirmatory_recognition_20260615/seedance_candidate_generation_manifest_improved_v1_20260615.json \
     --phase candidate_old_videos \
     --limit 1 \
     --execute-live \
     --max-cost-usd 1.00
 '
 ```
+
+Legacy note: an earlier baseline-prompt smoke/partial run produced retained
+clips under `data/generated/.../candidate_old_videos/`. Preserve those clips as
+legacy anchors, but do not mix them silently into the improved-v1 confirmatory
+candidate pool. The improved-v1 pool is intentionally regenerated into
+`data/generated/.../candidate_old_videos_improved_v1/`.
 
 The first one-video smoke completed on 2026-06-15 for
 `orange_flowers_candidate_old_v00`:
@@ -114,6 +134,7 @@ Phase 0: freeze prompt and candidate manifest.
 
 - 12 content families.
 - 8 candidate old-video prompts per family.
+- current prospective candidate pool: `improved_v1`;
 - no API calls until manifest review.
 
 Phase 1: generate candidate old videos.
