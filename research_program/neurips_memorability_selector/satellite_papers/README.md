@@ -93,6 +93,30 @@ Venue target:
 - Main-track only if the selector or guidance gain survives human/BMD
   validation against strong V-JEPA, CLIP, and quality baselines.
 
+## Paper 8: Content-Pocket Human Recognition Memory
+
+**Generated-Video Content Pockets Predict Delayed Human Recognition Memory**
+
+Core:
+
+- SVD content-pocket regime produced primary candidates: orange flowers and
+  hanging clothes.
+- TRIBE/V-JEPA compute-proxy verification preceded a frozen old-vs-lure human
+  recognition-memory task.
+- Wave 2 Prolific result provides narrow delayed human recognition evidence for
+  the pooled primary-positive packet against hard negative controls.
+- Scope remains exact recognition in this packet, not broad generated-video
+  memorability, measured-BMD grounding, or prompt-conditioned generator control.
+- Exportable PDF: `08_content_pocket_recognition_memory.pdf`.
+- Full paper PDF: `08_content_pocket_recognition_memory_full_paper.pdf`.
+- arXiv source package: `../arxiv/content_pocket_recognition_memory/`.
+
+Venue target:
+
+- NeuroAI / generative media evaluation workshop.
+- Main-track only if framed carefully as a content-pocket validation study or
+  paired with a larger confirmatory endpoint.
+
 ## Rule
 
 Do not let a satellite claim become a burden for the main paper unless it
