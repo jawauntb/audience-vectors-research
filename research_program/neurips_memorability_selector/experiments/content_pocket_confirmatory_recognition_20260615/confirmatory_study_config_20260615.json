@@ -7,7 +7,7 @@
     "duration_seconds": 5,
     "fps": 24,
     "model_family": "Seedance 2.0",
-    "model_id": "resolve_from_provider_before_generation",
+    "model_id": "bytedance/seedance-2.0",
     "resolution": "1280x720",
     "silence_audio": true
   },

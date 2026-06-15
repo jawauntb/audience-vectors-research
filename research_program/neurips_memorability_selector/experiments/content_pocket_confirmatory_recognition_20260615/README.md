@@ -39,16 +39,31 @@ in a delayed old-vs-lure task. The next study upgrades the regime:
 ## Immediate Next Operations
 
 1. Review and freeze the protocol/config.
-2. Implement the Seedance generation adapter against the actual provider API.
-3. Generate candidate old videos only after the manifest is frozen.
-4. Score candidates with TRIBE/BMD, V-JEPA, CLIP, quality, saliency, and simple
+2. Run the Seedance generation adapter in dry-run/cost-estimate mode.
+3. Implement the live provider call only after the dry-run report is reviewed.
+4. Generate candidate old videos only after the manifest is frozen.
+5. Score candidates with TRIBE/BMD, V-JEPA, CLIP, quality, saliency, and simple
    visual descriptors.
-5. Select one `selector_top` and one `quality_matched_control` item per content
+6. Select one `selector_top` and one `quality_matched_control` item per content
    family.
-6. Generate same-category lures for selected old videos.
-7. Screen videos, upload to durable HTTPS storage, and freeze launch assets.
-8. Launch Session 1/Session 2 with a durable collector and preregistered
+7. Generate same-category lures for selected old videos.
+8. Screen videos, upload to durable HTTPS storage, and freeze launch assets.
+9. Launch Session 1/Session 2 with a durable collector and preregistered
    mixed-effects analysis.
+
+The dry-run entry point is:
+
+```bash
+uv run python scripts/generate_confirmatory_seedance_videos.py \
+  --phase candidate_old_videos \
+  --dry-run
+```
+
+It writes `seedance_candidate_generation_dry_run_20260615.json` and
+`seedance_candidate_generation_dry_run_20260615.md`. The report resolves the
+OpenRouter model as `bytedance/seedance-2.0` and estimates cost from the
+committed 5-second 1280x720 settings. Live generation still requires a separate
+provider-call implementation and final spend review.
 
 ## Allowed Claim Before Human Data
 

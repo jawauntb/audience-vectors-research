@@ -42,6 +42,41 @@ The first implementation pass should run `--dry-run` and print the resolved
 model ID, job count, estimated cost, and output paths. Do not spend generation
 budget until the dry-run manifest is reviewed.
 
+Committed dry-run entry point:
+
+```bash
+uv run python scripts/generate_confirmatory_seedance_videos.py \
+  --phase candidate_old_videos \
+  --dry-run
+```
+
+To clear the model/cost preflight blockers without logging credentials:
+
+```bash
+uv run python scripts/generate_confirmatory_seedance_videos.py \
+  --phase candidate_old_videos \
+  --model-id <provider_seedance_2_model_id> \
+  --estimated-cost-per-video-usd <reviewed_cost> \
+  --dry-run
+```
+
+The script may also read `SEEDANCE_MODEL_ID` and
+`SEEDANCE_ESTIMATED_COST_PER_VIDEO_USD` from the environment. It records only
+whether recognized credential variables are present; it never records secret
+values.
+
+For the committed candidate manifest, the OpenRouter model ID is
+`bytedance/seedance-2.0`. The dry-run estimates cost using OpenRouter's token
+formula:
+
+```text
+(width * height * duration_seconds * fps / 1024) * 0.000007 USD
+```
+
+For 96 videos at 1280x720, 5 seconds, and 24 fps, this is approximately
+`$0.76` per video and `$72.58` total before any provider-side changes,
+failures, retries, lures, fillers, or scoring costs.
+
 ## Generation Phases
 
 Phase 0: freeze prompt and candidate manifest.
