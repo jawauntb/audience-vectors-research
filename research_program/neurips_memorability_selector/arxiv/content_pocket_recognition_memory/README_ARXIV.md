@@ -42,3 +42,16 @@ Claim boundary:
   orange-flowers/hanging-clothes content-pocket packet.
 - Not allowed: broad memorability proof, measured-BMD/fMRI grounding,
   prompt-conditioned generation control, or a general BO/SVD optimization claim.
+
+Reproducibility boundary:
+
+- Link the paper to the project repository:
+  `https://github.com/jawauntb/audience-vectors-research`.
+- Keep raw Prolific/webhook exports out of git because they contain participant
+  metadata.
+- Release generated old/lure stimulus videos as a separate artifact bundle
+  with stable URLs or a DOI when submitting externally; do not embed videos in
+  the PDF appendix.
+- Use the committed design, stimulus, screening, hosted-URL, response-plan,
+  aggregate-result, and figure artifacts as the participant-safe reproducibility
+  packet.
