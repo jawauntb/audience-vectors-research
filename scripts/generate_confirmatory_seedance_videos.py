@@ -14,8 +14,10 @@ import json
 import os
 import time
 from collections import Counter
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
+from threading import Lock
 from typing import Any
 from urllib.parse import urlparse
 
@@ -106,6 +108,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--poll-interval-seconds", type=int, default=10)
     parser.add_argument("--max-poll-attempts", type=int, default=90)
     parser.add_argument("--request-timeout-seconds", type=float, default=120.0)
+    parser.add_argument(
+        "--concurrency",
+        type=int,
+        default=1,
+        help="Maximum simultaneous live provider jobs. Default is sequential mode.",
+    )
     parser.add_argument(
         "--overwrite",
         action="store_true",
@@ -580,7 +588,7 @@ def download_generated_video(
     }
 
 
-def run_live_generation(
+def run_live_generation(  # noqa: C901
     *,
     config: dict[str, Any],
     jobs: list[dict[str, Any]],
@@ -594,32 +602,38 @@ def run_live_generation(
         raise ValueError("--poll-interval-seconds must be positive")
     if args.max_poll_attempts <= 0:
         raise ValueError("--max-poll-attempts must be positive")
+    if args.concurrency <= 0:
+        raise ValueError("--concurrency must be positive")
 
     headers = {"Authorization": f"Bearer {api_key}"}
-    rows: list[dict[str, Any]] = []
-    with httpx.Client(timeout=args.request_timeout_seconds) as client:
-        for index, job in enumerate(jobs, start=1):
+    print_lock = Lock()
+
+    def print_event(payload: dict[str, Any]) -> None:
+        with print_lock:
             print(
-                json.dumps(
-                    {
-                        "event": "submit_job",
-                        "index": index,
-                        "total": len(jobs),
-                        "job_id": job["job_id"],
-                        "family_id": job["family_id"],
-                    },
-                    sort_keys=True,
-                ),
+                json.dumps(payload, sort_keys=True),
                 flush=True,
             )
-            row: dict[str, Any] = {
+
+    def run_one_job(index: int, job: dict[str, Any]) -> dict[str, Any]:
+        print_event(
+            {
+                "event": "submit_job",
+                "index": index,
+                "total": len(jobs),
                 "job_id": job["job_id"],
                 "family_id": job["family_id"],
-                "status": "submitted",
-                "output_path": job["output_video"]["path"],
-                "prompt": job["prompt"],
             }
-            try:
+        )
+        row: dict[str, Any] = {
+            "job_id": job["job_id"],
+            "family_id": job["family_id"],
+            "status": "submitted",
+            "output_path": job["output_video"]["path"],
+            "prompt": job["prompt"],
+        }
+        try:
+            with httpx.Client(timeout=args.request_timeout_seconds) as client:
                 submitted = submit_openrouter_job(
                     client=client,
                     base_url=str(args.openrouter_base_url),
@@ -639,12 +653,10 @@ def run_live_generation(
                 if completed["status"] != "completed":
                     row["status"] = "provider_not_completed"
                     row["error"] = completed.get("error")
-                    rows.append(row)
-                    continue
+                    return row
                 if not completed["unsigned_urls"]:
                     row["status"] = "provider_completed_without_video_url"
-                    rows.append(row)
-                    continue
+                    return row
                 output = download_generated_video(
                     client=client,
                     url=completed["unsigned_urls"][0],
@@ -653,24 +665,31 @@ def run_live_generation(
                 )
                 row["status"] = "downloaded"
                 row["output_video"] = output
-            except Exception as exc:  # noqa: BLE001
-                row["status"] = "failed"
-                row["error"] = str(exc)
-            rows.append(row)
-            print(
-                json.dumps(
-                    {
-                        "event": "finish_job",
-                        "index": index,
-                        "total": len(jobs),
-                        "job_id": row["job_id"],
-                        "family_id": row["family_id"],
-                        "status": row["status"],
-                    },
-                    sort_keys=True,
-                ),
-                flush=True,
+        except Exception as exc:  # noqa: BLE001
+            row["status"] = "failed"
+            row["error"] = str(exc)
+        finally:
+            print_event(
+                {
+                    "event": "finish_job",
+                    "index": index,
+                    "total": len(jobs),
+                    "job_id": job["job_id"],
+                    "family_id": job["family_id"],
+                    "status": row["status"],
+                }
             )
+        return row
+
+    rows: list[dict[str, Any]] = []
+    max_workers = min(args.concurrency, len(jobs)) if jobs else 1
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(run_one_job, index, job): index
+            for index, job in enumerate(jobs, start=1)
+        }
+        for future in as_completed(futures):
+            rows.append(future.result())
     return rows
 
 
@@ -814,6 +833,7 @@ def build_report(
             "poll_interval_seconds": args.poll_interval_seconds,
             "max_poll_attempts": args.max_poll_attempts,
             "request_timeout_seconds": args.request_timeout_seconds,
+            "concurrency": args.concurrency,
         },
         "skipped_rows": skipped_rows,
         "live_rows": live_rows,
