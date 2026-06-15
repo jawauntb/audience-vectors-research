@@ -27,6 +27,11 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--summary-json", required=True, type=Path)
     parser.add_argument("--out-pdf", required=True, type=Path)
+    parser.add_argument(
+        "--arxiv-figure-dir",
+        type=Path,
+        help="Optional directory for cropped PNG figures used by the arXiv source.",
+    )
     return parser.parse_args()
 
 
@@ -374,6 +379,15 @@ def main() -> None:
         append_images=pages[1:],
         resolution=150.0,
     )
+    if args.arxiv_figure_dir:
+        args.arxiv_figure_dir.mkdir(parents=True, exist_ok=True)
+        crops = {
+            "recognition_accuracy.png": (60, 70, 1550, 1680),
+            "primary_vs_hard_lift.png": (60, 70, 1550, 1550),
+            "pocket_specific_lift.png": (60, 70, 1550, 1160),
+        }
+        for page, (filename, box) in zip(pages[1:], crops.items(), strict=True):
+            page.crop(box).save(args.arxiv_figure_dir / filename)
 
 
 if __name__ == "__main__":
