@@ -7,12 +7,19 @@ This folder is a self-contained arXiv-style source package for:
 Files:
 
 - `main.tex`: preprint source.
+- `main.pdf`: compiled preprint PDF.
 - `references.bib`: local bibliography.
 - `figures/recognition_accuracy.png`: arm-level recognition plot.
 - `figures/primary_vs_hard_lift.png`: pooled primary-vs-hard-control lift.
 - `figures/pocket_specific_lift.png`: individual pocket contrast.
 
-Local compile command, when a TeX toolchain is installed:
+Local compile command with Tectonic:
+
+```bash
+tectonic -X compile main.tex
+```
+
+Equivalent classic TeX sequence:
 
 ```bash
 pdflatex main
@@ -21,8 +28,8 @@ pdflatex main
 pdflatex main
 ```
 
-The current Codex environment did not have `pdflatex`, `latexmk`, `xelatex`, or
-`tectonic`, so this package was not locally compiled here. The companion
+This package was locally compiled with `tectonic 0.16.9` on 2026-06-15. The
+compile completed with only a bibliography underfull-box warning. The companion
 presentation-style PDF remains at:
 
 ```text
