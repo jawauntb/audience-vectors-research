@@ -1,0 +1,2313 @@
+{
+  "created_at_utc": "2026-06-15T16:25:40.991850+00:00",
+  "experiment_id": "content_pocket_confirmatory_recognition_20260615",
+  "job_count": 96,
+  "jobs": [
+    {
+      "candidate_index": 0,
+      "family_id": "orange_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "orange_flowers_candidate_old_v00",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/orange_flowers/orange_flowers_candidate_old_v00.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of orange flowers with clear petals, gentle motion, stable composition, no people, no text, no watermark. Variant requirements: close framing, clear central subject, gentle natural motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "close framing, clear central subject, gentle natural motion"
+    },
+    {
+      "candidate_index": 1,
+      "family_id": "orange_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "orange_flowers_candidate_old_v01",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/orange_flowers/orange_flowers_candidate_old_v01.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of orange flowers with clear petals, gentle motion, stable composition, no people, no text, no watermark. Variant requirements: medium framing, visible surroundings, gentle camera drift; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "medium framing, visible surroundings, gentle camera drift"
+    },
+    {
+      "candidate_index": 2,
+      "family_id": "orange_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "orange_flowers_candidate_old_v02",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/orange_flowers/orange_flowers_candidate_old_v02.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of orange flowers with clear petals, gentle motion, stable composition, no people, no text, no watermark. Variant requirements: wider contextual framing, stable composition, subtle environmental motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "wider contextual framing, stable composition, subtle environmental motion"
+    },
+    {
+      "candidate_index": 3,
+      "family_id": "orange_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "orange_flowers_candidate_old_v03",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/orange_flowers/orange_flowers_candidate_old_v03.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of orange flowers with clear petals, gentle motion, stable composition, no people, no text, no watermark. Variant requirements: side-angle composition, distinct background geometry, continuous motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "side-angle composition, distinct background geometry, continuous motion"
+    },
+    {
+      "candidate_index": 4,
+      "family_id": "orange_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "orange_flowers_candidate_old_v04",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/orange_flowers/orange_flowers_candidate_old_v04.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of orange flowers with clear petals, gentle motion, stable composition, no people, no text, no watermark. Variant requirements: foreground detail with readable background separation, stable camera; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "foreground detail with readable background separation, stable camera"
+    },
+    {
+      "candidate_index": 5,
+      "family_id": "orange_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "orange_flowers_candidate_old_v05",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/orange_flowers/orange_flowers_candidate_old_v05.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of orange flowers with clear petals, gentle motion, stable composition, no people, no text, no watermark. Variant requirements: slight push-in camera movement, clear subject identity, no abrupt cuts; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "slight push-in camera movement, clear subject identity, no abrupt cuts"
+    },
+    {
+      "candidate_index": 6,
+      "family_id": "orange_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "orange_flowers_candidate_old_v06",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/orange_flowers/orange_flowers_candidate_old_v06.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of orange flowers with clear petals, gentle motion, stable composition, no people, no text, no watermark. Variant requirements: static camera with subject motion, natural lighting, coherent scene; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "static camera with subject motion, natural lighting, coherent scene"
+    },
+    {
+      "candidate_index": 7,
+      "family_id": "orange_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "orange_flowers_candidate_old_v07",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/orange_flowers/orange_flowers_candidate_old_v07.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of orange flowers with clear petals, gentle motion, stable composition, no people, no text, no watermark. Variant requirements: alternate viewpoint with distinct layout, realistic motion, clean edges; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "alternate viewpoint with distinct layout, realistic motion, clean edges"
+    },
+    {
+      "candidate_index": 0,
+      "family_id": "hanging_clothes",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hanging_clothes_candidate_old_v00",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hanging_clothes/hanging_clothes_candidate_old_v00.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of hanging clothes or laundry moving gently, clear fabric detail, stable composition, no text, no watermark. Variant requirements: close framing, clear central subject, gentle natural motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "close framing, clear central subject, gentle natural motion"
+    },
+    {
+      "candidate_index": 1,
+      "family_id": "hanging_clothes",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hanging_clothes_candidate_old_v01",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hanging_clothes/hanging_clothes_candidate_old_v01.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of hanging clothes or laundry moving gently, clear fabric detail, stable composition, no text, no watermark. Variant requirements: medium framing, visible surroundings, gentle camera drift; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "medium framing, visible surroundings, gentle camera drift"
+    },
+    {
+      "candidate_index": 2,
+      "family_id": "hanging_clothes",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hanging_clothes_candidate_old_v02",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hanging_clothes/hanging_clothes_candidate_old_v02.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of hanging clothes or laundry moving gently, clear fabric detail, stable composition, no text, no watermark. Variant requirements: wider contextual framing, stable composition, subtle environmental motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "wider contextual framing, stable composition, subtle environmental motion"
+    },
+    {
+      "candidate_index": 3,
+      "family_id": "hanging_clothes",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hanging_clothes_candidate_old_v03",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hanging_clothes/hanging_clothes_candidate_old_v03.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of hanging clothes or laundry moving gently, clear fabric detail, stable composition, no text, no watermark. Variant requirements: side-angle composition, distinct background geometry, continuous motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "side-angle composition, distinct background geometry, continuous motion"
+    },
+    {
+      "candidate_index": 4,
+      "family_id": "hanging_clothes",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hanging_clothes_candidate_old_v04",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hanging_clothes/hanging_clothes_candidate_old_v04.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of hanging clothes or laundry moving gently, clear fabric detail, stable composition, no text, no watermark. Variant requirements: foreground detail with readable background separation, stable camera; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "foreground detail with readable background separation, stable camera"
+    },
+    {
+      "candidate_index": 5,
+      "family_id": "hanging_clothes",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hanging_clothes_candidate_old_v05",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hanging_clothes/hanging_clothes_candidate_old_v05.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of hanging clothes or laundry moving gently, clear fabric detail, stable composition, no text, no watermark. Variant requirements: slight push-in camera movement, clear subject identity, no abrupt cuts; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "slight push-in camera movement, clear subject identity, no abrupt cuts"
+    },
+    {
+      "candidate_index": 6,
+      "family_id": "hanging_clothes",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hanging_clothes_candidate_old_v06",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hanging_clothes/hanging_clothes_candidate_old_v06.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of hanging clothes or laundry moving gently, clear fabric detail, stable composition, no text, no watermark. Variant requirements: static camera with subject motion, natural lighting, coherent scene; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "static camera with subject motion, natural lighting, coherent scene"
+    },
+    {
+      "candidate_index": 7,
+      "family_id": "hanging_clothes",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hanging_clothes_candidate_old_v07",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hanging_clothes/hanging_clothes_candidate_old_v07.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "accepted_positive_anchor",
+      "prompt": "Natural realistic 5-second video of hanging clothes or laundry moving gently, clear fabric detail, stable composition, no text, no watermark. Variant requirements: alternate viewpoint with distinct layout, realistic motion, clean edges; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "alternate viewpoint with distinct layout, realistic motion, clean edges"
+    },
+    {
+      "candidate_index": 0,
+      "family_id": "blue_jellyfish",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "blue_jellyfish_candidate_old_v00",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/blue_jellyfish/blue_jellyfish_candidate_old_v00.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second underwater video of blue jellyfish drifting slowly, clear central subject, stable composition, no text, no watermark. Variant requirements: close framing, clear central subject, gentle natural motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "close framing, clear central subject, gentle natural motion"
+    },
+    {
+      "candidate_index": 1,
+      "family_id": "blue_jellyfish",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "blue_jellyfish_candidate_old_v01",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/blue_jellyfish/blue_jellyfish_candidate_old_v01.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second underwater video of blue jellyfish drifting slowly, clear central subject, stable composition, no text, no watermark. Variant requirements: medium framing, visible surroundings, gentle camera drift; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "medium framing, visible surroundings, gentle camera drift"
+    },
+    {
+      "candidate_index": 2,
+      "family_id": "blue_jellyfish",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "blue_jellyfish_candidate_old_v02",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/blue_jellyfish/blue_jellyfish_candidate_old_v02.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second underwater video of blue jellyfish drifting slowly, clear central subject, stable composition, no text, no watermark. Variant requirements: wider contextual framing, stable composition, subtle environmental motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "wider contextual framing, stable composition, subtle environmental motion"
+    },
+    {
+      "candidate_index": 3,
+      "family_id": "blue_jellyfish",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "blue_jellyfish_candidate_old_v03",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/blue_jellyfish/blue_jellyfish_candidate_old_v03.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second underwater video of blue jellyfish drifting slowly, clear central subject, stable composition, no text, no watermark. Variant requirements: side-angle composition, distinct background geometry, continuous motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "side-angle composition, distinct background geometry, continuous motion"
+    },
+    {
+      "candidate_index": 4,
+      "family_id": "blue_jellyfish",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "blue_jellyfish_candidate_old_v04",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/blue_jellyfish/blue_jellyfish_candidate_old_v04.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second underwater video of blue jellyfish drifting slowly, clear central subject, stable composition, no text, no watermark. Variant requirements: foreground detail with readable background separation, stable camera; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "foreground detail with readable background separation, stable camera"
+    },
+    {
+      "candidate_index": 5,
+      "family_id": "blue_jellyfish",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "blue_jellyfish_candidate_old_v05",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/blue_jellyfish/blue_jellyfish_candidate_old_v05.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second underwater video of blue jellyfish drifting slowly, clear central subject, stable composition, no text, no watermark. Variant requirements: slight push-in camera movement, clear subject identity, no abrupt cuts; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "slight push-in camera movement, clear subject identity, no abrupt cuts"
+    },
+    {
+      "candidate_index": 6,
+      "family_id": "blue_jellyfish",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "blue_jellyfish_candidate_old_v06",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/blue_jellyfish/blue_jellyfish_candidate_old_v06.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second underwater video of blue jellyfish drifting slowly, clear central subject, stable composition, no text, no watermark. Variant requirements: static camera with subject motion, natural lighting, coherent scene; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "static camera with subject motion, natural lighting, coherent scene"
+    },
+    {
+      "candidate_index": 7,
+      "family_id": "blue_jellyfish",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "blue_jellyfish_candidate_old_v07",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/blue_jellyfish/blue_jellyfish_candidate_old_v07.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second underwater video of blue jellyfish drifting slowly, clear central subject, stable composition, no text, no watermark. Variant requirements: alternate viewpoint with distinct layout, realistic motion, clean edges; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "alternate viewpoint with distinct layout, realistic motion, clean edges"
+    },
+    {
+      "candidate_index": 0,
+      "family_id": "old_car",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "old_car_candidate_old_v00",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/old_car/old_car_candidate_old_v00.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second video of an old car with distinctive shape and setting, gentle camera or environmental motion, no text, no watermark. Variant requirements: close framing, clear central subject, gentle natural motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "close framing, clear central subject, gentle natural motion"
+    },
+    {
+      "candidate_index": 1,
+      "family_id": "old_car",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "old_car_candidate_old_v01",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/old_car/old_car_candidate_old_v01.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second video of an old car with distinctive shape and setting, gentle camera or environmental motion, no text, no watermark. Variant requirements: medium framing, visible surroundings, gentle camera drift; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "medium framing, visible surroundings, gentle camera drift"
+    },
+    {
+      "candidate_index": 2,
+      "family_id": "old_car",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "old_car_candidate_old_v02",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/old_car/old_car_candidate_old_v02.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second video of an old car with distinctive shape and setting, gentle camera or environmental motion, no text, no watermark. Variant requirements: wider contextual framing, stable composition, subtle environmental motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "wider contextual framing, stable composition, subtle environmental motion"
+    },
+    {
+      "candidate_index": 3,
+      "family_id": "old_car",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "old_car_candidate_old_v03",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/old_car/old_car_candidate_old_v03.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second video of an old car with distinctive shape and setting, gentle camera or environmental motion, no text, no watermark. Variant requirements: side-angle composition, distinct background geometry, continuous motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "side-angle composition, distinct background geometry, continuous motion"
+    },
+    {
+      "candidate_index": 4,
+      "family_id": "old_car",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "old_car_candidate_old_v04",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/old_car/old_car_candidate_old_v04.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second video of an old car with distinctive shape and setting, gentle camera or environmental motion, no text, no watermark. Variant requirements: foreground detail with readable background separation, stable camera; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "foreground detail with readable background separation, stable camera"
+    },
+    {
+      "candidate_index": 5,
+      "family_id": "old_car",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "old_car_candidate_old_v05",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/old_car/old_car_candidate_old_v05.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second video of an old car with distinctive shape and setting, gentle camera or environmental motion, no text, no watermark. Variant requirements: slight push-in camera movement, clear subject identity, no abrupt cuts; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "slight push-in camera movement, clear subject identity, no abrupt cuts"
+    },
+    {
+      "candidate_index": 6,
+      "family_id": "old_car",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "old_car_candidate_old_v06",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/old_car/old_car_candidate_old_v06.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second video of an old car with distinctive shape and setting, gentle camera or environmental motion, no text, no watermark. Variant requirements: static camera with subject motion, natural lighting, coherent scene; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "static camera with subject motion, natural lighting, coherent scene"
+    },
+    {
+      "candidate_index": 7,
+      "family_id": "old_car",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "old_car_candidate_old_v07",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/old_car/old_car_candidate_old_v07.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "boundary_positive",
+      "prompt": "Natural realistic 5-second video of an old car with distinctive shape and setting, gentle camera or environmental motion, no text, no watermark. Variant requirements: alternate viewpoint with distinct layout, realistic motion, clean edges; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "alternate viewpoint with distinct layout, realistic motion, clean edges"
+    },
+    {
+      "candidate_index": 0,
+      "family_id": "aerial_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "aerial_beach_candidate_old_v00",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/aerial_beach/aerial_beach_candidate_old_v00.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second aerial beach video with shoreline, water motion, stable composition, no text, no watermark. Variant requirements: close framing, clear central subject, gentle natural motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "close framing, clear central subject, gentle natural motion"
+    },
+    {
+      "candidate_index": 1,
+      "family_id": "aerial_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "aerial_beach_candidate_old_v01",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/aerial_beach/aerial_beach_candidate_old_v01.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second aerial beach video with shoreline, water motion, stable composition, no text, no watermark. Variant requirements: medium framing, visible surroundings, gentle camera drift; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "medium framing, visible surroundings, gentle camera drift"
+    },
+    {
+      "candidate_index": 2,
+      "family_id": "aerial_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "aerial_beach_candidate_old_v02",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/aerial_beach/aerial_beach_candidate_old_v02.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second aerial beach video with shoreline, water motion, stable composition, no text, no watermark. Variant requirements: wider contextual framing, stable composition, subtle environmental motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "wider contextual framing, stable composition, subtle environmental motion"
+    },
+    {
+      "candidate_index": 3,
+      "family_id": "aerial_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "aerial_beach_candidate_old_v03",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/aerial_beach/aerial_beach_candidate_old_v03.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second aerial beach video with shoreline, water motion, stable composition, no text, no watermark. Variant requirements: side-angle composition, distinct background geometry, continuous motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "side-angle composition, distinct background geometry, continuous motion"
+    },
+    {
+      "candidate_index": 4,
+      "family_id": "aerial_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "aerial_beach_candidate_old_v04",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/aerial_beach/aerial_beach_candidate_old_v04.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second aerial beach video with shoreline, water motion, stable composition, no text, no watermark. Variant requirements: foreground detail with readable background separation, stable camera; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "foreground detail with readable background separation, stable camera"
+    },
+    {
+      "candidate_index": 5,
+      "family_id": "aerial_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "aerial_beach_candidate_old_v05",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/aerial_beach/aerial_beach_candidate_old_v05.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second aerial beach video with shoreline, water motion, stable composition, no text, no watermark. Variant requirements: slight push-in camera movement, clear subject identity, no abrupt cuts; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "slight push-in camera movement, clear subject identity, no abrupt cuts"
+    },
+    {
+      "candidate_index": 6,
+      "family_id": "aerial_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "aerial_beach_candidate_old_v06",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/aerial_beach/aerial_beach_candidate_old_v06.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second aerial beach video with shoreline, water motion, stable composition, no text, no watermark. Variant requirements: static camera with subject motion, natural lighting, coherent scene; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "static camera with subject motion, natural lighting, coherent scene"
+    },
+    {
+      "candidate_index": 7,
+      "family_id": "aerial_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "aerial_beach_candidate_old_v07",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/aerial_beach/aerial_beach_candidate_old_v07.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second aerial beach video with shoreline, water motion, stable composition, no text, no watermark. Variant requirements: alternate viewpoint with distinct layout, realistic motion, clean edges; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "alternate viewpoint with distinct layout, realistic motion, clean edges"
+    },
+    {
+      "candidate_index": 0,
+      "family_id": "city_street",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "city_street_candidate_old_v00",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/city_street/city_street_candidate_old_v00.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second city street video with buildings, street geometry, subtle motion, stable composition, no text, no watermark. Variant requirements: close framing, clear central subject, gentle natural motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "close framing, clear central subject, gentle natural motion"
+    },
+    {
+      "candidate_index": 1,
+      "family_id": "city_street",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "city_street_candidate_old_v01",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/city_street/city_street_candidate_old_v01.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second city street video with buildings, street geometry, subtle motion, stable composition, no text, no watermark. Variant requirements: medium framing, visible surroundings, gentle camera drift; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "medium framing, visible surroundings, gentle camera drift"
+    },
+    {
+      "candidate_index": 2,
+      "family_id": "city_street",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "city_street_candidate_old_v02",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/city_street/city_street_candidate_old_v02.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second city street video with buildings, street geometry, subtle motion, stable composition, no text, no watermark. Variant requirements: wider contextual framing, stable composition, subtle environmental motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "wider contextual framing, stable composition, subtle environmental motion"
+    },
+    {
+      "candidate_index": 3,
+      "family_id": "city_street",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "city_street_candidate_old_v03",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/city_street/city_street_candidate_old_v03.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second city street video with buildings, street geometry, subtle motion, stable composition, no text, no watermark. Variant requirements: side-angle composition, distinct background geometry, continuous motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "side-angle composition, distinct background geometry, continuous motion"
+    },
+    {
+      "candidate_index": 4,
+      "family_id": "city_street",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "city_street_candidate_old_v04",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/city_street/city_street_candidate_old_v04.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second city street video with buildings, street geometry, subtle motion, stable composition, no text, no watermark. Variant requirements: foreground detail with readable background separation, stable camera; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "foreground detail with readable background separation, stable camera"
+    },
+    {
+      "candidate_index": 5,
+      "family_id": "city_street",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "city_street_candidate_old_v05",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/city_street/city_street_candidate_old_v05.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second city street video with buildings, street geometry, subtle motion, stable composition, no text, no watermark. Variant requirements: slight push-in camera movement, clear subject identity, no abrupt cuts; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "slight push-in camera movement, clear subject identity, no abrupt cuts"
+    },
+    {
+      "candidate_index": 6,
+      "family_id": "city_street",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "city_street_candidate_old_v06",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/city_street/city_street_candidate_old_v06.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second city street video with buildings, street geometry, subtle motion, stable composition, no text, no watermark. Variant requirements: static camera with subject motion, natural lighting, coherent scene; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "static camera with subject motion, natural lighting, coherent scene"
+    },
+    {
+      "candidate_index": 7,
+      "family_id": "city_street",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "city_street_candidate_old_v07",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/city_street/city_street_candidate_old_v07.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second city street video with buildings, street geometry, subtle motion, stable composition, no text, no watermark. Variant requirements: alternate viewpoint with distinct layout, realistic motion, clean edges; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "alternate viewpoint with distinct layout, realistic motion, clean edges"
+    },
+    {
+      "candidate_index": 0,
+      "family_id": "storm_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "storm_beach_candidate_old_v00",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/storm_beach/storm_beach_candidate_old_v00.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second stormy beach video with waves, clouds, shoreline, stable composition, no text, no watermark. Variant requirements: close framing, clear central subject, gentle natural motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "close framing, clear central subject, gentle natural motion"
+    },
+    {
+      "candidate_index": 1,
+      "family_id": "storm_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "storm_beach_candidate_old_v01",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/storm_beach/storm_beach_candidate_old_v01.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second stormy beach video with waves, clouds, shoreline, stable composition, no text, no watermark. Variant requirements: medium framing, visible surroundings, gentle camera drift; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "medium framing, visible surroundings, gentle camera drift"
+    },
+    {
+      "candidate_index": 2,
+      "family_id": "storm_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "storm_beach_candidate_old_v02",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/storm_beach/storm_beach_candidate_old_v02.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second stormy beach video with waves, clouds, shoreline, stable composition, no text, no watermark. Variant requirements: wider contextual framing, stable composition, subtle environmental motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "wider contextual framing, stable composition, subtle environmental motion"
+    },
+    {
+      "candidate_index": 3,
+      "family_id": "storm_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "storm_beach_candidate_old_v03",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/storm_beach/storm_beach_candidate_old_v03.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second stormy beach video with waves, clouds, shoreline, stable composition, no text, no watermark. Variant requirements: side-angle composition, distinct background geometry, continuous motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "side-angle composition, distinct background geometry, continuous motion"
+    },
+    {
+      "candidate_index": 4,
+      "family_id": "storm_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "storm_beach_candidate_old_v04",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/storm_beach/storm_beach_candidate_old_v04.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second stormy beach video with waves, clouds, shoreline, stable composition, no text, no watermark. Variant requirements: foreground detail with readable background separation, stable camera; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "foreground detail with readable background separation, stable camera"
+    },
+    {
+      "candidate_index": 5,
+      "family_id": "storm_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "storm_beach_candidate_old_v05",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/storm_beach/storm_beach_candidate_old_v05.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second stormy beach video with waves, clouds, shoreline, stable composition, no text, no watermark. Variant requirements: slight push-in camera movement, clear subject identity, no abrupt cuts; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "slight push-in camera movement, clear subject identity, no abrupt cuts"
+    },
+    {
+      "candidate_index": 6,
+      "family_id": "storm_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "storm_beach_candidate_old_v06",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/storm_beach/storm_beach_candidate_old_v06.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second stormy beach video with waves, clouds, shoreline, stable composition, no text, no watermark. Variant requirements: static camera with subject motion, natural lighting, coherent scene; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "static camera with subject motion, natural lighting, coherent scene"
+    },
+    {
+      "candidate_index": 7,
+      "family_id": "storm_beach",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "storm_beach_candidate_old_v07",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/storm_beach/storm_beach_candidate_old_v07.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "previous_hard_negative",
+      "prompt": "Natural realistic 5-second stormy beach video with waves, clouds, shoreline, stable composition, no text, no watermark. Variant requirements: alternate viewpoint with distinct layout, realistic motion, clean edges; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "alternate viewpoint with distinct layout, realistic motion, clean edges"
+    },
+    {
+      "candidate_index": 0,
+      "family_id": "butterflies_on_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "butterflies_on_flowers_candidate_old_v00",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v00.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of butterflies near flowers with clear subjects, gentle motion, stable composition, no text, no watermark. Variant requirements: close framing, clear central subject, gentle natural motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "close framing, clear central subject, gentle natural motion"
+    },
+    {
+      "candidate_index": 1,
+      "family_id": "butterflies_on_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "butterflies_on_flowers_candidate_old_v01",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v01.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of butterflies near flowers with clear subjects, gentle motion, stable composition, no text, no watermark. Variant requirements: medium framing, visible surroundings, gentle camera drift; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "medium framing, visible surroundings, gentle camera drift"
+    },
+    {
+      "candidate_index": 2,
+      "family_id": "butterflies_on_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "butterflies_on_flowers_candidate_old_v02",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v02.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of butterflies near flowers with clear subjects, gentle motion, stable composition, no text, no watermark. Variant requirements: wider contextual framing, stable composition, subtle environmental motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "wider contextual framing, stable composition, subtle environmental motion"
+    },
+    {
+      "candidate_index": 3,
+      "family_id": "butterflies_on_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "butterflies_on_flowers_candidate_old_v03",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v03.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of butterflies near flowers with clear subjects, gentle motion, stable composition, no text, no watermark. Variant requirements: side-angle composition, distinct background geometry, continuous motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "side-angle composition, distinct background geometry, continuous motion"
+    },
+    {
+      "candidate_index": 4,
+      "family_id": "butterflies_on_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "butterflies_on_flowers_candidate_old_v04",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v04.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of butterflies near flowers with clear subjects, gentle motion, stable composition, no text, no watermark. Variant requirements: foreground detail with readable background separation, stable camera; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "foreground detail with readable background separation, stable camera"
+    },
+    {
+      "candidate_index": 5,
+      "family_id": "butterflies_on_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "butterflies_on_flowers_candidate_old_v05",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v05.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of butterflies near flowers with clear subjects, gentle motion, stable composition, no text, no watermark. Variant requirements: slight push-in camera movement, clear subject identity, no abrupt cuts; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "slight push-in camera movement, clear subject identity, no abrupt cuts"
+    },
+    {
+      "candidate_index": 6,
+      "family_id": "butterflies_on_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "butterflies_on_flowers_candidate_old_v06",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v06.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of butterflies near flowers with clear subjects, gentle motion, stable composition, no text, no watermark. Variant requirements: static camera with subject motion, natural lighting, coherent scene; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "static camera with subject motion, natural lighting, coherent scene"
+    },
+    {
+      "candidate_index": 7,
+      "family_id": "butterflies_on_flowers",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "butterflies_on_flowers_candidate_old_v07",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v07.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of butterflies near flowers with clear subjects, gentle motion, stable composition, no text, no watermark. Variant requirements: alternate viewpoint with distinct layout, realistic motion, clean edges; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "alternate viewpoint with distinct layout, realistic motion, clean edges"
+    },
+    {
+      "candidate_index": 0,
+      "family_id": "street_food_grill",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "street_food_grill_candidate_old_v00",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/street_food_grill/street_food_grill_candidate_old_v00.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of street food cooking on a grill with visible steam or flame motion, stable composition, no text, no watermark. Variant requirements: close framing, clear central subject, gentle natural motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "close framing, clear central subject, gentle natural motion"
+    },
+    {
+      "candidate_index": 1,
+      "family_id": "street_food_grill",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "street_food_grill_candidate_old_v01",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/street_food_grill/street_food_grill_candidate_old_v01.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of street food cooking on a grill with visible steam or flame motion, stable composition, no text, no watermark. Variant requirements: medium framing, visible surroundings, gentle camera drift; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "medium framing, visible surroundings, gentle camera drift"
+    },
+    {
+      "candidate_index": 2,
+      "family_id": "street_food_grill",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "street_food_grill_candidate_old_v02",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/street_food_grill/street_food_grill_candidate_old_v02.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of street food cooking on a grill with visible steam or flame motion, stable composition, no text, no watermark. Variant requirements: wider contextual framing, stable composition, subtle environmental motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "wider contextual framing, stable composition, subtle environmental motion"
+    },
+    {
+      "candidate_index": 3,
+      "family_id": "street_food_grill",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "street_food_grill_candidate_old_v03",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/street_food_grill/street_food_grill_candidate_old_v03.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of street food cooking on a grill with visible steam or flame motion, stable composition, no text, no watermark. Variant requirements: side-angle composition, distinct background geometry, continuous motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "side-angle composition, distinct background geometry, continuous motion"
+    },
+    {
+      "candidate_index": 4,
+      "family_id": "street_food_grill",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "street_food_grill_candidate_old_v04",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/street_food_grill/street_food_grill_candidate_old_v04.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of street food cooking on a grill with visible steam or flame motion, stable composition, no text, no watermark. Variant requirements: foreground detail with readable background separation, stable camera; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "foreground detail with readable background separation, stable camera"
+    },
+    {
+      "candidate_index": 5,
+      "family_id": "street_food_grill",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "street_food_grill_candidate_old_v05",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/street_food_grill/street_food_grill_candidate_old_v05.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of street food cooking on a grill with visible steam or flame motion, stable composition, no text, no watermark. Variant requirements: slight push-in camera movement, clear subject identity, no abrupt cuts; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "slight push-in camera movement, clear subject identity, no abrupt cuts"
+    },
+    {
+      "candidate_index": 6,
+      "family_id": "street_food_grill",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "street_food_grill_candidate_old_v06",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/street_food_grill/street_food_grill_candidate_old_v06.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of street food cooking on a grill with visible steam or flame motion, stable composition, no text, no watermark. Variant requirements: static camera with subject motion, natural lighting, coherent scene; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "static camera with subject motion, natural lighting, coherent scene"
+    },
+    {
+      "candidate_index": 7,
+      "family_id": "street_food_grill",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "street_food_grill_candidate_old_v07",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/street_food_grill/street_food_grill_candidate_old_v07.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of street food cooking on a grill with visible steam or flame motion, stable composition, no text, no watermark. Variant requirements: alternate viewpoint with distinct layout, realistic motion, clean edges; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "alternate viewpoint with distinct layout, realistic motion, clean edges"
+    },
+    {
+      "candidate_index": 0,
+      "family_id": "rain_on_window",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "rain_on_window_candidate_old_v00",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/rain_on_window/rain_on_window_candidate_old_v00.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of rain droplets moving on a window with a distinct background, stable composition, no text, no watermark. Variant requirements: close framing, clear central subject, gentle natural motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "close framing, clear central subject, gentle natural motion"
+    },
+    {
+      "candidate_index": 1,
+      "family_id": "rain_on_window",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "rain_on_window_candidate_old_v01",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/rain_on_window/rain_on_window_candidate_old_v01.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of rain droplets moving on a window with a distinct background, stable composition, no text, no watermark. Variant requirements: medium framing, visible surroundings, gentle camera drift; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "medium framing, visible surroundings, gentle camera drift"
+    },
+    {
+      "candidate_index": 2,
+      "family_id": "rain_on_window",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "rain_on_window_candidate_old_v02",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/rain_on_window/rain_on_window_candidate_old_v02.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of rain droplets moving on a window with a distinct background, stable composition, no text, no watermark. Variant requirements: wider contextual framing, stable composition, subtle environmental motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "wider contextual framing, stable composition, subtle environmental motion"
+    },
+    {
+      "candidate_index": 3,
+      "family_id": "rain_on_window",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "rain_on_window_candidate_old_v03",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/rain_on_window/rain_on_window_candidate_old_v03.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of rain droplets moving on a window with a distinct background, stable composition, no text, no watermark. Variant requirements: side-angle composition, distinct background geometry, continuous motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "side-angle composition, distinct background geometry, continuous motion"
+    },
+    {
+      "candidate_index": 4,
+      "family_id": "rain_on_window",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "rain_on_window_candidate_old_v04",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/rain_on_window/rain_on_window_candidate_old_v04.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of rain droplets moving on a window with a distinct background, stable composition, no text, no watermark. Variant requirements: foreground detail with readable background separation, stable camera; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "foreground detail with readable background separation, stable camera"
+    },
+    {
+      "candidate_index": 5,
+      "family_id": "rain_on_window",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "rain_on_window_candidate_old_v05",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/rain_on_window/rain_on_window_candidate_old_v05.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of rain droplets moving on a window with a distinct background, stable composition, no text, no watermark. Variant requirements: slight push-in camera movement, clear subject identity, no abrupt cuts; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "slight push-in camera movement, clear subject identity, no abrupt cuts"
+    },
+    {
+      "candidate_index": 6,
+      "family_id": "rain_on_window",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "rain_on_window_candidate_old_v06",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/rain_on_window/rain_on_window_candidate_old_v06.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of rain droplets moving on a window with a distinct background, stable composition, no text, no watermark. Variant requirements: static camera with subject motion, natural lighting, coherent scene; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "static camera with subject motion, natural lighting, coherent scene"
+    },
+    {
+      "candidate_index": 7,
+      "family_id": "rain_on_window",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "rain_on_window_candidate_old_v07",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/rain_on_window/rain_on_window_candidate_old_v07.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of rain droplets moving on a window with a distinct background, stable composition, no text, no watermark. Variant requirements: alternate viewpoint with distinct layout, realistic motion, clean edges; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "alternate viewpoint with distinct layout, realistic motion, clean edges"
+    },
+    {
+      "candidate_index": 0,
+      "family_id": "hands_pottery_wheel",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hands_pottery_wheel_candidate_old_v00",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v00.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of hands shaping clay on a pottery wheel, clear action, stable composition, no text, no watermark. Variant requirements: close framing, clear central subject, gentle natural motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "close framing, clear central subject, gentle natural motion"
+    },
+    {
+      "candidate_index": 1,
+      "family_id": "hands_pottery_wheel",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hands_pottery_wheel_candidate_old_v01",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v01.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of hands shaping clay on a pottery wheel, clear action, stable composition, no text, no watermark. Variant requirements: medium framing, visible surroundings, gentle camera drift; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "medium framing, visible surroundings, gentle camera drift"
+    },
+    {
+      "candidate_index": 2,
+      "family_id": "hands_pottery_wheel",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hands_pottery_wheel_candidate_old_v02",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v02.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of hands shaping clay on a pottery wheel, clear action, stable composition, no text, no watermark. Variant requirements: wider contextual framing, stable composition, subtle environmental motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "wider contextual framing, stable composition, subtle environmental motion"
+    },
+    {
+      "candidate_index": 3,
+      "family_id": "hands_pottery_wheel",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hands_pottery_wheel_candidate_old_v03",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v03.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of hands shaping clay on a pottery wheel, clear action, stable composition, no text, no watermark. Variant requirements: side-angle composition, distinct background geometry, continuous motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "side-angle composition, distinct background geometry, continuous motion"
+    },
+    {
+      "candidate_index": 4,
+      "family_id": "hands_pottery_wheel",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hands_pottery_wheel_candidate_old_v04",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v04.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of hands shaping clay on a pottery wheel, clear action, stable composition, no text, no watermark. Variant requirements: foreground detail with readable background separation, stable camera; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "foreground detail with readable background separation, stable camera"
+    },
+    {
+      "candidate_index": 5,
+      "family_id": "hands_pottery_wheel",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hands_pottery_wheel_candidate_old_v05",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v05.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of hands shaping clay on a pottery wheel, clear action, stable composition, no text, no watermark. Variant requirements: slight push-in camera movement, clear subject identity, no abrupt cuts; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "slight push-in camera movement, clear subject identity, no abrupt cuts"
+    },
+    {
+      "candidate_index": 6,
+      "family_id": "hands_pottery_wheel",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hands_pottery_wheel_candidate_old_v06",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v06.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of hands shaping clay on a pottery wheel, clear action, stable composition, no text, no watermark. Variant requirements: static camera with subject motion, natural lighting, coherent scene; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "static camera with subject motion, natural lighting, coherent scene"
+    },
+    {
+      "candidate_index": 7,
+      "family_id": "hands_pottery_wheel",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "hands_pottery_wheel_candidate_old_v07",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v07.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of hands shaping clay on a pottery wheel, clear action, stable composition, no text, no watermark. Variant requirements: alternate viewpoint with distinct layout, realistic motion, clean edges; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "alternate viewpoint with distinct layout, realistic motion, clean edges"
+    },
+    {
+      "candidate_index": 0,
+      "family_id": "candle_flame_table",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "candle_flame_table_candidate_old_v00",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/candle_flame_table/candle_flame_table_candidate_old_v00.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of a candle flame on a table with subtle flame motion, stable composition, no text, no watermark. Variant requirements: close framing, clear central subject, gentle natural motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "close framing, clear central subject, gentle natural motion"
+    },
+    {
+      "candidate_index": 1,
+      "family_id": "candle_flame_table",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "candle_flame_table_candidate_old_v01",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/candle_flame_table/candle_flame_table_candidate_old_v01.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of a candle flame on a table with subtle flame motion, stable composition, no text, no watermark. Variant requirements: medium framing, visible surroundings, gentle camera drift; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "medium framing, visible surroundings, gentle camera drift"
+    },
+    {
+      "candidate_index": 2,
+      "family_id": "candle_flame_table",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "candle_flame_table_candidate_old_v02",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/candle_flame_table/candle_flame_table_candidate_old_v02.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of a candle flame on a table with subtle flame motion, stable composition, no text, no watermark. Variant requirements: wider contextual framing, stable composition, subtle environmental motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "wider contextual framing, stable composition, subtle environmental motion"
+    },
+    {
+      "candidate_index": 3,
+      "family_id": "candle_flame_table",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "candle_flame_table_candidate_old_v03",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/candle_flame_table/candle_flame_table_candidate_old_v03.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of a candle flame on a table with subtle flame motion, stable composition, no text, no watermark. Variant requirements: side-angle composition, distinct background geometry, continuous motion; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "side-angle composition, distinct background geometry, continuous motion"
+    },
+    {
+      "candidate_index": 4,
+      "family_id": "candle_flame_table",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "candle_flame_table_candidate_old_v04",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/candle_flame_table/candle_flame_table_candidate_old_v04.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of a candle flame on a table with subtle flame motion, stable composition, no text, no watermark. Variant requirements: foreground detail with readable background separation, stable camera; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "foreground detail with readable background separation, stable camera"
+    },
+    {
+      "candidate_index": 5,
+      "family_id": "candle_flame_table",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "candle_flame_table_candidate_old_v05",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/candle_flame_table/candle_flame_table_candidate_old_v05.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of a candle flame on a table with subtle flame motion, stable composition, no text, no watermark. Variant requirements: slight push-in camera movement, clear subject identity, no abrupt cuts; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "slight push-in camera movement, clear subject identity, no abrupt cuts"
+    },
+    {
+      "candidate_index": 6,
+      "family_id": "candle_flame_table",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "candle_flame_table_candidate_old_v06",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/candle_flame_table/candle_flame_table_candidate_old_v06.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of a candle flame on a table with subtle flame motion, stable composition, no text, no watermark. Variant requirements: static camera with subject motion, natural lighting, coherent scene; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "static camera with subject motion, natural lighting, coherent scene"
+    },
+    {
+      "candidate_index": 7,
+      "family_id": "candle_flame_table",
+      "generator": {
+        "duration_seconds": 5,
+        "fps": 24,
+        "model_family": "Seedance 2.0",
+        "model_id": "resolve_from_provider_before_generation",
+        "resolution": "1280x720",
+        "silence_audio": true
+      },
+      "job_id": "candle_flame_table_candidate_old_v07",
+      "output_video": {
+        "bytes": null,
+        "path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/candle_flame_table/candle_flame_table_candidate_old_v07.mp4",
+        "sha256": null,
+        "status": "not_generated"
+      },
+      "prior_role": "new_generalization_family",
+      "prompt": "Natural realistic 5-second video of a candle flame on a table with subtle flame motion, stable composition, no text, no watermark. Variant requirements: alternate viewpoint with distinct layout, realistic motion, clean edges; audio-free; no captions, no subtitles, no logos, no watermarks, no text overlays.",
+      "retain_if_failed": true,
+      "role": "candidate_old_video",
+      "variant_direction": "alternate viewpoint with distinct layout, realistic motion, clean edges"
+    }
+  ],
+  "source_config": "research_program/neurips_memorability_selector/experiments/content_pocket_confirmatory_recognition_20260615/confirmatory_study_config_20260615.json",
+  "status": "manifest_only_no_api_calls"
+}

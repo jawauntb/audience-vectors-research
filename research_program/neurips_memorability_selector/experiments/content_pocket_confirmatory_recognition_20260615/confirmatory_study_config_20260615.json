@@ -1,0 +1,111 @@
+{
+  "artifact_status": "setup_no_generation_no_human_data",
+  "created_at_local": "2026-06-15",
+  "experiment_id": "content_pocket_confirmatory_recognition_20260615",
+  "generator": {
+    "duration_seconds": 5,
+    "fps": 24,
+    "model_family": "Seedance 2.0",
+    "model_id": "resolve_from_provider_before_generation",
+    "resolution": "1280x720",
+    "silence_audio": true
+  },
+  "participant_plan": {
+    "expected_session2_retention": 0.85,
+    "minimum_usable_delayed_n": 300,
+    "session1_recruit_for_minimum": 353,
+    "session1_recruit_for_stretch": 589,
+    "session1_recruit_for_target": 471,
+    "stretch_usable_delayed_n": 500,
+    "target_usable_delayed_n": 400
+  },
+  "selection_conditions": [
+    {
+      "condition_id": "selector_top",
+      "description": "Top candidate per family after quality gates under the preregistered ensemble selector."
+    },
+    {
+      "condition_id": "quality_matched_control",
+      "description": "Lower-scoring candidate from the same family matched on visual quality, motion, colorfulness, and artifact score."
+    }
+  ],
+  "session_design": {
+    "analysis_families_per_participant": 12,
+    "cover_task": "brief non-memory judgment after each Session 1 video",
+    "filler_pairs_total": 24,
+    "fillers_per_participant": 12,
+    "form_count": 8,
+    "recognition_task": "two-alternative forced choice old-vs-lure with confidence and optional post-choice free-text recall"
+  },
+  "stimulus_counts": {
+    "accepted_analysis_lures": 24,
+    "accepted_analysis_old_videos": 24,
+    "candidate_old_videos_per_family": 8,
+    "content_family_count": 12,
+    "filler_lures": 24,
+    "filler_old_videos": 24,
+    "lure_attempts_per_selected_old": 2
+  },
+  "content_families": [
+    {
+      "family_id": "orange_flowers",
+      "prior_role": "accepted_positive_anchor",
+      "prompt_template": "Natural realistic 5-second video of orange flowers with clear petals, gentle motion, stable composition, no people, no text, no watermark."
+    },
+    {
+      "family_id": "hanging_clothes",
+      "prior_role": "accepted_positive_anchor",
+      "prompt_template": "Natural realistic 5-second video of hanging clothes or laundry moving gently, clear fabric detail, stable composition, no text, no watermark."
+    },
+    {
+      "family_id": "blue_jellyfish",
+      "prior_role": "boundary_positive",
+      "prompt_template": "Natural realistic 5-second underwater video of blue jellyfish drifting slowly, clear central subject, stable composition, no text, no watermark."
+    },
+    {
+      "family_id": "old_car",
+      "prior_role": "boundary_positive",
+      "prompt_template": "Natural realistic 5-second video of an old car with distinctive shape and setting, gentle camera or environmental motion, no text, no watermark."
+    },
+    {
+      "family_id": "aerial_beach",
+      "prior_role": "previous_hard_negative",
+      "prompt_template": "Natural realistic 5-second aerial beach video with shoreline, water motion, stable composition, no text, no watermark."
+    },
+    {
+      "family_id": "city_street",
+      "prior_role": "previous_hard_negative",
+      "prompt_template": "Natural realistic 5-second city street video with buildings, street geometry, subtle motion, stable composition, no text, no watermark."
+    },
+    {
+      "family_id": "storm_beach",
+      "prior_role": "previous_hard_negative",
+      "prompt_template": "Natural realistic 5-second stormy beach video with waves, clouds, shoreline, stable composition, no text, no watermark."
+    },
+    {
+      "family_id": "butterflies_on_flowers",
+      "prior_role": "new_generalization_family",
+      "prompt_template": "Natural realistic 5-second video of butterflies near flowers with clear subjects, gentle motion, stable composition, no text, no watermark."
+    },
+    {
+      "family_id": "street_food_grill",
+      "prior_role": "new_generalization_family",
+      "prompt_template": "Natural realistic 5-second video of street food cooking on a grill with visible steam or flame motion, stable composition, no text, no watermark."
+    },
+    {
+      "family_id": "rain_on_window",
+      "prior_role": "new_generalization_family",
+      "prompt_template": "Natural realistic 5-second video of rain droplets moving on a window with a distinct background, stable composition, no text, no watermark."
+    },
+    {
+      "family_id": "hands_pottery_wheel",
+      "prior_role": "new_generalization_family",
+      "prompt_template": "Natural realistic 5-second video of hands shaping clay on a pottery wheel, clear action, stable composition, no text, no watermark."
+    },
+    {
+      "family_id": "candle_flame_table",
+      "prior_role": "new_generalization_family",
+      "prompt_template": "Natural realistic 5-second video of a candle flame on a table with subtle flame motion, stable composition, no text, no watermark."
+    }
+  ]
+}
