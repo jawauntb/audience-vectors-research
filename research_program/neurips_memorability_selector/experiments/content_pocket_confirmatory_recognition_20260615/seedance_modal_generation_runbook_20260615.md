@@ -65,6 +65,18 @@ The script may also read `SEEDANCE_MODEL_ID` and
 whether recognized credential variables are present; it never records secret
 values.
 
+For the committed candidate manifest, the OpenRouter model ID is
+`bytedance/seedance-2.0`. The dry-run estimates cost using OpenRouter's token
+formula:
+
+```text
+(width * height * duration_seconds * fps / 1024) * 0.000007 USD
+```
+
+For 96 videos at 1280x720, 5 seconds, and 24 fps, this is approximately
+`$0.76` per video and `$72.58` total before any provider-side changes,
+failures, retries, lures, fillers, or scoring costs.
+
 ## Generation Phases
 
 Phase 0: freeze prompt and candidate manifest.

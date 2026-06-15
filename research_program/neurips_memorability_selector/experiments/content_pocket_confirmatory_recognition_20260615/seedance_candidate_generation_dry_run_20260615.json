@@ -105,11 +105,12 @@
   ],
   "cost_estimate": {
     "currency": "USD",
-    "display_per_video": "not_estimated",
-    "display_total": "not_estimated",
-    "per_video": null,
-    "source": "not_supplied",
-    "total": null
+    "display_per_video": "$0.76",
+    "display_total": "$72.58",
+    "formula": "(width * height * duration_seconds * fps / 1024) * 0.000007 USD",
+    "per_video": "0.756000",
+    "source": "openrouter_formula",
+    "total": "72.576000"
   },
   "counts": {
     "by_family": {
@@ -145,14 +146,12 @@
   "output_json": "research_program/neurips_memorability_selector/experiments/content_pocket_confirmatory_recognition_20260615/seedance_candidate_generation_dry_run_20260615.json",
   "output_md": "research_program/neurips_memorability_selector/experiments/content_pocket_confirmatory_recognition_20260615/seedance_candidate_generation_dry_run_20260615.md",
   "phase": "candidate_old_videos",
-  "preflight_blockers": [
-    "Seedance provider model ID is unresolved."
-  ],
+  "preflight_blockers": [],
   "provider": {
     "model_family": "Seedance 2.0",
-    "model_id_resolved": false,
-    "model_id_source": "manifest_placeholder",
-    "resolved_model_id": "resolve_from_provider_before_generation"
+    "model_id_resolved": true,
+    "model_id_source": "manifest",
+    "resolved_model_id": "bytedance/seedance-2.0"
   },
   "review_sample_jobs": [
     {
@@ -231,6 +230,8 @@
   "runtime_env_checks": {
     "credential_env_present": {
       "ARK_API_KEY": false,
+      "OPENROUTER_API_KEY": false,
+      "OPENROUTER_BASE_URL": false,
       "SEEDANCE_ACCESS_KEY_ID": false,
       "SEEDANCE_API_KEY": false,
       "SEEDANCE_SECRET_ACCESS_KEY": false,
@@ -242,9 +243,8 @@
   "schema_version": "confirmatory_seedance_generation_dry_run.v1",
   "source_config": "research_program/neurips_memorability_selector/experiments/content_pocket_confirmatory_recognition_20260615/confirmatory_study_config_20260615.json",
   "source_manifest": "research_program/neurips_memorability_selector/experiments/content_pocket_confirmatory_recognition_20260615/seedance_candidate_generation_manifest_20260615.json",
-  "status": "dry_run_blocked",
+  "status": "dry_run_ready_for_review",
   "warnings": [
-    "No per-video cost estimate supplied; total cost is not estimated.",
     "No recognized Seedance credential environment variables are present in this shell."
   ]
 }

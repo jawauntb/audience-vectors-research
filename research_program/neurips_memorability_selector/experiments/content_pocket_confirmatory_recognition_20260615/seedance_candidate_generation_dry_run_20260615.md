@@ -2,26 +2,28 @@
 
 Created: `2026-06-15T16:00:00+00:00`
 Experiment: `content_pocket_confirmatory_recognition_20260615`
-Status: `dry_run_blocked`
+Status: `dry_run_ready_for_review`
 Phase: `candidate_old_videos`
 
 ## Provider Resolution
 
 - Model family: `Seedance 2.0`
-- Resolved model ID: `resolve_from_provider_before_generation`
-- Model ID source: `manifest_placeholder`
-- Model ID resolved: `False`
+- Resolved model ID: `bytedance/seedance-2.0`
+- Model ID source: `manifest`
+- Model ID resolved: `True`
 
 ## Job And Cost Summary
 
 - Selected jobs: `96`
 - Families: `12`
-- Estimated cost per video: `not_estimated`
-- Estimated total cost: `not_estimated`
+- Estimated cost per video: `$0.76`
+- Estimated total cost: `$72.58`
 
 ## Credential Environment Check
 
 - `ARK_API_KEY` present: `False`
+- `OPENROUTER_API_KEY` present: `False`
+- `OPENROUTER_BASE_URL` present: `False`
 - `SEEDANCE_ACCESS_KEY_ID` present: `False`
 - `SEEDANCE_API_KEY` present: `False`
 - `SEEDANCE_SECRET_ACCESS_KEY` present: `False`
@@ -30,11 +32,10 @@ Phase: `candidate_old_videos`
 
 ## Preflight Blockers
 
-- Seedance provider model ID is unresolved.
+- None.
 
 ## Warnings
 
-- No per-video cost estimate supplied; total cost is not estimated.
 - No recognized Seedance credential environment variables are present in this shell.
 
 ## Jobs By Family

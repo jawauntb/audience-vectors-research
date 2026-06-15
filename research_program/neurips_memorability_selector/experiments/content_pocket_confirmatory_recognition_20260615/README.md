@@ -60,9 +60,10 @@ uv run python scripts/generate_confirmatory_seedance_videos.py \
 ```
 
 It writes `seedance_candidate_generation_dry_run_20260615.json` and
-`seedance_candidate_generation_dry_run_20260615.md`. The report is expected to
-block live generation until the provider model ID and per-video cost estimate
-are supplied through CLI flags or environment variables.
+`seedance_candidate_generation_dry_run_20260615.md`. The report resolves the
+OpenRouter model as `bytedance/seedance-2.0` and estimates cost from the
+committed 5-second 1280x720 settings. Live generation still requires a separate
+provider-call implementation and final spend review.
 
 ## Allowed Claim Before Human Data
 

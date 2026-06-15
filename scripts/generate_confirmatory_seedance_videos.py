@@ -1,9 +1,9 @@
 """Dry-run Seedance candidate generation for the confirmatory recognition study.
 
 This script is intentionally conservative. The first pass validates the frozen
-candidate manifest, resolves non-secret runtime settings, estimates cost when a
-per-video estimate is supplied, and writes review artifacts. It does not call a
-provider API yet.
+candidate manifest, resolves non-secret runtime settings, estimates OpenRouter
+Seedance cost from the committed generation settings, and writes review
+artifacts. It does not call a provider API yet.
 """
 
 from __future__ import annotations
@@ -25,10 +25,14 @@ DEFAULT_MANIFEST = EXPERIMENT_DIR / "seedance_candidate_generation_manifest_2026
 DEFAULT_OUT_JSON = EXPERIMENT_DIR / "seedance_candidate_generation_dry_run_20260615.json"
 DEFAULT_OUT_MD = EXPERIMENT_DIR / "seedance_candidate_generation_dry_run_20260615.md"
 PLACEHOLDER_MODEL_ID = "resolve_from_provider_before_generation"
+OPENROUTER_SEEDANCE_2_MODEL_ID = "bytedance/seedance-2.0"
+OPENROUTER_SEEDANCE_DOLLARS_PER_TOKEN = Decimal("0.000007")
 PHASE_TO_ROLE = {
     "candidate_old_videos": "candidate_old_video",
 }
 SEEDANCE_CREDENTIAL_ENV_NAMES = (
+    "OPENROUTER_API_KEY",
+    "OPENROUTER_BASE_URL",
     "SEEDANCE_API_KEY",
     "SEEDANCE_ACCESS_KEY_ID",
     "SEEDANCE_SECRET_ACCESS_KEY",
@@ -60,7 +64,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--estimated-cost-per-video-usd",
         default=os.environ.get("SEEDANCE_ESTIMATED_COST_PER_VIDEO_USD"),
-        help="Optional per-video cost estimate. No provider pricing is assumed.",
+        help=(
+            "Optional per-video cost override. If omitted, known OpenRouter "
+            "Seedance 2.0 pricing is estimated from resolution, duration, and fps."
+        ),
     )
     parser.add_argument(
         "--dry-run",
@@ -95,6 +102,57 @@ def money(value: Decimal | None) -> str:
     if value is None:
         return "not_estimated"
     return f"${value.quantize(Decimal('0.01'))}"
+
+
+def parse_resolution_pixels(resolution: str) -> tuple[int, int] | None:
+    normalized = resolution.lower().strip()
+    if "x" not in normalized:
+        return None
+    width_text, height_text = normalized.split("x", maxsplit=1)
+    if not width_text.isdecimal() or not height_text.isdecimal():
+        return None
+    width = int(width_text)
+    height = int(height_text)
+    if width <= 0 or height <= 0:
+        return None
+    return width, height
+
+
+def estimate_openrouter_seedance_cost_per_video(
+    *,
+    config: dict[str, Any],
+    model_id: str,
+) -> tuple[Decimal | None, str]:
+    if model_id != OPENROUTER_SEEDANCE_2_MODEL_ID:
+        return None, "not_available_for_model"
+
+    generator = config["generator"]
+    resolution = parse_resolution_pixels(str(generator["resolution"]))
+    if resolution is None:
+        return None, "resolution_not_pixel_dimensions"
+
+    width, height = resolution
+    duration_seconds = Decimal(str(generator["duration_seconds"]))
+    fps = Decimal(str(generator.get("fps", 24)))
+    tokens = (Decimal(width) * Decimal(height) * duration_seconds * fps) / Decimal(
+        1024
+    )
+    return tokens * OPENROUTER_SEEDANCE_DOLLARS_PER_TOKEN, "openrouter_formula"
+
+
+def resolve_cost_per_video(
+    *,
+    config: dict[str, Any],
+    model_id: str,
+    cost_override: str | None,
+) -> tuple[Decimal | None, str]:
+    override = parse_decimal(cost_override)
+    if override is not None:
+        return override, "user_or_environment_supplied"
+    return estimate_openrouter_seedance_cost_per_video(
+        config=config,
+        model_id=model_id,
+    )
 
 
 def selected_jobs(
@@ -240,12 +298,16 @@ def build_report(
     jobs: list[dict[str, Any]],
     args: argparse.Namespace,
 ) -> dict[str, Any]:
-    cost_per_video = parse_decimal(args.estimated_cost_per_video_usd)
-    total_cost = cost_per_video * len(jobs) if cost_per_video is not None else None
     model_id, model_source, model_resolved = resolve_model_id(
         cli_or_env_model_id=args.model_id,
         manifest_jobs=jobs,
     )
+    cost_per_video, cost_source = resolve_cost_per_video(
+        config=config,
+        model_id=model_id,
+        cost_override=args.estimated_cost_per_video_usd,
+    )
+    total_cost = cost_per_video * len(jobs) if cost_per_video is not None else None
     blockers, warnings = manifest_checks(
         config=config,
         manifest=manifest,
@@ -292,9 +354,13 @@ def build_report(
             "total": str(total_cost) if total_cost is not None else None,
             "display_per_video": money(cost_per_video),
             "display_total": money(total_cost),
-            "source": "user_or_environment_supplied"
-            if cost_per_video is not None
-            else "not_supplied",
+            "source": cost_source,
+            "formula": (
+                "(width * height * duration_seconds * fps / 1024) * "
+                "0.000007 USD"
+            )
+            if cost_source == "openrouter_formula"
+            else None,
         },
         "runtime_env_checks": {
             "credential_env_present": env_presence(),
