@@ -1,0 +1,266 @@
+{
+  "all_output_paths": [
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v00.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v01.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v02.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v03.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v04.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v05.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v06.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v07.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hanging_clothes/hanging_clothes_candidate_old_v00.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hanging_clothes/hanging_clothes_candidate_old_v01.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hanging_clothes/hanging_clothes_candidate_old_v02.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hanging_clothes/hanging_clothes_candidate_old_v03.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hanging_clothes/hanging_clothes_candidate_old_v04.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hanging_clothes/hanging_clothes_candidate_old_v05.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hanging_clothes/hanging_clothes_candidate_old_v06.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hanging_clothes/hanging_clothes_candidate_old_v07.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/blue_jellyfish/blue_jellyfish_candidate_old_v00.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/blue_jellyfish/blue_jellyfish_candidate_old_v01.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/blue_jellyfish/blue_jellyfish_candidate_old_v02.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/blue_jellyfish/blue_jellyfish_candidate_old_v03.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/blue_jellyfish/blue_jellyfish_candidate_old_v04.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/blue_jellyfish/blue_jellyfish_candidate_old_v05.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/blue_jellyfish/blue_jellyfish_candidate_old_v06.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/blue_jellyfish/blue_jellyfish_candidate_old_v07.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/old_car/old_car_candidate_old_v00.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/old_car/old_car_candidate_old_v01.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/old_car/old_car_candidate_old_v02.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/old_car/old_car_candidate_old_v03.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/old_car/old_car_candidate_old_v04.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/old_car/old_car_candidate_old_v05.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/old_car/old_car_candidate_old_v06.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/old_car/old_car_candidate_old_v07.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/aerial_beach/aerial_beach_candidate_old_v00.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/aerial_beach/aerial_beach_candidate_old_v01.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/aerial_beach/aerial_beach_candidate_old_v02.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/aerial_beach/aerial_beach_candidate_old_v03.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/aerial_beach/aerial_beach_candidate_old_v04.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/aerial_beach/aerial_beach_candidate_old_v05.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/aerial_beach/aerial_beach_candidate_old_v06.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/aerial_beach/aerial_beach_candidate_old_v07.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/city_street/city_street_candidate_old_v00.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/city_street/city_street_candidate_old_v01.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/city_street/city_street_candidate_old_v02.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/city_street/city_street_candidate_old_v03.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/city_street/city_street_candidate_old_v04.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/city_street/city_street_candidate_old_v05.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/city_street/city_street_candidate_old_v06.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/city_street/city_street_candidate_old_v07.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/storm_beach/storm_beach_candidate_old_v00.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/storm_beach/storm_beach_candidate_old_v01.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/storm_beach/storm_beach_candidate_old_v02.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/storm_beach/storm_beach_candidate_old_v03.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/storm_beach/storm_beach_candidate_old_v04.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/storm_beach/storm_beach_candidate_old_v05.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/storm_beach/storm_beach_candidate_old_v06.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/storm_beach/storm_beach_candidate_old_v07.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v00.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v01.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v02.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v03.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v04.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v05.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v06.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/butterflies_on_flowers/butterflies_on_flowers_candidate_old_v07.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/street_food_grill/street_food_grill_candidate_old_v00.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/street_food_grill/street_food_grill_candidate_old_v01.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/street_food_grill/street_food_grill_candidate_old_v02.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/street_food_grill/street_food_grill_candidate_old_v03.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/street_food_grill/street_food_grill_candidate_old_v04.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/street_food_grill/street_food_grill_candidate_old_v05.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/street_food_grill/street_food_grill_candidate_old_v06.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/street_food_grill/street_food_grill_candidate_old_v07.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/rain_on_window/rain_on_window_candidate_old_v00.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/rain_on_window/rain_on_window_candidate_old_v01.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/rain_on_window/rain_on_window_candidate_old_v02.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/rain_on_window/rain_on_window_candidate_old_v03.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/rain_on_window/rain_on_window_candidate_old_v04.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/rain_on_window/rain_on_window_candidate_old_v05.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/rain_on_window/rain_on_window_candidate_old_v06.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/rain_on_window/rain_on_window_candidate_old_v07.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v00.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v01.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v02.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v03.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v04.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v05.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v06.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hands_pottery_wheel/hands_pottery_wheel_candidate_old_v07.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/candle_flame_table/candle_flame_table_candidate_old_v00.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/candle_flame_table/candle_flame_table_candidate_old_v01.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/candle_flame_table/candle_flame_table_candidate_old_v02.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/candle_flame_table/candle_flame_table_candidate_old_v03.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/candle_flame_table/candle_flame_table_candidate_old_v04.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/candle_flame_table/candle_flame_table_candidate_old_v05.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/candle_flame_table/candle_flame_table_candidate_old_v06.mp4",
+    "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/candle_flame_table/candle_flame_table_candidate_old_v07.mp4"
+  ],
+  "claim_boundary": [
+    "Generated recognition MP4s are not human-memory evidence.",
+    "Video-level screening and final human-facing review are required before launch.",
+    "Failed, skipped, and visually rejected candidates must be retained with reasons.",
+    "No human-memory or generator-control claim is created by this report."
+  ],
+  "cost_estimate": {
+    "currency": "USD",
+    "display_per_video": "$0.76",
+    "display_total": "$72.58",
+    "formula": "(width * height * duration_seconds * fps / 1024) * 0.000007 USD",
+    "per_video": "0.756000",
+    "per_video_float": 0.756,
+    "source": "openrouter_formula",
+    "total": "72.576000",
+    "total_float": 72.576
+  },
+  "counts": {
+    "by_family": {
+      "aerial_beach": 8,
+      "blue_jellyfish": 8,
+      "butterflies_on_flowers": 8,
+      "candle_flame_table": 8,
+      "city_street": 8,
+      "hands_pottery_wheel": 8,
+      "hanging_clothes": 8,
+      "old_car": 8,
+      "orange_flowers": 8,
+      "rain_on_window": 8,
+      "storm_beach": 8,
+      "street_food_grill": 8
+    },
+    "families": 12,
+    "live_rows": 0,
+    "live_statuses": {},
+    "roles": {
+      "candidate_old_video": 96
+    },
+    "selected_jobs": 96,
+    "skipped_existing_outputs": 0
+  },
+  "created_at_utc": "2026-06-15T16:00:00+00:00",
+  "dry_run": true,
+  "experiment_id": "content_pocket_confirmatory_recognition_20260615",
+  "generation_settings": {
+    "duration_seconds": 5,
+    "fps": 24,
+    "resolution": "1280x720",
+    "silence_audio": true
+  },
+  "live_generation_attempted": false,
+  "live_options": {
+    "execute_live": false,
+    "max_cost_usd": null,
+    "max_poll_attempts": 90,
+    "openrouter_base_url": "https://openrouter.ai/api/v1",
+    "overwrite": false,
+    "poll_interval_seconds": 10,
+    "request_timeout_seconds": 120.0
+  },
+  "live_rows": [],
+  "output_json": "research_program/neurips_memorability_selector/experiments/content_pocket_confirmatory_recognition_20260615/seedance_candidate_generation_dry_run_improved_v1_20260615.json",
+  "output_md": "research_program/neurips_memorability_selector/experiments/content_pocket_confirmatory_recognition_20260615/seedance_candidate_generation_dry_run_improved_v1_20260615.md",
+  "phase": "candidate_old_videos",
+  "preflight_blockers": [],
+  "provider": {
+    "model_family": "Seedance 2.0",
+    "model_id_resolved": true,
+    "model_id_source": "manifest",
+    "resolved_model_id": "bytedance/seedance-2.0"
+  },
+  "review_sample_jobs": [
+    {
+      "family_id": "orange_flowers",
+      "job_id": "orange_flowers_candidate_old_v00",
+      "output_path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v00.mp4",
+      "prompt": "real garden footage of vivid orange marigold or poppy-like flowers, petals sharply defined, green stems and leaves visible, a light breeze moving petals naturally, warm daylight, high detail, no people. Variant requirements: subject-forward composition with crisp details and one easy-to-name visual anchor. Global requirements: single continuous realistic camera shot; five seconds; natural light; clear focal subject; coherent physical motion; no scene cuts; no montage; no captions, subtitles, logos, brands, watermarks, signs, readable text, UI elements, or artificial borders; silent video."
+    },
+    {
+      "family_id": "orange_flowers",
+      "job_id": "orange_flowers_candidate_old_v01",
+      "output_path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v01.mp4",
+      "prompt": "real garden footage of vivid orange marigold or poppy-like flowers, petals sharply defined, green stems and leaves visible, a light breeze moving petals naturally, warm daylight, high detail, no people. Variant requirements: medium shot with subject plus a distinctive surrounding object or background shape. Global requirements: single continuous realistic camera shot; five seconds; natural light; clear focal subject; coherent physical motion; no scene cuts; no montage; no captions, subtitles, logos, brands, watermarks, signs, readable text, UI elements, or artificial borders; silent video."
+    },
+    {
+      "family_id": "orange_flowers",
+      "job_id": "orange_flowers_candidate_old_v02",
+      "output_path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v02.mp4",
+      "prompt": "real garden footage of vivid orange marigold or poppy-like flowers, petals sharply defined, green stems and leaves visible, a light breeze moving petals naturally, warm daylight, high detail, no people. Variant requirements: wider establishing shot that still keeps the subject easy to recognize. Global requirements: single continuous realistic camera shot; five seconds; natural light; clear focal subject; coherent physical motion; no scene cuts; no montage; no captions, subtitles, logos, brands, watermarks, signs, readable text, UI elements, or artificial borders; silent video."
+    },
+    {
+      "family_id": "orange_flowers",
+      "job_id": "orange_flowers_candidate_old_v03",
+      "output_path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v03.mp4",
+      "prompt": "real garden footage of vivid orange marigold or poppy-like flowers, petals sharply defined, green stems and leaves visible, a light breeze moving petals naturally, warm daylight, high detail, no people. Variant requirements: side-angle shot with parallax or gentle camera drift and stable composition. Global requirements: single continuous realistic camera shot; five seconds; natural light; clear focal subject; coherent physical motion; no scene cuts; no montage; no captions, subtitles, logos, brands, watermarks, signs, readable text, UI elements, or artificial borders; silent video."
+    },
+    {
+      "family_id": "orange_flowers",
+      "job_id": "orange_flowers_candidate_old_v04",
+      "output_path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v04.mp4",
+      "prompt": "real garden footage of vivid orange marigold or poppy-like flowers, petals sharply defined, green stems and leaves visible, a light breeze moving petals naturally, warm daylight, high detail, no people. Variant requirements: foreground subject with layered background separation and readable texture. Global requirements: single continuous realistic camera shot; five seconds; natural light; clear focal subject; coherent physical motion; no scene cuts; no montage; no captions, subtitles, logos, brands, watermarks, signs, readable text, UI elements, or artificial borders; silent video."
+    },
+    {
+      "family_id": "orange_flowers",
+      "job_id": "orange_flowers_candidate_old_v05",
+      "output_path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v05.mp4",
+      "prompt": "real garden footage of vivid orange marigold or poppy-like flowers, petals sharply defined, green stems and leaves visible, a light breeze moving petals naturally, warm daylight, high detail, no people. Variant requirements: slow push-in toward the subject without abrupt movement or cuts. Global requirements: single continuous realistic camera shot; five seconds; natural light; clear focal subject; coherent physical motion; no scene cuts; no montage; no captions, subtitles, logos, brands, watermarks, signs, readable text, UI elements, or artificial borders; silent video."
+    },
+    {
+      "family_id": "orange_flowers",
+      "job_id": "orange_flowers_candidate_old_v06",
+      "output_path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v06.mp4",
+      "prompt": "real garden footage of vivid orange marigold or poppy-like flowers, petals sharply defined, green stems and leaves visible, a light breeze moving petals naturally, warm daylight, high detail, no people. Variant requirements: locked-off camera where the subject motion carries the clip. Global requirements: single continuous realistic camera shot; five seconds; natural light; clear focal subject; coherent physical motion; no scene cuts; no montage; no captions, subtitles, logos, brands, watermarks, signs, readable text, UI elements, or artificial borders; silent video."
+    },
+    {
+      "family_id": "orange_flowers",
+      "job_id": "orange_flowers_candidate_old_v07",
+      "output_path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/orange_flowers/orange_flowers_candidate_old_v07.mp4",
+      "prompt": "real garden footage of vivid orange marigold or poppy-like flowers, petals sharply defined, green stems and leaves visible, a light breeze moving petals naturally, warm daylight, high detail, no people. Variant requirements: alternate viewpoint with different layout, lighting direction, and spatial landmarks. Global requirements: single continuous realistic camera shot; five seconds; natural light; clear focal subject; coherent physical motion; no scene cuts; no montage; no captions, subtitles, logos, brands, watermarks, signs, readable text, UI elements, or artificial borders; silent video."
+    },
+    {
+      "family_id": "hanging_clothes",
+      "job_id": "hanging_clothes_candidate_old_v00",
+      "output_path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hanging_clothes/hanging_clothes_candidate_old_v00.mp4",
+      "prompt": "real outdoor laundry line with colorful shirts and sheets hanging from clothespins, fabric folds and stitching visible, clothes moving gently in wind, clear domestic background, no faces or readable labels. Variant requirements: subject-forward composition with crisp details and one easy-to-name visual anchor. Global requirements: single continuous realistic camera shot; five seconds; natural light; clear focal subject; coherent physical motion; no scene cuts; no montage; no captions, subtitles, logos, brands, watermarks, signs, readable text, UI elements, or artificial borders; silent video."
+    },
+    {
+      "family_id": "hanging_clothes",
+      "job_id": "hanging_clothes_candidate_old_v01",
+      "output_path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hanging_clothes/hanging_clothes_candidate_old_v01.mp4",
+      "prompt": "real outdoor laundry line with colorful shirts and sheets hanging from clothespins, fabric folds and stitching visible, clothes moving gently in wind, clear domestic background, no faces or readable labels. Variant requirements: medium shot with subject plus a distinctive surrounding object or background shape. Global requirements: single continuous realistic camera shot; five seconds; natural light; clear focal subject; coherent physical motion; no scene cuts; no montage; no captions, subtitles, logos, brands, watermarks, signs, readable text, UI elements, or artificial borders; silent video."
+    },
+    {
+      "family_id": "hanging_clothes",
+      "job_id": "hanging_clothes_candidate_old_v02",
+      "output_path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hanging_clothes/hanging_clothes_candidate_old_v02.mp4",
+      "prompt": "real outdoor laundry line with colorful shirts and sheets hanging from clothespins, fabric folds and stitching visible, clothes moving gently in wind, clear domestic background, no faces or readable labels. Variant requirements: wider establishing shot that still keeps the subject easy to recognize. Global requirements: single continuous realistic camera shot; five seconds; natural light; clear focal subject; coherent physical motion; no scene cuts; no montage; no captions, subtitles, logos, brands, watermarks, signs, readable text, UI elements, or artificial borders; silent video."
+    },
+    {
+      "family_id": "hanging_clothes",
+      "job_id": "hanging_clothes_candidate_old_v03",
+      "output_path": "data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos_improved_v1/hanging_clothes/hanging_clothes_candidate_old_v03.mp4",
+      "prompt": "real outdoor laundry line with colorful shirts and sheets hanging from clothespins, fabric folds and stitching visible, clothes moving gently in wind, clear domestic background, no faces or readable labels. Variant requirements: side-angle shot with parallax or gentle camera drift and stable composition. Global requirements: single continuous realistic camera shot; five seconds; natural light; clear focal subject; coherent physical motion; no scene cuts; no montage; no captions, subtitles, logos, brands, watermarks, signs, readable text, UI elements, or artificial borders; silent video."
+    }
+  ],
+  "runtime_env_checks": {
+    "credential_env_present": {
+      "ARK_API_KEY": false,
+      "OPENROUTER_API_KEY": false,
+      "OPENROUTER_BASE_URL": false,
+      "SEEDANCE_ACCESS_KEY_ID": false,
+      "SEEDANCE_API_KEY": false,
+      "SEEDANCE_SECRET_ACCESS_KEY": false,
+      "VOLCENGINE_ACCESS_KEY_ID": false,
+      "VOLCENGINE_SECRET_ACCESS_KEY": false
+    },
+    "credential_values_logged": false
+  },
+  "schema_version": "confirmatory_seedance_generation.v1",
+  "skipped_rows": [],
+  "source_config": "research_program/neurips_memorability_selector/experiments/content_pocket_confirmatory_recognition_20260615/confirmatory_study_config_20260615.json",
+  "source_manifest": "research_program/neurips_memorability_selector/experiments/content_pocket_confirmatory_recognition_20260615/seedance_candidate_generation_manifest_improved_v1_20260615.json",
+  "status": "dry_run_ready_for_review",
+  "warnings": [
+    "No recognized Seedance credential environment variables are present in this shell."
+  ]
+}
