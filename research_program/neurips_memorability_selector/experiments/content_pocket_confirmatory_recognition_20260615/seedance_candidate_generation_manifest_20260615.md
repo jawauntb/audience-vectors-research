@@ -1,6 +1,6 @@
 # Seedance Candidate Generation Manifest
 
-Created: `2026-06-15T16:25:40.991850+00:00`
+Created: `2026-06-15T16:00:00+00:00`
 Experiment: `content_pocket_confirmatory_recognition_20260615`
 Status: `manifest_only_no_api_calls`
 Jobs: `96`

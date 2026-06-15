@@ -6,7 +6,6 @@ import argparse
 import json
 import math
 from collections import Counter
-from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -106,7 +105,7 @@ def build_form_plan(config: dict[str, Any]) -> dict[str, Any]:
     recommended_session1 = math.ceil(target_delayed / retention)
 
     return {
-        "created_at_utc": datetime.now(UTC).isoformat(),
+        "created_at_utc": config["manifest_created_at_utc"],
         "experiment_id": config["experiment_id"],
         "source_config": str(DEFAULT_CONFIG),
         "form_count": form_count,

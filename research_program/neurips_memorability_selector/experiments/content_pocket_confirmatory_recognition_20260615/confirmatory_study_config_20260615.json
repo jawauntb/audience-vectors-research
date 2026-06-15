@@ -2,6 +2,7 @@
   "artifact_status": "setup_no_generation_no_human_data",
   "created_at_local": "2026-06-15",
   "experiment_id": "content_pocket_confirmatory_recognition_20260615",
+  "manifest_created_at_utc": "2026-06-15T16:00:00+00:00",
   "generator": {
     "duration_seconds": 5,
     "fps": 24,

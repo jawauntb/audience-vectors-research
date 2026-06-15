@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import argparse
 import json
-from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -94,7 +93,7 @@ def build_manifest(config: dict[str, Any], *, video_root: Path) -> dict[str, Any
             )
 
     return {
-        "created_at_utc": datetime.now(UTC).isoformat(),
+        "created_at_utc": config["manifest_created_at_utc"],
         "experiment_id": config["experiment_id"],
         "source_config": str(DEFAULT_CONFIG),
         "status": "manifest_only_no_api_calls",
