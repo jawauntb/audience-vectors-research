@@ -77,6 +77,37 @@ For 96 videos at 1280x720, 5 seconds, and 24 fps, this is approximately
 `$0.76` per video and `$72.58` total before any provider-side changes,
 failures, retries, lures, fillers, or scoring costs.
 
+Live generation is deliberately opt-in and budget-capped:
+
+```bash
+cd /Users/jawaun/superoptimizers
+doppler run --project cofounder --config dev -- bash -lc '
+  cd /Users/jawaun/isc_mod
+  uv run python scripts/generate_confirmatory_seedance_videos.py \
+    --phase candidate_old_videos \
+    --limit 1 \
+    --execute-live \
+    --max-cost-usd 1.00
+'
+```
+
+The first one-video smoke completed on 2026-06-15 for
+`orange_flowers_candidate_old_v00`:
+
+- provider model: `bytedance/seedance-2.0`;
+- provider usage cost: `$0.756`;
+- local output:
+  `data/generated/content_pocket_confirmatory_recognition_20260615/candidate_old_videos/orange_flowers/orange_flowers_candidate_old_v00.mp4`;
+- SHA256:
+  `e16a3e8634ad29bcede96de6ed7ca0b234b72b9d010298c0e31a818750d1b81c`;
+- ffprobe: 1280x720, 24 fps, 5.041667 seconds, 1,855,477 bytes.
+
+The first download attempt exposed that OpenRouter content URLs still require
+the bearer header; the adapter now downloads with the same authorization header
+used for submission and polling. Rerunning the one-job command without
+`--overwrite` skips the existing MP4 and reports `$0.00` estimated additional
+cost.
+
 ## Generation Phases
 
 Phase 0: freeze prompt and candidate manifest.
