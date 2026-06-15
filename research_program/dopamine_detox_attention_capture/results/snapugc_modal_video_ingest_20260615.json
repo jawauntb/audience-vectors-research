@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "experiment": "snapugc_modal_video_ingest",
+  "generated_at": "2026-06-15T16:16:32.420238+00:00",
+  "modal_volume_name": "bmd-videos-v1",
+  "modal_root": "/bmd-videos",
+  "target_prefix": "attention_capture/SnapUGC",
+  "official_source": {
+    "train_video_folder_id": "134gJflcaQ7Dhg5EUKfLdeXW61fj1fiNo",
+    "train_video_folder_url": "https://drive.google.com/drive/folders/134gJflcaQ7Dhg5EUKfLdeXW61fj1fiNo",
+    "train_label_file_id": "1Mv5Esq5gGuxRTayabRUb5NmHwEN3JdbD",
+    "train_label_file_url": "https://drive.google.com/file/d/1Mv5Esq5gGuxRTayabRUb5NmHwEN3JdbD/view"
+  },
+  "ingest": {
+    "ok": false,
+    "ready": false,
+    "error_type": "ArchiveDownloadError",
+    "error": "failed to download train_videos_split.z02 after 2 attempts",
+    "archive_report": {
+      "ok": false,
+      "mode": "official_file_ids",
+      "archive_dir": "/bmd-videos/attention_capture/SnapUGC/archive/train_videos_split",
+      "paths": [
+        "/bmd-videos/attention_capture/SnapUGC/archive/train_videos_split/train_videos_split.z01"
+      ],
+      "paths_preview": [
+        "/bmd-videos/attention_capture/SnapUGC/archive/train_videos_split/train_videos_split.z01"
+      ],
+      "n_paths": 1,
+      "n_files": 2,
+      "n_downloaded": 0,
+      "n_existing": 1,
+      "n_failed": 1,
+      "files": [
+        {
+          "filename": "train_videos_split.z01",
+          "file_id": "1t7bcW1Ep0FElD716VUo-EPS1pkE_zcFG",
+          "path": "/bmd-videos/attention_capture/SnapUGC/archive/train_videos_split/train_videos_split.z01",
+          "status": "existing",
+          "size_bytes": 10485760000,
+          "attempts": 0
+        },
+        {
+          "filename": "train_videos_split.z02",
+          "file_id": "1Bg4_a3WMJsvn-NygAUHA2VsnZ5sjE08u",
+          "path": "/bmd-videos/attention_capture/SnapUGC/archive/train_videos_split/train_videos_split.z02",
+          "status": "failed",
+          "attempts": 2,
+          "errors": [
+            "attempt 1: FileURLRetrievalError: Failed to retrieve file url:\n\n\tToo many users have viewed or downloaded this file recently. Please\n\ttry accessing the file again later. If the file you are trying to\n\taccess is particularly large or is shared with many people, it may\n\ttake up to 24 hours to be able to view or download the file. If you\n\tstill can't access a file after 24 hours, contact your domain\n\tadministrator.\n\nYou may still be able to access the file from the browser:\n\n\thttps://drive.google.com/uc?id=1Bg4_a3WMJsvn-NygAUHA2VsnZ5sjE08u\n\nbut Gdown can't. Please check connections and permissions.",
+            "attempt 2: FileURLRetrievalError: Failed to retrieve file url:\n\n\tToo many users have viewed or downloaded this file recently. Please\n\ttry accessing the file again later. If the file you are trying to\n\taccess is particularly large or is shared with many people, it may\n\ttake up to 24 hours to be able to view or download the file. If you\n\tstill can't access a file after 24 hours, contact your domain\n\tadministrator.\n\nYou may still be able to access the file from the browser:\n\n\thttps://drive.google.com/uc?id=1Bg4_a3WMJsvn-NygAUHA2VsnZ5sjE08u\n\nbut Gdown can't. Please check connections and permissions."
+          ]
+        }
+      ]
+    },
+    "google_drive_folder_id": "134gJflcaQ7Dhg5EUKfLdeXW61fj1fiNo",
+    "google_drive_label_file_id": "1Mv5Esq5gGuxRTayabRUb5NmHwEN3JdbD",
+    "split_archive_stem": "train_videos_split",
+    "target_prefix": "attention_capture/SnapUGC",
+    "claim_boundary": "This ingests SnapUGC/VQualA media into a Modal Volume for later TRIBE feature extraction. It does not validate labels, score TRIBE, or support Phase 1/2/3 claims by itself."
+  },
+  "ready": false,
+  "claim_boundary": "This ingests SnapUGC/VQualA media into a Modal Volume for later TRIBE feature extraction. It does not validate labels, score TRIBE, or support Phase 1/2/3 claims by itself."
+}
