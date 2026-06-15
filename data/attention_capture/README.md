@@ -128,3 +128,24 @@ uv run python scripts/audit_attention_capture_retention_baselines.py \
 This baseline is diagnostic, not a replacement for TRIBE. It checks whether
 simple metadata has signal and whether deterministic negative controls such as
 row order or sample-id hashes look suspicious before any Modal GPU spend.
+
+To avoid downloading the split training-video archive onto a local laptop, run
+the SnapUGC/VQualA video ingest inside Modal:
+
+```bash
+uv run --extra modal modal run scripts/ingest_snapugc_videos_modal.py \
+  --output-json research_program/dopamine_detox_attention_capture/results/snapugc_modal_video_ingest_20260615.json \
+  --output-md research_program/dopamine_detox_attention_capture/results/snapugc_modal_video_ingest_20260615.md
+```
+
+That job downloads the official `train_videos_split.z01` ...
+`train_videos_split.zip` parts inside a Modal CPU container, caches successful
+parts under `/bmd-videos/attention_capture/SnapUGC/archive/train_videos_split`,
+extracts the split archive on Modal ephemeral disk, copies videos to
+`/bmd-videos/attention_capture/SnapUGC/video`, downloads `train_data.csv` into
+`/bmd-videos/attention_capture/SnapUGC/labels/train_data.csv`, commits the
+`bmd-videos-v1` volume, and writes only a small local report. It is safe to
+rerun after Google Drive quota failures: existing non-empty archive parts are
+reused and only missing parts are retried. It does not score TRIBE or make the
+dataset claim-ready by itself; the label builder and audits above still need to
+pass before Phase 1 scoring.
