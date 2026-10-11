@@ -1,0 +1,12 @@
+{
+  "ignore": [
+    "**/.pytest_cache/**",
+    "**/.ruff_cache/**",
+    "**/.pyright/**",
+    "**/node_modules/.cache/**",
+    "coverage/**",
+    "**/.coverage*",
+    "/tmp/testonce-pytest-tmp"
+  ],
+  "noCache": []
+}

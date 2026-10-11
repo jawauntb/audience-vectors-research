@@ -91,3 +91,6 @@ responses/private/
 # Modal
 .modal/
 .worktrees
+
+# testonce result cache
+.testonce/
