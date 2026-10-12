@@ -1,0 +1,54 @@
+name: tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      # Install everything up front so the traced test command never syncs or
+      # touches the network. The `modal` extra is needed by the *_modal tests.
+      # --compile-bytecode precompiles site-packages (stable between runs) so
+      # the repo's own source is the only code Python compiles per run.
+      - name: Install dependencies
+        run: uv sync --frozen --group dev --extra modal --compile-bytecode
+
+      # Installs strace, restores/saves .testonce/ with actions/cache and puts
+      # `testonce` on PATH. Config: testonce.json.
+      - uses: jawauntb/testonce@main
+
+      # One cached run per test file: a file is skipped only while every file it
+      # read, the command and the environment are byte-identical to its last pass.
+      # A failing test still fails the job.
+      #
+      # PYTHONDONTWRITEBYTECODE: when Python loads a repo module from a valid
+      # .pyc it only stats the .py, and testonce records a stat as "exists", not
+      # as content. A cached pass could then survive an edit to that module.
+      # With no repo .pyc files (a fresh checkout, none written) Python reads
+      # every .py, so edits are seen.
+      # TMPDIR: Python probes the temp dir at startup, which testonce would see
+      # as a modified input; a dedicated dir outside the checkout (ignored in
+      # testonce.json) keeps tmp_path relative-path behaviour unchanged.
+      - name: Run tests (per file, via testonce)
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          TMPDIR: /tmp/testonce-pytest-tmp
+        run: |
+          mkdir -p "$TMPDIR"
+          source .venv/bin/activate
+          testonce each tests/test_*.py -- python -m pytest -q {}
